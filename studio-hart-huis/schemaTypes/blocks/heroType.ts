@@ -1,20 +1,6 @@
 import {ImagesIcon} from '@sanity/icons/Images'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-const ctaFields = [
-  defineField({
-    name: 'label',
-    type: 'string',
-    validation: (rule) => rule.required(),
-  }),
-  defineField({
-    name: 'href',
-    type: 'string',
-    title: 'Link',
-    validation: (rule) => rule.required(),
-  }),
-]
-
 export const heroType = defineType({
   name: 'hero',
   title: 'Hero',
@@ -67,15 +53,13 @@ export const heroType = defineType({
     defineField({
       name: 'primaryCta',
       title: 'Primary CTA',
-      type: 'object',
-      fields: ctaFields,
+      type: 'cta',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'secondaryCta',
       title: 'Secondary CTA',
-      type: 'object',
-      fields: ctaFields,
+      type: 'cta',
       validation: (rule) => rule.required(),
     }),
     defineField({

@@ -3,5 +3,21 @@ import {defineArrayMember, defineType} from 'sanity'
 export const pageBuilderType = defineType({
   name: 'pageBuilder',
   type: 'array',
-  of: [defineArrayMember({type: 'hero'})],
+  of: [
+    defineArrayMember({type: 'hero'}),
+    defineArrayMember({type: 'intro'}),
+    defineArrayMember({type: 'services'}),
+    defineArrayMember({type: 'story'}),
+    defineArrayMember({type: 'reviews'}),
+    defineArrayMember({type: 'listings'}),
+    defineArrayMember({type: 'ctaBand'}),
+    defineArrayMember({type: 'pageHero'}),
+    defineArrayMember({type: 'factBar'}),
+    defineArrayMember({type: 'benefits'}),
+    defineArrayMember({type: 'steps'}),
+    defineArrayMember({type: 'quoteBand'}),
+    defineArrayMember({type: 'faqs'}),
+    defineArrayMember({type: 'regionBlock'}),
+    defineArrayMember({type: 'crossLinks'}),
+  ],
 })
