@@ -6,15 +6,12 @@ type WrapProps = {
   className?: string;
 };
 
-/**
- * Site content width shell.
- * Keeps a `wrap` class temporarily so section CSS (intro/stories/cta) can still target it.
- */
+/** Site content width shell. */
 export function Wrap({ children, className }: WrapProps) {
   return (
     <div
       className={cn(
-        "wrap mx-auto max-w-site px-wrap max-md:px-wrap-md max-xs:px-wrap-sm",
+        "mx-auto max-w-site px-wrap max-md:px-wrap-md max-xs:px-wrap-sm",
         className,
       )}
     >

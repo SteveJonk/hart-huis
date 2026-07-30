@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
+import { cn } from "@/lib/cn";
 
 type RevealLinkProps = {
   href: string;
@@ -10,21 +11,31 @@ type RevealLinkProps = {
   delay?: 1 | 2 | 3;
 };
 
+const delayClass = {
+  1: "delay-[90ms]",
+  2: "delay-[180ms]",
+  3: "delay-[270ms]",
+} as const;
+
 export function RevealLink({
   href,
   children,
-  className = "",
+  className,
   delay,
 }: RevealLinkProps) {
-  const ref = useRevealOnScroll<HTMLAnchorElement>();
-  const classes = ["rv", className].filter(Boolean).join(" ");
+  const { ref, visible } = useRevealOnScroll<HTMLAnchorElement>();
 
   return (
     <a
       ref={ref}
       href={href}
-      className={classes}
-      data-d={delay ? String(delay) : undefined}
+      className={cn(
+        "transition-[opacity,transform] duration-[850ms] ease-brand",
+        "motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none",
+        visible ? "translate-y-0 opacity-100" : "translate-y-[26px] opacity-0",
+        delay && delayClass[delay],
+        className,
+      )}
     >
       {children}
     </a>

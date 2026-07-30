@@ -4,7 +4,6 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import "./globals.css";
-import "@/styles/site.css";
 
 const display = Schibsted_Grotesk({
   variable: "--font-schibsted",

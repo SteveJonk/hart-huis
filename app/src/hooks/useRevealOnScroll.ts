@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const REVEAL_OPTIONS: IntersectionObserverInit = {
   threshold: 0.12,
@@ -9,15 +9,21 @@ const REVEAL_OPTIONS: IntersectionObserverInit = {
 
 export function useRevealOnScroll<T extends HTMLElement>() {
   const ref = useRef<T>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
+
     const io = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
-          entry.target.classList.add("in");
+          setVisible(true);
           io.unobserve(entry.target);
         }
       }
@@ -27,5 +33,5 @@ export function useRevealOnScroll<T extends HTMLElement>() {
     return () => io.disconnect();
   }, []);
 
-  return ref;
+  return { ref, visible };
 }
