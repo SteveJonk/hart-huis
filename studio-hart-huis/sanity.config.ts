@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'Hart en Huis',
 
-  projectId: 'bw6wf7fp',
+  projectId: 's7u8d78o',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
