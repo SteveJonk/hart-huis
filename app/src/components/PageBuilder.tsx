@@ -15,19 +15,18 @@ import { Services } from '@/components/blocks/Services';
 import { Steps } from '@/components/blocks/Steps';
 import { Stories } from '@/components/blocks/Stories';
 import { urlFor } from '@/sanity/image';
+import {
+  resolveHref,
+  type SanityLabeledLink,
+  type SanityLink,
+} from '@/lib/links';
 
 type SanityImage = SanityImageSource & {
   _key?: string;
   alt?: string;
 };
 
-type SanityLink = {
-  linkType?: 'internal' | 'external';
-  href?: string;
-  internalLink?: { slug?: string | null } | null;
-};
-
-type SanityCta = SanityLink & { label?: string };
+type SanityCta = SanityLabeledLink;
 
 type PageBlock = {
   _type: string;
@@ -54,17 +53,6 @@ function toImage(
   const src = imageSrc(source, width, height);
   if (!src) return undefined;
   return { src, alt: source?.alt ?? '' };
-}
-
-function resolveHref(link: SanityLink | undefined | null): string | undefined {
-  if (!link) return undefined;
-  if (link.linkType === 'internal') {
-    const slug = link.internalLink?.slug;
-    if (!slug) return undefined;
-    return slug === 'home' ? '/' : `/${slug}`;
-  }
-  // External, or legacy plain-string href content
-  return link.href || undefined;
 }
 
 function toCta(cta: SanityCta | undefined | null) {

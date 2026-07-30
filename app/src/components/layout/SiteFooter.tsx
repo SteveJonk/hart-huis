@@ -3,9 +3,8 @@ import { Wrap } from '@/components/ui/Wrap';
 import { cn } from '@/lib/cn';
 import {
   FOOTER_CERTS,
-  FOOTER_DIENSTEN,
-  FOOTER_QUICK,
   SITE,
+  type FooterLinkGroup,
   type NavLink,
 } from '@/lib/site';
 import Link from 'next/link';
@@ -27,7 +26,17 @@ function FooterLinkList({ links }: { links: NavLink[] }) {
   );
 }
 
-export function SiteFooter() {
+type SiteFooterProps = {
+  linkGroups?: FooterLinkGroup[] | null;
+  copyright?: string | null;
+};
+
+export function SiteFooter({
+  linkGroups = [],
+  copyright,
+}: SiteFooterProps) {
+  const groups = linkGroups ?? [];
+
   return (
     <footer className='bg-ink pt-24 pb-[34px] text-mist max-sm:pt-[74px]'>
       <Wrap>
@@ -45,18 +54,14 @@ export function SiteFooter() {
               omstreken.
             </p>
           </div>
-          <div>
-            <h5 className='mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase'>
-              Diensten
-            </h5>
-            <FooterLinkList links={FOOTER_DIENSTEN} />
-          </div>
-          <div>
-            <h5 className='mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase'>
-              Snel naar
-            </h5>
-            <FooterLinkList links={FOOTER_QUICK} />
-          </div>
+          {groups.map((group) => (
+            <div key={group.title}>
+              <h5 className='mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase'>
+                {group.title}
+              </h5>
+              <FooterLinkList links={group.links ?? []} />
+            </div>
+          ))}
           <div>
             <h5 className='mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase'>
               Contact
@@ -93,7 +98,8 @@ export function SiteFooter() {
           )}
         >
           <span>
-            © 2026 Hart &amp; Huis Makelaardij — Algemene voorwaarden · Privacy
+            {copyright ||
+              '© 2026 Hart & Huis Makelaardij — Algemene voorwaarden · Privacy'}
           </span>
           <div className='flex gap-2.5 max-sm:flex-wrap'>
             {FOOTER_CERTS.map((cert) => (

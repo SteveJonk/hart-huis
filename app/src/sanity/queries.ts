@@ -52,3 +52,21 @@ export const PAGE_QUERY = defineQuery(`
     }
   }
 `);
+
+export const NAVIGATION_QUERY = defineQuery(`
+  *[_id == "navigation"][0]{
+    navLeft[]${linkExpansion},
+    navRight[]${linkExpansion}
+  }
+`);
+
+export const FOOTER_QUERY = defineQuery(`
+  *[_id == "footer"][0]{
+    linkGroups[]{
+      title,
+      links[]${linkExpansion}
+    },
+    socialLinks[]{ platform, url },
+    copyright
+  }
+`);

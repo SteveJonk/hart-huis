@@ -1,5 +1,6 @@
 /**
- * Seed Sanity with home + verkoop page builder content.
+ * Seed Sanity with home + verkoop page builder content,
+ * plus navigation and footer singletons.
  *
  * Requires SANITY_API_WRITE_TOKEN (Editor or Admin) in app/.env
  * Create one at: https://www.sanity.io/manage/project/s7u8d78o/api#tokens
@@ -8,7 +9,7 @@
  *   npm run seed:sanity
  *
  * Idempotent: reuses assets by filename, reviews by name, FAQs by title,
- * and pages by slug (creates or replaces content).
+ * pages by slug, and navigation/footer by fixed singleton IDs.
  */
 import {createHash, randomBytes} from 'node:crypto'
 import {createReadStream, existsSync} from 'node:fs'
@@ -191,6 +192,101 @@ async function upsertPage(slug: string, title: string, content: unknown[]) {
   const created = await client.create(doc)
   console.log(`✓ page /${slug === 'home' ? '' : slug} created (${created._id})`)
   return created._id
+}
+
+function navLinkExternal(label: string, href: string) {
+  return {
+    _key: key(`${label}:${href}`),
+    label,
+    linkType: 'external' as const,
+    href,
+  }
+}
+
+function navLinkInternal(label: string, pageId: string) {
+  return {
+    _key: key(`internal:${label}:${pageId}`),
+    label,
+    linkType: 'internal' as const,
+    internalLink: {_type: 'reference' as const, _ref: pageId},
+  }
+}
+
+async function pageIdBySlug(slug: string) {
+  return client.fetch<string | null>(
+    `*[_type == "page" && slug.current == $slug][0]._id`,
+    {slug},
+  )
+}
+
+async function upsertNavigation() {
+  const verkoopId = await pageIdBySlug('verkoop')
+  const verkoopLink = verkoopId
+    ? navLinkInternal('Verkoop', verkoopId)
+    : navLinkExternal('Verkoop', '/verkoop')
+
+  const doc = {
+    _id: 'navigation',
+    _type: 'navigation' as const,
+    navLeft: [
+      verkoopLink,
+      navLinkExternal('Aankoop', '#'),
+      navLinkExternal('Taxatie', '#'),
+      navLinkExternal('NVM', '#'),
+    ],
+    navRight: [
+      navLinkExternal('Actueel aanbod', '#'),
+      navLinkExternal('Beoordelingen', '#'),
+      navLinkExternal('Over ons', '#'),
+      navLinkExternal('Contact', '#'),
+    ],
+  }
+
+  await client.createOrReplace(doc)
+  console.log(
+    verkoopId
+      ? '✓ navigation singleton upserted (Verkoop → internal page)'
+      : '✓ navigation singleton upserted (Verkoop → external /verkoop; page not found yet)',
+  )
+}
+
+async function upsertFooter() {
+  const verkoopId = await pageIdBySlug('verkoop')
+  const verkoopLink = verkoopId
+    ? navLinkInternal('Verkoop', verkoopId)
+    : navLinkExternal('Verkoop', '/verkoop')
+
+  const doc = {
+    _id: 'footer',
+    _type: 'footer' as const,
+    linkGroups: [
+      {
+        _key: key('footer-diensten'),
+        title: 'Diensten',
+        links: [
+          verkoopLink,
+          navLinkExternal('Aankoop', '#'),
+          navLinkExternal('Taxatie', '#'),
+          navLinkExternal('NVM', '#'),
+        ],
+      },
+      {
+        _key: key('footer-snel-naar'),
+        title: 'Snel naar',
+        links: [
+          navLinkExternal('Actueel aanbod', '#'),
+          navLinkExternal('Beoordelingen', '#'),
+          navLinkExternal('Over ons', '#'),
+          navLinkExternal('Contact', '#'),
+        ],
+      },
+    ],
+    socialLinks: [],
+    copyright: '© 2026 Hart & Huis Makelaardij — Algemene voorwaarden · Privacy',
+  }
+
+  await client.createOrReplace(doc)
+  console.log('✓ footer singleton upserted')
 }
 
 async function buildHomeContent(reviewIds: string[]) {
@@ -479,6 +575,10 @@ async function main() {
   console.log('\nVerkoop page')
   const verkoopContent = await buildVerkoopContent(faqIds)
   await upsertPage('verkoop', 'Verkoop', verkoopContent)
+
+  console.log('\nNavigation & footer')
+  await upsertNavigation()
+  await upsertFooter()
 
   console.log('\nDone. Open / and /verkoop after a refresh.')
 }

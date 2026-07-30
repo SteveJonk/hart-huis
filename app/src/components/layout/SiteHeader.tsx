@@ -6,7 +6,7 @@ import { LogoMark } from '@/components/ui/LogoMark';
 import { useMobileNav } from '@/hooks/useMobileNav';
 import { useStickyTopbar } from '@/hooks/useStickyTopbar';
 import { cn } from '@/lib/cn';
-import { NAV_LEFT, NAV_MOBILE, NAV_RIGHT, SITE, type NavLink } from '@/lib/site';
+import { SITE, type NavLink } from '@/lib/site';
 
 function isActivePath(pathname: string, href: string) {
   if (href === '#' || href === '/') return pathname === href;
@@ -99,9 +99,17 @@ function Burger({
   );
 }
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+  navLeft?: NavLink[] | null;
+  navRight?: NavLink[] | null;
+};
+
+export function SiteHeader({ navLeft = [], navRight = [] }: SiteHeaderProps) {
   const stuck = useStickyTopbar();
   const { open, toggle, close } = useMobileNav();
+  const left = navLeft ?? [];
+  const right = navRight ?? [];
+  const navMobile = left.concat(right);
 
   return (
     <>
@@ -119,11 +127,11 @@ export function SiteHeader() {
           (stuck || open) && 'before:opacity-0',
         )}
       >
-        <DesktopNav links={NAV_LEFT} stuck={stuck} />
+        <DesktopNav links={left} stuck={stuck} />
         <Link href='/' aria-label={SITE.name}>
           <LogoMark stuck={stuck} />
         </Link>
-        <DesktopNav links={NAV_RIGHT} align='end' stuck={stuck} />
+        <DesktopNav links={right} align='end' stuck={stuck} />
         <Burger open={open} stuck={stuck} onToggle={toggle} />
       </div>
 
@@ -137,7 +145,7 @@ export function SiteHeader() {
           'max-xs:px-wrap-sm',
         )}
       >
-        {NAV_MOBILE.map((link) => (
+        {navMobile.map((link) => (
           <Link
             key={link.label}
             href={link.href}

@@ -12,35 +12,10 @@ export const SITE = {
 
 export type NavLink = { href: string; label: string };
 
-export const NAV_LEFT: NavLink[] = [
-  { href: "/verkoop", label: "Verkoop" },
-  { href: "#", label: "Aankoop" },
-  { href: "#", label: "Taxatie" },
-  { href: "#", label: "NVM" },
-];
-
-export const NAV_RIGHT: NavLink[] = [
-  { href: "#", label: "Actueel aanbod" },
-  { href: "#", label: "Beoordelingen" },
-  { href: "#", label: "Over ons" },
-  { href: "#", label: "Contact" },
-];
-
-export const NAV_MOBILE: NavLink[] = [...NAV_LEFT, ...NAV_RIGHT];
-
-export const FOOTER_DIENSTEN: NavLink[] = [
-  { href: "/verkoop", label: "Verkoop" },
-  { href: "#", label: "Aankoop" },
-  { href: "#", label: "Taxatie" },
-  { href: "#", label: "NVM" },
-];
-
-export const FOOTER_QUICK: NavLink[] = [
-  { href: "#", label: "Actueel aanbod" },
-  { href: "#", label: "Beoordelingen" },
-  { href: "#", label: "Over ons" },
-  { href: "#", label: "Contact" },
-];
+export type FooterLinkGroup = {
+  title: string;
+  links: NavLink[];
+};
 
 export const FOOTER_CERTS = ["NVM", "FUNDA", "NWWI", "VASTGOEDCERT"] as const;
 
