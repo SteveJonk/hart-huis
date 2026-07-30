@@ -5,12 +5,57 @@ import { cn } from "@/lib/cn";
 import { HERO_SLIDES } from "@/lib/home-content";
 import { SITE } from "@/lib/site";
 
+export type HeroCta = {
+  label: string;
+  href: string;
+};
+
+export type HeroSlide = {
+  src: string;
+  alt: string;
+};
+
+export type HeroProps = {
+  slides?: HeroSlide[];
+  eyebrow?: string;
+  title?: string;
+  titleHighlight?: string;
+  lead?: string;
+  primaryCta?: HeroCta;
+  secondaryCta?: HeroCta;
+  badgeValue?: string;
+  badgeLabel?: string;
+};
+
+const DEFAULTS: Required<HeroProps> = {
+  slides: HERO_SLIDES,
+  eyebrow: "NVM-makelaar in Haarlem en omstreken",
+  title: "Je voelt je thuis bij",
+  titleHighlight: "Hart & Huis",
+  lead:
+    "Verkopen, kopen of taxeren in Haarlem — met twee makelaars die je bij naam kennen, de buurt op hun duimpje kennen en de tijd nemen voor jouw verhaal.",
+  primaryCta: { label: "Wat is mijn huis waard?", href: "#" },
+  secondaryCta: { label: "Bekijk het aanbod", href: "#" },
+  badgeValue: SITE.fundaScore,
+  badgeLabel: "OP FUNDA",
+};
+
 const SLIDE_DELAYS = ["[animation-delay:0s]", "[animation-delay:7.5s]", "[animation-delay:15s]"];
 
 const shortLandscape =
   "[@media(max-height:560px)_and_(max-width:960px)]:min-h-0 [@media(max-height:560px)_and_(max-width:960px)]:pt-24";
 
-export function Hero() {
+export function Hero({
+  slides = DEFAULTS.slides,
+  eyebrow = DEFAULTS.eyebrow,
+  title = DEFAULTS.title,
+  titleHighlight = DEFAULTS.titleHighlight,
+  lead = DEFAULTS.lead,
+  primaryCta = DEFAULTS.primaryCta,
+  secondaryCta = DEFAULTS.secondaryCta,
+  badgeValue = DEFAULTS.badgeValue,
+  badgeLabel = DEFAULTS.badgeLabel,
+}: HeroProps = {}) {
   return (
     <header
       className={cn(
@@ -20,7 +65,7 @@ export function Hero() {
       )}
     >
       <div className="absolute inset-0">
-        {HERO_SLIDES.map((slide, index) => (
+        {slides.map((slide, index) => (
           <div
             key={slide.src}
             className={cn(
@@ -55,7 +100,7 @@ export function Hero() {
             "[@media(max-height:560px)_and_(max-width:960px)]:pb-[60px]",
           )}
         >
-          <Eyebrow light>NVM-makelaar in Haarlem en omstreken</Eyebrow>
+          <Eyebrow light>{eyebrow}</Eyebrow>
           <h1
             className={cn(
               "mb-[26px] max-w-[15ch] text-[clamp(2.9rem,7.2vw,6.2rem)] text-white",
@@ -63,7 +108,13 @@ export function Hero() {
               "max-xs:text-[2rem]",
             )}
           >
-            Je voelt je thuis bij <em className="text-sand italic">Hart &amp; Huis</em>
+            {title}
+            {titleHighlight ? (
+              <>
+                {" "}
+                <em className="text-sand italic">{titleHighlight}</em>
+              </>
+            ) : null}
           </h1>
           <p
             className={cn(
@@ -71,24 +122,22 @@ export function Hero() {
               "max-sm:mb-7 max-sm:max-w-none max-sm:text-[0.97rem]",
             )}
           >
-            Verkopen, kopen of taxeren in Haarlem — met twee makelaars die je bij
-            naam kennen, de buurt op hun duimpje kennen en de tijd nemen voor jouw
-            verhaal.
+            {lead}
           </p>
           <div className="flex flex-wrap gap-[14px] max-sm:gap-2.5">
             <Button
-              href="#"
+              href={primaryCta.href}
               variant="primary"
               className="max-sm:w-full max-sm:flex-1 max-sm:basis-full max-sm:justify-center"
             >
-              Wat is mijn huis waard?
+              {primaryCta.label}
             </Button>
             <Button
-              href="#"
+              href={secondaryCta.href}
               variant="line"
               className="max-sm:w-full max-sm:flex-1 max-sm:basis-full max-sm:justify-center"
             >
-              Bekijk het aanbod
+              {secondaryCta.label}
             </Button>
           </div>
         </div>
@@ -124,7 +173,7 @@ export function Hero() {
                 "max-md:text-[1.5rem] max-sm:text-[1.36rem] max-xs:text-[1.2rem]",
               )}
             >
-              {SITE.fundaScore}
+              {badgeValue}
             </b>
             <small
               className={cn(
@@ -133,7 +182,7 @@ export function Hero() {
                 "max-xs:text-[0.5rem] max-xs:tracking-[0.1em]",
               )}
             >
-              OP FUNDA
+              {badgeLabel}
             </small>
           </div>
         </div>
