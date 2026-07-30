@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 const REVEAL_OPTIONS: IntersectionObserverInit = {
   threshold: 0.12,
-  rootMargin: "0px 0px -40px 0px",
+  rootMargin: '0px 0px -40px 0px',
 };
 
 export function useRevealOnScroll<T extends HTMLElement>() {
@@ -15,7 +15,8 @@ export function useRevealOnScroll<T extends HTMLElement>() {
     const el = ref.current;
     if (!el) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true);
       return;
     }
