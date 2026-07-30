@@ -13,7 +13,7 @@ export const SITE = {
 export type NavLink = { href: string; label: string };
 
 export const NAV_LEFT: NavLink[] = [
-  { href: "#", label: "Verkoop" },
+  { href: "/verkoop", label: "Verkoop" },
   { href: "#", label: "Aankoop" },
   { href: "#", label: "Taxatie" },
   { href: "#", label: "NVM" },
@@ -29,7 +29,7 @@ export const NAV_RIGHT: NavLink[] = [
 export const NAV_MOBILE: NavLink[] = [...NAV_LEFT, ...NAV_RIGHT];
 
 export const FOOTER_DIENSTEN: NavLink[] = [
-  { href: "#", label: "Verkoop" },
+  { href: "/verkoop", label: "Verkoop" },
   { href: "#", label: "Aankoop" },
   { href: "#", label: "Taxatie" },
   { href: "#", label: "NVM" },

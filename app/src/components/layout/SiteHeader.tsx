@@ -1,11 +1,17 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { LogoMark } from '@/components/ui/LogoMark';
 import { useMobileNav } from '@/hooks/useMobileNav';
 import { useStickyTopbar } from '@/hooks/useStickyTopbar';
 import { cn } from '@/lib/cn';
 import { NAV_LEFT, NAV_MOBILE, NAV_RIGHT, SITE, type NavLink } from '@/lib/site';
+
+function isActivePath(pathname: string, href: string) {
+  if (href === '#' || href === '/') return pathname === href;
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 function DesktopNav({
   links,
@@ -16,6 +22,8 @@ function DesktopNav({
   align?: 'start' | 'end';
   stuck: boolean;
 }) {
+  const pathname = usePathname();
+
   return (
     <ul
       className={cn(
@@ -23,22 +31,26 @@ function DesktopNav({
         align === 'end' && 'justify-end',
       )}
     >
-      {links.map((link) => (
-        <li key={link.label}>
-          <a
-            href={link.href}
-            className={cn(
-              'relative py-1.5 text-nav font-medium transition-colors duration-[400ms] ease-brand max-lg:text-[0.79rem]',
-              stuck ? 'text-ink' : 'text-white',
-              'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current',
-              'after:transition-transform after:duration-[350ms] after:ease-brand',
-              'hover:after:origin-left hover:after:scale-x-100',
-            )}
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
+      {links.map((link) => {
+        const active = isActivePath(pathname, link.href);
+        return (
+          <li key={link.label}>
+            <Link
+              href={link.href}
+              className={cn(
+                'relative py-1.5 text-nav font-medium transition-colors duration-[400ms] ease-brand max-lg:text-[0.79rem]',
+                stuck ? 'text-ink' : 'text-white',
+                'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current',
+                'after:transition-transform after:duration-[350ms] after:ease-brand',
+                'hover:after:origin-left hover:after:scale-x-100',
+                active && 'after:origin-left after:scale-x-100',
+              )}
+            >
+              {link.label}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -126,7 +138,7 @@ export function SiteHeader() {
         )}
       >
         {NAV_MOBILE.map((link) => (
-          <a
+          <Link
             key={link.label}
             href={link.href}
             onClick={close}
@@ -137,7 +149,7 @@ export function SiteHeader() {
             )}
           >
             {link.label}
-          </a>
+          </Link>
         ))}
       </nav>
     </>
