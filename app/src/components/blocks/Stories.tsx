@@ -5,7 +5,53 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Wrap } from "@/components/ui/Wrap";
 import { cn } from "@/lib/cn";
 
-export function Stories() {
+export type StoriesImage = {
+  src: string;
+  alt: string;
+};
+
+export type StoriesCta = {
+  label: string;
+  href: string;
+};
+
+export type StoriesProps = {
+  image?: StoriesImage;
+  secondaryImage?: StoriesImage;
+  eyebrow?: string;
+  title?: string;
+  quote?: string;
+  attribution?: string;
+  cta?: StoriesCta;
+};
+
+const DEFAULTS: Required<Omit<StoriesProps, "cta">> & Pick<StoriesProps, "cta"> =
+  {
+    image: {
+      src: "/images/story-big.jpg",
+      alt: "Een straat in Haarlem bij zonsondergang",
+    },
+    secondaryImage: {
+      src: "/images/story-small.jpg",
+      alt: "Gevels in het centrum van Haarlem",
+    },
+    eyebrow: "Klanten vertellen",
+    title: "Van Amsterdam naar de Kleverparkbuurt",
+    quote:
+      "We zochten al anderhalf jaar. Binnen zes weken stonden we met de sleutel in onze hand — in de straat waar we stiekem altijd al wilden wonen.",
+    attribution: "Sanne & Joost — Haarlem",
+    cta: { label: "Lees hun verhaal", href: "#" },
+  };
+
+export function Stories({
+  image = DEFAULTS.image,
+  secondaryImage = DEFAULTS.secondaryImage,
+  eyebrow = DEFAULTS.eyebrow,
+  title = DEFAULTS.title,
+  quote = DEFAULTS.quote,
+  attribution = DEFAULTS.attribution,
+  cta = DEFAULTS.cta,
+}: StoriesProps = {}) {
   return (
     <section className="relative bg-sand py-[130px] max-sm:py-[82px]">
       <Wrap
@@ -22,8 +68,8 @@ export function Stories() {
         >
           <div className="absolute top-0 left-0 h-full w-[70%] overflow-hidden rounded-arch max-sm:w-[74%]">
             <Image
-              src="/images/story-big.jpg"
-              alt="Een straat in Haarlem bij zonsondergang"
+              src={image.src}
+              alt={image.alt}
               width={900}
               height={1200}
               className="h-full w-full object-cover"
@@ -36,8 +82,8 @@ export function Stories() {
             )}
           >
             <Image
-              src="/images/story-small.jpg"
-              alt="Gevels in het centrum van Haarlem"
+              src={secondaryImage.src}
+              alt={secondaryImage.alt}
               width={600}
               height={400}
               className="h-full w-full object-cover"
@@ -46,9 +92,9 @@ export function Stories() {
         </Reveal>
 
         <Reveal delay={1}>
-          <Eyebrow>Klanten vertellen</Eyebrow>
+          <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className="mb-6 max-w-[14ch] text-[clamp(2.1rem,4vw,3.5rem)]">
-            Van Amsterdam naar de Kleverparkbuurt
+            {title}
           </h2>
           <blockquote
             className={cn(
@@ -56,16 +102,16 @@ export function Stories() {
               "max-sm:pl-[18px] max-sm:text-[1.12rem]",
             )}
           >
-            &ldquo;We zochten al anderhalf jaar. Binnen zes weken stonden we met
-            de sleutel in onze hand — in de straat waar we stiekem altijd al
-            wilden wonen.&rdquo;
+            &ldquo;{quote}&rdquo;
           </blockquote>
           <div className="mb-[34px] text-[0.82rem] font-semibold tracking-[0.14em] text-ink-70 uppercase">
-            Sanne &amp; Joost — Haarlem
+            {attribution}
           </div>
-          <Button href="#" variant="ink">
-            Lees hun verhaal
-          </Button>
+          {cta ? (
+            <Button href={cta.href} variant="ink">
+              {cta.label}
+            </Button>
+          ) : null}
         </Reveal>
       </Wrap>
     </section>

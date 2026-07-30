@@ -7,13 +7,67 @@ import { RevealLink } from "@/components/ui/RevealLink";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Wrap } from "@/components/ui/Wrap";
 import { cn } from "@/lib/cn";
-import { SERVICES, type ServiceCard } from "@/lib/home-content";
+import { SERVICES } from "@/lib/home-content";
+
+export type ServiceImage = {
+  src: string;
+  alt: string;
+};
+
+export type ServiceItem = {
+  label: string;
+  title: string;
+  description: string;
+  image: ServiceImage;
+  href: string;
+  delay?: 1 | 2 | 3;
+};
+
+export type ServiceCta = {
+  label: string;
+  href: string;
+};
+
+export type ServicesNvm = {
+  badge: string;
+  title: string;
+  body: string;
+  cta?: ServiceCta;
+};
+
+export type ServicesProps = {
+  title?: string;
+  lead?: string;
+  items?: ServiceItem[];
+  nvm?: ServicesNvm;
+};
+
+const DEFAULT_ITEMS: ServiceItem[] = SERVICES.map((service) => ({
+  label: service.label,
+  title: service.title,
+  description: service.description,
+  image: { src: service.image, alt: service.imageAlt },
+  href: service.href,
+  delay: service.delay,
+}));
+
+const DEFAULTS: Required<ServicesProps> = {
+  title: "Wat kunnen we voor je doen?",
+  lead: "Van Haarlem-Noord tot Heemstede: verkoop, aankoop en taxaties onder één dak.",
+  items: DEFAULT_ITEMS,
+  nvm: {
+    badge: "NVM",
+    title: "Aangesloten bij de NVM",
+    body: "Vaste kwaliteitseisen, actuele marktdata uit de grootste woningdatabase van Nederland, en een geschillenregeling waar je op terug kunt vallen.",
+    cta: { label: "Wat betekent dat voor jou?", href: "#" },
+  },
+};
 
 function ServiceCardItem({
   service,
   index,
 }: {
-  service: ServiceCard;
+  service: ServiceItem;
   index: number;
 }) {
   return (
@@ -37,8 +91,8 @@ function ServiceCardItem({
           {service.label}
         </span>
         <Image
-          src={service.image}
-          alt={service.imageAlt}
+          src={service.image.src}
+          alt={service.image.alt}
           width={640}
           height={768}
           className="h-full w-full object-cover transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
@@ -55,22 +109,24 @@ function ServiceCardItem({
   );
 }
 
-export function Services() {
+export function Services({
+  title = DEFAULTS.title,
+  lead = DEFAULTS.lead,
+  items = DEFAULTS.items,
+  nvm = DEFAULTS.nvm,
+}: ServicesProps = {}) {
   return (
     <section className="pt-5 pb-[130px] max-sm:py-[82px]">
       <Wrap>
         <Reveal>
           <SectionHead>
-            <h2>Wat kunnen we voor je doen?</h2>
-            <Lead className="max-w-[38ch]">
-              Van Haarlem-Noord tot Heemstede: verkoop, aankoop en taxaties onder
-              één dak.
-            </Lead>
+            <h2>{title}</h2>
+            <Lead className="max-w-[38ch]">{lead}</Lead>
           </SectionHead>
         </Reveal>
 
         <div className="grid grid-cols-3 gap-[30px] max-md:grid-cols-2 max-md:gap-[22px] max-sm:grid-cols-1">
-          {SERVICES.map((service, index) => (
+          {items.map((service, index) => (
             <ServiceCardItem
               key={service.label}
               service={service}
@@ -90,26 +146,26 @@ export function Services() {
           )}
         >
           <div className="relative z-[2] grid size-[82px] shrink-0 place-items-center rounded-full bg-sand font-display text-[1.32rem] tracking-[0.08em] text-ink max-sm:size-[66px] max-sm:text-[1.08rem]">
-            NVM
+            {nvm.badge}
           </div>
           <div className="relative z-[2] min-w-[270px] flex-1 max-sm:min-w-0 max-sm:basis-full">
             <h3 className="mb-[9px] text-[1.55rem] text-white max-sm:text-[1.32rem]">
-              Aangesloten bij de NVM
+              {nvm.title}
             </h3>
             <p className="max-w-[54ch] text-[0.95rem] leading-[1.65] text-clay max-sm:text-[0.92rem]">
-              Vaste kwaliteitseisen, actuele marktdata uit de grootste
-              woningdatabase van Nederland, en een geschillenregeling waar je op
-              terug kunt vallen.
+              {nvm.body}
             </p>
           </div>
-          <Button
-            href="#"
-            variant="primary"
-            size="sm"
-            className="relative z-[2] max-sm:w-full max-sm:justify-center"
-          >
-            Wat betekent dat voor jou?
-          </Button>
+          {nvm.cta ? (
+            <Button
+              href={nvm.cta.href}
+              variant="primary"
+              size="sm"
+              className="relative z-[2] max-sm:w-full max-sm:justify-center"
+            >
+              {nvm.cta.label}
+            </Button>
+          ) : null}
         </Reveal>
       </Wrap>
     </section>

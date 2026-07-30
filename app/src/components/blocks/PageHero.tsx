@@ -4,9 +4,48 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Wrap } from "@/components/ui/Wrap";
 import { VERKOOP_HERO } from "@/lib/verkoop-content";
 
-export function PageHero() {
-  const hero = VERKOOP_HERO;
+export type PageHeroImage = {
+  src: string;
+  alt: string;
+};
 
+export type PageHeroCta = {
+  label: string;
+  href: string;
+};
+
+export type PageHeroProps = {
+  image?: PageHeroImage;
+  breadcrumbLabel?: string;
+  eyebrow?: string;
+  title?: string;
+  titleHighlight?: string;
+  lead?: string;
+  primaryCta?: PageHeroCta;
+  secondaryCta?: PageHeroCta;
+};
+
+const DEFAULTS: Required<PageHeroProps> = {
+  image: { src: VERKOOP_HERO.image, alt: VERKOOP_HERO.imageAlt },
+  breadcrumbLabel: "Verkoop",
+  eyebrow: VERKOOP_HERO.eyebrow,
+  title: VERKOOP_HERO.titleBefore,
+  titleHighlight: VERKOOP_HERO.titleEm,
+  lead: VERKOOP_HERO.lead,
+  primaryCta: VERKOOP_HERO.primary,
+  secondaryCta: VERKOOP_HERO.secondary,
+};
+
+export function PageHero({
+  image = DEFAULTS.image,
+  breadcrumbLabel = DEFAULTS.breadcrumbLabel,
+  eyebrow = DEFAULTS.eyebrow,
+  title = DEFAULTS.title,
+  titleHighlight = DEFAULTS.titleHighlight,
+  lead = DEFAULTS.lead,
+  primaryCta = DEFAULTS.primaryCta,
+  secondaryCta = DEFAULTS.secondaryCta,
+}: PageHeroProps = {}) {
   return (
     <header
       className={[
@@ -16,8 +55,8 @@ export function PageHero() {
       ].join(" ")}
     >
       <Image
-        src={hero.image}
-        alt={hero.imageAlt}
+        src={image.src}
+        alt={image.alt}
         fill
         priority
         sizes="100vw"
@@ -52,9 +91,9 @@ export function PageHero() {
               strokeWidth="1.3"
             />
           </svg>
-          <b className="font-medium text-white">Verkoop</b>
+          <b className="font-medium text-white">{breadcrumbLabel}</b>
         </nav>
-        <Eyebrow light>{hero.eyebrow}</Eyebrow>
+        <Eyebrow light>{eyebrow}</Eyebrow>
         <h1
           className={[
             "mb-[22px] max-w-[17ch] text-[clamp(2.5rem,5.6vw,4.6rem)] text-white",
@@ -62,8 +101,10 @@ export function PageHero() {
             "max-xs:text-[2rem]",
           ].join(" ")}
         >
-          {hero.titleBefore}
-          <em className="text-sand italic">{hero.titleEm}</em>
+          {title}
+          {titleHighlight ? (
+            <em className="text-sand italic">{titleHighlight}</em>
+          ) : null}
         </h1>
         <p
           className={[
@@ -71,22 +112,22 @@ export function PageHero() {
             "max-sm:mb-[26px] max-sm:max-w-none max-sm:text-[0.97rem]",
           ].join(" ")}
         >
-          {hero.lead}
+          {lead}
         </p>
         <div className="flex flex-wrap gap-[14px]">
           <Button
-            href={hero.primary.href}
+            href={primaryCta.href}
             variant="primary"
             className="max-sm:w-full max-sm:flex-1 max-sm:basis-full max-sm:justify-center"
           >
-            {hero.primary.label}
+            {primaryCta.label}
           </Button>
           <Button
-            href={hero.secondary.href}
+            href={secondaryCta.href}
             variant="line"
             className="max-sm:w-full max-sm:flex-1 max-sm:basis-full max-sm:justify-center"
           >
-            {hero.secondary.label}
+            {secondaryCta.label}
           </Button>
         </div>
       </Wrap>

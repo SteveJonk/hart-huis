@@ -6,7 +6,15 @@ export const PAGE_QUERY = defineQuery(`
     title,
     slug,
     content[]{
-      ...
+      ...,
+      _type == "reviews" => {
+        ...,
+        reviews[]->
+      },
+      _type == "faqs" => {
+        ...,
+        faqs[]->
+      }
     }
   }
 `);

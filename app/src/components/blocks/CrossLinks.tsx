@@ -3,12 +3,26 @@ import { Wrap } from "@/components/ui/Wrap";
 import { IconArrow } from "@/components/ui/IconArrow";
 import { VERKOOP_CROSSLINKS } from "@/lib/verkoop-content";
 
-export function CrossLinks() {
+export type CrossLinkItem = {
+  title: string;
+  body: string;
+  href: string;
+};
+
+export type CrossLinksProps = {
+  items?: CrossLinkItem[];
+};
+
+const DEFAULTS: Required<CrossLinksProps> = {
+  items: [...VERKOOP_CROSSLINKS],
+};
+
+export function CrossLinks({ items = DEFAULTS.items }: CrossLinksProps = {}) {
   return (
     <section className="pb-[124px] max-sm:pb-[84px]">
       <Wrap>
         <div className="grid grid-cols-2 gap-[26px] max-md:grid-cols-1">
-          {VERKOOP_CROSSLINKS.map((link, index) => (
+          {items.map((link, index) => (
             <Reveal key={link.title} delay={index === 1 ? 1 : undefined}>
               <a
                 href={link.href}

@@ -9,29 +9,67 @@ import { useActiveStep } from "@/hooks/useActiveStep";
 import { cn } from "@/lib/cn";
 import { VERKOOP_STEPS } from "@/lib/verkoop-content";
 
-export function Steps() {
-  const { active, itemRefs } = useActiveStep(VERKOOP_STEPS.length);
-  const current = VERKOOP_STEPS[active] ?? VERKOOP_STEPS[0];
+export type StepsCta = {
+  label: string;
+  href: string;
+};
+
+export type StepsItem = {
+  number: string;
+  title: string;
+  body: string;
+  image: string | { src: string };
+};
+
+export type StepsProps = {
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+  cta?: StepsCta;
+  items?: StepsItem[];
+};
+
+const DEFAULTS: Required<StepsProps> = {
+  eyebrow: "Het traject",
+  title: "Zo verkopen we jouw woning",
+  lead:
+    "Vijf stappen, van de eerste kop koffie tot de overdracht bij de notaris. Je weet vooraf precies wat er gebeurt en wanneer.",
+  cta: { label: "Plan een kennismaking", href: "#" },
+  items: VERKOOP_STEPS,
+};
+
+function stepImageSrc(image: StepsItem["image"]): string {
+  return typeof image === "string" ? image : image.src;
+}
+
+export function Steps({
+  eyebrow = DEFAULTS.eyebrow,
+  title = DEFAULTS.title,
+  lead = DEFAULTS.lead,
+  cta = DEFAULTS.cta,
+  items = DEFAULTS.items,
+}: StepsProps = {}) {
+  const { active, itemRefs } = useActiveStep(items.length);
+  const current = items[active] ?? items[0];
 
   return (
     <section className="bg-sand pt-[120px] pb-[34px] max-sm:py-[84px]">
       <Wrap className="grid grid-cols-[0.86fr_1.14fr] items-stretch gap-[74px] max-lg:gap-[52px] max-md:grid-cols-1">
         <div className="max-md:contents">
           <Reveal className="mb-11 max-md:mb-8">
-            <Eyebrow>Het traject</Eyebrow>
+            <Eyebrow>{eyebrow}</Eyebrow>
             <h2 className="mb-5 max-w-[14ch] text-[clamp(2rem,3.6vw,3.1rem)] max-sm:max-w-none">
-              Zo verkopen we jouw woning
+              {title}
             </h2>
             <p className="mb-7 max-w-[38ch] leading-[1.7] text-[#4d3d37] max-sm:mb-6 max-sm:max-w-none">
-              Vijf stappen, van de eerste kop koffie tot de overdracht bij de
-              notaris. Je weet vooraf precies wat er gebeurt en wanneer.
+              {lead}
             </p>
             <Button
-              href="#"
+              href={cta.href}
               variant="ink"
               className="max-sm:w-full max-sm:justify-center"
             >
-              Plan een kennismaking
+              {cta.label}
             </Button>
           </Reveal>
 
@@ -47,7 +85,7 @@ export function Steps() {
             )}
             aria-hidden="true"
           >
-            {VERKOOP_STEPS.map((step, index) => (
+            {items.map((step, index) => (
               <div
                 key={step.number}
                 className={cn(
@@ -58,7 +96,7 @@ export function Steps() {
                 )}
               >
                 <Image
-                  src={step.image}
+                  src={stepImageSrc(step.image)}
                   alt=""
                   fill
                   sizes="(max-width: 960px) 100vw, 42vw"
@@ -79,7 +117,7 @@ export function Steps() {
                 {current.title}
               </span>
               <i className="ml-auto text-[0.7rem] tracking-[0.16em] not-italic opacity-70 whitespace-nowrap max-sm:hidden">
-                {current.number} / 0{VERKOOP_STEPS.length}
+                {current.number} / 0{items.length}
               </i>
             </div>
           </div>
@@ -87,7 +125,7 @@ export function Steps() {
 
         <Reveal delay={1}>
           <ol className="list-none pb-[185px] max-sm:pb-0">
-            {VERKOOP_STEPS.map((step, index) => (
+            {items.map((step, index) => (
               <li
                 key={step.number}
                 ref={(el) => {

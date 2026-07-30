@@ -1,13 +1,10 @@
 import type { Metadata } from 'next';
-import { Benefits } from '@/components/blocks/Benefits';
-import { CrossLinks } from '@/components/blocks/CrossLinks';
-import { FactBar } from '@/components/blocks/FactBar';
-import { Faq } from '@/components/blocks/Faq';
-import { PageHero } from '@/components/blocks/PageHero';
-import { QuoteBand } from '@/components/blocks/QuoteBand';
-import { RegionBlock } from '@/components/blocks/RegionBlock';
-import { Steps } from '@/components/blocks/Steps';
-import { VerkoopCta } from '@/components/blocks/VerkoopCta';
+import { notFound } from 'next/navigation';
+import { PageBuilder } from '@/components/PageBuilder';
+import { client } from '@/sanity/client';
+import { PAGE_QUERY } from '@/sanity/queries';
+
+const options = { next: { revalidate: 30 } };
 
 export const metadata: Metadata = {
   title: 'Je woning verkopen in Haarlem — Hart & Huis Makelaardij',
@@ -15,18 +12,16 @@ export const metadata: Metadata = {
     'Je woning verkopen in Haarlem en omstreken. Van gratis waardebepaling en styling tot de overdracht bij de notaris, met één vast aanspreekpunt.',
 };
 
-export default function VerkoopPage() {
+export default async function VerkoopPage() {
+  const page = await client.fetch(PAGE_QUERY, { slug: 'verkoop' }, options);
+
+  if (!page) {
+    notFound();
+  }
+
   return (
     <main>
-      <PageHero />
-      <FactBar />
-      <Benefits />
-      <Steps />
-      <QuoteBand />
-      <Faq />
-      <RegionBlock />
-      <CrossLinks />
-      <VerkoopCta />
+      <PageBuilder content={page.content} />
     </main>
   );
 }

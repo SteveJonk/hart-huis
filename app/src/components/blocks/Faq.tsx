@@ -5,28 +5,55 @@ import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Wrap } from "@/components/ui/Wrap";
-import { VERKOOP_FAQ } from "@/lib/verkoop-content";
+import { VERKOOP_FAQ, type FaqItem } from "@/lib/verkoop-content";
 
-export function Faq() {
+export type FaqLink = {
+  label: string;
+  href: string;
+};
+
+export type FaqProps = {
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  link?: FaqLink;
+  items?: FaqItem[];
+};
+
+const DEFAULTS: Required<FaqProps> = {
+  eyebrow: "Veelgestelde vragen",
+  title: "Goed om te weten",
+  intro:
+    "Staat je vraag er niet bij? Bel of app ons gewoon — we denken graag even met je mee, ook als je nog niet zeker weet of je wilt verkopen.",
+  link: { label: "Stel je vraag", href: "#" },
+  items: VERKOOP_FAQ,
+};
+
+export function Faq({
+  eyebrow = DEFAULTS.eyebrow,
+  title = DEFAULTS.title,
+  intro = DEFAULTS.intro,
+  link = DEFAULTS.link,
+  items = DEFAULTS.items,
+}: FaqProps = {}) {
   const detailsRefs = useRef<(HTMLDetailsElement | null)[]>([]);
 
   return (
     <section className="bg-white py-[120px] max-sm:py-[84px]">
       <Wrap className="grid grid-cols-[0.8fr_1.2fr] items-start gap-[76px] max-lg:gap-[52px] max-md:grid-cols-1">
         <Reveal className="faq-intro">
-          <Eyebrow>Veelgestelde vragen</Eyebrow>
+          <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className="mb-[18px] max-w-[13ch] text-[clamp(2rem,3.6vw,3rem)] max-sm:max-w-none">
-            Goed om te weten
+            {title}
           </h2>
           <p className="mb-[26px] max-w-[34ch] leading-[1.7] text-ink-70 max-sm:mb-2 max-sm:max-w-none">
-            Staat je vraag er niet bij? Bel of app ons gewoon — we denken graag
-            even met je mee, ook als je nog niet zeker weet of je wilt verkopen.
+            {intro}
           </p>
-          <ArrowLink href="#">Stel je vraag</ArrowLink>
+          <ArrowLink href={link.href}>{link.label}</ArrowLink>
         </Reveal>
 
         <Reveal delay={1}>
-          {VERKOOP_FAQ.map((item, index) => (
+          {items.map((item, index) => (
             <details
               key={item.question}
               ref={(el) => {

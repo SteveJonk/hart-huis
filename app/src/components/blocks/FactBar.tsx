@@ -1,7 +1,15 @@
 import { Reveal } from "@/components/ui/Reveal";
-import { VERKOOP_FACTS } from "@/lib/verkoop-content";
+import { VERKOOP_FACTS, type Fact } from "@/lib/verkoop-content";
 
-export function FactBar() {
+export type FactBarProps = {
+  facts?: Fact[];
+};
+
+const DEFAULTS: Required<FactBarProps> = {
+  facts: VERKOOP_FACTS,
+};
+
+export function FactBar({ facts = DEFAULTS.facts }: FactBarProps = {}) {
   return (
     <div className="relative z-20 mx-auto max-w-site px-wrap max-md:px-wrap-md max-xs:px-wrap-sm">
       <Reveal
@@ -10,7 +18,7 @@ export function FactBar() {
           "max-sm:mt-[-38px] max-sm:grid-cols-1",
         ].join(" ")}
       >
-        {VERKOOP_FACTS.map((fact, index) => (
+        {facts.map((fact, index) => (
           <div
             key={fact.value}
             className={[

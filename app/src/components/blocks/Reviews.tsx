@@ -6,10 +6,42 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Wrap } from "@/components/ui/Wrap";
 import { useReviewsCarousel } from "@/hooks/useReviewsCarousel";
 import { cn } from "@/lib/cn";
-import { REVIEWS, type Review } from "@/lib/home-content";
+import { REVIEWS } from "@/lib/home-content";
 import { SITE } from "@/lib/site";
 
-function ReviewCard({ review }: { review: Review }) {
+export type ReviewItem = {
+  quote: string;
+  initials: string;
+  name: string;
+  place: string;
+  source: string;
+};
+
+export type ReviewsLink = {
+  label: string;
+  href: string;
+};
+
+export type ReviewsProps = {
+  score?: string;
+  scoreLabel?: string;
+  reviewCountLabel?: string;
+  intro?: string;
+  reviews?: ReviewItem[];
+  link?: ReviewsLink;
+};
+
+const DEFAULTS: Required<Omit<ReviewsProps, "link">> & Pick<ReviewsProps, "link"> =
+  {
+    score: SITE.fundaScore,
+    scoreLabel: "OP FUNDA",
+    reviewCountLabel: `${SITE.reviewCount} keer beoordeeld`,
+    intro: "Door kopers én verkopers, rechtstreeks vanuit Funda en Google.",
+    reviews: REVIEWS,
+    link: { label: "Alle beoordelingen bekijken", href: "#" },
+  };
+
+function ReviewCard({ review }: { review: ReviewItem }) {
   return (
     <article
       data-review-card
@@ -41,7 +73,14 @@ function ReviewCard({ review }: { review: Review }) {
   );
 }
 
-export function Reviews() {
+export function Reviews({
+  score = DEFAULTS.score,
+  scoreLabel = DEFAULTS.scoreLabel,
+  reviewCountLabel = DEFAULTS.reviewCountLabel,
+  intro = DEFAULTS.intro,
+  reviews = DEFAULTS.reviews,
+  link = DEFAULTS.link,
+}: ReviewsProps = {}) {
   const { trackRef, progress, prev, next } = useReviewsCarousel();
 
   return (
@@ -67,18 +106,18 @@ export function Reviews() {
                     "max-md:text-[2.1rem] max-sm:text-[1.85rem]",
                   )}
                 >
-                  {SITE.fundaScore}
+                  {score}
                 </b>
                 <small className="mt-1.5 block text-[0.57rem] font-semibold tracking-[0.2em] text-ink-70">
-                  OP FUNDA
+                  {scoreLabel}
                 </small>
               </div>
             </div>
             <div className="max-w-[230px] text-[0.9rem] leading-[1.6] text-ink-70">
               <b className="mb-1.5 block font-display text-[1.5rem] leading-[1.2] font-normal text-ink max-sm:text-[1.25rem]">
-                {SITE.reviewCount} keer beoordeeld
+                {reviewCountLabel}
               </b>
-              Door kopers én verkopers, rechtstreeks vanuit Funda en Google.
+              {intro}
             </div>
           </div>
           <div className="flex gap-2.5 max-sm:hidden">
@@ -110,7 +149,7 @@ export function Reviews() {
               "max-xs:-mx-wrap-sm max-xs:scroll-pl-wrap-sm max-xs:px-wrap-sm",
             )}
           >
-            {REVIEWS.map((review) => (
+            {reviews.map((review) => (
               <ReviewCard key={review.initials} review={review} />
             ))}
           </div>
@@ -123,9 +162,11 @@ export function Reviews() {
           />
         </Reveal>
 
-        <Reveal className="mt-[38px]">
-          <ArrowLink href="#">Alle beoordelingen bekijken</ArrowLink>
-        </Reveal>
+        {link ? (
+          <Reveal className="mt-[38px]">
+            <ArrowLink href={link.href}>{link.label}</ArrowLink>
+          </Reveal>
+        ) : null}
       </Wrap>
     </section>
   );

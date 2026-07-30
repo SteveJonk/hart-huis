@@ -7,7 +7,87 @@ import { Wrap } from "@/components/ui/Wrap";
 import { cn } from "@/lib/cn";
 import { INTRO_FACTS } from "@/lib/home-content";
 
-export function Intro() {
+export type IntroImage = {
+  src: string;
+  alt: string;
+};
+
+export type IntroFact = {
+  value: string;
+  label: string;
+};
+
+export type IntroLink = {
+  label: string;
+  href: string;
+};
+
+export type IntroProps = {
+  image?: IntroImage;
+  stampValue?: string;
+  stampLabel?: string;
+  eyebrow?: string;
+  title?: string;
+  titleHighlight?: string;
+  leads?: string[];
+  facts?: IntroFact[];
+  link?: IntroLink;
+};
+
+const DEFAULTS: Required<Omit<IntroProps, "titleHighlight" | "link">> &
+  Pick<IntroProps, "titleHighlight" | "link"> = {
+  image: {
+    src: "/images/intro-team.jpg",
+    alt: "Het team van Hart & Huis Makelaardij",
+  },
+  stampValue: "20",
+  stampLabel: "JAAR ERVARING",
+  eyebrow: "Over Hart & Huis",
+  title: "Makelaardij met hart voor jouw huis",
+  titleHighlight: "hart",
+  leads: [
+    "Een huis verkopen of kopen is zelden alleen een transactie. Het is verhuizen naar een nieuwe fase, afscheid nemen van een plek vol herinneringen, of eindelijk die ene straat in kunnen.",
+    "Daarom werken wij klein en persoonlijk. Je hebt één vast aanspreekpunt, je krijgt eerlijk advies — ook als dat even tegen je zin ingaat — en je weet altijd waar je staat.",
+  ],
+  facts: INTRO_FACTS,
+  link: { label: "Maak kennis met ons", href: "#" },
+};
+
+function renderHighlightedTitle(title: string, titleHighlight?: string) {
+  if (!titleHighlight) {
+    return title;
+  }
+
+  const index = title.indexOf(titleHighlight);
+  if (index === -1) {
+    return (
+      <>
+        {title}{" "}
+        <em className="italic">{titleHighlight}</em>
+      </>
+    );
+  }
+
+  return (
+    <>
+      {title.slice(0, index)}
+      <em className="italic">{titleHighlight}</em>
+      {title.slice(index + titleHighlight.length)}
+    </>
+  );
+}
+
+export function Intro({
+  image = DEFAULTS.image,
+  stampValue = DEFAULTS.stampValue,
+  stampLabel = DEFAULTS.stampLabel,
+  eyebrow = DEFAULTS.eyebrow,
+  title = DEFAULTS.title,
+  titleHighlight = DEFAULTS.titleHighlight,
+  leads = DEFAULTS.leads,
+  facts = DEFAULTS.facts,
+  link = DEFAULTS.link,
+}: IntroProps = {}) {
   return (
     <section className="relative pt-[120px] pb-[130px] max-sm:py-[82px]">
       <Wrap
@@ -19,8 +99,8 @@ export function Intro() {
         <Reveal className="relative">
           <div className="aspect-[4/5] overflow-hidden rounded-arch max-sm:aspect-[3/4]">
             <Image
-              src="/images/intro-team.jpg"
-              alt="Het team van Hart & Huis Makelaardij"
+              src={image.src}
+              alt={image.alt}
               width={800}
               height={1000}
               className="h-full w-full object-cover"
@@ -40,7 +120,7 @@ export function Intro() {
                   "max-md:text-[1.55rem] max-xs:text-[1.35rem]",
                 )}
               >
-                20
+                {stampValue}
               </b>
               <small
                 className={cn(
@@ -49,34 +129,29 @@ export function Intro() {
                   "max-xs:text-[0.53rem] max-xs:tracking-[0.08em]",
                 )}
               >
-                JAAR ERVARING
+                {stampLabel}
               </small>
             </div>
           </div>
         </Reveal>
 
         <Reveal delay={1}>
-          <Eyebrow>Over Hart &amp; Huis</Eyebrow>
+          <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className="mb-[26px] max-w-[17ch] text-[clamp(2.1rem,3.9vw,3.4rem)]">
-            Makelaardij met <em className="italic">hart</em> voor jouw huis
+            {renderHighlightedTitle(title, titleHighlight)}
           </h2>
-          <Lead className="mb-[18px]">
-            Een huis verkopen of kopen is zelden alleen een transactie. Het is
-            verhuizen naar een nieuwe fase, afscheid nemen van een plek vol
-            herinneringen, of eindelijk die ene straat in kunnen.
-          </Lead>
-          <Lead className="mb-[18px]">
-            Daarom werken wij klein en persoonlijk. Je hebt één vast
-            aanspreekpunt, je krijgt eerlijk advies — ook als dat even tegen je
-            zin ingaat — en je weet altijd waar je staat.
-          </Lead>
+          {leads.map((lead, index) => (
+            <Lead key={index} className="mb-[18px]">
+              {lead}
+            </Lead>
+          ))}
           <div
             className={cn(
               "my-9 mb-[34px] flex flex-wrap gap-11",
               "max-sm:my-[30px] max-sm:gap-x-7 max-sm:gap-y-[22px]",
             )}
           >
-            {INTRO_FACTS.map((fact) => (
+            {facts.map((fact) => (
               <div
                 key={fact.value}
                 className="max-w-[170px] max-sm:max-w-none max-sm:flex-1 max-sm:basis-[40%]"
@@ -90,7 +165,7 @@ export function Intro() {
               </div>
             ))}
           </div>
-          <ArrowLink href="#">Maak kennis met ons</ArrowLink>
+          {link ? <ArrowLink href={link.href}>{link.label}</ArrowLink> : null}
         </Reveal>
       </Wrap>
     </section>

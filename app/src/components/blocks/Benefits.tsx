@@ -9,6 +9,28 @@ import {
   type Benefit,
 } from "@/lib/verkoop-content";
 
+export type BenefitsImage = {
+  src: string;
+  alt: string;
+};
+
+export type BenefitsProps = {
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+  image?: BenefitsImage;
+  items?: Benefit[];
+};
+
+const DEFAULTS: Required<BenefitsProps> = {
+  eyebrow: "Wat je van ons krijgt",
+  title: "Een makelaar die het hele traject uit handen neemt",
+  lead:
+    "Je woning verkopen kun je zelf doen, maar er komt meer bij kijken dan een mooie foto en een prijs op Funda. Wij regelen het van begin tot eind — en je weet elke week waar je staat.",
+  image: VERKOOP_BENEFITS_IMAGE,
+  items: VERKOOP_BENEFITS,
+};
+
 function BenefitIcon({ icon }: { icon: Benefit["icon"] }) {
   const common = {
     width: 19,
@@ -62,22 +84,24 @@ function BenefitIcon({ icon }: { icon: Benefit["icon"] }) {
   }
 }
 
-export function Benefits() {
+export function Benefits({
+  eyebrow = DEFAULTS.eyebrow,
+  title = DEFAULTS.title,
+  lead = DEFAULTS.lead,
+  image = DEFAULTS.image,
+  items = DEFAULTS.items,
+}: BenefitsProps = {}) {
   return (
     <section className="py-[92px] pb-[124px] max-sm:py-[66px] max-sm:pb-[84px]">
       <Wrap className="grid grid-cols-[1.12fr_0.88fr] items-center gap-[78px] max-lg:gap-[52px] max-md:grid-cols-1">
         <Reveal>
-          <Eyebrow>Wat je van ons krijgt</Eyebrow>
+          <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className="mb-[22px] max-w-[18ch] text-[clamp(2rem,3.6vw,3.1rem)] max-sm:max-w-none">
-            Een makelaar die het hele traject uit handen neemt
+            {title}
           </h2>
-          <Lead>
-            Je woning verkopen kun je zelf doen, maar er komt meer bij kijken dan
-            een mooie foto en een prijs op Funda. Wij regelen het van begin tot
-            eind — en je weet elke week waar je staat.
-          </Lead>
+          <Lead>{lead}</Lead>
           <ul className="mt-[34px] grid list-none gap-6 max-sm:mt-7 max-sm:gap-5">
-            {VERKOOP_BENEFITS.map((item) => (
+            {items.map((item) => (
               <li key={item.title} className="flex items-start gap-[18px]">
                 <span className="grid size-11 shrink-0 place-items-center rounded-full bg-sand text-burgundy max-sm:size-10">
                   <BenefitIcon icon={item.icon} />
@@ -95,8 +119,8 @@ export function Benefits() {
         <Reveal delay={1} className="overflow-hidden rounded-arch">
           <div className="relative aspect-[4/5] max-md:aspect-[3/4]">
             <Image
-              src={VERKOOP_BENEFITS_IMAGE.src}
-              alt={VERKOOP_BENEFITS_IMAGE.alt}
+              src={image.src}
+              alt={image.alt}
               fill
               sizes="(max-width: 960px) 100vw, 44vw"
               className="object-cover"
