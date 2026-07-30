@@ -2,18 +2,22 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { RevealLink } from "@/components/ui/RevealLink";
+import { SectionHead } from "@/components/ui/SectionHead";
+import { Wrap } from "@/components/ui/Wrap";
 import { LISTINGS } from "@/lib/home-content";
 import { REGIONS } from "@/lib/site";
 
 export function Listings() {
   return (
     <section className="aanbod">
-      <div className="wrap">
-        <Reveal className="sechead">
-          <h2>Actueel aanbod</h2>
-          <Button href="#" variant="ink">
-            Bekijk alle woningen
-          </Button>
+      <Wrap>
+        <Reveal>
+          <SectionHead>
+            <h2>Actueel aanbod</h2>
+            <Button href="#" variant="ink">
+              Bekijk alle woningen
+            </Button>
+          </SectionHead>
         </Reveal>
         <div className="agrid">
           {LISTINGS.map((listing) => (
@@ -58,7 +62,7 @@ export function Listings() {
             </a>
           ))}
         </Reveal>
-      </div>
+      </Wrap>
     </section>
   );
 }

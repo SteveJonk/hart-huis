@@ -22,6 +22,10 @@ const config = {
         },
         burgundy: "#5c2a2f",
         moss: "#1d241a",
+        mist: "#d8ccc6",
+        taupe: "#b8a8a1",
+        stone: "#8b7a73",
+        clay: "#bcaca5",
       },
       fontFamily: {
         display: [
@@ -38,10 +42,20 @@ const config = {
           "sans-serif",
         ],
       },
+      screens: {
+        xs: "400px",
+        sm: "760px",
+        md: "960px",
+        lg: "1120px",
+        xl: "1360px",
+      },
       fontSize: {
         eyebrow: ["0.68rem", { lineHeight: "1", letterSpacing: "0.24em" }],
         lead: ["1.06rem", { lineHeight: "1.7" }],
         nav: ["0.845rem", { lineHeight: "1.2", letterSpacing: "0.01em" }],
+        btn: ["0.9rem", { lineHeight: "1.2", letterSpacing: "0.01em" }],
+        "btn-sm": ["0.84rem", { lineHeight: "1.2", letterSpacing: "0.01em" }],
+        arrow: ["0.86rem", { lineHeight: "1.2", letterSpacing: "0.02em" }],
       },
       spacing: {
         wrap: "44px",

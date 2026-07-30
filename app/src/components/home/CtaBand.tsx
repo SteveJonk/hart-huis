@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
+import { Wrap } from "@/components/ui/Wrap";
 import { SITE } from "@/lib/site";
 
 export function CtaBand() {
@@ -13,9 +15,9 @@ export function CtaBand() {
         sizes="100vw"
         className="object-cover"
       />
-      <div className="wrap">
+      <Wrap>
         <Reveal>
-          <span className="eyebrow eyebrow--light">Even sparren?</span>
+          <Eyebrow light>Even sparren?</Eyebrow>
           <h2>Loop binnen, bel of app ons</h2>
           <p>
             Geen verkooppraatje, gewoon een eerlijk gesprek over wat jouw huis
@@ -23,15 +25,23 @@ export function CtaBand() {
             klaar.
           </p>
           <div className="row">
-            <Button href="#" variant="primary">
+            <Button
+              href="#"
+              variant="primary"
+              className="max-sm:w-full max-sm:flex-1 max-sm:basis-full max-sm:justify-center"
+            >
               Plan een kennismaking
             </Button>
-            <Button href={SITE.phoneHref} variant="line">
+            <Button
+              href={SITE.phoneHref}
+              variant="line"
+              className="max-sm:w-full max-sm:flex-1 max-sm:basis-full max-sm:justify-center"
+            >
               {SITE.phone}
             </Button>
           </div>
         </Reveal>
-      </div>
+      </Wrap>
     </section>
   );
 }

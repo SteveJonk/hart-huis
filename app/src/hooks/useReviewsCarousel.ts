@@ -34,7 +34,7 @@ export function useReviewsCarousel() {
   const scrollByCard = useCallback((direction: 1 | -1) => {
     const track = trackRef.current;
     if (!track) return;
-    const card = track.querySelector<HTMLElement>(".rcard");
+    const card = track.querySelector<HTMLElement>("[data-review-card]");
     const step = getReviewScrollStep(card?.offsetWidth ?? 400);
     track.scrollBy({ left: direction * step, behavior: "smooth" });
   }, []);

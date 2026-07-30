@@ -13,6 +13,10 @@
   --color-sage-deep: #5f7057;
   --color-burgundy: #5c2a2f;
   --color-moss: #1d241a;
+  --color-mist: #d8ccc6;
+  --color-taupe: #b8a8a1;
+  --color-stone: #8b7a73;
+  --color-clay: #bcaca5;
 
   --font-display: var(--font-schibsted), 'Bodoni Moda', 'Times New Roman', serif;
   --font-sans:
@@ -29,6 +33,83 @@
   --shadow-topbar: 0 1px 0 rgba(36, 31, 28, 0.09);
 
   --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 760px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1120px;
+  --breakpoint-xl: 1360px;
+
+  --text-eyebrow: 0.68rem;
+  --text-eyebrow--line-height: 1;
+  --text-eyebrow--letter-spacing: 0.24em;
+  --text-lead: 1.06rem;
+  --text-lead--line-height: 1.7;
+  --text-btn: 0.9rem;
+  --text-btn--line-height: 1.2;
+  --text-btn--letter-spacing: 0.01em;
+  --text-btn-sm: 0.84rem;
+  --text-btn-sm--line-height: 1.2;
+  --text-btn-sm--letter-spacing: 0.01em;
+  --text-arrow: 0.86rem;
+  --text-arrow--line-height: 1.2;
+  --text-arrow--letter-spacing: 0.02em;
+
+  --spacing-wrap: 44px;
+  --spacing-wrap-md: 24px;
+  --spacing-wrap-sm: 20px;
+  --spacing-section: 130px;
+  --spacing-section-sm: 82px;
+
+  --container-site: 1280px;
+
+  --animate-hero-cycle: heroCycle 22.5s infinite;
+  --animate-cue: cue 2.4s infinite;
+  --animate-spin-in: spinIn 0.9s var(--ease-brand) both;
+
+  @keyframes heroCycle {
+    0% {
+      opacity: 0;
+      transform: scale(1.07);
+    }
+    4% {
+      opacity: 1;
+    }
+    30% {
+      opacity: 1;
+    }
+    36% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes cue {
+    0%,
+    100% {
+      transform: scaleY(0.4);
+      transform-origin: top;
+    }
+    50% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+  }
+
+  @keyframes spinIn {
+    from {
+      opacity: 0;
+      transform: scale(0.7) rotate(-16deg);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 /* Bridge original site.css custom properties to theme tokens */

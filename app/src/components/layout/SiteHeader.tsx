@@ -1,74 +1,144 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { LogoMark } from "@/components/ui/LogoMark";
-import { Button } from "@/components/ui/Button";
-import { useMobileNav } from "@/hooks/useMobileNav";
-import { useStickyTopbar } from "@/hooks/useStickyTopbar";
-import { NAV_LEFT, NAV_MOBILE, NAV_RIGHT, SITE } from "@/lib/site";
+import Link from 'next/link';
+import { LogoMark } from '@/components/ui/LogoMark';
+import { useMobileNav } from '@/hooks/useMobileNav';
+import { useStickyTopbar } from '@/hooks/useStickyTopbar';
+import { cn } from '@/lib/cn';
+import { NAV_LEFT, NAV_MOBILE, NAV_RIGHT, SITE, type NavLink } from '@/lib/site';
+
+function DesktopNav({
+  links,
+  align = 'start',
+  stuck,
+}: {
+  links: NavLink[];
+  align?: 'start' | 'end';
+  stuck: boolean;
+}) {
+  return (
+    <ul
+      className={cn(
+        'flex list-none items-center gap-[30px] max-lg:gap-[18px] max-md:hidden',
+        align === 'end' && 'justify-end',
+      )}
+    >
+      {links.map((link) => (
+        <li key={link.label}>
+          <a
+            href={link.href}
+            className={cn(
+              'relative py-1.5 text-nav font-medium transition-colors duration-[400ms] ease-brand max-lg:text-[0.79rem]',
+              stuck ? 'text-ink' : 'text-white',
+              'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current',
+              'after:transition-transform after:duration-[350ms] after:ease-brand',
+              'hover:after:origin-left hover:after:scale-x-100',
+            )}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Burger({
+  open,
+  stuck,
+  onToggle,
+}: {
+  open: boolean;
+  stuck: boolean;
+  onToggle: () => void;
+}) {
+  const barTone = open || stuck ? 'bg-ink' : 'bg-white';
+
+  return (
+    <button
+      type='button'
+      aria-label='Menu'
+      aria-expanded={open}
+      onClick={onToggle}
+      className='relative z-burger mr-[-8px] hidden size-11 max-md:block'
+    >
+      <span
+        className={cn(
+          'absolute left-[9px] h-[1.5px] w-[26px] transition duration-300 ease-brand',
+          barTone,
+          open ? 'top-[22px] rotate-45' : 'top-[15px]',
+        )}
+      />
+      <span
+        className={cn(
+          'absolute top-[22px] left-[9px] h-[1.5px] w-[26px] transition duration-300 ease-brand',
+          barTone,
+          open && 'opacity-0',
+        )}
+      />
+      <span
+        className={cn(
+          'absolute left-[9px] h-[1.5px] w-[26px] transition duration-300 ease-brand',
+          barTone,
+          open ? 'top-[22px] -rotate-45' : 'top-[29px]',
+        )}
+      />
+    </button>
+  );
+}
 
 export function SiteHeader() {
   const stuck = useStickyTopbar();
   const { open, toggle, close } = useMobileNav();
 
-  const topbarClass = [
-    "topbar",
-    stuck ? "stuck" : "",
-    open ? "navopen" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
   return (
     <>
-      <div className={topbarClass}>
-        <ul className="navlist">
-          {NAV_LEFT.map((link) => (
-            <li key={link.label}>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))}
-        </ul>
-        <Link href="/" aria-label={SITE.name}>
-          <LogoMark />
+      <div
+        className={cn(
+          'fixed inset-x-0 top-0 z-topbar grid grid-cols-[1fr_auto_1fr] items-center gap-[30px] px-wrap',
+          'transition-[padding,background-color,box-shadow] duration-[400ms] ease-brand',
+          stuck ? 'bg-cream py-2.5 shadow-topbar' : 'bg-transparent py-5',
+          'max-md:flex max-md:justify-between max-md:gap-4 max-md:px-wrap-md',
+          stuck ? 'max-md:py-[9px]' : 'max-md:py-[14px]',
+          'max-xs:px-wrap-sm',
+          'before:pointer-events-none before:absolute before:inset-0 before:-z-10',
+          'before:bg-gradient-to-b before:from-[rgba(28,22,19,0.5)] before:to-transparent',
+          'before:transition-opacity before:duration-[400ms] before:ease-brand',
+          (stuck || open) && 'before:opacity-0',
+        )}
+      >
+        <DesktopNav links={NAV_LEFT} stuck={stuck} />
+        <Link href='/' aria-label={SITE.name}>
+          <LogoMark stuck={stuck} />
         </Link>
-        <ul className="navlist navlist--r">
-          {NAV_RIGHT.map((link) => (
-            <li key={link.label}>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))}
-        </ul>
-        <button
-          className={["burger", open ? "on" : ""].filter(Boolean).join(" ")}
-          aria-label="Menu"
-          aria-expanded={open}
-          onClick={toggle}
-          type="button"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+        <DesktopNav links={NAV_RIGHT} align='end' stuck={stuck} />
+        <Burger open={open} stuck={stuck} onToggle={toggle} />
       </div>
 
       <nav
-        className={["mobilenav", open ? "open" : ""].filter(Boolean).join(" ")}
         aria-hidden={!open}
+        className={cn(
+          'fixed inset-0 z-mobilenav flex flex-col justify-center gap-1.5 bg-cream px-wrap',
+          'transition-transform duration-[550ms] ease-brand',
+          open ? 'translate-y-0' : '-translate-y-full',
+          'max-md:justify-start max-md:overflow-y-auto max-md:px-wrap-md max-md:pt-[110px] max-md:pb-11',
+          'max-xs:px-wrap-sm',
+        )}
       >
         {NAV_MOBILE.map((link) => (
-          <a key={link.label} href={link.href} onClick={close}>
+          <a
+            key={link.label}
+            href={link.href}
+            onClick={close}
+            className={cn(
+              'border-b border-ink/10 py-[9px] font-display text-[2rem]',
+              'max-md:py-[13px] max-md:text-[1.72rem]',
+              'max-xs:py-[11px] max-xs:text-[1.5rem]',
+            )}
+          >
             {link.label}
           </a>
         ))}
-        <div className="mn-foot">
-          <Button href="#" variant="primary" onClick={close}>
-            Wat is mijn huis waard?
-          </Button>
-          <span>
-            {SITE.phone} &nbsp;·&nbsp; {SITE.email}
-          </span>
-        </div>
       </nav>
     </>
   );
