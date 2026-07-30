@@ -18,7 +18,7 @@ export const regionBlockType = defineType({
           type: 'object',
           fields: [
             defineField({name: 'label', type: 'string', validation: (rule) => rule.required()}),
-            defineField({name: 'href', type: 'string', title: 'Link', validation: (rule) => rule.required()}),
+            defineField({name: 'link', type: 'link', title: 'Link', validation: (rule) => rule.required()}),
           ],
           preview: {select: {title: 'label'}},
         }),

@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {linkFields} from './linkFields'
 
 export const ctaType = defineType({
   name: 'cta',
@@ -10,11 +11,6 @@ export const ctaType = defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'href',
-      type: 'string',
-      title: 'Link',
-      validation: (rule) => rule.required(),
-    }),
+    ...linkFields,
   ],
 })

@@ -44,7 +44,7 @@ export const listingsType = defineType({
               ],
               validation: (rule) => rule.required(),
             }),
-            defineField({name: 'href', type: 'string', title: 'Link', validation: (rule) => rule.required()}),
+            defineField({name: 'link', type: 'link', title: 'Link', validation: (rule) => rule.required()}),
           ],
           preview: {
             select: {title: 'title', subtitle: 'place', media: 'image'},
@@ -66,7 +66,7 @@ export const listingsType = defineType({
           type: 'object',
           fields: [
             defineField({name: 'label', type: 'string', validation: (rule) => rule.required()}),
-            defineField({name: 'href', type: 'string', title: 'Link', validation: (rule) => rule.required()}),
+            defineField({name: 'link', type: 'link', title: 'Link', validation: (rule) => rule.required()}),
           ],
           preview: {select: {title: 'label'}},
         }),

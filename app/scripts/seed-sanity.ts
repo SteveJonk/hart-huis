@@ -67,8 +67,12 @@ function key(seed?: string) {
   return randomBytes(6).toString('hex')
 }
 
+function externalLink(href: string) {
+  return {_type: 'link' as const, linkType: 'external' as const, href}
+}
+
 function cta(label: string, href: string) {
-  return {_type: 'cta' as const, label, href}
+  return {_type: 'cta' as const, label, linkType: 'external' as const, href}
 }
 
 async function uploadImage(publicPath: string, alt: string) {
@@ -210,7 +214,7 @@ async function buildHomeContent(reviewIds: string[]) {
       label: service.label,
       title: service.title,
       description: service.description,
-      href: service.href,
+      link: externalLink(service.href),
       image: await uploadImage(service.image, service.imageAlt),
     })),
   )
@@ -233,7 +237,7 @@ async function buildHomeContent(reviewIds: string[]) {
       title: listing.title,
       meta: listing.meta,
       price: listing.price,
-      href: listing.href,
+      link: externalLink(listing.href),
       image: await uploadImage(listing.image, listing.imageAlt),
     })),
   )
@@ -322,7 +326,7 @@ async function buildHomeContent(reviewIds: string[]) {
       regions: REGIONS.map((label) => ({
         _key: key(label),
         label,
-        href: '#',
+        link: externalLink('#'),
       })),
     },
     {
@@ -427,7 +431,7 @@ async function buildVerkoopContent(faqIds: string[]) {
       places: VERKOOP_REGIONS.map((label) => ({
         _key: key(label),
         label,
-        href: '#',
+        link: externalLink('#'),
       })),
     },
     {
@@ -437,7 +441,7 @@ async function buildVerkoopContent(faqIds: string[]) {
         _key: key(item.title),
         title: item.title,
         body: item.body,
-        href: item.href,
+        link: externalLink(item.href),
       })),
     },
     {

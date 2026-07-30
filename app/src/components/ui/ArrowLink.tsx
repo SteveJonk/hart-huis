@@ -1,24 +1,25 @@
-import type { ReactNode } from "react";
-import { cn } from "@/lib/cn";
-import { IconArrow } from "./IconArrow";
+import type { ReactNode } from 'react';
+import { cn } from '@/lib/cn';
+import { IconArrow } from './IconArrow';
+import Link from 'next/link';
 
 export const arrowLinkClass = cn(
-  "group inline-flex items-center gap-3 py-[5px] text-arrow font-semibold",
-  "max-md:py-[7px]",
+  'group inline-flex items-center gap-3 py-[5px] text-arrow font-semibold',
+  'max-md:py-[7px]',
 );
 
 export const arrowLinkCircClass = {
   md: cn(
-    "grid size-9 place-items-center rounded-full border border-current",
-    "transition-[background,color,transform] duration-300 ease-brand",
-    "group-hover:translate-x-1 group-hover:bg-ink group-hover:text-cream",
-    "max-md:size-[38px]",
+    'grid size-9 place-items-center rounded-full border border-current',
+    'transition-[background,color,transform] duration-300 ease-brand',
+    'group-hover:translate-x-1 group-hover:bg-ink group-hover:text-cream',
+    'max-md:size-[38px]',
   ),
   sm: cn(
-    "grid size-[34px] place-items-center rounded-full border border-current",
-    "transition-[background,color,transform] duration-300 ease-brand",
-    "group-hover:translate-x-1 group-hover:bg-ink group-hover:text-cream",
-    "max-md:size-[38px]",
+    'grid size-[34px] place-items-center rounded-full border border-current',
+    'transition-[background,color,transform] duration-300 ease-brand',
+    'group-hover:translate-x-1 group-hover:bg-ink group-hover:text-cream',
+    'max-md:size-[38px]',
   ),
 } as const;
 
@@ -37,12 +38,12 @@ export function ArrowLink({
   className,
 }: ArrowLinkProps) {
   return (
-    <a href={href} className={cn(arrowLinkClass, className)}>
-      {children}{" "}
+    <Link href={href} className={cn(arrowLinkClass, className)}>
+      {children}{' '}
       <span className={arrowLinkCircClass.md}>
         <IconArrow size={iconSize} />
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -57,12 +58,12 @@ type ArrowLinkLabelProps = {
 export function ArrowLinkLabel({
   children,
   iconSize = 12,
-  circ = "sm",
+  circ = 'sm',
   className,
 }: ArrowLinkLabelProps) {
   return (
     <span className={cn(arrowLinkClass, className)}>
-      {children}{" "}
+      {children}{' '}
       <span className={arrowLinkCircClass[circ]}>
         <IconArrow size={iconSize} />
       </span>

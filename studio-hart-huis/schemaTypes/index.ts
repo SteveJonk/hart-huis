@@ -15,6 +15,7 @@ import {stepsType} from './blocks/stepsType'
 import {storyType} from './blocks/storyType'
 import {faqType} from './faqType'
 import {ctaType} from './objects/ctaType'
+import {linkType} from './objects/linkType'
 import {pageBuilderType} from './pageBuilderType'
 import {pageType} from './pageType'
 import {reviewType} from './reviewType'
@@ -25,6 +26,7 @@ export const schemaTypes = [
   faqType,
   reviewType,
   // Shared objects
+  linkType,
   ctaType,
   pageBuilderType,
   // Blocks

@@ -1,28 +1,26 @@
-import { LogoMark } from "@/components/ui/LogoMark";
-import { Wrap } from "@/components/ui/Wrap";
-import { cn } from "@/lib/cn";
+import { LogoMark } from '@/components/ui/LogoMark';
+import { Wrap } from '@/components/ui/Wrap';
+import { cn } from '@/lib/cn';
 import {
   FOOTER_CERTS,
   FOOTER_DIENSTEN,
   FOOTER_QUICK,
   SITE,
   type NavLink,
-} from "@/lib/site";
+} from '@/lib/site';
+import Link from 'next/link';
 
 function FooterLinkList({ links }: { links: NavLink[] }) {
   return (
-    <ul className="list-none">
+    <ul className='list-none'>
       {links.map((link) => (
-        <li
-          key={link.label}
-          className="mb-[11px] text-[0.92rem] max-md:mb-0.5"
-        >
-          <a
+        <li key={link.label} className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
+          <Link
             href={link.href}
-            className="opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3"
+            className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
           >
             {link.label}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>
@@ -31,77 +29,77 @@ function FooterLinkList({ links }: { links: NavLink[] }) {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-ink pt-24 pb-[34px] text-mist max-sm:pt-[74px]">
+    <footer className='bg-ink pt-24 pb-[34px] text-mist max-sm:pt-[74px]'>
       <Wrap>
         <div
           className={cn(
-            "mb-[70px] grid grid-cols-[1.5fr_1fr_1fr_1.1fr] gap-12",
-            "max-md:grid-cols-2 max-md:gap-10",
-            "max-sm:mb-[46px] max-sm:grid-cols-1 max-sm:gap-[38px]",
+            'mb-[70px] grid grid-cols-[1.5fr_1fr_1fr_1.1fr] gap-12',
+            'max-md:grid-cols-2 max-md:gap-10',
+            'max-sm:mb-[46px] max-sm:grid-cols-1 max-sm:gap-[38px]',
           )}
         >
           <div>
-            <LogoMark variant="footer" />
-            <p className="max-w-[270px] text-[0.9rem] leading-[1.75] text-taupe">
+            <LogoMark variant='footer' />
+            <p className='max-w-[270px] text-[0.9rem] leading-[1.75] text-taupe'>
               Jouw NVM-makelaar voor verkoop, aankoop en taxaties in Haarlem en
               omstreken.
             </p>
           </div>
           <div>
-            <h5 className="mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase">
+            <h5 className='mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase'>
               Diensten
             </h5>
             <FooterLinkList links={FOOTER_DIENSTEN} />
           </div>
           <div>
-            <h5 className="mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase">
+            <h5 className='mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase'>
               Snel naar
             </h5>
             <FooterLinkList links={FOOTER_QUICK} />
           </div>
           <div>
-            <h5 className="mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase">
+            <h5 className='mb-5 text-eyebrow font-semibold tracking-[0.22em] text-stone uppercase'>
               Contact
             </h5>
-            <ul className="list-none">
-              <li className="mb-[11px] text-[0.92rem] max-md:mb-0.5">
+            <ul className='list-none'>
+              <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
                 {SITE.address[0]}
                 <br />
                 {SITE.address[1]}
               </li>
-              <li className="mb-[11px] text-[0.92rem] max-md:mb-0.5">
-                <a
+              <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
+                <Link
                   href={SITE.phoneHref}
-                  className="opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3"
+                  className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
                 >
                   {SITE.phone}
-                </a>
+                </Link>
               </li>
-              <li className="mb-[11px] text-[0.92rem] max-md:mb-0.5">
-                <a
+              <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
+                <Link
                   href={SITE.emailHref}
-                  className="opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3"
+                  className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
                 >
                   {SITE.email}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
         <div
           className={cn(
-            "flex flex-wrap items-center justify-between gap-4 border-t border-white/13 pt-[26px]",
-            "text-[0.78rem] text-stone max-sm:gap-[18px] max-sm:text-[0.74rem]",
+            'flex flex-wrap items-center justify-between gap-4 border-t border-white/13 pt-[26px]',
+            'text-[0.78rem] text-stone max-sm:gap-[18px] max-sm:text-[0.74rem]',
           )}
         >
           <span>
             © 2026 Hart &amp; Huis Makelaardij — Algemene voorwaarden · Privacy
           </span>
-          <div className="flex gap-2.5 max-sm:flex-wrap">
+          <div className='flex gap-2.5 max-sm:flex-wrap'>
             {FOOTER_CERTS.map((cert) => (
               <span
                 key={cert}
-                className="rounded-pill border border-white/22 px-[13px] py-[5px] text-[0.65rem] tracking-[0.14em]"
+                className='rounded-pill border border-white/22 px-[13px] py-[5px] text-[0.65rem] tracking-[0.14em]'
               >
                 {cert}
               </span>

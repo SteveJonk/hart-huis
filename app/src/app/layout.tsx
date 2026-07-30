@@ -31,6 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang='nl'
+      data-scroll-behavior='smooth'
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
       <head>

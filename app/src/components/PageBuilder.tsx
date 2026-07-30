@@ -21,7 +21,13 @@ type SanityImage = SanityImageSource & {
   alt?: string;
 };
 
-type Cta = { label?: string; href?: string };
+type SanityLink = {
+  linkType?: 'internal' | 'external';
+  href?: string;
+  internalLink?: { slug?: string | null } | null;
+};
+
+type SanityCta = SanityLink & { label?: string };
 
 type PageBlock = {
   _type: string;
@@ -50,9 +56,29 @@ function toImage(
   return { src, alt: source?.alt ?? '' };
 }
 
-function toCta(cta: Cta | undefined | null) {
-  if (!cta?.label || !cta?.href) return undefined;
-  return { label: cta.label, href: cta.href };
+function resolveHref(link: SanityLink | undefined | null): string | undefined {
+  if (!link) return undefined;
+  if (link.linkType === 'internal') {
+    const slug = link.internalLink?.slug;
+    if (!slug) return undefined;
+    return slug === 'home' ? '/' : `/${slug}`;
+  }
+  // External, or legacy plain-string href content
+  return link.href || undefined;
+}
+
+function toCta(cta: SanityCta | undefined | null) {
+  const href = resolveHref(cta);
+  if (!cta?.label || !href) return undefined;
+  return { label: cta.label, href };
+}
+
+function toLabeledLink(
+  item: { label?: string; link?: SanityLink } | undefined | null,
+): { label: string; href: string } | undefined {
+  const href = resolveHref(item?.link);
+  if (!item?.label || !href) return undefined;
+  return { label: item.label, href };
 }
 
 function renderBlock(block: PageBlock) {
@@ -69,8 +95,8 @@ function renderBlock(block: PageBlock) {
           title={block.title as string | undefined}
           titleHighlight={block.titleHighlight as string | undefined}
           lead={block.lead as string | undefined}
-          primaryCta={toCta(block.primaryCta as Cta)}
-          secondaryCta={toCta(block.secondaryCta as Cta)}
+          primaryCta={toCta(block.primaryCta as SanityCta)}
+          secondaryCta={toCta(block.secondaryCta as SanityCta)}
           badgeValue={block.badgeValue as string | undefined}
           badgeLabel={block.badgeLabel as string | undefined}
         />
@@ -88,27 +114,37 @@ function renderBlock(block: PageBlock) {
           titleHighlight={block.titleHighlight as string | undefined}
           leads={block.leads as string[] | undefined}
           facts={block.facts as { value: string; label: string }[] | undefined}
-          link={toCta(block.link as Cta)}
+          link={toCta(block.link as SanityCta)}
         />
       );
     }
     case 'services': {
-      const items = (block.items as Array<{
-        label: string;
-        title: string;
-        description: string;
-        image: SanityImage;
-        href: string;
-      }> | undefined)?.map((item, index) => ({
-        label: item.label,
-        title: item.title,
-        description: item.description,
-        href: item.href,
-        image: toImage(item.image, 640, 768) ?? { src: '', alt: '' },
-        delay: (index === 0 ? undefined : index) as 1 | 2 | 3 | undefined,
-      }));
+      const items = (
+        block.items as
+          | Array<{
+              label: string;
+              title: string;
+              description: string;
+              image: SanityImage;
+              link?: SanityLink;
+            }>
+          | undefined
+      )
+        ?.map((item, index) => {
+          const href = resolveHref(item.link);
+          if (!href) return null;
+          return {
+            label: item.label,
+            title: item.title,
+            description: item.description,
+            href,
+            image: toImage(item.image, 640, 768) ?? { src: '', alt: '' },
+            delay: (index === 0 ? undefined : index) as 1 | 2 | 3 | undefined,
+          };
+        })
+        .filter((item): item is NonNullable<typeof item> => Boolean(item));
       const nvm = block.nvm as
-        | { badge?: string; title?: string; body?: string; cta?: Cta }
+        | { badge?: string; title?: string; body?: string; cta?: SanityCta }
         | undefined;
       return (
         <Services
@@ -139,19 +175,21 @@ function renderBlock(block: PageBlock) {
           title={block.title as string | undefined}
           quote={block.quote as string | undefined}
           attribution={block.attribution as string | undefined}
-          cta={toCta(block.cta as Cta)}
+          cta={toCta(block.cta as SanityCta)}
         />
       );
     }
     case 'reviews': {
       const reviews = (
-        block.reviews as Array<{
-          quote?: string;
-          initials?: string;
-          name?: string;
-          place?: string;
-          source?: string;
-        }> | undefined
+        block.reviews as
+          | Array<{
+              quote?: string;
+              initials?: string;
+              name?: string;
+              place?: string;
+              source?: string;
+            }>
+          | undefined
       )
         ?.filter((review) => review?.quote && review?.name)
         .map((review) => ({
@@ -169,41 +207,54 @@ function renderBlock(block: PageBlock) {
           reviewCountLabel={block.reviewCountLabel as string | undefined}
           intro={block.intro as string | undefined}
           reviews={reviews}
-          link={toCta(block.link as Cta)}
+          link={toCta(block.link as SanityCta)}
         />
       );
     }
     case 'listings': {
       const items = (
-        block.items as Array<{
-          status: string;
-          sold?: boolean;
-          place: string;
-          title: string;
-          meta: string;
-          price: string;
-          image: SanityImage;
-          href: string;
-        }> | undefined
-      )?.map((item, index) => ({
-        status: item.status,
-        sold: item.sold,
-        place: item.place,
-        title: item.title,
-        meta: item.meta,
-        price: item.price,
-        href: item.href,
-        image: toImage(item.image, 800, 600) ?? { src: '', alt: '' },
-        delay: (index === 0 ? undefined : index) as 1 | 2 | 3 | undefined,
-      }));
+        block.items as
+          | Array<{
+              status: string;
+              sold?: boolean;
+              place: string;
+              title: string;
+              meta: string;
+              price: string;
+              image: SanityImage;
+              link?: SanityLink;
+            }>
+          | undefined
+      )
+        ?.map((item, index) => {
+          const href = resolveHref(item.link);
+          if (!href) return null;
+          return {
+            status: item.status,
+            sold: item.sold,
+            place: item.place,
+            title: item.title,
+            meta: item.meta,
+            price: item.price,
+            href,
+            image: toImage(item.image, 800, 600) ?? { src: '', alt: '' },
+            delay: (index === 0 ? undefined : index) as 1 | 2 | 3 | undefined,
+          };
+        })
+        .filter((item): item is NonNullable<typeof item> => Boolean(item));
+      const regions = (
+        block.regions as Array<{ label?: string; link?: SanityLink }> | undefined
+      )
+        ?.map(toLabeledLink)
+        .filter((region): region is { label: string; href: string } => Boolean(region));
       return (
         <Listings
           key={block._key}
           title={block.title as string | undefined}
-          cta={toCta(block.cta as Cta)}
+          cta={toCta(block.cta as SanityCta)}
           items={items}
           regionsLabel={block.regionsLabel as string | undefined}
-          regions={block.regions as { label: string; href: string }[] | undefined}
+          regions={regions}
         />
       );
     }
@@ -215,8 +266,8 @@ function renderBlock(block: PageBlock) {
           eyebrow={block.eyebrow as string | undefined}
           title={block.title as string | undefined}
           body={block.body as string | undefined}
-          primaryCta={toCta(block.primaryCta as Cta)}
-          secondaryCta={toCta(block.secondaryCta as Cta)}
+          primaryCta={toCta(block.primaryCta as SanityCta)}
+          secondaryCta={toCta(block.secondaryCta as SanityCta)}
         />
       );
     }
@@ -230,8 +281,8 @@ function renderBlock(block: PageBlock) {
           title={block.title as string | undefined}
           titleHighlight={block.titleHighlight as string | undefined}
           lead={block.lead as string | undefined}
-          primaryCta={toCta(block.primaryCta as Cta)}
-          secondaryCta={toCta(block.secondaryCta as Cta)}
+          primaryCta={toCta(block.primaryCta as SanityCta)}
+          secondaryCta={toCta(block.secondaryCta as SanityCta)}
         />
       );
     }
@@ -265,12 +316,14 @@ function renderBlock(block: PageBlock) {
     }
     case 'steps': {
       const items = (
-        block.items as Array<{
-          number: string;
-          title: string;
-          body: string;
-          image: SanityImage;
-        }> | undefined
+        block.items as
+          | Array<{
+              number: string;
+              title: string;
+              body: string;
+              image: SanityImage;
+            }>
+          | undefined
       )?.map((item) => ({
         number: item.number,
         title: item.title,
@@ -283,7 +336,7 @@ function renderBlock(block: PageBlock) {
           eyebrow={block.eyebrow as string | undefined}
           title={block.title as string | undefined}
           lead={block.lead as string | undefined}
-          cta={toCta(block.cta as Cta)}
+          cta={toCta(block.cta as SanityCta)}
           items={items}
         />
       );
@@ -303,12 +356,14 @@ function renderBlock(block: PageBlock) {
     }
     case 'faqs': {
       const items = (
-        block.faqs as Array<{
-          title?: string;
-          answer?: string;
-          link?: Cta;
-          afterLink?: string;
-        }> | undefined
+        block.faqs as
+          | Array<{
+              title?: string;
+              answer?: string;
+              link?: SanityCta;
+              afterLink?: string;
+            }>
+          | undefined
       )
         ?.filter((faq) => faq?.title && faq?.answer)
         .map((faq) => ({
@@ -323,33 +378,42 @@ function renderBlock(block: PageBlock) {
           eyebrow={block.eyebrow as string | undefined}
           title={block.title as string | undefined}
           intro={block.intro as string | undefined}
-          link={toCta(block.link as Cta)}
+          link={toCta(block.link as SanityCta)}
           items={items}
         />
       );
     }
     case 'regionBlock': {
+      const places = (
+        block.places as Array<{ label?: string; link?: SanityLink }> | undefined
+      )
+        ?.map(toLabeledLink)
+        .filter((place): place is { label: string; href: string } => Boolean(place));
       return (
         <RegionBlock
           key={block._key}
           eyebrow={block.eyebrow as string | undefined}
           title={block.title as string | undefined}
           lead={block.lead as string | undefined}
-          places={block.places as { label: string; href: string }[] | undefined}
+          places={places}
         />
       );
     }
     case 'crossLinks': {
-      return (
-        <CrossLinks
-          key={block._key}
-          items={
-            block.items as
-              | Array<{ title: string; body: string; href: string }>
-              | undefined
-          }
-        />
-      );
+      const items = (
+        block.items as
+          | Array<{ title?: string; body?: string; link?: SanityLink }>
+          | undefined
+      )
+        ?.map((item) => {
+          const href = resolveHref(item.link);
+          if (!item.title || !item.body || !href) return null;
+          return { title: item.title, body: item.body, href };
+        })
+        .filter((item): item is { title: string; body: string; href: string } =>
+          Boolean(item),
+        );
+      return <CrossLinks key={block._key} items={items} />;
     }
     default:
       console.warn(`Unknown page builder block type: ${block._type}`);

@@ -16,7 +16,7 @@ export const crossLinksType = defineType({
           fields: [
             defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
             defineField({name: 'body', type: 'text', rows: 2, validation: (rule) => rule.required()}),
-            defineField({name: 'href', type: 'string', title: 'Link', validation: (rule) => rule.required()}),
+            defineField({name: 'link', type: 'link', title: 'Link', validation: (rule) => rule.required()}),
           ],
           preview: {select: {title: 'title'}},
         }),
