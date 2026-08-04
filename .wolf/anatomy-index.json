@@ -1,0 +1,1932 @@
+{
+  "version": 1,
+  "meta": {
+    "lastScanned": "2026-08-04T09:02:57.338Z",
+    "fileCount": 129,
+    "hits": 0,
+    "misses": 0,
+    "renderedHash": "8e0719f1d6dc47101882636c497640174a6603474fa491bd0499eb1b835c8ab9",
+    "storeUpdatedAt": "2026-08-04T09:02:57.338Z"
+  },
+  "files": {
+    ".claude/commands/reframe.md": {
+      "description": "Mode: migrate [framework]",
+      "tokens": 551,
+      "hash": "17a75695be5d4629",
+      "size": 2221,
+      "mtimeMs": 1785834177283.9353,
+      "updatedAt": "2026-08-04T09:02:57.293Z",
+      "source": "scan"
+    },
+    ".claude/commands/security-audit.md": {
+      "description": "Layer 1 — Dependencies",
+      "tokens": 510,
+      "hash": "e6f7e0b7337c9c86",
+      "size": 2060,
+      "mtimeMs": 1785834177283.637,
+      "updatedAt": "2026-08-04T09:02:57.293Z",
+      "source": "scan"
+    },
+    ".claude/rules/openwolf.md": {
+      "description": "",
+      "tokens": 328,
+      "hash": "6d735b2c1c54a916",
+      "size": 1323,
+      "mtimeMs": 1785834177112.1697,
+      "updatedAt": "2026-08-04T09:02:57.293Z",
+      "source": "scan"
+    },
+    ".claude/settings.json": {
+      "description": "",
+      "tokens": 514,
+      "hash": "f68759bb50af5ee4",
+      "size": 1799,
+      "mtimeMs": 1785834177111.7556,
+      "updatedAt": "2026-08-04T09:02:57.294Z",
+      "source": "scan"
+    },
+    ".cursor/rules/openwolf.mdc": {
+      "description": "",
+      "tokens": 87,
+      "hash": "25a895da2047ef4d",
+      "size": 323,
+      "mtimeMs": 1785834177282.8696,
+      "updatedAt": "2026-08-04T09:02:57.295Z",
+      "source": "scan"
+    },
+    ".DS_Store": {
+      "description": "",
+      "tokens": 2186,
+      "hash": "091b45748a5489ea",
+      "size": 8196,
+      "mtimeMs": 1785411783875.0442,
+      "updatedAt": "2026-08-04T09:02:57.295Z",
+      "source": "scan"
+    },
+    ".gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 3,
+      "hash": "e2eb93a61ffd7877",
+      "size": 9,
+      "mtimeMs": 1785392122288.7588,
+      "updatedAt": "2026-08-04T09:02:57.295Z",
+      "source": "scan"
+    },
+    ".opencode/command/reframe.md": {
+      "description": "Mode: migrate [framework]",
+      "tokens": 551,
+      "hash": "17a75695be5d4629",
+      "size": 2221,
+      "mtimeMs": 1785834177284.3032,
+      "updatedAt": "2026-08-04T09:02:57.296Z",
+      "source": "scan"
+    },
+    ".opencode/command/security-audit.md": {
+      "description": "Layer 1 — Dependencies",
+      "tokens": 510,
+      "hash": "e6f7e0b7337c9c86",
+      "size": 2060,
+      "mtimeMs": 1785834177284.1458,
+      "updatedAt": "2026-08-04T09:02:57.296Z",
+      "source": "scan"
+    },
+    ".opencode/plugin/openwolf/anatomy.ts": {
+      "description": "Exports parseAnatomy, serializeAnatomy, extractDescription, STORE_FILE + 12 more",
+      "tokens": 2922,
+      "hash": "de2a14445289179f",
+      "size": 10257,
+      "mtimeMs": 1785834177278.7407,
+      "updatedAt": "2026-08-04T09:02:57.297Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "parseAnatomy",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 28,
+          "tokens": 207
+        },
+        {
+          "name": "serializeAnatomy",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 53,
+          "tokens": 240
+        },
+        {
+          "name": "extractDescription",
+          "kind": "fn",
+          "startLine": 54,
+          "endLine": 106,
+          "tokens": 577
+        },
+        {
+          "name": "sha256",
+          "kind": "fn",
+          "startLine": 107,
+          "endLine": 110,
+          "tokens": 33
+        },
+        {
+          "name": "StoreFileEntry",
+          "kind": "section",
+          "startLine": 111,
+          "endLine": 121,
+          "tokens": 83
+        },
+        {
+          "name": "AnatomyStoreData",
+          "kind": "section",
+          "startLine": 122,
+          "endLine": 127,
+          "tokens": 63
+        },
+        {
+          "name": "newStore",
+          "kind": "fn",
+          "startLine": 128,
+          "endLine": 132,
+          "tokens": 64
+        },
+        {
+          "name": "loadStore",
+          "kind": "fn",
+          "startLine": 133,
+          "endLine": 142,
+          "tokens": 92
+        },
+        {
+          "name": "saveStore",
+          "kind": "fn",
+          "startLine": 143,
+          "endLine": 157,
+          "tokens": 162
+        },
+        {
+          "name": "renderStore",
+          "kind": "fn",
+          "startLine": 158,
+          "endLine": 188,
+          "tokens": 380
+        },
+        {
+          "name": "renderToFile",
+          "kind": "fn",
+          "startLine": 189,
+          "endLine": 202,
+          "tokens": 146
+        },
+        {
+          "name": "importFromMarkdown",
+          "kind": "fn",
+          "startLine": 203,
+          "endLine": 227,
+          "tokens": 305
+        },
+        {
+          "name": "loadStoreReconciled",
+          "kind": "fn",
+          "startLine": 228,
+          "endLine": 240,
+          "tokens": 137
+        },
+        {
+          "name": "lockSleep",
+          "kind": "fn",
+          "startLine": 241,
+          "endLine": 244,
+          "tokens": 31
+        },
+        {
+          "name": "withAnatomyLock",
+          "kind": "fn",
+          "startLine": 245,
+          "endLine": 276,
+          "tokens": 373
+        }
+      ]
+    },
+    ".opencode/plugin/openwolf/fs.ts": {
+      "description": "Exports getWolfDir, wolfDirExists, readJSON, writeJSON + 6 more",
+      "tokens": 538,
+      "hash": "0193b1022c8e098b",
+      "size": 1881,
+      "mtimeMs": 1785834177279.1472,
+      "updatedAt": "2026-08-04T09:02:57.298Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "getWolfDir",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 8,
+          "tokens": 28
+        },
+        {
+          "name": "wolfDirExists",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 12,
+          "tokens": 31
+        },
+        {
+          "name": "readJSON",
+          "kind": "fn",
+          "startLine": 13,
+          "endLine": 20,
+          "tokens": 50
+        },
+        {
+          "name": "writeJSON",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 33,
+          "tokens": 144
+        },
+        {
+          "name": "readMarkdown",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 41,
+          "tokens": 41
+        },
+        {
+          "name": "appendMarkdown",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 47,
+          "tokens": 64
+        },
+        {
+          "name": "timeShort",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 52,
+          "tokens": 46
+        },
+        {
+          "name": "timestamp",
+          "kind": "fn",
+          "startLine": 53,
+          "endLine": 56,
+          "tokens": 22
+        },
+        {
+          "name": "normalizePath",
+          "kind": "fn",
+          "startLine": 57,
+          "endLine": 60,
+          "tokens": 24
+        },
+        {
+          "name": "estimateTokens",
+          "kind": "fn",
+          "startLine": 61,
+          "endLine": 64,
+          "tokens": 60
+        }
+      ]
+    },
+    ".opencode/plugin/openwolf/index.ts": {
+      "description": "Exports OpenWolf",
+      "tokens": 1081,
+      "hash": "5044a1f76c74f535",
+      "size": 3782,
+      "mtimeMs": 1785834177279.532,
+      "updatedAt": "2026-08-04T09:02:57.298Z",
+      "source": "scan"
+    },
+    ".opencode/plugin/openwolf/post-read.ts": {
+      "description": "Exports handlePostRead",
+      "tokens": 629,
+      "hash": "1bc80c56ad0cfd32",
+      "size": 2200,
+      "mtimeMs": 1785834177279.9321,
+      "updatedAt": "2026-08-04T09:02:57.298Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "handlePostRead",
+          "kind": "fn",
+          "startLine": 7,
+          "endLine": 57,
+          "tokens": 553
+        }
+      ]
+    },
+    ".opencode/plugin/openwolf/post-write.ts": {
+      "description": "Exports handlePostWrite, summarizeEdit, autoDetectBugFix, detectFixPattern",
+      "tokens": 3226,
+      "hash": "02ba6ccd8d82475c",
+      "size": 11300,
+      "mtimeMs": 1785834177280.4854,
+      "updatedAt": "2026-08-04T09:02:57.299Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "handlePostWrite",
+          "kind": "fn",
+          "startLine": 8,
+          "endLine": 39,
+          "tokens": 302
+        },
+        {
+          "name": "updateAnatomy",
+          "kind": "fn",
+          "startLine": 40,
+          "endLine": 86,
+          "tokens": 473
+        },
+        {
+          "name": "appendToMemory",
+          "kind": "fn",
+          "startLine": 87,
+          "endLine": 114,
+          "tokens": 302
+        },
+        {
+          "name": "trackSession",
+          "kind": "fn",
+          "startLine": 115,
+          "endLine": 150,
+          "tokens": 338
+        },
+        {
+          "name": "summarizeEdit",
+          "kind": "fn",
+          "startLine": 151,
+          "endLine": 184,
+          "tokens": 471
+        },
+        {
+          "name": "autoDetectBugFix",
+          "kind": "fn",
+          "startLine": 185,
+          "endLine": 228,
+          "tokens": 523
+        },
+        {
+          "name": "detectFixPattern",
+          "kind": "fn",
+          "startLine": 229,
+          "endLine": 265,
+          "tokens": 610
+        },
+        {
+          "name": "extractChangedLines",
+          "kind": "fn",
+          "startLine": 266,
+          "endLine": 270,
+          "tokens": 88
+        }
+      ]
+    },
+    ".opencode/plugin/openwolf/pre-read.ts": {
+      "description": "Exports handlePreRead",
+      "tokens": 685,
+      "hash": "88c051b64b073c6a",
+      "size": 2401,
+      "mtimeMs": 1785834177280.8362,
+      "updatedAt": "2026-08-04T09:02:57.299Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "handlePreRead",
+          "kind": "fn",
+          "startLine": 7,
+          "endLine": 63,
+          "tokens": 613
+        }
+      ]
+    },
+    ".opencode/plugin/openwolf/pre-write.ts": {
+      "description": "Exports handlePreWrite",
+      "tokens": 1167,
+      "hash": "c3b34d216601e76f",
+      "size": 4092,
+      "mtimeMs": 1785834177281.0354,
+      "updatedAt": "2026-08-04T09:02:57.299Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "tokenize",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 21,
+          "tokens": 63
+        },
+        {
+          "name": "handlePreWrite",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 35,
+          "tokens": 132
+        },
+        {
+          "name": "checkCerebrum",
+          "kind": "fn",
+          "startLine": 36,
+          "endLine": 65,
+          "tokens": 369
+        },
+        {
+          "name": "BugEntry",
+          "kind": "section",
+          "startLine": 66,
+          "endLine": 74,
+          "tokens": 37
+        },
+        {
+          "name": "checkBugLog",
+          "kind": "fn",
+          "startLine": 75,
+          "endLine": 105,
+          "tokens": 399
+        }
+      ]
+    },
+    ".opencode/plugin/openwolf/session.ts": {
+      "description": "Exports getSessionState, setSessionState, deleteSession, handleSessionStart",
+      "tokens": 952,
+      "hash": "dda2df097f6d5874",
+      "size": 3340,
+      "mtimeMs": 1785834177281.3862,
+      "updatedAt": "2026-08-04T09:02:57.299Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "getSessionState",
+          "kind": "fn",
+          "startLine": 8,
+          "endLine": 11,
+          "tokens": 33
+        },
+        {
+          "name": "setSessionState",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 15,
+          "tokens": 33
+        },
+        {
+          "name": "deleteSession",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 19,
+          "tokens": 26
+        },
+        {
+          "name": "handleSessionStart",
+          "kind": "fn",
+          "startLine": 20,
+          "endLine": 89,
+          "tokens": 783
+        }
+      ]
+    },
+    ".opencode/plugin/openwolf/stop.ts": {
+      "description": "Exports handleStop",
+      "tokens": 1444,
+      "hash": "5f8633a3904ee5ce",
+      "size": 5057,
+      "mtimeMs": 1785834177281.7463,
+      "updatedAt": "2026-08-04T09:02:57.299Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "handleStop",
+          "kind": "fn",
+          "startLine": 6,
+          "endLine": 35,
+          "tokens": 262
+        },
+        {
+          "name": "checkForMissingBugLogs",
+          "kind": "fn",
+          "startLine": 36,
+          "endLine": 50,
+          "tokens": 165
+        },
+        {
+          "name": "buildLedgerEntry",
+          "kind": "fn",
+          "startLine": 51,
+          "endLine": 114,
+          "tokens": 743
+        },
+        {
+          "name": "appendSessionSummary",
+          "kind": "fn",
+          "startLine": 115,
+          "endLine": 126,
+          "tokens": 218
+        }
+      ]
+    },
+    ".opencode/plugin/openwolf/types.ts": {
+      "description": "Exports FileRead, FileWrite, SessionState, PartialSessionState + 2 more",
+      "tokens": 217,
+      "hash": "47f4dfb03abf55f9",
+      "size": 757,
+      "mtimeMs": 1785834177281.9375,
+      "updatedAt": "2026-08-04T09:02:57.299Z",
+      "source": "scan"
+    },
+    ".opencode/plugin/openwolf.ts": {
+      "description": "OpenWolf plugin entry — installed by `openwolf init --agent opencode`.",
+      "tokens": 74,
+      "hash": "a29f91aadb9a324d",
+      "size": 261,
+      "mtimeMs": 1785834177282.0498,
+      "updatedAt": "2026-08-04T09:02:57.300Z",
+      "source": "scan"
+    },
+    "AGENTS.md": {
+      "description": "OpenWolf",
+      "tokens": 68,
+      "hash": "8c90778623bf50ac",
+      "size": 271,
+      "mtimeMs": 1785834177282.5024,
+      "updatedAt": "2026-08-04T09:02:57.300Z",
+      "source": "scan"
+    },
+    "app/.DS_Store": {
+      "description": "",
+      "tokens": 3824,
+      "hash": "adc2e102fdd42988",
+      "size": 14340,
+      "mtimeMs": 1785411791297.803,
+      "updatedAt": "2026-08-04T09:02:57.300Z",
+      "source": "scan"
+    },
+    "app/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 128,
+      "hash": "207e265ff4901f9a",
+      "size": 480,
+      "mtimeMs": 1785087937158.668,
+      "updatedAt": "2026-08-04T09:02:57.300Z",
+      "source": "scan"
+    },
+    "app/AGENTS.md": {
+      "description": "This is NOT the Next.js you know",
+      "tokens": 82,
+      "hash": "e3447d84251880fb",
+      "size": 327,
+      "mtimeMs": 1785834093957.9656,
+      "updatedAt": "2026-08-04T09:02:57.301Z",
+      "source": "scan"
+    },
+    "app/CLAUDE.md": {
+      "description": "",
+      "tokens": 3,
+      "hash": "336cc4fbf19beaad",
+      "size": 11,
+      "mtimeMs": 1785834093958.6213,
+      "updatedAt": "2026-08-04T09:02:57.301Z",
+      "source": "scan"
+    },
+    "app/eslint.config.mjs": {
+      "description": "ESLint flat configuration",
+      "tokens": 124,
+      "hash": "870f1adccecf3051",
+      "size": 465,
+      "mtimeMs": 1785087937158.6077,
+      "updatedAt": "2026-08-04T09:02:57.301Z",
+      "source": "scan"
+    },
+    "app/next-env.d.ts": {
+      "description": "/ <reference types=\"next\" />",
+      "tokens": 72,
+      "hash": "7ad303e40d4fddf4",
+      "size": 251,
+      "mtimeMs": 1785411393693.1975,
+      "updatedAt": "2026-08-04T09:02:57.301Z",
+      "source": "scan"
+    },
+    "app/next.config.ts": {
+      "description": "Next.js configuration",
+      "tokens": 141,
+      "hash": "64afc7ed205e5e32",
+      "size": 493,
+      "mtimeMs": 1785418340362.8108,
+      "updatedAt": "2026-08-04T09:02:57.301Z",
+      "source": "scan"
+    },
+    "app/package-lock.json": {
+      "description": "npm lock file",
+      "tokens": 191822,
+      "hash": "a4b2cd61e58ad6ff",
+      "size": 671377,
+      "mtimeMs": 1785392074873.074,
+      "updatedAt": "2026-08-04T09:02:57.304Z",
+      "source": "scan"
+    },
+    "app/package.json": {
+      "description": "Node.js package manifest",
+      "tokens": 204,
+      "hash": "b6cdc45c161d137f",
+      "size": 713,
+      "mtimeMs": 1785415503335.873,
+      "updatedAt": "2026-08-04T09:02:57.304Z",
+      "source": "scan"
+    },
+    "app/postcss.config.mjs": {
+      "description": "Declares config",
+      "tokens": 26,
+      "hash": "dfac7ac2d86d326a",
+      "size": 94,
+      "mtimeMs": 1785087937158.5386,
+      "updatedAt": "2026-08-04T09:02:57.304Z",
+      "source": "scan"
+    },
+    "app/public/.DS_Store": {
+      "description": "",
+      "tokens": 1640,
+      "hash": "92a13dc2c5c09daf",
+      "size": 6148,
+      "mtimeMs": 1785410057099.7646,
+      "updatedAt": "2026-08-04T09:02:57.305Z",
+      "source": "scan"
+    },
+    "app/scripts/seed-sanity.ts": {
+      "description": "Seed Sanity with home + verkoop page builder content,",
+      "tokens": 5056,
+      "hash": "6a41e9b89a1ef331",
+      "size": 17749,
+      "mtimeMs": 1785417723268.794,
+      "updatedAt": "2026-08-04T09:02:57.306Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "key",
+          "kind": "fn",
+          "startLine": 64,
+          "endLine": 70,
+          "tokens": 46
+        },
+        {
+          "name": "externalLink",
+          "kind": "fn",
+          "startLine": 71,
+          "endLine": 74,
+          "tokens": 32
+        },
+        {
+          "name": "cta",
+          "kind": "fn",
+          "startLine": 75,
+          "endLine": 78,
+          "tokens": 36
+        },
+        {
+          "name": "uploadImage",
+          "kind": "fn",
+          "startLine": 79,
+          "endLine": 113,
+          "tokens": 248
+        },
+        {
+          "name": "upsertReview",
+          "kind": "fn",
+          "startLine": 114,
+          "endLine": 139,
+          "tokens": 183
+        },
+        {
+          "name": "upsertFaq",
+          "kind": "fn",
+          "startLine": 140,
+          "endLine": 172,
+          "tokens": 280
+        },
+        {
+          "name": "upsertPage",
+          "kind": "fn",
+          "startLine": 173,
+          "endLine": 196,
+          "tokens": 189
+        },
+        {
+          "name": "navLinkExternal",
+          "kind": "fn",
+          "startLine": 197,
+          "endLine": 205,
+          "tokens": 47
+        },
+        {
+          "name": "navLinkInternal",
+          "kind": "fn",
+          "startLine": 206,
+          "endLine": 214,
+          "tokens": 66
+        },
+        {
+          "name": "pageIdBySlug",
+          "kind": "fn",
+          "startLine": 215,
+          "endLine": 221,
+          "tokens": 46
+        },
+        {
+          "name": "upsertNavigation",
+          "kind": "fn",
+          "startLine": 222,
+          "endLine": 252,
+          "tokens": 248
+        },
+        {
+          "name": "upsertFooter",
+          "kind": "fn",
+          "startLine": 253,
+          "endLine": 291,
+          "tokens": 298
+        },
+        {
+          "name": "buildHomeContent",
+          "kind": "fn",
+          "startLine": 292,
+          "endLine": 440,
+          "tokens": 1452
+        },
+        {
+          "name": "buildVerkoopContent",
+          "kind": "fn",
+          "startLine": 441,
+          "endLine": 555,
+          "tokens": 1133
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 556,
+          "endLine": 590,
+          "tokens": 261
+        }
+      ]
+    },
+    "app/src/.DS_Store": {
+      "description": "",
+      "tokens": 2186,
+      "hash": "10d8e961febdd09b",
+      "size": 8196,
+      "mtimeMs": 1785410026743.0393,
+      "updatedAt": "2026-08-04T09:02:57.307Z",
+      "source": "scan"
+    },
+    "app/src/app/[slug]/page.tsx": {
+      "description": "options",
+      "tokens": 298,
+      "hash": "4de33151af259183",
+      "size": 1041,
+      "mtimeMs": 1785412606362.9448,
+      "updatedAt": "2026-08-04T09:02:57.307Z",
+      "source": "scan"
+    },
+    "app/src/app/globals.css": {
+      "description": "Styles: 4 rules, 1 media queries, 1 layers",
+      "tokens": 140,
+      "hash": "c2624fe14d9e1637",
+      "size": 489,
+      "mtimeMs": 1785408681792.3948,
+      "updatedAt": "2026-08-04T09:02:57.308Z",
+      "source": "scan"
+    },
+    "app/src/app/layout.tsx": {
+      "description": "display",
+      "tokens": 789,
+      "hash": "7addbda9cc66f28f",
+      "size": 2763,
+      "mtimeMs": 1785417707075.2327,
+      "updatedAt": "2026-08-04T09:02:57.308Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "asNavLinks",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 53,
+          "tokens": 58
+        },
+        {
+          "name": "RootLayout",
+          "kind": "fn",
+          "startLine": 54,
+          "endLine": 95,
+          "tokens": 342
+        }
+      ]
+    },
+    "app/src/app/manifest.json": {
+      "description": "",
+      "tokens": 125,
+      "hash": "91a78d4fe16316df",
+      "size": 436,
+      "mtimeMs": 1785402644000,
+      "updatedAt": "2026-08-04T09:02:57.309Z",
+      "source": "scan"
+    },
+    "app/src/app/not-found.tsx": {
+      "description": "NotFound",
+      "tokens": 239,
+      "hash": "f2fcb973347f6c77",
+      "size": 835,
+      "mtimeMs": 1785412795354.7793,
+      "updatedAt": "2026-08-04T09:02:57.309Z",
+      "source": "scan"
+    },
+    "app/src/app/page.tsx": {
+      "description": "options",
+      "tokens": 137,
+      "hash": "05e86c4174e26eed",
+      "size": 477,
+      "mtimeMs": 1785413297327.7615,
+      "updatedAt": "2026-08-04T09:02:57.309Z",
+      "source": "scan"
+    },
+    "app/src/app/verkoop/page.tsx": {
+      "description": "options",
+      "tokens": 227,
+      "hash": "5177551e3f75420a",
+      "size": 798,
+      "mtimeMs": 1785413297767.633,
+      "updatedAt": "2026-08-04T09:02:57.309Z",
+      "source": "scan"
+    },
+    "app/src/components/blocks/Benefits.tsx": {
+      "description": "DEFAULTS — renders chart",
+      "tokens": 1106,
+      "hash": "1f098ea7858b5460",
+      "size": 3872,
+      "mtimeMs": 1785413192926.5146,
+      "updatedAt": "2026-08-04T09:02:57.310Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "BenefitIcon",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 86,
+          "tokens": 342
+        },
+        {
+          "name": "Benefits",
+          "kind": "fn",
+          "startLine": 87,
+          "endLine": 134,
+          "tokens": 500
+        }
+      ]
+    },
+    "app/src/components/blocks/CrossLinks.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 634,
+      "hash": "23edba36ee511c1f",
+      "size": 2218,
+      "mtimeMs": 1785415262140.9001,
+      "updatedAt": "2026-08-04T09:02:57.310Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "CrossLinks",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 63,
+          "tokens": 500
+        }
+      ]
+    },
+    "app/src/components/blocks/CtaBand.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 790,
+      "hash": "9453e19c00bd640b",
+      "size": 2762,
+      "mtimeMs": 1785413195722.425,
+      "updatedAt": "2026-08-04T09:02:57.310Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "CtaBand",
+          "kind": "fn",
+          "startLine": 40,
+          "endLine": 93,
+          "tokens": 478
+        }
+      ]
+    },
+    "app/src/components/blocks/FactBar.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 418,
+      "hash": "0b7344e108a67ec0",
+      "size": 1460,
+      "mtimeMs": 1785413190284.1921,
+      "updatedAt": "2026-08-04T09:02:57.311Z",
+      "source": "scan"
+    },
+    "app/src/components/blocks/Faq.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 1125,
+      "hash": "e51ade10d399f8e6",
+      "size": 3938,
+      "mtimeMs": 1785415428516.1208,
+      "updatedAt": "2026-08-04T09:02:57.311Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Faq",
+          "kind": "fn",
+          "startLine": 33,
+          "endLine": 107,
+          "tokens": 880
+        }
+      ]
+    },
+    "app/src/components/blocks/Hero.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 1815,
+      "hash": "1782bb68412bb1e3",
+      "size": 6352,
+      "mtimeMs": 1785415619363.6216,
+      "updatedAt": "2026-08-04T09:02:57.311Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Hero",
+          "kind": "fn",
+          "startLine": 51,
+          "endLine": 196,
+          "tokens": 1422
+        }
+      ]
+    },
+    "app/src/components/blocks/Intro.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 1518,
+      "hash": "e6519b09e9a62195",
+      "size": 5319,
+      "mtimeMs": 1785413227994.7705,
+      "updatedAt": "2026-08-04T09:02:57.312Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "renderHighlightedTitle",
+          "kind": "fn",
+          "startLine": 56,
+          "endLine": 79,
+          "tokens": 136
+        },
+        {
+          "name": "Intro",
+          "kind": "fn",
+          "startLine": 80,
+          "endLine": 174,
+          "tokens": 921
+        }
+      ]
+    },
+    "app/src/components/blocks/Listings.tsx": {
+      "description": "DEFAULT_ITEMS",
+      "tokens": 1340,
+      "hash": "2670e9510a33eae6",
+      "size": 4687,
+      "mtimeMs": 1785415292580.5696,
+      "updatedAt": "2026-08-04T09:02:57.312Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "ListingCard",
+          "kind": "fn",
+          "startLine": 72,
+          "endLine": 117,
+          "tokens": 466
+        },
+        {
+          "name": "Listings",
+          "kind": "fn",
+          "startLine": 118,
+          "endLine": 164,
+          "tokens": 400
+        }
+      ]
+    },
+    "app/src/components/blocks/PageHero.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 1142,
+      "hash": "fb1258a1b0739644",
+      "size": 3995,
+      "mtimeMs": 1785416736400.1511,
+      "updatedAt": "2026-08-04T09:02:57.312Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "PageHero",
+          "kind": "fn",
+          "startLine": 40,
+          "endLine": 134,
+          "tokens": 864
+        }
+      ]
+    },
+    "app/src/components/blocks/QuoteBand.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 650,
+      "hash": "7d13572e8a5583bd",
+      "size": 2276,
+      "mtimeMs": 1785413199718.2004,
+      "updatedAt": "2026-08-04T09:02:57.312Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "QuoteBand",
+          "kind": "fn",
+          "startLine": 30,
+          "endLine": 71,
+          "tokens": 441
+        }
+      ]
+    },
+    "app/src/components/blocks/RegionBlock.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 637,
+      "hash": "57d64e6258679b91",
+      "size": 2229,
+      "mtimeMs": 1785415274797.0264,
+      "updatedAt": "2026-08-04T09:02:57.313Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "RegionBlock",
+          "kind": "fn",
+          "startLine": 26,
+          "endLine": 62,
+          "tokens": 416
+        }
+      ]
+    },
+    "app/src/components/blocks/Reviews.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 1781,
+      "hash": "bbbf69ce877ec382",
+      "size": 6232,
+      "mtimeMs": 1785413190498.031,
+      "updatedAt": "2026-08-04T09:02:57.313Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "ReviewCard",
+          "kind": "fn",
+          "startLine": 44,
+          "endLine": 75,
+          "tokens": 433
+        },
+        {
+          "name": "Reviews",
+          "kind": "fn",
+          "startLine": 76,
+          "endLine": 174,
+          "tokens": 1023
+        }
+      ]
+    },
+    "app/src/components/blocks/Services.tsx": {
+      "description": "DEFAULT_ITEMS",
+      "tokens": 1624,
+      "hash": "766f3ba05c33d969",
+      "size": 5684,
+      "mtimeMs": 1785413183139.182,
+      "updatedAt": "2026-08-04T09:02:57.313Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "ServiceCardItem",
+          "kind": "fn",
+          "startLine": 66,
+          "endLine": 111,
+          "tokens": 445
+        },
+        {
+          "name": "Services",
+          "kind": "fn",
+          "startLine": 112,
+          "endLine": 174,
+          "tokens": 690
+        }
+      ]
+    },
+    "app/src/components/blocks/Steps.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 1722,
+      "hash": "2f16ec5ec4826c2a",
+      "size": 6024,
+      "mtimeMs": 1785419839858.5242,
+      "updatedAt": "2026-08-04T09:02:57.314Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "stepImageSrc",
+          "kind": "fn",
+          "startLine": 40,
+          "endLine": 43,
+          "tokens": 34
+        },
+        {
+          "name": "Steps",
+          "kind": "fn",
+          "startLine": 44,
+          "endLine": 165,
+          "tokens": 1399
+        }
+      ]
+    },
+    "app/src/components/blocks/Stories.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 1018,
+      "hash": "710c500aa121dbc8",
+      "size": 3565,
+      "mtimeMs": 1785413186461.6929,
+      "updatedAt": "2026-08-04T09:02:57.314Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Stories",
+          "kind": "fn",
+          "startLine": 46,
+          "endLine": 120,
+          "tokens": 665
+        }
+      ]
+    },
+    "app/src/components/blocks/VerkoopCta.tsx": {
+      "description": "DEFAULTS",
+      "tokens": 248,
+      "hash": "08052a2b80291d6a",
+      "size": 866,
+      "mtimeMs": 1785413185546.9302,
+      "updatedAt": "2026-08-04T09:02:57.314Z",
+      "source": "scan"
+    },
+    "app/src/components/layout/SiteFooter.tsx": {
+      "description": "FooterLinkList",
+      "tokens": 1120,
+      "hash": "c8479ba44d4c0202",
+      "size": 3922,
+      "mtimeMs": 1785417523009.0027,
+      "updatedAt": "2026-08-04T09:02:57.315Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "FooterLinkList",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 33,
+          "tokens": 174
+        },
+        {
+          "name": "SiteFooter",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 119,
+          "tokens": 873
+        }
+      ]
+    },
+    "app/src/components/layout/SiteHeader.tsx": {
+      "description": "isActivePath",
+      "tokens": 1467,
+      "hash": "ab48b22c1437f101",
+      "size": 5132,
+      "mtimeMs": 1785834066050.2935,
+      "updatedAt": "2026-08-04T09:02:57.315Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "isActivePath",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 15,
+          "tokens": 53
+        },
+        {
+          "name": "DesktopNav",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 57,
+          "tokens": 350
+        },
+        {
+          "name": "Burger",
+          "kind": "fn",
+          "startLine": 58,
+          "endLine": 106,
+          "tokens": 321
+        },
+        {
+          "name": "SiteHeader",
+          "kind": "fn",
+          "startLine": 107,
+          "endLine": 166,
+          "tokens": 646
+        }
+      ]
+    },
+    "app/src/components/layout/WhatsAppButton.tsx": {
+      "description": "WhatsAppButton",
+      "tokens": 445,
+      "hash": "a9777db744547c28",
+      "size": 1556,
+      "mtimeMs": 1785395526511.0378,
+      "updatedAt": "2026-08-04T09:02:57.315Z",
+      "source": "scan"
+    },
+    "app/src/components/PageBuilder.tsx": {
+      "description": "imageSrc — renders chart",
+      "tokens": 3810,
+      "hash": "55562a769c8bc71f",
+      "size": 13333,
+      "mtimeMs": 1785417713657.7637,
+      "updatedAt": "2026-08-04T09:02:57.316Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "imageSrc",
+          "kind": "fn",
+          "startLine": 37,
+          "endLine": 47,
+          "tokens": 82
+        },
+        {
+          "name": "toImage",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 57,
+          "tokens": 76
+        },
+        {
+          "name": "toCta",
+          "kind": "fn",
+          "startLine": 58,
+          "endLine": 63,
+          "tokens": 49
+        },
+        {
+          "name": "toLabeledLink",
+          "kind": "fn",
+          "startLine": 64,
+          "endLine": 71,
+          "tokens": 76
+        },
+        {
+          "name": "renderBlock",
+          "kind": "fn",
+          "startLine": 72,
+          "endLine": 411,
+          "tokens": 3119
+        },
+        {
+          "name": "PageBuilder",
+          "kind": "fn",
+          "startLine": 412,
+          "endLine": 417,
+          "tokens": 60
+        }
+      ]
+    },
+    "app/src/components/ui/ArrowLink.tsx": {
+      "description": "Standalone text link with circular arrow (renders as `<a>`).",
+      "tokens": 541,
+      "hash": "38475ef714e8affc",
+      "size": 1892,
+      "mtimeMs": 1785415441511.4055,
+      "updatedAt": "2026-08-04T09:02:57.316Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "ArrowLink",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 57,
+          "tokens": 154
+        },
+        {
+          "name": "ArrowLinkLabel",
+          "kind": "fn",
+          "startLine": 58,
+          "endLine": 73,
+          "tokens": 93
+        }
+      ]
+    },
+    "app/src/components/ui/Button.tsx": {
+      "description": "baseClass",
+      "tokens": 444,
+      "hash": "05f55f040d0a64a8",
+      "size": 1553,
+      "mtimeMs": 1785415398610.7769,
+      "updatedAt": "2026-08-04T09:02:57.316Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/Eyebrow.tsx": {
+      "description": "Eyebrow",
+      "tokens": 150,
+      "hash": "94985d277a22a8fe",
+      "size": 523,
+      "mtimeMs": 1785394552460.0012,
+      "updatedAt": "2026-08-04T09:02:57.316Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/IconArrow.tsx": {
+      "description": "IconArrow",
+      "tokens": 203,
+      "hash": "6a5c1f24e03300a7",
+      "size": 708,
+      "mtimeMs": 1785392743578.4355,
+      "updatedAt": "2026-08-04T09:02:57.317Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/Lead.tsx": {
+      "description": "Lead",
+      "tokens": 92,
+      "hash": "014631b802eaf516",
+      "size": 319,
+      "mtimeMs": 1785394554923.0151,
+      "updatedAt": "2026-08-04T09:02:57.317Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/LogoMark.tsx": {
+      "description": "Header mark responds to sticky/mobile; footer is a fixed 90px mark.",
+      "tokens": 638,
+      "hash": "921a4759be97b862",
+      "size": 2230,
+      "mtimeMs": 1785395350079.9578,
+      "updatedAt": "2026-08-04T09:02:57.317Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "LogoMark",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 74,
+          "tokens": 556
+        }
+      ]
+    },
+    "app/src/components/ui/Reveal.tsx": {
+      "description": "delayClass",
+      "tokens": 252,
+      "hash": "aec7f6d2a3d1a840",
+      "size": 882,
+      "mtimeMs": 1785408194057.265,
+      "updatedAt": "2026-08-04T09:02:57.317Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/RevealLink.tsx": {
+      "description": "delayClass",
+      "tokens": 277,
+      "hash": "dd12002044baeeb5",
+      "size": 969,
+      "mtimeMs": 1785415412626.4539,
+      "updatedAt": "2026-08-04T09:02:57.317Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/SectionHead.tsx": {
+      "description": "SectionHead",
+      "tokens": 160,
+      "hash": "f0ab3aab1f7b059e",
+      "size": 559,
+      "mtimeMs": 1785394555191.6484,
+      "updatedAt": "2026-08-04T09:02:57.318Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/Wrap.tsx": {
+      "description": "Site content width shell.",
+      "tokens": 119,
+      "hash": "bde3116a0bd7d4cd",
+      "size": 416,
+      "mtimeMs": 1785408054715.1523,
+      "updatedAt": "2026-08-04T09:02:57.318Z",
+      "source": "scan"
+    },
+    "app/src/hooks/useActiveStep.ts": {
+      "description": "Tracks which step list item is closest to ~42% viewport height.",
+      "tokens": 316,
+      "hash": "3b0e1f6ea523cbf1",
+      "size": 1106,
+      "mtimeMs": 1785409638047.68,
+      "updatedAt": "2026-08-04T09:02:57.318Z",
+      "source": "scan"
+    },
+    "app/src/hooks/useMobileNav.ts": {
+      "description": "Exports useMobileNav",
+      "tokens": 282,
+      "hash": "59f2e48a7765bf83",
+      "size": 984,
+      "mtimeMs": 1785392863778.6238,
+      "updatedAt": "2026-08-04T09:02:57.319Z",
+      "source": "scan"
+    },
+    "app/src/hooks/useRevealOnScroll.ts": {
+      "description": "Exports useRevealOnScroll",
+      "tokens": 259,
+      "hash": "d2aaae0770b00a6b",
+      "size": 905,
+      "mtimeMs": 1785408710694.711,
+      "updatedAt": "2026-08-04T09:02:57.319Z",
+      "source": "scan"
+    },
+    "app/src/hooks/useReviewsCarousel.ts": {
+      "description": "Exports useReviewsCarousel",
+      "tokens": 382,
+      "hash": "4de275bb0b4be16f",
+      "size": 1334,
+      "mtimeMs": 1785406817982.6602,
+      "updatedAt": "2026-08-04T09:02:57.319Z",
+      "source": "scan"
+    },
+    "app/src/hooks/useStickyTopbar.ts": {
+      "description": "Exports useStickyTopbar",
+      "tokens": 138,
+      "hash": "69c8e69e6de40070",
+      "size": 483,
+      "mtimeMs": 1785392861581.7021,
+      "updatedAt": "2026-08-04T09:02:57.319Z",
+      "source": "scan"
+    },
+    "app/src/lib/chrome.ts": {
+      "description": "Scroll threshold (px) before the topbar gets the stuck state.",
+      "tokens": 62,
+      "hash": "0a9825cfe769c118",
+      "size": 214,
+      "mtimeMs": 1785392860077.3623,
+      "updatedAt": "2026-08-04T09:02:57.320Z",
+      "source": "scan"
+    },
+    "app/src/lib/cn.ts": {
+      "description": "Exports cn",
+      "tokens": 37,
+      "hash": "ec1499e69cf8ab14",
+      "size": 129,
+      "mtimeMs": 1785394522220.3386,
+      "updatedAt": "2026-08-04T09:02:57.320Z",
+      "source": "scan"
+    },
+    "app/src/lib/home-content.ts": {
+      "description": "Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more",
+      "tokens": 1136,
+      "hash": "edf59c53969314b2",
+      "size": 3996,
+      "mtimeMs": 1785392722977.4873,
+      "updatedAt": "2026-08-04T09:02:57.320Z",
+      "source": "scan"
+    },
+    "app/src/lib/links.ts": {
+      "description": "Resolve a Sanity link/cta object to a usable href.",
+      "tokens": 258,
+      "hash": "deb9a891b124a1f5",
+      "size": 900,
+      "mtimeMs": 1785417692764.3281,
+      "updatedAt": "2026-08-04T09:02:57.320Z",
+      "source": "scan"
+    },
+    "app/src/lib/reviews.ts": {
+      "description": "Gap between review cards in the carousel (matches CSS `gap: 24px`).",
+      "tokens": 131,
+      "hash": "c5e47367b867c13f",
+      "size": 457,
+      "mtimeMs": 1785392860805.4639,
+      "updatedAt": "2026-08-04T09:02:57.320Z",
+      "source": "scan"
+    },
+    "app/src/lib/site.ts": {
+      "description": "Exports SITE, NavLink, FooterLinkGroup, FOOTER_CERTS, REGIONS",
+      "tokens": 191,
+      "hash": "eee0b0612d02829c",
+      "size": 666,
+      "mtimeMs": 1785417542588.1482,
+      "updatedAt": "2026-08-04T09:02:57.321Z",
+      "source": "scan"
+    },
+    "app/src/lib/verkoop-content.ts": {
+      "description": "Plain answer text. Optional `link` is inserted before `afterLink`.",
+      "tokens": 2190,
+      "hash": "dbca31b74e4fac74",
+      "size": 7679,
+      "mtimeMs": 1785409626351.41,
+      "updatedAt": "2026-08-04T09:02:57.321Z",
+      "source": "scan"
+    },
+    "app/src/sanity/client.ts": {
+      "description": "Exports client",
+      "tokens": 61,
+      "hash": "3ec432deb90d37d3",
+      "size": 211,
+      "mtimeMs": 1785089336344.546,
+      "updatedAt": "2026-08-04T09:02:57.321Z",
+      "source": "scan"
+    },
+    "app/src/sanity/image.ts": {
+      "description": "Exports urlFor",
+      "tokens": 107,
+      "hash": "d6daebf98c997e48",
+      "size": 374,
+      "mtimeMs": 1785412093193.3325,
+      "updatedAt": "2026-08-04T09:02:57.322Z",
+      "source": "scan"
+    },
+    "app/src/sanity/queries.ts": {
+      "description": "Resolve internal page references on link/cta objects.",
+      "tokens": 392,
+      "hash": "12f0db58f86a9e87",
+      "size": 1370,
+      "mtimeMs": 1785417702102.7957,
+      "updatedAt": "2026-08-04T09:02:57.322Z",
+      "source": "scan"
+    },
+    "app/tailwind.config.ts": {
+      "description": "Tailwind CSS configuration",
+      "tokens": 946,
+      "hash": "acbbf29f655cfa27",
+      "size": 3308,
+      "mtimeMs": 1785396746187.5957,
+      "updatedAt": "2026-08-04T09:02:57.322Z",
+      "source": "scan"
+    },
+    "app/tsconfig.json": {
+      "description": "TypeScript configuration",
+      "tokens": 192,
+      "hash": "5c51df4c59f4510d",
+      "size": 670,
+      "mtimeMs": 1785087937160.0479,
+      "updatedAt": "2026-08-04T09:02:57.322Z",
+      "source": "scan"
+    },
+    "app/tsconfig.tsbuildinfo": {
+      "description": "",
+      "tokens": 40428,
+      "hash": "ea0c4a13637ff747",
+      "size": 151602,
+      "mtimeMs": 1785415121196.2756,
+      "updatedAt": "2026-08-04T09:02:57.323Z",
+      "source": "scan"
+    },
+    "CLAUDE.md": {
+      "description": "OpenWolf",
+      "tokens": 57,
+      "hash": "b1ca356fa9d5f3a6",
+      "size": 225,
+      "mtimeMs": 1785834177112.446,
+      "updatedAt": "2026-08-04T09:02:57.323Z",
+      "source": "scan"
+    },
+    "README.md": {
+      "description": "Project documentation",
+      "tokens": 72,
+      "hash": "7239f818fb4c333e",
+      "size": 286,
+      "mtimeMs": 1785088116980.9365,
+      "updatedAt": "2026-08-04T09:02:57.323Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 112,
+      "hash": "e830721125cd1c86",
+      "size": 420,
+      "mtimeMs": 1785064182434.4294,
+      "updatedAt": "2026-08-04T09:02:57.323Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/.sanity/runtime/app.js": {
+      "description": "This file is auto-generated on 'sanity dev'",
+      "tokens": 87,
+      "hash": "8efdad20830ad340",
+      "size": 303,
+      "mtimeMs": 1785418680300.2751,
+      "updatedAt": "2026-08-04T09:02:57.323Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/.sanity/runtime/index.html": {
+      "description": "Sanity Studio",
+      "tokens": 2316,
+      "hash": "2d9e304bcfe67fce",
+      "size": 8688,
+      "mtimeMs": 1785418680299.7578,
+      "updatedAt": "2026-08-04T09:02:57.324Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/eslint.config.mjs": {
+      "description": "ESLint flat configuration",
+      "tokens": 21,
+      "hash": "c5807d719bd7e7fe",
+      "size": 78,
+      "mtimeMs": 1785064183076.9744,
+      "updatedAt": "2026-08-04T09:02:57.324Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/package.json": {
+      "description": "Node.js package manifest",
+      "tokens": 238,
+      "hash": "793c39d37438accf",
+      "size": 830,
+      "mtimeMs": 1785411524122.5452,
+      "updatedAt": "2026-08-04T09:02:57.324Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/pnpm-lock.yaml": {
+      "description": "pnpm lock file",
+      "tokens": 109203,
+      "hash": "69c013504b4faddc",
+      "size": 382210,
+      "mtimeMs": 1785411524079.5054,
+      "updatedAt": "2026-08-04T09:02:57.326Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/README.md": {
+      "description": "Project documentation",
+      "tokens": 131,
+      "hash": "9bdd511ad54209f8",
+      "size": 527,
+      "mtimeMs": 1785064182431.047,
+      "updatedAt": "2026-08-04T09:02:57.326Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/sanity.cli.ts": {
+      "description": "Enable auto-updates for studios.",
+      "tokens": 98,
+      "hash": "eefc3be71900db30",
+      "size": 342,
+      "mtimeMs": 1785134275657.092,
+      "updatedAt": "2026-08-04T09:02:57.326Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/sanity.config.ts": {
+      "description": "",
+      "tokens": 124,
+      "hash": "7d486984dda172ef",
+      "size": 432,
+      "mtimeMs": 1785411188891.0164,
+      "updatedAt": "2026-08-04T09:02:57.327Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/benefitsType.ts": {
+      "description": "Exports benefitsType",
+      "tokens": 592,
+      "hash": "3e9971776ff70e9b",
+      "size": 2070,
+      "mtimeMs": 1785413091173.2114,
+      "updatedAt": "2026-08-04T09:02:57.327Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/crossLinksType.ts": {
+      "description": "Exports crossLinksType",
+      "tokens": 319,
+      "hash": "84229b651aa969e7",
+      "size": 1115,
+      "mtimeMs": 1785415057713.1182,
+      "updatedAt": "2026-08-04T09:02:57.327Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/ctaBandType.ts": {
+      "description": "Exports ctaBandType",
+      "tokens": 334,
+      "hash": "9c112bfd109e89c0",
+      "size": 1166,
+      "mtimeMs": 1785413063795.3142,
+      "updatedAt": "2026-08-04T09:02:57.327Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/factBarType.ts": {
+      "description": "Exports factBarType",
+      "tokens": 289,
+      "hash": "fea9102e9266f4a3",
+      "size": 1010,
+      "mtimeMs": 1785413084448.296,
+      "updatedAt": "2026-08-04T09:02:57.328Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/faqsType.ts": {
+      "description": "Exports faqsType",
+      "tokens": 264,
+      "hash": "9f84992a20aef4df",
+      "size": 924,
+      "mtimeMs": 1785413108533.2122,
+      "updatedAt": "2026-08-04T09:02:57.328Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/heroType.ts": {
+      "description": "Exports heroType",
+      "tokens": 687,
+      "hash": "86b8fce348ee5201",
+      "size": 2403,
+      "mtimeMs": 1785414683668.4846,
+      "updatedAt": "2026-08-04T09:02:57.328Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/introType.ts": {
+      "description": "Exports introType",
+      "tokens": 686,
+      "hash": "741d65d7d7f99709",
+      "size": 2399,
+      "mtimeMs": 1785413256568.5757,
+      "updatedAt": "2026-08-04T09:02:57.329Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/listingsType.ts": {
+      "description": "Exports listingsType",
+      "tokens": 747,
+      "hash": "b07adac0900ab265",
+      "size": 2614,
+      "mtimeMs": 1785415063219.6985,
+      "updatedAt": "2026-08-04T09:02:57.329Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/pageHeroType.ts": {
+      "description": "Exports pageHeroType",
+      "tokens": 479,
+      "hash": "fe9b18c92a938e89",
+      "size": 1676,
+      "mtimeMs": 1785413077593.0142,
+      "updatedAt": "2026-08-04T09:02:57.329Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/quoteBandType.ts": {
+      "description": "Exports quoteBandType",
+      "tokens": 363,
+      "hash": "e89a70e799854c51",
+      "size": 1270,
+      "mtimeMs": 1785413100084.1924,
+      "updatedAt": "2026-08-04T09:02:57.330Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/regionBlockType.ts": {
+      "description": "Exports regionBlockType",
+      "tokens": 342,
+      "hash": "5f6d9448a6739d6d",
+      "size": 1196,
+      "mtimeMs": 1785415063504.6973,
+      "updatedAt": "2026-08-04T09:02:57.330Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/reviewsType.ts": {
+      "description": "Exports reviewsType",
+      "tokens": 374,
+      "hash": "61f6590f0c895298",
+      "size": 1306,
+      "mtimeMs": 1785413059436.2683,
+      "updatedAt": "2026-08-04T09:02:57.330Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/servicesType.ts": {
+      "description": "Exports servicesType",
+      "tokens": 685,
+      "hash": "f8b43f8565d79112",
+      "size": 2396,
+      "mtimeMs": 1785415062017.9482,
+      "updatedAt": "2026-08-04T09:02:57.330Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/stepsType.ts": {
+      "description": "Exports stepsType",
+      "tokens": 452,
+      "hash": "c748e46a3ca14f11",
+      "size": 1581,
+      "mtimeMs": 1785413096292.5088,
+      "updatedAt": "2026-08-04T09:02:57.331Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/storyType.ts": {
+      "description": "Exports storyType",
+      "tokens": 456,
+      "hash": "11d20c4b8974f6e2",
+      "size": 1595,
+      "mtimeMs": 1785413049413.9749,
+      "updatedAt": "2026-08-04T09:02:57.331Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/faqType.ts": {
+      "description": "Exports faqType",
+      "tokens": 238,
+      "hash": "1f7a05e01a3cc9f2",
+      "size": 830,
+      "mtimeMs": 1785413103941.8618,
+      "updatedAt": "2026-08-04T09:02:57.331Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/footerType.ts": {
+      "description": "Exports footerType",
+      "tokens": 779,
+      "hash": "532851f1c70528b3",
+      "size": 2725,
+      "mtimeMs": 1785417697738.4307,
+      "updatedAt": "2026-08-04T09:02:57.332Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/index.ts": {
+      "description": "Exports schemaTypes",
+      "tokens": 425,
+      "hash": "3ce4050808eb8903",
+      "size": 1487,
+      "mtimeMs": 1785416163684.3977,
+      "updatedAt": "2026-08-04T09:02:57.332Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/navigationType.ts": {
+      "description": "Exports navigationType",
+      "tokens": 363,
+      "hash": "be12c9ef0727712d",
+      "size": 1269,
+      "mtimeMs": 1785417696494.7275,
+      "updatedAt": "2026-08-04T09:02:57.332Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/objects/ctaType.ts": {
+      "description": "Exports ctaType",
+      "tokens": 94,
+      "hash": "d016fc7939d21106",
+      "size": 326,
+      "mtimeMs": 1785415054580.3945,
+      "updatedAt": "2026-08-04T09:02:57.333Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/objects/linkFields.ts": {
+      "description": "Shared internal/external link fields for `link` and `cta` objects.",
+      "tokens": 407,
+      "hash": "c355054eed7f2555",
+      "size": 1424,
+      "mtimeMs": 1785415050987.8442,
+      "updatedAt": "2026-08-04T09:02:57.333Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/objects/linkType.ts": {
+      "description": "Exports linkType",
+      "tokens": 54,
+      "hash": "4a6dec2e72655f28",
+      "size": 188,
+      "mtimeMs": 1785415051978.4214,
+      "updatedAt": "2026-08-04T09:02:57.333Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/pageBuilderType.ts": {
+      "description": "Exports pageBuilderType",
+      "tokens": 225,
+      "hash": "1615fdd0902003db",
+      "size": 785,
+      "mtimeMs": 1785413126337.8738,
+      "updatedAt": "2026-08-04T09:02:57.334Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/pageType.ts": {
+      "description": "Exports pageType",
+      "tokens": 189,
+      "hash": "40688272f080fcf3",
+      "size": 660,
+      "mtimeMs": 1785411639854.4954,
+      "updatedAt": "2026-08-04T09:02:57.334Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/reviewType.ts": {
+      "description": "Exports reviewType",
+      "tokens": 256,
+      "hash": "5a110d9fbe4f8320",
+      "size": 894,
+      "mtimeMs": 1785413052233.648,
+      "updatedAt": "2026-08-04T09:02:57.334Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/static/.gitkeep": {
+      "description": "",
+      "tokens": 22,
+      "hash": "7635960718f1ae5c",
+      "size": 81,
+      "mtimeMs": 1785064182433.0325,
+      "updatedAt": "2026-08-04T09:02:57.335Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/structure.ts": {
+      "description": "Exports structure",
+      "tokens": 305,
+      "hash": "281f4ba5e4649929",
+      "size": 1065,
+      "mtimeMs": 1785417423517.2847,
+      "updatedAt": "2026-08-04T09:02:57.335Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/tsconfig.json": {
+      "description": "TypeScript configuration",
+      "tokens": 120,
+      "hash": "e5a67d7d8cdee156",
+      "size": 417,
+      "mtimeMs": 1785064182435.5544,
+      "updatedAt": "2026-08-04T09:02:57.335Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/tsconfig.tsbuildinfo": {
+      "description": "",
+      "tokens": 36718,
+      "hash": "956dcb4a086d0e0b",
+      "size": 137689,
+      "mtimeMs": 1785415131083.9102,
+      "updatedAt": "2026-08-04T09:02:57.336Z",
+      "source": "scan"
+    }
+  }
+}
