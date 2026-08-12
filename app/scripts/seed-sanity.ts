@@ -1,5 +1,5 @@
 /**
- * Seed Sanity with home + verkoop page builder content,
+ * Seed Sanity with home + verkoop + over-ons page builder content,
  * plus navigation and footer singletons.
  *
  * Requires SANITY_API_WRITE_TOKEN (Editor or Admin) in app/.env
@@ -23,6 +23,18 @@ import {
   REVIEWS,
   SERVICES,
 } from '../src/lib/home-content'
+import {
+  OVER_ONS_ASSURANCES,
+  OVER_ONS_ASSURANCES_INTRO,
+  OVER_ONS_BUITEN,
+  OVER_ONS_CTA,
+  OVER_ONS_DUO,
+  OVER_ONS_OPENER,
+  OVER_ONS_TIMELINE,
+  OVER_ONS_TIMELINE_INTRO,
+  OVER_ONS_VALUES,
+  OVER_ONS_VALUES_INTRO,
+} from '../src/lib/over-ons-content'
 import {REGIONS, SITE} from '../src/lib/site'
 import {
   VERKOOP_BENEFITS,
@@ -219,11 +231,15 @@ async function pageIdBySlug(slug: string) {
   )
 }
 
+/** Link to a seeded page by slug, falling back to a plain path if it is missing. */
+async function pageLink(label: string, slug: string) {
+  const id = await pageIdBySlug(slug)
+  return id ? navLinkInternal(label, id) : navLinkExternal(label, `/${slug}`)
+}
+
 async function upsertNavigation() {
-  const verkoopId = await pageIdBySlug('verkoop')
-  const verkoopLink = verkoopId
-    ? navLinkInternal('Verkoop', verkoopId)
-    : navLinkExternal('Verkoop', '/verkoop')
+  const verkoopLink = await pageLink('Verkoop', 'verkoop')
+  const overOnsLink = await pageLink('Over ons', 'over-ons')
 
   const doc = {
     _id: 'navigation',
@@ -237,24 +253,18 @@ async function upsertNavigation() {
     navRight: [
       navLinkExternal('Actueel aanbod', '#'),
       navLinkExternal('Beoordelingen', '#'),
-      navLinkExternal('Over ons', '#'),
+      overOnsLink,
       navLinkExternal('Contact', '#'),
     ],
   }
 
   await client.createOrReplace(doc)
-  console.log(
-    verkoopId
-      ? '✓ navigation singleton upserted (Verkoop → internal page)'
-      : '✓ navigation singleton upserted (Verkoop → external /verkoop; page not found yet)',
-  )
+  console.log('✓ navigation singleton upserted')
 }
 
 async function upsertFooter() {
-  const verkoopId = await pageIdBySlug('verkoop')
-  const verkoopLink = verkoopId
-    ? navLinkInternal('Verkoop', verkoopId)
-    : navLinkExternal('Verkoop', '/verkoop')
+  const verkoopLink = await pageLink('Verkoop', 'verkoop')
+  const overOnsLink = await pageLink('Over ons', 'over-ons')
 
   const doc = {
     _id: 'footer',
@@ -276,7 +286,7 @@ async function upsertFooter() {
         links: [
           navLinkExternal('Actueel aanbod', '#'),
           navLinkExternal('Beoordelingen', '#'),
-          navLinkExternal('Over ons', '#'),
+          overOnsLink,
           navLinkExternal('Contact', '#'),
         ],
       },
@@ -553,6 +563,97 @@ async function buildVerkoopContent(faqIds: string[]) {
   ]
 }
 
+async function buildOverOnsContent() {
+  console.log('Building over-ons blocks…')
+
+  const duoImage = await uploadImage(OVER_ONS_DUO.image.src, OVER_ONS_DUO.image.alt)
+  const duoSecondary = await uploadImage(
+    OVER_ONS_DUO.secondaryImage.src,
+    OVER_ONS_DUO.secondaryImage.alt,
+  )
+  const timelineItems = await Promise.all(
+    OVER_ONS_TIMELINE.map(async (item) => ({
+      _key: key(item.year),
+      year: item.year,
+      title: item.title,
+      body: item.body,
+      ...(item.image
+        ? {image: await uploadImage(item.image.src, item.image.alt)}
+        : {}),
+    })),
+  )
+  const buitenImage = await uploadImage(
+    OVER_ONS_BUITEN.image.src,
+    OVER_ONS_BUITEN.image.alt,
+  )
+  const ctaImage = await uploadImage(OVER_ONS_CTA.image.src, OVER_ONS_CTA.image.alt)
+
+  return [
+    {
+      _type: 'pageOpener',
+      _key: key('over-ons-opener'),
+      eyebrow: OVER_ONS_OPENER.eyebrow,
+      title: OVER_ONS_OPENER.title,
+      titleHighlight: OVER_ONS_OPENER.titleEm,
+      lead: OVER_ONS_OPENER.lead,
+      motto: OVER_ONS_OPENER.motto,
+      attribution: OVER_ONS_OPENER.attribution,
+    },
+    {
+      _type: 'duoPhotos',
+      _key: key('over-ons-duo'),
+      image: duoImage,
+      stampValue: OVER_ONS_DUO.stampValue,
+      stampLabel: OVER_ONS_DUO.stampLabel,
+      secondaryImage: duoSecondary,
+      caption: OVER_ONS_DUO.caption,
+    },
+    {
+      _type: 'timeline',
+      _key: key('over-ons-timeline'),
+      eyebrow: OVER_ONS_TIMELINE_INTRO.eyebrow,
+      title: OVER_ONS_TIMELINE_INTRO.title,
+      lead: OVER_ONS_TIMELINE_INTRO.lead,
+      items: timelineItems,
+    },
+    {
+      _type: 'valueCards',
+      _key: key('over-ons-values'),
+      eyebrow: OVER_ONS_VALUES_INTRO.eyebrow,
+      title: OVER_ONS_VALUES_INTRO.title,
+      lead: OVER_ONS_VALUES_INTRO.lead,
+      items: OVER_ONS_VALUES.map((item) => ({...item, _key: key(item.title)})),
+    },
+    {
+      _type: 'mediaText',
+      _key: key('over-ons-buiten'),
+      eyebrow: OVER_ONS_BUITEN.eyebrow,
+      title: OVER_ONS_BUITEN.title,
+      paragraphs: [...OVER_ONS_BUITEN.paragraphs],
+      cta: cta(OVER_ONS_BUITEN.cta.label, OVER_ONS_BUITEN.cta.href),
+      image: buitenImage,
+    },
+    {
+      _type: 'assurances',
+      _key: key('over-ons-assurances'),
+      eyebrow: OVER_ONS_ASSURANCES_INTRO.eyebrow,
+      title: OVER_ONS_ASSURANCES_INTRO.title,
+      lead: OVER_ONS_ASSURANCES_INTRO.lead,
+      items: OVER_ONS_ASSURANCES.map((item) => ({...item, _key: key(item.title)})),
+    },
+    {
+      _type: 'ctaBand',
+      _key: key('over-ons-cta'),
+      image: ctaImage,
+      eyebrow: OVER_ONS_CTA.eyebrow,
+      title: OVER_ONS_CTA.title,
+      body: OVER_ONS_CTA.body,
+      primaryCta: cta(OVER_ONS_CTA.primary.label, OVER_ONS_CTA.primary.href),
+      secondaryCta: cta(OVER_ONS_CTA.secondary.label, OVER_ONS_CTA.secondary.href),
+    },
+  ]
+}
+
 async function main() {
   console.log(`Seeding Sanity project ${projectId}/${dataset}…\n`)
 
@@ -576,11 +677,15 @@ async function main() {
   const verkoopContent = await buildVerkoopContent(faqIds)
   await upsertPage('verkoop', 'Verkoop', verkoopContent)
 
+  console.log('\nOver ons page')
+  const overOnsContent = await buildOverOnsContent()
+  await upsertPage('over-ons', 'Over ons', overOnsContent)
+
   console.log('\nNavigation & footer')
   await upsertNavigation()
   await upsertFooter()
 
-  console.log('\nDone. Open / and /verkoop after a refresh.')
+  console.log('\nDone. Open /, /verkoop and /over-ons after a refresh.')
 }
 
 main().catch((error) => {

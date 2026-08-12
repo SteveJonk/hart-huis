@@ -1,18 +1,24 @@
+import {assurancesType} from './blocks/assurancesType'
 import {benefitsType} from './blocks/benefitsType'
 import {crossLinksType} from './blocks/crossLinksType'
 import {ctaBandType} from './blocks/ctaBandType'
+import {duoPhotosType} from './blocks/duoPhotosType'
 import {factBarType} from './blocks/factBarType'
 import {faqsType} from './blocks/faqsType'
 import {heroType} from './blocks/heroType'
 import {introType} from './blocks/introType'
 import {listingsType} from './blocks/listingsType'
+import {mediaTextType} from './blocks/mediaTextType'
 import {pageHeroType} from './blocks/pageHeroType'
+import {pageOpenerType} from './blocks/pageOpenerType'
 import {quoteBandType} from './blocks/quoteBandType'
 import {regionBlockType} from './blocks/regionBlockType'
 import {reviewsType} from './blocks/reviewsType'
 import {servicesType} from './blocks/servicesType'
 import {stepsType} from './blocks/stepsType'
 import {storyType} from './blocks/storyType'
+import {timelineType} from './blocks/timelineType'
+import {valueCardsType} from './blocks/valueCardsType'
 import {faqType} from './faqType'
 import {footerType} from './footerType'
 import {navigationType} from './navigationType'
@@ -49,4 +55,10 @@ export const schemaTypes = [
   faqsType,
   regionBlockType,
   crossLinksType,
+  pageOpenerType,
+  duoPhotosType,
+  timelineType,
+  valueCardsType,
+  mediaTextType,
+  assurancesType,
 ]

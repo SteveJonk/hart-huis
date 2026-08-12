@@ -19,5 +19,11 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'faqs'}),
     defineArrayMember({type: 'regionBlock'}),
     defineArrayMember({type: 'crossLinks'}),
+    defineArrayMember({type: 'pageOpener'}),
+    defineArrayMember({type: 'duoPhotos'}),
+    defineArrayMember({type: 'timeline'}),
+    defineArrayMember({type: 'valueCards'}),
+    defineArrayMember({type: 'mediaText'}),
+    defineArrayMember({type: 'assurances'}),
   ],
 })

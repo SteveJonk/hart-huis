@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-12T18:35:50.776Z
-> Files: 129 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-12T18:57:53.042Z
+> Files: 147 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -13,6 +13,7 @@
 
 ## .claude/
 
+- `launch.json` (~58 tok)
 - `settings.json` (~514 tok)
 
 ## .claude/commands/
@@ -112,7 +113,15 @@
 - `postcss.config.mjs` — Declares config (~26 tok)
 - `tailwind.config.ts` — Tailwind CSS configuration (~946 tok)
 - `tsconfig.json` — TypeScript configuration (~192 tok)
-- `tsconfig.tsbuildinfo` (~40428 tok)
+- `tsconfig.tsbuildinfo` (~40713 tok)
+
+## app/example-designs/
+
+- `.DS_Store` (~1640 tok)
+- `aanbod.html` — Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem (~245118 tok)
+- `beoordelingen.html` — Beoordelingen — Hart &amp; Huis Makelaardij Haarlem (~106755 tok)
+- `contact.html` — Contact — Hart &amp; Huis Makelaardij Haarlem (~115609 tok)
+- `over-ons.html` — Over ons — Dorien Hollemans, Hart &amp; Huis Makelaardij Haarlem (~205364 tok)
 
 ## app/public/
 
@@ -120,22 +129,24 @@
 
 ## app/scripts/
 
-- `seed-sanity.ts` — Seed Sanity with home + verkoop page builder content, (~5056 tok)
-  - fn `key` L64-70 (~46 tok)
-  - fn `externalLink` L71-74 (~32 tok)
-  - fn `cta` L75-78 (~36 tok)
-  - fn `uploadImage` L79-113 (~248 tok)
-  - fn `upsertReview` L114-139 (~183 tok)
-  - fn `upsertFaq` L140-172 (~280 tok)
-  - fn `upsertPage` L173-196 (~189 tok)
-  - fn `navLinkExternal` L197-205 (~47 tok)
-  - fn `navLinkInternal` L206-214 (~66 tok)
-  - fn `pageIdBySlug` L215-221 (~46 tok)
-  - fn `upsertNavigation` L222-252 (~248 tok)
-  - fn `upsertFooter` L253-291 (~298 tok)
-  - fn `buildHomeContent` L292-440 (~1452 tok)
-  - fn `buildVerkoopContent` L441-555 (~1133 tok)
-  - fn `main` L556-590 (~261 tok)
+- `seed-sanity.ts` — Seed Sanity with home + verkoop + over-ons page builder content, (~5986 tok)
+  - fn `key` L76-82 (~46 tok)
+  - fn `externalLink` L83-86 (~32 tok)
+  - fn `cta` L87-90 (~36 tok)
+  - fn `uploadImage` L91-125 (~248 tok)
+  - fn `upsertReview` L126-151 (~183 tok)
+  - fn `upsertFaq` L152-184 (~280 tok)
+  - fn `upsertPage` L185-208 (~189 tok)
+  - fn `navLinkExternal` L209-217 (~47 tok)
+  - fn `navLinkInternal` L218-226 (~66 tok)
+  - fn `pageIdBySlug` L227-234 (~70 tok)
+  - fn `pageLink` L235-239 (~50 tok)
+  - fn `upsertNavigation` L240-264 (~186 tok)
+  - fn `upsertFooter` L265-301 (~277 tok)
+  - fn `buildHomeContent` L302-450 (~1452 tok)
+  - fn `buildVerkoopContent` L451-565 (~1133 tok)
+  - fn `buildOverOnsContent` L566-656 (~816 tok)
+  - fn `main` L657-695 (~306 tok)
 
 ## app/src/
 
@@ -155,22 +166,21 @@
 
 - `page.tsx` — options (~298 tok)
 
-## app/src/app/verkoop/
-
-- `page.tsx` — options (~227 tok)
-
 ## app/src/components/
 
-- `PageBuilder.tsx` — imageSrc — renders chart (~3810 tok)
-  - fn `imageSrc` L37-47 (~82 tok)
-  - fn `toImage` L48-57 (~76 tok)
-  - fn `toCta` L58-63 (~49 tok)
-  - fn `toLabeledLink` L64-71 (~76 tok)
-  - fn `renderBlock` L72-411 (~3119 tok)
-  - fn `PageBuilder` L412-417 (~60 tok)
+- `PageBuilder.tsx` — imageSrc — renders chart (~4720 tok)
+  - fn `imageSrc` L43-53 (~82 tok)
+  - fn `toImage` L54-63 (~76 tok)
+  - fn `toCta` L64-69 (~49 tok)
+  - fn `toLabeledLink` L70-77 (~76 tok)
+  - fn `renderBlock` L78-510 (~3927 tok)
+  - fn `PageBuilder` L511-516 (~60 tok)
 
 ## app/src/components/blocks/
 
+- `Assurances.tsx` — Dark band with credentials, checked off two by two. (~867 tok)
+  - fn `IconCheck` L24-32 (~79 tok)
+  - fn `Assurances` L33-90 (~622 tok)
 - `Benefits.tsx` — DEFAULTS — renders chart (~1106 tok)
   - fn `BenefitIcon` L34-86 (~342 tok)
   - fn `Benefits` L87-134 (~500 tok)
@@ -178,6 +188,8 @@
   - fn `CrossLinks` L21-63 (~500 tok)
 - `CtaBand.tsx` — DEFAULTS (~790 tok)
   - fn `CtaBand` L40-93 (~478 tok)
+- `DuoPhotos.tsx` — DEFAULTS (~882 tok)
+  - fn `DuoPhotos` L27-96 (~697 tok)
 - `FactBar.tsx` — DEFAULTS (~418 tok)
 - `Faq.tsx` — DEFAULTS (~1125 tok)
   - fn `Faq` L33-107 (~880 tok)
@@ -189,8 +201,12 @@
 - `Listings.tsx` — DEFAULT_ITEMS (~1340 tok)
   - fn `ListingCard` L72-117 (~466 tok)
   - fn `Listings` L118-164 (~400 tok)
+- `MediaText.tsx` — Text column with a supporting photo on the right. (~652 tok)
+  - fn `MediaText` L35-85 (~412 tok)
 - `PageHero.tsx` — DEFAULTS (~1142 tok)
   - fn `PageHero` L40-134 (~864 tok)
+- `PageOpener.tsx` — Centred opener for pages without a photo hero (Over ons). (~656 tok)
+  - fn `PageOpener` L24-76 (~471 tok)
 - `QuoteBand.tsx` — DEFAULTS (~650 tok)
   - fn `QuoteBand` L30-71 (~441 tok)
 - `RegionBlock.tsx` — DEFAULTS (~637 tok)
@@ -206,6 +222,11 @@
   - fn `Steps` L44-165 (~1399 tok)
 - `Stories.tsx` — DEFAULTS (~1018 tok)
   - fn `Stories` L46-120 (~665 tok)
+- `Timeline.tsx` — DEFAULTS (~888 tok)
+  - fn `Timeline` L25-89 (~716 tok)
+- `ValueCards.tsx` — DEFAULTS (~925 tok)
+  - fn `ValueIcon` L24-60 (~273 tok)
+  - fn `ValueCards` L61-105 (~493 tok)
 - `VerkoopCta.tsx` — DEFAULTS (~248 tok)
 
 ## app/src/components/layout/
@@ -226,7 +247,7 @@
   - fn `ArrowLink` L34-57 (~154 tok)
   - fn `ArrowLinkLabel` L58-73 (~93 tok)
 - `Button.tsx` — baseClass (~444 tok)
-- `Eyebrow.tsx` — Eyebrow (~150 tok)
+- `Eyebrow.tsx` — Warm sand tone on dark backgrounds where white reads too cold. (~188 tok)
 - `IconArrow.tsx` — IconArrow (~203 tok)
 - `Lead.tsx` — Lead (~92 tok)
 - `LogoMark.tsx` — Header mark responds to sticky/mobile; footer is a fixed 90px mark. (~638 tok)
@@ -242,7 +263,7 @@
 - `useMobileNav.ts` — Exports useMobileNav (~282 tok)
 - `useRevealOnScroll.ts` — Exports useRevealOnScroll (~259 tok)
 - `useReviewsCarousel.ts` — Exports useReviewsCarousel (~382 tok)
-- `useStickyTopbar.ts` — Exports useStickyTopbar (~138 tok)
+- `useStickyTopbar.ts` — Exports useStickyTopbar (~236 tok)
 
 ## app/src/lib/
 
@@ -250,6 +271,7 @@
 - `cn.ts` — Exports cn (~37 tok)
 - `home-content.ts` — Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more (~1136 tok)
 - `links.ts` — Resolve a Sanity link/cta object to a usable href. (~258 tok)
+- `over-ons-content.ts` — Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more (~1949 tok)
 - `reviews.ts` — Gap between review cards in the carousel (matches CSS `gap: 24px`). (~131 tok)
 - `site.ts` — Exports SITE, NavLink, FooterLinkGroup, FOOTER_CERTS, REGIONS (~191 tok)
 - `verkoop-content.ts` — Plain answer text. Optional `link` is inserted before `afterLink`. (~2190 tok)
@@ -271,7 +293,7 @@
 - `sanity.config.ts` (~124 tok)
 - `structure.ts` — Exports structure (~305 tok)
 - `tsconfig.json` — TypeScript configuration (~120 tok)
-- `tsconfig.tsbuildinfo` (~36718 tok)
+- `tsconfig.tsbuildinfo` (~37645 tok)
 
 ## studio-hart-huis/.sanity/runtime/
 
@@ -282,29 +304,35 @@
 
 - `faqType.ts` — Exports faqType (~238 tok)
 - `footerType.ts` — Exports footerType (~779 tok)
-- `index.ts` — Exports schemaTypes (~425 tok)
+- `index.ts` — Exports schemaTypes (~547 tok)
 - `navigationType.ts` — Exports navigationType (~363 tok)
-- `pageBuilderType.ts` — Exports pageBuilderType (~225 tok)
+- `pageBuilderType.ts` — Exports pageBuilderType (~301 tok)
 - `pageType.ts` — Exports pageType (~189 tok)
 - `reviewType.ts` — Exports reviewType (~256 tok)
 
 ## studio-hart-huis/schemaTypes/blocks/
 
+- `assurancesType.ts` — Exports assurancesType (~368 tok)
 - `benefitsType.ts` — Exports benefitsType (~592 tok)
 - `crossLinksType.ts` — Exports crossLinksType (~319 tok)
 - `ctaBandType.ts` — Exports ctaBandType (~334 tok)
+- `duoPhotosType.ts` — Exports duoPhotosType (~366 tok)
 - `factBarType.ts` — Exports factBarType (~289 tok)
 - `faqsType.ts` — Exports faqsType (~264 tok)
 - `heroType.ts` — Exports heroType (~687 tok)
 - `introType.ts` — Exports introType (~686 tok)
 - `listingsType.ts` — Exports listingsType (~747 tok)
+- `mediaTextType.ts` — Exports mediaTextType (~341 tok)
 - `pageHeroType.ts` — Exports pageHeroType (~479 tok)
+- `pageOpenerType.ts` — Exports pageOpenerType (~288 tok)
 - `quoteBandType.ts` — Exports quoteBandType (~363 tok)
 - `regionBlockType.ts` — Exports regionBlockType (~342 tok)
 - `reviewsType.ts` — Exports reviewsType (~374 tok)
 - `servicesType.ts` — Exports servicesType (~685 tok)
 - `stepsType.ts` — Exports stepsType (~452 tok)
 - `storyType.ts` — Exports storyType (~456 tok)
+- `timelineType.ts` — Exports timelineType (~492 tok)
+- `valueCardsType.ts` — Exports valueCardsType (~469 tok)
 
 ## studio-hart-huis/schemaTypes/objects/
 

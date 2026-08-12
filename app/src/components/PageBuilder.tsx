@@ -1,19 +1,25 @@
 import type { SanityImageSource } from '@sanity/image-url';
+import { Assurances } from '@/components/blocks/Assurances';
 import { Benefits } from '@/components/blocks/Benefits';
 import { CrossLinks } from '@/components/blocks/CrossLinks';
 import { CtaBand } from '@/components/blocks/CtaBand';
+import { DuoPhotos } from '@/components/blocks/DuoPhotos';
 import { FactBar } from '@/components/blocks/FactBar';
 import { Faq } from '@/components/blocks/Faq';
 import { Hero } from '@/components/blocks/Hero';
 import { Intro } from '@/components/blocks/Intro';
 import { Listings } from '@/components/blocks/Listings';
+import { MediaText } from '@/components/blocks/MediaText';
 import { PageHero } from '@/components/blocks/PageHero';
+import { PageOpener } from '@/components/blocks/PageOpener';
 import { QuoteBand } from '@/components/blocks/QuoteBand';
 import { RegionBlock } from '@/components/blocks/RegionBlock';
 import { Reviews } from '@/components/blocks/Reviews';
 import { Services } from '@/components/blocks/Services';
 import { Steps } from '@/components/blocks/Steps';
 import { Stories } from '@/components/blocks/Stories';
+import { Timeline } from '@/components/blocks/Timeline';
+import { ValueCards } from '@/components/blocks/ValueCards';
 import { urlFor } from '@/sanity/image';
 import {
   resolveHref,
@@ -402,6 +408,99 @@ function renderBlock(block: PageBlock) {
           Boolean(item),
         );
       return <CrossLinks key={block._key} items={items} />;
+    }
+    case 'pageOpener': {
+      return (
+        <PageOpener
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          titleHighlight={block.titleHighlight as string | undefined}
+          lead={block.lead as string | undefined}
+          motto={block.motto as string | undefined}
+          attribution={block.attribution as string | undefined}
+        />
+      );
+    }
+    case 'duoPhotos': {
+      return (
+        <DuoPhotos
+          key={block._key}
+          image={toImage(block.image as SanityImage, 900, 1125)}
+          stampValue={block.stampValue as string | undefined}
+          stampLabel={block.stampLabel as string | undefined}
+          secondaryImage={toImage(block.secondaryImage as SanityImage, 700, 933)}
+          caption={block.caption as string | undefined}
+        />
+      );
+    }
+    case 'timeline': {
+      const items = (
+        block.items as
+          | Array<{
+              year: string;
+              title: string;
+              body: string;
+              image?: SanityImage;
+            }>
+          | undefined
+      )?.map((item) => ({
+        year: item.year,
+        title: item.title,
+        body: item.body,
+        image: toImage(item.image, 1400, 875),
+      }));
+      return (
+        <Timeline
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          lead={block.lead as string | undefined}
+          items={items}
+        />
+      );
+    }
+    case 'valueCards': {
+      return (
+        <ValueCards
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          lead={block.lead as string | undefined}
+          items={
+            block.items as
+              | Array<{
+                  icon: 'heart' | 'rings' | 'lines';
+                  title: string;
+                  body: string;
+                }>
+              | undefined
+          }
+        />
+      );
+    }
+    case 'mediaText': {
+      return (
+        <MediaText
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          paragraphs={block.paragraphs as string[] | undefined}
+          cta={toCta(block.cta as SanityCta)}
+          image={toImage(block.image as SanityImage, 900, 720)}
+        />
+      );
+    }
+    case 'assurances': {
+      return (
+        <Assurances
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          lead={block.lead as string | undefined}
+          items={block.items as { title: string; body: string }[] | undefined}
+        />
+      );
     }
     default:
       console.warn(`Unknown page builder block type: ${block._type}`);

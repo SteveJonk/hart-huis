@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-04
+> Last updated: 2026-08-12
 
 ---
 
@@ -10,28 +10,38 @@
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
 
-- (nothing yet — fill in as work completes)
+**Pages implemented from `app/example-designs/`**
+- `home.html` → home page (hero, intro, services, story, reviews, listings, ctaBand)
+- `verkoop.html` → /verkoop (pageHero, factBar, benefits, steps, quoteBand, faqs, regionBlock, crossLinks, ctaBand)
+- `over-ons.html` → /over-ons (pageOpener, duoPhotos, timeline, valueCards, mediaText, assurances, ctaBand)
+  - images extracted to `app/public/images/over-ons/`
+  - 6 new blocks + 6 new Sanity object types + PageBuilder cases + seed builder
+  - `useStickyTopbar` now honours `data-solid-header` so the nav stays readable over the light opener
+  - **not yet run:** `cd app && npm run seed:sanity` (needs SANITY_API_WRITE_TOKEN) — the page does not exist in Sanity until then
 
 ---
 
 ## 🚀 Next phase
 
-**Goal:** _<what we're building next, in 1 sentence>_
+**Goal:** Implement the remaining designs (`aanbod.html`, `beoordelingen.html`, `contact.html`, `taxatie.html`) the same way.
 
 ### Acceptance criteria
-1. _<concrete user-visible outcome>_
-2. _<...>_
+1. Run `npm run seed:sanity` so /over-ons exists in Sanity.
+2. Each remaining design gets blocks + schema + seed, reusing existing blocks where they fit.
 
 ### Files to create / edit
 | Type | File | Content |
 |---|---|---|
-| new | `path/to/file.ts` | _what it does_ |
+| new | `src/components/blocks/*.tsx` | per-design sections not yet covered |
+| new | `studio-hart-huis/schemaTypes/blocks/*.ts` | matching object types |
+| edit | `app/scripts/seed-sanity.ts` | one `build<Page>Content()` + `upsertPage()` per design |
 
 ### Closed decisions
-- _<choice + reasoning>_
+- Copy lives in `src/lib/<page>-content.ts` and doubles as component DEFAULTS.
+- Internal nav/footer links resolve via `pageLink(label, slug)` in the seed script.
 
 ### Open decisions
-- _<question to ask the user before coding>_
+- `taxatie.html` likely reuses steps/faqs/benefits — check before writing new blocks.
 
 ---
 
