@@ -25,5 +25,6 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'valueCards'}),
     defineArrayMember({type: 'mediaText'}),
     defineArrayMember({type: 'assurances'}),
+    defineArrayMember({type: 'compareCards'}),
   ],
 })

@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed:sanity": "tsx --env-file=.env scripts/seed-sanity.ts"
+    "seed:sanity": "tsx --env-file=.env scripts/seed.ts",
+    "seed:home": "tsx --env-file=.env scripts/seed.ts home",
+    "seed:verkoop": "tsx --env-file=.env scripts/seed.ts verkoop",
+    "seed:over-ons": "tsx --env-file=.env scripts/seed.ts over-ons",
+    "seed:taxatie": "tsx --env-file=.env scripts/seed.ts taxatie",
+    "seed:nav": "tsx --env-file=.env scripts/seed.ts nav"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",

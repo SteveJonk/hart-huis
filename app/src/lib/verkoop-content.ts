@@ -5,7 +5,7 @@ export type Fact = { value: string; label: string };
 export type Benefit = {
   title: string;
   body: string;
-  icon: "person" | "camera" | "chart" | "doc";
+  icon: "person" | "camera" | "chart" | "doc" | "house" | "renovate" | "scale";
 };
 
 export type Step = {

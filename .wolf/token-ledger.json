@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 5056,
-    "total_reads": 3,
+    "total_tokens_estimated": 15168,
+    "total_reads": 11,
     "total_writes": 0,
     "total_sessions": 9,
-    "anatomy_hits": 1,
-    "anatomy_misses": 2,
-    "repeated_reads_blocked": 1,
-    "estimated_savings_vs_bare_cli": 200,
-    "real_input_tokens": 176,
-    "real_output_tokens": 56104,
-    "real_cache_read_tokens": 15118351,
-    "real_cache_creation_tokens": 182238,
-    "real_api_calls": 93
+    "anatomy_hits": 3,
+    "anatomy_misses": 8,
+    "repeated_reads_blocked": 5,
+    "estimated_savings_vs_bare_cli": 600,
+    "real_input_tokens": 715,
+    "real_output_tokens": 240663,
+    "real_cache_read_tokens": 69323276,
+    "real_cache_creation_tokens": 907527,
+    "real_api_calls": 378
   },
   "sessions": [
     {
@@ -57,6 +57,102 @@
         "cache_read_input_tokens": 15118351,
         "cache_creation_input_tokens": 182238,
         "api_calls": 93
+      }
+    },
+    {
+      "id": "session-2026-08-12-2045",
+      "agent": "claude",
+      "started": "2026-08-12T18:45:10.526Z",
+      "ended": "2026-08-12T19:27:08.553Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/example-designs/over-ons.html",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-hart-huis/5f4b850f-ca69-42d3-9572-b321b6eeec36/scratchpad/over-ons.html",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/scripts/seed-sanity.ts",
+          "tokens_estimated": 5056,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-hart-huis/5f4b850f-ca69-42d3-9572-b321b6eeec36/scratchpad/taxatie.html",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 5056,
+        "output_tokens_estimated": 0,
+        "reads_count": 4,
+        "writes_count": 0,
+        "repeated_reads_blocked": 2,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 259,
+        "output_tokens": 86491,
+        "cache_read_input_tokens": 25720486,
+        "cache_creation_input_tokens": 238120,
+        "api_calls": 137
+      }
+    },
+    {
+      "id": "session-2026-08-12-2045",
+      "agent": "claude",
+      "started": "2026-08-12T18:45:10.526Z",
+      "ended": "2026-08-12T19:36:25.691Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/example-designs/over-ons.html",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-hart-huis/5f4b850f-ca69-42d3-9572-b321b6eeec36/scratchpad/over-ons.html",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/scripts/seed-sanity.ts",
+          "tokens_estimated": 5056,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-hart-huis/5f4b850f-ca69-42d3-9572-b321b6eeec36/scratchpad/taxatie.html",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 5056,
+        "output_tokens_estimated": 0,
+        "reads_count": 4,
+        "writes_count": 0,
+        "repeated_reads_blocked": 2,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 280,
+        "output_tokens": 98068,
+        "cache_read_input_tokens": 28484439,
+        "cache_creation_input_tokens": 487169,
+        "api_calls": 148
       }
     }
   ],

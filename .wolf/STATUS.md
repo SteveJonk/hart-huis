@@ -17,13 +17,16 @@
   - images extracted to `app/public/images/over-ons/`
   - 6 new blocks + 6 new Sanity object types + PageBuilder cases + seed builder
   - `useStickyTopbar` now honours `data-solid-header` so the nav stays readable over the light opener
-  - **not yet run:** `cd app && npm run seed:sanity` (needs SANITY_API_WRITE_TOKEN) — the page does not exist in Sanity until then
+- `taxatie.html` → /taxatie (pageHero, factBar, benefits, compareCards, steps, quoteBand, faqs, regionBlock, crossLinks, ctaBand)
+  - images extracted to `app/public/images/taxatie/`
+  - only `compareCards` is new; Benefits gained house/renovate/scale icons
+  - **not yet run:** `cd app && npm run seed:sanity` (needs SANITY_API_WRITE_TOKEN) — /over-ons and /taxatie do not exist in Sanity until then
 
 ---
 
 ## 🚀 Next phase
 
-**Goal:** Implement the remaining designs (`aanbod.html`, `beoordelingen.html`, `contact.html`, `taxatie.html`) the same way.
+**Goal:** Implement the remaining designs (`aanbod.html`, `beoordelingen.html`, `contact.html`, `object.html`) the same way.
 
 ### Acceptance criteria
 1. Run `npm run seed:sanity` so /over-ons exists in Sanity.
@@ -34,14 +37,15 @@
 |---|---|---|
 | new | `src/components/blocks/*.tsx` | per-design sections not yet covered |
 | new | `studio-hart-huis/schemaTypes/blocks/*.ts` | matching object types |
-| edit | `app/scripts/seed-sanity.ts` | one `build<Page>Content()` + `upsertPage()` per design |
+| new | `app/scripts/seed/<page>.ts` | one seed module per design, registered in `scripts/seed.ts` |
 
 ### Closed decisions
 - Copy lives in `src/lib/<page>-content.ts` and doubles as component DEFAULTS.
-- Internal nav/footer links resolve via `pageLink(label, slug)` in the seed script.
+- Internal nav/footer links resolve via `pageLink(label, slug)` in `scripts/seed/navigation.ts`; run `npm run seed:nav` after adding a page.
+- Seeding is per target: `npm run seed:<home|verkoop|over-ons|taxatie|nav>`, or `npm run seed:sanity` for all.
 
 ### Open decisions
-- `taxatie.html` likely reuses steps/faqs/benefits — check before writing new blocks.
+- `aanbod.html` / `object.html` probably need a listings-detail block; check the CSS diff against `!verkoop.html` first.
 
 ---
 

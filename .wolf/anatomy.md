@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-12T18:57:53.042Z
-> Files: 147 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-12T19:36:07.807Z
+> Files: 156 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -109,19 +109,19 @@
 - `next-env.d.ts` — / <reference types="next" /> (~72 tok)
 - `next.config.ts` — Next.js configuration (~141 tok)
 - `package-lock.json` — npm lock file (~191822 tok)
-- `package.json` — Node.js package manifest (~204 tok)
+- `package.json` — Node.js package manifest (~294 tok)
 - `postcss.config.mjs` — Declares config (~26 tok)
 - `tailwind.config.ts` — Tailwind CSS configuration (~946 tok)
 - `tsconfig.json` — TypeScript configuration (~192 tok)
-- `tsconfig.tsbuildinfo` (~40713 tok)
+- `tsconfig.tsbuildinfo` (~41482 tok)
 
 ## app/example-designs/
 
+- `!over-ons.html` — Over ons — Dorien Hollemans, Hart &amp; Huis Makelaardij Haarlem (~205364 tok)
 - `.DS_Store` (~1640 tok)
 - `aanbod.html` — Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem (~245118 tok)
 - `beoordelingen.html` — Beoordelingen — Hart &amp; Huis Makelaardij Haarlem (~106755 tok)
 - `contact.html` — Contact — Hart &amp; Huis Makelaardij Haarlem (~115609 tok)
-- `over-ons.html` — Over ons — Dorien Hollemans, Hart &amp; Huis Makelaardij Haarlem (~205364 tok)
 
 ## app/public/
 
@@ -129,24 +129,38 @@
 
 ## app/scripts/
 
-- `seed-sanity.ts` — Seed Sanity with home + verkoop + over-ons page builder content, (~5986 tok)
-  - fn `key` L76-82 (~46 tok)
-  - fn `externalLink` L83-86 (~32 tok)
-  - fn `cta` L87-90 (~36 tok)
-  - fn `uploadImage` L91-125 (~248 tok)
-  - fn `upsertReview` L126-151 (~183 tok)
-  - fn `upsertFaq` L152-184 (~280 tok)
-  - fn `upsertPage` L185-208 (~189 tok)
-  - fn `navLinkExternal` L209-217 (~47 tok)
-  - fn `navLinkInternal` L218-226 (~66 tok)
-  - fn `pageIdBySlug` L227-234 (~70 tok)
-  - fn `pageLink` L235-239 (~50 tok)
-  - fn `upsertNavigation` L240-264 (~186 tok)
-  - fn `upsertFooter` L265-301 (~277 tok)
-  - fn `buildHomeContent` L302-450 (~1452 tok)
-  - fn `buildVerkoopContent` L451-565 (~1133 tok)
-  - fn `buildOverOnsContent` L566-656 (~816 tok)
-  - fn `main` L657-695 (~306 tok)
+- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~472 tok)
+
+## app/scripts/seed/
+
+- `home.ts` — Seeds the reviews and the home page. (~1796 tok)
+  - fn `upsertReview` L12-37 (~183 tok)
+  - fn `buildHomeContent` L38-186 (~1452 tok)
+  - fn `seedHome` L187-197 (~80 tok)
+- `navigation.ts` — Seeds the navigation and footer singletons. (~819 tok)
+  - fn `navLinkExternal` L9-17 (~47 tok)
+  - fn `navLinkInternal` L18-26 (~66 tok)
+  - fn `pageIdBySlug` L27-34 (~70 tok)
+  - fn `pageLink` L35-39 (~50 tok)
+  - fn `upsertNavigation` L40-65 (~197 tok)
+  - fn `upsertFooter` L66-103 (~288 tok)
+  - fn `seedNavigation` L104-109 (~38 tok)
+- `over-ons.ts` — Seeds the /over-ons page. (~958 tok)
+  - fn `buildOverOnsContent` L16-106 (~816 tok)
+  - fn `seedOverOns` L107-111 (~41 tok)
+- `shared.ts` — Shared Sanity write helpers for the per-page seed scripts in this folder. (~1241 tok)
+  - fn `key` L43-49 (~48 tok)
+  - fn `externalLink` L50-53 (~34 tok)
+  - fn `cta` L54-57 (~38 tok)
+  - fn `uploadImage` L58-92 (~250 tok)
+  - fn `upsertFaq` L93-125 (~276 tok)
+  - fn `upsertPage` L126-149 (~191 tok)
+- `taxatie.ts` — Seeds the taxatie FAQs and the /taxatie page. (~1417 tok)
+  - fn `buildTaxatieContent` L22-155 (~1192 tok)
+  - fn `seedTaxatie` L156-166 (~82 tok)
+- `verkoop.ts` — Seeds the verkoop FAQs and the /verkoop page. (~1320 tok)
+  - fn `buildVerkoopContent` L16-130 (~1133 tok)
+  - fn `seedVerkoop` L131-141 (~82 tok)
 
 ## app/src/
 
@@ -168,22 +182,26 @@
 
 ## app/src/components/
 
-- `PageBuilder.tsx` — imageSrc — renders chart (~4720 tok)
-  - fn `imageSrc` L43-53 (~82 tok)
-  - fn `toImage` L54-63 (~76 tok)
-  - fn `toCta` L64-69 (~49 tok)
-  - fn `toLabeledLink` L70-77 (~76 tok)
-  - fn `renderBlock` L78-510 (~3927 tok)
-  - fn `PageBuilder` L511-516 (~60 tok)
+- `PageBuilder.tsx` — imageSrc — renders chart (~5031 tok)
+  - fn `imageSrc` L44-54 (~82 tok)
+  - fn `toImage` L55-64 (~76 tok)
+  - fn `toCta` L65-70 (~49 tok)
+  - fn `toLabeledLink` L71-78 (~76 tok)
+  - fn `renderBlock` L79-547 (~4220 tok)
+  - fn `PageBuilder` L548-553 (~60 tok)
 
 ## app/src/components/blocks/
 
 - `Assurances.tsx` — Dark band with credentials, checked off two by two. (~867 tok)
   - fn `IconCheck` L24-32 (~79 tok)
   - fn `Assurances` L33-90 (~622 tok)
-- `Benefits.tsx` — DEFAULTS — renders chart (~1106 tok)
-  - fn `BenefitIcon` L34-86 (~342 tok)
-  - fn `Benefits` L87-134 (~500 tok)
+- `Benefits.tsx` — DEFAULTS — renders chart (~1334 tok)
+  - fn `BenefitIcon` L34-119 (~570 tok)
+  - fn `Benefits` L120-167 (~500 tok)
+- `CompareCards.tsx` — Two side-by-side option cards, the second one on ink. (~1670 tok)
+  - fn `IconCheck` L26-33 (~62 tok)
+  - fn `IconCross` L34-42 (~80 tok)
+  - fn `CompareCards` L43-153 (~1345 tok)
 - `CrossLinks.tsx` — DEFAULTS (~634 tok)
   - fn `CrossLinks` L21-63 (~500 tok)
 - `CtaBand.tsx` — DEFAULTS (~790 tok)
@@ -274,26 +292,27 @@
 - `over-ons-content.ts` — Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more (~1949 tok)
 - `reviews.ts` — Gap between review cards in the carousel (matches CSS `gap: 24px`). (~131 tok)
 - `site.ts` — Exports SITE, NavLink, FooterLinkGroup, FOOTER_CERTS, REGIONS (~191 tok)
-- `verkoop-content.ts` — Plain answer text. Optional `link` is inserted before `afterLink`. (~2190 tok)
+- `taxatie-content.ts` — Exports TAXATIE_HERO, TAXATIE_FACTS, TAXATIE_BENEFITS_IMAGE, TAXATIE_BENEFITS_INTRO + 14 more (~3127 tok)
+- `verkoop-content.ts` — Plain answer text. Optional `link` is inserted before `afterLink`. (~2199 tok)
 
 ## app/src/sanity/
 
 - `client.ts` — Exports client (~61 tok)
 - `image.ts` — Exports urlFor (~107 tok)
-- `queries.ts` — Resolve internal page references on link/cta objects. (~392 tok)
+- `queries.ts` — Resolve internal page references on link/cta objects. (~410 tok)
 
 ## studio-hart-huis/
 
 - `.gitignore` — Git ignore rules (~112 tok)
 - `eslint.config.mjs` — ESLint flat configuration (~21 tok)
 - `package.json` — Node.js package manifest (~238 tok)
-- `pnpm-lock.yaml` — pnpm lock file (~109203 tok)
+- `pnpm-lock.yaml` — pnpm lock file (~109821 tok)
 - `README.md` — Project documentation (~131 tok)
 - `sanity.cli.ts` — Enable auto-updates for studios. (~98 tok)
 - `sanity.config.ts` (~124 tok)
 - `structure.ts` — Exports structure (~305 tok)
 - `tsconfig.json` — TypeScript configuration (~120 tok)
-- `tsconfig.tsbuildinfo` (~37645 tok)
+- `tsconfig.tsbuildinfo` (~39150 tok)
 
 ## studio-hart-huis/.sanity/runtime/
 
@@ -304,16 +323,17 @@
 
 - `faqType.ts` — Exports faqType (~238 tok)
 - `footerType.ts` — Exports footerType (~779 tok)
-- `index.ts` — Exports schemaTypes (~547 tok)
+- `index.ts` — Exports schemaTypes (~570 tok)
 - `navigationType.ts` — Exports navigationType (~363 tok)
-- `pageBuilderType.ts` — Exports pageBuilderType (~301 tok)
+- `pageBuilderType.ts` — Exports pageBuilderType (~314 tok)
 - `pageType.ts` — Exports pageType (~189 tok)
 - `reviewType.ts` — Exports reviewType (~256 tok)
 
 ## studio-hart-huis/schemaTypes/blocks/
 
 - `assurancesType.ts` — Exports assurancesType (~368 tok)
-- `benefitsType.ts` — Exports benefitsType (~592 tok)
+- `benefitsType.ts` — Exports benefitsType (~638 tok)
+- `compareCardsType.ts` — Exports compareCardsType (~707 tok)
 - `crossLinksType.ts` — Exports crossLinksType (~319 tok)
 - `ctaBandType.ts` — Exports ctaBandType (~334 tok)
 - `duoPhotosType.ts` — Exports duoPhotosType (~366 tok)

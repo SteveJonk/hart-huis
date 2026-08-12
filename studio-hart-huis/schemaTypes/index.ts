@@ -1,5 +1,6 @@
 import {assurancesType} from './blocks/assurancesType'
 import {benefitsType} from './blocks/benefitsType'
+import {compareCardsType} from './blocks/compareCardsType'
 import {crossLinksType} from './blocks/crossLinksType'
 import {ctaBandType} from './blocks/ctaBandType'
 import {duoPhotosType} from './blocks/duoPhotosType'
@@ -61,4 +62,5 @@ export const schemaTypes = [
   valueCardsType,
   mediaTextType,
   assurancesType,
+  compareCardsType,
 ]

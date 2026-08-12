@@ -28,6 +28,10 @@ export const PAGE_QUERY = defineQuery(`
         link${linkExpansion},
         cta${linkExpansion}
       },
+      cards[]{
+        ...,
+        cta${linkExpansion}
+      },
       regions[]{
         ...,
         link${linkExpansion}

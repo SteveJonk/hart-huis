@@ -1,6 +1,7 @@
 import type { SanityImageSource } from '@sanity/image-url';
 import { Assurances } from '@/components/blocks/Assurances';
 import { Benefits } from '@/components/blocks/Benefits';
+import { CompareCards } from '@/components/blocks/CompareCards';
 import { CrossLinks } from '@/components/blocks/CrossLinks';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import { DuoPhotos } from '@/components/blocks/DuoPhotos';
@@ -488,6 +489,42 @@ function renderBlock(block: PageBlock) {
           paragraphs={block.paragraphs as string[] | undefined}
           cta={toCta(block.cta as SanityCta)}
           image={toImage(block.image as SanityImage, 900, 720)}
+        />
+      );
+    }
+    case 'compareCards': {
+      const cards = (
+        block.cards as
+          | Array<{
+              label: string;
+              title: string;
+              body: string;
+              items: { text: string; included?: boolean }[];
+              cta?: SanityCta;
+              dark?: boolean;
+            }>
+          | undefined
+      )
+        ?.map((card) => {
+          const cardCta = toCta(card.cta);
+          if (!cardCta) return null;
+          return {
+            label: card.label,
+            title: card.title,
+            body: card.body,
+            items: card.items ?? [],
+            cta: cardCta,
+            dark: card.dark,
+          };
+        })
+        .filter((card): card is NonNullable<typeof card> => Boolean(card));
+      return (
+        <CompareCards
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          lead={block.lead as string | undefined}
+          cards={cards}
         />
       );
     }

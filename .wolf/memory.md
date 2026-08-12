@@ -61,3 +61,18 @@
 | — | Sanity schemas | studio-hart-huis/schemaTypes/blocks/*.ts + index + pageBuilderType | 6 new object types | ~3k |
 | — | Seed over-ons page | app/scripts/seed-sanity.ts | upsertPage('over-ons'), nav/footer link now internal | ~3k |
 | — | Verified render on temp route, then removed it | — | all 7 sections OK desktop + mobile | ~12k |
+
+## Session: 2026-08-12 taxatie
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| — | Diffed taxatie.html CSS against verkoop.html | example-designs/ | only `.vergelijk` is new; rest is the shared vervolgpagina-template | ~4k |
+| — | Extracted 9 embedded jpegs | public/images/taxatie/*.jpg | pagehero, wanneer, step-1..5, quote, cta | ~1k |
+| — | Added copy constants | src/lib/taxatie-content.ts | new | ~4k |
+| — | Built CompareCards block | blocks/CompareCards.tsx + compareCardsType.ts | light/ink option cards with check-cross list | ~4k |
+| — | Extended Benefits icons | blocks/Benefits.tsx, lib/verkoop-content.ts, benefitsType.ts | added house / renovate / scale | ~1k |
+| — | Query: expand cards[].cta | src/sanity/queries.ts | internal links inside compareCards resolve | ~0.3k |
+| — | Seed taxatie page | scripts/seed-sanity.ts | taxatie FAQs + buildTaxatieContent + nav/footer Taxatie internal | ~3k |
+| — | Verified render on temp route, then removed it | — | 10 blocks OK desktop + mobile | ~8k |
+| — | Marked design done | example-designs/!taxatie.html | follows the `!` prefix convention | ~0.1k |
+| — | Split the seed script per page | scripts/seed.ts + scripts/seed/{shared,home,verkoop,over-ons,taxatie,navigation}.ts | per-target npm scripts, old seed-sanity.ts removed | ~6k |

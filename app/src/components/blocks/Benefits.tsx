@@ -81,6 +81,39 @@ function BenefitIcon({ icon }: { icon: Benefit["icon"] }) {
           />
         </svg>
       );
+    case "house":
+      return (
+        <svg {...common}>
+          <path
+            d="M4 10.5 12 4l8 6.5V20H4zM10 20v-6h4v6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "renovate":
+      return (
+        <svg {...common}>
+          <path
+            d="M3 20h18M6 20V9l6-4 6 4v11M10 20v-5h4v5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "scale":
+      return (
+        <svg {...common}>
+          <path
+            d="M12 4v16M5 9 12 4l7 5M4 20h6M14 20h6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
   }
 }
 
