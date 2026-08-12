@@ -1,24 +1,24 @@
 {
-  "last_heartbeat": "2026-08-07T12:28:27.291Z",
+  "last_heartbeat": "2026-08-07T12:31:11.965Z",
   "engine_status": "stopped",
   "execution_log": [
     {
       "task_id": "anatomy-rescan",
       "status": "success",
-      "timestamp": "2026-08-04T22:00:00.288Z",
-      "duration_ms": 253
+      "timestamp": "2026-08-04T22:00:00.509Z",
+      "duration_ms": 473
     },
     {
       "task_id": "anatomy-rescan",
       "status": "success",
-      "timestamp": "2026-08-05T10:00:00.260Z",
-      "duration_ms": 173
+      "timestamp": "2026-08-05T10:00:00.478Z",
+      "duration_ms": 395
     },
     {
       "task_id": "anatomy-rescan",
       "status": "success",
-      "timestamp": "2026-08-06T10:00:00.260Z",
-      "duration_ms": 198
+      "timestamp": "2026-08-06T10:00:00.501Z",
+      "duration_ms": 443
     }
   ],
   "dead_letter_queue": [],

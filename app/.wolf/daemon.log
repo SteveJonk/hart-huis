@@ -1,0 +1,8 @@
+[2026-08-04T22:00:00.035Z] [INFO] Executing task: Full anatomy rescan
+[2026-08-04T22:00:00.509Z] [INFO] Task Full anatomy rescan completed in 473ms
+[2026-08-05T10:00:00.083Z] [INFO] Executing task: Full anatomy rescan
+[2026-08-05T10:00:00.479Z] [INFO] Task Full anatomy rescan completed in 395ms
+[2026-08-06T10:00:00.059Z] [INFO] Executing task: Full anatomy rescan
+[2026-08-06T10:00:00.502Z] [INFO] Task Full anatomy rescan completed in 443ms
+[2026-08-07T12:47:19.274Z] [INFO] Daemon shutting down...
+[2026-08-07T12:47:19.297Z] [INFO] Daemon stopped

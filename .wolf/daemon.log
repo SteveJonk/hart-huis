@@ -268,3 +268,11 @@
 [2026-08-04T09:05:13.513Z] [INFO] OpenWolf daemon started
 [2026-08-04T09:05:13.515Z] [INFO] Dashboard server listening on 127.0.0.1:18791
 [2026-08-04T09:05:15.194Z] [INFO] Executing task: AI suggestions
+[2026-08-04T22:00:00.035Z] [INFO] Executing task: Full anatomy rescan
+[2026-08-04T22:00:00.289Z] [INFO] Task Full anatomy rescan completed in 253ms
+[2026-08-05T10:00:00.087Z] [INFO] Executing task: Full anatomy rescan
+[2026-08-05T10:00:00.260Z] [INFO] Task Full anatomy rescan completed in 173ms
+[2026-08-06T10:00:00.063Z] [INFO] Executing task: Full anatomy rescan
+[2026-08-06T10:00:00.260Z] [INFO] Task Full anatomy rescan completed in 198ms
+[2026-08-07T12:47:19.279Z] [INFO] Daemon shutting down...
+[2026-08-07T12:47:19.297Z] [INFO] Daemon stopped
