@@ -18,14 +18,12 @@ async function upsertReview(review: (typeof REVIEWS)[number]) {
   const doc = {
     _type: 'review' as const,
     quote: review.quote,
-    initials: review.initials,
     name: review.name,
-    place: review.place,
-    source: review.source,
   }
 
   if (existingId) {
-    await client.patch(existingId).set(doc).commit()
+    // verwijderde velden opruimen op eerder geseede reviews
+    await client.patch(existingId).set(doc).unset(['initials', 'place', 'source']).commit()
     console.log(`  ↻ review ${review.name}`)
     return existingId
   }

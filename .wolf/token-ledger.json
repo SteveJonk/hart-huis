@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 24550,
-    "total_reads": 27,
+    "total_tokens_estimated": 31080,
+    "total_reads": 28,
     "total_writes": 0,
-    "total_sessions": 17,
-    "anatomy_hits": 13,
+    "total_sessions": 19,
+    "anatomy_hits": 14,
     "anatomy_misses": 14,
     "repeated_reads_blocked": 7,
-    "estimated_savings_vs_bare_cli": 2600,
-    "real_input_tokens": 1970,
-    "real_output_tokens": 638407,
-    "real_cache_read_tokens": 190297425,
-    "real_cache_creation_tokens": 3156578,
-    "real_api_calls": 925
+    "estimated_savings_vs_bare_cli": 2800,
+    "real_input_tokens": 4019,
+    "real_output_tokens": 648011,
+    "real_cache_read_tokens": 192072360,
+    "real_cache_creation_tokens": 3211822,
+    "real_api_calls": 951
   },
   "sessions": [
     {
@@ -345,6 +345,36 @@
         "cache_read_input_tokens": 6340238,
         "cache_creation_input_tokens": 130366,
         "api_calls": 58
+      }
+    },
+    {
+      "id": "session-2026-08-13-1300",
+      "agent": "claude",
+      "started": "2026-08-13T11:00:01.357Z",
+      "ended": "2026-08-13T11:08:21.796Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/PageBuilder.tsx",
+          "tokens_estimated": 6530,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 6530,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 2049,
+        "output_tokens": 9604,
+        "cache_read_input_tokens": 1774935,
+        "cache_creation_input_tokens": 55244,
+        "api_calls": 26
       }
     }
   ],

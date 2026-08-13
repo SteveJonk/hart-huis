@@ -171,24 +171,10 @@ function renderBlock(block: PageBlock) {
     }
     case 'reviews': {
       const reviews = (
-        block.reviews as
-          | Array<{
-              quote?: string;
-              initials?: string;
-              name?: string;
-              place?: string;
-              source?: string;
-            }>
-          | undefined
+        block.reviews as Array<{quote?: string; name?: string}> | undefined
       )
         ?.filter((review) => review?.quote && review?.name)
-        .map((review) => ({
-          quote: review.quote!,
-          initials: review.initials ?? '',
-          name: review.name!,
-          place: review.place ?? '',
-          source: review.source ?? '',
-        }));
+        .map((review) => ({quote: review.quote!, name: review.name!}));
       return (
         <Reviews
           key={block._key}

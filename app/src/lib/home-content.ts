@@ -20,10 +20,7 @@ export type ServiceCard = {
 
 export type Review = {
   quote: string;
-  initials: string;
   name: string;
-  place: string;
-  source: string;
 };
 
 export type Listing = {
@@ -96,34 +93,22 @@ export const REVIEWS: Review[] = [
   {
     quote:
       "Vanaf het eerste gesprek voelde het goed. Er werd echt geluisterd naar wat wij zochten, en niet naar wat er toevallig te koop stond.",
-    initials: "MB",
     name: "Marloes B.",
-    place: "Haarlem",
-    source: "Funda",
   },
   {
     quote:
       "Scherp in de onderhandeling en rustig als wij het even niet meer wisten. Precies de combinatie die je nodig hebt in deze markt.",
-    initials: "PA",
     name: "Peter & Ans",
-    place: "Heemstede",
-    source: "Funda",
   },
   {
     quote:
       "Als starters wisten we helemaal niets. Alles werd stap voor stap uitgelegd, zonder dat we ons dom voelden. Aanrader.",
-    initials: "YE",
     name: "Youssef E.",
-    place: "Haarlem-Noord",
-    source: "Google",
   },
   {
     quote:
       "Ons huis stond na tien dagen verkocht, ruim boven de vraagprijs. De styling en de foto's maakten echt het verschil.",
-    initials: "FW",
     name: "Familie de Wit",
-    place: "Overveen",
-    source: "Funda",
   },
 ];
 

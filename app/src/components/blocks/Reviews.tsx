@@ -11,10 +11,7 @@ import { SITE } from "@/lib/site";
 
 export type ReviewItem = {
   quote: string;
-  initials: string;
   name: string;
-  place: string;
-  source: string;
 };
 
 export type ReviewsLink = {
@@ -58,16 +55,9 @@ function ReviewCard({ review }: { review: ReviewItem }) {
         {review.quote}
       </p>
       <footer className="mt-7 flex items-center gap-[13px] border-t border-cream bg-transparent pt-5">
-        <span className="grid size-11 shrink-0 place-items-center rounded-full bg-sand text-[0.8rem] font-semibold tracking-[0.02em] text-white">
-          {review.initials}
-        </span>
-        <span className="min-w-0 flex-1 leading-[1.35]">
-          <b className="block text-[0.9rem] font-semibold">{review.name}</b>
-          <span className="text-[0.78rem] text-ink-45">{review.place}</span>
-        </span>
-        <span className="rounded-pill border border-sage-deep/32 px-[11px] py-1.5 text-[0.6rem] font-semibold tracking-[0.16em] text-sage-deep uppercase max-sm:text-[0.64rem]">
-          {review.source}
-        </span>
+        <b className="min-w-0 flex-1 text-[0.9rem] leading-[1.35] font-semibold">
+          {review.name}
+        </b>
       </footer>
     </article>
   );
@@ -150,7 +140,7 @@ export function Reviews({
             )}
           >
             {reviews.map((review) => (
-              <ReviewCard key={review.initials} review={review} />
+              <ReviewCard key={review.name} review={review} />
             ))}
           </div>
         </Reveal>

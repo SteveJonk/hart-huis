@@ -39,6 +39,7 @@
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
 <!-- Format: [YYYY-MM-DD] Description of what went wrong and what to do instead. -->
 
+- [2026-08-13] `src/lib/*-content.ts` bundelt meerdere exports die dezelfde veldnamen delen (`place` zit in zowel `REVIEWS` als `LISTINGS`). Nooit een bestandsbrede regex loslaten om velden te verwijderen — scope op het array-blok of gebruik per-veld Edits, en controleer altijd met `git diff` welke regels echt weg zijn.
 - [2026-08-13] Next 16 metadata merging is by **key presence**, not by value: returning `{ title: undefined }` from `generateMetadata` wipes the root layout's title/description instead of inheriting them. Build the Metadata object with conditional spreads (`...(x ? { x } : {})`) so unset CMS fields are simply absent.
 
 - [2026-08-13] `SectionHead` forces `[&_h2]:max-w-[16ch]` through a descendant selector, so a `max-w-*` class on the h2 itself loses on specificity (and `cn` is not tailwind-merge). When a section head needs a wider heading, write the small flex header inline instead of fighting it — that is what `SimilarObjects` does.

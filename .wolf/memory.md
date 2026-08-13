@@ -131,3 +131,14 @@
 | 13:05 | Built /aanbod overview from example-designs/aanbod.html | src/lib/aanbod-content.ts, blocks/AanbodHeader.tsx, blocks/ObjectGrid.tsx, studio blocks, PageBuilder.tsx, queries.ts, scripts/seed/aanbod.ts | page seeded, build clean, filters verified in browser | ~35k |
 | 13:10 | Nav + footer "Actueel aanbod" now resolve to the /aanbod page | scripts/seed/navigation.ts | ran seed:nav; links render as /aanbod | ~2k |
 | 13:12 | Fixed stale /object/<slug> links after the route rename | src/app/aanbod/[slug]/page.tsx | vergelijkbare woningen point at /aanbod/<slug> | ~1k |
+
+## Session: 2026-08-13 12:53
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-13 13:00
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 14:10 | review-type uitgebreid: +grade/expertise/localMarketKnowledge/priceQuality (0-10, optioneel) + type enum Aankoop/Verkoop; -initials/place/source; description op name | studio/schemaTypes/reviewType.ts, src/lib/home-content.ts, src/components/blocks/Reviews.tsx, src/components/PageBuilder.tsx, scripts/seed/home.ts | tsc --noEmit schoon; dev-server niet gedraaid (gebruiker weigerde) | ~14k |

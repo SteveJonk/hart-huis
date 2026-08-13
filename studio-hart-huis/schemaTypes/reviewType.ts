@@ -1,6 +1,15 @@
 import {CommentIcon} from '@sanity/icons/Comment'
 import {defineField, defineType} from 'sanity'
 
+/** Cijfers komen straks uit de scraper; daarom optioneel. */
+const scoreField = (name: string, title: string) =>
+  defineField({
+    name,
+    title,
+    type: 'number',
+    validation: (rule) => rule.min(0).max(10),
+  })
+
 export const reviewType = defineType({
   name: 'review',
   title: 'Review',
@@ -14,27 +23,22 @@ export const reviewType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'initials',
-      type: 'string',
-      validation: (rule) => rule.required().max(3),
-    }),
-    defineField({
       name: 'name',
       type: 'string',
+      description: 'Naam van de reviewer zoals die op de bron staat, bijv. "Marloes B."',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'place',
+      name: 'type',
       type: 'string',
-      validation: (rule) => rule.required(),
+      options: {list: ['Aankoop', 'Verkoop'], layout: 'radio'},
     }),
-    defineField({
-      name: 'source',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
+    scoreField('grade', 'Cijfer'),
+    scoreField('expertise', 'Deskundigheid'),
+    scoreField('localMarketKnowledge', 'Lokale marktkennis'),
+    scoreField('priceQuality', 'Prijs-kwaliteit'),
   ],
   preview: {
-    select: {title: 'name', subtitle: 'place'},
+    select: {title: 'name', subtitle: 'type'},
   },
 })
