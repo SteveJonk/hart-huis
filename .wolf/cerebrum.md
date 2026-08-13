@@ -17,12 +17,15 @@
 - **Service pages share one template.** Diff a new design's `<style>` block against `!verkoop.html` first — the "vervolgpagina" CSS (pagehero, factbar, krijgt, steps, qband, faq, regioblk, crosslinks, ctaband) is identical everywhere, so usually only the page-specific section at the bottom needs a new block.
 - **Design images live inside the HTML** as base64 data URIs — extract them to `app/public/images/<page>/` before seeding (`uploadImage` reads from `app/public`).
 - `src/lib/cn.ts` is a plain join, **not** tailwind-merge. Conflicting utility classes passed via `className` do not override — add an explicit prop to the ui component instead (e.g. `Eyebrow` has `light` / `sand`), or nest a child div.
+- **Page SEO:** the `seo` object (title, description, ogImage, noIndex) on the `page` document is selected in `PAGE_QUERY` and mapped to Next metadata by `pageMetadata()` in `app/src/sanity/metadata.ts`, called from `generateMetadata` in both `src/app/page.tsx` (home) and `src/app/[slug]/page.tsx`. Home strips the document title so an empty `seo.title` keeps the layout default instead of showing "Home".
 - Topbar is transparent over photo heroes. Pages that open on a light background render `data-solid-header` on the first section; `useStickyTopbar` looks for it and stays solid from the top.
 
 ## Do-Not-Repeat
 
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
 <!-- Format: [YYYY-MM-DD] Description of what went wrong and what to do instead. -->
+
+- [2026-08-13] Next 16 metadata merging is by **key presence**, not by value: returning `{ title: undefined }` from `generateMetadata` wipes the root layout's title/description instead of inheriting them. Build the Metadata object with conditional spreads (`...(x ? { x } : {})`) so unset CMS fields are simply absent.
 
 ## Decision Log
 

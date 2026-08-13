@@ -299,6 +299,7 @@
 
 - `client.ts` — Exports client (~61 tok)
 - `image.ts` — Exports urlFor (~107 tok)
+- `metadata.ts` — `pageMetadata()`: maps a page document's `seo` object (title, description, ogImage, noIndex) onto Next Metadata; omits unset keys so layout defaults inherit. (~290 tok)
 - `queries.ts` — Resolve internal page references on link/cta objects. (~410 tok)
 
 ## studio-hart-huis/

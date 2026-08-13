@@ -22,6 +22,11 @@
   - only `compareCards` is new; Benefits gained house/renovate/scale icons
   - **not yet run:** `cd app && npm run seed:sanity` (needs SANITY_API_WRITE_TOKEN) — /over-ons and /taxatie do not exist in Sanity until then
 
+**SEO**
+- `seo` object type on the `page` document is now rendered: `PAGE_QUERY` selects it, `app/src/sanity/metadata.ts` maps it to Next Metadata, `generateMetadata` added to `/` and `/[slug]`
+- ogImage → og:image 1200×630 + `twitter:card=summary_large_image`; noIndex → `robots: {index:false, follow:false}`
+- editors have not filled any `seo` fields yet, so pages currently fall back to title + layout description
+
 ---
 
 ## 🚀 Next phase

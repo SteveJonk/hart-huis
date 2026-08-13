@@ -76,3 +76,14 @@
 | — | Verified render on temp route, then removed it | — | 10 blocks OK desktop + mobile | ~8k |
 | — | Marked design done | example-designs/!taxatie.html | follows the `!` prefix convention | ~0.1k |
 | — | Split the seed script per page | scripts/seed.ts + scripts/seed/{shared,home,verkoop,over-ons,taxatie,navigation}.ts | per-target npm scripts, old seed-sanity.ts removed | ~6k |
+
+## Session: 2026-08-13 09:23
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-13 09:23
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 09:40 | Rendered Sanity `seo` object in Next metadata: added `seo` to PAGE_QUERY, new `pageMetadata()` mapper, wired into `/` + `/[slug]` | app/src/sanity/queries.ts, app/src/sanity/metadata.ts, app/src/app/page.tsx, app/src/app/[slug]/page.tsx | done — verified live head tags on /, /verkoop, /taxatie + assert check on ogImage/noIndex branches | ~14k |

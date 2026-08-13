@@ -3,11 +3,8 @@ import { Inter_Tight, Schibsted_Grotesk } from 'next/font/google';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
-import {
-  toLabeledHref,
-  type SanityLabeledLink,
-} from '@/lib/links';
-import type { FooterLinkGroup, NavLink } from '@/lib/site';
+import { toLabeledHref, type SanityLabeledLink } from '@/lib/links';
+import { SITE, type FooterLinkGroup, type NavLink } from '@/lib/site';
 import { client } from '@/sanity/client';
 import { FOOTER_QUERY, NAVIGATION_QUERY } from '@/sanity/queries';
 import './globals.css';
@@ -23,12 +20,6 @@ const sans = Inter_Tight({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
 });
-
-export const metadata: Metadata = {
-  title: 'Hart & Huis Makelaardij — NVM-makelaar in Haarlem',
-  description:
-    'Verkopen, kopen of taxeren in Haarlem — met twee makelaars die je bij naam kennen.',
-};
 
 const options = { next: { revalidate: 30 } };
 
@@ -65,9 +56,8 @@ export default async function RootLayout({
   const navRight = asNavLinks(navigation?.navRight);
 
   const linkGroups: FooterLinkGroup[] = (footer?.linkGroups ?? [])
-    .filter(
-      (group): group is { title: string; links?: SanityLabeledLink[] | null } =>
-        Boolean(group?.title),
+    .filter((group): group is { title: string; links?: SanityLabeledLink[] | null } =>
+      Boolean(group?.title),
     )
     .map((group) => ({
       title: group.title,

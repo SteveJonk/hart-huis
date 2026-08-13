@@ -1,4 +1,24 @@
 {
   "version": 1,
-  "bugs": []
+  "bugs": [
+    {
+      "id": "bug-001",
+      "timestamp": "2026-08-13T09:40:00Z",
+      "error_message": "After adding generateMetadata to the home route, <title> and <meta name=\"description\"> disappeared from / and /verkoop \u2014 the root layout defaults stopped rendering.",
+      "file": "app/src/sanity/metadata.ts",
+      "root_cause": "pageMetadata() returned `{ title: undefined, description: undefined }` when the Sanity `seo` object was empty. Next 16 merges metadata by key presence, so an explicitly-undefined key overrides the parent segment instead of inheriting from it.",
+      "fix": "Build the Metadata object with conditional spreads so unset fields are absent: `...(title ? { title } : {})`, and only emit `openGraph` when at least one of title/description/ogImage exists.",
+      "tags": [
+        "nextjs",
+        "metadata",
+        "seo",
+        "sanity",
+        "generateMetadata",
+        "inheritance"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-13T09:40:00Z"
+    }
+  ]
 }

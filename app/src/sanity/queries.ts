@@ -13,6 +13,7 @@ export const PAGE_QUERY = defineQuery(`
     _id,
     title,
     slug,
+    seo,
     content[]{
       ...,
       primaryCta${linkExpansion},
