@@ -13,6 +13,7 @@
     "seed:over-ons": "tsx --env-file=.env scripts/seed.ts over-ons",
     "seed:taxatie": "tsx --env-file=.env scripts/seed.ts taxatie",
     "seed:contact": "tsx --env-file=.env scripts/seed.ts contact",
+    "seed:objecten": "tsx --env-file=.env scripts/seed.ts objecten",
     "seed:nav": "tsx --env-file=.env scripts/seed.ts nav"
   },
   "dependencies": {

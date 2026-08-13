@@ -13,6 +13,7 @@
 import {seedContact} from './seed/contact'
 import {seedHome} from './seed/home'
 import {seedNavigation} from './seed/navigation'
+import {seedObjecten} from './seed/objecten'
 import {seedOverOns} from './seed/over-ons'
 import {projectRef} from './seed/shared'
 import {seedTaxatie} from './seed/taxatie'
@@ -24,6 +25,7 @@ const TARGETS = {
   'over-ons': seedOverOns,
   taxatie: seedTaxatie,
   contact: seedContact,
+  objecten: seedObjecten,
   nav: seedNavigation,
 } as const
 
