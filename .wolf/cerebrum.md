@@ -12,6 +12,9 @@
 
 ## Key Learnings
 
+- **Tailwind v4 in dit project draait nog via de v3-bridge** (`@config "../../tailwind.config.ts"` in globals.css). In het template is die bridge weg: alles staat in een `@theme`-blok in globals.css. Let op bij migreren: v4 heeft **geen z-index namespace**, dus `z-topbar`/`z-mobilenav`/`z-burger` uit de config worden stille no-ops — inline ze als `z-[120]` e.d. `maxWidth` heet in v4 `--container-*`, `fontSize` wordt `--text-*` met `--text-x--line-height` suffixen.
+- **`src/lib/*-content.ts` is dubbelgebruik**: component-defaults én seed-bron (`scripts/seed/<page>.ts` importeert eruit). Wie de copy vervangt, verplaatst dus beide kanten tegelijk — nooit één van de twee los aanpassen.
+
 - **Project:** hart-huis
 - **Description:** Sanity-powered website for **Hart en Huis makelaars**.
 - **Design pipeline:** each page starts as a standalone HTML file in `app/example-designs/`. Sections are abstracted into `src/components/blocks/*.tsx` (Tailwind), copy lands in `src/lib/<page>-content.ts` as component DEFAULTS, a matching Sanity object type goes in `studio-hart-huis/schemaTypes/blocks/`, registered in `schemaTypes/index.ts` + `pageBuilderType.ts`, mapped in `src/components/PageBuilder.tsx`, and seeded from its own `app/scripts/seed/<page>.ts` (registered as a target in `app/scripts/seed.ts`; run one page with `npm run seed:<page>`). Pages render through `src/app/[slug]/page.tsx`; no per-page route files.

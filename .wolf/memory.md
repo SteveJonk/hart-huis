@@ -151,3 +151,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 19:55 | advies-sessie: hoe dit project tot herbruikbaar template te maken (fork-and-strip, semantische kleur-tokens via Tailwind v4 `@theme`, welke blocks houden). Geen code gewijzigd. | — | advies gegeven; wacht op keuze NL/EN naamgeving + Sanity wel/niet in het template | ~35k |
+| 20:30 | project-template gebouwd onder `template/`: app/ (Next 16) + studio/ (Sanity 6) uitgekleed uit hart-huis — 10 generieke blocks, home + /about, SEO-laag intact, semantische Tailwind v4 @theme tokens i.p.v. merk-palet, Engelse naamgeving, env-gedreven Sanity config, demo-content.ts als fallback+seedbron | template/** (88 files) | tsc + eslint groen (app+studio), sanity build groen, next build groen met fixture: alle 10 blocks renderen | ~180k |
