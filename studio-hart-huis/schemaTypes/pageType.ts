@@ -19,6 +19,11 @@ export const pageType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
+    defineField({
       name: 'content',
       type: 'pageBuilder',
     }),

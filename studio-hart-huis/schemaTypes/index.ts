@@ -25,6 +25,7 @@ import {footerType} from './footerType'
 import {navigationType} from './navigationType'
 import {ctaType} from './objects/ctaType'
 import {linkType} from './objects/linkType'
+import {seoType} from './objects/seoType'
 import {pageBuilderType} from './pageBuilderType'
 import {pageType} from './pageType'
 import {reviewType} from './reviewType'
@@ -37,6 +38,7 @@ export const schemaTypes = [
   navigationType,
   footerType,
   // Shared objects
+  seoType,
   linkType,
   ctaType,
   pageBuilderType,
