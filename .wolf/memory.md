@@ -145,3 +145,9 @@
 | 14:45 | review-aggregates afgeleid i.p.v. singleton: reviewStats-projectie in PAGE_QUERY (count aankoop/verkoop + math::avg cijfer), reviewScore/reviewCountLabel helpers met CMS-fallback | src/sanity/queries.ts, src/lib/reviews.ts, src/components/PageBuilder.tsx, scripts/check-reviews.ts | check:reviews + tsc groen; PAGE_QUERY live gedraaid: 4 reviews, cijfer null -> fallback "9,6" werkt | ~22k |
 | 15:05 | hero-badge op home leest nu hetzelfde afgeleide cijfer: reviewStats ook in de `hero`-blokprojectie, badgeValue via reviewScore() met CMS-fallback | src/sanity/queries.ts, src/components/PageBuilder.tsx | live geverifieerd: hero + reviews krijgen beide de aggregates; cijfer nog null -> fallback "9,6", count -> "4 keer beoordeeld" | ~9k |
 | 16:20 | /beoordelingen gebouwd uit beoordelingen.html: 4 nieuwe blocks (beoordelingenHero, uitgelichteReview, reviewGrid, werkwijze) + schema's + seed; ReviewCard uitgebreid met cijferrondje, type-tag, datum en deelcijfertabel achter `showGrades` | src/components/blocks/{BeoordelingenHero,UitgelichteReview,ReviewGrid,Werkwijze}.tsx, blocks/Reviews.tsx, PageBuilder.tsx, sanity/queries.ts, lib/{reviews,beoordelingen-content}.ts, studio schemaTypes, scripts/seed/beoordelingen.ts | tsc (app+studio) + lint + check:reviews groen; pagina geseed en in de browser geverifieerd: 8,8 / 4 beoordelingen, filters 4/2/2, 4 kaarten met tabel; home heeft 0 tabellen | ~78k |
+
+## Session: 2026-08-13 19:50
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 19:55 | advies-sessie: hoe dit project tot herbruikbaar template te maken (fork-and-strip, semantische kleur-tokens via Tailwind v4 `@theme`, welke blocks houden). Geen code gewijzigd. | — | advies gegeven; wacht op keuze NL/EN naamgeving + Sanity wel/niet in het template | ~35k |

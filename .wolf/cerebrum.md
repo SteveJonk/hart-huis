@@ -8,6 +8,8 @@
 
 <!-- How the user likes things done. Code style, tools, patterns, communication. -->
 
+- **"Just advise, don't plan"** — bij verkennende vragen wil de gebruiker een geschreven advies met afwegingen en een aanbeveling, geen plan-mode, geen taken, geen code. Onderzoek de codebase wel eerst zodat het advies concreet is (echte bestandsnamen, echte aantallen), en sluit af met de open beslissingen. Pas bouwen als de gebruiker expliciet groen licht geeft.
+
 ## Key Learnings
 
 - **Project:** hart-huis
