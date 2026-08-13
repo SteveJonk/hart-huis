@@ -5,48 +5,52 @@ import {
   LISTINGS,
   REVIEWS,
   SERVICES,
-} from '../../src/lib/home-content'
-import {REGIONS, SITE} from '../../src/lib/site'
-import {client, cta, externalLink, key, uploadImage, upsertPage} from './shared'
+} from '../../src/lib/home-content';
+import { REGIONS, SITE } from '../../src/lib/site';
+import { client, cta, externalLink, key, uploadImage, upsertPage } from './shared';
 
 async function upsertReview(review: (typeof REVIEWS)[number]) {
   const existingId = await client.fetch<string | null>(
     `*[_type == "review" && name == $name][0]._id`,
-    {name: review.name},
-  )
+    { name: review.name },
+  );
 
   const doc = {
     _type: 'review' as const,
     quote: review.quote,
     name: review.name,
-  }
+  };
 
   if (existingId) {
     // verwijderde velden opruimen op eerder geseede reviews
-    await client.patch(existingId).set(doc).unset(['initials', 'place', 'source']).commit()
-    console.log(`  ↻ review ${review.name}`)
-    return existingId
+    await client
+      .patch(existingId)
+      .set(doc)
+      .unset(['initials', 'place', 'source'])
+      .commit();
+    console.log(`  ↻ review ${review.name}`);
+    return existingId;
   }
 
-  const created = await client.create(doc)
-  console.log(`  + review ${review.name}`)
-  return created._id
+  const created = await client.create(doc);
+  console.log(`  + review ${review.name}`);
+  return created._id;
 }
 
 async function buildHomeContent(reviewIds: string[]) {
-  console.log('Building home blocks…')
+  console.log('Building home blocks…');
 
   const heroSlides = await Promise.all(
     HERO_SLIDES.map(async (slide) => ({
       ...(await uploadImage(slide.src, slide.alt)),
       _key: key(slide.src),
     })),
-  )
+  );
 
   const introImage = await uploadImage(
     '/images/intro-team.jpg',
     'Het team van Hart & Huis Makelaardij',
-  )
+  );
 
   const serviceItems = await Promise.all(
     SERVICES.map(async (service) => ({
@@ -57,16 +61,16 @@ async function buildHomeContent(reviewIds: string[]) {
       link: externalLink(service.href),
       image: await uploadImage(service.image, service.imageAlt),
     })),
-  )
+  );
 
   const storyImage = await uploadImage(
     '/images/story-big.jpg',
     'Een straat in Haarlem bij zonsondergang',
-  )
+  );
   const storySecondary = await uploadImage(
     '/images/story-small.jpg',
     'Gevels in het centrum van Haarlem',
-  )
+  );
 
   const listingItems = await Promise.all(
     LISTINGS.map(async (listing) => ({
@@ -80,12 +84,12 @@ async function buildHomeContent(reviewIds: string[]) {
       link: externalLink(listing.href),
       image: await uploadImage(listing.image, listing.imageAlt),
     })),
-  )
+  );
 
   const ctaImage = await uploadImage(
     '/images/cta-office.jpg',
     'Het kantoor van Hart & Huis Makelaardij in Haarlem',
-  )
+  );
 
   return [
     {
@@ -98,7 +102,6 @@ async function buildHomeContent(reviewIds: string[]) {
       lead: 'Verkopen, kopen of taxeren in Haarlem — met twee makelaars die je bij naam kennen, de buurt op hun duimpje kennen en de tijd nemen voor jouw verhaal.',
       primaryCta: cta('Wat is mijn huis waard?', '#'),
       secondaryCta: cta('Bekijk het aanbod', '#'),
-      badgeValue: SITE.fundaScore,
       badgeLabel: 'OP FUNDA',
     },
     {
@@ -114,7 +117,7 @@ async function buildHomeContent(reviewIds: string[]) {
         'Een huis verkopen of kopen is zelden alleen een transactie. Het is verhuizen naar een nieuwe fase, afscheid nemen van een plek vol herinneringen, of eindelijk die ene straat in kunnen.',
         'Daarom werken wij klein en persoonlijk. Je hebt één vast aanspreekpunt, je krijgt eerlijk advies — ook als dat even tegen je zin ingaat — en je weet altijd waar je staat.',
       ],
-      facts: INTRO_FACTS.map((fact) => ({...fact, _key: key(fact.label)})),
+      facts: INTRO_FACTS.map((fact) => ({ ...fact, _key: key(fact.label) })),
       link: cta('Maak kennis met ons', '#'),
     },
     {
@@ -179,16 +182,16 @@ async function buildHomeContent(reviewIds: string[]) {
       primaryCta: cta('Plan een kennismaking', '#'),
       secondaryCta: cta(SITE.phone, SITE.phoneHref),
     },
-  ]
+  ];
 }
 
 export async function seedHome() {
-  console.log('Reviews')
-  const reviewIds: string[] = []
+  console.log('Reviews');
+  const reviewIds: string[] = [];
   for (const review of REVIEWS) {
-    reviewIds.push(await upsertReview(review))
+    reviewIds.push(await upsertReview(review));
   }
 
-  console.log('\nHome page')
-  await upsertPage('home', 'Home', await buildHomeContent(reviewIds))
+  console.log('\nHome page');
+  await upsertPage('home', 'Home', await buildHomeContent(reviewIds));
 }

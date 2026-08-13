@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-13T08:08:05.296Z
-> Files: 173 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-13T11:18:20.630Z
+> Files: 194 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -106,21 +106,21 @@
 - `AGENTS.md` — This is NOT the Next.js you know (~82 tok)
 - `CLAUDE.md` (~3 tok)
 - `eslint.config.mjs` — ESLint flat configuration (~124 tok)
-- `next-env.d.ts` — / <reference types="next" /> (~72 tok)
+- `next-env.d.ts` — / <reference types="next" /> (~71 tok)
 - `next.config.ts` — Next.js configuration (~141 tok)
 - `package-lock.json` — npm lock file (~192873 tok)
-- `package.json` — Node.js package manifest (~356 tok)
+- `package.json` — Node.js package manifest (~427 tok)
 - `postcss.config.mjs` — Declares config (~26 tok)
 - `tailwind.config.ts` — Tailwind CSS configuration (~946 tok)
 - `tsconfig.json` — TypeScript configuration (~192 tok)
-- `tsconfig.tsbuildinfo` (~42809 tok)
+- `tsconfig.tsbuildinfo` (~44886 tok)
 
 ## app/example-designs/
 
+- `!aanbod.html` — Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem (~245118 tok)
 - `!contact.html` — Contact — Hart &amp; Huis Makelaardij Haarlem (~115609 tok)
 - `!over-ons.html` — Over ons — Dorien Hollemans, Hart &amp; Huis Makelaardij Haarlem (~205364 tok)
 - `.DS_Store` (~1640 tok)
-- `aanbod.html` — Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem (~245118 tok)
 - `beoordelingen.html` — Beoordelingen — Hart &amp; Huis Makelaardij Haarlem (~106755 tok)
 
 ## app/public/
@@ -129,29 +129,39 @@
 
 ## app/scripts/
 
-- `check-aanbiedingstekst.ts` — assert-based check of the Realworks text parser (`npm run check:tekst`). (~350 tok)
-- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~491 tok)
+- `check-aanbiedingstekst.ts` — assert-based check of the Realworks text parser (`npm run check:tekst`). (~359 tok)
+- `check-reviews.ts` — Smallest thing that fails if de afgeleide review-cijfers breken. (~305 tok)
+- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~530 tok)
+  - fn `parseTargets` L36-47 (~106 tok)
+  - fn `main` L48-64 (~119 tok)
 
 ## app/scripts/seed/
 
-- `aanbod.ts` — Seeds the /aanbod page (aanbodHeader + objectGrid + ctaBand). (~500 tok)
+- `aanbod.ts` — Seeds the /aanbod page (aanbodHeader + objectGrid + ctaBand). (~494 tok)
 - `contact.ts` — Seeds the /contact page, plus the form document it points at. (~1490 tok)
   - fn `upsertContactForm` L24-59 (~310 tok)
   - fn `buildContactContent` L60-162 (~912 tok)
   - fn `seedContact` L163-170 (~64 tok)
-- `home.ts` — Seeds the reviews and the home page. (~1796 tok)
-  - fn `upsertReview` L12-37 (~183 tok)
-  - fn `buildHomeContent` L38-186 (~1452 tok)
-  - fn `seedHome` L187-197 (~80 tok)
-- `navigation.ts` — Seeds the navigation and footer singletons. (~841 tok)
-- `objecten.ts` — Seeds 6 mock `woning` documents (houses for sale) in the Realworks text format; reuses photos already in the Sanity library, deterministic `_id` per slug. (~4200 tok)
+- `home.ts` — Seeds the reviews and the home page. (~1801 tok)
+  - fn `upsertReview` L12-35 (~188 tok)
+  - fn `buildHomeContent` L36-184 (~1452 tok)
+  - fn `seedHome` L185-195 (~80 tok)
+- `navigation.ts` — Seeds the navigation and footer singletons. (~862 tok)
   - fn `navLinkExternal` L9-17 (~47 tok)
   - fn `navLinkInternal` L18-26 (~66 tok)
   - fn `pageIdBySlug` L27-34 (~70 tok)
   - fn `pageLink` L35-39 (~50 tok)
-  - fn `upsertNavigation` L40-66 (~208 tok)
-  - fn `upsertFooter` L67-105 (~300 tok)
-  - fn `seedNavigation` L106-111 (~38 tok)
+  - fn `upsertNavigation` L40-67 (~218 tok)
+  - fn `upsertFooter` L68-107 (~310 tok)
+  - fn `seedNavigation` L108-113 (~38 tok)
+- `objecten.ts` — Seeds 6 mock `woning` documents (houses for sale) in the Realworks text format; reuses photos already in the Sanity library, deterministic `_id` per slug. (~8403 tok)
+  - fn `euro` L277-277 (~20 tok)
+  - fn `datum` L278-280 (~36 tok)
+  - fn `slugify` L281-290 (~91 tok)
+  - fn `rij` L291-296 (~73 tok)
+  - fn `kenmerkGroepen` L297-364 (~533 tok)
+  - fn `photoAssets` L365-380 (~168 tok)
+  - fn `seedObjecten` L381-425 (~418 tok)
 - `over-ons.ts` — Seeds the /over-ons page. (~958 tok)
   - fn `buildOverOnsContent` L16-106 (~816 tok)
   - fn `seedOverOns` L107-111 (~41 tok)
@@ -189,17 +199,11 @@
 
 ## app/src/app/aanbod/[slug]/
 
-- `page.tsx` — Object detail page: fetches one `woning` by slug (WONING_QUERY), composes gallery/header/description/features/sidebar + SimilarObjects + CtaBand. (~1100 tok)
-
-## app/src/components/object/
-
-- `ObjectGallery.tsx` — Client. Three-photo header grid + "Alle foto's" lightbox (arrow keys, Escape, focus return). Carries `data-solid-header`. (~1900 tok)
-- `ObjectHeader.tsx` — Adres/prijs kop + the specs bar; skips specs the feed did not fill, colours the energielabel chip by tier. (~1100 tok)
-- `ObjectDescription.tsx` — Client. Omschrijving clamped behind a fade with a "lees de volledige omschrijving" toggle; renders parsed Realworks text. (~800 tok)
-- `ObjectFeatures.tsx` — Kenmerkentabel: one white card per `kenmerkGroep`, label/value rows, multi-value rows as a list. (~800 tok)
-- `ObjectSidebar.tsx` — Sticky price card (status pill, CTAs, feiten, brochure/delen) + makelaar card. (~1300 tok)
-- `ShareButton.tsx` — Client. navigator.share with a clipboard fallback. (~250 tok)
-- `SimilarObjects.tsx` — "Vergelijkbare woningen" band on sand, reusing `ListingCard`. (~400 tok)
+- `page.tsx` — Object detail page: fetches one `woning` by slug (WONING_QUERY), composes gallery/header/description/features/sidebar + SimilarObjects + CtaBand. (~1476 tok)
+  - fn `getWoning` L62-65 (~31 tok)
+  - fn `toCard` L66-86 (~159 tok)
+  - fn `generateMetadata` L87-100 (~91 tok)
+  - fn `ObjectPage` L101-166 (~612 tok)
 
 ## app/src/app/api/submit-form/
 
@@ -211,17 +215,16 @@
 
 ## app/src/components/
 
-- `PageBuilder.tsx` — imageSrc — renders chart (~6530 tok)
-  - fn `imageSrc` L52-62 (~82 tok)
-  - fn `toImage` L63-72 (~76 tok)
-  - fn `toCta` L73-78 (~49 tok)
-  - fn `toLabeledLink` L79-86 (~76 tok)
-  - fn `renderBlock` L87-705 (~5626 tok)
-  - fn `PageBuilder` L706-711 (~60 tok)
+- `PageBuilder.tsx` — toCta — renders chart (~6904 tok)
+  - fn `toCta` L61-66 (~49 tok)
+  - fn `toLabeledLink` L67-74 (~76 tok)
+  - fn `renderBlock` L75-732 (~6056 tok)
+  - fn `PageBuilder` L733-738 (~60 tok)
 
 ## app/src/components/blocks/
 
-- `AanbodHeader.tsx` — Opener for /aanbod: breadcrumb, eyebrow, title with burgundy highlight, lead, and the sand "gratis zoekopdracht" card. Carries `data-solid-header`. (~900 tok)
+- `AanbodHeader.tsx` — Opener for /aanbod: breadcrumb, eyebrow, title with burgundy highlight, lead, and the sand "gratis zoekopdracht" card. Carries `data-solid-header`. (~1000 tok)
+  - fn `AanbodHeader` L36-109 (~716 tok)
 - `Assurances.tsx` — Dark band with credentials, checked off two by two. (~867 tok)
   - fn `IconCheck` L24-32 (~79 tok)
   - fn `Assurances` L33-90 (~622 tok)
@@ -253,12 +256,16 @@
 - `Intro.tsx` — DEFAULTS (~1518 tok)
   - fn `renderHighlightedTitle` L56-79 (~136 tok)
   - fn `Intro` L80-174 (~921 tok)
-- `Listings.tsx` — DEFAULT_ITEMS (~1340 tok)
-  - fn `ListingCard` L72-117 (~466 tok)
-  - fn `Listings` L118-164 (~400 tok)
+- `Listings.tsx` — Pill tone: available (white), sold subject to conditions (sand), sold (burgundy). (~1475 tok)
+  - fn `ListingCard` L83-128 (~472 tok)
+  - fn `Listings` L129-175 (~400 tok)
 - `MediaText.tsx` — Text column with a supporting photo on the right. (~652 tok)
   - fn `MediaText` L35-85 (~412 tok)
-- `ObjectGrid.tsx` — Client. Sticky filter bar (status pills, plaats/prijs/sortering) + listing grid over all woningen; filters, sorts and pages in the browser, with the dark CTA card and the empty state. (~2400 tok)
+- `ObjectGrid.tsx` — Client. Sticky filter bar (status pills, plaats/prijs/sortering) + listing grid over all woningen; filters, sorts and pages in the browser, with the dark CTA card and the empty state. (~3146 tok)
+  - fn `IconArea` L46-57 (~74 tok)
+  - fn `IconRooms` L58-80 (~259 tok)
+  - fn `toListing` L81-111 (~246 tok)
+  - fn `ObjectGrid` L112-326 (~2263 tok)
 - `PageHero.tsx` — DEFAULTS (~1142 tok)
   - fn `PageHero` L40-134 (~864 tok)
 - `PageOpener.tsx` — Centred opener for pages without a photo hero (Over ons). (~656 tok)
@@ -269,9 +276,9 @@
   - fn `QuoteBand` L30-71 (~441 tok)
 - `RegionBlock.tsx` — DEFAULTS (~637 tok)
   - fn `RegionBlock` L26-62 (~416 tok)
-- `Reviews.tsx` — DEFAULTS (~1781 tok)
-  - fn `ReviewCard` L44-75 (~433 tok)
-  - fn `Reviews` L76-174 (~1023 tok)
+- `Reviews.tsx` — DEFAULTS (~1616 tok)
+  - fn `ReviewCard` L41-65 (~285 tok)
+  - fn `Reviews` L66-164 (~1022 tok)
 - `RouteBlock.tsx` — Dark band with opening hours, directions and a photo. (~888 tok)
   - fn `RouteBlock` L37-107 (~632 tok)
 - `Services.tsx` — DEFAULT_ITEMS (~1624 tok)
@@ -303,6 +310,29 @@
   - fn `SiteHeader` L107-166 (~646 tok)
 - `WhatsAppButton.tsx` — WhatsAppButton (~445 tok)
 
+## app/src/components/object/
+
+- `ObjectDescription.tsx` — Client. Omschrijving clamped behind a fade with a "lees de volledige omschrijving" toggle; renders parsed Realworks text. (~813 tok)
+  - fn `Inline` L12-28 (~121 tok)
+  - fn `ObjectDescription` L29-91 (~616 tok)
+- `ObjectFeatures.tsx` — Kenmerkentabel: one white card per `kenmerkGroep`, label/value rows, multi-value rows as a list. (~703 tok)
+  - fn `ObjectFeatures` L16-74 (~608 tok)
+- `ObjectGallery.tsx` — Client. Three-photo header grid + "Alle foto's" lightbox (arrow keys, Escape, focus return). Carries `data-solid-header`. (~2206 tok)
+  - fn `IconBack` L19-26 (~62 tok)
+  - fn `IconPhotos` L27-47 (~192 tok)
+  - fn `ObjectGallery` L48-239 (~1839 tok)
+- `ObjectHeader.tsx` — Adres/prijs kop + the specs bar; skips specs the feed did not fill, colours the energielabel chip by tier. (~1063 tok)
+  - fn `labelClass` L21-28 (~78 tok)
+  - fn `Spec` L29-41 (~118 tok)
+  - fn `ObjectHeader` L42-124 (~713 tok)
+- `ObjectSidebar.tsx` — Sticky price card (status pill, CTAs, feiten, brochure/delen) + makelaar card. (~1621 tok)
+  - fn `IconDownload` L34-46 (~84 tok)
+  - fn `IconShare` L47-57 (~133 tok)
+  - fn `Feit` L58-67 (~112 tok)
+  - fn `ObjectSidebar` L68-177 (~988 tok)
+- `ShareButton.tsx` — Client. navigator.share with a clipboard fallback. (~254 tok)
+- `SimilarObjects.tsx` — "Vergelijkbare woningen" band on sand, reusing `ListingCard`. (~417 tok)
+
 ## app/src/components/ui/
 
 - `ArrowLink.tsx` — Standalone text link with circular arrow (renders as `<a>`). (~541 tok)
@@ -331,17 +361,21 @@
 
 ## app/src/lib/
 
-- `aanbiedingstekst.ts` — Parses the Realworks text format (`<br>`, `**vet**`, `- ` bullets) into blocks and drops the English half; `splitBold` for inline emphasis. (~500 tok)
-- `aanbod-content.ts` — Copy + filter options (status, price ranges, sortings), page size and CTA-card position for /aanbod. (~800 tok)
+- `aanbiedingstekst.ts` — Parses the Realworks text format (`<br>`, `**vet**`, `- ` bullets) into blocks and drops the English half; `splitBold` for inline emphasis. (~588 tok)
+  - fn `stripMarkers` L21-22 (~21 tok)
+  - fn `parseAanbiedingstekst` L23-57 (~252 tok)
+  - fn `splitBold` L58-64 (~66 tok)
+- `aanbod-content.ts` — Copy + filter options (status, price ranges, sortings), page size and CTA-card position for /aanbod. (~839 tok)
 - `chrome.ts` — Scroll threshold (px) before the topbar gets the stuck state. (~62 tok)
-- `format.ts` — `euro()`, `longDate()`, `shortDate()` for object data. (~200 tok)
-- `object-content.ts` — Status labels/tones, back link, makelaar card, CTA copy for the object page. (~600 tok)
 - `cn.ts` — Exports cn (~37 tok)
 - `contact-content.ts` — Icons shared by the contact cards and the form aside. (~1741 tok)
-- `home-content.ts` — Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more (~1136 tok)
+- `format.ts` — `euro()`, `longDate()`, `shortDate()` for object data. (~228 tok)
+- `home-content.ts` — Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more (~1046 tok)
 - `links.ts` — Resolve a Sanity link/cta object to a usable href. (~258 tok)
+- `object-content.ts` — Status labels/tones, back link, makelaar card, CTA copy for the object page. (~518 tok)
+  - fn `statusOf` L12-53 (~407 tok)
 - `over-ons-content.ts` — Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more (~1949 tok)
-- `reviews.ts` — Gap between review cards in the carousel (matches CSS `gap: 24px`). (~131 tok)
+- `reviews.ts` — Aggregates die PAGE_QUERY over alle reviews afleidt. Alles kan ontbreken. (~429 tok)
 - `site.ts` — Exports SITE, NavLink, FooterLinkGroup, FOOTER_CERTS, REGIONS (~191 tok)
 - `taxatie-content.ts` — Exports TAXATIE_HERO, TAXATIE_FACTS, TAXATIE_BENEFITS_IMAGE, TAXATIE_BENEFITS_INTRO + 14 more (~3127 tok)
 - `verkoop-content.ts` — Plain answer text. Optional `link` is inserted before `afterLink`. (~2199 tok)
@@ -349,10 +383,10 @@
 ## app/src/sanity/
 
 - `client.ts` — Exports client (~61 tok)
-- `image.ts` — Exports urlFor (~107 tok)
-- `metadata.ts` — `pageMetadata()`: maps a page document's `seo` object (title, description, ogImage, noIndex) onto Next Metadata; omits unset keys so layout defaults inherit. (~509 tok)
+- `image.ts` — Exports SanityImage, urlFor, imageSrc, toImage (~293 tok)
+- `metadata.ts` — Map a page document's `seo` object onto Next metadata. Unset fields fall back to the root layout. (~511 tok)
   - fn `pageMetadata` L23-57 (~353 tok)
-- `queries.ts` — Resolve internal page references on link/cta objects. (~724 tok)
+- `queries.ts` — Resolve internal page references on link/cta objects. (~1247 tok)
 
 ## studio-hart-huis/
 
@@ -364,9 +398,9 @@
 - `README.md` — Project documentation (~131 tok)
 - `sanity.cli.ts` — Enable auto-updates for studios. (~98 tok)
 - `sanity.config.ts` (~150 tok)
-- `structure.ts` — Exports structure (~459 tok)
+- `structure.ts` — Exports structure (~478 tok)
 - `tsconfig.json` — TypeScript configuration (~120 tok)
-- `tsconfig.tsbuildinfo` (~32802 tok)
+- `tsconfig.tsbuildinfo` (~32857 tok)
 
 ## studio-hart-huis/.sanity/runtime/
 
@@ -377,18 +411,17 @@
 
 - `faqType.ts` — Exports faqType (~238 tok)
 - `footerType.ts` — Exports footerType (~779 tok)
-- `index.ts` — Exports schemaTypes (~692 tok)
+- `index.ts` — Exports schemaTypes (~751 tok)
 - `navigationType.ts` — Exports navigationType (~363 tok)
-- `pageBuilderType.ts` — Exports pageBuilderType (~381 tok)
+- `pageBuilderType.ts` — Exports pageBuilderType (~407 tok)
 - `pageType.ts` — Exports pageType (~213 tok)
-- `reviewType.ts` — Exports reviewType (~256 tok)
-- `woningType.ts` — The "Object" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional. (~1600 tok)
+- `reviewType.ts` — Cijfers komen straks uit de scraper; daarom optioneel. (~338 tok)
+- `woningType.ts` — The "Object" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional. (~2608 tok)
 
 ## studio-hart-huis/schemaTypes/blocks/
 
-- `aanbodHeaderType.ts` — Exports aanbodHeaderType (~400 tok)
+- `aanbodHeaderType.ts` — Exports aanbodHeaderType (~358 tok)
 - `assurancesType.ts` — Exports assurancesType (~368 tok)
-- `objectGridType.ts` — Exports objectGridType — CTA-kaart + lege-staat teksten; de woningen komen uit PAGE_QUERY (~330 tok)
 - `benefitsType.ts` — Exports benefitsType (~638 tok)
 - `compareCardsType.ts` — Exports compareCardsType (~707 tok)
 - `contactFormSectionType.ts` — Exports contactFormSectionType (~846 tok)
@@ -402,6 +435,7 @@
 - `introType.ts` — Exports introType (~686 tok)
 - `listingsType.ts` — Exports listingsType (~747 tok)
 - `mediaTextType.ts` — Exports mediaTextType (~341 tok)
+- `objectGridType.ts` — Exports objectGridType — CTA-kaart + lege-staat teksten; de woningen komen uit PAGE_QUERY (~315 tok)
 - `pageHeroType.ts` — Exports pageHeroType (~479 tok)
 - `pageOpenerType.ts` — Exports pageOpenerType (~288 tok)
 - `personType.ts` — Exports personType (~561 tok)

@@ -21,6 +21,18 @@ const woningCard = /* groq */ `{
   "foto": fotos[0]
 }`;
 
+/**
+ * Aggregates over alle reviews, afgeleid bij het uitvoeren van de query.
+ * Bewust niet opgeslagen: een afgeleide waarde kan niet verouderen.
+ * `math::avg` geeft null zolang geen enkele review een cijfer heeft.
+ */
+const reviewStats = /* groq */ `{
+  "totaalReviews": count(*[_type == "review"]),
+  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),
+  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),
+  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)
+}`;
+
 export const PAGE_QUERY = defineQuery(`
   *[_type == "page" && slug.current == $slug][0]{
     _id,
@@ -69,9 +81,14 @@ export const PAGE_QUERY = defineQuery(`
         ...,
         link${linkExpansion}
       },
+      _type == "hero" => {
+        ...,
+        ...${reviewStats}
+      },
       _type == "reviews" => {
         ...,
         reviews[]->,
+        ...${reviewStats},
         link${linkExpansion}
       },
       _type == "objectGrid" => {

@@ -2,10 +2,7 @@ import { AanbodHeader } from '@/components/blocks/AanbodHeader';
 import { Assurances } from '@/components/blocks/Assurances';
 import { Benefits } from '@/components/blocks/Benefits';
 import { CompareCards } from '@/components/blocks/CompareCards';
-import {
-  ContactForm,
-  type ContactFormField,
-} from '@/components/blocks/ContactForm';
+import { ContactForm, type ContactFormField } from '@/components/blocks/ContactForm';
 import { ContactWays } from '@/components/blocks/ContactWays';
 import { CrossLinks } from '@/components/blocks/CrossLinks';
 import { CtaBand } from '@/components/blocks/CtaBand';
@@ -31,11 +28,8 @@ import { Stories } from '@/components/blocks/Stories';
 import { Timeline } from '@/components/blocks/Timeline';
 import { ValueCards } from '@/components/blocks/ValueCards';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
-import {
-  resolveHref,
-  type SanityLabeledLink,
-  type SanityLink,
-} from '@/lib/links';
+import { resolveHref, type SanityLabeledLink, type SanityLink } from '@/lib/links';
+import { reviewCountLabel, reviewScore, type ReviewStats } from '@/lib/reviews';
 
 type SanityCta = SanityLabeledLink;
 
@@ -87,7 +81,10 @@ function renderBlock(block: PageBlock) {
           lead={block.lead as string | undefined}
           primaryCta={toCta(block.primaryCta as SanityCta)}
           secondaryCta={toCta(block.secondaryCta as SanityCta)}
-          badgeValue={block.badgeValue as string | undefined}
+          badgeValue={reviewScore(
+            block as ReviewStats,
+            block.badgeValue as string | undefined,
+          )}
           badgeLabel={block.badgeLabel as string | undefined}
         />
       );
@@ -134,8 +131,7 @@ function renderBlock(block: PageBlock) {
         })
         .filter((item): item is NonNullable<typeof item> => Boolean(item));
       const nvm = block.nvm as
-        | { badge?: string; title?: string; body?: string; cta?: SanityCta }
-        | undefined;
+        { badge?: string; title?: string; body?: string; cta?: SanityCta } | undefined;
       return (
         <Services
           key={block._key}
@@ -171,16 +167,20 @@ function renderBlock(block: PageBlock) {
     }
     case 'reviews': {
       const reviews = (
-        block.reviews as Array<{quote?: string; name?: string}> | undefined
+        block.reviews as Array<{ quote?: string; name?: string }> | undefined
       )
         ?.filter((review) => review?.quote && review?.name)
-        .map((review) => ({quote: review.quote!, name: review.name!}));
+        .map((review) => ({ quote: review.quote!, name: review.name! }));
+      const stats = block as ReviewStats;
       return (
         <Reviews
           key={block._key}
-          score={block.score as string | undefined}
+          score={reviewScore(stats, block.score as string | undefined)}
           scoreLabel={block.scoreLabel as string | undefined}
-          reviewCountLabel={block.reviewCountLabel as string | undefined}
+          reviewCountLabel={reviewCountLabel(
+            stats,
+            block.reviewCountLabel as string | undefined,
+          )}
           intro={block.intro as string | undefined}
           reviews={reviews}
           link={toCta(block.link as SanityCta)}
@@ -378,8 +378,7 @@ function renderBlock(block: PageBlock) {
     case 'crossLinks': {
       const items = (
         block.items as
-          | Array<{ title?: string; body?: string; link?: SanityLink }>
-          | undefined
+          Array<{ title?: string; body?: string; link?: SanityLink }> | undefined
       )
         ?.map((item) => {
           const href = resolveHref(item.link);
@@ -393,8 +392,7 @@ function renderBlock(block: PageBlock) {
     }
     case 'aanbodHeader': {
       const aside = block.aside as
-        | { title?: string; body?: string; cta?: SanityCta }
-        | undefined;
+        { title?: string; body?: string; cta?: SanityCta } | undefined;
       return (
         <AanbodHeader
           key={block._key}
@@ -424,8 +422,7 @@ function renderBlock(block: PageBlock) {
         }),
       );
       const ctaCard = block.ctaCard as
-        | { title?: string; body?: string; cta?: SanityCta }
-        | undefined;
+        { title?: string; body?: string; cta?: SanityCta } | undefined;
       return (
         <ObjectGrid
           key={block._key}
@@ -662,8 +659,7 @@ function renderBlock(block: PageBlock) {
           }
         | undefined;
       const recaptcha = block.recaptcha as
-        | { recaptchaEnabled?: boolean; recaptchaSiteKey?: string }
-        | undefined;
+        { recaptchaEnabled?: boolean; recaptchaSiteKey?: string } | undefined;
       return (
         <ContactForm
           key={block._key}

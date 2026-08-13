@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-13T08:08:05.296Z",
-    "fileCount": 173,
+    "lastScanned": "2026-08-13T11:18:20.630Z",
+    "fileCount": 194,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "bb4aaa3e08344d8a77ec81bfa907f8b4dadae471cde4602a3d622f20b84313da",
-    "storeUpdatedAt": "2026-08-13T08:08:05.297Z"
+    "renderedHash": "01967a350c7571b2511fa0c411d004077aec72cdedec5d8651992c8dfd0b6f90",
+    "storeUpdatedAt": "2026-08-13T11:18:20.631Z"
   },
   "files": {
     ".claude/commands/reframe.md": {
@@ -15,7 +15,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1785834177283.9353,
-      "updatedAt": "2026-08-13T08:08:05.239Z",
+      "updatedAt": "2026-08-13T11:18:20.570Z",
       "source": "scan"
     },
     ".claude/commands/security-audit.md": {
@@ -24,7 +24,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1785834177283.637,
-      "updatedAt": "2026-08-13T08:08:05.240Z",
+      "updatedAt": "2026-08-13T11:18:20.570Z",
       "source": "scan"
     },
     ".claude/launch.json": {
@@ -33,7 +33,7 @@
       "hash": "6dcceaf45f569238",
       "size": 201,
       "mtimeMs": 1786560829903.9763,
-      "updatedAt": "2026-08-13T08:08:05.241Z",
+      "updatedAt": "2026-08-13T11:18:20.571Z",
       "source": "scan"
     },
     ".claude/rules/openwolf.md": {
@@ -42,7 +42,7 @@
       "hash": "6d735b2c1c54a916",
       "size": 1323,
       "mtimeMs": 1785834177112.1697,
-      "updatedAt": "2026-08-13T08:08:05.241Z",
+      "updatedAt": "2026-08-13T11:18:20.571Z",
       "source": "scan"
     },
     ".claude/settings.json": {
@@ -51,7 +51,7 @@
       "hash": "f68759bb50af5ee4",
       "size": 1799,
       "mtimeMs": 1785834177111.7556,
-      "updatedAt": "2026-08-13T08:08:05.242Z",
+      "updatedAt": "2026-08-13T11:18:20.571Z",
       "source": "scan"
     },
     ".cursor/rules/openwolf.mdc": {
@@ -60,7 +60,7 @@
       "hash": "25a895da2047ef4d",
       "size": 323,
       "mtimeMs": 1785834177282.8696,
-      "updatedAt": "2026-08-13T08:08:05.242Z",
+      "updatedAt": "2026-08-13T11:18:20.572Z",
       "source": "scan"
     },
     ".DS_Store": {
@@ -69,7 +69,7 @@
       "hash": "5f07336534a29f6a",
       "size": 8196,
       "mtimeMs": 1786559963896.4783,
-      "updatedAt": "2026-08-13T08:08:05.243Z",
+      "updatedAt": "2026-08-13T11:18:20.572Z",
       "source": "scan"
     },
     ".gitignore": {
@@ -78,7 +78,7 @@
       "hash": "e2eb93a61ffd7877",
       "size": 9,
       "mtimeMs": 1785392122288.7588,
-      "updatedAt": "2026-08-13T08:08:05.243Z",
+      "updatedAt": "2026-08-13T11:18:20.572Z",
       "source": "scan"
     },
     ".opencode/command/reframe.md": {
@@ -87,7 +87,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1785834177284.3032,
-      "updatedAt": "2026-08-13T08:08:05.243Z",
+      "updatedAt": "2026-08-13T11:18:20.573Z",
       "source": "scan"
     },
     ".opencode/command/security-audit.md": {
@@ -96,7 +96,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1785834177284.1458,
-      "updatedAt": "2026-08-13T08:08:05.243Z",
+      "updatedAt": "2026-08-13T11:18:20.573Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/anatomy.ts": {
@@ -105,7 +105,7 @@
       "hash": "de2a14445289179f",
       "size": 10257,
       "mtimeMs": 1785834177278.7407,
-      "updatedAt": "2026-08-13T08:08:05.245Z",
+      "updatedAt": "2026-08-13T11:18:20.574Z",
       "source": "scan",
       "symbols": [
         {
@@ -221,7 +221,7 @@
       "hash": "0193b1022c8e098b",
       "size": 1881,
       "mtimeMs": 1785834177279.1472,
-      "updatedAt": "2026-08-13T08:08:05.246Z",
+      "updatedAt": "2026-08-13T11:18:20.575Z",
       "source": "scan",
       "symbols": [
         {
@@ -302,7 +302,7 @@
       "hash": "5044a1f76c74f535",
       "size": 3782,
       "mtimeMs": 1785834177279.532,
-      "updatedAt": "2026-08-13T08:08:05.246Z",
+      "updatedAt": "2026-08-13T11:18:20.575Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/post-read.ts": {
@@ -311,7 +311,7 @@
       "hash": "1bc80c56ad0cfd32",
       "size": 2200,
       "mtimeMs": 1785834177279.9321,
-      "updatedAt": "2026-08-13T08:08:05.246Z",
+      "updatedAt": "2026-08-13T11:18:20.575Z",
       "source": "scan",
       "symbols": [
         {
@@ -329,7 +329,7 @@
       "hash": "02ba6ccd8d82475c",
       "size": 11300,
       "mtimeMs": 1785834177280.4854,
-      "updatedAt": "2026-08-13T08:08:05.247Z",
+      "updatedAt": "2026-08-13T11:18:20.576Z",
       "source": "scan",
       "symbols": [
         {
@@ -396,7 +396,7 @@
       "hash": "88c051b64b073c6a",
       "size": 2401,
       "mtimeMs": 1785834177280.8362,
-      "updatedAt": "2026-08-13T08:08:05.247Z",
+      "updatedAt": "2026-08-13T11:18:20.576Z",
       "source": "scan",
       "symbols": [
         {
@@ -414,7 +414,7 @@
       "hash": "c3b34d216601e76f",
       "size": 4092,
       "mtimeMs": 1785834177281.0354,
-      "updatedAt": "2026-08-13T08:08:05.248Z",
+      "updatedAt": "2026-08-13T11:18:20.577Z",
       "source": "scan",
       "symbols": [
         {
@@ -460,7 +460,7 @@
       "hash": "dda2df097f6d5874",
       "size": 3340,
       "mtimeMs": 1785834177281.3862,
-      "updatedAt": "2026-08-13T08:08:05.248Z",
+      "updatedAt": "2026-08-13T11:18:20.577Z",
       "source": "scan",
       "symbols": [
         {
@@ -499,7 +499,7 @@
       "hash": "5f8633a3904ee5ce",
       "size": 5057,
       "mtimeMs": 1785834177281.7463,
-      "updatedAt": "2026-08-13T08:08:05.248Z",
+      "updatedAt": "2026-08-13T11:18:20.577Z",
       "source": "scan",
       "symbols": [
         {
@@ -538,7 +538,7 @@
       "hash": "47f4dfb03abf55f9",
       "size": 757,
       "mtimeMs": 1785834177281.9375,
-      "updatedAt": "2026-08-13T08:08:05.248Z",
+      "updatedAt": "2026-08-13T11:18:20.577Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf.ts": {
@@ -547,7 +547,7 @@
       "hash": "a29f91aadb9a324d",
       "size": 261,
       "mtimeMs": 1785834177282.0498,
-      "updatedAt": "2026-08-13T08:08:05.249Z",
+      "updatedAt": "2026-08-13T11:18:20.577Z",
       "source": "scan"
     },
     "AGENTS.md": {
@@ -556,7 +556,7 @@
       "hash": "8c90778623bf50ac",
       "size": 271,
       "mtimeMs": 1785834177282.5024,
-      "updatedAt": "2026-08-13T08:08:05.249Z",
+      "updatedAt": "2026-08-13T11:18:20.578Z",
       "source": "scan"
     },
     "app/.DS_Store": {
@@ -565,7 +565,7 @@
       "hash": "5aa9b7c32d9e6887",
       "size": 14340,
       "mtimeMs": 1786559963895.7332,
-      "updatedAt": "2026-08-13T08:08:05.250Z",
+      "updatedAt": "2026-08-13T11:18:20.578Z",
       "source": "scan"
     },
     "app/.gitignore": {
@@ -574,7 +574,7 @@
       "hash": "207e265ff4901f9a",
       "size": 480,
       "mtimeMs": 1785087937158.668,
-      "updatedAt": "2026-08-13T08:08:05.250Z",
+      "updatedAt": "2026-08-13T11:18:20.578Z",
       "source": "scan"
     },
     "app/AGENTS.md": {
@@ -583,7 +583,7 @@
       "hash": "e3447d84251880fb",
       "size": 327,
       "mtimeMs": 1785834093957.9656,
-      "updatedAt": "2026-08-13T08:08:05.251Z",
+      "updatedAt": "2026-08-13T11:18:20.579Z",
       "source": "scan"
     },
     "app/CLAUDE.md": {
@@ -592,7 +592,7 @@
       "hash": "336cc4fbf19beaad",
       "size": 11,
       "mtimeMs": 1785834093958.6213,
-      "updatedAt": "2026-08-13T08:08:05.251Z",
+      "updatedAt": "2026-08-13T11:18:20.579Z",
       "source": "scan"
     },
     "app/eslint.config.mjs": {
@@ -601,7 +601,16 @@
       "hash": "870f1adccecf3051",
       "size": 465,
       "mtimeMs": 1785087937158.6077,
-      "updatedAt": "2026-08-13T08:08:05.251Z",
+      "updatedAt": "2026-08-13T11:18:20.579Z",
+      "source": "scan"
+    },
+    "app/example-designs/!aanbod.html": {
+      "description": "Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem",
+      "tokens": 245118,
+      "hash": "3523ccb1ab45b801",
+      "size": 919267,
+      "mtimeMs": 1786544646497.3599,
+      "updatedAt": "2026-08-13T11:18:20.583Z",
       "source": "scan"
     },
     "app/example-designs/!contact.html": {
@@ -610,7 +619,7 @@
       "hash": "97c4aa747737140b",
       "size": 433573,
       "mtimeMs": 1786545261017.0356,
-      "updatedAt": "2026-08-13T08:08:05.253Z",
+      "updatedAt": "2026-08-13T11:18:20.585Z",
       "source": "scan"
     },
     "app/example-designs/!over-ons.html": {
@@ -619,7 +628,7 @@
       "hash": "5511c4dee427781e",
       "size": 770145,
       "mtimeMs": 1786544072612.1208,
-      "updatedAt": "2026-08-13T08:08:05.257Z",
+      "updatedAt": "2026-08-13T11:18:20.589Z",
       "source": "scan"
     },
     "app/example-designs/.DS_Store": {
@@ -628,16 +637,7 @@
       "hash": "27d694b2f35516b2",
       "size": 6148,
       "mtimeMs": 1786560158396.6606,
-      "updatedAt": "2026-08-13T08:08:05.258Z",
-      "source": "scan"
-    },
-    "app/example-designs/aanbod.html": {
-      "description": "Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem",
-      "tokens": 245118,
-      "hash": "3523ccb1ab45b801",
-      "size": 919267,
-      "mtimeMs": 1786544646497.3599,
-      "updatedAt": "2026-08-13T08:08:05.262Z",
+      "updatedAt": "2026-08-13T11:18:20.589Z",
       "source": "scan"
     },
     "app/example-designs/beoordelingen.html": {
@@ -646,16 +646,16 @@
       "hash": "3778dc5759592126",
       "size": 400355,
       "mtimeMs": 1786540904307.1616,
-      "updatedAt": "2026-08-13T08:08:05.264Z",
+      "updatedAt": "2026-08-13T11:18:20.591Z",
       "source": "scan"
     },
     "app/next-env.d.ts": {
       "description": "/ <reference types=\"next\" />",
-      "tokens": 72,
-      "hash": "7ad303e40d4fddf4",
-      "size": 251,
-      "mtimeMs": 1785411393693.1975,
-      "updatedAt": "2026-08-13T08:08:05.264Z",
+      "tokens": 71,
+      "hash": "7b550dda9686c16f",
+      "size": 247,
+      "mtimeMs": 1786617612815.1458,
+      "updatedAt": "2026-08-13T11:18:20.592Z",
       "source": "scan"
     },
     "app/next.config.ts": {
@@ -664,7 +664,7 @@
       "hash": "64afc7ed205e5e32",
       "size": 493,
       "mtimeMs": 1785418340362.8108,
-      "updatedAt": "2026-08-13T08:08:05.264Z",
+      "updatedAt": "2026-08-13T11:18:20.592Z",
       "source": "scan"
     },
     "app/package-lock.json": {
@@ -673,16 +673,16 @@
       "hash": "205d4b0da9993c62",
       "size": 675053,
       "mtimeMs": 1786608285980.4985,
-      "updatedAt": "2026-08-13T08:08:05.265Z",
+      "updatedAt": "2026-08-13T11:18:20.594Z",
       "source": "scan"
     },
     "app/package.json": {
       "description": "Node.js package manifest",
-      "tokens": 356,
-      "hash": "aa79ab36c328370f",
-      "size": 1246,
-      "mtimeMs": 1786608285824.5435,
-      "updatedAt": "2026-08-13T08:08:05.265Z",
+      "tokens": 427,
+      "hash": "7652fae7ece06e3a",
+      "size": 1493,
+      "mtimeMs": 1786619852415.648,
+      "updatedAt": "2026-08-13T11:18:20.594Z",
       "source": "scan"
     },
     "app/postcss.config.mjs": {
@@ -691,7 +691,7 @@
       "hash": "dfac7ac2d86d326a",
       "size": 94,
       "mtimeMs": 1785087937158.5386,
-      "updatedAt": "2026-08-13T08:08:05.265Z",
+      "updatedAt": "2026-08-13T11:18:20.594Z",
       "source": "scan"
     },
     "app/public/.DS_Store": {
@@ -700,7 +700,34 @@
       "hash": "92a13dc2c5c09daf",
       "size": 6148,
       "mtimeMs": 1785410057099.7646,
-      "updatedAt": "2026-08-13T08:08:05.266Z",
+      "updatedAt": "2026-08-13T11:18:20.595Z",
+      "source": "scan"
+    },
+    "app/scripts/check-aanbiedingstekst.ts": {
+      "description": "assert-based check of the Realworks text parser (`npm run check:tekst`).",
+      "tokens": 359,
+      "hash": "67887acf672f27bb",
+      "size": 1256,
+      "mtimeMs": 1786611162315.6191,
+      "updatedAt": "2026-08-13T11:18:20.595Z",
+      "source": "scan"
+    },
+    "app/scripts/check-reviews.ts": {
+      "description": "Smallest thing that fails if de afgeleide review-cijfers breken.",
+      "tokens": 305,
+      "hash": "29cae3027b8860d1",
+      "size": 1067,
+      "mtimeMs": 1786619848629.0251,
+      "updatedAt": "2026-08-13T11:18:20.595Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/aanbod.ts": {
+      "description": "Seeds the /aanbod page (aanbodHeader + objectGrid + ctaBand).",
+      "tokens": 494,
+      "hash": "8d71751dd2aff759",
+      "size": 1728,
+      "mtimeMs": 1786617377357.243,
+      "updatedAt": "2026-08-13T11:18:20.596Z",
       "source": "scan"
     },
     "app/scripts/seed/contact.ts": {
@@ -709,7 +736,7 @@
       "hash": "a01e67acca59f7d7",
       "size": 5221,
       "mtimeMs": 1786607895950.854,
-      "updatedAt": "2026-08-13T08:08:05.269Z",
+      "updatedAt": "2026-08-13T11:18:20.596Z",
       "source": "scan",
       "symbols": [
         {
@@ -737,43 +764,43 @@
     },
     "app/scripts/seed/home.ts": {
       "description": "Seeds the reviews and the home page.",
-      "tokens": 1796,
-      "hash": "35490047e896dff0",
-      "size": 6305,
-      "mtimeMs": 1786563303853.218,
-      "updatedAt": "2026-08-13T08:08:05.269Z",
+      "tokens": 1801,
+      "hash": "6e55617d85553f81",
+      "size": 6322,
+      "mtimeMs": 1786618907292.097,
+      "updatedAt": "2026-08-13T11:18:20.596Z",
       "source": "scan",
       "symbols": [
         {
           "name": "upsertReview",
           "kind": "fn",
           "startLine": 12,
-          "endLine": 37,
-          "tokens": 183
+          "endLine": 35,
+          "tokens": 188
         },
         {
           "name": "buildHomeContent",
           "kind": "fn",
-          "startLine": 38,
-          "endLine": 186,
+          "startLine": 36,
+          "endLine": 184,
           "tokens": 1452
         },
         {
           "name": "seedHome",
           "kind": "fn",
-          "startLine": 187,
-          "endLine": 197,
+          "startLine": 185,
+          "endLine": 195,
           "tokens": 80
         }
       ]
     },
     "app/scripts/seed/navigation.ts": {
       "description": "Seeds the navigation and footer singletons.",
-      "tokens": 841,
-      "hash": "4158e51998b47a31",
-      "size": 2953,
-      "mtimeMs": 1786607914814.6892,
-      "updatedAt": "2026-08-13T08:08:05.269Z",
+      "tokens": 862,
+      "hash": "7c56abd4cbc7115c",
+      "size": 3025,
+      "mtimeMs": 1786617387877.3745,
+      "updatedAt": "2026-08-13T11:18:20.596Z",
       "source": "scan",
       "symbols": [
         {
@@ -808,22 +835,82 @@
           "name": "upsertNavigation",
           "kind": "fn",
           "startLine": 40,
-          "endLine": 66,
-          "tokens": 208
+          "endLine": 67,
+          "tokens": 218
         },
         {
           "name": "upsertFooter",
           "kind": "fn",
-          "startLine": 67,
-          "endLine": 105,
-          "tokens": 300
+          "startLine": 68,
+          "endLine": 107,
+          "tokens": 310
         },
         {
           "name": "seedNavigation",
           "kind": "fn",
-          "startLine": 106,
-          "endLine": 111,
+          "startLine": 108,
+          "endLine": 113,
           "tokens": 38
+        }
+      ]
+    },
+    "app/scripts/seed/objecten.ts": {
+      "description": "Seeds 6 mock `woning` documents (houses for sale) in the Realworks text format; reuses photos already in the Sanity library, deterministic `_id` per slug.",
+      "tokens": 8403,
+      "hash": "48b7381c10241df5",
+      "size": 29465,
+      "mtimeMs": 1786609894741.7761,
+      "updatedAt": "2026-08-13T11:18:20.596Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "euro",
+          "kind": "fn",
+          "startLine": 277,
+          "endLine": 277,
+          "tokens": 20
+        },
+        {
+          "name": "datum",
+          "kind": "fn",
+          "startLine": 278,
+          "endLine": 280,
+          "tokens": 36
+        },
+        {
+          "name": "slugify",
+          "kind": "fn",
+          "startLine": 281,
+          "endLine": 290,
+          "tokens": 91
+        },
+        {
+          "name": "rij",
+          "kind": "fn",
+          "startLine": 291,
+          "endLine": 296,
+          "tokens": 73
+        },
+        {
+          "name": "kenmerkGroepen",
+          "kind": "fn",
+          "startLine": 297,
+          "endLine": 364,
+          "tokens": 533
+        },
+        {
+          "name": "photoAssets",
+          "kind": "fn",
+          "startLine": 365,
+          "endLine": 380,
+          "tokens": 168
+        },
+        {
+          "name": "seedObjecten",
+          "kind": "fn",
+          "startLine": 381,
+          "endLine": 425,
+          "tokens": 418
         }
       ]
     },
@@ -833,7 +920,7 @@
       "hash": "8e122ef9a61ce256",
       "size": 3355,
       "mtimeMs": 1786563303853.5188,
-      "updatedAt": "2026-08-13T08:08:05.269Z",
+      "updatedAt": "2026-08-13T11:18:20.596Z",
       "source": "scan",
       "symbols": [
         {
@@ -857,8 +944,8 @@
       "tokens": 1241,
       "hash": "02a909de07084f06",
       "size": 4351,
-      "mtimeMs": 1786563303853.0464,
-      "updatedAt": "2026-08-13T08:08:05.269Z",
+      "mtimeMs": 1786609552149.716,
+      "updatedAt": "2026-08-13T11:18:20.596Z",
       "source": "scan",
       "symbols": [
         {
@@ -911,7 +998,7 @@
       "hash": "ff5e36ae3fb91655",
       "size": 4961,
       "mtimeMs": 1786563303853.6697,
-      "updatedAt": "2026-08-13T08:08:05.269Z",
+      "updatedAt": "2026-08-13T11:18:20.597Z",
       "source": "scan",
       "symbols": [
         {
@@ -936,7 +1023,7 @@
       "hash": "cb8ee6b7d470220a",
       "size": 4628,
       "mtimeMs": 1786563303853.3809,
-      "updatedAt": "2026-08-13T08:08:05.270Z",
+      "updatedAt": "2026-08-13T11:18:20.597Z",
       "source": "scan",
       "symbols": [
         {
@@ -957,12 +1044,28 @@
     },
     "app/scripts/seed.ts": {
       "description": "Seed Sanity content. Runs every target, or only the ones you name.",
-      "tokens": 491,
-      "hash": "6388b793138b71c7",
-      "size": 1720,
-      "mtimeMs": 1786607904026.6848,
-      "updatedAt": "2026-08-13T08:08:05.270Z",
-      "source": "scan"
+      "tokens": 530,
+      "hash": "d9e19e70ba2e135c",
+      "size": 1854,
+      "mtimeMs": 1786617387876.4465,
+      "updatedAt": "2026-08-13T11:18:20.597Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "parseTargets",
+          "kind": "fn",
+          "startLine": 36,
+          "endLine": 47,
+          "tokens": 106
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 64,
+          "tokens": 119
+        }
+      ]
     },
     "app/src/.DS_Store": {
       "description": "",
@@ -970,7 +1073,7 @@
       "hash": "10d8e961febdd09b",
       "size": 8196,
       "mtimeMs": 1785410026743.0393,
-      "updatedAt": "2026-08-13T08:08:05.270Z",
+      "updatedAt": "2026-08-13T11:18:20.597Z",
       "source": "scan"
     },
     "app/src/app/[slug]/page.tsx": {
@@ -979,8 +1082,47 @@
       "hash": "bc809c181947bb06",
       "size": 990,
       "mtimeMs": 1786606840498.2776,
-      "updatedAt": "2026-08-13T08:08:05.271Z",
+      "updatedAt": "2026-08-13T11:18:20.598Z",
       "source": "scan"
+    },
+    "app/src/app/aanbod/[slug]/page.tsx": {
+      "description": "Object detail page: fetches one `woning` by slug (WONING_QUERY), composes gallery/header/description/features/sidebar + SimilarObjects + CtaBand.",
+      "tokens": 1476,
+      "hash": "db065b6b1bb032b9",
+      "size": 5169,
+      "mtimeMs": 1786617367004.5522,
+      "updatedAt": "2026-08-13T11:18:20.599Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "getWoning",
+          "kind": "fn",
+          "startLine": 62,
+          "endLine": 65,
+          "tokens": 31
+        },
+        {
+          "name": "toCard",
+          "kind": "fn",
+          "startLine": 66,
+          "endLine": 86,
+          "tokens": 159
+        },
+        {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 87,
+          "endLine": 100,
+          "tokens": 91
+        },
+        {
+          "name": "ObjectPage",
+          "kind": "fn",
+          "startLine": 101,
+          "endLine": 166,
+          "tokens": 612
+        }
+      ]
     },
     "app/src/app/api/submit-form/route.ts": {
       "description": "Bigger uploads are rejected rather than silently dropped from the mail.",
@@ -988,7 +1130,7 @@
       "hash": "264991085c0e4a95",
       "size": 6286,
       "mtimeMs": 1786608370030.402,
-      "updatedAt": "2026-08-13T08:08:05.271Z",
+      "updatedAt": "2026-08-13T11:18:20.599Z",
       "source": "scan",
       "symbols": [
         {
@@ -1027,7 +1169,7 @@
       "hash": "c2624fe14d9e1637",
       "size": 489,
       "mtimeMs": 1785408681792.3948,
-      "updatedAt": "2026-08-13T08:08:05.272Z",
+      "updatedAt": "2026-08-13T11:18:20.599Z",
       "source": "scan"
     },
     "app/src/app/layout.tsx": {
@@ -1036,7 +1178,7 @@
       "hash": "fd919d17a50ffcb8",
       "size": 2549,
       "mtimeMs": 1786606887704.3767,
-      "updatedAt": "2026-08-13T08:08:05.272Z",
+      "updatedAt": "2026-08-13T11:18:20.600Z",
       "source": "scan",
       "symbols": [
         {
@@ -1061,7 +1203,7 @@
       "hash": "91a78d4fe16316df",
       "size": 436,
       "mtimeMs": 1785402644000,
-      "updatedAt": "2026-08-13T08:08:05.272Z",
+      "updatedAt": "2026-08-13T11:18:20.600Z",
       "source": "scan"
     },
     "app/src/app/not-found.tsx": {
@@ -1070,7 +1212,7 @@
       "hash": "f2fcb973347f6c77",
       "size": 835,
       "mtimeMs": 1785412795354.7793,
-      "updatedAt": "2026-08-13T08:08:05.272Z",
+      "updatedAt": "2026-08-13T11:18:20.600Z",
       "source": "scan"
     },
     "app/src/app/page.tsx": {
@@ -1079,8 +1221,26 @@
       "hash": "724783b017582a4b",
       "size": 752,
       "mtimeMs": 1786606850133.974,
-      "updatedAt": "2026-08-13T08:08:05.272Z",
+      "updatedAt": "2026-08-13T11:18:20.601Z",
       "source": "scan"
+    },
+    "app/src/components/blocks/AanbodHeader.tsx": {
+      "description": "Opener for /aanbod: breadcrumb, eyebrow, title with burgundy highlight, lead, and the sand \"gratis zoekopdracht\" card. Carries `data-solid-header`.",
+      "tokens": 1000,
+      "hash": "4ef2885bfaa64002",
+      "size": 3499,
+      "mtimeMs": 1786617206271.3364,
+      "updatedAt": "2026-08-13T11:18:20.601Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "AanbodHeader",
+          "kind": "fn",
+          "startLine": 36,
+          "endLine": 109,
+          "tokens": 716
+        }
+      ]
     },
     "app/src/components/blocks/Assurances.tsx": {
       "description": "Dark band with credentials, checked off two by two.",
@@ -1088,7 +1248,7 @@
       "hash": "95c82e286b375224",
       "size": 3032,
       "mtimeMs": 1786560649047.1638,
-      "updatedAt": "2026-08-13T08:08:05.273Z",
+      "updatedAt": "2026-08-13T11:18:20.601Z",
       "source": "scan",
       "symbols": [
         {
@@ -1113,7 +1273,7 @@
       "hash": "5474d6899e32461a",
       "size": 4671,
       "mtimeMs": 1786562539407.3,
-      "updatedAt": "2026-08-13T08:08:05.273Z",
+      "updatedAt": "2026-08-13T11:18:20.601Z",
       "source": "scan",
       "symbols": [
         {
@@ -1138,7 +1298,7 @@
       "hash": "8d018b3d87225c26",
       "size": 5842,
       "mtimeMs": 1786562575890.2498,
-      "updatedAt": "2026-08-13T08:08:05.274Z",
+      "updatedAt": "2026-08-13T11:18:20.601Z",
       "source": "scan",
       "symbols": [
         {
@@ -1170,7 +1330,7 @@
       "hash": "08bb8f1c9f9edfde",
       "size": 13224,
       "mtimeMs": 1786608326292.7334,
-      "updatedAt": "2026-08-13T08:08:05.274Z",
+      "updatedAt": "2026-08-13T11:18:20.602Z",
       "source": "scan",
       "symbols": [
         {
@@ -1209,7 +1369,7 @@
       "hash": "a584c27a8b2980e2",
       "size": 2406,
       "mtimeMs": 1786607572449.5425,
-      "updatedAt": "2026-08-13T08:08:05.274Z",
+      "updatedAt": "2026-08-13T11:18:20.602Z",
       "source": "scan",
       "symbols": [
         {
@@ -1227,7 +1387,7 @@
       "hash": "23edba36ee511c1f",
       "size": 2218,
       "mtimeMs": 1785415262140.9001,
-      "updatedAt": "2026-08-13T08:08:05.274Z",
+      "updatedAt": "2026-08-13T11:18:20.602Z",
       "source": "scan",
       "symbols": [
         {
@@ -1245,7 +1405,7 @@
       "hash": "9453e19c00bd640b",
       "size": 2762,
       "mtimeMs": 1785413195722.425,
-      "updatedAt": "2026-08-13T08:08:05.274Z",
+      "updatedAt": "2026-08-13T11:18:20.602Z",
       "source": "scan",
       "symbols": [
         {
@@ -1263,7 +1423,7 @@
       "hash": "594f2eece16bda42",
       "size": 3084,
       "mtimeMs": 1786560543137.319,
-      "updatedAt": "2026-08-13T08:08:05.274Z",
+      "updatedAt": "2026-08-13T11:18:20.602Z",
       "source": "scan",
       "symbols": [
         {
@@ -1281,7 +1441,7 @@
       "hash": "0b7344e108a67ec0",
       "size": 1460,
       "mtimeMs": 1785413190284.1921,
-      "updatedAt": "2026-08-13T08:08:05.274Z",
+      "updatedAt": "2026-08-13T11:18:20.602Z",
       "source": "scan"
     },
     "app/src/components/blocks/Faq.tsx": {
@@ -1290,7 +1450,7 @@
       "hash": "e51ade10d399f8e6",
       "size": 3938,
       "mtimeMs": 1785415428516.1208,
-      "updatedAt": "2026-08-13T08:08:05.275Z",
+      "updatedAt": "2026-08-13T11:18:20.603Z",
       "source": "scan",
       "symbols": [
         {
@@ -1308,7 +1468,7 @@
       "hash": "1782bb68412bb1e3",
       "size": 6352,
       "mtimeMs": 1785415619363.6216,
-      "updatedAt": "2026-08-13T08:08:05.275Z",
+      "updatedAt": "2026-08-13T11:18:20.603Z",
       "source": "scan",
       "symbols": [
         {
@@ -1326,7 +1486,7 @@
       "hash": "e6519b09e9a62195",
       "size": 5319,
       "mtimeMs": 1785413227994.7705,
-      "updatedAt": "2026-08-13T08:08:05.275Z",
+      "updatedAt": "2026-08-13T11:18:20.603Z",
       "source": "scan",
       "symbols": [
         {
@@ -1346,26 +1506,26 @@
       ]
     },
     "app/src/components/blocks/Listings.tsx": {
-      "description": "DEFAULT_ITEMS",
-      "tokens": 1340,
-      "hash": "2670e9510a33eae6",
-      "size": 4687,
-      "mtimeMs": 1785415292580.5696,
-      "updatedAt": "2026-08-13T08:08:05.275Z",
+      "description": "Pill tone: available (white), sold subject to conditions (sand), sold (burgundy).",
+      "tokens": 1475,
+      "hash": "fbabc3a994751bf2",
+      "size": 5161,
+      "mtimeMs": 1786617221818.1606,
+      "updatedAt": "2026-08-13T11:18:20.603Z",
       "source": "scan",
       "symbols": [
         {
           "name": "ListingCard",
           "kind": "fn",
-          "startLine": 72,
-          "endLine": 117,
-          "tokens": 466
+          "startLine": 83,
+          "endLine": 128,
+          "tokens": 472
         },
         {
           "name": "Listings",
           "kind": "fn",
-          "startLine": 118,
-          "endLine": 164,
+          "startLine": 129,
+          "endLine": 175,
           "tokens": 400
         }
       ]
@@ -1376,7 +1536,7 @@
       "hash": "a302d9f6c3781a19",
       "size": 2282,
       "mtimeMs": 1786560600830.5215,
-      "updatedAt": "2026-08-13T08:08:05.275Z",
+      "updatedAt": "2026-08-13T11:18:20.603Z",
       "source": "scan",
       "symbols": [
         {
@@ -1388,13 +1548,52 @@
         }
       ]
     },
+    "app/src/components/blocks/ObjectGrid.tsx": {
+      "description": "Client. Sticky filter bar (status pills, plaats/prijs/sortering) + listing grid over all woningen; filters, sorts and pages in the browser, with the dark CTA card and the empty state.",
+      "tokens": 3146,
+      "hash": "d28678e268e03c5e",
+      "size": 11012,
+      "mtimeMs": 1786617270480.7734,
+      "updatedAt": "2026-08-13T11:18:20.603Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "IconArea",
+          "kind": "fn",
+          "startLine": 46,
+          "endLine": 57,
+          "tokens": 74
+        },
+        {
+          "name": "IconRooms",
+          "kind": "fn",
+          "startLine": 58,
+          "endLine": 80,
+          "tokens": 259
+        },
+        {
+          "name": "toListing",
+          "kind": "fn",
+          "startLine": 81,
+          "endLine": 111,
+          "tokens": 246
+        },
+        {
+          "name": "ObjectGrid",
+          "kind": "fn",
+          "startLine": 112,
+          "endLine": 326,
+          "tokens": 2263
+        }
+      ]
+    },
     "app/src/components/blocks/PageHero.tsx": {
       "description": "DEFAULTS",
       "tokens": 1142,
       "hash": "fb1258a1b0739644",
       "size": 3995,
       "mtimeMs": 1785416736400.1511,
-      "updatedAt": "2026-08-13T08:08:05.275Z",
+      "updatedAt": "2026-08-13T11:18:20.603Z",
       "source": "scan",
       "symbols": [
         {
@@ -1412,7 +1611,7 @@
       "hash": "898d3dcd97cb7497",
       "size": 2295,
       "mtimeMs": 1786560526892.9836,
-      "updatedAt": "2026-08-13T08:08:05.275Z",
+      "updatedAt": "2026-08-13T11:18:20.603Z",
       "source": "scan",
       "symbols": [
         {
@@ -1430,7 +1629,7 @@
       "hash": "dec3de55ff8b8cc2",
       "size": 3775,
       "mtimeMs": 1786607590283.33,
-      "updatedAt": "2026-08-13T08:08:05.276Z",
+      "updatedAt": "2026-08-13T11:18:20.604Z",
       "source": "scan",
       "symbols": [
         {
@@ -1448,7 +1647,7 @@
       "hash": "7d13572e8a5583bd",
       "size": 2276,
       "mtimeMs": 1785413199718.2004,
-      "updatedAt": "2026-08-13T08:08:05.276Z",
+      "updatedAt": "2026-08-13T11:18:20.604Z",
       "source": "scan",
       "symbols": [
         {
@@ -1466,7 +1665,7 @@
       "hash": "57d64e6258679b91",
       "size": 2229,
       "mtimeMs": 1785415274797.0264,
-      "updatedAt": "2026-08-13T08:08:05.276Z",
+      "updatedAt": "2026-08-13T11:18:20.604Z",
       "source": "scan",
       "symbols": [
         {
@@ -1480,26 +1679,26 @@
     },
     "app/src/components/blocks/Reviews.tsx": {
       "description": "DEFAULTS",
-      "tokens": 1781,
-      "hash": "bbbf69ce877ec382",
-      "size": 6232,
-      "mtimeMs": 1785413190498.031,
-      "updatedAt": "2026-08-13T08:08:05.276Z",
+      "tokens": 1616,
+      "hash": "769a7987d553ba43",
+      "size": 5656,
+      "mtimeMs": 1786618893110.1035,
+      "updatedAt": "2026-08-13T11:18:20.604Z",
       "source": "scan",
       "symbols": [
         {
           "name": "ReviewCard",
           "kind": "fn",
-          "startLine": 44,
-          "endLine": 75,
-          "tokens": 433
+          "startLine": 41,
+          "endLine": 65,
+          "tokens": 285
         },
         {
           "name": "Reviews",
           "kind": "fn",
-          "startLine": 76,
-          "endLine": 174,
-          "tokens": 1023
+          "startLine": 66,
+          "endLine": 164,
+          "tokens": 1022
         }
       ]
     },
@@ -1509,7 +1708,7 @@
       "hash": "15bacaa7b4cb3614",
       "size": 3106,
       "mtimeMs": 1786607699400.1987,
-      "updatedAt": "2026-08-13T08:08:05.276Z",
+      "updatedAt": "2026-08-13T11:18:20.604Z",
       "source": "scan",
       "symbols": [
         {
@@ -1527,7 +1726,7 @@
       "hash": "766f3ba05c33d969",
       "size": 5684,
       "mtimeMs": 1785413183139.182,
-      "updatedAt": "2026-08-13T08:08:05.276Z",
+      "updatedAt": "2026-08-13T11:18:20.604Z",
       "source": "scan",
       "symbols": [
         {
@@ -1552,7 +1751,7 @@
       "hash": "7f4448009f72a0bd",
       "size": 4342,
       "mtimeMs": 1786607558666.14,
-      "updatedAt": "2026-08-13T08:08:05.276Z",
+      "updatedAt": "2026-08-13T11:18:20.605Z",
       "source": "scan",
       "symbols": [
         {
@@ -1570,7 +1769,7 @@
       "hash": "2f16ec5ec4826c2a",
       "size": 6024,
       "mtimeMs": 1785419839858.5242,
-      "updatedAt": "2026-08-13T08:08:05.276Z",
+      "updatedAt": "2026-08-13T11:18:20.605Z",
       "source": "scan",
       "symbols": [
         {
@@ -1595,7 +1794,7 @@
       "hash": "710c500aa121dbc8",
       "size": 3565,
       "mtimeMs": 1785413186461.6929,
-      "updatedAt": "2026-08-13T08:08:05.277Z",
+      "updatedAt": "2026-08-13T11:18:20.605Z",
       "source": "scan",
       "symbols": [
         {
@@ -1613,7 +1812,7 @@
       "hash": "47280cf16f3ed10d",
       "size": 3106,
       "mtimeMs": 1786560558589.5383,
-      "updatedAt": "2026-08-13T08:08:05.277Z",
+      "updatedAt": "2026-08-13T11:18:20.605Z",
       "source": "scan",
       "symbols": [
         {
@@ -1631,7 +1830,7 @@
       "hash": "703a8fda0ba8595a",
       "size": 3236,
       "mtimeMs": 1786560588922.7517,
-      "updatedAt": "2026-08-13T08:08:05.277Z",
+      "updatedAt": "2026-08-13T11:18:20.605Z",
       "source": "scan",
       "symbols": [
         {
@@ -1656,7 +1855,7 @@
       "hash": "08052a2b80291d6a",
       "size": 866,
       "mtimeMs": 1785413185546.9302,
-      "updatedAt": "2026-08-13T08:08:05.277Z",
+      "updatedAt": "2026-08-13T11:18:20.605Z",
       "source": "scan"
     },
     "app/src/components/layout/SiteFooter.tsx": {
@@ -1665,7 +1864,7 @@
       "hash": "c8479ba44d4c0202",
       "size": 3922,
       "mtimeMs": 1785417523009.0027,
-      "updatedAt": "2026-08-13T08:08:05.277Z",
+      "updatedAt": "2026-08-13T11:18:20.606Z",
       "source": "scan",
       "symbols": [
         {
@@ -1690,7 +1889,7 @@
       "hash": "ab48b22c1437f101",
       "size": 5132,
       "mtimeMs": 1786603597186.0835,
-      "updatedAt": "2026-08-13T08:08:05.277Z",
+      "updatedAt": "2026-08-13T11:18:20.606Z",
       "source": "scan",
       "symbols": [
         {
@@ -1729,58 +1928,208 @@
       "hash": "a9777db744547c28",
       "size": 1556,
       "mtimeMs": 1785395526511.0378,
-      "updatedAt": "2026-08-13T08:08:05.277Z",
+      "updatedAt": "2026-08-13T11:18:20.606Z",
       "source": "scan"
     },
-    "app/src/components/PageBuilder.tsx": {
-      "description": "imageSrc — renders chart",
-      "tokens": 6530,
-      "hash": "7ebaae6eb6140cba",
-      "size": 22855,
-      "mtimeMs": 1786608339626.4736,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+    "app/src/components/object/ObjectDescription.tsx": {
+      "description": "Client. Omschrijving clamped behind a fade with a \"lees de volledige omschrijving\" toggle; renders parsed Realworks text.",
+      "tokens": 813,
+      "hash": "5e66d737b694a669",
+      "size": 2844,
+      "mtimeMs": 1786611315479.8455,
+      "updatedAt": "2026-08-13T11:18:20.606Z",
       "source": "scan",
       "symbols": [
         {
-          "name": "imageSrc",
+          "name": "Inline",
           "kind": "fn",
-          "startLine": 52,
-          "endLine": 62,
-          "tokens": 82
+          "startLine": 12,
+          "endLine": 28,
+          "tokens": 121
         },
         {
-          "name": "toImage",
+          "name": "ObjectDescription",
           "kind": "fn",
-          "startLine": 63,
-          "endLine": 72,
-          "tokens": 76
+          "startLine": 29,
+          "endLine": 91,
+          "tokens": 616
+        }
+      ]
+    },
+    "app/src/components/object/ObjectFeatures.tsx": {
+      "description": "Kenmerkentabel: one white card per `kenmerkGroep`, label/value rows, multi-value rows as a list.",
+      "tokens": 703,
+      "hash": "9d6c39b3a1ff35ad",
+      "size": 2460,
+      "mtimeMs": 1786611326008.5325,
+      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "ObjectFeatures",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 74,
+          "tokens": 608
+        }
+      ]
+    },
+    "app/src/components/object/ObjectGallery.tsx": {
+      "description": "Client. Three-photo header grid + \"Alle foto's\" lightbox (arrow keys, Escape, focus return). Carries `data-solid-header`.",
+      "tokens": 2206,
+      "hash": "37e3641824cbfc52",
+      "size": 7721,
+      "mtimeMs": 1786611284509.3784,
+      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "IconBack",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 26,
+          "tokens": 62
         },
+        {
+          "name": "IconPhotos",
+          "kind": "fn",
+          "startLine": 27,
+          "endLine": 47,
+          "tokens": 192
+        },
+        {
+          "name": "ObjectGallery",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 239,
+          "tokens": 1839
+        }
+      ]
+    },
+    "app/src/components/object/ObjectHeader.tsx": {
+      "description": "Adres/prijs kop + the specs bar; skips specs the feed did not fill, colours the energielabel chip by tier.",
+      "tokens": 1063,
+      "hash": "0ae6dce70550b5b6",
+      "size": 3722,
+      "mtimeMs": 1786611433898.564,
+      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "labelClass",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 28,
+          "tokens": 78
+        },
+        {
+          "name": "Spec",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 41,
+          "tokens": 118
+        },
+        {
+          "name": "ObjectHeader",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 124,
+          "tokens": 713
+        }
+      ]
+    },
+    "app/src/components/object/ObjectSidebar.tsx": {
+      "description": "Sticky price card (status pill, CTAs, feiten, brochure/delen) + makelaar card.",
+      "tokens": 1621,
+      "hash": "f65c1f6130e303e0",
+      "size": 5675,
+      "mtimeMs": 1786611353906.9075,
+      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "IconDownload",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 46,
+          "tokens": 84
+        },
+        {
+          "name": "IconShare",
+          "kind": "fn",
+          "startLine": 47,
+          "endLine": 57,
+          "tokens": 133
+        },
+        {
+          "name": "Feit",
+          "kind": "fn",
+          "startLine": 58,
+          "endLine": 67,
+          "tokens": 112
+        },
+        {
+          "name": "ObjectSidebar",
+          "kind": "fn",
+          "startLine": 68,
+          "endLine": 177,
+          "tokens": 988
+        }
+      ]
+    },
+    "app/src/components/object/ShareButton.tsx": {
+      "description": "Client. navigator.share with a clipboard fallback.",
+      "tokens": 254,
+      "hash": "3f5007d4950d8dbb",
+      "size": 890,
+      "mtimeMs": 1786611331205.4033,
+      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "source": "scan"
+    },
+    "app/src/components/object/SimilarObjects.tsx": {
+      "description": "\"Vergelijkbare woningen\" band on sand, reusing `ListingCard`.",
+      "tokens": 417,
+      "hash": "8da9d2e724b2b297",
+      "size": 1460,
+      "mtimeMs": 1786611884278.9775,
+      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "source": "scan"
+    },
+    "app/src/components/PageBuilder.tsx": {
+      "description": "toCta — renders chart",
+      "tokens": 6904,
+      "hash": "04b9149998bb248c",
+      "size": 24162,
+      "mtimeMs": 1786619840283.0605,
+      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "source": "scan",
+      "symbols": [
         {
           "name": "toCta",
           "kind": "fn",
-          "startLine": 73,
-          "endLine": 78,
+          "startLine": 61,
+          "endLine": 66,
           "tokens": 49
         },
         {
           "name": "toLabeledLink",
           "kind": "fn",
-          "startLine": 79,
-          "endLine": 86,
+          "startLine": 67,
+          "endLine": 74,
           "tokens": 76
         },
         {
           "name": "renderBlock",
           "kind": "fn",
-          "startLine": 87,
-          "endLine": 705,
-          "tokens": 5626
+          "startLine": 75,
+          "endLine": 732,
+          "tokens": 6056
         },
         {
           "name": "PageBuilder",
           "kind": "fn",
-          "startLine": 706,
-          "endLine": 711,
+          "startLine": 733,
+          "endLine": 738,
           "tokens": 60
         }
       ]
@@ -1791,7 +2140,7 @@
       "hash": "38475ef714e8affc",
       "size": 1892,
       "mtimeMs": 1785415441511.4055,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+      "updatedAt": "2026-08-13T11:18:20.607Z",
       "source": "scan",
       "symbols": [
         {
@@ -1816,7 +2165,7 @@
       "hash": "05f55f040d0a64a8",
       "size": 1553,
       "mtimeMs": 1785415398610.7769,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+      "updatedAt": "2026-08-13T11:18:20.607Z",
       "source": "scan"
     },
     "app/src/components/ui/ContactIcon.tsx": {
@@ -1825,7 +2174,7 @@
       "hash": "edabc2df94fe7af8",
       "size": 1998,
       "mtimeMs": 1786607538427.6035,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+      "updatedAt": "2026-08-13T11:18:20.607Z",
       "source": "scan",
       "symbols": [
         {
@@ -1843,7 +2192,7 @@
       "hash": "02d1f9bbe083f4cd",
       "size": 657,
       "mtimeMs": 1786560645894.0952,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+      "updatedAt": "2026-08-13T11:18:20.607Z",
       "source": "scan"
     },
     "app/src/components/ui/IconArrow.tsx": {
@@ -1852,7 +2201,7 @@
       "hash": "6a5c1f24e03300a7",
       "size": 708,
       "mtimeMs": 1785392743578.4355,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+      "updatedAt": "2026-08-13T11:18:20.607Z",
       "source": "scan"
     },
     "app/src/components/ui/Lead.tsx": {
@@ -1861,7 +2210,7 @@
       "hash": "014631b802eaf516",
       "size": 319,
       "mtimeMs": 1785394554923.0151,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+      "updatedAt": "2026-08-13T11:18:20.607Z",
       "source": "scan"
     },
     "app/src/components/ui/LogoMark.tsx": {
@@ -1870,7 +2219,7 @@
       "hash": "921a4759be97b862",
       "size": 2230,
       "mtimeMs": 1785395350079.9578,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+      "updatedAt": "2026-08-13T11:18:20.607Z",
       "source": "scan",
       "symbols": [
         {
@@ -1888,7 +2237,7 @@
       "hash": "aec7f6d2a3d1a840",
       "size": 882,
       "mtimeMs": 1785408194057.265,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+      "updatedAt": "2026-08-13T11:18:20.608Z",
       "source": "scan"
     },
     "app/src/components/ui/RevealLink.tsx": {
@@ -1897,7 +2246,7 @@
       "hash": "dd12002044baeeb5",
       "size": 969,
       "mtimeMs": 1785415412626.4539,
-      "updatedAt": "2026-08-13T08:08:05.278Z",
+      "updatedAt": "2026-08-13T11:18:20.608Z",
       "source": "scan"
     },
     "app/src/components/ui/SectionHead.tsx": {
@@ -1906,7 +2255,7 @@
       "hash": "f0ab3aab1f7b059e",
       "size": 559,
       "mtimeMs": 1785394555191.6484,
-      "updatedAt": "2026-08-13T08:08:05.279Z",
+      "updatedAt": "2026-08-13T11:18:20.608Z",
       "source": "scan"
     },
     "app/src/components/ui/Wrap.tsx": {
@@ -1915,7 +2264,7 @@
       "hash": "bde3116a0bd7d4cd",
       "size": 416,
       "mtimeMs": 1785408054715.1523,
-      "updatedAt": "2026-08-13T08:08:05.279Z",
+      "updatedAt": "2026-08-13T11:18:20.608Z",
       "source": "scan"
     },
     "app/src/hooks/useActiveStep.ts": {
@@ -1924,7 +2273,7 @@
       "hash": "3b0e1f6ea523cbf1",
       "size": 1106,
       "mtimeMs": 1785409638047.68,
-      "updatedAt": "2026-08-13T08:08:05.279Z",
+      "updatedAt": "2026-08-13T11:18:20.608Z",
       "source": "scan"
     },
     "app/src/hooks/useMobileNav.ts": {
@@ -1933,7 +2282,7 @@
       "hash": "59f2e48a7765bf83",
       "size": 984,
       "mtimeMs": 1785392863778.6238,
-      "updatedAt": "2026-08-13T08:08:05.279Z",
+      "updatedAt": "2026-08-13T11:18:20.608Z",
       "source": "scan"
     },
     "app/src/hooks/useRevealOnScroll.ts": {
@@ -1942,7 +2291,7 @@
       "hash": "ff5027d1717a5bf1",
       "size": 906,
       "mtimeMs": 1786561479607.484,
-      "updatedAt": "2026-08-13T08:08:05.279Z",
+      "updatedAt": "2026-08-13T11:18:20.608Z",
       "source": "scan"
     },
     "app/src/hooks/useReviewsCarousel.ts": {
@@ -1951,7 +2300,7 @@
       "hash": "4de275bb0b4be16f",
       "size": 1334,
       "mtimeMs": 1785406817982.6602,
-      "updatedAt": "2026-08-13T08:08:05.279Z",
+      "updatedAt": "2026-08-13T11:18:20.608Z",
       "source": "scan"
     },
     "app/src/hooks/useStickyTopbar.ts": {
@@ -1960,7 +2309,48 @@
       "hash": "e9e5ab97944164eb",
       "size": 826,
       "mtimeMs": 1786560656601.862,
-      "updatedAt": "2026-08-13T08:08:05.279Z",
+      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "source": "scan"
+    },
+    "app/src/lib/aanbiedingstekst.ts": {
+      "description": "Parses the Realworks text format (`<br>`, `**vet**`, `- ` bullets) into blocks and drops the English half; `splitBold` for inline emphasis.",
+      "tokens": 588,
+      "hash": "417f23580d3dd5fa",
+      "size": 2065,
+      "mtimeMs": 1786611152891.484,
+      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "stripMarkers",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 22,
+          "tokens": 21
+        },
+        {
+          "name": "parseAanbiedingstekst",
+          "kind": "fn",
+          "startLine": 23,
+          "endLine": 57,
+          "tokens": 252
+        },
+        {
+          "name": "splitBold",
+          "kind": "fn",
+          "startLine": 58,
+          "endLine": 64,
+          "tokens": 66
+        }
+      ]
+    },
+    "app/src/lib/aanbod-content.ts": {
+      "description": "Copy + filter options (status, price ranges, sortings), page size and CTA-card position for /aanbod.",
+      "tokens": 839,
+      "hash": "69edd82abbe63162",
+      "size": 2949,
+      "mtimeMs": 1786617190173.3257,
+      "updatedAt": "2026-08-13T11:18:20.609Z",
       "source": "scan"
     },
     "app/src/lib/chrome.ts": {
@@ -1969,7 +2359,7 @@
       "hash": "0a9825cfe769c118",
       "size": 214,
       "mtimeMs": 1785392860077.3623,
-      "updatedAt": "2026-08-13T08:08:05.280Z",
+      "updatedAt": "2026-08-13T11:18:20.609Z",
       "source": "scan"
     },
     "app/src/lib/cn.ts": {
@@ -1978,7 +2368,7 @@
       "hash": "ec1499e69cf8ab14",
       "size": 129,
       "mtimeMs": 1785394522220.3386,
-      "updatedAt": "2026-08-13T08:08:05.280Z",
+      "updatedAt": "2026-08-13T11:18:20.609Z",
       "source": "scan"
     },
     "app/src/lib/contact-content.ts": {
@@ -1987,16 +2377,25 @@
       "hash": "8867d82d35948820",
       "size": 6115,
       "mtimeMs": 1786607522146.9343,
-      "updatedAt": "2026-08-13T08:08:05.280Z",
+      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "source": "scan"
+    },
+    "app/src/lib/format.ts": {
+      "description": "`euro()`, `longDate()`, `shortDate()` for object data.",
+      "tokens": 228,
+      "hash": "8701aed0fafb688d",
+      "size": 799,
+      "mtimeMs": 1786611222475.6199,
+      "updatedAt": "2026-08-13T11:18:20.609Z",
       "source": "scan"
     },
     "app/src/lib/home-content.ts": {
       "description": "Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more",
-      "tokens": 1136,
-      "hash": "edf59c53969314b2",
-      "size": 3996,
-      "mtimeMs": 1785392722977.4873,
-      "updatedAt": "2026-08-13T08:08:05.280Z",
+      "tokens": 1046,
+      "hash": "468aafd90e1e85ea",
+      "size": 3679,
+      "mtimeMs": 1786618873059.2969,
+      "updatedAt": "2026-08-13T11:18:20.609Z",
       "source": "scan"
     },
     "app/src/lib/links.ts": {
@@ -2005,8 +2404,26 @@
       "hash": "deb9a891b124a1f5",
       "size": 900,
       "mtimeMs": 1785417692764.3281,
-      "updatedAt": "2026-08-13T08:08:05.280Z",
+      "updatedAt": "2026-08-13T11:18:20.609Z",
       "source": "scan"
+    },
+    "app/src/lib/object-content.ts": {
+      "description": "Status labels/tones, back link, makelaar card, CTA copy for the object page.",
+      "tokens": 518,
+      "hash": "53f2c1ecb6fa6ff3",
+      "size": 1813,
+      "mtimeMs": 1786611233980.7998,
+      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "statusOf",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 53,
+          "tokens": 407
+        }
+      ]
     },
     "app/src/lib/over-ons-content.ts": {
       "description": "Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more",
@@ -2014,16 +2431,16 @@
       "hash": "12b28f9d9e1d1d95",
       "size": 6839,
       "mtimeMs": 1786560515058.1301,
-      "updatedAt": "2026-08-13T08:08:05.280Z",
+      "updatedAt": "2026-08-13T11:18:20.610Z",
       "source": "scan"
     },
     "app/src/lib/reviews.ts": {
-      "description": "Gap between review cards in the carousel (matches CSS `gap: 24px`).",
-      "tokens": 131,
-      "hash": "c5e47367b867c13f",
-      "size": 457,
-      "mtimeMs": 1785392860805.4639,
-      "updatedAt": "2026-08-13T08:08:05.280Z",
+      "description": "Aggregates die PAGE_QUERY over alle reviews afleidt. Alles kan ontbreken.",
+      "tokens": 429,
+      "hash": "23d69cc8a1f2e45e",
+      "size": 1501,
+      "mtimeMs": 1786619826044.7517,
+      "updatedAt": "2026-08-13T11:18:20.610Z",
       "source": "scan"
     },
     "app/src/lib/site.ts": {
@@ -2032,7 +2449,7 @@
       "hash": "eee0b0612d02829c",
       "size": 666,
       "mtimeMs": 1785417542588.1482,
-      "updatedAt": "2026-08-13T08:08:05.280Z",
+      "updatedAt": "2026-08-13T11:18:20.610Z",
       "source": "scan"
     },
     "app/src/lib/taxatie-content.ts": {
@@ -2041,7 +2458,7 @@
       "hash": "a411db3329b2ef87",
       "size": 10953,
       "mtimeMs": 1786562523597.816,
-      "updatedAt": "2026-08-13T08:08:05.281Z",
+      "updatedAt": "2026-08-13T11:18:20.610Z",
       "source": "scan"
     },
     "app/src/lib/verkoop-content.ts": {
@@ -2050,7 +2467,7 @@
       "hash": "f31c6a93a5a316a5",
       "size": 7712,
       "mtimeMs": 1786562531182.1392,
-      "updatedAt": "2026-08-13T08:08:05.281Z",
+      "updatedAt": "2026-08-13T11:18:20.610Z",
       "source": "scan"
     },
     "app/src/sanity/client.ts": {
@@ -2059,25 +2476,25 @@
       "hash": "3ec432deb90d37d3",
       "size": 211,
       "mtimeMs": 1785089336344.546,
-      "updatedAt": "2026-08-13T08:08:05.281Z",
+      "updatedAt": "2026-08-13T11:18:20.610Z",
       "source": "scan"
     },
     "app/src/sanity/image.ts": {
-      "description": "Exports urlFor",
-      "tokens": 107,
-      "hash": "d6daebf98c997e48",
-      "size": 374,
-      "mtimeMs": 1785412093193.3325,
-      "updatedAt": "2026-08-13T08:08:05.281Z",
+      "description": "Exports SanityImage, urlFor, imageSrc, toImage",
+      "tokens": 293,
+      "hash": "b01cf2114cc455b3",
+      "size": 1024,
+      "mtimeMs": 1786611093245.4412,
+      "updatedAt": "2026-08-13T11:18:20.610Z",
       "source": "scan"
     },
     "app/src/sanity/metadata.ts": {
-      "description": "`pageMetadata()`: maps a page document's `seo` object (title, description, ogImage, noIndex) onto Next Metadata; omits unset keys so layout defaults inherit.",
-      "tokens": 509,
-      "hash": "8bc05e910360be38",
-      "size": 1783,
-      "mtimeMs": 1786606865090.4587,
-      "updatedAt": "2026-08-13T08:08:05.281Z",
+      "description": "Map a page document's `seo` object onto Next metadata. Unset fields fall back to the root layout.",
+      "tokens": 511,
+      "hash": "7acb84c9e55c0cd9",
+      "size": 1790,
+      "mtimeMs": 1786611390739.419,
+      "updatedAt": "2026-08-13T11:18:20.611Z",
       "source": "scan",
       "symbols": [
         {
@@ -2091,11 +2508,11 @@
     },
     "app/src/sanity/queries.ts": {
       "description": "Resolve internal page references on link/cta objects.",
-      "tokens": 724,
-      "hash": "cf31cc0e4ac8c443",
-      "size": 2534,
-      "mtimeMs": 1786608297050.206,
-      "updatedAt": "2026-08-13T08:08:05.281Z",
+      "tokens": 1247,
+      "hash": "2341522046ff7c57",
+      "size": 4368,
+      "mtimeMs": 1786619803195.4453,
+      "updatedAt": "2026-08-13T11:18:20.611Z",
       "source": "scan"
     },
     "app/tailwind.config.ts": {
@@ -2104,7 +2521,7 @@
       "hash": "acbbf29f655cfa27",
       "size": 3308,
       "mtimeMs": 1785396746187.5957,
-      "updatedAt": "2026-08-13T08:08:05.281Z",
+      "updatedAt": "2026-08-13T11:18:20.611Z",
       "source": "scan"
     },
     "app/tsconfig.json": {
@@ -2113,16 +2530,16 @@
       "hash": "5c51df4c59f4510d",
       "size": 670,
       "mtimeMs": 1785087937160.0479,
-      "updatedAt": "2026-08-13T08:08:05.281Z",
+      "updatedAt": "2026-08-13T11:18:20.611Z",
       "source": "scan"
     },
     "app/tsconfig.tsbuildinfo": {
       "description": "",
-      "tokens": 42809,
-      "hash": "0e1197d1c36bd22b",
-      "size": 160533,
-      "mtimeMs": 1786608377586.508,
-      "updatedAt": "2026-08-13T08:08:05.282Z",
+      "tokens": 44886,
+      "hash": "b9b4fe83c2de6562",
+      "size": 168320,
+      "mtimeMs": 1786619859731.9812,
+      "updatedAt": "2026-08-13T11:18:20.612Z",
       "source": "scan"
     },
     "CLAUDE.md": {
@@ -2131,7 +2548,7 @@
       "hash": "b1ca356fa9d5f3a6",
       "size": 225,
       "mtimeMs": 1785834177112.446,
-      "updatedAt": "2026-08-13T08:08:05.282Z",
+      "updatedAt": "2026-08-13T11:18:20.613Z",
       "source": "scan"
     },
     "README.md": {
@@ -2140,7 +2557,7 @@
       "hash": "7239f818fb4c333e",
       "size": 286,
       "mtimeMs": 1785088116980.9365,
-      "updatedAt": "2026-08-13T08:08:05.282Z",
+      "updatedAt": "2026-08-13T11:18:20.613Z",
       "source": "scan"
     },
     "studio-hart-huis/.gitignore": {
@@ -2149,7 +2566,7 @@
       "hash": "e830721125cd1c86",
       "size": 420,
       "mtimeMs": 1785064182434.4294,
-      "updatedAt": "2026-08-13T08:08:05.283Z",
+      "updatedAt": "2026-08-13T11:18:20.613Z",
       "source": "scan"
     },
     "studio-hart-huis/.sanity/runtime/app.js": {
@@ -2157,8 +2574,8 @@
       "tokens": 88,
       "hash": "9f3c353621ecc547",
       "size": 307,
-      "mtimeMs": 1786607108707.6526,
-      "updatedAt": "2026-08-13T08:08:05.284Z",
+      "mtimeMs": 1786610598429.3792,
+      "updatedAt": "2026-08-13T11:18:20.614Z",
       "source": "scan"
     },
     "studio-hart-huis/.sanity/runtime/index.html": {
@@ -2166,8 +2583,8 @@
       "tokens": 2316,
       "hash": "2d9e304bcfe67fce",
       "size": 8688,
-      "mtimeMs": 1786607108706.9958,
-      "updatedAt": "2026-08-13T08:08:05.284Z",
+      "mtimeMs": 1786610598428.543,
+      "updatedAt": "2026-08-13T11:18:20.614Z",
       "source": "scan"
     },
     "studio-hart-huis/eslint.config.mjs": {
@@ -2176,7 +2593,7 @@
       "hash": "c5807d719bd7e7fe",
       "size": 78,
       "mtimeMs": 1785064183076.9744,
-      "updatedAt": "2026-08-13T08:08:05.284Z",
+      "updatedAt": "2026-08-13T11:18:20.615Z",
       "source": "scan"
     },
     "studio-hart-huis/package-lock.json": {
@@ -2185,7 +2602,7 @@
       "hash": "11b691ebd09f393e",
       "size": 599520,
       "mtimeMs": 1786607099651.9663,
-      "updatedAt": "2026-08-13T08:08:05.286Z",
+      "updatedAt": "2026-08-13T11:18:20.616Z",
       "source": "scan"
     },
     "studio-hart-huis/package.json": {
@@ -2194,7 +2611,7 @@
       "hash": "ca6ab595d6f7a184",
       "size": 885,
       "mtimeMs": 1786607099536.6936,
-      "updatedAt": "2026-08-13T08:08:05.286Z",
+      "updatedAt": "2026-08-13T11:18:20.616Z",
       "source": "scan"
     },
     "studio-hart-huis/pnpm-lock.yaml": {
@@ -2203,7 +2620,7 @@
       "hash": "6c882dbf5161706e",
       "size": 384372,
       "mtimeMs": 1786561413902.1328,
-      "updatedAt": "2026-08-13T08:08:05.288Z",
+      "updatedAt": "2026-08-13T11:18:20.618Z",
       "source": "scan"
     },
     "studio-hart-huis/README.md": {
@@ -2212,7 +2629,7 @@
       "hash": "9bdd511ad54209f8",
       "size": 527,
       "mtimeMs": 1785064182431.047,
-      "updatedAt": "2026-08-13T08:08:05.288Z",
+      "updatedAt": "2026-08-13T11:18:20.619Z",
       "source": "scan"
     },
     "studio-hart-huis/sanity.cli.ts": {
@@ -2221,7 +2638,7 @@
       "hash": "eefc3be71900db30",
       "size": 342,
       "mtimeMs": 1786605565609.9658,
-      "updatedAt": "2026-08-13T08:08:05.288Z",
+      "updatedAt": "2026-08-13T11:18:20.619Z",
       "source": "scan"
     },
     "studio-hart-huis/sanity.config.ts": {
@@ -2230,7 +2647,16 @@
       "hash": "2f644a97d63da24c",
       "size": 525,
       "mtimeMs": 1786607449160.8398,
-      "updatedAt": "2026-08-13T08:08:05.288Z",
+      "updatedAt": "2026-08-13T11:18:20.619Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/aanbodHeaderType.ts": {
+      "description": "Exports aanbodHeaderType",
+      "tokens": 358,
+      "hash": "8ca24ea2b522143d",
+      "size": 1253,
+      "mtimeMs": 1786617278177.1423,
+      "updatedAt": "2026-08-13T11:18:20.619Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/assurancesType.ts": {
@@ -2239,7 +2665,7 @@
       "hash": "f5f79b942c3c7416",
       "size": 1285,
       "mtimeMs": 1786560726143.7336,
-      "updatedAt": "2026-08-13T08:08:05.289Z",
+      "updatedAt": "2026-08-13T11:18:20.619Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/benefitsType.ts": {
@@ -2248,7 +2674,7 @@
       "hash": "c8fc75e0c430d858",
       "size": 2232,
       "mtimeMs": 1786562544138.0842,
-      "updatedAt": "2026-08-13T08:08:05.289Z",
+      "updatedAt": "2026-08-13T11:18:20.619Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/compareCardsType.ts": {
@@ -2257,7 +2683,7 @@
       "hash": "9c56e998cde09cb7",
       "size": 2473,
       "mtimeMs": 1786562590636.7693,
-      "updatedAt": "2026-08-13T08:08:05.289Z",
+      "updatedAt": "2026-08-13T11:18:20.619Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/contactFormSectionType.ts": {
@@ -2266,7 +2692,7 @@
       "hash": "e87b540d6e5ff1d6",
       "size": 2959,
       "mtimeMs": 1786607810092.9868,
-      "updatedAt": "2026-08-13T08:08:05.289Z",
+      "updatedAt": "2026-08-13T11:18:20.620Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/contactWaysType.ts": {
@@ -2275,7 +2701,7 @@
       "hash": "d39910ec626dc7f9",
       "size": 1853,
       "mtimeMs": 1786607789624.2578,
-      "updatedAt": "2026-08-13T08:08:05.289Z",
+      "updatedAt": "2026-08-13T11:18:20.620Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/crossLinksType.ts": {
@@ -2284,7 +2710,7 @@
       "hash": "84229b651aa969e7",
       "size": 1115,
       "mtimeMs": 1785415057713.1182,
-      "updatedAt": "2026-08-13T08:08:05.289Z",
+      "updatedAt": "2026-08-13T11:18:20.620Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/ctaBandType.ts": {
@@ -2293,7 +2719,7 @@
       "hash": "9c112bfd109e89c0",
       "size": 1166,
       "mtimeMs": 1785413063795.3142,
-      "updatedAt": "2026-08-13T08:08:05.289Z",
+      "updatedAt": "2026-08-13T11:18:20.620Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/duoPhotosType.ts": {
@@ -2302,7 +2728,7 @@
       "hash": "8e379f3468f37824",
       "size": 1278,
       "mtimeMs": 1786560726121.0774,
-      "updatedAt": "2026-08-13T08:08:05.289Z",
+      "updatedAt": "2026-08-13T11:18:20.620Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/factBarType.ts": {
@@ -2311,7 +2737,7 @@
       "hash": "fea9102e9266f4a3",
       "size": 1010,
       "mtimeMs": 1785413084448.296,
-      "updatedAt": "2026-08-13T08:08:05.289Z",
+      "updatedAt": "2026-08-13T11:18:20.620Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/faqsType.ts": {
@@ -2320,7 +2746,7 @@
       "hash": "9f84992a20aef4df",
       "size": 924,
       "mtimeMs": 1785413108533.2122,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.620Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/heroType.ts": {
@@ -2329,7 +2755,7 @@
       "hash": "86b8fce348ee5201",
       "size": 2403,
       "mtimeMs": 1785414683668.4846,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.620Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/introType.ts": {
@@ -2338,7 +2764,7 @@
       "hash": "741d65d7d7f99709",
       "size": 2399,
       "mtimeMs": 1785413256568.5757,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.620Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/listingsType.ts": {
@@ -2347,7 +2773,7 @@
       "hash": "b07adac0900ab265",
       "size": 2614,
       "mtimeMs": 1785415063219.6985,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.621Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/mediaTextType.ts": {
@@ -2356,7 +2782,16 @@
       "hash": "a2b19db266fc7fc8",
       "size": 1192,
       "mtimeMs": 1786560726139.4656,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/objectGridType.ts": {
+      "description": "Exports objectGridType — CTA-kaart + lege-staat teksten; de woningen komen uit PAGE_QUERY",
+      "tokens": 315,
+      "hash": "0cbd91172da12ec1",
+      "size": 1102,
+      "mtimeMs": 1786617285586.8928,
+      "updatedAt": "2026-08-13T11:18:20.621Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/pageHeroType.ts": {
@@ -2365,7 +2800,7 @@
       "hash": "fe9b18c92a938e89",
       "size": 1676,
       "mtimeMs": 1785413077593.0142,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.621Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/pageOpenerType.ts": {
@@ -2374,7 +2809,7 @@
       "hash": "aa636902ee6cd871",
       "size": 1007,
       "mtimeMs": 1786560726116.503,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.621Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/personType.ts": {
@@ -2383,7 +2818,7 @@
       "hash": "59ad75bde78645ca",
       "size": 1962,
       "mtimeMs": 1786607789628.988,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.621Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/quoteBandType.ts": {
@@ -2392,7 +2827,7 @@
       "hash": "e89a70e799854c51",
       "size": 1270,
       "mtimeMs": 1785413100084.1924,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.621Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/regionBlockType.ts": {
@@ -2401,7 +2836,7 @@
       "hash": "5f6d9448a6739d6d",
       "size": 1196,
       "mtimeMs": 1785415063504.6973,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.621Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/reviewsType.ts": {
@@ -2410,7 +2845,7 @@
       "hash": "61f6590f0c895298",
       "size": 1306,
       "mtimeMs": 1785413059436.2683,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.621Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/routeBlockType.ts": {
@@ -2419,7 +2854,7 @@
       "hash": "e669ac88eafe57d0",
       "size": 1819,
       "mtimeMs": 1786607789633.3943,
-      "updatedAt": "2026-08-13T08:08:05.290Z",
+      "updatedAt": "2026-08-13T11:18:20.621Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/servicesType.ts": {
@@ -2428,7 +2863,7 @@
       "hash": "f8b43f8565d79112",
       "size": 2396,
       "mtimeMs": 1785415062017.9482,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "updatedAt": "2026-08-13T11:18:20.622Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/splitHeroType.ts": {
@@ -2437,7 +2872,7 @@
       "hash": "4d100ac6e82e4820",
       "size": 1499,
       "mtimeMs": 1786607789619.8772,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "updatedAt": "2026-08-13T11:18:20.622Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/stepsType.ts": {
@@ -2446,7 +2881,7 @@
       "hash": "c748e46a3ca14f11",
       "size": 1581,
       "mtimeMs": 1785413096292.5088,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "updatedAt": "2026-08-13T11:18:20.622Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/storyType.ts": {
@@ -2455,7 +2890,7 @@
       "hash": "11d20c4b8974f6e2",
       "size": 1595,
       "mtimeMs": 1785413049413.9749,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "updatedAt": "2026-08-13T11:18:20.622Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/timelineType.ts": {
@@ -2464,7 +2899,7 @@
       "hash": "0535ac1f45c7bc01",
       "size": 1721,
       "mtimeMs": 1786560726125.752,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "updatedAt": "2026-08-13T11:18:20.622Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/valueCardsType.ts": {
@@ -2473,7 +2908,7 @@
       "hash": "58de0c4342f59467",
       "size": 1640,
       "mtimeMs": 1786560726135.1118,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "updatedAt": "2026-08-13T11:18:20.622Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/faqType.ts": {
@@ -2482,7 +2917,7 @@
       "hash": "1f7a05e01a3cc9f2",
       "size": 830,
       "mtimeMs": 1785413103941.8618,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "updatedAt": "2026-08-13T11:18:20.623Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/footerType.ts": {
@@ -2491,16 +2926,16 @@
       "hash": "532851f1c70528b3",
       "size": 2725,
       "mtimeMs": 1785417697738.4307,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "updatedAt": "2026-08-13T11:18:20.623Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/index.ts": {
       "description": "Exports schemaTypes",
-      "tokens": 692,
-      "hash": "3e32a1afbf0d96a0",
-      "size": 2422,
-      "mtimeMs": 1786607810191.9648,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "tokens": 751,
+      "hash": "b1e0998c66e85042",
+      "size": 2628,
+      "mtimeMs": 1786617313503.7886,
+      "updatedAt": "2026-08-13T11:18:20.623Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/navigationType.ts": {
@@ -2509,7 +2944,7 @@
       "hash": "be12c9ef0727712d",
       "size": 1269,
       "mtimeMs": 1785417696494.7275,
-      "updatedAt": "2026-08-13T08:08:05.291Z",
+      "updatedAt": "2026-08-13T11:18:20.623Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/ctaType.ts": {
@@ -2518,7 +2953,7 @@
       "hash": "d016fc7939d21106",
       "size": 326,
       "mtimeMs": 1785415054580.3945,
-      "updatedAt": "2026-08-13T08:08:05.292Z",
+      "updatedAt": "2026-08-13T11:18:20.623Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/linkFields.ts": {
@@ -2527,7 +2962,7 @@
       "hash": "c355054eed7f2555",
       "size": 1424,
       "mtimeMs": 1785415050987.8442,
-      "updatedAt": "2026-08-13T08:08:05.292Z",
+      "updatedAt": "2026-08-13T11:18:20.624Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/linkType.ts": {
@@ -2536,7 +2971,7 @@
       "hash": "4a6dec2e72655f28",
       "size": 188,
       "mtimeMs": 1785415051978.4214,
-      "updatedAt": "2026-08-13T08:08:05.292Z",
+      "updatedAt": "2026-08-13T11:18:20.624Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/seoType.ts": {
@@ -2545,16 +2980,16 @@
       "hash": "c3937d54e6fc72e3",
       "size": 806,
       "mtimeMs": 1786605655235.7788,
-      "updatedAt": "2026-08-13T08:08:05.292Z",
+      "updatedAt": "2026-08-13T11:18:20.624Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/pageBuilderType.ts": {
       "description": "Exports pageBuilderType",
-      "tokens": 381,
-      "hash": "b5d2b85bf1c25771",
-      "size": 1332,
-      "mtimeMs": 1786607810192.267,
-      "updatedAt": "2026-08-13T08:08:05.293Z",
+      "tokens": 407,
+      "hash": "e823b7d950a858c7",
+      "size": 1424,
+      "mtimeMs": 1786617313504.1016,
+      "updatedAt": "2026-08-13T11:18:20.624Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/pageType.ts": {
@@ -2563,16 +2998,25 @@
       "hash": "302e9947730ed839",
       "size": 744,
       "mtimeMs": 1786605681102.2048,
-      "updatedAt": "2026-08-13T08:08:05.293Z",
+      "updatedAt": "2026-08-13T11:18:20.624Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/reviewType.ts": {
-      "description": "Exports reviewType",
-      "tokens": 256,
-      "hash": "5a110d9fbe4f8320",
-      "size": 894,
-      "mtimeMs": 1785413052233.648,
-      "updatedAt": "2026-08-13T08:08:05.293Z",
+      "description": "Cijfers komen straks uit de scraper; daarom optioneel.",
+      "tokens": 338,
+      "hash": "19572b65587d66a3",
+      "size": 1180,
+      "mtimeMs": 1786618855549.3674,
+      "updatedAt": "2026-08-13T11:18:20.625Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/woningType.ts": {
+      "description": "The \"Object\" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional.",
+      "tokens": 2608,
+      "hash": "101779e5870086b9",
+      "size": 9146,
+      "mtimeMs": 1786610789327.7375,
+      "updatedAt": "2026-08-13T11:18:20.625Z",
       "source": "scan"
     },
     "studio-hart-huis/static/.gitkeep": {
@@ -2581,16 +3025,16 @@
       "hash": "7635960718f1ae5c",
       "size": 81,
       "mtimeMs": 1785064182433.0325,
-      "updatedAt": "2026-08-13T08:08:05.293Z",
+      "updatedAt": "2026-08-13T11:18:20.625Z",
       "source": "scan"
     },
     "studio-hart-huis/structure.ts": {
       "description": "Exports structure",
-      "tokens": 459,
-      "hash": "c09ee255d77dc02f",
-      "size": 1605,
-      "mtimeMs": 1786607449161.4548,
-      "updatedAt": "2026-08-13T08:08:05.293Z",
+      "tokens": 478,
+      "hash": "ba56cc5ea33a4993",
+      "size": 1673,
+      "mtimeMs": 1786609428958.1206,
+      "updatedAt": "2026-08-13T11:18:20.625Z",
       "source": "scan"
     },
     "studio-hart-huis/tsconfig.json": {
@@ -2599,16 +3043,16 @@
       "hash": "e5a67d7d8cdee156",
       "size": 417,
       "mtimeMs": 1785064182435.5544,
-      "updatedAt": "2026-08-13T08:08:05.293Z",
+      "updatedAt": "2026-08-13T11:18:20.625Z",
       "source": "scan"
     },
     "studio-hart-huis/tsconfig.tsbuildinfo": {
       "description": "",
-      "tokens": 32802,
-      "hash": "f8815dfa3d0e04ce",
-      "size": 123007,
-      "mtimeMs": 1786607812321.4526,
-      "updatedAt": "2026-08-13T08:08:05.294Z",
+      "tokens": 32857,
+      "hash": "726135bff1fda673",
+      "size": 123213,
+      "mtimeMs": 1786609870452.595,
+      "updatedAt": "2026-08-13T11:18:20.626Z",
       "source": "scan"
     }
   }

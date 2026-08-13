@@ -63,13 +63,6 @@ export const heroType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'badgeValue',
-      title: 'Badge value',
-      type: 'string',
-      description: 'e.g. Funda score shown in the circular badge',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: 'badgeLabel',
       title: 'Badge label',
       type: 'string',
