@@ -87,3 +87,8 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 09:40 | Rendered Sanity `seo` object in Next metadata: added `seo` to PAGE_QUERY, new `pageMetadata()` mapper, wired into `/` + `/[slug]` | app/src/sanity/queries.ts, app/src/sanity/metadata.ts, app/src/app/page.tsx, app/src/app/[slug]/page.tsx | done — verified live head tags on /, /verkoop, /taxatie + assert check on ogImage/noIndex branches | ~14k |
+
+## Session: 2026-08-13 09:46
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
