@@ -17,6 +17,7 @@
     "seed:contact": "tsx --env-file=.env scripts/seed.ts contact",
     "seed:objecten": "tsx --env-file=.env scripts/seed.ts objecten",
     "seed:aanbod": "tsx --env-file=.env scripts/seed.ts aanbod",
+    "seed:beoordelingen": "tsx --env-file=.env scripts/seed.ts beoordelingen",
     "seed:nav": "tsx --env-file=.env scripts/seed.ts nav"
   },
   "dependencies": {

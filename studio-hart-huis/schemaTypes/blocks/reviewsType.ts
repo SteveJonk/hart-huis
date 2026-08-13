@@ -38,6 +38,13 @@ export const reviewsType = defineType({
       validation: (rule) => rule.min(1).required(),
     }),
     defineField({
+      name: 'showGrades',
+      title: 'Deelcijfers tonen',
+      description: 'Zet de tabel met deelcijfers per beoordeling aan op de kaarten.',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'link',
       type: 'cta',
     }),

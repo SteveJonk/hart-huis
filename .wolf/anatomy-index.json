@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-13T11:18:20.630Z",
-    "fileCount": 194,
+    "lastScanned": "2026-08-13T12:03:28.337Z",
+    "fileCount": 204,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "01967a350c7571b2511fa0c411d004077aec72cdedec5d8651992c8dfd0b6f90",
-    "storeUpdatedAt": "2026-08-13T11:18:20.631Z"
+    "renderedHash": "49a1a2f2167a7076af336094d5e3814a1fc45273ec4e4354ad143d9d1210d180",
+    "storeUpdatedAt": "2026-08-13T12:03:28.339Z"
   },
   "files": {
     ".claude/commands/reframe.md": {
@@ -15,7 +15,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1785834177283.9353,
-      "updatedAt": "2026-08-13T11:18:20.570Z",
+      "updatedAt": "2026-08-13T12:03:28.284Z",
       "source": "scan"
     },
     ".claude/commands/security-audit.md": {
@@ -24,7 +24,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1785834177283.637,
-      "updatedAt": "2026-08-13T11:18:20.570Z",
+      "updatedAt": "2026-08-13T12:03:28.284Z",
       "source": "scan"
     },
     ".claude/launch.json": {
@@ -33,7 +33,7 @@
       "hash": "6dcceaf45f569238",
       "size": 201,
       "mtimeMs": 1786560829903.9763,
-      "updatedAt": "2026-08-13T11:18:20.571Z",
+      "updatedAt": "2026-08-13T12:03:28.285Z",
       "source": "scan"
     },
     ".claude/rules/openwolf.md": {
@@ -42,7 +42,7 @@
       "hash": "6d735b2c1c54a916",
       "size": 1323,
       "mtimeMs": 1785834177112.1697,
-      "updatedAt": "2026-08-13T11:18:20.571Z",
+      "updatedAt": "2026-08-13T12:03:28.286Z",
       "source": "scan"
     },
     ".claude/settings.json": {
@@ -51,7 +51,7 @@
       "hash": "f68759bb50af5ee4",
       "size": 1799,
       "mtimeMs": 1785834177111.7556,
-      "updatedAt": "2026-08-13T11:18:20.571Z",
+      "updatedAt": "2026-08-13T12:03:28.286Z",
       "source": "scan"
     },
     ".cursor/rules/openwolf.mdc": {
@@ -60,7 +60,7 @@
       "hash": "25a895da2047ef4d",
       "size": 323,
       "mtimeMs": 1785834177282.8696,
-      "updatedAt": "2026-08-13T11:18:20.572Z",
+      "updatedAt": "2026-08-13T12:03:28.286Z",
       "source": "scan"
     },
     ".DS_Store": {
@@ -69,7 +69,7 @@
       "hash": "5f07336534a29f6a",
       "size": 8196,
       "mtimeMs": 1786559963896.4783,
-      "updatedAt": "2026-08-13T11:18:20.572Z",
+      "updatedAt": "2026-08-13T12:03:28.287Z",
       "source": "scan"
     },
     ".gitignore": {
@@ -78,7 +78,7 @@
       "hash": "e2eb93a61ffd7877",
       "size": 9,
       "mtimeMs": 1785392122288.7588,
-      "updatedAt": "2026-08-13T11:18:20.572Z",
+      "updatedAt": "2026-08-13T12:03:28.287Z",
       "source": "scan"
     },
     ".opencode/command/reframe.md": {
@@ -87,7 +87,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1785834177284.3032,
-      "updatedAt": "2026-08-13T11:18:20.573Z",
+      "updatedAt": "2026-08-13T12:03:28.287Z",
       "source": "scan"
     },
     ".opencode/command/security-audit.md": {
@@ -96,7 +96,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1785834177284.1458,
-      "updatedAt": "2026-08-13T11:18:20.573Z",
+      "updatedAt": "2026-08-13T12:03:28.287Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/anatomy.ts": {
@@ -105,7 +105,7 @@
       "hash": "de2a14445289179f",
       "size": 10257,
       "mtimeMs": 1785834177278.7407,
-      "updatedAt": "2026-08-13T11:18:20.574Z",
+      "updatedAt": "2026-08-13T12:03:28.289Z",
       "source": "scan",
       "symbols": [
         {
@@ -221,7 +221,7 @@
       "hash": "0193b1022c8e098b",
       "size": 1881,
       "mtimeMs": 1785834177279.1472,
-      "updatedAt": "2026-08-13T11:18:20.575Z",
+      "updatedAt": "2026-08-13T12:03:28.290Z",
       "source": "scan",
       "symbols": [
         {
@@ -302,7 +302,7 @@
       "hash": "5044a1f76c74f535",
       "size": 3782,
       "mtimeMs": 1785834177279.532,
-      "updatedAt": "2026-08-13T11:18:20.575Z",
+      "updatedAt": "2026-08-13T12:03:28.290Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/post-read.ts": {
@@ -311,7 +311,7 @@
       "hash": "1bc80c56ad0cfd32",
       "size": 2200,
       "mtimeMs": 1785834177279.9321,
-      "updatedAt": "2026-08-13T11:18:20.575Z",
+      "updatedAt": "2026-08-13T12:03:28.290Z",
       "source": "scan",
       "symbols": [
         {
@@ -329,7 +329,7 @@
       "hash": "02ba6ccd8d82475c",
       "size": 11300,
       "mtimeMs": 1785834177280.4854,
-      "updatedAt": "2026-08-13T11:18:20.576Z",
+      "updatedAt": "2026-08-13T12:03:28.291Z",
       "source": "scan",
       "symbols": [
         {
@@ -396,7 +396,7 @@
       "hash": "88c051b64b073c6a",
       "size": 2401,
       "mtimeMs": 1785834177280.8362,
-      "updatedAt": "2026-08-13T11:18:20.576Z",
+      "updatedAt": "2026-08-13T12:03:28.291Z",
       "source": "scan",
       "symbols": [
         {
@@ -414,7 +414,7 @@
       "hash": "c3b34d216601e76f",
       "size": 4092,
       "mtimeMs": 1785834177281.0354,
-      "updatedAt": "2026-08-13T11:18:20.577Z",
+      "updatedAt": "2026-08-13T12:03:28.292Z",
       "source": "scan",
       "symbols": [
         {
@@ -460,7 +460,7 @@
       "hash": "dda2df097f6d5874",
       "size": 3340,
       "mtimeMs": 1785834177281.3862,
-      "updatedAt": "2026-08-13T11:18:20.577Z",
+      "updatedAt": "2026-08-13T12:03:28.292Z",
       "source": "scan",
       "symbols": [
         {
@@ -499,7 +499,7 @@
       "hash": "5f8633a3904ee5ce",
       "size": 5057,
       "mtimeMs": 1785834177281.7463,
-      "updatedAt": "2026-08-13T11:18:20.577Z",
+      "updatedAt": "2026-08-13T12:03:28.292Z",
       "source": "scan",
       "symbols": [
         {
@@ -538,7 +538,7 @@
       "hash": "47f4dfb03abf55f9",
       "size": 757,
       "mtimeMs": 1785834177281.9375,
-      "updatedAt": "2026-08-13T11:18:20.577Z",
+      "updatedAt": "2026-08-13T12:03:28.293Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf.ts": {
@@ -547,7 +547,7 @@
       "hash": "a29f91aadb9a324d",
       "size": 261,
       "mtimeMs": 1785834177282.0498,
-      "updatedAt": "2026-08-13T11:18:20.577Z",
+      "updatedAt": "2026-08-13T12:03:28.293Z",
       "source": "scan"
     },
     "AGENTS.md": {
@@ -556,16 +556,16 @@
       "hash": "8c90778623bf50ac",
       "size": 271,
       "mtimeMs": 1785834177282.5024,
-      "updatedAt": "2026-08-13T11:18:20.578Z",
+      "updatedAt": "2026-08-13T12:03:28.293Z",
       "source": "scan"
     },
     "app/.DS_Store": {
       "description": "",
       "tokens": 3824,
-      "hash": "5aa9b7c32d9e6887",
+      "hash": "3756993a7a0a9cef",
       "size": 14340,
-      "mtimeMs": 1786559963895.7332,
-      "updatedAt": "2026-08-13T11:18:20.578Z",
+      "mtimeMs": 1786620345797.5774,
+      "updatedAt": "2026-08-13T12:03:28.294Z",
       "source": "scan"
     },
     "app/.gitignore": {
@@ -574,7 +574,7 @@
       "hash": "207e265ff4901f9a",
       "size": 480,
       "mtimeMs": 1785087937158.668,
-      "updatedAt": "2026-08-13T11:18:20.578Z",
+      "updatedAt": "2026-08-13T12:03:28.294Z",
       "source": "scan"
     },
     "app/AGENTS.md": {
@@ -583,7 +583,7 @@
       "hash": "e3447d84251880fb",
       "size": 327,
       "mtimeMs": 1785834093957.9656,
-      "updatedAt": "2026-08-13T11:18:20.579Z",
+      "updatedAt": "2026-08-13T12:03:28.294Z",
       "source": "scan"
     },
     "app/CLAUDE.md": {
@@ -592,7 +592,7 @@
       "hash": "336cc4fbf19beaad",
       "size": 11,
       "mtimeMs": 1785834093958.6213,
-      "updatedAt": "2026-08-13T11:18:20.579Z",
+      "updatedAt": "2026-08-13T12:03:28.294Z",
       "source": "scan"
     },
     "app/eslint.config.mjs": {
@@ -601,7 +601,7 @@
       "hash": "870f1adccecf3051",
       "size": 465,
       "mtimeMs": 1785087937158.6077,
-      "updatedAt": "2026-08-13T11:18:20.579Z",
+      "updatedAt": "2026-08-13T12:03:28.294Z",
       "source": "scan"
     },
     "app/example-designs/!aanbod.html": {
@@ -610,7 +610,7 @@
       "hash": "3523ccb1ab45b801",
       "size": 919267,
       "mtimeMs": 1786544646497.3599,
-      "updatedAt": "2026-08-13T11:18:20.583Z",
+      "updatedAt": "2026-08-13T12:03:28.298Z",
       "source": "scan"
     },
     "app/example-designs/!contact.html": {
@@ -619,7 +619,7 @@
       "hash": "97c4aa747737140b",
       "size": 433573,
       "mtimeMs": 1786545261017.0356,
-      "updatedAt": "2026-08-13T11:18:20.585Z",
+      "updatedAt": "2026-08-13T12:03:28.301Z",
       "source": "scan"
     },
     "app/example-designs/!over-ons.html": {
@@ -628,7 +628,7 @@
       "hash": "5511c4dee427781e",
       "size": 770145,
       "mtimeMs": 1786544072612.1208,
-      "updatedAt": "2026-08-13T11:18:20.589Z",
+      "updatedAt": "2026-08-13T12:03:28.305Z",
       "source": "scan"
     },
     "app/example-designs/.DS_Store": {
@@ -637,7 +637,7 @@
       "hash": "27d694b2f35516b2",
       "size": 6148,
       "mtimeMs": 1786560158396.6606,
-      "updatedAt": "2026-08-13T11:18:20.589Z",
+      "updatedAt": "2026-08-13T12:03:28.305Z",
       "source": "scan"
     },
     "app/example-designs/beoordelingen.html": {
@@ -646,16 +646,16 @@
       "hash": "3778dc5759592126",
       "size": 400355,
       "mtimeMs": 1786540904307.1616,
-      "updatedAt": "2026-08-13T11:18:20.591Z",
+      "updatedAt": "2026-08-13T12:03:28.308Z",
       "source": "scan"
     },
     "app/next-env.d.ts": {
       "description": "/ <reference types=\"next\" />",
-      "tokens": 71,
-      "hash": "7b550dda9686c16f",
-      "size": 247,
-      "mtimeMs": 1786617612815.1458,
-      "updatedAt": "2026-08-13T11:18:20.592Z",
+      "tokens": 72,
+      "hash": "7ad303e40d4fddf4",
+      "size": 251,
+      "mtimeMs": 1786620333940.6392,
+      "updatedAt": "2026-08-13T12:03:28.308Z",
       "source": "scan"
     },
     "app/next.config.ts": {
@@ -664,7 +664,7 @@
       "hash": "64afc7ed205e5e32",
       "size": 493,
       "mtimeMs": 1785418340362.8108,
-      "updatedAt": "2026-08-13T11:18:20.592Z",
+      "updatedAt": "2026-08-13T12:03:28.308Z",
       "source": "scan"
     },
     "app/package-lock.json": {
@@ -673,16 +673,16 @@
       "hash": "205d4b0da9993c62",
       "size": 675053,
       "mtimeMs": 1786608285980.4985,
-      "updatedAt": "2026-08-13T11:18:20.594Z",
+      "updatedAt": "2026-08-13T12:03:28.309Z",
       "source": "scan"
     },
     "app/package.json": {
       "description": "Node.js package manifest",
-      "tokens": 427,
-      "hash": "7652fae7ece06e3a",
-      "size": 1493,
-      "mtimeMs": 1786619852415.648,
-      "updatedAt": "2026-08-13T11:18:20.594Z",
+      "tokens": 450,
+      "hash": "6e4ab24fe74af0da",
+      "size": 1572,
+      "mtimeMs": 1786622268237.7793,
+      "updatedAt": "2026-08-13T12:03:28.309Z",
       "source": "scan"
     },
     "app/postcss.config.mjs": {
@@ -691,7 +691,7 @@
       "hash": "dfac7ac2d86d326a",
       "size": 94,
       "mtimeMs": 1785087937158.5386,
-      "updatedAt": "2026-08-13T11:18:20.594Z",
+      "updatedAt": "2026-08-13T12:03:28.309Z",
       "source": "scan"
     },
     "app/public/.DS_Store": {
@@ -700,7 +700,7 @@
       "hash": "92a13dc2c5c09daf",
       "size": 6148,
       "mtimeMs": 1785410057099.7646,
-      "updatedAt": "2026-08-13T11:18:20.595Z",
+      "updatedAt": "2026-08-13T12:03:28.310Z",
       "source": "scan"
     },
     "app/scripts/check-aanbiedingstekst.ts": {
@@ -709,16 +709,16 @@
       "hash": "67887acf672f27bb",
       "size": 1256,
       "mtimeMs": 1786611162315.6191,
-      "updatedAt": "2026-08-13T11:18:20.595Z",
+      "updatedAt": "2026-08-13T12:03:28.311Z",
       "source": "scan"
     },
     "app/scripts/check-reviews.ts": {
       "description": "Smallest thing that fails if de afgeleide review-cijfers breken.",
-      "tokens": 305,
-      "hash": "29cae3027b8860d1",
-      "size": 1067,
-      "mtimeMs": 1786619848629.0251,
-      "updatedAt": "2026-08-13T11:18:20.595Z",
+      "tokens": 687,
+      "hash": "73867855f047b673",
+      "size": 2407,
+      "mtimeMs": 1786622282904.938,
+      "updatedAt": "2026-08-13T12:03:28.311Z",
       "source": "scan"
     },
     "app/scripts/seed/aanbod.ts": {
@@ -727,8 +727,33 @@
       "hash": "8d71751dd2aff759",
       "size": 1728,
       "mtimeMs": 1786617377357.243,
-      "updatedAt": "2026-08-13T11:18:20.596Z",
+      "updatedAt": "2026-08-13T12:03:28.311Z",
       "source": "scan"
+    },
+    "app/scripts/seed/beoordelingen.ts": {
+      "description": "Seeds the /beoordelingen page. De beoordelingen zelf komen uit `seed:home`",
+      "tokens": 902,
+      "hash": "58f779b8ed1fedc1",
+      "size": 3161,
+      "mtimeMs": 1786622260843.213,
+      "updatedAt": "2026-08-13T12:03:28.311Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "buildBeoordelingenContent",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 90,
+          "tokens": 739
+        },
+        {
+          "name": "seedBeoordelingen",
+          "kind": "fn",
+          "startLine": 91,
+          "endLine": 95,
+          "tokens": 49
+        }
+      ]
     },
     "app/scripts/seed/contact.ts": {
       "description": "Seeds the /contact page, plus the form document it points at.",
@@ -736,7 +761,7 @@
       "hash": "a01e67acca59f7d7",
       "size": 5221,
       "mtimeMs": 1786607895950.854,
-      "updatedAt": "2026-08-13T11:18:20.596Z",
+      "updatedAt": "2026-08-13T12:03:28.311Z",
       "source": "scan",
       "symbols": [
         {
@@ -764,33 +789,33 @@
     },
     "app/scripts/seed/home.ts": {
       "description": "Seeds the reviews and the home page.",
-      "tokens": 1801,
-      "hash": "6e55617d85553f81",
-      "size": 6322,
-      "mtimeMs": 1786618907292.097,
-      "updatedAt": "2026-08-13T11:18:20.596Z",
+      "tokens": 1809,
+      "hash": "46a41fdbf5f11dbe",
+      "size": 6348,
+      "mtimeMs": 1786621264899.3997,
+      "updatedAt": "2026-08-13T12:03:28.311Z",
       "source": "scan",
       "symbols": [
         {
           "name": "upsertReview",
           "kind": "fn",
           "startLine": 12,
-          "endLine": 35,
-          "tokens": 188
+          "endLine": 39,
+          "tokens": 198
         },
         {
           "name": "buildHomeContent",
           "kind": "fn",
-          "startLine": 36,
-          "endLine": 184,
-          "tokens": 1452
+          "startLine": 40,
+          "endLine": 187,
+          "tokens": 1445
         },
         {
           "name": "seedHome",
           "kind": "fn",
-          "startLine": 185,
-          "endLine": 195,
-          "tokens": 80
+          "startLine": 188,
+          "endLine": 198,
+          "tokens": 82
         }
       ]
     },
@@ -800,7 +825,7 @@
       "hash": "7c56abd4cbc7115c",
       "size": 3025,
       "mtimeMs": 1786617387877.3745,
-      "updatedAt": "2026-08-13T11:18:20.596Z",
+      "updatedAt": "2026-08-13T12:03:28.311Z",
       "source": "scan",
       "symbols": [
         {
@@ -860,7 +885,7 @@
       "hash": "48b7381c10241df5",
       "size": 29465,
       "mtimeMs": 1786609894741.7761,
-      "updatedAt": "2026-08-13T11:18:20.596Z",
+      "updatedAt": "2026-08-13T12:03:28.312Z",
       "source": "scan",
       "symbols": [
         {
@@ -920,7 +945,7 @@
       "hash": "8e122ef9a61ce256",
       "size": 3355,
       "mtimeMs": 1786563303853.5188,
-      "updatedAt": "2026-08-13T11:18:20.596Z",
+      "updatedAt": "2026-08-13T12:03:28.312Z",
       "source": "scan",
       "symbols": [
         {
@@ -945,7 +970,7 @@
       "hash": "02a909de07084f06",
       "size": 4351,
       "mtimeMs": 1786609552149.716,
-      "updatedAt": "2026-08-13T11:18:20.596Z",
+      "updatedAt": "2026-08-13T12:03:28.312Z",
       "source": "scan",
       "symbols": [
         {
@@ -998,7 +1023,7 @@
       "hash": "ff5e36ae3fb91655",
       "size": 4961,
       "mtimeMs": 1786563303853.6697,
-      "updatedAt": "2026-08-13T11:18:20.597Z",
+      "updatedAt": "2026-08-13T12:03:28.312Z",
       "source": "scan",
       "symbols": [
         {
@@ -1023,7 +1048,7 @@
       "hash": "cb8ee6b7d470220a",
       "size": 4628,
       "mtimeMs": 1786563303853.3809,
-      "updatedAt": "2026-08-13T11:18:20.597Z",
+      "updatedAt": "2026-08-13T12:03:28.312Z",
       "source": "scan",
       "symbols": [
         {
@@ -1044,25 +1069,25 @@
     },
     "app/scripts/seed.ts": {
       "description": "Seed Sanity content. Runs every target, or only the ones you name.",
-      "tokens": 530,
-      "hash": "d9e19e70ba2e135c",
-      "size": 1854,
-      "mtimeMs": 1786617387876.4465,
-      "updatedAt": "2026-08-13T11:18:20.597Z",
+      "tokens": 556,
+      "hash": "5a93c8af2ca3b737",
+      "size": 1945,
+      "mtimeMs": 1786622268237.404,
+      "updatedAt": "2026-08-13T12:03:28.312Z",
       "source": "scan",
       "symbols": [
         {
           "name": "parseTargets",
           "kind": "fn",
-          "startLine": 36,
-          "endLine": 47,
+          "startLine": 38,
+          "endLine": 49,
           "tokens": 106
         },
         {
           "name": "main",
           "kind": "fn",
-          "startLine": 48,
-          "endLine": 64,
+          "startLine": 50,
+          "endLine": 66,
           "tokens": 119
         }
       ]
@@ -1073,7 +1098,7 @@
       "hash": "10d8e961febdd09b",
       "size": 8196,
       "mtimeMs": 1785410026743.0393,
-      "updatedAt": "2026-08-13T11:18:20.597Z",
+      "updatedAt": "2026-08-13T12:03:28.313Z",
       "source": "scan"
     },
     "app/src/app/[slug]/page.tsx": {
@@ -1082,7 +1107,7 @@
       "hash": "bc809c181947bb06",
       "size": 990,
       "mtimeMs": 1786606840498.2776,
-      "updatedAt": "2026-08-13T11:18:20.598Z",
+      "updatedAt": "2026-08-13T12:03:28.313Z",
       "source": "scan"
     },
     "app/src/app/aanbod/[slug]/page.tsx": {
@@ -1091,7 +1116,7 @@
       "hash": "db065b6b1bb032b9",
       "size": 5169,
       "mtimeMs": 1786617367004.5522,
-      "updatedAt": "2026-08-13T11:18:20.599Z",
+      "updatedAt": "2026-08-13T12:03:28.313Z",
       "source": "scan",
       "symbols": [
         {
@@ -1130,7 +1155,7 @@
       "hash": "264991085c0e4a95",
       "size": 6286,
       "mtimeMs": 1786608370030.402,
-      "updatedAt": "2026-08-13T11:18:20.599Z",
+      "updatedAt": "2026-08-13T12:03:28.314Z",
       "source": "scan",
       "symbols": [
         {
@@ -1169,7 +1194,7 @@
       "hash": "c2624fe14d9e1637",
       "size": 489,
       "mtimeMs": 1785408681792.3948,
-      "updatedAt": "2026-08-13T11:18:20.599Z",
+      "updatedAt": "2026-08-13T12:03:28.314Z",
       "source": "scan"
     },
     "app/src/app/layout.tsx": {
@@ -1178,7 +1203,7 @@
       "hash": "fd919d17a50ffcb8",
       "size": 2549,
       "mtimeMs": 1786606887704.3767,
-      "updatedAt": "2026-08-13T11:18:20.600Z",
+      "updatedAt": "2026-08-13T12:03:28.314Z",
       "source": "scan",
       "symbols": [
         {
@@ -1203,7 +1228,7 @@
       "hash": "91a78d4fe16316df",
       "size": 436,
       "mtimeMs": 1785402644000,
-      "updatedAt": "2026-08-13T11:18:20.600Z",
+      "updatedAt": "2026-08-13T12:03:28.315Z",
       "source": "scan"
     },
     "app/src/app/not-found.tsx": {
@@ -1212,7 +1237,7 @@
       "hash": "f2fcb973347f6c77",
       "size": 835,
       "mtimeMs": 1785412795354.7793,
-      "updatedAt": "2026-08-13T11:18:20.600Z",
+      "updatedAt": "2026-08-13T12:03:28.315Z",
       "source": "scan"
     },
     "app/src/app/page.tsx": {
@@ -1221,7 +1246,7 @@
       "hash": "724783b017582a4b",
       "size": 752,
       "mtimeMs": 1786606850133.974,
-      "updatedAt": "2026-08-13T11:18:20.601Z",
+      "updatedAt": "2026-08-13T12:03:28.315Z",
       "source": "scan"
     },
     "app/src/components/blocks/AanbodHeader.tsx": {
@@ -1230,7 +1255,7 @@
       "hash": "4ef2885bfaa64002",
       "size": 3499,
       "mtimeMs": 1786617206271.3364,
-      "updatedAt": "2026-08-13T11:18:20.601Z",
+      "updatedAt": "2026-08-13T12:03:28.315Z",
       "source": "scan",
       "symbols": [
         {
@@ -1248,7 +1273,7 @@
       "hash": "95c82e286b375224",
       "size": 3032,
       "mtimeMs": 1786560649047.1638,
-      "updatedAt": "2026-08-13T11:18:20.601Z",
+      "updatedAt": "2026-08-13T12:03:28.315Z",
       "source": "scan",
       "symbols": [
         {
@@ -1273,7 +1298,7 @@
       "hash": "5474d6899e32461a",
       "size": 4671,
       "mtimeMs": 1786562539407.3,
-      "updatedAt": "2026-08-13T11:18:20.601Z",
+      "updatedAt": "2026-08-13T12:03:28.315Z",
       "source": "scan",
       "symbols": [
         {
@@ -1292,13 +1317,31 @@
         }
       ]
     },
+    "app/src/components/blocks/BeoordelingenHero.tsx": {
+      "description": "Opener van /beoordelingen: copy naast de zandkleurige scorekaart.",
+      "tokens": 1805,
+      "hash": "0151bc414004d3e0",
+      "size": 6315,
+      "mtimeMs": 1786622044844.197,
+      "updatedAt": "2026-08-13T12:03:28.316Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "BeoordelingenHero",
+          "kind": "fn",
+          "startLine": 43,
+          "endLine": 183,
+          "tokens": 1421
+        }
+      ]
+    },
     "app/src/components/blocks/CompareCards.tsx": {
       "description": "Two side-by-side option cards, the second one on ink.",
       "tokens": 1670,
       "hash": "8d018b3d87225c26",
       "size": 5842,
       "mtimeMs": 1786562575890.2498,
-      "updatedAt": "2026-08-13T11:18:20.601Z",
+      "updatedAt": "2026-08-13T12:03:28.316Z",
       "source": "scan",
       "symbols": [
         {
@@ -1330,7 +1373,7 @@
       "hash": "08bb8f1c9f9edfde",
       "size": 13224,
       "mtimeMs": 1786608326292.7334,
-      "updatedAt": "2026-08-13T11:18:20.602Z",
+      "updatedAt": "2026-08-13T12:03:28.316Z",
       "source": "scan",
       "symbols": [
         {
@@ -1369,7 +1412,7 @@
       "hash": "a584c27a8b2980e2",
       "size": 2406,
       "mtimeMs": 1786607572449.5425,
-      "updatedAt": "2026-08-13T11:18:20.602Z",
+      "updatedAt": "2026-08-13T12:03:28.316Z",
       "source": "scan",
       "symbols": [
         {
@@ -1387,7 +1430,7 @@
       "hash": "23edba36ee511c1f",
       "size": 2218,
       "mtimeMs": 1785415262140.9001,
-      "updatedAt": "2026-08-13T11:18:20.602Z",
+      "updatedAt": "2026-08-13T12:03:28.316Z",
       "source": "scan",
       "symbols": [
         {
@@ -1405,7 +1448,7 @@
       "hash": "9453e19c00bd640b",
       "size": 2762,
       "mtimeMs": 1785413195722.425,
-      "updatedAt": "2026-08-13T11:18:20.602Z",
+      "updatedAt": "2026-08-13T12:03:28.316Z",
       "source": "scan",
       "symbols": [
         {
@@ -1423,7 +1466,7 @@
       "hash": "594f2eece16bda42",
       "size": 3084,
       "mtimeMs": 1786560543137.319,
-      "updatedAt": "2026-08-13T11:18:20.602Z",
+      "updatedAt": "2026-08-13T12:03:28.316Z",
       "source": "scan",
       "symbols": [
         {
@@ -1441,7 +1484,7 @@
       "hash": "0b7344e108a67ec0",
       "size": 1460,
       "mtimeMs": 1785413190284.1921,
-      "updatedAt": "2026-08-13T11:18:20.602Z",
+      "updatedAt": "2026-08-13T12:03:28.316Z",
       "source": "scan"
     },
     "app/src/components/blocks/Faq.tsx": {
@@ -1450,7 +1493,7 @@
       "hash": "e51ade10d399f8e6",
       "size": 3938,
       "mtimeMs": 1785415428516.1208,
-      "updatedAt": "2026-08-13T11:18:20.603Z",
+      "updatedAt": "2026-08-13T12:03:28.317Z",
       "source": "scan",
       "symbols": [
         {
@@ -1468,7 +1511,7 @@
       "hash": "1782bb68412bb1e3",
       "size": 6352,
       "mtimeMs": 1785415619363.6216,
-      "updatedAt": "2026-08-13T11:18:20.603Z",
+      "updatedAt": "2026-08-13T12:03:28.317Z",
       "source": "scan",
       "symbols": [
         {
@@ -1486,7 +1529,7 @@
       "hash": "e6519b09e9a62195",
       "size": 5319,
       "mtimeMs": 1785413227994.7705,
-      "updatedAt": "2026-08-13T11:18:20.603Z",
+      "updatedAt": "2026-08-13T12:03:28.317Z",
       "source": "scan",
       "symbols": [
         {
@@ -1511,7 +1554,7 @@
       "hash": "fbabc3a994751bf2",
       "size": 5161,
       "mtimeMs": 1786617221818.1606,
-      "updatedAt": "2026-08-13T11:18:20.603Z",
+      "updatedAt": "2026-08-13T12:03:28.317Z",
       "source": "scan",
       "symbols": [
         {
@@ -1536,7 +1579,7 @@
       "hash": "a302d9f6c3781a19",
       "size": 2282,
       "mtimeMs": 1786560600830.5215,
-      "updatedAt": "2026-08-13T11:18:20.603Z",
+      "updatedAt": "2026-08-13T12:03:28.317Z",
       "source": "scan",
       "symbols": [
         {
@@ -1554,7 +1597,7 @@
       "hash": "d28678e268e03c5e",
       "size": 11012,
       "mtimeMs": 1786617270480.7734,
-      "updatedAt": "2026-08-13T11:18:20.603Z",
+      "updatedAt": "2026-08-13T12:03:28.317Z",
       "source": "scan",
       "symbols": [
         {
@@ -1593,7 +1636,7 @@
       "hash": "fb1258a1b0739644",
       "size": 3995,
       "mtimeMs": 1785416736400.1511,
-      "updatedAt": "2026-08-13T11:18:20.603Z",
+      "updatedAt": "2026-08-13T12:03:28.317Z",
       "source": "scan",
       "symbols": [
         {
@@ -1611,7 +1654,7 @@
       "hash": "898d3dcd97cb7497",
       "size": 2295,
       "mtimeMs": 1786560526892.9836,
-      "updatedAt": "2026-08-13T11:18:20.603Z",
+      "updatedAt": "2026-08-13T12:03:28.317Z",
       "source": "scan",
       "symbols": [
         {
@@ -1629,7 +1672,7 @@
       "hash": "dec3de55ff8b8cc2",
       "size": 3775,
       "mtimeMs": 1786607590283.33,
-      "updatedAt": "2026-08-13T11:18:20.604Z",
+      "updatedAt": "2026-08-13T12:03:28.318Z",
       "source": "scan",
       "symbols": [
         {
@@ -1647,7 +1690,7 @@
       "hash": "7d13572e8a5583bd",
       "size": 2276,
       "mtimeMs": 1785413199718.2004,
-      "updatedAt": "2026-08-13T11:18:20.604Z",
+      "updatedAt": "2026-08-13T12:03:28.318Z",
       "source": "scan",
       "symbols": [
         {
@@ -1665,7 +1708,7 @@
       "hash": "57d64e6258679b91",
       "size": 2229,
       "mtimeMs": 1785415274797.0264,
-      "updatedAt": "2026-08-13T11:18:20.604Z",
+      "updatedAt": "2026-08-13T12:03:28.318Z",
       "source": "scan",
       "symbols": [
         {
@@ -1677,28 +1720,46 @@
         }
       ]
     },
+    "app/src/components/blocks/ReviewGrid.tsx": {
+      "description": "Alle beoordelingen, in de browser gefilterd op soort en per 9 getoond.",
+      "tokens": 1108,
+      "hash": "e48a29750ab5adb4",
+      "size": 3878,
+      "mtimeMs": 1786622085091.6216,
+      "updatedAt": "2026-08-13T12:03:28.318Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "ReviewGrid",
+          "kind": "fn",
+          "startLine": 20,
+          "endLine": 123,
+          "tokens": 931
+        }
+      ]
+    },
     "app/src/components/blocks/Reviews.tsx": {
-      "description": "DEFAULTS",
-      "tokens": 1616,
-      "hash": "769a7987d553ba43",
-      "size": 5656,
-      "mtimeMs": 1786618893110.1035,
-      "updatedAt": "2026-08-13T11:18:20.604Z",
+      "description": "Deelcijfertabel per review. Uit op de homepage, aan op /beoordelingen.",
+      "tokens": 2137,
+      "hash": "01e0ed7995f7aac2",
+      "size": 7481,
+      "mtimeMs": 1786622309919.6628,
+      "updatedAt": "2026-08-13T12:03:28.318Z",
       "source": "scan",
       "symbols": [
         {
           "name": "ReviewCard",
           "kind": "fn",
-          "startLine": 41,
-          "endLine": 65,
-          "tokens": 285
+          "startLine": 50,
+          "endLine": 111,
+          "tokens": 618
         },
         {
           "name": "Reviews",
           "kind": "fn",
-          "startLine": 66,
-          "endLine": 164,
-          "tokens": 1022
+          "startLine": 112,
+          "endLine": 219,
+          "tokens": 1108
         }
       ]
     },
@@ -1708,7 +1769,7 @@
       "hash": "15bacaa7b4cb3614",
       "size": 3106,
       "mtimeMs": 1786607699400.1987,
-      "updatedAt": "2026-08-13T11:18:20.604Z",
+      "updatedAt": "2026-08-13T12:03:28.318Z",
       "source": "scan",
       "symbols": [
         {
@@ -1726,7 +1787,7 @@
       "hash": "766f3ba05c33d969",
       "size": 5684,
       "mtimeMs": 1785413183139.182,
-      "updatedAt": "2026-08-13T11:18:20.604Z",
+      "updatedAt": "2026-08-13T12:03:28.318Z",
       "source": "scan",
       "symbols": [
         {
@@ -1751,7 +1812,7 @@
       "hash": "7f4448009f72a0bd",
       "size": 4342,
       "mtimeMs": 1786607558666.14,
-      "updatedAt": "2026-08-13T11:18:20.605Z",
+      "updatedAt": "2026-08-13T12:03:28.319Z",
       "source": "scan",
       "symbols": [
         {
@@ -1769,7 +1830,7 @@
       "hash": "2f16ec5ec4826c2a",
       "size": 6024,
       "mtimeMs": 1785419839858.5242,
-      "updatedAt": "2026-08-13T11:18:20.605Z",
+      "updatedAt": "2026-08-13T12:03:28.319Z",
       "source": "scan",
       "symbols": [
         {
@@ -1794,7 +1855,7 @@
       "hash": "710c500aa121dbc8",
       "size": 3565,
       "mtimeMs": 1785413186461.6929,
-      "updatedAt": "2026-08-13T11:18:20.605Z",
+      "updatedAt": "2026-08-13T12:03:28.319Z",
       "source": "scan",
       "symbols": [
         {
@@ -1812,7 +1873,7 @@
       "hash": "47280cf16f3ed10d",
       "size": 3106,
       "mtimeMs": 1786560558589.5383,
-      "updatedAt": "2026-08-13T11:18:20.605Z",
+      "updatedAt": "2026-08-13T12:03:28.319Z",
       "source": "scan",
       "symbols": [
         {
@@ -1824,13 +1885,31 @@
         }
       ]
     },
+    "app/src/components/blocks/UitgelichteReview.tsx": {
+      "description": "Eén uitgelichte beoordeling, groot uitgelicht naast een foto.",
+      "tokens": 751,
+      "hash": "371978a44767858d",
+      "size": 2630,
+      "mtimeMs": 1786622069380.0312,
+      "updatedAt": "2026-08-13T12:03:28.319Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "UitgelichteReview",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 81,
+          "tokens": 552
+        }
+      ]
+    },
     "app/src/components/blocks/ValueCards.tsx": {
       "description": "DEFAULTS",
       "tokens": 925,
       "hash": "703a8fda0ba8595a",
       "size": 3236,
       "mtimeMs": 1786560588922.7517,
-      "updatedAt": "2026-08-13T11:18:20.605Z",
+      "updatedAt": "2026-08-13T12:03:28.319Z",
       "source": "scan",
       "symbols": [
         {
@@ -1855,8 +1934,26 @@
       "hash": "08052a2b80291d6a",
       "size": 866,
       "mtimeMs": 1785413185546.9302,
-      "updatedAt": "2026-08-13T11:18:20.605Z",
+      "updatedAt": "2026-08-13T12:03:28.319Z",
       "source": "scan"
+    },
+    "app/src/components/blocks/Werkwijze.tsx": {
+      "description": "Donkere uitlegsectie met genummerde punten.",
+      "tokens": 811,
+      "hash": "84fe4cea788d30db",
+      "size": 2838,
+      "mtimeMs": 1786622313328.146,
+      "updatedAt": "2026-08-13T12:03:28.320Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Werkwijze",
+          "kind": "fn",
+          "startLine": 28,
+          "endLine": 79,
+          "tokens": 605
+        }
+      ]
     },
     "app/src/components/layout/SiteFooter.tsx": {
       "description": "FooterLinkList",
@@ -1864,7 +1961,7 @@
       "hash": "c8479ba44d4c0202",
       "size": 3922,
       "mtimeMs": 1785417523009.0027,
-      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "updatedAt": "2026-08-13T12:03:28.320Z",
       "source": "scan",
       "symbols": [
         {
@@ -1889,7 +1986,7 @@
       "hash": "ab48b22c1437f101",
       "size": 5132,
       "mtimeMs": 1786603597186.0835,
-      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "updatedAt": "2026-08-13T12:03:28.320Z",
       "source": "scan",
       "symbols": [
         {
@@ -1928,7 +2025,7 @@
       "hash": "a9777db744547c28",
       "size": 1556,
       "mtimeMs": 1785395526511.0378,
-      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "updatedAt": "2026-08-13T12:03:28.320Z",
       "source": "scan"
     },
     "app/src/components/object/ObjectDescription.tsx": {
@@ -1937,7 +2034,7 @@
       "hash": "5e66d737b694a669",
       "size": 2844,
       "mtimeMs": 1786611315479.8455,
-      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "updatedAt": "2026-08-13T12:03:28.320Z",
       "source": "scan",
       "symbols": [
         {
@@ -1962,7 +2059,7 @@
       "hash": "9d6c39b3a1ff35ad",
       "size": 2460,
       "mtimeMs": 1786611326008.5325,
-      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "updatedAt": "2026-08-13T12:03:28.320Z",
       "source": "scan",
       "symbols": [
         {
@@ -1980,7 +2077,7 @@
       "hash": "37e3641824cbfc52",
       "size": 7721,
       "mtimeMs": 1786611284509.3784,
-      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "updatedAt": "2026-08-13T12:03:28.320Z",
       "source": "scan",
       "symbols": [
         {
@@ -2012,7 +2109,7 @@
       "hash": "0ae6dce70550b5b6",
       "size": 3722,
       "mtimeMs": 1786611433898.564,
-      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "updatedAt": "2026-08-13T12:03:28.320Z",
       "source": "scan",
       "symbols": [
         {
@@ -2044,7 +2141,7 @@
       "hash": "f65c1f6130e303e0",
       "size": 5675,
       "mtimeMs": 1786611353906.9075,
-      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "updatedAt": "2026-08-13T12:03:28.321Z",
       "source": "scan",
       "symbols": [
         {
@@ -2083,7 +2180,7 @@
       "hash": "3f5007d4950d8dbb",
       "size": 890,
       "mtimeMs": 1786611331205.4033,
-      "updatedAt": "2026-08-13T11:18:20.606Z",
+      "updatedAt": "2026-08-13T12:03:28.321Z",
       "source": "scan"
     },
     "app/src/components/object/SimilarObjects.tsx": {
@@ -2092,44 +2189,51 @@
       "hash": "8da9d2e724b2b297",
       "size": 1460,
       "mtimeMs": 1786611884278.9775,
-      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "updatedAt": "2026-08-13T12:03:28.321Z",
       "source": "scan"
     },
     "app/src/components/PageBuilder.tsx": {
-      "description": "toCta — renders chart",
-      "tokens": 6904,
-      "hash": "04b9149998bb248c",
-      "size": 24162,
-      "mtimeMs": 1786619840283.0605,
-      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "description": "Reviews zonder quote of naam zijn onbruikbaar op een kaart en vallen af.",
+      "tokens": 7570,
+      "hash": "7571e861226c2c06",
+      "size": 26492,
+      "mtimeMs": 1786622240431.5457,
+      "updatedAt": "2026-08-13T12:03:28.321Z",
       "source": "scan",
       "symbols": [
         {
           "name": "toCta",
           "kind": "fn",
-          "startLine": 61,
-          "endLine": 66,
+          "startLine": 64,
+          "endLine": 69,
           "tokens": 49
         },
         {
           "name": "toLabeledLink",
           "kind": "fn",
-          "startLine": 67,
-          "endLine": 74,
-          "tokens": 76
+          "startLine": 70,
+          "endLine": 78,
+          "tokens": 99
+        },
+        {
+          "name": "toReviews",
+          "kind": "fn",
+          "startLine": 79,
+          "endLine": 85,
+          "tokens": 84
         },
         {
           "name": "renderBlock",
           "kind": "fn",
-          "startLine": 75,
-          "endLine": 732,
-          "tokens": 6056
+          "startLine": 86,
+          "endLine": 790,
+          "tokens": 6523
         },
         {
           "name": "PageBuilder",
           "kind": "fn",
-          "startLine": 733,
-          "endLine": 738,
+          "startLine": 791,
+          "endLine": 796,
           "tokens": 60
         }
       ]
@@ -2140,7 +2244,7 @@
       "hash": "38475ef714e8affc",
       "size": 1892,
       "mtimeMs": 1785415441511.4055,
-      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "updatedAt": "2026-08-13T12:03:28.321Z",
       "source": "scan",
       "symbols": [
         {
@@ -2165,7 +2269,7 @@
       "hash": "05f55f040d0a64a8",
       "size": 1553,
       "mtimeMs": 1785415398610.7769,
-      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "updatedAt": "2026-08-13T12:03:28.321Z",
       "source": "scan"
     },
     "app/src/components/ui/ContactIcon.tsx": {
@@ -2174,7 +2278,7 @@
       "hash": "edabc2df94fe7af8",
       "size": 1998,
       "mtimeMs": 1786607538427.6035,
-      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "updatedAt": "2026-08-13T12:03:28.321Z",
       "source": "scan",
       "symbols": [
         {
@@ -2192,7 +2296,7 @@
       "hash": "02d1f9bbe083f4cd",
       "size": 657,
       "mtimeMs": 1786560645894.0952,
-      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "updatedAt": "2026-08-13T12:03:28.321Z",
       "source": "scan"
     },
     "app/src/components/ui/IconArrow.tsx": {
@@ -2201,7 +2305,7 @@
       "hash": "6a5c1f24e03300a7",
       "size": 708,
       "mtimeMs": 1785392743578.4355,
-      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "updatedAt": "2026-08-13T12:03:28.321Z",
       "source": "scan"
     },
     "app/src/components/ui/Lead.tsx": {
@@ -2210,7 +2314,7 @@
       "hash": "014631b802eaf516",
       "size": 319,
       "mtimeMs": 1785394554923.0151,
-      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/components/ui/LogoMark.tsx": {
@@ -2219,7 +2323,7 @@
       "hash": "921a4759be97b862",
       "size": 2230,
       "mtimeMs": 1785395350079.9578,
-      "updatedAt": "2026-08-13T11:18:20.607Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan",
       "symbols": [
         {
@@ -2237,7 +2341,7 @@
       "hash": "aec7f6d2a3d1a840",
       "size": 882,
       "mtimeMs": 1785408194057.265,
-      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/components/ui/RevealLink.tsx": {
@@ -2246,7 +2350,7 @@
       "hash": "dd12002044baeeb5",
       "size": 969,
       "mtimeMs": 1785415412626.4539,
-      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/components/ui/SectionHead.tsx": {
@@ -2255,7 +2359,7 @@
       "hash": "f0ab3aab1f7b059e",
       "size": 559,
       "mtimeMs": 1785394555191.6484,
-      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/components/ui/Wrap.tsx": {
@@ -2264,7 +2368,7 @@
       "hash": "bde3116a0bd7d4cd",
       "size": 416,
       "mtimeMs": 1785408054715.1523,
-      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/hooks/useActiveStep.ts": {
@@ -2273,7 +2377,7 @@
       "hash": "3b0e1f6ea523cbf1",
       "size": 1106,
       "mtimeMs": 1785409638047.68,
-      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/hooks/useMobileNav.ts": {
@@ -2282,7 +2386,7 @@
       "hash": "59f2e48a7765bf83",
       "size": 984,
       "mtimeMs": 1785392863778.6238,
-      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/hooks/useRevealOnScroll.ts": {
@@ -2291,7 +2395,7 @@
       "hash": "ff5027d1717a5bf1",
       "size": 906,
       "mtimeMs": 1786561479607.484,
-      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/hooks/useReviewsCarousel.ts": {
@@ -2300,7 +2404,7 @@
       "hash": "4de275bb0b4be16f",
       "size": 1334,
       "mtimeMs": 1785406817982.6602,
-      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/hooks/useStickyTopbar.ts": {
@@ -2309,7 +2413,7 @@
       "hash": "e9e5ab97944164eb",
       "size": 826,
       "mtimeMs": 1786560656601.862,
-      "updatedAt": "2026-08-13T11:18:20.608Z",
+      "updatedAt": "2026-08-13T12:03:28.322Z",
       "source": "scan"
     },
     "app/src/lib/aanbiedingstekst.ts": {
@@ -2318,7 +2422,7 @@
       "hash": "417f23580d3dd5fa",
       "size": 2065,
       "mtimeMs": 1786611152891.484,
-      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan",
       "symbols": [
         {
@@ -2350,7 +2454,16 @@
       "hash": "69edd82abbe63162",
       "size": 2949,
       "mtimeMs": 1786617190173.3257,
-      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
+      "source": "scan"
+    },
+    "app/src/lib/beoordelingen-content.ts": {
+      "description": "Copy voor /beoordelingen. Doet dubbel dienst als component-DEFAULTS en seed-bron.",
+      "tokens": 925,
+      "hash": "9a8e147761f6a739",
+      "size": 3242,
+      "mtimeMs": 1786621966761.69,
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan"
     },
     "app/src/lib/chrome.ts": {
@@ -2359,7 +2472,7 @@
       "hash": "0a9825cfe769c118",
       "size": 214,
       "mtimeMs": 1785392860077.3623,
-      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan"
     },
     "app/src/lib/cn.ts": {
@@ -2368,7 +2481,7 @@
       "hash": "ec1499e69cf8ab14",
       "size": 129,
       "mtimeMs": 1785394522220.3386,
-      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan"
     },
     "app/src/lib/contact-content.ts": {
@@ -2377,7 +2490,7 @@
       "hash": "8867d82d35948820",
       "size": 6115,
       "mtimeMs": 1786607522146.9343,
-      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan"
     },
     "app/src/lib/format.ts": {
@@ -2386,7 +2499,7 @@
       "hash": "8701aed0fafb688d",
       "size": 799,
       "mtimeMs": 1786611222475.6199,
-      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan"
     },
     "app/src/lib/home-content.ts": {
@@ -2395,7 +2508,7 @@
       "hash": "468aafd90e1e85ea",
       "size": 3679,
       "mtimeMs": 1786618873059.2969,
-      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan"
     },
     "app/src/lib/links.ts": {
@@ -2404,7 +2517,7 @@
       "hash": "deb9a891b124a1f5",
       "size": 900,
       "mtimeMs": 1785417692764.3281,
-      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan"
     },
     "app/src/lib/object-content.ts": {
@@ -2413,7 +2526,7 @@
       "hash": "53f2c1ecb6fa6ff3",
       "size": 1813,
       "mtimeMs": 1786611233980.7998,
-      "updatedAt": "2026-08-13T11:18:20.609Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan",
       "symbols": [
         {
@@ -2431,25 +2544,90 @@
       "hash": "12b28f9d9e1d1d95",
       "size": 6839,
       "mtimeMs": 1786560515058.1301,
-      "updatedAt": "2026-08-13T11:18:20.610Z",
+      "updatedAt": "2026-08-13T12:03:28.323Z",
       "source": "scan"
     },
     "app/src/lib/reviews.ts": {
       "description": "Aggregates die PAGE_QUERY over alle reviews afleidt. Alles kan ontbreken.",
-      "tokens": 429,
-      "hash": "23d69cc8a1f2e45e",
-      "size": 1501,
-      "mtimeMs": 1786619826044.7517,
-      "updatedAt": "2026-08-13T11:18:20.610Z",
-      "source": "scan"
+      "tokens": 1301,
+      "hash": "a6900973353d5c22",
+      "size": 4565,
+      "mtimeMs": 1786622306249.2139,
+      "updatedAt": "2026-08-13T12:03:28.324Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "subjectGrades",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 63,
+          "tokens": 246
+        },
+        {
+          "name": "gradeDistribution",
+          "kind": "fn",
+          "startLine": 64,
+          "endLine": 76,
+          "tokens": 124
+        },
+        {
+          "name": "formatReviewDate",
+          "kind": "fn",
+          "startLine": 77,
+          "endLine": 88,
+          "tokens": 111
+        },
+        {
+          "name": "formatGrade",
+          "kind": "fn",
+          "startLine": 89,
+          "endLine": 97,
+          "tokens": 99
+        },
+        {
+          "name": "reviewScore",
+          "kind": "fn",
+          "startLine": 98,
+          "endLine": 102,
+          "tokens": 64
+        },
+        {
+          "name": "reviewCountLabel",
+          "kind": "fn",
+          "startLine": 103,
+          "endLine": 107,
+          "tokens": 75
+        },
+        {
+          "name": "reviewCountNoun",
+          "kind": "fn",
+          "startLine": 108,
+          "endLine": 116,
+          "tokens": 93
+        },
+        {
+          "name": "getReviewScrollStep",
+          "kind": "fn",
+          "startLine": 117,
+          "endLine": 120,
+          "tokens": 30
+        },
+        {
+          "name": "getReviewProgressWidth",
+          "kind": "fn",
+          "startLine": 121,
+          "endLine": 130,
+          "tokens": 69
+        }
+      ]
     },
     "app/src/lib/site.ts": {
       "description": "Exports SITE, NavLink, FooterLinkGroup, FOOTER_CERTS, REGIONS",
-      "tokens": 191,
-      "hash": "eee0b0612d02829c",
-      "size": 666,
-      "mtimeMs": 1785417542588.1482,
-      "updatedAt": "2026-08-13T11:18:20.610Z",
+      "tokens": 190,
+      "hash": "0ab924bfe5c29b6d",
+      "size": 665,
+      "mtimeMs": 1786620654861.6467,
+      "updatedAt": "2026-08-13T12:03:28.324Z",
       "source": "scan"
     },
     "app/src/lib/taxatie-content.ts": {
@@ -2458,7 +2636,7 @@
       "hash": "a411db3329b2ef87",
       "size": 10953,
       "mtimeMs": 1786562523597.816,
-      "updatedAt": "2026-08-13T11:18:20.610Z",
+      "updatedAt": "2026-08-13T12:03:28.324Z",
       "source": "scan"
     },
     "app/src/lib/verkoop-content.ts": {
@@ -2467,7 +2645,7 @@
       "hash": "f31c6a93a5a316a5",
       "size": 7712,
       "mtimeMs": 1786562531182.1392,
-      "updatedAt": "2026-08-13T11:18:20.610Z",
+      "updatedAt": "2026-08-13T12:03:28.324Z",
       "source": "scan"
     },
     "app/src/sanity/client.ts": {
@@ -2476,7 +2654,7 @@
       "hash": "3ec432deb90d37d3",
       "size": 211,
       "mtimeMs": 1785089336344.546,
-      "updatedAt": "2026-08-13T11:18:20.610Z",
+      "updatedAt": "2026-08-13T12:03:28.324Z",
       "source": "scan"
     },
     "app/src/sanity/image.ts": {
@@ -2485,7 +2663,7 @@
       "hash": "b01cf2114cc455b3",
       "size": 1024,
       "mtimeMs": 1786611093245.4412,
-      "updatedAt": "2026-08-13T11:18:20.610Z",
+      "updatedAt": "2026-08-13T12:03:28.324Z",
       "source": "scan"
     },
     "app/src/sanity/metadata.ts": {
@@ -2494,7 +2672,7 @@
       "hash": "7acb84c9e55c0cd9",
       "size": 1790,
       "mtimeMs": 1786611390739.419,
-      "updatedAt": "2026-08-13T11:18:20.611Z",
+      "updatedAt": "2026-08-13T12:03:28.324Z",
       "source": "scan",
       "symbols": [
         {
@@ -2508,11 +2686,11 @@
     },
     "app/src/sanity/queries.ts": {
       "description": "Resolve internal page references on link/cta objects.",
-      "tokens": 1247,
-      "hash": "2341522046ff7c57",
-      "size": 4368,
-      "mtimeMs": 1786619803195.4453,
-      "updatedAt": "2026-08-13T11:18:20.611Z",
+      "tokens": 1613,
+      "hash": "258c9208dee8ee89",
+      "size": 5649,
+      "mtimeMs": 1786622185676.7554,
+      "updatedAt": "2026-08-13T12:03:28.324Z",
       "source": "scan"
     },
     "app/tailwind.config.ts": {
@@ -2521,7 +2699,7 @@
       "hash": "acbbf29f655cfa27",
       "size": 3308,
       "mtimeMs": 1785396746187.5957,
-      "updatedAt": "2026-08-13T11:18:20.611Z",
+      "updatedAt": "2026-08-13T12:03:28.324Z",
       "source": "scan"
     },
     "app/tsconfig.json": {
@@ -2530,16 +2708,16 @@
       "hash": "5c51df4c59f4510d",
       "size": 670,
       "mtimeMs": 1785087937160.0479,
-      "updatedAt": "2026-08-13T11:18:20.611Z",
+      "updatedAt": "2026-08-13T12:03:28.325Z",
       "source": "scan"
     },
     "app/tsconfig.tsbuildinfo": {
       "description": "",
-      "tokens": 44886,
-      "hash": "b9b4fe83c2de6562",
-      "size": 168320,
-      "mtimeMs": 1786619859731.9812,
-      "updatedAt": "2026-08-13T11:18:20.612Z",
+      "tokens": 44031,
+      "hash": "1dc76d99e7821740",
+      "size": 165116,
+      "mtimeMs": 1786622320988.3667,
+      "updatedAt": "2026-08-13T12:03:28.326Z",
       "source": "scan"
     },
     "CLAUDE.md": {
@@ -2548,7 +2726,7 @@
       "hash": "b1ca356fa9d5f3a6",
       "size": 225,
       "mtimeMs": 1785834177112.446,
-      "updatedAt": "2026-08-13T11:18:20.613Z",
+      "updatedAt": "2026-08-13T12:03:28.326Z",
       "source": "scan"
     },
     "README.md": {
@@ -2557,7 +2735,7 @@
       "hash": "7239f818fb4c333e",
       "size": 286,
       "mtimeMs": 1785088116980.9365,
-      "updatedAt": "2026-08-13T11:18:20.613Z",
+      "updatedAt": "2026-08-13T12:03:28.326Z",
       "source": "scan"
     },
     "studio-hart-huis/.gitignore": {
@@ -2566,7 +2744,7 @@
       "hash": "e830721125cd1c86",
       "size": 420,
       "mtimeMs": 1785064182434.4294,
-      "updatedAt": "2026-08-13T11:18:20.613Z",
+      "updatedAt": "2026-08-13T12:03:28.327Z",
       "source": "scan"
     },
     "studio-hart-huis/.sanity/runtime/app.js": {
@@ -2574,8 +2752,8 @@
       "tokens": 88,
       "hash": "9f3c353621ecc547",
       "size": 307,
-      "mtimeMs": 1786610598429.3792,
-      "updatedAt": "2026-08-13T11:18:20.614Z",
+      "mtimeMs": 1786620575050.2197,
+      "updatedAt": "2026-08-13T12:03:28.327Z",
       "source": "scan"
     },
     "studio-hart-huis/.sanity/runtime/index.html": {
@@ -2583,8 +2761,8 @@
       "tokens": 2316,
       "hash": "2d9e304bcfe67fce",
       "size": 8688,
-      "mtimeMs": 1786610598428.543,
-      "updatedAt": "2026-08-13T11:18:20.614Z",
+      "mtimeMs": 1786620575049.0876,
+      "updatedAt": "2026-08-13T12:03:28.327Z",
       "source": "scan"
     },
     "studio-hart-huis/eslint.config.mjs": {
@@ -2593,7 +2771,7 @@
       "hash": "c5807d719bd7e7fe",
       "size": 78,
       "mtimeMs": 1785064183076.9744,
-      "updatedAt": "2026-08-13T11:18:20.615Z",
+      "updatedAt": "2026-08-13T12:03:28.328Z",
       "source": "scan"
     },
     "studio-hart-huis/package-lock.json": {
@@ -2602,7 +2780,7 @@
       "hash": "11b691ebd09f393e",
       "size": 599520,
       "mtimeMs": 1786607099651.9663,
-      "updatedAt": "2026-08-13T11:18:20.616Z",
+      "updatedAt": "2026-08-13T12:03:28.329Z",
       "source": "scan"
     },
     "studio-hart-huis/package.json": {
@@ -2611,7 +2789,7 @@
       "hash": "ca6ab595d6f7a184",
       "size": 885,
       "mtimeMs": 1786607099536.6936,
-      "updatedAt": "2026-08-13T11:18:20.616Z",
+      "updatedAt": "2026-08-13T12:03:28.329Z",
       "source": "scan"
     },
     "studio-hart-huis/pnpm-lock.yaml": {
@@ -2620,7 +2798,7 @@
       "hash": "6c882dbf5161706e",
       "size": 384372,
       "mtimeMs": 1786561413902.1328,
-      "updatedAt": "2026-08-13T11:18:20.618Z",
+      "updatedAt": "2026-08-13T12:03:28.330Z",
       "source": "scan"
     },
     "studio-hart-huis/README.md": {
@@ -2629,7 +2807,7 @@
       "hash": "9bdd511ad54209f8",
       "size": 527,
       "mtimeMs": 1785064182431.047,
-      "updatedAt": "2026-08-13T11:18:20.619Z",
+      "updatedAt": "2026-08-13T12:03:28.331Z",
       "source": "scan"
     },
     "studio-hart-huis/sanity.cli.ts": {
@@ -2638,7 +2816,7 @@
       "hash": "eefc3be71900db30",
       "size": 342,
       "mtimeMs": 1786605565609.9658,
-      "updatedAt": "2026-08-13T11:18:20.619Z",
+      "updatedAt": "2026-08-13T12:03:28.331Z",
       "source": "scan"
     },
     "studio-hart-huis/sanity.config.ts": {
@@ -2647,7 +2825,7 @@
       "hash": "2f644a97d63da24c",
       "size": 525,
       "mtimeMs": 1786607449160.8398,
-      "updatedAt": "2026-08-13T11:18:20.619Z",
+      "updatedAt": "2026-08-13T12:03:28.331Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/aanbodHeaderType.ts": {
@@ -2656,7 +2834,7 @@
       "hash": "8ca24ea2b522143d",
       "size": 1253,
       "mtimeMs": 1786617278177.1423,
-      "updatedAt": "2026-08-13T11:18:20.619Z",
+      "updatedAt": "2026-08-13T12:03:28.331Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/assurancesType.ts": {
@@ -2665,7 +2843,7 @@
       "hash": "f5f79b942c3c7416",
       "size": 1285,
       "mtimeMs": 1786560726143.7336,
-      "updatedAt": "2026-08-13T11:18:20.619Z",
+      "updatedAt": "2026-08-13T12:03:28.331Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/benefitsType.ts": {
@@ -2674,7 +2852,16 @@
       "hash": "c8fc75e0c430d858",
       "size": 2232,
       "mtimeMs": 1786562544138.0842,
-      "updatedAt": "2026-08-13T11:18:20.619Z",
+      "updatedAt": "2026-08-13T12:03:28.331Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/beoordelingenHeroType.ts": {
+      "description": "Opener van /beoordelingen. Het cijfer, het aantal en de staafjes worden",
+      "tokens": 455,
+      "hash": "8d31f4b9d0eba883",
+      "size": 1592,
+      "mtimeMs": 1786622128019.0623,
+      "updatedAt": "2026-08-13T12:03:28.331Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/compareCardsType.ts": {
@@ -2683,7 +2870,7 @@
       "hash": "9c56e998cde09cb7",
       "size": 2473,
       "mtimeMs": 1786562590636.7693,
-      "updatedAt": "2026-08-13T11:18:20.619Z",
+      "updatedAt": "2026-08-13T12:03:28.331Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/contactFormSectionType.ts": {
@@ -2692,7 +2879,7 @@
       "hash": "e87b540d6e5ff1d6",
       "size": 2959,
       "mtimeMs": 1786607810092.9868,
-      "updatedAt": "2026-08-13T11:18:20.620Z",
+      "updatedAt": "2026-08-13T12:03:28.331Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/contactWaysType.ts": {
@@ -2701,7 +2888,7 @@
       "hash": "d39910ec626dc7f9",
       "size": 1853,
       "mtimeMs": 1786607789624.2578,
-      "updatedAt": "2026-08-13T11:18:20.620Z",
+      "updatedAt": "2026-08-13T12:03:28.331Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/crossLinksType.ts": {
@@ -2710,7 +2897,7 @@
       "hash": "84229b651aa969e7",
       "size": 1115,
       "mtimeMs": 1785415057713.1182,
-      "updatedAt": "2026-08-13T11:18:20.620Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/ctaBandType.ts": {
@@ -2719,7 +2906,7 @@
       "hash": "9c112bfd109e89c0",
       "size": 1166,
       "mtimeMs": 1785413063795.3142,
-      "updatedAt": "2026-08-13T11:18:20.620Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/duoPhotosType.ts": {
@@ -2728,7 +2915,7 @@
       "hash": "8e379f3468f37824",
       "size": 1278,
       "mtimeMs": 1786560726121.0774,
-      "updatedAt": "2026-08-13T11:18:20.620Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/factBarType.ts": {
@@ -2737,7 +2924,7 @@
       "hash": "fea9102e9266f4a3",
       "size": 1010,
       "mtimeMs": 1785413084448.296,
-      "updatedAt": "2026-08-13T11:18:20.620Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/faqsType.ts": {
@@ -2746,16 +2933,16 @@
       "hash": "9f84992a20aef4df",
       "size": 924,
       "mtimeMs": 1785413108533.2122,
-      "updatedAt": "2026-08-13T11:18:20.620Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/heroType.ts": {
       "description": "Exports heroType",
-      "tokens": 687,
-      "hash": "86b8fce348ee5201",
-      "size": 2403,
-      "mtimeMs": 1785414683668.4846,
-      "updatedAt": "2026-08-13T11:18:20.620Z",
+      "tokens": 626,
+      "hash": "954fcf15d2e885a1",
+      "size": 2189,
+      "mtimeMs": 1786621270904.8347,
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/introType.ts": {
@@ -2764,7 +2951,7 @@
       "hash": "741d65d7d7f99709",
       "size": 2399,
       "mtimeMs": 1785413256568.5757,
-      "updatedAt": "2026-08-13T11:18:20.620Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/listingsType.ts": {
@@ -2773,7 +2960,7 @@
       "hash": "b07adac0900ab265",
       "size": 2614,
       "mtimeMs": 1785415063219.6985,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/mediaTextType.ts": {
@@ -2782,7 +2969,7 @@
       "hash": "a2b19db266fc7fc8",
       "size": 1192,
       "mtimeMs": 1786560726139.4656,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/objectGridType.ts": {
@@ -2791,7 +2978,7 @@
       "hash": "0cbd91172da12ec1",
       "size": 1102,
       "mtimeMs": 1786617285586.8928,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/pageHeroType.ts": {
@@ -2800,7 +2987,7 @@
       "hash": "fe9b18c92a938e89",
       "size": 1676,
       "mtimeMs": 1785413077593.0142,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/pageOpenerType.ts": {
@@ -2809,7 +2996,7 @@
       "hash": "aa636902ee6cd871",
       "size": 1007,
       "mtimeMs": 1786560726116.503,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "updatedAt": "2026-08-13T12:03:28.332Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/personType.ts": {
@@ -2818,7 +3005,7 @@
       "hash": "59ad75bde78645ca",
       "size": 1962,
       "mtimeMs": 1786607789628.988,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "updatedAt": "2026-08-13T12:03:28.333Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/quoteBandType.ts": {
@@ -2827,7 +3014,7 @@
       "hash": "e89a70e799854c51",
       "size": 1270,
       "mtimeMs": 1785413100084.1924,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "updatedAt": "2026-08-13T12:03:28.333Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/regionBlockType.ts": {
@@ -2836,16 +3023,25 @@
       "hash": "5f6d9448a6739d6d",
       "size": 1196,
       "mtimeMs": 1785415063504.6973,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "updatedAt": "2026-08-13T12:03:28.333Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/reviewGridType.ts": {
+      "description": "Alle beoordelingen met filters. De reviews worden hier niet geselecteerd:",
+      "tokens": 268,
+      "hash": "52c773c695913e6c",
+      "size": 935,
+      "mtimeMs": 1786622140597.4822,
+      "updatedAt": "2026-08-13T12:03:28.333Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/reviewsType.ts": {
       "description": "Exports reviewsType",
-      "tokens": 374,
-      "hash": "61f6590f0c895298",
-      "size": 1306,
-      "mtimeMs": 1785413059436.2683,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "tokens": 437,
+      "hash": "3c14a6f8e27b4d80",
+      "size": 1528,
+      "mtimeMs": 1786622153004.419,
+      "updatedAt": "2026-08-13T12:03:28.333Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/routeBlockType.ts": {
@@ -2854,7 +3050,7 @@
       "hash": "e669ac88eafe57d0",
       "size": 1819,
       "mtimeMs": 1786607789633.3943,
-      "updatedAt": "2026-08-13T11:18:20.621Z",
+      "updatedAt": "2026-08-13T12:03:28.333Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/servicesType.ts": {
@@ -2863,7 +3059,7 @@
       "hash": "f8b43f8565d79112",
       "size": 2396,
       "mtimeMs": 1785415062017.9482,
-      "updatedAt": "2026-08-13T11:18:20.622Z",
+      "updatedAt": "2026-08-13T12:03:28.333Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/splitHeroType.ts": {
@@ -2872,7 +3068,7 @@
       "hash": "4d100ac6e82e4820",
       "size": 1499,
       "mtimeMs": 1786607789619.8772,
-      "updatedAt": "2026-08-13T11:18:20.622Z",
+      "updatedAt": "2026-08-13T12:03:28.333Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/stepsType.ts": {
@@ -2881,7 +3077,7 @@
       "hash": "c748e46a3ca14f11",
       "size": 1581,
       "mtimeMs": 1785413096292.5088,
-      "updatedAt": "2026-08-13T11:18:20.622Z",
+      "updatedAt": "2026-08-13T12:03:28.333Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/storyType.ts": {
@@ -2890,7 +3086,7 @@
       "hash": "11d20c4b8974f6e2",
       "size": 1595,
       "mtimeMs": 1785413049413.9749,
-      "updatedAt": "2026-08-13T11:18:20.622Z",
+      "updatedAt": "2026-08-13T12:03:28.333Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/timelineType.ts": {
@@ -2899,7 +3095,16 @@
       "hash": "0535ac1f45c7bc01",
       "size": 1721,
       "mtimeMs": 1786560726125.752,
-      "updatedAt": "2026-08-13T11:18:20.622Z",
+      "updatedAt": "2026-08-13T12:03:28.333Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/uitgelichteReviewType.ts": {
+      "description": "Eén beoordeling groot uitgelicht naast een foto.",
+      "tokens": 288,
+      "hash": "90b8f22d4f0445c6",
+      "size": 1006,
+      "mtimeMs": 1786622134207.8027,
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/valueCardsType.ts": {
@@ -2908,7 +3113,16 @@
       "hash": "58de0c4342f59467",
       "size": 1640,
       "mtimeMs": 1786560726135.1118,
-      "updatedAt": "2026-08-13T11:18:20.622Z",
+      "updatedAt": "2026-08-13T12:03:28.334Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/werkwijzeType.ts": {
+      "description": "Donkere uitlegsectie met genummerde punten.",
+      "tokens": 345,
+      "hash": "004a607aef8d57a2",
+      "size": 1207,
+      "mtimeMs": 1786622147744.428,
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/faqType.ts": {
@@ -2917,7 +3131,7 @@
       "hash": "1f7a05e01a3cc9f2",
       "size": 830,
       "mtimeMs": 1785413103941.8618,
-      "updatedAt": "2026-08-13T11:18:20.623Z",
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/footerType.ts": {
@@ -2926,16 +3140,16 @@
       "hash": "532851f1c70528b3",
       "size": 2725,
       "mtimeMs": 1785417697738.4307,
-      "updatedAt": "2026-08-13T11:18:20.623Z",
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/index.ts": {
       "description": "Exports schemaTypes",
-      "tokens": 751,
-      "hash": "b1e0998c66e85042",
-      "size": 2628,
-      "mtimeMs": 1786617313503.7886,
-      "updatedAt": "2026-08-13T11:18:20.623Z",
+      "tokens": 846,
+      "hash": "93c885695109ff17",
+      "size": 2959,
+      "mtimeMs": 1786622166873.336,
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/navigationType.ts": {
@@ -2944,7 +3158,7 @@
       "hash": "be12c9ef0727712d",
       "size": 1269,
       "mtimeMs": 1785417696494.7275,
-      "updatedAt": "2026-08-13T11:18:20.623Z",
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/ctaType.ts": {
@@ -2953,7 +3167,7 @@
       "hash": "d016fc7939d21106",
       "size": 326,
       "mtimeMs": 1785415054580.3945,
-      "updatedAt": "2026-08-13T11:18:20.623Z",
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/linkFields.ts": {
@@ -2962,7 +3176,7 @@
       "hash": "c355054eed7f2555",
       "size": 1424,
       "mtimeMs": 1785415050987.8442,
-      "updatedAt": "2026-08-13T11:18:20.624Z",
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/linkType.ts": {
@@ -2971,7 +3185,7 @@
       "hash": "4a6dec2e72655f28",
       "size": 188,
       "mtimeMs": 1785415051978.4214,
-      "updatedAt": "2026-08-13T11:18:20.624Z",
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/seoType.ts": {
@@ -2980,16 +3194,16 @@
       "hash": "c3937d54e6fc72e3",
       "size": 806,
       "mtimeMs": 1786605655235.7788,
-      "updatedAt": "2026-08-13T11:18:20.624Z",
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/pageBuilderType.ts": {
       "description": "Exports pageBuilderType",
-      "tokens": 407,
-      "hash": "e823b7d950a858c7",
-      "size": 1424,
-      "mtimeMs": 1786617313504.1016,
-      "updatedAt": "2026-08-13T11:18:20.624Z",
+      "tokens": 462,
+      "hash": "84bfe3323a969fdc",
+      "size": 1617,
+      "mtimeMs": 1786622166873.509,
+      "updatedAt": "2026-08-13T12:03:28.334Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/pageType.ts": {
@@ -2998,16 +3212,16 @@
       "hash": "302e9947730ed839",
       "size": 744,
       "mtimeMs": 1786605681102.2048,
-      "updatedAt": "2026-08-13T11:18:20.624Z",
+      "updatedAt": "2026-08-13T12:03:28.335Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/reviewType.ts": {
       "description": "Cijfers komen straks uit de scraper; daarom optioneel.",
-      "tokens": 338,
-      "hash": "19572b65587d66a3",
-      "size": 1180,
-      "mtimeMs": 1786618855549.3674,
-      "updatedAt": "2026-08-13T11:18:20.625Z",
+      "tokens": 408,
+      "hash": "12fba4f3a66ae52b",
+      "size": 1425,
+      "mtimeMs": 1786622157556.2068,
+      "updatedAt": "2026-08-13T12:03:28.335Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/woningType.ts": {
@@ -3016,7 +3230,7 @@
       "hash": "101779e5870086b9",
       "size": 9146,
       "mtimeMs": 1786610789327.7375,
-      "updatedAt": "2026-08-13T11:18:20.625Z",
+      "updatedAt": "2026-08-13T12:03:28.335Z",
       "source": "scan"
     },
     "studio-hart-huis/static/.gitkeep": {
@@ -3025,7 +3239,7 @@
       "hash": "7635960718f1ae5c",
       "size": 81,
       "mtimeMs": 1785064182433.0325,
-      "updatedAt": "2026-08-13T11:18:20.625Z",
+      "updatedAt": "2026-08-13T12:03:28.335Z",
       "source": "scan"
     },
     "studio-hart-huis/structure.ts": {
@@ -3034,7 +3248,7 @@
       "hash": "ba56cc5ea33a4993",
       "size": 1673,
       "mtimeMs": 1786609428958.1206,
-      "updatedAt": "2026-08-13T11:18:20.625Z",
+      "updatedAt": "2026-08-13T12:03:28.335Z",
       "source": "scan"
     },
     "studio-hart-huis/tsconfig.json": {
@@ -3043,16 +3257,16 @@
       "hash": "e5a67d7d8cdee156",
       "size": 417,
       "mtimeMs": 1785064182435.5544,
-      "updatedAt": "2026-08-13T11:18:20.625Z",
+      "updatedAt": "2026-08-13T12:03:28.335Z",
       "source": "scan"
     },
     "studio-hart-huis/tsconfig.tsbuildinfo": {
       "description": "",
-      "tokens": 32857,
-      "hash": "726135bff1fda673",
-      "size": 123213,
-      "mtimeMs": 1786609870452.595,
-      "updatedAt": "2026-08-13T11:18:20.626Z",
+      "tokens": 33347,
+      "hash": "a9a7348609c1444c",
+      "size": 125049,
+      "mtimeMs": 1786622595776.4146,
+      "updatedAt": "2026-08-13T12:03:28.336Z",
       "source": "scan"
     }
   }

@@ -39,6 +39,7 @@
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
 <!-- Format: [YYYY-MM-DD] Description of what went wrong and what to do instead. -->
 
+- [2026-08-13] Een kaartcomponent die zowel in een carousel als in een grid moet passen: zet de sizing (`shrink-0 basis-[400px] snap-start`) op een wrapper-div in de carousel, niet op de kaart zelf. `cn` is geen tailwind-merge, dus een `w-full` van de grid wint niet van een `basis-[400px]` op de kaart — de klassen blijven allebei staan en de CSS-volgorde beslist. `useReviewsCarousel` meet `[data-review-card]`, dus de kaart heeft wel `w-full` nodig om de wrapper te vullen.
 - [2026-08-13] `src/lib/*-content.ts` bundelt meerdere exports die dezelfde veldnamen delen (`place` zit in zowel `REVIEWS` als `LISTINGS`). Nooit een bestandsbrede regex loslaten om velden te verwijderen — scope op het array-blok of gebruik per-veld Edits, en controleer altijd met `git diff` welke regels echt weg zijn.
 - [2026-08-13] Next 16 metadata merging is by **key presence**, not by value: returning `{ title: undefined }` from `generateMetadata` wipes the root layout's title/description instead of inheriting them. Build the Metadata object with conditional spreads (`...(x ? { x } : {})`) so unset CMS fields are simply absent.
 

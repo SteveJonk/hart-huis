@@ -1,6 +1,7 @@
 import { AanbodHeader } from '@/components/blocks/AanbodHeader';
 import { Assurances } from '@/components/blocks/Assurances';
 import { Benefits } from '@/components/blocks/Benefits';
+import { BeoordelingenHero } from '@/components/blocks/BeoordelingenHero';
 import { CompareCards } from '@/components/blocks/CompareCards';
 import { ContactForm, type ContactFormField } from '@/components/blocks/ContactForm';
 import { ContactWays } from '@/components/blocks/ContactWays';
@@ -20,16 +21,25 @@ import { Person } from '@/components/blocks/Person';
 import { QuoteBand } from '@/components/blocks/QuoteBand';
 import { RegionBlock } from '@/components/blocks/RegionBlock';
 import { RouteBlock } from '@/components/blocks/RouteBlock';
+import { ReviewGrid } from '@/components/blocks/ReviewGrid';
 import { Reviews } from '@/components/blocks/Reviews';
 import { Services } from '@/components/blocks/Services';
 import { SplitHero } from '@/components/blocks/SplitHero';
 import { Steps } from '@/components/blocks/Steps';
 import { Stories } from '@/components/blocks/Stories';
 import { Timeline } from '@/components/blocks/Timeline';
+import { UitgelichteReview } from '@/components/blocks/UitgelichteReview';
 import { ValueCards } from '@/components/blocks/ValueCards';
+import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
 import { resolveHref, type SanityLabeledLink, type SanityLink } from '@/lib/links';
-import { reviewCountLabel, reviewScore, type ReviewStats } from '@/lib/reviews';
+import {
+  reviewCountLabel,
+  reviewCountNoun,
+  reviewScore,
+  type ReviewItem,
+  type ReviewStats,
+} from '@/lib/reviews';
 
 type SanityCta = SanityLabeledLink;
 
@@ -63,6 +73,14 @@ function toLabeledLink(
   const href = resolveHref(item?.link);
   if (!item?.label || !href) return undefined;
   return { label: item.label, href };
+}
+
+/** Reviews zonder quote of naam zijn onbruikbaar op een kaart en vallen af. */
+function toReviews(value: unknown): ReviewItem[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  return (value as Array<Partial<ReviewItem> | null>)
+    .filter((review): review is ReviewItem => Boolean(review?.quote && review?.name))
+    .map((review) => ({ ...review }));
 }
 
 function renderBlock(block: PageBlock) {
@@ -166,11 +184,7 @@ function renderBlock(block: PageBlock) {
       );
     }
     case 'reviews': {
-      const reviews = (
-        block.reviews as Array<{ quote?: string; name?: string }> | undefined
-      )
-        ?.filter((review) => review?.quote && review?.name)
-        .map((review) => ({ quote: review.quote!, name: review.name! }));
+      const reviews = toReviews(block.reviews);
       const stats = block as ReviewStats;
       return (
         <Reviews
@@ -184,6 +198,59 @@ function renderBlock(block: PageBlock) {
           intro={block.intro as string | undefined}
           reviews={reviews}
           link={toCta(block.link as SanityCta)}
+          showGrades={Boolean(block.showGrades)}
+        />
+      );
+    }
+    case 'beoordelingenHero': {
+      const stats = block as ReviewStats;
+      return (
+        <BeoordelingenHero
+          key={block._key}
+          breadcrumbLabel={block.breadcrumbLabel as string | undefined}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          titleHighlight={block.titleHighlight as string | undefined}
+          lead={block.lead as string | undefined}
+          primaryCta={toCta(block.primaryCta as SanityCta)}
+          secondaryCta={toCta(block.secondaryCta as SanityCta)}
+          score={reviewScore(stats)}
+          scoreLabel={block.scoreLabel as string | undefined}
+          countLabel={reviewCountNoun(stats)}
+          scoreNote={block.scoreNote as string | undefined}
+          stats={stats}
+        />
+      );
+    }
+    case 'uitgelichteReview': {
+      return (
+        <UitgelichteReview
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          image={toImage(block.image as SanityImage, 900, 1125)}
+          review={toReviews([block.review])?.[0]}
+        />
+      );
+    }
+    case 'reviewGrid': {
+      return (
+        <ReviewGrid
+          key={block._key}
+          title={block.title as string | undefined}
+          items={toReviews(block.items)}
+          more={block.more as string | undefined}
+          empty={block.empty as string | undefined}
+        />
+      );
+    }
+    case 'werkwijze': {
+      return (
+        <Werkwijze
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          lead={block.lead as string | undefined}
+          items={block.items as WerkwijzeItem[] | undefined}
         />
       );
     }

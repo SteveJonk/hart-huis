@@ -45,36 +45,32 @@
   - `objectGrid` is a client block: PAGE_QUERY hands it every `woning`, the browser filters (status/plaats/prijs), sorts and pages (9 per keer)
   - nav + footer "Actueel aanbod" now resolve to the page (`npm run seed:nav` is done)
 
+
+**`beoordelingen.html` → /beoordelingen**
+- 4 nieuwe blocks: `beoordelingenHero` (scorekaart + cijferverdeling), `uitgelichteReview` (referentie naar één review), `reviewGrid` (client: filter Alle/Verkopers/Kopers + 9 per keer), `werkwijze` (donker, genummerd); `ctaBand` hergebruikt
+- images in `app/public/images/beoordelingen/`; geseed met `npm run seed:beoordelingen` + `seed:nav`
+- `ReviewCard` is nu gedeeld: cijferrondje, naam, datum, type-tag, en de deelcijfertabel achter `showGrades` (uit op home, aan op /beoordelingen)
+- sizing van de carousel is naar een wrapper-div verhuisd zodat dezelfde kaart in een grid past
+
+**Review-aggregates**
+- afgeleid in GROQ (`reviewStats` + `reviewDistribution` in PAGE_QUERY), geen singleton — zie Decision Log in cerebrum
+- `review` heeft nu grade/expertise/localMarketKnowledge/negotiationAndResult/priceQuality (0-10), `type` (Aankoop/Verkoop) en `date`; initials/place/source zijn verwijderd
+- home hero-badge en reviews-blok lezen hetzelfde afgeleide cijfer, met de CMS-waarde als fallback
+- `npm run check:reviews` dekt formatting, fallback, deelcijfers en de verdeling
+
 ---
 
 ## 🚀 Next phase
 
-**Goal:** Implement the last remaining design, `beoordelingen.html`, the same way.
+**Goal:** Alle designs uit `app/example-designs/` zijn nu geïmplementeerd. Wat resteert is afmaken en aanscherpen.
 
-### Acceptance criteria
-1. Run `npm run seed:sanity` so /over-ons exists in Sanity.
-2. Each remaining design gets blocks + schema + seed, reusing existing blocks where they fit.
-3. `beoordelingen.html` → its own page document; check first how much of `Reviews` (home) can be reused.
-4. Still open: the makelaar card on the object page is hardcoded in `src/lib/object-content.ts` — move it into the `woning` schema (or a shared makelaar document) when a second makelaar appears.
-5. Still open: `aanbiedingsTekstEngels` is stored and seeded but never rendered — there is no language switch on the object page yet.
-6. Still open: with only 6 objects seeded, the aanbod grid's "toon meer" (>9) and the CTA-kaart-after-6 position have not been exercised with real data.
-
-### Files to create / edit
-| Type | File | Content |
-|---|---|---|
-| new | `src/components/blocks/*.tsx` | per-design sections not yet covered |
-| new | `studio-hart-huis/schemaTypes/blocks/*.ts` | matching object types |
-| new | `app/scripts/seed/<page>.ts` | one seed module per design, registered in `scripts/seed.ts` |
-
-### Closed decisions
-- Copy lives in `src/lib/<page>-content.ts` and doubles as component DEFAULTS.
-- Internal nav/footer links resolve via `pageLink(label, slug)` in `scripts/seed/navigation.ts`; run `npm run seed:nav` after adding a page.
-- Seeding is per target: `npm run seed:<home|verkoop|over-ons|taxatie|contact|nav>`, or `npm run seed:sanity` for all.
-
-### Open decisions
-- `aanbod.html` / `object.html` probably need a listings-detail block; check the CSS diff against `!verkoop.html` first.
-
----
+### Open punten
+1. De scraper die `review`-documenten vult (grade, deelcijfers, type, date) moet nog gebouwd worden — schema en front-end staan klaar.
+2. Met 4 reviews is de "toon meer" van `reviewGrid` (>9) nog niet met echte data uitgeprobeerd.
+3. De makelaarskaart op de objectpagina is nog hardcoded in `src/lib/object-content.ts` — naar het `woning`-schema (of een gedeeld makelaar-document) zodra er een tweede makelaar is.
+4. `aanbiedingsTekstEngels` wordt opgeslagen en geseed maar nergens gerenderd — er is nog geen taalwissel op de objectpagina.
+5. Met 6 objecten is de aanbod-grid "toon meer" (>9) en de CTA-kaart-na-6 nog niet met echte data uitgeprobeerd.
+6. `SITE.fundaScore` / `SITE.reviewCount` zijn nu alleen nog fallback; de factBar op /verkoop gebruikt `SITE.fundaScore` nog hardcoded.
 
 ## 📁 Active architecture
 

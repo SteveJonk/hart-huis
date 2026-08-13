@@ -13,7 +13,11 @@ import {heroType} from './blocks/heroType'
 import {introType} from './blocks/introType'
 import {listingsType} from './blocks/listingsType'
 import {mediaTextType} from './blocks/mediaTextType'
+import {beoordelingenHeroType} from './blocks/beoordelingenHeroType'
 import {objectGridType} from './blocks/objectGridType'
+import {reviewGridType} from './blocks/reviewGridType'
+import {uitgelichteReviewType} from './blocks/uitgelichteReviewType'
+import {werkwijzeType} from './blocks/werkwijzeType'
 import {pageHeroType} from './blocks/pageHeroType'
 import {pageOpenerType} from './blocks/pageOpenerType'
 import {personType} from './blocks/personType'
@@ -81,4 +85,8 @@ export const schemaTypes = [
   routeBlockType,
   aanbodHeaderType,
   objectGridType,
+  beoordelingenHeroType,
+  uitgelichteReviewType,
+  reviewGridType,
+  werkwijzeType,
 ]

@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-13T11:18:20.630Z
-> Files: 194 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-13T12:03:28.337Z
+> Files: 204 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -106,14 +106,14 @@
 - `AGENTS.md` — This is NOT the Next.js you know (~82 tok)
 - `CLAUDE.md` (~3 tok)
 - `eslint.config.mjs` — ESLint flat configuration (~124 tok)
-- `next-env.d.ts` — / <reference types="next" /> (~71 tok)
+- `next-env.d.ts` — / <reference types="next" /> (~72 tok)
 - `next.config.ts` — Next.js configuration (~141 tok)
 - `package-lock.json` — npm lock file (~192873 tok)
-- `package.json` — Node.js package manifest (~427 tok)
+- `package.json` — Node.js package manifest (~450 tok)
 - `postcss.config.mjs` — Declares config (~26 tok)
 - `tailwind.config.ts` — Tailwind CSS configuration (~946 tok)
 - `tsconfig.json` — TypeScript configuration (~192 tok)
-- `tsconfig.tsbuildinfo` (~44886 tok)
+- `tsconfig.tsbuildinfo` (~44031 tok)
 
 ## app/example-designs/
 
@@ -130,22 +130,25 @@
 ## app/scripts/
 
 - `check-aanbiedingstekst.ts` — assert-based check of the Realworks text parser (`npm run check:tekst`). (~359 tok)
-- `check-reviews.ts` — Smallest thing that fails if de afgeleide review-cijfers breken. (~305 tok)
-- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~530 tok)
-  - fn `parseTargets` L36-47 (~106 tok)
-  - fn `main` L48-64 (~119 tok)
+- `check-reviews.ts` — Smallest thing that fails if de afgeleide review-cijfers breken. (~687 tok)
+- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~556 tok)
+  - fn `parseTargets` L38-49 (~106 tok)
+  - fn `main` L50-66 (~119 tok)
 
 ## app/scripts/seed/
 
 - `aanbod.ts` — Seeds the /aanbod page (aanbodHeader + objectGrid + ctaBand). (~494 tok)
+- `beoordelingen.ts` — Seeds the /beoordelingen page. De beoordelingen zelf komen uit `seed:home` (~902 tok)
+  - fn `buildBeoordelingenContent` L14-90 (~739 tok)
+  - fn `seedBeoordelingen` L91-95 (~49 tok)
 - `contact.ts` — Seeds the /contact page, plus the form document it points at. (~1490 tok)
   - fn `upsertContactForm` L24-59 (~310 tok)
   - fn `buildContactContent` L60-162 (~912 tok)
   - fn `seedContact` L163-170 (~64 tok)
-- `home.ts` — Seeds the reviews and the home page. (~1801 tok)
-  - fn `upsertReview` L12-35 (~188 tok)
-  - fn `buildHomeContent` L36-184 (~1452 tok)
-  - fn `seedHome` L185-195 (~80 tok)
+- `home.ts` — Seeds the reviews and the home page. (~1809 tok)
+  - fn `upsertReview` L12-39 (~198 tok)
+  - fn `buildHomeContent` L40-187 (~1445 tok)
+  - fn `seedHome` L188-198 (~82 tok)
 - `navigation.ts` — Seeds the navigation and footer singletons. (~862 tok)
   - fn `navLinkExternal` L9-17 (~47 tok)
   - fn `navLinkInternal` L18-26 (~66 tok)
@@ -215,11 +218,12 @@
 
 ## app/src/components/
 
-- `PageBuilder.tsx` — toCta — renders chart (~6904 tok)
-  - fn `toCta` L61-66 (~49 tok)
-  - fn `toLabeledLink` L67-74 (~76 tok)
-  - fn `renderBlock` L75-732 (~6056 tok)
-  - fn `PageBuilder` L733-738 (~60 tok)
+- `PageBuilder.tsx` — Reviews zonder quote of naam zijn onbruikbaar op een kaart en vallen af. (~7570 tok)
+  - fn `toCta` L64-69 (~49 tok)
+  - fn `toLabeledLink` L70-78 (~99 tok)
+  - fn `toReviews` L79-85 (~84 tok)
+  - fn `renderBlock` L86-790 (~6523 tok)
+  - fn `PageBuilder` L791-796 (~60 tok)
 
 ## app/src/components/blocks/
 
@@ -231,6 +235,8 @@
 - `Benefits.tsx` — DEFAULTS — renders chart (~1334 tok)
   - fn `BenefitIcon` L34-119 (~570 tok)
   - fn `Benefits` L120-167 (~500 tok)
+- `BeoordelingenHero.tsx` — Opener van /beoordelingen: copy naast de zandkleurige scorekaart. (~1805 tok)
+  - fn `BeoordelingenHero` L43-183 (~1421 tok)
 - `CompareCards.tsx` — Two side-by-side option cards, the second one on ink. (~1670 tok)
   - fn `IconCheck` L26-33 (~62 tok)
   - fn `IconCross` L34-42 (~80 tok)
@@ -276,9 +282,11 @@
   - fn `QuoteBand` L30-71 (~441 tok)
 - `RegionBlock.tsx` — DEFAULTS (~637 tok)
   - fn `RegionBlock` L26-62 (~416 tok)
-- `Reviews.tsx` — DEFAULTS (~1616 tok)
-  - fn `ReviewCard` L41-65 (~285 tok)
-  - fn `Reviews` L66-164 (~1022 tok)
+- `ReviewGrid.tsx` — Alle beoordelingen, in de browser gefilterd op soort en per 9 getoond. (~1108 tok)
+  - fn `ReviewGrid` L20-123 (~931 tok)
+- `Reviews.tsx` — Deelcijfertabel per review. Uit op de homepage, aan op /beoordelingen. (~2137 tok)
+  - fn `ReviewCard` L50-111 (~618 tok)
+  - fn `Reviews` L112-219 (~1108 tok)
 - `RouteBlock.tsx` — Dark band with opening hours, directions and a photo. (~888 tok)
   - fn `RouteBlock` L37-107 (~632 tok)
 - `Services.tsx` — DEFAULT_ITEMS (~1624 tok)
@@ -293,10 +301,14 @@
   - fn `Stories` L46-120 (~665 tok)
 - `Timeline.tsx` — DEFAULTS (~888 tok)
   - fn `Timeline` L25-89 (~716 tok)
+- `UitgelichteReview.tsx` — Eén uitgelichte beoordeling, groot uitgelicht naast een foto. (~751 tok)
+  - fn `UitgelichteReview` L21-81 (~552 tok)
 - `ValueCards.tsx` — DEFAULTS (~925 tok)
   - fn `ValueIcon` L24-60 (~273 tok)
   - fn `ValueCards` L61-105 (~493 tok)
 - `VerkoopCta.tsx` — DEFAULTS (~248 tok)
+- `Werkwijze.tsx` — Donkere uitlegsectie met genummerde punten. (~811 tok)
+  - fn `Werkwijze` L28-79 (~605 tok)
 
 ## app/src/components/layout/
 
@@ -366,6 +378,7 @@
   - fn `parseAanbiedingstekst` L23-57 (~252 tok)
   - fn `splitBold` L58-64 (~66 tok)
 - `aanbod-content.ts` — Copy + filter options (status, price ranges, sortings), page size and CTA-card position for /aanbod. (~839 tok)
+- `beoordelingen-content.ts` — Copy voor /beoordelingen. Doet dubbel dienst als component-DEFAULTS en seed-bron. (~925 tok)
 - `chrome.ts` — Scroll threshold (px) before the topbar gets the stuck state. (~62 tok)
 - `cn.ts` — Exports cn (~37 tok)
 - `contact-content.ts` — Icons shared by the contact cards and the form aside. (~1741 tok)
@@ -375,8 +388,17 @@
 - `object-content.ts` — Status labels/tones, back link, makelaar card, CTA copy for the object page. (~518 tok)
   - fn `statusOf` L12-53 (~407 tok)
 - `over-ons-content.ts` — Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more (~1949 tok)
-- `reviews.ts` — Aggregates die PAGE_QUERY over alle reviews afleidt. Alles kan ontbreken. (~429 tok)
-- `site.ts` — Exports SITE, NavLink, FooterLinkGroup, FOOTER_CERTS, REGIONS (~191 tok)
+- `reviews.ts` — Aggregates die PAGE_QUERY over alle reviews afleidt. Alles kan ontbreken. (~1301 tok)
+  - fn `subjectGrades` L42-63 (~246 tok)
+  - fn `gradeDistribution` L64-76 (~124 tok)
+  - fn `formatReviewDate` L77-88 (~111 tok)
+  - fn `formatGrade` L89-97 (~99 tok)
+  - fn `reviewScore` L98-102 (~64 tok)
+  - fn `reviewCountLabel` L103-107 (~75 tok)
+  - fn `reviewCountNoun` L108-116 (~93 tok)
+  - fn `getReviewScrollStep` L117-120 (~30 tok)
+  - fn `getReviewProgressWidth` L121-130 (~69 tok)
+- `site.ts` — Exports SITE, NavLink, FooterLinkGroup, FOOTER_CERTS, REGIONS (~190 tok)
 - `taxatie-content.ts` — Exports TAXATIE_HERO, TAXATIE_FACTS, TAXATIE_BENEFITS_IMAGE, TAXATIE_BENEFITS_INTRO + 14 more (~3127 tok)
 - `verkoop-content.ts` — Plain answer text. Optional `link` is inserted before `afterLink`. (~2199 tok)
 
@@ -386,7 +408,7 @@
 - `image.ts` — Exports SanityImage, urlFor, imageSrc, toImage (~293 tok)
 - `metadata.ts` — Map a page document's `seo` object onto Next metadata. Unset fields fall back to the root layout. (~511 tok)
   - fn `pageMetadata` L23-57 (~353 tok)
-- `queries.ts` — Resolve internal page references on link/cta objects. (~1247 tok)
+- `queries.ts` — Resolve internal page references on link/cta objects. (~1613 tok)
 
 ## studio-hart-huis/
 
@@ -400,7 +422,7 @@
 - `sanity.config.ts` (~150 tok)
 - `structure.ts` — Exports structure (~478 tok)
 - `tsconfig.json` — TypeScript configuration (~120 tok)
-- `tsconfig.tsbuildinfo` (~32857 tok)
+- `tsconfig.tsbuildinfo` (~33347 tok)
 
 ## studio-hart-huis/.sanity/runtime/
 
@@ -411,11 +433,11 @@
 
 - `faqType.ts` — Exports faqType (~238 tok)
 - `footerType.ts` — Exports footerType (~779 tok)
-- `index.ts` — Exports schemaTypes (~751 tok)
+- `index.ts` — Exports schemaTypes (~846 tok)
 - `navigationType.ts` — Exports navigationType (~363 tok)
-- `pageBuilderType.ts` — Exports pageBuilderType (~407 tok)
+- `pageBuilderType.ts` — Exports pageBuilderType (~462 tok)
 - `pageType.ts` — Exports pageType (~213 tok)
-- `reviewType.ts` — Cijfers komen straks uit de scraper; daarom optioneel. (~338 tok)
+- `reviewType.ts` — Cijfers komen straks uit de scraper; daarom optioneel. (~408 tok)
 - `woningType.ts` — The "Object" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional. (~2608 tok)
 
 ## studio-hart-huis/schemaTypes/blocks/
@@ -423,6 +445,7 @@
 - `aanbodHeaderType.ts` — Exports aanbodHeaderType (~358 tok)
 - `assurancesType.ts` — Exports assurancesType (~368 tok)
 - `benefitsType.ts` — Exports benefitsType (~638 tok)
+- `beoordelingenHeroType.ts` — Opener van /beoordelingen. Het cijfer, het aantal en de staafjes worden (~455 tok)
 - `compareCardsType.ts` — Exports compareCardsType (~707 tok)
 - `contactFormSectionType.ts` — Exports contactFormSectionType (~846 tok)
 - `contactWaysType.ts` — Exports contactWaysType (~530 tok)
@@ -431,7 +454,7 @@
 - `duoPhotosType.ts` — Exports duoPhotosType (~366 tok)
 - `factBarType.ts` — Exports factBarType (~289 tok)
 - `faqsType.ts` — Exports faqsType (~264 tok)
-- `heroType.ts` — Exports heroType (~687 tok)
+- `heroType.ts` — Exports heroType (~626 tok)
 - `introType.ts` — Exports introType (~686 tok)
 - `listingsType.ts` — Exports listingsType (~747 tok)
 - `mediaTextType.ts` — Exports mediaTextType (~341 tok)
@@ -441,14 +464,17 @@
 - `personType.ts` — Exports personType (~561 tok)
 - `quoteBandType.ts` — Exports quoteBandType (~363 tok)
 - `regionBlockType.ts` — Exports regionBlockType (~342 tok)
-- `reviewsType.ts` — Exports reviewsType (~374 tok)
+- `reviewGridType.ts` — Alle beoordelingen met filters. De reviews worden hier niet geselecteerd: (~268 tok)
+- `reviewsType.ts` — Exports reviewsType (~437 tok)
 - `routeBlockType.ts` — Exports routeBlockType (~520 tok)
 - `servicesType.ts` — Exports servicesType (~685 tok)
 - `splitHeroType.ts` — Exports splitHeroType (~429 tok)
 - `stepsType.ts` — Exports stepsType (~452 tok)
 - `storyType.ts` — Exports storyType (~456 tok)
 - `timelineType.ts` — Exports timelineType (~492 tok)
+- `uitgelichteReviewType.ts` — Eén beoordeling groot uitgelicht naast een foto. (~288 tok)
 - `valueCardsType.ts` — Exports valueCardsType (~469 tok)
+- `werkwijzeType.ts` — Donkere uitlegsectie met genummerde punten. (~345 tok)
 
 ## studio-hart-huis/schemaTypes/objects/
 

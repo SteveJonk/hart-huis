@@ -33,5 +33,9 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'routeBlock'}),
     defineArrayMember({type: 'aanbodHeader'}),
     defineArrayMember({type: 'objectGrid'}),
+    defineArrayMember({type: 'beoordelingenHero'}),
+    defineArrayMember({type: 'uitgelichteReview'}),
+    defineArrayMember({type: 'reviewGrid'}),
+    defineArrayMember({type: 'werkwijze'}),
   ],
 })

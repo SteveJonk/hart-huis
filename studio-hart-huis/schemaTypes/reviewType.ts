@@ -33,9 +33,16 @@ export const reviewType = defineType({
       type: 'string',
       options: {list: ['Aankoop', 'Verkoop'], layout: 'radio'},
     }),
+    defineField({
+      name: 'date',
+      title: 'Datum',
+      description: 'Wanneer de beoordeling geplaatst is; wordt op de kaart getoond.',
+      type: 'date',
+    }),
     scoreField('grade', 'Cijfer'),
     scoreField('expertise', 'Deskundigheid'),
     scoreField('localMarketKnowledge', 'Lokale marktkennis'),
+    scoreField('negotiationAndResult', 'Onderhandeling en resultaat'),
     scoreField('priceQuality', 'Prijs-kwaliteit'),
   ],
   preview: {

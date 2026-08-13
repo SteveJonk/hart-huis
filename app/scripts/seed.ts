@@ -11,6 +11,7 @@
  * scripts/seed/<page>.ts.
  */
 import {seedAanbod} from './seed/aanbod'
+import {seedBeoordelingen} from './seed/beoordelingen'
 import {seedContact} from './seed/contact'
 import {seedHome} from './seed/home'
 import {seedNavigation} from './seed/navigation'
@@ -28,6 +29,7 @@ const TARGETS = {
   contact: seedContact,
   objecten: seedObjecten,
   aanbod: seedAanbod,
+  beoordelingen: seedBeoordelingen,
   nav: seedNavigation,
 } as const
 

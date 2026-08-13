@@ -33,6 +33,31 @@ const reviewStats = /* groq */ `{
   "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)
 }`;
 
+/**
+ * Staafjes van de cijferverdeling: het cijfer wordt op een heel getal afgerond
+ * (9,5 telt als een 10), alles onder de 6,5 valt in de restbak.
+ */
+const reviewDistribution = /* groq */ `{
+  "cijfer10": count(*[_type == "review" && grade >= 9.5]),
+  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),
+  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),
+  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),
+  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])
+}`;
+
+/** Velden die een reviewkaart nodig heeft, inclusief de deelcijfers. */
+const reviewCard = /* groq */ `{
+  quote,
+  name,
+  type,
+  date,
+  grade,
+  expertise,
+  localMarketKnowledge,
+  negotiationAndResult,
+  priceQuality
+}`;
+
 export const PAGE_QUERY = defineQuery(`
   *[_type == "page" && slug.current == $slug][0]{
     _id,
@@ -87,9 +112,24 @@ export const PAGE_QUERY = defineQuery(`
       },
       _type == "reviews" => {
         ...,
-        reviews[]->,
+        reviews[]->${reviewCard},
         ...${reviewStats},
         link${linkExpansion}
+      },
+      _type == "beoordelingenHero" => {
+        ...,
+        ...${reviewStats},
+        ...${reviewDistribution},
+        primaryCta${linkExpansion},
+        secondaryCta${linkExpansion}
+      },
+      _type == "uitgelichteReview" => {
+        ...,
+        review->${reviewCard}
+      },
+      _type == "reviewGrid" => {
+        ...,
+        "items": *[_type == "review"] | order(date desc)${reviewCard}
       },
       _type == "objectGrid" => {
         ...,

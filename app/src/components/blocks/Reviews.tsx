@@ -7,12 +7,15 @@ import { Wrap } from "@/components/ui/Wrap";
 import { useReviewsCarousel } from "@/hooks/useReviewsCarousel";
 import { cn } from "@/lib/cn";
 import { REVIEWS } from "@/lib/home-content";
+import {
+  formatGrade,
+  formatReviewDate,
+  subjectGrades,
+  type ReviewItem,
+} from "@/lib/reviews";
 import { SITE } from "@/lib/site";
 
-export type ReviewItem = {
-  quote: string;
-  name: string;
-};
+export type { ReviewItem };
 
 export type ReviewsLink = {
   label: string;
@@ -26,10 +29,12 @@ export type ReviewsProps = {
   intro?: string;
   reviews?: ReviewItem[];
   link?: ReviewsLink;
+  /** Deelcijfertabel per review. Uit op de homepage, aan op /beoordelingen. */
+  showGrades?: boolean;
 };
 
-const DEFAULTS: Required<Omit<ReviewsProps, "link">> & Pick<ReviewsProps, "link"> =
-  {
+const DEFAULTS: Required<Omit<ReviewsProps, "link" | "showGrades">> &
+  Pick<ReviewsProps, "link"> = {
     score: SITE.fundaScore,
     scoreLabel: "OP FUNDA",
     reviewCountLabel: `${SITE.reviewCount} keer beoordeeld`,
@@ -38,27 +43,68 @@ const DEFAULTS: Required<Omit<ReviewsProps, "link">> & Pick<ReviewsProps, "link"
     link: { label: "Alle beoordelingen bekijken", href: "#" },
   };
 
-function ReviewCard({ review }: { review: ReviewItem }) {
+/**
+ * Eén beoordeling. De sizing zit bewust níet op de kaart zelf: de carousel
+ * wikkelt hem in een basis-/snap-div, de /beoordelingen-grid plaatst hem direct.
+ */
+export function ReviewCard({
+  review,
+  showGrades = false,
+}: {
+  review: ReviewItem;
+  showGrades?: boolean;
+}) {
+  const grade = formatGrade(review.grade);
+  const date = formatReviewDate(review.date);
+  const grades = showGrades ? subjectGrades(review) : [];
+
   return (
     <article
       data-review-card
       className={cn(
-        "flex shrink-0 basis-[400px] snap-start flex-col rounded bg-white px-[34px] pt-9 pb-[30px]",
+        "flex h-full w-full flex-col rounded bg-white px-[34px] pt-9 pb-[30px]",
         "transition-[transform,box-shadow] duration-500 ease-brand hover:-translate-y-1.5 hover:shadow-card",
-        "max-md:basis-[320px] max-sm:basis-[min(83vw,330px)] max-sm:px-[26px] max-sm:pt-[30px] max-sm:pb-[26px]",
+        "max-sm:px-[26px] max-sm:pt-[30px] max-sm:pb-[26px]",
       )}
     >
-      <span className="mb-5 block h-[26px] font-display text-[3.4rem] leading-[0.55] text-sand">
-        &rdquo;
-      </span>
+      <header className="mb-5 flex items-center gap-3.5 max-xs:flex-wrap">
+        {grade ? (
+          <span className="grid size-[52px] shrink-0 place-items-center rounded-full bg-sand font-display text-[1.12rem] font-medium">
+            {grade}
+          </span>
+        ) : (
+          <span className="block h-[26px] font-display text-[3.4rem] leading-[0.55] text-sand">
+            &rdquo;
+          </span>
+        )}
+        <span className="min-w-0 flex-1 leading-[1.4]">
+          <b className="block text-[0.92rem] font-semibold">{review.name}</b>
+          {date ? <span className="text-[0.79rem] text-ink-45">{date}</span> : null}
+        </span>
+        {review.type ? (
+          <span className="rounded-pill border border-sage-deep/30 px-[11px] py-1.5 text-[0.6rem] font-semibold tracking-[0.14em] text-sage-deep uppercase">
+            {review.type}
+          </span>
+        ) : null}
+      </header>
+
       <p className="flex-1 font-display text-[1.18rem] leading-[1.55] text-ink italic max-sm:text-[1.06rem]">
         {review.quote}
       </p>
-      <footer className="mt-7 flex items-center gap-[13px] border-t border-cream bg-transparent pt-5">
-        <b className="min-w-0 flex-1 text-[0.9rem] leading-[1.35] font-semibold">
-          {review.name}
-        </b>
-      </footer>
+
+      {grades.length > 0 ? (
+        <dl className="mt-[22px] border-t border-cream pt-4 text-[0.83rem]">
+          {grades.map((row) => (
+            <div
+              key={row.label}
+              className="flex items-baseline justify-between gap-4 py-[5px]"
+            >
+              <dt className="text-ink-45">{row.label}</dt>
+              <dd className="font-semibold tabular-nums">{row.value}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : null}
     </article>
   );
 }
@@ -70,6 +116,7 @@ export function Reviews({
   intro = DEFAULTS.intro,
   reviews = DEFAULTS.reviews,
   link = DEFAULTS.link,
+  showGrades = false,
 }: ReviewsProps = {}) {
   const { trackRef, progress, prev, next } = useReviewsCarousel();
 
@@ -140,7 +187,15 @@ export function Reviews({
             )}
           >
             {reviews.map((review) => (
-              <ReviewCard key={review.name} review={review} />
+              <div
+                key={review.name}
+                className={cn(
+                  "flex shrink-0 basis-[400px] snap-start",
+                  "max-md:basis-[320px] max-sm:basis-[min(83vw,330px)]",
+                )}
+              >
+                <ReviewCard review={review} showGrades={showGrades} />
+              </div>
             ))}
           </div>
         </Reveal>
