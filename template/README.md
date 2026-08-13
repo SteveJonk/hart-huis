@@ -84,10 +84,15 @@ Used by the header, footer and CTA blocks.
 
 ### Copy
 
-`app/src/lib/demo-content.ts` holds the placeholder copy for every block, and it
-does two jobs at once: it is what a block falls back to when the CMS has not
-supplied a field, **and** it is what `npm run seed` pushes into Sanity. Replace
-the strings there and both sides move together.
+`app/src/lib/demo-content.ts` holds the demo copy for every block, and it does
+two jobs at once: it is what a block falls back to when the CMS has not supplied
+a field, **and** it is what `npm run seed` pushes into Sanity. Replace the
+strings there and both sides move together.
+
+The copy is written for an invented studio ("Fieldnote") so that a seeded site
+reads like a real site instead of a page of lorem ipsum — it is easier to judge
+spacing and hierarchy against sentences of realistic length. It is still filler:
+replace it, along with the matching details in `app/src/lib/site.ts`.
 
 ## The blocks
 
