@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { urlFor } from '@/sanity/image';
 import { SITE } from '@/lib/site';
 
-type SanitySeo = {
+export type SanitySeo = {
   title?: string | null;
   description?: string | null;
   ogImage?: SanityImageSource | null;

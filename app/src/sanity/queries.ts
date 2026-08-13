@@ -80,6 +80,56 @@ export const PAGE_QUERY = defineQuery(`
   }
 `);
 
+/** Card fields for a `woning`, shared by the detail page's "vergelijkbare woningen". */
+const woningCard = /* groq */ `{
+  adres,
+  "slug": slug.current,
+  plaats,
+  status,
+  prijs,
+  woonoppervlak,
+  kamers,
+  "foto": fotos[0]
+}`;
+
+/**
+ * One object (house for sale) plus three others to show underneath — same
+ * plaats first, then the most recently offered.
+ */
+export const WONING_QUERY = defineQuery(`
+  *[_type == "woning" && slug.current == $slug][0]{
+    _id,
+    adres,
+    "slug": slug.current,
+    postcode,
+    plaats,
+    status,
+    prijs,
+    prijsConditie,
+    aangebodenSinds,
+    aanvaarding,
+    soortWoning,
+    bouwjaar,
+    woonoppervlak,
+    perceel,
+    inhoud,
+    kamers,
+    slaapkamers,
+    energielabel,
+    kenmerkGroepen[]{
+      titel,
+      rijen[]{label, waarde}
+    },
+    aanbiedingsTekst,
+    aanbiedingsTekstEngels,
+    fotos,
+    "brochureUrl": brochure.asset->url,
+    seo,
+    "vergelijkbaar": *[_type == "woning" && _id != ^._id]
+      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]${woningCard}
+  }
+`);
+
 /** Fields of one form, by document id. Used to validate submissions server-side. */
 export const CONTACT_FORM_QUERY = defineQuery(`
   *[_type == "contactForm" && _id == $formId][0]{

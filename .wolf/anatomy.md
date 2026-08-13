@@ -129,6 +129,7 @@
 
 ## app/scripts/
 
+- `check-aanbiedingstekst.ts` — assert-based check of the Realworks text parser (`npm run check:tekst`). (~350 tok)
 - `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~491 tok)
 
 ## app/scripts/seed/
@@ -184,6 +185,20 @@
 ## app/src/app/[slug]/
 
 - `page.tsx` — options (~283 tok)
+
+## app/src/app/object/[slug]/
+
+- `page.tsx` — Object detail page: fetches one `woning` by slug (WONING_QUERY), composes gallery/header/description/features/sidebar + SimilarObjects + CtaBand. (~1100 tok)
+
+## app/src/components/object/
+
+- `ObjectGallery.tsx` — Client. Three-photo header grid + "Alle foto's" lightbox (arrow keys, Escape, focus return). Carries `data-solid-header`. (~1900 tok)
+- `ObjectHeader.tsx` — Adres/prijs kop + the specs bar; skips specs the feed did not fill, colours the energielabel chip by tier. (~1100 tok)
+- `ObjectDescription.tsx` — Client. Omschrijving clamped behind a fade with a "lees de volledige omschrijving" toggle; renders parsed Realworks text. (~800 tok)
+- `ObjectFeatures.tsx` — Kenmerkentabel: one white card per `kenmerkGroep`, label/value rows, multi-value rows as a list. (~800 tok)
+- `ObjectSidebar.tsx` — Sticky price card (status pill, CTAs, feiten, brochure/delen) + makelaar card. (~1300 tok)
+- `ShareButton.tsx` — Client. navigator.share with a clipboard fallback. (~250 tok)
+- `SimilarObjects.tsx` — "Vergelijkbare woningen" band on sand, reusing `ListingCard`. (~400 tok)
 
 ## app/src/app/api/submit-form/
 
@@ -313,7 +328,10 @@
 
 ## app/src/lib/
 
+- `aanbiedingstekst.ts` — Parses the Realworks text format (`<br>`, `**vet**`, `- ` bullets) into blocks and drops the English half; `splitBold` for inline emphasis. (~500 tok)
 - `chrome.ts` — Scroll threshold (px) before the topbar gets the stuck state. (~62 tok)
+- `format.ts` — `euro()`, `longDate()`, `shortDate()` for object data. (~200 tok)
+- `object-content.ts` — Status labels/tones, back link, makelaar card, CTA copy for the object page. (~600 tok)
 - `cn.ts` — Exports cn (~37 tok)
 - `contact-content.ts` — Icons shared by the contact cards and the form aside. (~1741 tok)
 - `home-content.ts` — Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more (~1136 tok)

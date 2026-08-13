@@ -14,10 +14,13 @@ export type ListingImage = {
   alt: string;
 };
 
+/** Pill tone: available (white), sold subject to conditions (sand), sold (burgundy). */
+export type ListingTone = 'white' | 'sand' | 'burgundy';
+
 export type ListingItem = {
   href: string;
   status: string;
-  sold?: boolean;
+  tone?: ListingTone;
   place: string;
   title: string;
   meta: string;
@@ -47,7 +50,7 @@ export type ListingsProps = {
 const DEFAULT_ITEMS: ListingItem[] = LISTINGS.map((listing) => ({
   href: listing.href,
   status: listing.status,
-  sold: listing.sold,
+  tone: listing.sold ? 'burgundy' : 'white',
   place: listing.place,
   title: listing.title,
   meta: listing.meta,
@@ -69,7 +72,13 @@ const DEFAULTS: Required<Omit<ListingsProps, 'cta'>> & Pick<ListingsProps, 'cta'
   regions: DEFAULT_REGIONS,
 };
 
-function ListingCard({ listing }: { listing: ListingItem }) {
+const toneClass: Record<ListingTone, string> = {
+  white: 'bg-white text-ink',
+  sand: 'bg-sand text-burgundy',
+  burgundy: 'bg-burgundy text-white',
+};
+
+export function ListingCard({ listing }: { listing: ListingItem }) {
   return (
     <RevealLink
       href={listing.href}
@@ -84,7 +93,7 @@ function ListingCard({ listing }: { listing: ListingItem }) {
           className={cn(
             'absolute top-4 left-4 z-[2] rounded-pill px-[13px] py-[7px]',
             'text-[0.66rem] font-semibold tracking-[0.14em] uppercase',
-            listing.sold ? 'bg-burgundy text-white' : 'bg-white text-ink',
+            toneClass[listing.tone ?? 'white'],
           )}
         >
           {listing.status}

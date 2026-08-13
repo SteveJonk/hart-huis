@@ -125,3 +125,6 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+| 12:10 | Built /object/[slug] from example-designs/object.html | src/app/object/[slug]/page.tsx, src/components/object/*, src/lib/{aanbiedingstekst,format,object-content}.ts, sanity/queries.ts | tsc + eslint clean; verified in browser (gallery, lightbox, toggle, mobile) | ~40k |
+| 12:15 | Reused ListingCard for "vergelijkbare woningen" | Listings.tsx, PageBuilder.tsx | `sold: boolean` → `tone: white/sand/burgundy`; home pills unchanged | ~4k |
+| 12:20 | Moved imageSrc/toImage from PageBuilder to sanity/image.ts | PageBuilder.tsx, sanity/image.ts | shared by the object route, no duplication | ~2k |

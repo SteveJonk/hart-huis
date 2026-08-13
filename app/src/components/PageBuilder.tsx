@@ -1,4 +1,3 @@
-import type { SanityImageSource } from '@sanity/image-url';
 import { Assurances } from '@/components/blocks/Assurances';
 import { Benefits } from '@/components/blocks/Benefits';
 import { CompareCards } from '@/components/blocks/CompareCards';
@@ -29,17 +28,12 @@ import { Steps } from '@/components/blocks/Steps';
 import { Stories } from '@/components/blocks/Stories';
 import { Timeline } from '@/components/blocks/Timeline';
 import { ValueCards } from '@/components/blocks/ValueCards';
-import { urlFor } from '@/sanity/image';
+import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
 import {
   resolveHref,
   type SanityLabeledLink,
   type SanityLink,
 } from '@/lib/links';
-
-type SanityImage = SanityImageSource & {
-  _key?: string;
-  alt?: string;
-};
 
 type SanityCta = SanityLabeledLink;
 
@@ -48,27 +42,6 @@ type PageBlock = {
   _key: string;
   [key: string]: unknown;
 };
-
-function imageSrc(
-  source: SanityImage | undefined | null,
-  width: number,
-  height?: number,
-): string | null {
-  if (!source) return null;
-  let builder = urlFor(source)?.width(width);
-  if (height) builder = builder?.height(height).fit('crop');
-  return builder?.url() ?? null;
-}
-
-function toImage(
-  source: SanityImage | undefined | null,
-  width: number,
-  height?: number,
-): { src: string; alt: string } | undefined {
-  const src = imageSrc(source, width, height);
-  if (!src) return undefined;
-  return { src, alt: source?.alt ?? '' };
-}
 
 function toCta(cta: SanityCta | undefined | null) {
   const href = resolveHref(cta);
@@ -234,7 +207,7 @@ function renderBlock(block: PageBlock) {
           if (!href) return null;
           return {
             status: item.status,
-            sold: item.sold,
+            tone: item.sold ? ('burgundy' as const) : ('white' as const),
             place: item.place,
             title: item.title,
             meta: item.meta,
