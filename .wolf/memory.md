@@ -92,3 +92,19 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+
+## Session: 2026-08-13 contact
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| — | Diffed contact.html vs !verkoop.html | example-designs/ | own template: split hero + ways + wie + form + route; only crossLinks reused | ~6k |
+| — | Asked how the form should submit | — | user chose: wire the installed Sanity contact-form plugin | ~1k |
+| — | Registered plugin + studio structure | sanity.config.ts, structure.ts | Forms list + Form settings singleton | ~1k |
+| — | Extracted 3 jpegs | public/images/contact/*.jpg | kantoor, dorien, straat | ~0.5k |
+| — | Copy constants | src/lib/contact-content.ts | incl. the seeded form field definitions | ~4k |
+| — | Built 5 blocks + shared icon | blocks/{SplitHero,ContactWays,Person,ContactForm,RouteBlock}.tsx, ui/ContactIcon.tsx | ContactForm is the only client block | ~10k |
+| — | Sanity schemas | schemaTypes/blocks/{splitHero,contactWays,person,contactFormSection,routeBlock}Type.ts | contactFormSection references the plugin's contactForm doc | ~4k |
+| — | Submit endpoint | src/app/api/submit-form/route.ts | server-side settings + allow-list from the form doc + nodemailer | ~4k |
+| — | Seed module | scripts/seed/contact.ts, seed.ts, package.json | seeds the form doc + page; npm run seed:contact | ~3k |
+| — | Verified layout/DOM + API error paths | — | desktop + mobile OK, 400/404 paths OK (screenshots unavailable, pane stuck) | ~8k |
+| — | Wired Google reCAPTCHA v2 | ContactForm.tsx, api/submit-form/route.ts, queries.ts, PageBuilder.tsx | site key via GROQ, secret server-side, fails closed | ~5k |

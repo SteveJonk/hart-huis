@@ -2,6 +2,11 @@ import type { SanityImageSource } from '@sanity/image-url';
 import { Assurances } from '@/components/blocks/Assurances';
 import { Benefits } from '@/components/blocks/Benefits';
 import { CompareCards } from '@/components/blocks/CompareCards';
+import {
+  ContactForm,
+  type ContactFormField,
+} from '@/components/blocks/ContactForm';
+import { ContactWays } from '@/components/blocks/ContactWays';
 import { CrossLinks } from '@/components/blocks/CrossLinks';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import { DuoPhotos } from '@/components/blocks/DuoPhotos';
@@ -13,10 +18,13 @@ import { Listings } from '@/components/blocks/Listings';
 import { MediaText } from '@/components/blocks/MediaText';
 import { PageHero } from '@/components/blocks/PageHero';
 import { PageOpener } from '@/components/blocks/PageOpener';
+import { Person } from '@/components/blocks/Person';
 import { QuoteBand } from '@/components/blocks/QuoteBand';
 import { RegionBlock } from '@/components/blocks/RegionBlock';
+import { RouteBlock } from '@/components/blocks/RouteBlock';
 import { Reviews } from '@/components/blocks/Reviews';
 import { Services } from '@/components/blocks/Services';
+import { SplitHero } from '@/components/blocks/SplitHero';
 import { Steps } from '@/components/blocks/Steps';
 import { Stories } from '@/components/blocks/Stories';
 import { Timeline } from '@/components/blocks/Timeline';
@@ -536,6 +544,156 @@ function renderBlock(block: PageBlock) {
           title={block.title as string | undefined}
           lead={block.lead as string | undefined}
           items={block.items as { title: string; body: string }[] | undefined}
+        />
+      );
+    }
+    case 'splitHero': {
+      return (
+        <SplitHero
+          key={block._key}
+          breadcrumbLabel={block.breadcrumbLabel as string | undefined}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          titleHighlight={block.titleHighlight as string | undefined}
+          lead={block.lead as string | undefined}
+          primaryCta={toCta(block.primaryCta as SanityCta)}
+          secondaryCta={toCta(block.secondaryCta as SanityCta)}
+          image={toImage(block.image as SanityImage, 1400, 1700)}
+        />
+      );
+    }
+    case 'contactWays': {
+      const items = (
+        block.items as
+          | Array<{
+              icon: 'phone' | 'whatsapp' | 'mail' | 'pin';
+              title: string;
+              body: string;
+              value: string;
+              note?: string;
+              link?: SanityLink;
+            }>
+          | undefined
+      )?.map((item) => ({
+        icon: item.icon,
+        title: item.title,
+        body: item.body,
+        value: item.value,
+        note: item.note ?? '',
+        href: resolveHref(item.link) ?? '#',
+      }));
+      return <ContactWays key={block._key} items={items} />;
+    }
+    case 'personBlock': {
+      const person = block.person as
+        | {
+            initials?: string;
+            name?: string;
+            role?: string;
+            links?: Array<{ label?: string; link?: SanityLink }>;
+          }
+        | undefined;
+      return (
+        <Person
+          key={block._key}
+          image={toImage(block.image as SanityImage, 800, 1000)}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          body={block.body as string | undefined}
+          person={
+            person?.initials && person.name && person.role
+              ? {
+                  initials: person.initials,
+                  name: person.name,
+                  role: person.role,
+                  links: (person.links ?? [])
+                    .map(toLabeledLink)
+                    .filter((link): link is { label: string; href: string } =>
+                      Boolean(link),
+                    ),
+                }
+              : undefined
+          }
+        />
+      );
+    }
+    case 'contactFormSection': {
+      const form = block.form as
+        | {
+            _id?: string;
+            title?: string;
+            showtitle?: boolean;
+            submitButtonText?: string;
+            fields?: ContactFormField[];
+          }
+        | undefined;
+      const aside = block.aside as
+        | {
+            title?: string;
+            body?: string;
+            items?: Array<{
+              icon: 'phone' | 'whatsapp' | 'mail' | 'pin';
+              title: string;
+              subtitle?: string;
+            }>;
+            cta?: SanityCta;
+          }
+        | undefined;
+      const recaptcha = block.recaptcha as
+        | { recaptchaEnabled?: boolean; recaptchaSiteKey?: string }
+        | undefined;
+      return (
+        <ContactForm
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          lead={block.lead as string | undefined}
+          note={block.note as string | undefined}
+          successTitle={block.successTitle as string | undefined}
+          successBody={block.successBody as string | undefined}
+          form={
+            form?._id && form.fields?.length
+              ? {
+                  id: form._id,
+                  title: form.title,
+                  showtitle: form.showtitle,
+                  fields: form.fields,
+                  submitButtonText: form.submitButtonText,
+                }
+              : undefined
+          }
+          aside={
+            aside?.title && aside.body
+              ? {
+                  title: aside.title,
+                  body: aside.body,
+                  items: (aside.items ?? []).map((item) => ({
+                    icon: item.icon,
+                    title: item.title,
+                    subtitle: item.subtitle ?? '',
+                  })),
+                  cta: toCta(aside.cta),
+                }
+              : undefined
+          }
+          recaptcha={
+            recaptcha?.recaptchaEnabled && recaptcha.recaptchaSiteKey
+              ? { enabled: true, siteKey: recaptcha.recaptchaSiteKey }
+              : undefined
+          }
+        />
+      );
+    }
+    case 'routeBlock': {
+      return (
+        <RouteBlock
+          key={block._key}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          lead={block.lead as string | undefined}
+          columns={block.columns as { title: string; body: string }[] | undefined}
+          cta={toCta(block.cta as SanityCta)}
+          image={toImage(block.image as SanityImage, 900, 1125)}
         />
       );
     }

@@ -26,5 +26,10 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'mediaText'}),
     defineArrayMember({type: 'assurances'}),
     defineArrayMember({type: 'compareCards'}),
+    defineArrayMember({type: 'splitHero'}),
+    defineArrayMember({type: 'contactWays'}),
+    defineArrayMember({type: 'personBlock'}),
+    defineArrayMember({type: 'contactFormSection'}),
+    defineArrayMember({type: 'routeBlock'}),
   ],
 })

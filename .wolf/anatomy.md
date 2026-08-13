@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-12T19:36:07.807Z
-> Files: 156 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-13T08:08:05.296Z
+> Files: 173 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -108,20 +108,20 @@
 - `eslint.config.mjs` — ESLint flat configuration (~124 tok)
 - `next-env.d.ts` — / <reference types="next" /> (~72 tok)
 - `next.config.ts` — Next.js configuration (~141 tok)
-- `package-lock.json` — npm lock file (~191822 tok)
-- `package.json` — Node.js package manifest (~294 tok)
+- `package-lock.json` — npm lock file (~192873 tok)
+- `package.json` — Node.js package manifest (~356 tok)
 - `postcss.config.mjs` — Declares config (~26 tok)
 - `tailwind.config.ts` — Tailwind CSS configuration (~946 tok)
 - `tsconfig.json` — TypeScript configuration (~192 tok)
-- `tsconfig.tsbuildinfo` (~41482 tok)
+- `tsconfig.tsbuildinfo` (~42809 tok)
 
 ## app/example-designs/
 
+- `!contact.html` — Contact — Hart &amp; Huis Makelaardij Haarlem (~115609 tok)
 - `!over-ons.html` — Over ons — Dorien Hollemans, Hart &amp; Huis Makelaardij Haarlem (~205364 tok)
 - `.DS_Store` (~1640 tok)
 - `aanbod.html` — Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem (~245118 tok)
 - `beoordelingen.html` — Beoordelingen — Hart &amp; Huis Makelaardij Haarlem (~106755 tok)
-- `contact.html` — Contact — Hart &amp; Huis Makelaardij Haarlem (~115609 tok)
 
 ## app/public/
 
@@ -129,22 +129,26 @@
 
 ## app/scripts/
 
-- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~472 tok)
+- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~491 tok)
 
 ## app/scripts/seed/
 
+- `contact.ts` — Seeds the /contact page, plus the form document it points at. (~1490 tok)
+  - fn `upsertContactForm` L24-59 (~310 tok)
+  - fn `buildContactContent` L60-162 (~912 tok)
+  - fn `seedContact` L163-170 (~64 tok)
 - `home.ts` — Seeds the reviews and the home page. (~1796 tok)
   - fn `upsertReview` L12-37 (~183 tok)
   - fn `buildHomeContent` L38-186 (~1452 tok)
   - fn `seedHome` L187-197 (~80 tok)
-- `navigation.ts` — Seeds the navigation and footer singletons. (~819 tok)
+- `navigation.ts` — Seeds the navigation and footer singletons. (~841 tok)
   - fn `navLinkExternal` L9-17 (~47 tok)
   - fn `navLinkInternal` L18-26 (~66 tok)
   - fn `pageIdBySlug` L27-34 (~70 tok)
   - fn `pageLink` L35-39 (~50 tok)
-  - fn `upsertNavigation` L40-65 (~197 tok)
-  - fn `upsertFooter` L66-103 (~288 tok)
-  - fn `seedNavigation` L104-109 (~38 tok)
+  - fn `upsertNavigation` L40-66 (~208 tok)
+  - fn `upsertFooter` L67-105 (~300 tok)
+  - fn `seedNavigation` L106-111 (~38 tok)
 - `over-ons.ts` — Seeds the /over-ons page. (~958 tok)
   - fn `buildOverOnsContent` L16-106 (~816 tok)
   - fn `seedOverOns` L107-111 (~41 tok)
@@ -169,26 +173,34 @@
 ## app/src/app/
 
 - `globals.css` — Styles: 4 rules, 1 media queries, 1 layers (~140 tok)
-- `layout.tsx` — display (~789 tok)
-  - fn `asNavLinks` L48-53 (~58 tok)
-  - fn `RootLayout` L54-95 (~342 tok)
+- `layout.tsx` — display (~729 tok)
+  - fn `asNavLinks` L39-44 (~58 tok)
+  - fn `RootLayout` L45-85 (~339 tok)
 - `manifest.json` (~125 tok)
 - `not-found.tsx` — NotFound (~239 tok)
-- `page.tsx` — options (~137 tok)
+- `page.tsx` — options (~215 tok)
 
 ## app/src/app/[slug]/
 
-- `page.tsx` — options (~298 tok)
+- `page.tsx` — options (~283 tok)
+
+## app/src/app/api/submit-form/
+
+- `route.ts` — Bigger uploads are rejected rather than silently dropped from the mail. (~1796 tok)
+  - fn `verifyRecaptcha` L36-53 (~163 tok)
+  - fn `fail` L54-57 (~35 tok)
+  - fn `escapeHtml` L58-65 (~48 tok)
+  - fn `POST` L66-188 (~1278 tok)
 
 ## app/src/components/
 
-- `PageBuilder.tsx` — imageSrc — renders chart (~5031 tok)
-  - fn `imageSrc` L44-54 (~82 tok)
-  - fn `toImage` L55-64 (~76 tok)
-  - fn `toCta` L65-70 (~49 tok)
-  - fn `toLabeledLink` L71-78 (~76 tok)
-  - fn `renderBlock` L79-547 (~4220 tok)
-  - fn `PageBuilder` L548-553 (~60 tok)
+- `PageBuilder.tsx` — imageSrc — renders chart (~6530 tok)
+  - fn `imageSrc` L52-62 (~82 tok)
+  - fn `toImage` L63-72 (~76 tok)
+  - fn `toCta` L73-78 (~49 tok)
+  - fn `toLabeledLink` L79-86 (~76 tok)
+  - fn `renderBlock` L87-705 (~5626 tok)
+  - fn `PageBuilder` L706-711 (~60 tok)
 
 ## app/src/components/blocks/
 
@@ -202,6 +214,13 @@
   - fn `IconCheck` L26-33 (~62 tok)
   - fn `IconCross` L34-42 (~80 tok)
   - fn `CompareCards` L43-153 (~1345 tok)
+- `ContactForm.tsx` — Field shape as authored in the Sanity contact-form plugin. (~3778 tok)
+  - fn `linkify` L111-132 (~150 tok)
+  - fn `Field` L133-224 (~815 tok)
+  - fn `toRows` L225-242 (~116 tok)
+  - fn `ContactForm` L243-414 (~1820 tok)
+- `ContactWays.tsx` — Four ways to get in touch, pulled up over the hero. (~688 tok)
+  - fn `ContactWays` L16-66 (~560 tok)
 - `CrossLinks.tsx` — DEFAULTS (~634 tok)
   - fn `CrossLinks` L21-63 (~500 tok)
 - `CtaBand.tsx` — DEFAULTS (~790 tok)
@@ -225,6 +244,8 @@
   - fn `PageHero` L40-134 (~864 tok)
 - `PageOpener.tsx` — Centred opener for pages without a photo hero (Over ons). (~656 tok)
   - fn `PageOpener` L24-76 (~471 tok)
+- `Person.tsx` — Photo beside a short intro and the one person you'll actually speak to. (~1079 tok)
+  - fn `Person` L40-122 (~813 tok)
 - `QuoteBand.tsx` — DEFAULTS (~650 tok)
   - fn `QuoteBand` L30-71 (~441 tok)
 - `RegionBlock.tsx` — DEFAULTS (~637 tok)
@@ -232,9 +253,13 @@
 - `Reviews.tsx` — DEFAULTS (~1781 tok)
   - fn `ReviewCard` L44-75 (~433 tok)
   - fn `Reviews` L76-174 (~1023 tok)
+- `RouteBlock.tsx` — Dark band with opening hours, directions and a photo. (~888 tok)
+  - fn `RouteBlock` L37-107 (~632 tok)
 - `Services.tsx` — DEFAULT_ITEMS (~1624 tok)
   - fn `ServiceCardItem` L66-111 (~445 tok)
   - fn `Services` L112-174 (~690 tok)
+- `SplitHero.tsx` — Copy on cream next to a full-bleed photo — the contact page's opener. (~1240 tok)
+  - fn `SplitHero` L40-139 (~958 tok)
 - `Steps.tsx` — DEFAULTS (~1722 tok)
   - fn `stepImageSrc` L40-43 (~34 tok)
   - fn `Steps` L44-165 (~1399 tok)
@@ -265,6 +290,8 @@
   - fn `ArrowLink` L34-57 (~154 tok)
   - fn `ArrowLinkLabel` L58-73 (~93 tok)
 - `Button.tsx` — baseClass (~444 tok)
+- `ContactIcon.tsx` — Phone / WhatsApp / mail / map-pin, shared by the contact cards and the form aside. (~571 tok)
+  - fn `ContactIcon` L9-60 (~507 tok)
 - `Eyebrow.tsx` — Warm sand tone on dark backgrounds where white reads too cold. (~188 tok)
 - `IconArrow.tsx` — IconArrow (~203 tok)
 - `Lead.tsx` — Lead (~92 tok)
@@ -287,6 +314,7 @@
 
 - `chrome.ts` — Scroll threshold (px) before the topbar gets the stuck state. (~62 tok)
 - `cn.ts` — Exports cn (~37 tok)
+- `contact-content.ts` — Icons shared by the contact cards and the form aside. (~1741 tok)
 - `home-content.ts` — Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more (~1136 tok)
 - `links.ts` — Resolve a Sanity link/cta object to a usable href. (~258 tok)
 - `over-ons-content.ts` — Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more (~1949 tok)
@@ -299,35 +327,37 @@
 
 - `client.ts` — Exports client (~61 tok)
 - `image.ts` — Exports urlFor (~107 tok)
-- `metadata.ts` — `pageMetadata()`: maps a page document's `seo` object (title, description, ogImage, noIndex) onto Next Metadata; omits unset keys so layout defaults inherit. (~290 tok)
-- `queries.ts` — Resolve internal page references on link/cta objects. (~410 tok)
+- `metadata.ts` — `pageMetadata()`: maps a page document's `seo` object (title, description, ogImage, noIndex) onto Next Metadata; omits unset keys so layout defaults inherit. (~509 tok)
+  - fn `pageMetadata` L23-57 (~353 tok)
+- `queries.ts` — Resolve internal page references on link/cta objects. (~724 tok)
 
 ## studio-hart-huis/
 
 - `.gitignore` — Git ignore rules (~112 tok)
 - `eslint.config.mjs` — ESLint flat configuration (~21 tok)
-- `package.json` — Node.js package manifest (~238 tok)
+- `package-lock.json` — npm lock file (~171292 tok)
+- `package.json` — Node.js package manifest (~253 tok)
 - `pnpm-lock.yaml` — pnpm lock file (~109821 tok)
 - `README.md` — Project documentation (~131 tok)
 - `sanity.cli.ts` — Enable auto-updates for studios. (~98 tok)
-- `sanity.config.ts` (~124 tok)
-- `structure.ts` — Exports structure (~305 tok)
+- `sanity.config.ts` (~150 tok)
+- `structure.ts` — Exports structure (~459 tok)
 - `tsconfig.json` — TypeScript configuration (~120 tok)
-- `tsconfig.tsbuildinfo` (~39150 tok)
+- `tsconfig.tsbuildinfo` (~32802 tok)
 
 ## studio-hart-huis/.sanity/runtime/
 
-- `app.js` — This file is auto-generated on 'sanity dev' (~87 tok)
+- `app.js` — This file is auto-generated on 'sanity dev' (~88 tok)
 - `index.html` — Sanity Studio (~2316 tok)
 
 ## studio-hart-huis/schemaTypes/
 
 - `faqType.ts` — Exports faqType (~238 tok)
 - `footerType.ts` — Exports footerType (~779 tok)
-- `index.ts` — Exports schemaTypes (~570 tok)
+- `index.ts` — Exports schemaTypes (~692 tok)
 - `navigationType.ts` — Exports navigationType (~363 tok)
-- `pageBuilderType.ts` — Exports pageBuilderType (~314 tok)
-- `pageType.ts` — Exports pageType (~189 tok)
+- `pageBuilderType.ts` — Exports pageBuilderType (~381 tok)
+- `pageType.ts` — Exports pageType (~213 tok)
 - `reviewType.ts` — Exports reviewType (~256 tok)
 
 ## studio-hart-huis/schemaTypes/blocks/
@@ -335,6 +365,8 @@
 - `assurancesType.ts` — Exports assurancesType (~368 tok)
 - `benefitsType.ts` — Exports benefitsType (~638 tok)
 - `compareCardsType.ts` — Exports compareCardsType (~707 tok)
+- `contactFormSectionType.ts` — Exports contactFormSectionType (~846 tok)
+- `contactWaysType.ts` — Exports contactWaysType (~530 tok)
 - `crossLinksType.ts` — Exports crossLinksType (~319 tok)
 - `ctaBandType.ts` — Exports ctaBandType (~334 tok)
 - `duoPhotosType.ts` — Exports duoPhotosType (~366 tok)
@@ -346,10 +378,13 @@
 - `mediaTextType.ts` — Exports mediaTextType (~341 tok)
 - `pageHeroType.ts` — Exports pageHeroType (~479 tok)
 - `pageOpenerType.ts` — Exports pageOpenerType (~288 tok)
+- `personType.ts` — Exports personType (~561 tok)
 - `quoteBandType.ts` — Exports quoteBandType (~363 tok)
 - `regionBlockType.ts` — Exports regionBlockType (~342 tok)
 - `reviewsType.ts` — Exports reviewsType (~374 tok)
+- `routeBlockType.ts` — Exports routeBlockType (~520 tok)
 - `servicesType.ts` — Exports servicesType (~685 tok)
+- `splitHeroType.ts` — Exports splitHeroType (~429 tok)
 - `stepsType.ts` — Exports stepsType (~452 tok)
 - `storyType.ts` — Exports storyType (~456 tok)
 - `timelineType.ts` — Exports timelineType (~492 tok)
@@ -360,6 +395,7 @@
 - `ctaType.ts` — Exports ctaType (~94 tok)
 - `linkFields.ts` — Shared internal/external link fields for `link` and `cta` objects. (~407 tok)
 - `linkType.ts` — Exports linkType (~54 tok)
+- `seoType.ts` — Exports seoType (~231 tok)
 
 ## studio-hart-huis/static/
 

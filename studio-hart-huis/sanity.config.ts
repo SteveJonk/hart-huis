@@ -1,3 +1,4 @@
+import {contactFormPlugin} from '@multidots/sanity-plugin-contact-form'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
@@ -11,7 +12,7 @@ export default defineConfig({
   projectId: 's7u8d78o',
   dataset: 'production',
 
-  plugins: [structureTool({structure}), visionTool()],
+  plugins: [structureTool({structure}), contactFormPlugin(), visionTool()],
 
   schema: {
     types: schemaTypes,

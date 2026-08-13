@@ -41,6 +41,7 @@ async function upsertNavigation() {
   const verkoopLink = await pageLink('Verkoop', 'verkoop')
   const taxatieLink = await pageLink('Taxatie', 'taxatie')
   const overOnsLink = await pageLink('Over ons', 'over-ons')
+  const contactLink = await pageLink('Contact', 'contact')
 
   const doc = {
     _id: 'navigation',
@@ -55,7 +56,7 @@ async function upsertNavigation() {
       navLinkExternal('Actueel aanbod', '#'),
       navLinkExternal('Beoordelingen', '#'),
       overOnsLink,
-      navLinkExternal('Contact', '#'),
+      contactLink,
     ],
   }
 
@@ -67,6 +68,7 @@ async function upsertFooter() {
   const verkoopLink = await pageLink('Verkoop', 'verkoop')
   const taxatieLink = await pageLink('Taxatie', 'taxatie')
   const overOnsLink = await pageLink('Over ons', 'over-ons')
+  const contactLink = await pageLink('Contact', 'contact')
 
   const doc = {
     _id: 'footer',
@@ -89,7 +91,7 @@ async function upsertFooter() {
           navLinkExternal('Actueel aanbod', '#'),
           navLinkExternal('Beoordelingen', '#'),
           overOnsLink,
-          navLinkExternal('Contact', '#'),
+          contactLink,
         ],
       },
     ],

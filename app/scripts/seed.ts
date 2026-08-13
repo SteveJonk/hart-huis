@@ -10,6 +10,7 @@
  * one page leaves the others alone. Page content is defined per page in
  * scripts/seed/<page>.ts.
  */
+import {seedContact} from './seed/contact'
 import {seedHome} from './seed/home'
 import {seedNavigation} from './seed/navigation'
 import {seedOverOns} from './seed/over-ons'
@@ -22,6 +23,7 @@ const TARGETS = {
   verkoop: seedVerkoop,
   'over-ons': seedOverOns,
   taxatie: seedTaxatie,
+  contact: seedContact,
   nav: seedNavigation,
 } as const
 

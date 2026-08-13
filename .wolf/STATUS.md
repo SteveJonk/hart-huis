@@ -20,6 +20,11 @@
 - `taxatie.html` → /taxatie (pageHero, factBar, benefits, compareCards, steps, quoteBand, faqs, regionBlock, crossLinks, ctaBand)
   - images extracted to `app/public/images/taxatie/`
   - only `compareCards` is new; Benefits gained house/renovate/scale icons
+- `contact.html` → /contact (splitHero, contactWays, personBlock, contactFormSection, routeBlock, crossLinks)
+  - images in `app/public/images/contact/`; form runs on the Sanity contact-form plugin
+  - `POST /api/submit-form` mails submissions via nodemailer
+  - reCAPTCHA v2 checkbox is wired: enable it + set the site key under "Form settings"; put the secret in `RECAPTCHA_SECRET_KEY`
+  - **before it can send mail:** fill "Form settings" in the studio, or set SMTP_USER / SMTP_PASSWORD / CONTACT_ADMIN_EMAIL in `app/.env`
   - **not yet run:** `cd app && npm run seed:sanity` (needs SANITY_API_WRITE_TOKEN) — /over-ons and /taxatie do not exist in Sanity until then
 
 **SEO**
@@ -31,7 +36,7 @@
 
 ## 🚀 Next phase
 
-**Goal:** Implement the remaining designs (`aanbod.html`, `beoordelingen.html`, `contact.html`, `object.html`) the same way.
+**Goal:** Implement the remaining designs (`aanbod.html`, `beoordelingen.html`, `object.html`) the same way.
 
 ### Acceptance criteria
 1. Run `npm run seed:sanity` so /over-ons exists in Sanity.
@@ -47,7 +52,7 @@
 ### Closed decisions
 - Copy lives in `src/lib/<page>-content.ts` and doubles as component DEFAULTS.
 - Internal nav/footer links resolve via `pageLink(label, slug)` in `scripts/seed/navigation.ts`; run `npm run seed:nav` after adding a page.
-- Seeding is per target: `npm run seed:<home|verkoop|over-ons|taxatie|nav>`, or `npm run seed:sanity` for all.
+- Seeding is per target: `npm run seed:<home|verkoop|over-ons|taxatie|contact|nav>`, or `npm run seed:sanity` for all.
 
 ### Open decisions
 - `aanbod.html` / `object.html` probably need a listings-detail block; check the CSS diff against `!verkoop.html` first.
