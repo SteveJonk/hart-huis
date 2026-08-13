@@ -134,6 +134,7 @@
 
 ## app/scripts/seed/
 
+- `aanbod.ts` — Seeds the /aanbod page (aanbodHeader + objectGrid + ctaBand). (~500 tok)
 - `contact.ts` — Seeds the /contact page, plus the form document it points at. (~1490 tok)
   - fn `upsertContactForm` L24-59 (~310 tok)
   - fn `buildContactContent` L60-162 (~912 tok)
@@ -186,7 +187,7 @@
 
 - `page.tsx` — options (~283 tok)
 
-## app/src/app/object/[slug]/
+## app/src/app/aanbod/[slug]/
 
 - `page.tsx` — Object detail page: fetches one `woning` by slug (WONING_QUERY), composes gallery/header/description/features/sidebar + SimilarObjects + CtaBand. (~1100 tok)
 
@@ -220,6 +221,7 @@
 
 ## app/src/components/blocks/
 
+- `AanbodHeader.tsx` — Opener for /aanbod: breadcrumb, eyebrow, title with burgundy highlight, lead, and the sand "gratis zoekopdracht" card. Carries `data-solid-header`. (~900 tok)
 - `Assurances.tsx` — Dark band with credentials, checked off two by two. (~867 tok)
   - fn `IconCheck` L24-32 (~79 tok)
   - fn `Assurances` L33-90 (~622 tok)
@@ -256,6 +258,7 @@
   - fn `Listings` L118-164 (~400 tok)
 - `MediaText.tsx` — Text column with a supporting photo on the right. (~652 tok)
   - fn `MediaText` L35-85 (~412 tok)
+- `ObjectGrid.tsx` — Client. Sticky filter bar (status pills, plaats/prijs/sortering) + listing grid over all woningen; filters, sorts and pages in the browser, with the dark CTA card and the empty state. (~2400 tok)
 - `PageHero.tsx` — DEFAULTS (~1142 tok)
   - fn `PageHero` L40-134 (~864 tok)
 - `PageOpener.tsx` — Centred opener for pages without a photo hero (Over ons). (~656 tok)
@@ -329,6 +332,7 @@
 ## app/src/lib/
 
 - `aanbiedingstekst.ts` — Parses the Realworks text format (`<br>`, `**vet**`, `- ` bullets) into blocks and drops the English half; `splitBold` for inline emphasis. (~500 tok)
+- `aanbod-content.ts` — Copy + filter options (status, price ranges, sortings), page size and CTA-card position for /aanbod. (~800 tok)
 - `chrome.ts` — Scroll threshold (px) before the topbar gets the stuck state. (~62 tok)
 - `format.ts` — `euro()`, `longDate()`, `shortDate()` for object data. (~200 tok)
 - `object-content.ts` — Status labels/tones, back link, makelaar card, CTA copy for the object page. (~600 tok)
@@ -382,7 +386,9 @@
 
 ## studio-hart-huis/schemaTypes/blocks/
 
+- `aanbodHeaderType.ts` — Exports aanbodHeaderType (~400 tok)
 - `assurancesType.ts` — Exports assurancesType (~368 tok)
+- `objectGridType.ts` — Exports objectGridType — CTA-kaart + lege-staat teksten; de woningen komen uit PAGE_QUERY (~330 tok)
 - `benefitsType.ts` — Exports benefitsType (~638 tok)
 - `compareCardsType.ts` — Exports compareCardsType (~707 tok)
 - `contactFormSectionType.ts` — Exports contactFormSectionType (~846 tok)

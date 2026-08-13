@@ -73,7 +73,7 @@ function toCard(woning: WoningCard): ListingItem {
     .join(' · ');
 
   return {
-    href: `/object/${woning.slug}`,
+    href: `/aanbod/${woning.slug}`,
     status: label,
     tone,
     place: woning.plaats,

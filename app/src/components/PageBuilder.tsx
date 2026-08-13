@@ -1,3 +1,4 @@
+import { AanbodHeader } from '@/components/blocks/AanbodHeader';
 import { Assurances } from '@/components/blocks/Assurances';
 import { Benefits } from '@/components/blocks/Benefits';
 import { CompareCards } from '@/components/blocks/CompareCards';
@@ -15,6 +16,7 @@ import { Hero } from '@/components/blocks/Hero';
 import { Intro } from '@/components/blocks/Intro';
 import { Listings } from '@/components/blocks/Listings';
 import { MediaText } from '@/components/blocks/MediaText';
+import { ObjectGrid } from '@/components/blocks/ObjectGrid';
 import { PageHero } from '@/components/blocks/PageHero';
 import { PageOpener } from '@/components/blocks/PageOpener';
 import { Person } from '@/components/blocks/Person';
@@ -36,6 +38,18 @@ import {
 } from '@/lib/links';
 
 type SanityCta = SanityLabeledLink;
+
+type SanityWoningCard = {
+  slug: string;
+  adres: string;
+  plaats: string;
+  status?: string | null;
+  prijs?: number | null;
+  woonoppervlak?: number | null;
+  kamers?: number | null;
+  aangebodenSinds?: string | null;
+  foto?: SanityImage | null;
+};
 
 type PageBlock = {
   _type: string;
@@ -390,6 +404,55 @@ function renderBlock(block: PageBlock) {
           Boolean(item),
         );
       return <CrossLinks key={block._key} items={items} />;
+    }
+    case 'aanbodHeader': {
+      const aside = block.aside as
+        | { title?: string; body?: string; cta?: SanityCta }
+        | undefined;
+      return (
+        <AanbodHeader
+          key={block._key}
+          breadcrumbLabel={block.breadcrumbLabel as string | undefined}
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string | undefined}
+          titleHighlight={block.titleHighlight as string | undefined}
+          lead={block.lead as string | undefined}
+          asideTitle={aside?.title}
+          asideBody={aside?.body}
+          asideCta={toCta(aside?.cta)}
+        />
+      );
+    }
+    case 'objectGrid': {
+      const items = (block.objecten as SanityWoningCard[] | undefined)?.map(
+        (woning) => ({
+          slug: woning.slug,
+          adres: woning.adres,
+          plaats: woning.plaats,
+          status: woning.status,
+          prijs: woning.prijs,
+          woonoppervlak: woning.woonoppervlak,
+          kamers: woning.kamers,
+          aangebodenSinds: woning.aangebodenSinds,
+          image: toImage(woning.foto, 800, 600),
+        }),
+      );
+      const ctaCard = block.ctaCard as
+        | { title?: string; body?: string; cta?: SanityCta }
+        | undefined;
+      return (
+        <ObjectGrid
+          key={block._key}
+          items={items}
+          ctaCard={
+            ctaCard
+              ? { title: ctaCard.title, body: ctaCard.body, cta: toCta(ctaCard.cta) }
+              : undefined
+          }
+          emptyTitle={block.emptyTitle as string | undefined}
+          emptyBody={block.emptyBody as string | undefined}
+        />
+      );
     }
     case 'pageOpener': {
       return (

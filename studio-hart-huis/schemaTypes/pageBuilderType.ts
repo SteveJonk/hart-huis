@@ -31,5 +31,7 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'personBlock'}),
     defineArrayMember({type: 'contactFormSection'}),
     defineArrayMember({type: 'routeBlock'}),
+    defineArrayMember({type: 'aanbodHeader'}),
+    defineArrayMember({type: 'objectGrid'}),
   ],
 })

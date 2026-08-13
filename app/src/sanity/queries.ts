@@ -8,6 +8,19 @@ const linkExpansion = /* groq */ `{
   }
 }`;
 
+/** Card fields for a `woning`, shared by the aanbod grid and "vergelijkbare woningen". */
+const woningCard = /* groq */ `{
+  adres,
+  "slug": slug.current,
+  plaats,
+  status,
+  prijs,
+  woonoppervlak,
+  kamers,
+  aangebodenSinds,
+  "foto": fotos[0]
+}`;
+
 export const PAGE_QUERY = defineQuery(`
   *[_type == "page" && slug.current == $slug][0]{
     _id,
@@ -61,6 +74,11 @@ export const PAGE_QUERY = defineQuery(`
         reviews[]->,
         link${linkExpansion}
       },
+      _type == "objectGrid" => {
+        ...,
+        ctaCard{..., cta${linkExpansion}},
+        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)${woningCard}
+      },
       _type == "contactFormSection" => {
         ...,
         "recaptcha": *[_type == "formGeneralSettings"][0]{
@@ -79,18 +97,6 @@ export const PAGE_QUERY = defineQuery(`
     }
   }
 `);
-
-/** Card fields for a `woning`, shared by the detail page's "vergelijkbare woningen". */
-const woningCard = /* groq */ `{
-  adres,
-  "slug": slug.current,
-  plaats,
-  status,
-  prijs,
-  woonoppervlak,
-  kamers,
-  "foto": fotos[0]
-}`;
 
 /**
  * One object (house for sale) plus three others to show underneath — same

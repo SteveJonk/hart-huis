@@ -128,3 +128,6 @@
 | 12:10 | Built /object/[slug] from example-designs/object.html | src/app/object/[slug]/page.tsx, src/components/object/*, src/lib/{aanbiedingstekst,format,object-content}.ts, sanity/queries.ts | tsc + eslint clean; verified in browser (gallery, lightbox, toggle, mobile) | ~40k |
 | 12:15 | Reused ListingCard for "vergelijkbare woningen" | Listings.tsx, PageBuilder.tsx | `sold: boolean` → `tone: white/sand/burgundy`; home pills unchanged | ~4k |
 | 12:20 | Moved imageSrc/toImage from PageBuilder to sanity/image.ts | PageBuilder.tsx, sanity/image.ts | shared by the object route, no duplication | ~2k |
+| 13:05 | Built /aanbod overview from example-designs/aanbod.html | src/lib/aanbod-content.ts, blocks/AanbodHeader.tsx, blocks/ObjectGrid.tsx, studio blocks, PageBuilder.tsx, queries.ts, scripts/seed/aanbod.ts | page seeded, build clean, filters verified in browser | ~35k |
+| 13:10 | Nav + footer "Actueel aanbod" now resolve to the /aanbod page | scripts/seed/navigation.ts | ran seed:nav; links render as /aanbod | ~2k |
+| 13:12 | Fixed stale /object/<slug> links after the route rename | src/app/aanbod/[slug]/page.tsx | vergelijkbare woningen point at /aanbod/<slug> | ~1k |

@@ -1,3 +1,4 @@
+import {aanbodHeaderType} from './blocks/aanbodHeaderType'
 import {assurancesType} from './blocks/assurancesType'
 import {benefitsType} from './blocks/benefitsType'
 import {compareCardsType} from './blocks/compareCardsType'
@@ -12,6 +13,7 @@ import {heroType} from './blocks/heroType'
 import {introType} from './blocks/introType'
 import {listingsType} from './blocks/listingsType'
 import {mediaTextType} from './blocks/mediaTextType'
+import {objectGridType} from './blocks/objectGridType'
 import {pageHeroType} from './blocks/pageHeroType'
 import {pageOpenerType} from './blocks/pageOpenerType'
 import {personType} from './blocks/personType'
@@ -77,4 +79,6 @@ export const schemaTypes = [
   personType,
   contactFormSectionType,
   routeBlockType,
+  aanbodHeaderType,
+  objectGridType,
 ]

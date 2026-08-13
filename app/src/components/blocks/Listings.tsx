@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/Reveal';
@@ -23,7 +24,8 @@ export type ListingItem = {
   tone?: ListingTone;
   place: string;
   title: string;
-  meta: string;
+  /** Plain string on the home page; the aanbod grid passes icon + label spans. */
+  meta: ReactNode;
   price: string;
   image: ListingImage;
   delay?: 1 | 2 | 3;
@@ -114,7 +116,7 @@ export function ListingCard({ listing }: { listing: ListingItem }) {
           {listing.title}
         </h3>
         <div className='flex items-baseline justify-between border-t border-cream pt-4 text-[0.86rem] text-ink-70'>
-          <span>{listing.meta}</span>
+          <span className='flex gap-3.5 max-xs:gap-2.5'>{listing.meta}</span>
           <b className='font-display text-[1.3rem] font-medium text-ink'>
             {listing.price}
           </b>

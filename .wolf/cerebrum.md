@@ -27,7 +27,10 @@
 - **The `woning` schema mirrors the Realworks feed.** Fields the site filters/sorts on are flat and typed (status, plaats, prijs, woonoppervlak, kamers, aangebodenSinds); the rest of the kenmerkentabel is `kenmerkGroepen[] -> {titel, rijen[] -> {label, waarde[]}}` so the import can map any feed enum without a schema change. Almost nothing is `required()` — the feed returns null for most fields (woonoppervlakte, inhoud, perceel included). `realworksId` is the upsert key for the future import endpoint.
 - **`aanbiedingsTekst` is not real HTML.** Realworks delivers one long string with `<br>` line breaks, `**vet**` for emphasis and `- ` prefixed lines as bullets, and often inlines the English version behind a `**English below**` marker even though `aanbiedingstekstEngels` exists separately. A renderer must handle those three, not a full HTML parser.
 
-- **Object detail page lives at `/object/[slug]`** (`src/app/object/[slug]/page.tsx`), not in the PageBuilder — it renders a `woning` document, not a `page`. Its sections are in `src/components/object/`; `WONING_QUERY` also pulls three "vergelijkbare woningen" (same plaats first) in the same request.
+- **Object detail page lives at `/aanbod/[slug]`** (`src/app/aanbod/[slug]/page.tsx`), not in the PageBuilder — it renders a `woning` document, not a `page`. Its sections are in `src/components/object/`; `WONING_QUERY` also pulls three "vergelijkbare woningen" (same plaats first) in the same request.
+- **`/aanbod` itself is a normal `page` document** rendered by the root `[slug]` route, with the blocks `aanbodHeader` + `objectGrid` + `ctaBand`. The static `app/aanbod/[slug]/` folder only claims the child route, so both coexist.
+- **`objectGrid` selects no woningen in the studio.** PAGE_QUERY resolves `_type == "objectGrid" => {"objecten": *[_type == "woning"] | order(aangebodenSinds desc)}` and the client component filters/sorts/pages in the browser — the editor only owns the CTA-kaart and the lege-staat teksten.
+- **GROQ fragments are plain consts in `queries.ts`**, interpolated at module load — a fragment must be declared *above* the query that uses it or it throws a TDZ ReferenceError.
 - **`imageSrc()` / `toImage()` now live in `src/sanity/image.ts`** (moved out of PageBuilder.tsx) — use them anywhere a Sanity image needs a next/image src.
 - **`ListingCard` is exported from `blocks/Listings.tsx`** and takes `tone: 'white' | 'sand' | 'burgundy'` for the status pill (replaced the old `sold` boolean). Reuse it for any listing grid.
 
@@ -39,6 +42,8 @@
 - [2026-08-13] Next 16 metadata merging is by **key presence**, not by value: returning `{ title: undefined }` from `generateMetadata` wipes the root layout's title/description instead of inheriting them. Build the Metadata object with conditional spreads (`...(x ? { x } : {})`) so unset CMS fields are simply absent.
 
 - [2026-08-13] `SectionHead` forces `[&_h2]:max-w-[16ch]` through a descendant selector, so a `max-w-*` class on the h2 itself loses on specificity (and `cn` is not tailwind-merge). When a section head needs a wider heading, write the small flex header inline instead of fighting it — that is what `SimilarObjects` does.
+
+- [2026-08-13] The aanbod grid reuses `ListingCard` a third time; `meta` is typed `ReactNode` so the home page can pass a plain string while /aanbod passes icon + label spans. Widening the type beat adding a second meta prop.
 
 ## Decision Log
 

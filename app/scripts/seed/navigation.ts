@@ -38,6 +38,7 @@ async function pageLink(label: string, slug: string) {
 }
 
 async function upsertNavigation() {
+  const aanbodLink = await pageLink('Actueel aanbod', 'aanbod')
   const verkoopLink = await pageLink('Verkoop', 'verkoop')
   const taxatieLink = await pageLink('Taxatie', 'taxatie')
   const overOnsLink = await pageLink('Over ons', 'over-ons')
@@ -53,7 +54,7 @@ async function upsertNavigation() {
       navLinkExternal('NVM', '#'),
     ],
     navRight: [
-      navLinkExternal('Actueel aanbod', '#'),
+      aanbodLink,
       navLinkExternal('Beoordelingen', '#'),
       overOnsLink,
       contactLink,
@@ -65,6 +66,7 @@ async function upsertNavigation() {
 }
 
 async function upsertFooter() {
+  const aanbodLink = await pageLink('Actueel aanbod', 'aanbod')
   const verkoopLink = await pageLink('Verkoop', 'verkoop')
   const taxatieLink = await pageLink('Taxatie', 'taxatie')
   const overOnsLink = await pageLink('Over ons', 'over-ons')
@@ -88,7 +90,7 @@ async function upsertFooter() {
         _key: key('footer-snel-naar'),
         title: 'Snel naar',
         links: [
-          navLinkExternal('Actueel aanbod', '#'),
+          aanbodLink,
           navLinkExternal('Beoordelingen', '#'),
           overOnsLink,
           contactLink,

@@ -15,6 +15,7 @@
     "seed:taxatie": "tsx --env-file=.env scripts/seed.ts taxatie",
     "seed:contact": "tsx --env-file=.env scripts/seed.ts contact",
     "seed:objecten": "tsx --env-file=.env scripts/seed.ts objecten",
+    "seed:aanbod": "tsx --env-file=.env scripts/seed.ts aanbod",
     "seed:nav": "tsx --env-file=.env scripts/seed.ts nav"
   },
   "dependencies": {

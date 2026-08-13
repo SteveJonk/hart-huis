@@ -37,23 +37,27 @@
 - shape follows the Realworks feed: typed core fields + free-form `kenmerkGroepen` table, nearly all optional, `realworksId` as import key
 - `aanbiedingsTekst` / `aanbiedingsTekstEngels` hold the raw feed format: `<br>` breaks, `**vet**`, `- ` bullets, often with `**English below**` inline
 - 6 mock objects seeded with `npm run seed:objecten` (photos reused from the Sanity library, no uploads)
-- **`object.html` → `/object/[slug]`** — gallery + lightbox, kop/specs, collapsible omschrijving, kenmerkentabel, sticky zijkaart, vergelijkbare woningen, ctaBand
+- **`object.html` → `/aanbod/[slug]`** — gallery + lightbox, kop/specs, collapsible omschrijving, kenmerkentabel, sticky zijkaart, vergelijkbare woningen, ctaBand
   - new sections in `src/components/object/`; reuses `ListingCard` (now `tone` instead of `sold`) and `CtaBand`
   - Realworks text renders through `src/lib/aanbiedingstekst.ts` (`npm run check:tekst` covers the parser)
   - `imageSrc`/`toImage` moved from `PageBuilder.tsx` to `src/sanity/image.ts`
+- **`aanbod.html` → `/aanbod`** — a normal `page` document (blocks: `aanbodHeader`, `objectGrid`, `ctaBand`), seeded with `npm run seed:aanbod`
+  - `objectGrid` is a client block: PAGE_QUERY hands it every `woning`, the browser filters (status/plaats/prijs), sorts and pages (9 per keer)
+  - nav + footer "Actueel aanbod" now resolve to the page (`npm run seed:nav` is done)
 
 ---
 
 ## 🚀 Next phase
 
-**Goal:** Implement the remaining designs (`aanbod.html`, `beoordelingen.html`, `object.html`) the same way, now that the `woning` documents exist.
+**Goal:** Implement the last remaining design, `beoordelingen.html`, the same way.
 
 ### Acceptance criteria
 1. Run `npm run seed:sanity` so /over-ons exists in Sanity.
 2. Each remaining design gets blocks + schema + seed, reusing existing blocks where they fit.
-3. `/aanbod` lists `woning` docs (status/plaats/prijs filters + sorting) — **the object page's "Terug naar het aanbod" and both "hele aanbod" buttons already point at `/aanbod`, which 404s until this exists** (single source: `OBJECT_BACK_LINK` in `src/lib/object-content.ts`). Point the nav's "Actueel aanbod" at it too (`scripts/seed/navigation.ts`, then `npm run seed:nav`).
+3. `beoordelingen.html` → its own page document; check first how much of `Reviews` (home) can be reused.
 4. Still open: the makelaar card on the object page is hardcoded in `src/lib/object-content.ts` — move it into the `woning` schema (or a shared makelaar document) when a second makelaar appears.
 5. Still open: `aanbiedingsTekstEngels` is stored and seeded but never rendered — there is no language switch on the object page yet.
+6. Still open: with only 6 objects seeded, the aanbod grid's "toon meer" (>9) and the CTA-kaart-after-6 position have not been exercised with real data.
 
 ### Files to create / edit
 | Type | File | Content |
