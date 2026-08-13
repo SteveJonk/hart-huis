@@ -34,12 +34,14 @@ import {seoType} from './objects/seoType'
 import {pageBuilderType} from './pageBuilderType'
 import {pageType} from './pageType'
 import {reviewType} from './reviewType'
+import {woningType} from './woningType'
 
 export const schemaTypes = [
   // Documents
   pageType,
   faqType,
   reviewType,
+  woningType,
   navigationType,
   footerType,
   // Shared objects

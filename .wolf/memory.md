@@ -108,3 +108,20 @@
 | — | Seed module | scripts/seed/contact.ts, seed.ts, package.json | seeds the form doc + page; npm run seed:contact | ~3k |
 | — | Verified layout/DOM + API error paths | — | desktop + mobile OK, 400/404 paths OK (screenshots unavailable, pane stuck) | ~8k |
 | — | Wired Google reCAPTCHA v2 | ContactForm.tsx, api/submit-form/route.ts, queries.ts, PageBuilder.tsx | site key via GROQ, secret server-side, fails closed | ~5k |
+
+## Session: 2026-08-13 10:15
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-13 10:20
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 11:05 | Added the "Object" document type (`woning`) + studio structure entry | studio-hart-huis/schemaTypes/woningType.ts, index.ts, structure.ts | tsc clean; `object` is a reserved Sanity name so the type is `woning` | ~9k |
+| 11:20 | Seeded 6 mock objects with library photos | app/scripts/seed/objecten.ts, seed.ts, package.json | `npm run seed:objecten` ran twice, 6 docs, idempotent | ~12k |
+
+## Session: 2026-08-13 10:47
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|

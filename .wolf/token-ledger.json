@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 24091,
-    "total_reads": 25,
+    "total_tokens_estimated": 24550,
+    "total_reads": 27,
     "total_writes": 0,
-    "total_sessions": 13,
-    "anatomy_hits": 12,
-    "anatomy_misses": 13,
+    "total_sessions": 17,
+    "anatomy_hits": 13,
+    "anatomy_misses": 14,
     "repeated_reads_blocked": 7,
-    "estimated_savings_vs_bare_cli": 2400,
-    "real_input_tokens": 1861,
-    "real_output_tokens": 584034,
-    "real_cache_read_tokens": 183957187,
-    "real_cache_creation_tokens": 3026212,
-    "real_api_calls": 867
+    "estimated_savings_vs_bare_cli": 2600,
+    "real_input_tokens": 1970,
+    "real_output_tokens": 638407,
+    "real_cache_read_tokens": 190297425,
+    "real_cache_creation_tokens": 3156578,
+    "real_api_calls": 925
   },
   "sessions": [
     {
@@ -309,6 +309,42 @@
         "cache_read_input_tokens": 61161180,
         "cache_creation_input_tokens": 1214360,
         "api_calls": 242
+      }
+    },
+    {
+      "id": "session-2026-08-13-1020",
+      "agent": "claude",
+      "started": "2026-08-13T08:20:38.383Z",
+      "ended": "2026-08-13T08:33:23.354Z",
+      "reads": [
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-hart-huis/42e33683-3305-455e-832e-d26b0e05ed1a/scratchpad/object-body.html",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/studio-hart-huis/structure.ts",
+          "tokens_estimated": 459,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 459,
+        "output_tokens_estimated": 0,
+        "reads_count": 2,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 109,
+        "output_tokens": 54373,
+        "cache_read_input_tokens": 6340238,
+        "cache_creation_input_tokens": 130366,
+        "api_calls": 58
       }
     }
   ],

@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-12
+> Last updated: 2026-08-13
 
 ---
 
@@ -32,15 +32,23 @@
 - ogImage → og:image 1200×630 + `twitter:card=summary_large_image`; noIndex → `robots: {index:false, follow:false}`
 - editors have not filled any `seo` fields yet, so pages currently fall back to title + layout description
 
+**Objecten (woningen te koop)**
+- `woning` document type = "Object" in the studio (`object` is a reserved Sanity name), listed under Pages in `structure.ts`
+- shape follows the Realworks feed: typed core fields + free-form `kenmerkGroepen` table, nearly all optional, `realworksId` as import key
+- `aanbiedingsTekst` / `aanbiedingsTekstEngels` hold the raw feed format: `<br>` breaks, `**vet**`, `- ` bullets, often with `**English below**` inline
+- 6 mock objects seeded with `npm run seed:objecten` (photos reused from the Sanity library, no uploads)
+
 ---
 
 ## 🚀 Next phase
 
-**Goal:** Implement the remaining designs (`aanbod.html`, `beoordelingen.html`, `object.html`) the same way.
+**Goal:** Implement the remaining designs (`aanbod.html`, `beoordelingen.html`, `object.html`) the same way, now that the `woning` documents exist.
 
 ### Acceptance criteria
 1. Run `npm run seed:sanity` so /over-ons exists in Sanity.
 2. Each remaining design gets blocks + schema + seed, reusing existing blocks where they fit.
+3. `/aanbod` lists `woning` docs (status/plaats/prijs filters + sorting) and `/aanbod/[slug]` renders one, including a renderer for the `<br>` / `**vet**` / `- ` aanbiedingstekst format.
+4. Still open: the makelaar card on object.html (name, role, phone) is not in the `woning` schema — decide static vs. per-object before building it.
 
 ### Files to create / edit
 | Type | File | Content |

@@ -23,6 +23,10 @@
 - **Page SEO:** the `seo` object (title, description, ogImage, noIndex) on the `page` document is selected in `PAGE_QUERY` and mapped to Next metadata by `pageMetadata()` in `app/src/sanity/metadata.ts`, called from `generateMetadata` in both `src/app/page.tsx` (home) and `src/app/[slug]/page.tsx`. Home strips the document title so an empty `seo.title` keeps the layout default instead of showing "Home".
 - Topbar is transparent over photo heroes. Pages that open on a light background render `data-solid-header` on the first section; `useStickyTopbar` looks for it and stays solid from the top.
 
+- **Objects (houses for sale) are the `woning` document type**, titled "Object" in the studio — `object` is a reserved Sanity type name and the schema fails to build if you use it. Seeded by `app/scripts/seed/objecten.ts` (`npm run seed:objecten`).
+- **The `woning` schema mirrors the Realworks feed.** Fields the site filters/sorts on are flat and typed (status, plaats, prijs, woonoppervlak, kamers, aangebodenSinds); the rest of the kenmerkentabel is `kenmerkGroepen[] -> {titel, rijen[] -> {label, waarde[]}}` so the import can map any feed enum without a schema change. Almost nothing is `required()` — the feed returns null for most fields (woonoppervlakte, inhoud, perceel included). `realworksId` is the upsert key for the future import endpoint.
+- **`aanbiedingsTekst` is not real HTML.** Realworks delivers one long string with `<br>` line breaks, `**vet**` for emphasis and `- ` prefixed lines as bullets, and often inlines the English version behind a `**English below**` marker even though `aanbiedingstekstEngels` exists separately. A renderer must handle those three, not a full HTML parser.
+
 ## Do-Not-Repeat
 
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
@@ -31,6 +35,9 @@
 - [2026-08-13] Next 16 metadata merging is by **key presence**, not by value: returning `{ title: undefined }` from `generateMetadata` wipes the root layout's title/description instead of inheriting them. Build the Metadata object with conditional spreads (`...(x ? { x } : {})`) so unset CMS fields are simply absent.
 
 ## Decision Log
+
+- [2026-08-13] `woning` keeps a hybrid shape (typed core fields + free-form `kenmerkGroepen`) instead of modelling all ~40 Realworks enum arrays as fields. The typed ones are exactly what aanbod.html filters and object.html's specs bar need; everything else is display-only table rows, so mapping enums to labels belongs in the import, not in the schema.
+- [2026-08-13] Seed objects use `createOrReplace` with `_id: woning-<slug>` instead of the fetch-then-patch style of the page seeds — re-running is idempotent without a lookup query, and mock docs need no id stability beyond the slug.
 
 <!-- Significant technical decisions with rationale. Why X was chosen over Y. -->
 

@@ -142,6 +142,7 @@
   - fn `buildHomeContent` L38-186 (~1452 tok)
   - fn `seedHome` L187-197 (~80 tok)
 - `navigation.ts` — Seeds the navigation and footer singletons. (~841 tok)
+- `objecten.ts` — Seeds 6 mock `woning` documents (houses for sale) in the Realworks text format; reuses photos already in the Sanity library, deterministic `_id` per slug. (~4200 tok)
   - fn `navLinkExternal` L9-17 (~47 tok)
   - fn `navLinkInternal` L18-26 (~66 tok)
   - fn `pageIdBySlug` L27-34 (~70 tok)
@@ -359,6 +360,7 @@
 - `pageBuilderType.ts` — Exports pageBuilderType (~381 tok)
 - `pageType.ts` — Exports pageType (~213 tok)
 - `reviewType.ts` — Exports reviewType (~256 tok)
+- `woningType.ts` — The "Object" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional. (~1600 tok)
 
 ## studio-hart-huis/schemaTypes/blocks/
 

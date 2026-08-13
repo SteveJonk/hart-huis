@@ -22,6 +22,7 @@ export const structure: StructureResolver = (S) =>
         .child(S.document().schemaType('footer').documentId('footer').title('Footer')),
       S.divider(),
       S.documentTypeListItem('page').title('Pages'),
+      S.documentTypeListItem('woning').title('Objecten'),
       S.divider(),
       S.documentTypeListItem('faq').title('FAQs'),
       S.documentTypeListItem('review').title('Reviews'),
@@ -41,6 +42,6 @@ export const structure: StructureResolver = (S) =>
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() &&
-          !['page', 'faq', 'review', 'contactForm', ...SINGLETONS].includes(item.getId()!),
+          !['page', 'woning', 'faq', 'review', 'contactForm', ...SINGLETONS].includes(item.getId()!),
       ),
     ])
