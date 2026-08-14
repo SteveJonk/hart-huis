@@ -22,6 +22,10 @@ You need a Sanity project. Create one at [sanity.io/manage](https://www.sanity.i
 (free tier is fine) and note its project id.
 
 ```bash
+# 1. Initiate Openwolf (if you want to use this)
+npx openwolf init (or openwolf init)
+npx openwolf dashboard (or openwolf dashboard)
+
 # 1. Studio
 cd studio
 cp .env.example .env          # fill in SANITY_STUDIO_PROJECT_ID
@@ -54,14 +58,14 @@ project looks like plain Tailwind rather than someone else's brand.
 Colours are named by **role**, not by hue, so a dark or colourful brand drops in
 without renaming anything:
 
-| Token                        | Used for                                  |
-| ---------------------------- | ----------------------------------------- |
-| `surface`, `surface-alt`     | page and panel backgrounds                |
-| `fg`, `muted`, `subtle`      | text, in descending emphasis              |
-| `inverse`, `inverse-fg`      | dark bands and the text on them           |
-| `accent`, `accent-deep`      | soft fills, tags, quiet highlights        |
-| `accent-strong`              | links, focus rings, the one loud colour   |
-| `brand`, `brand-hover`, `brand-deep`, `brand-fg` | primary buttons and the loudest UI |
+| Token                                            | Used for                                |
+| ------------------------------------------------ | --------------------------------------- |
+| `surface`, `surface-alt`                         | page and panel backgrounds              |
+| `fg`, `muted`, `subtle`                          | text, in descending emphasis            |
+| `inverse`, `inverse-fg`                          | dark bands and the text on them         |
+| `accent`, `accent-deep`                          | soft fills, tags, quiet highlights      |
+| `accent-strong`                                  | links, focus rings, the one loud colour |
+| `brand`, `brand-hover`, `brand-deep`, `brand-fg` | primary buttons and the loudest UI      |
 
 No component references a raw colour, so editing those values recolours the
 whole site. There is no `tailwind.config.ts` — Tailwind v4 puts the theme in
@@ -96,8 +100,8 @@ replace it, along with the matching details in `app/src/lib/site.ts`.
 
 ## The blocks
 
-| Block        | What it is                                      |
-| ------------ | ----------------------------------------------- |
+| Block        | What it is                                       |
+| ------------ | ------------------------------------------------ |
 | `hero`       | Full-bleed opener with a cycling image and badge |
 | `pageHero`   | Shorter opener for inner pages, with breadcrumb  |
 | `intro`      | Text and image with a stat row                   |
