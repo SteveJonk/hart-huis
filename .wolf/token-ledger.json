@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 192242,
-    "total_reads": 56,
+    "total_tokens_estimated": 193855,
+    "total_reads": 57,
     "total_writes": 0,
-    "total_sessions": 29,
-    "anatomy_hits": 31,
+    "total_sessions": 30,
+    "anatomy_hits": 32,
     "anatomy_misses": 25,
     "repeated_reads_blocked": 16,
-    "estimated_savings_vs_bare_cli": 124166,
-    "real_input_tokens": 24290,
-    "real_output_tokens": 1571632,
-    "real_cache_read_tokens": 386889351,
-    "real_cache_creation_tokens": 7123684,
-    "real_api_calls": 2477
+    "estimated_savings_vs_bare_cli": 124366,
+    "real_input_tokens": 24340,
+    "real_output_tokens": 1579888,
+    "real_cache_read_tokens": 388577017,
+    "real_cache_creation_tokens": 7201787,
+    "real_api_calls": 2502
   },
   "sessions": [
     {
@@ -927,6 +927,36 @@
         "cache_read_input_tokens": 23626729,
         "cache_creation_input_tokens": 355348,
         "api_calls": 162
+      }
+    },
+    {
+      "id": "session-2026-08-17-2002",
+      "agent": "claude",
+      "started": "2026-08-17T20:02:43.101Z",
+      "ended": "2026-08-17T20:05:10.510Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/sanity/queries.ts",
+          "tokens_estimated": 1613,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 1613,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 50,
+        "output_tokens": 8256,
+        "cache_read_input_tokens": 1687666,
+        "cache_creation_input_tokens": 78103,
+        "api_calls": 25
       }
     }
   ],
