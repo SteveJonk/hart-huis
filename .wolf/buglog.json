@@ -229,6 +229,45 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-17T21:30:00Z"
+    },
+    {
+      "id": "bug-013",
+      "timestamp": "2026-08-17T21:05:00Z",
+      "error_message": "WONING_QUERY selecteert `seo`, maar het gegenereerde type is `seo: null` — de objectpagina krijgt nooit CMS-SEO.",
+      "file": "studio-hart-huis/schemaTypes/woningType.ts",
+      "root_cause": "Het `woning`-schema heeft helemaal geen `seo`-veld. De query vroeg het toch op en `src/app/aanbod/[slug]/page.tsx` typte het met de hand als `SanitySeo | null`, dus niets wees erop dat het altijd leeg was. pageMetadata() valt stil terug op de defaults.",
+      "fix": "Nog niet opgelost — gevonden doordat Sanity TypeGen het veld als `null` typeerde. Keuze aan de redactie: `seo` toevoegen aan het woning-schema (zoals `page` dat heeft), of de dode selectie uit WONING_QUERY halen.",
+      "tags": [
+        "sanity",
+        "typegen",
+        "seo",
+        "metadata",
+        "woning",
+        "latent"
+      ],
+      "related_bugs": [
+        "bug-001"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T21:05:00Z"
+    },
+    {
+      "id": "bug-014",
+      "timestamp": "2026-08-17T21:05:00Z",
+      "error_message": "TS2339: Property 'badgeValue' does not exist on type '{ _type: \"hero\"; ... }'",
+      "file": "app/src/components/PageBuilder.tsx",
+      "root_cause": "PageBuilder las `block.badgeValue` als redactionele fallback voor het herocijfer, maar het hero-schema kent alleen `badgeLabel` — `badgeValue` bestaat in geen schema en in geen seed. Onder het oude `[key: string]: unknown`-blocktype viel dat niet op: de cast maakte er stilzwijgend `undefined` van.",
+      "fix": "De dode fallback verwijderd; `reviewScore(block)` zonder tweede argument. Gedrag blijft gelijk — Hero vult zelf SITE.fundaScore in als het afgeleide cijfer leeg is.",
+      "tags": [
+        "sanity",
+        "typegen",
+        "pagebuilder",
+        "hero",
+        "dead-code"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T21:05:00Z"
     }
   ]
 }

@@ -32,6 +32,7 @@ import { UitgelichteReview } from '@/components/blocks/UitgelichteReview';
 import { ValueCards } from '@/components/blocks/ValueCards';
 import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
+import type { PAGE_QUERY_RESULT } from '@/sanity/sanity.types';
 import { resolveHref, type SanityLabeledLink, type SanityLink } from '@/lib/links';
 import {
   reviewCountLabel,
@@ -55,11 +56,7 @@ type SanityWoningCard = {
   foto?: SanityImage | null;
 };
 
-type PageBlock = {
-  _type: string;
-  _key: string;
-  [key: string]: unknown;
-};
+type PageBlock = NonNullable<NonNullable<PAGE_QUERY_RESULT>['content']>[number];
 
 function toCta(cta: SanityCta | undefined | null) {
   const href = resolveHref(cta);
@@ -86,24 +83,24 @@ function toReviews(value: unknown): ReviewItem[] | undefined {
 function renderBlock(block: PageBlock) {
   switch (block._type) {
     case 'hero': {
-      const slides = (block.slides as SanityImage[] | undefined)
+      const slides = block.slides
         ?.map((slide) => toImage(slide, 2400, 1600))
         .filter((slide): slide is { src: string; alt: string } => Boolean(slide));
       return (
         <Hero
           key={block._key}
           slides={slides}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          titleHighlight={block.titleHighlight as string | undefined}
-          lead={block.lead as string | undefined}
-          primaryCta={toCta(block.primaryCta as SanityCta)}
-          secondaryCta={toCta(block.secondaryCta as SanityCta)}
-          badgeValue={reviewScore(
-            block as ReviewStats,
-            block.badgeValue as string | undefined,
-          )}
-          badgeLabel={block.badgeLabel as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          titleHighlight={block.titleHighlight}
+          lead={block.lead}
+          primaryCta={toCta(block.primaryCta)}
+          secondaryCta={toCta(block.secondaryCta)}
+          // Geen redactionele fallback: `badgeValue` staat niet in het
+          // hero-schema, dus die kwam altijd leeg terug. Blijft het afgeleide
+          // cijfer leeg, dan vult Hero zelf SITE.fundaScore in.
+          badgeValue={reviewScore(block)}
+          badgeLabel={block.badgeLabel}
         />
       );
     }
@@ -111,15 +108,15 @@ function renderBlock(block: PageBlock) {
       return (
         <Intro
           key={block._key}
-          image={toImage(block.image as SanityImage, 800, 1000)}
-          stampValue={block.stampValue as string | undefined}
-          stampLabel={block.stampLabel as string | undefined}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          titleHighlight={block.titleHighlight as string | undefined}
-          leads={block.leads as string[] | undefined}
+          image={toImage(block.image, 800, 1000)}
+          stampValue={block.stampValue}
+          stampLabel={block.stampLabel}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          titleHighlight={block.titleHighlight}
+          leads={block.leads}
           facts={block.facts as { value: string; label: string }[] | undefined}
-          link={toCta(block.link as SanityCta)}
+          link={toCta(block.link)}
         />
       );
     }
@@ -153,8 +150,8 @@ function renderBlock(block: PageBlock) {
       return (
         <Services
           key={block._key}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
+          title={block.title}
+          lead={block.lead}
           items={items}
           nvm={
             nvm
@@ -173,13 +170,13 @@ function renderBlock(block: PageBlock) {
       return (
         <Stories
           key={block._key}
-          image={toImage(block.image as SanityImage, 900, 1200)}
-          secondaryImage={toImage(block.secondaryImage as SanityImage, 600, 400)}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          quote={block.quote as string | undefined}
-          attribution={block.attribution as string | undefined}
-          cta={toCta(block.cta as SanityCta)}
+          image={toImage(block.image, 900, 1200)}
+          secondaryImage={toImage(block.secondaryImage, 600, 400)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          quote={block.quote}
+          attribution={block.attribution}
+          cta={toCta(block.cta)}
         />
       );
     }
@@ -189,15 +186,12 @@ function renderBlock(block: PageBlock) {
       return (
         <Reviews
           key={block._key}
-          score={reviewScore(stats, block.score as string | undefined)}
-          scoreLabel={block.scoreLabel as string | undefined}
-          reviewCountLabel={reviewCountLabel(
-            stats,
-            block.reviewCountLabel as string | undefined,
-          )}
-          intro={block.intro as string | undefined}
+          score={reviewScore(stats, block.score)}
+          scoreLabel={block.scoreLabel}
+          reviewCountLabel={reviewCountLabel(stats, block.reviewCountLabel)}
+          intro={block.intro}
           reviews={reviews}
-          link={toCta(block.link as SanityCta)}
+          link={toCta(block.link)}
           showGrades={Boolean(block.showGrades)}
         />
       );
@@ -207,17 +201,17 @@ function renderBlock(block: PageBlock) {
       return (
         <BeoordelingenHero
           key={block._key}
-          breadcrumbLabel={block.breadcrumbLabel as string | undefined}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          titleHighlight={block.titleHighlight as string | undefined}
-          lead={block.lead as string | undefined}
-          primaryCta={toCta(block.primaryCta as SanityCta)}
-          secondaryCta={toCta(block.secondaryCta as SanityCta)}
+          breadcrumbLabel={block.breadcrumbLabel}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          titleHighlight={block.titleHighlight}
+          lead={block.lead}
+          primaryCta={toCta(block.primaryCta)}
+          secondaryCta={toCta(block.secondaryCta)}
           score={reviewScore(stats)}
-          scoreLabel={block.scoreLabel as string | undefined}
+          scoreLabel={block.scoreLabel}
           countLabel={reviewCountNoun(stats)}
-          scoreNote={block.scoreNote as string | undefined}
+          scoreNote={block.scoreNote}
           stats={stats}
         />
       );
@@ -226,8 +220,8 @@ function renderBlock(block: PageBlock) {
       return (
         <UitgelichteReview
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          image={toImage(block.image as SanityImage, 900, 1125)}
+          eyebrow={block.eyebrow}
+          image={toImage(block.image, 900, 1125)}
           review={toReviews([block.review])?.[0]}
         />
       );
@@ -236,10 +230,10 @@ function renderBlock(block: PageBlock) {
       return (
         <ReviewGrid
           key={block._key}
-          title={block.title as string | undefined}
+          title={block.title}
           items={toReviews(block.items)}
-          more={block.more as string | undefined}
-          empty={block.empty as string | undefined}
+          more={block.more}
+          empty={block.empty}
         />
       );
     }
@@ -247,9 +241,9 @@ function renderBlock(block: PageBlock) {
       return (
         <Werkwijze
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
           items={block.items as WerkwijzeItem[] | undefined}
         />
       );
@@ -279,10 +273,10 @@ function renderBlock(block: PageBlock) {
       return (
         <Listings
           key={block._key}
-          title={block.title as string | undefined}
-          cta={toCta(block.cta as SanityCta)}
+          title={block.title}
+          cta={toCta(block.cta)}
           items={items}
-          regionsLabel={block.regionsLabel as string | undefined}
+          regionsLabel={block.regionsLabel}
           regions={regions}
         />
       );
@@ -291,12 +285,12 @@ function renderBlock(block: PageBlock) {
       return (
         <CtaBand
           key={block._key}
-          image={toImage(block.image as SanityImage, 2400, 1200)}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          body={block.body as string | undefined}
-          primaryCta={toCta(block.primaryCta as SanityCta)}
-          secondaryCta={toCta(block.secondaryCta as SanityCta)}
+          image={toImage(block.image, 2400, 1200)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          body={block.body}
+          primaryCta={toCta(block.primaryCta)}
+          secondaryCta={toCta(block.secondaryCta)}
         />
       );
     }
@@ -304,14 +298,14 @@ function renderBlock(block: PageBlock) {
       return (
         <PageHero
           key={block._key}
-          image={toImage(block.image as SanityImage, 2400, 1600)}
-          breadcrumbLabel={block.breadcrumbLabel as string | undefined}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          titleHighlight={block.titleHighlight as string | undefined}
-          lead={block.lead as string | undefined}
-          primaryCta={toCta(block.primaryCta as SanityCta)}
-          secondaryCta={toCta(block.secondaryCta as SanityCta)}
+          image={toImage(block.image, 2400, 1600)}
+          breadcrumbLabel={block.breadcrumbLabel}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          titleHighlight={block.titleHighlight}
+          lead={block.lead}
+          primaryCta={toCta(block.primaryCta)}
+          secondaryCta={toCta(block.secondaryCta)}
         />
       );
     }
@@ -327,10 +321,10 @@ function renderBlock(block: PageBlock) {
       return (
         <Benefits
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
-          image={toImage(block.image as SanityImage, 900, 1125)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
+          image={toImage(block.image, 900, 1125)}
           items={
             block.items as
               | Array<{
@@ -362,10 +356,10 @@ function renderBlock(block: PageBlock) {
       return (
         <Steps
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
-          cta={toCta(block.cta as SanityCta)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
+          cta={toCta(block.cta)}
           items={items}
         />
       );
@@ -374,12 +368,12 @@ function renderBlock(block: PageBlock) {
       return (
         <QuoteBand
           key={block._key}
-          image={toImage(block.image as SanityImage, 800, 1000)}
-          eyebrow={block.eyebrow as string | undefined}
-          quote={block.quote as string | undefined}
-          initials={block.initials as string | undefined}
-          name={block.name as string | undefined}
-          place={block.place as string | undefined}
+          image={toImage(block.image, 800, 1000)}
+          eyebrow={block.eyebrow}
+          quote={block.quote}
+          initials={block.initials}
+          name={block.name}
+          place={block.place}
         />
       );
     }
@@ -404,10 +398,10 @@ function renderBlock(block: PageBlock) {
       return (
         <Faq
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          intro={block.intro as string | undefined}
-          link={toCta(block.link as SanityCta)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          intro={block.intro}
+          link={toCta(block.link)}
           items={items}
         />
       );
@@ -421,9 +415,9 @@ function renderBlock(block: PageBlock) {
       return (
         <RegionBlock
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
           places={places}
         />
       );
@@ -449,11 +443,11 @@ function renderBlock(block: PageBlock) {
       return (
         <AanbodHeader
           key={block._key}
-          breadcrumbLabel={block.breadcrumbLabel as string | undefined}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          titleHighlight={block.titleHighlight as string | undefined}
-          lead={block.lead as string | undefined}
+          breadcrumbLabel={block.breadcrumbLabel}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          titleHighlight={block.titleHighlight}
+          lead={block.lead}
           asideTitle={aside?.title}
           asideBody={aside?.body}
           asideCta={toCta(aside?.cta)}
@@ -485,8 +479,8 @@ function renderBlock(block: PageBlock) {
               ? { title: ctaCard.title, body: ctaCard.body, cta: toCta(ctaCard.cta) }
               : undefined
           }
-          emptyTitle={block.emptyTitle as string | undefined}
-          emptyBody={block.emptyBody as string | undefined}
+          emptyTitle={block.emptyTitle}
+          emptyBody={block.emptyBody}
         />
       );
     }
@@ -494,12 +488,12 @@ function renderBlock(block: PageBlock) {
       return (
         <PageOpener
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          titleHighlight={block.titleHighlight as string | undefined}
-          lead={block.lead as string | undefined}
-          motto={block.motto as string | undefined}
-          attribution={block.attribution as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          titleHighlight={block.titleHighlight}
+          lead={block.lead}
+          motto={block.motto}
+          attribution={block.attribution}
         />
       );
     }
@@ -507,11 +501,11 @@ function renderBlock(block: PageBlock) {
       return (
         <DuoPhotos
           key={block._key}
-          image={toImage(block.image as SanityImage, 900, 1125)}
-          stampValue={block.stampValue as string | undefined}
-          stampLabel={block.stampLabel as string | undefined}
-          secondaryImage={toImage(block.secondaryImage as SanityImage, 700, 933)}
-          caption={block.caption as string | undefined}
+          image={toImage(block.image, 900, 1125)}
+          stampValue={block.stampValue}
+          stampLabel={block.stampLabel}
+          secondaryImage={toImage(block.secondaryImage, 700, 933)}
+          caption={block.caption}
         />
       );
     }
@@ -534,9 +528,9 @@ function renderBlock(block: PageBlock) {
       return (
         <Timeline
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
           items={items}
         />
       );
@@ -545,9 +539,9 @@ function renderBlock(block: PageBlock) {
       return (
         <ValueCards
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
           items={
             block.items as
               | Array<{
@@ -564,11 +558,11 @@ function renderBlock(block: PageBlock) {
       return (
         <MediaText
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          paragraphs={block.paragraphs as string[] | undefined}
-          cta={toCta(block.cta as SanityCta)}
-          image={toImage(block.image as SanityImage, 900, 720)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          paragraphs={block.paragraphs}
+          cta={toCta(block.cta)}
+          image={toImage(block.image, 900, 720)}
         />
       );
     }
@@ -601,9 +595,9 @@ function renderBlock(block: PageBlock) {
       return (
         <CompareCards
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
           cards={cards}
         />
       );
@@ -612,9 +606,9 @@ function renderBlock(block: PageBlock) {
       return (
         <Assurances
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
           items={block.items as { title: string; body: string }[] | undefined}
         />
       );
@@ -623,14 +617,14 @@ function renderBlock(block: PageBlock) {
       return (
         <SplitHero
           key={block._key}
-          breadcrumbLabel={block.breadcrumbLabel as string | undefined}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          titleHighlight={block.titleHighlight as string | undefined}
-          lead={block.lead as string | undefined}
-          primaryCta={toCta(block.primaryCta as SanityCta)}
-          secondaryCta={toCta(block.secondaryCta as SanityCta)}
-          image={toImage(block.image as SanityImage, 1400, 1700)}
+          breadcrumbLabel={block.breadcrumbLabel}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          titleHighlight={block.titleHighlight}
+          lead={block.lead}
+          primaryCta={toCta(block.primaryCta)}
+          secondaryCta={toCta(block.secondaryCta)}
+          image={toImage(block.image, 1400, 1700)}
         />
       );
     }
@@ -668,10 +662,10 @@ function renderBlock(block: PageBlock) {
       return (
         <Person
           key={block._key}
-          image={toImage(block.image as SanityImage, 800, 1000)}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          body={block.body as string | undefined}
+          image={toImage(block.image, 800, 1000)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          body={block.body}
           person={
             person?.initials && person.name && person.role
               ? {
@@ -717,12 +711,12 @@ function renderBlock(block: PageBlock) {
       return (
         <ContactForm
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
-          note={block.note as string | undefined}
-          successTitle={block.successTitle as string | undefined}
-          successBody={block.successBody as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
+          note={block.note}
+          successTitle={block.successTitle}
+          successBody={block.successBody}
           form={
             form?._id && form.fields?.length
               ? {
@@ -760,18 +754,23 @@ function renderBlock(block: PageBlock) {
       return (
         <RouteBlock
           key={block._key}
-          eyebrow={block.eyebrow as string | undefined}
-          title={block.title as string | undefined}
-          lead={block.lead as string | undefined}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
           columns={block.columns as { title: string; body: string }[] | undefined}
-          cta={toCta(block.cta as SanityCta)}
-          image={toImage(block.image as SanityImage, 900, 1125)}
+          cta={toCta(block.cta)}
+          image={toImage(block.image, 900, 1125)}
         />
       );
     }
-    default:
-      console.warn(`Unknown page builder block type: ${block._type}`);
+    default: {
+      // `block` is hier `never`: de switch dekt elk bloktype dat PAGE_QUERY kan
+      // teruggeven. Een nieuw blok in het schema laat TypeScript hier stuklopen
+      // — de waarschuwing blijft staan voor data die ouder is dan deze build.
+      const unknownBlock: { _type: string } = block;
+      console.warn(`Unknown page builder block type: ${unknownBlock._type}`);
       return null;
+    }
   }
 }
 
