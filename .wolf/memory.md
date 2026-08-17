@@ -176,3 +176,4 @@
 |------|--------|---------|---------|--------|
 | 15:40 | Deelcijfers per reviewsoort: Aankoop krijgt bereikbaarheid+onderhandeling, Verkoop marktkennis+begeleiding | reviewType.ts, funda-reviews.ts, reviews.ts, queries.ts, route.ts, 2 checks, docs | check:reviews + check:funda + tsc + lint groen | ~14k |
 | 16:55 | Paginering gefixt (URL is /live/{id}/1/{type}/pN/), reacties van de makelaar overgeslagen, entities gedecodeerd, cijfer in de dedup-sleutel | funda-reviews.ts, check-funda-reviews.ts, 3 echte fixtures, docs | live run: 42 verkoop + 12 aankoop = 54, geen warnings | ~40k |
+| 17:30 | Lange beoordelingen op 250 tekens ingekort met 'Lees meer' in een native <dialog> | Reviews.tsx, reviews.ts, check-reviews.ts | in de browser getest: kaart 248 tekens, dialog 1241, Esc + backdrop + sticky Sluiten werken, mobiel 337px breed | ~12k |

@@ -50,6 +50,7 @@
 - 4 nieuwe blocks: `beoordelingenHero` (scorekaart + cijferverdeling), `uitgelichteReview` (referentie naar één review), `reviewGrid` (client: filter Alle/Verkopers/Kopers + 9 per keer), `werkwijze` (donker, genummerd); `ctaBand` hergebruikt
 - images in `app/public/images/beoordelingen/`; geseed met `npm run seed:beoordelingen` + `seed:nav`
 - `ReviewCard` is nu gedeeld: cijferrondje, naam, datum, type-tag, en de deelcijfertabel achter `showGrades` (uit op home, aan op /beoordelingen)
+- beoordelingen langer dan 250 tekens worden ingekort met "Lees meer" → hele tekst in een native `<dialog>` (top layer, dus de carousel knipt hem niet af); `ReviewMeta` en `ReviewGrades` zijn daarvoor uit de kaart getrokken en staan ook in de dialog
 - sizing van de carousel is naar een wrapper-div verhuisd zodat dezelfde kaart in een grid past
 
 **Review-aggregates**

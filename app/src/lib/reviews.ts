@@ -73,6 +73,27 @@ export function subjectGrades(review: ReviewItem) {
     .filter((row): row is { label: string; value: string } => Boolean(row.value));
 }
 
+/**
+ * Vanaf hoeveel tekens een beoordeling op de kaart wordt ingekort. Sommige
+ * reviewers schrijven een halve pagina; zonder grens rekt één zo'n kaart de
+ * hele rij op.
+ */
+export const QUOTE_LIMIT = 250;
+
+/** Knipt op een spatie, zodat er geen half woord voor de puntjes staat. */
+export function truncateQuote(
+  quote: string,
+  limit = QUOTE_LIMIT,
+): { text: string; truncated: boolean } {
+  if (quote.length <= limit) return { text: quote, truncated: false };
+
+  const cut = quote.slice(0, limit);
+  const lastSpace = cut.lastIndexOf(' ');
+  const head = lastSpace > 0 ? cut.slice(0, lastSpace) : cut;
+
+  return { text: `${head.replace(/[\s,;:.!?-]+$/, '')}…`, truncated: true };
+}
+
 /** Staafjes in de scorekaart: afgerond cijfer → aantal. `<= 6` is de restbak. */
 export const GRADE_BUCKETS = [
   { label: '10', field: 'cijfer10' },

@@ -16,8 +16,10 @@ const scoreField = (name: string, title: string, hidden?: (parent: any) => boole
  * het bijbehorende type. Zolang er nog geen soort gekozen is blijft alles
  * zichtbaar — anders lijkt een half ingevuld formulier kapot.
  */
-const alleenBij = (type: 'Aankoop' | 'Verkoop') => ({parent}: any) =>
-  Boolean(parent?.type) && parent.type !== type
+const alleenBij =
+  (type: 'Aankoop' | 'Verkoop') =>
+  ({parent}: any) =>
+    Boolean(parent?.type) && parent.type !== type
 
 export const reviewType = defineType({
   name: 'review',
@@ -34,7 +36,8 @@ export const reviewType = defineType({
     defineField({
       name: 'name',
       type: 'string',
-      description: 'Naam van de reviewer zoals die op de bron staat, bijv. "Marloes B."',
+      description:
+        'Adres van de reviewer zoals die op de bron staat, bijv. "Volhardingstraat 2 A03"',
       validation: (rule) => rule.required(),
     }),
     defineField({

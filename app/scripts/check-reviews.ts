@@ -11,6 +11,7 @@ import {
   reviewCountNoun,
   reviewScore,
   subjectGrades,
+  truncateQuote,
 } from '../src/lib/reviews';
 
 assert.equal(formatGrade(9.55), '9,6');
@@ -74,6 +75,25 @@ assert.deepEqual(
 );
 // zonder soort (met de hand ingevoerd) blijft alles staan wat ingevuld is
 assert.equal(subjectGrades(alleCijfers).length, 6);
+
+// een korte beoordeling blijft heel en krijgt geen "Lees meer"
+assert.deepEqual(truncateQuote('Kort en krachtig.'), {
+  text: 'Kort en krachtig.',
+  truncated: false,
+});
+// precies op de grens telt nog als kort
+assert.equal(truncateQuote('a'.repeat(250)).truncated, false);
+assert.equal(truncateQuote('a'.repeat(251)).truncated, true);
+
+// een lange beoordeling wordt op een spatie geknipt, niet midden in een woord
+const lang = truncateQuote(`${'woord '.repeat(60)}slot`);
+assert.equal(lang.truncated, true);
+assert.ok(lang.text.length <= 251, `te lang: ${lang.text.length}`);
+assert.match(lang.text, /woord…$/);
+// geen leesteken vlak vóór de puntjes
+assert.match(truncateQuote(`${'ja, '.repeat(80)}einde`).text, /ja…$/);
+// één lang woord zonder spaties valt terug op hard afkappen
+assert.equal(truncateQuote('a'.repeat(400)).text, `${'a'.repeat(250)}…`);
 
 // de grootste bak is altijd 100%, de rest schaalt mee
 const verdeling = gradeDistribution({ cijfer10: 38, cijfer9: 12, cijfer8: 5, cijfer7: 1 });

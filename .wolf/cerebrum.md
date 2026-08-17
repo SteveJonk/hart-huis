@@ -53,6 +53,8 @@
 - [2026-08-17] De paginering van de widget toont maar een **venster** van paginanummers ("1 2 3 … 9"). Daar het laatste paginanummer uit afleiden om te weten wanneer je klaar bent is fragiel. Loop gewoon door tot de pagina "Er zijn geen beoordelingen om te tonen" zegt — die komt met een gewone 200 terug en kost één extra request.
 - [2026-08-17] `naam + adres + datum` is **niet uniek** voor een Funda-review: twee bewoners van hetzelfde huis schrijven allebei anoniem ("Een funda gebruiker") op dezelfde dag. Het cijfer moet mee in de dedup-hash. Neem géén stuk reviewtekst op in een sleutel die een Sanity-`_id` wordt: dan gooit elke verbetering in de parser alle sleutels om en wordt alles opnieuw aangemaakt.
 
+- **Lange reviewteksten gaan achter een native `<dialog>`.** `truncateQuote()` in `src/lib/reviews.ts` knipt op 250 tekens (op een spatie), `ReviewCard` toont dan "Lees meer" en zet de hele tekst in een `dialog` die met `showModal()` opengaat. Bewust geen uitklap in de kaart: dat rekt de grid-rij én in de carousel de kaarten ernaast mee. `showModal()` zet de dialog in de **top layer**, dus de `overflow-x-auto` van de carousel knipt hem niet af — dat is precies waarom het een dialog is en geen absoluut gepositioneerde div. Esc en focus-trap komen gratis; de backdrop sluit via `event.target === dialogRef.current` (daarom zit alle padding op de div bínnen de dialog), en de Sluiten-knop is `sticky bottom-0` omdat hij bij een lange tekst anders duizend pixels naar beneden staat.
+
 ## Do-Not-Repeat
 
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
