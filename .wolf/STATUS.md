@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-15
+> Last updated: 2026-08-17
 
 ---
 
@@ -64,7 +64,7 @@
 - beide tabbladen + paginering; `_id` = `funda-review-<hash van type+naam+adres+datum>`, dus idempotent en verwijzingen blijven heel
 - aan te roepen via **Tools → Funda-reviews** in de linkerkolom van de studio (`tools/FundaReviewsTool.tsx`, ingehangen in `structure.ts`) en dagelijks via de cron in `app/vercel.json`
 - `?dryRun=1` schrijft niets weg, `?debug=1` geeft de ruwe tekst terug
-- deelcijfer `negotiationAndResult` → **`serviceAndGuidance`** ("Service en begeleiding"): de widget vraagt Deskundigheid / Lokale marktkennis / Prijs / kwaliteit / Service en begeleiding uit
+- **deelcijfers per soort** (2026-08-17): Aankoop = bereikbaarheid en communicatie / deskundigheid / onderhandeling en resultaat / prijs / kwaliteit, Verkoop = deskundigheid / lokale marktkennis / prijs / kwaliteit / service en begeleiding. `SUBSCORES` is één platte lijst van alle zes (parser), `GRADE_SUBJECTS.types` bepaalt de kaart, `alleenBij()` verbergt ze in de studio. De **Aankoop-labels zijn nog niet tegen een echte pagina gecontroleerd**
 - `npm run check:funda` dekt de parser, de ontdubbeling en de paginering-guard
 - alles staat beschreven in `docs/funda-review-scraper.md`
 
@@ -76,7 +76,7 @@
 
 ### Open punten
 1. **De scraper is nog nooit tegen de echte Funda gedraaid** — funda.nl is geblokkeerd vanuit de bouwomgeving. Te doen, in deze volgorde:
-   a. sla een echte widget-pagina op over `app/scripts/fixtures/funda-widget.html` heen en draai `npm run check:funda`
+   a. sla een echte widget-pagina op over `app/scripts/fixtures/funda-widget.html` heen en draai `npm run check:funda`; doe dat ook voor het Aankoop-tabblad (`?debug=1&type=Aankoop`) — die vier labels zijn nog nooit tegen echte HTML gezien
    b. controleer in de browser of pagina 1 en pagina 2 van de widget-URL écht andere reviews geven (de route stopt zelf als dat niet zo is, met een waarschuwing)
    c. `?dryRun=1` draaien en de uitkomst nalopen vóór de eerste echte run
    d. daarna de 4 mock-reviews uit `seed:home` weggooien — die hebben geen cijfers maar tellen wel mee in `reviewStats`

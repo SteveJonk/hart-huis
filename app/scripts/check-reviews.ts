@@ -51,6 +51,30 @@ assert.deepEqual(
 );
 assert.deepEqual(subjectGrades({ quote: 'q', name: 'n' }), []);
 
+// een koper beoordeelt andere criteria dan een verkoper: de vier van het
+// andere tabblad horen niet op de kaart, ook niet als er per ongeluk een
+// cijfer in staat
+const alleCijfers = {
+  quote: 'q',
+  name: 'n',
+  accessibilityAndCommunication: 9,
+  expertise: 9,
+  localMarketKnowledge: 8,
+  negotiationAndResult: 10,
+  priceQuality: 8,
+  serviceAndGuidance: 7,
+};
+assert.deepEqual(
+  subjectGrades({ ...alleCijfers, type: 'Aankoop' }).map((row) => row.label),
+  ['Bereikbaarheid en communicatie', 'Deskundigheid', 'Onderhandeling en resultaat', 'Prijs / kwaliteit'],
+);
+assert.deepEqual(
+  subjectGrades({ ...alleCijfers, type: 'Verkoop' }).map((row) => row.label),
+  ['Deskundigheid', 'Lokale marktkennis', 'Prijs / kwaliteit', 'Service en begeleiding'],
+);
+// zonder soort (met de hand ingevoerd) blijft alles staan wat ingevuld is
+assert.equal(subjectGrades(alleCijfers).length, 6);
+
 // de grootste bak is altijd 100%, de rest schaalt mee
 const verdeling = gradeDistribution({ cijfer10: 38, cijfer9: 12, cijfer8: 5, cijfer7: 1 });
 assert.deepEqual(

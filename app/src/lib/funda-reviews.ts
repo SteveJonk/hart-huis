@@ -22,13 +22,28 @@ export const DEFAULT_WIDGET_COLORS = '3=D7C3B9;6=61';
 export const DEFAULT_MAKELAAR_ID = '10356';
 
 /**
- * De vier deelcijfers die de widget toont, in de volgorde van het sjabloon.
- * De labels zijn letterlijk wat er in de HTML staat — verander ze alleen als
- * Funda het sjabloon wijzigt, want de parser zoekt er letterlijk op.
+ * De deelcijfers die de widget toont. Funda vraagt per tabblad vier andere
+ * criteria uit — Aankoop wil weten hoe de onderhandeling ging, Verkoop hoe de
+ * begeleiding was — dus dit zijn er zes waarvan er per review vier voorkomen.
+ *
+ *   Aankoop: bereikbaarheid en communicatie, deskundigheid,
+ *            onderhandeling en resultaat, prijs / kwaliteit
+ *   Verkoop: deskundigheid, lokale marktkennis, prijs / kwaliteit,
+ *            service en begeleiding
+ *
+ * Bewust één platte lijst: de parser zoekt gewoon alle labels en wat niet op de
+ * pagina staat blijft `undefined`. Scheelt een tweede lijst die uit de pas kan
+ * gaan lopen, en een tabblad dat een vijfde criterium krijgt valt hier vanzelf
+ * in. Welke velden bij welk type hóren staat in `src/lib/reviews.ts`.
+ *
+ * De labels zijn letterlijk wat er in de HTML staat (hoofdletterongevoelig
+ * gematcht) — verander ze alleen als Funda het sjabloon wijzigt.
  */
 export const SUBSCORES = [
+  { field: 'accessibilityAndCommunication', label: 'Bereikbaarheid en communicatie' },
   { field: 'expertise', label: 'Deskundigheid' },
   { field: 'localMarketKnowledge', label: 'Lokale marktkennis' },
+  { field: 'negotiationAndResult', label: 'Onderhandeling en resultaat' },
   { field: 'priceQuality', label: 'Prijs / kwaliteit' },
   { field: 'serviceAndGuidance', label: 'Service en begeleiding' },
 ] as const;
@@ -48,11 +63,7 @@ export type ScrapedReview = {
   date?: string;
   quote: string;
   grade?: number;
-  expertise?: number;
-  localMarketKnowledge?: number;
-  priceQuality?: number;
-  serviceAndGuidance?: number;
-};
+} & Partial<Record<SubscoreField, number>>;
 
 export function buildWidgetUrl(options: {
   id: string;
@@ -173,6 +184,21 @@ function labelPattern(label: string): string {
   return escapeForRegExp(label).replace(/\\?\s*\/\\?\s*/g, String.raw`\s*/\s*`);
 }
 
+/**
+ * Waar het cijferblok begint: de eerste plek waar een deelcijferlabel staat.
+ * Niet het eerste label uit `SUBSCORES` opzoeken — welk criterium bovenaan
+ * staat verschilt per tabblad. Alles ervóór is naam, totaalcijfer en tekst.
+ */
+function subscoreStart(after: string): number {
+  const index = after.search(SUBSCORE_LABELS);
+  return index === -1 ? after.length : index;
+}
+
+const SUBSCORE_LABELS = new RegExp(
+  SUBSCORES.map((subscore) => labelPattern(subscore.label)).join('|'),
+  'i',
+);
+
 function lines(block: string): string[] {
   return block
     .split('\n')
@@ -244,13 +270,12 @@ function parseNameAndAddress(before: string): { name: string; address: string } 
 function parseScores(after: string): Partial<Record<'grade' | SubscoreField, number>> {
   const scores: Partial<Record<'grade' | SubscoreField, number>> = {};
 
-  const headEnd = after.search(new RegExp(labelPattern(SUBSCORES[0].label)));
-  const head = headEnd === -1 ? after : after.slice(0, headEnd);
+  const head = after.slice(0, subscoreStart(after));
   const grade = parseGrade(head.match(new RegExp(String.raw`(?:^|\n)\s*(${GRADE_PATTERN})\s*(?:\n|$)`))?.[1]);
   if (grade !== undefined) scores.grade = grade;
 
   for (const { field, label } of SUBSCORES) {
-    const match = after.match(new RegExp(`${labelPattern(label)}\\s*\\n?\\s*(${GRADE_PATTERN})`));
+    const match = after.match(new RegExp(`${labelPattern(label)}\\s*\\n?\\s*(${GRADE_PATTERN})`, 'i'));
     const value = parseGrade(match?.[1]);
     if (value !== undefined) scores[field] = value;
   }
@@ -271,10 +296,7 @@ const RECOMMENDATION_MAX_LENGTH = 120;
  * zou de halve beoordeling wegvallen.
  */
 function parseQuote(after: string): string {
-  const end = after.search(new RegExp(labelPattern(SUBSCORES[0].label)));
-  const segment = end === -1 ? after : after.slice(0, end);
-
-  let body = lines(segment);
+  let body = lines(after.slice(0, subscoreStart(after)));
 
   const gradeLine = body.findIndex((line) => new RegExp(`^${GRADE_PATTERN}$`).test(line));
   if (gradeLine !== -1) body = body.slice(gradeLine + 1);

@@ -55,6 +55,27 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-15T20:47:00Z"
+    },
+    {
+      "id": "bug-004",
+      "timestamp": "2026-08-17T15:40:00Z",
+      "error_message": "De scraper zou elk Aankoop-deelcijfer 'Onderhandeling en resultaat' meteen weer weggooien",
+      "file": "app/src/app/api/scrape-funda-reviews/route.ts",
+      "root_cause": "Bij de hernoeming naar serviceAndGuidance kreeg de patch een harde .unset(['negotiationAndResult']) mee om het oude veld op te ruimen. Toen negotiationAndResult terugkwam als echt Aankoop-veld, wiste die unset het veld dat .set() er net in had gezet.",
+      "fix": "De unset is nu afgeleid: alle SUBSCORES-velden die deze review niet heeft worden gewist. Ruimt de cijfers van het andere tabblad op en laat staan wat wel gescrapet is. Zonder dit bleef een oude waarde ook hangen en noemde elke run dezelfde review 'gewijzigd'.",
+      "tags": [
+        "funda",
+        "scraper",
+        "sanity",
+        "patch",
+        "reviews",
+        "deelcijfers"
+      ],
+      "related_bugs": [
+        "bug-003"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T15:40:00Z"
     }
   ]
 }

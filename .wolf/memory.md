@@ -159,3 +159,19 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+
+## Session: 2026-08-17 15:00
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-17 15:01
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-17 15:02
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 15:40 | Deelcijfers per reviewsoort: Aankoop krijgt bereikbaarheid+onderhandeling, Verkoop marktkennis+begeleiding | reviewType.ts, funda-reviews.ts, reviews.ts, queries.ts, route.ts, 2 checks, docs | check:reviews + check:funda + tsc + lint groen | ~14k |

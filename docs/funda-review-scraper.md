@@ -107,11 +107,28 @@ egress-proxy blokkeert de host), dus:
    paginering niet te werken, dan zie je dat terug als "pagina 2 herhaalde
    pagina 1" plus een verdacht laag aantal reviews.
 
-3. **De vier deelcijfers heten nu zoals Funda ze uitvraagt.** Het schema had
-   `negotiationAndResult` ("Onderhandeling en resultaat"), maar de widget levert
-   *Deskundigheid, Lokale marktkennis, Prijs / kwaliteit, Service en
-   begeleiding*. Het veld heet daarom nu `serviceAndGuidance`; de route ruimt
-   het oude veld op bij het wegschrijven.
+3. **De deelcijfers verschillen per tabblad.** Funda vraagt kopers en verkopers
+   andere criteria:
+
+   | Aankoop | Verkoop |
+   | --- | --- |
+   | Bereikbaarheid en communicatie (`accessibilityAndCommunication`) | |
+   | Deskundigheid (`expertise`) | Deskundigheid (`expertise`) |
+   | | Lokale marktkennis (`localMarketKnowledge`) |
+   | Onderhandeling en resultaat (`negotiationAndResult`) | |
+   | Prijs / kwaliteit (`priceQuality`) | Prijs / kwaliteit (`priceQuality`) |
+   | | Service en begeleiding (`serviceAndGuidance`) |
+
+   `SUBSCORES` in `app/src/lib/funda-reviews.ts` is één platte lijst van alle
+   zes: de parser zoekt gewoon alle labels en wat niet op de pagina staat blijft
+   leeg. Bij het wegschrijven wist de route de cijfers van het andere tabblad,
+   zodat er geen oude waarde blijft hangen. Welke rijen op de kaart komen
+   bepaalt `GRADE_SUBJECTS` in `app/src/lib/reviews.ts`, op `type`. In de studio
+   verbergt het schema de velden van het andere type.
+
+   De Aankoop-labels zijn **nog niet tegen een echte pagina gecontroleerd** —
+   die van Verkoop wel. Levert de eerste echte run lege Aankoop-deelcijfers op,
+   draai dan `?debug=1&type=Aankoop` en vergelijk de labels.
 
 4. **De vier mock-reviews uit `npm run seed:home` staan er nog.** Die hebben
    geen cijfers en tellen wel mee in `reviewStats`. Verwijder ze in de studio

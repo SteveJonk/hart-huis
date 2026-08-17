@@ -94,6 +94,45 @@ assert.equal(second.name, 'Familie De Vries');
 assert.equal(second.grade, 10);
 assert.equal(second.quote, 'Dorien nam ons stap voor stap mee door het hele proces. Fijne samenwerking.');
 
+// ------------------------------------------------------- het andere tabblad
+
+/**
+ * Aankoop vraagt vier ándere criteria uit dan Verkoop. Bewust inline en niet
+ * als tweede fixture: er is nog geen echte Aankoop-pagina opgeslagen, dus dit
+ * bewijst alleen dat de parser beide labelsets aankan. De hoofdletters wijken
+ * met opzet af — Funda schrijft ze niet overal hetzelfde.
+ */
+const aankoopFixture = `
+<div class="beoordeling">
+  <div class="naam">Joost en Anne</div>
+  <div class="woning">Zijlweg 8, Haarlem<span>Geschreven op 4 mei 2026</span></div>
+  <div class="cijfer">9</div>
+  <div class="aanbeveling">Deze klant zou deze makelaar aanbevelen.</div>
+  <p>Scherp onderhandeld, we kregen het huis onder de vraagprijs.</p>
+  <div class="deelcijfer"><span>Bereikbaarheid en Communicatie</span><span>9,5</span></div>
+  <div class="deelcijfer"><span>Deskundigheid</span><span>9</span></div>
+  <div class="deelcijfer"><span>Onderhandeling en resultaat</span><span>10</span></div>
+  <div class="deelcijfer"><span>Prijs / kwaliteit</span><span>8</span></div>
+</div>`;
+
+const [aankoop] = parseReviews(aankoopFixture, 'Aankoop');
+assert.equal(aankoop.name, 'Joost en Anne');
+assert.equal(aankoop.grade, 9);
+assert.equal(aankoop.accessibilityAndCommunication, 9.5);
+assert.equal(aankoop.expertise, 9);
+assert.equal(aankoop.negotiationAndResult, 10);
+assert.equal(aankoop.priceQuality, 8);
+// criteria van het andere tabblad blijven leeg in plaats van 0
+assert.equal(aankoop.localMarketKnowledge, undefined);
+assert.equal(aankoop.serviceAndGuidance, undefined);
+// het cijferblok begint hier bij een ánder label dan bij Verkoop; de tekst
+// mag daar niet in doorlopen
+assert.equal(aankoop.quote, 'Scherp onderhandeld, we kregen het huis onder de vraagprijs.');
+
+// en andersom: een Verkoop-review krijgt geen Aankoop-cijfers
+assert.equal(first.negotiationAndResult, undefined);
+assert.equal(first.accessibilityAndCommunication, undefined);
+
 // -------------------------------------------------------------- de hele lus
 
 async function run(pages: Record<number, string>, type: FundaReviewType = 'Verkoop') {

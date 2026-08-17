@@ -25,6 +25,7 @@ import {
   stripTags,
   type FundaReviewType,
   type ScrapedReview,
+  type SubscoreField,
 } from '@/lib/funda-reviews';
 import { getWriteClient } from '@/sanity/write-client';
 
@@ -58,11 +59,7 @@ type ReviewDocument = {
   type: FundaReviewType;
   date?: string;
   grade?: number;
-  expertise?: number;
-  localMarketKnowledge?: number;
-  priceQuality?: number;
-  serviceAndGuidance?: number;
-};
+} & Partial<Record<SubscoreField, number>>;
 
 function equalSecret(received: string, expected: string): boolean {
   // hashen zodat timingSafeEqual geen gelijke lengtes nodig heeft
@@ -174,10 +171,13 @@ async function upsertReviews(reviews: ScrapedReview[]) {
 
     // `_type` blijft buiten de patch: Sanity staat het niet toe die te zetten.
     const { _id, _type, ...fields } = doc;
+    // Deelcijfers van het ándere tabblad horen hier niet te staan. Zonder dit
+    // blijft een oude waarde hangen en noemt elke run dezelfde review gewijzigd.
+    const stale = SUBSCORES.map(({ field }) => field).filter((field) => doc[field] === undefined);
     transaction
       .createIfNotExists({ _id, _type })
       // Funda is de bron: een gewijzigde tekst of cijfer overschrijft Sanity.
-      .patch(_id, (patch) => patch.set(fields).unset(['negotiationAndResult']));
+      .patch(_id, (patch) => patch.set(fields).unset(stale));
   }
 
   if (created + updated > 0) await transaction.commit({ visibility: 'async' });

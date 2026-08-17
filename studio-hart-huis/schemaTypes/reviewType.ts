@@ -11,6 +11,14 @@ const scoreField = (name: string, title: string, hidden?: (parent: any) => boole
     hidden,
   })
 
+/**
+ * Funda vraagt per soort andere criteria uit, dus die cijfers horen alleen bij
+ * het bijbehorende type. Zolang er nog geen soort gekozen is blijft alles
+ * zichtbaar — anders lijkt een half ingevuld formulier kapot.
+ */
+const alleenBij = (type: 'Aankoop' | 'Verkoop') => ({parent}: any) =>
+  Boolean(parent?.type) && parent.type !== type
+
 export const reviewType = defineType({
   name: 'review',
   title: 'Review',
@@ -41,19 +49,16 @@ export const reviewType = defineType({
       type: 'date',
     }),
     scoreField('grade', 'Cijfer'),
+    scoreField(
+      'accessibilityAndCommunication',
+      'Bereikbaarheid en communicatie',
+      alleenBij('Aankoop'),
+    ),
     scoreField('expertise', 'Deskundigheid'),
-    scoreField('localMarketKnowledge', 'Lokale marktkennis'),
-    scoreField(
-      'negotiationAndResult',
-      'Onderhandeling en resultaat',
-      ({parent}) => parent?.type === 'Verkoop',
-    ),
+    scoreField('localMarketKnowledge', 'Lokale marktkennis', alleenBij('Verkoop')),
+    scoreField('negotiationAndResult', 'Onderhandeling en resultaat', alleenBij('Aankoop')),
     scoreField('priceQuality', 'Prijs / kwaliteit'),
-    scoreField(
-      'serviceAndGuidance',
-      'Service en begeleiding',
-      ({parent}) => parent?.type === 'Aankoop',
-    ),
+    scoreField('serviceAndGuidance', 'Service en begeleiding', alleenBij('Verkoop')),
     defineField({
       name: 'fundaKey',
       title: 'Funda-sleutel',

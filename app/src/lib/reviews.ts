@@ -21,6 +21,7 @@ export type ReviewItem = {
   type?: ReviewType | null;
   date?: string | null;
   grade?: number | null;
+  accessibilityAndCommunication?: number | null;
   expertise?: number | null;
   localMarketKnowledge?: number | null;
   negotiationAndResult?: number | null;
@@ -32,25 +33,44 @@ export type ReviewItem = {
  * De deelcijfers, in de volgorde waarin ze in de kaarttabel staan.
  * Los van het totaalcijfer (`grade`), dat als los rondje getoond wordt.
  *
- * Labels en volgorde volgen de vier criteria die Funda zelf uitvraagt — de
- * scraper leest ze letterlijk uit de beoordelingenwidget, dus ze horen hier
- * hetzelfde te heten als in `src/lib/funda-reviews.ts`.
+ * Funda vraagt per soort andere criteria uit — een koper beoordeelt de
+ * onderhandeling, een verkoper de begeleiding — dus `types` zegt op welke
+ * kaart een rij thuishoort. Labels en velden horen hetzelfde te heten als in
+ * `src/lib/funda-reviews.ts`, waar de scraper ze uit de widget leest.
  */
 export const GRADE_SUBJECTS = [
-  { key: 'expertise', label: 'Deskundigheid' },
-  { key: 'localMarketKnowledge', label: 'Lokale marktkennis' },
-  { key: 'priceQuality', label: 'Prijs / kwaliteit' },
-  { key: 'serviceAndGuidance', label: 'Service en begeleiding' },
-] as const satisfies ReadonlyArray<{ key: keyof ReviewItem; label: string }>;
+  {
+    key: 'accessibilityAndCommunication',
+    label: 'Bereikbaarheid en communicatie',
+    types: ['Aankoop'],
+  },
+  { key: 'expertise', label: 'Deskundigheid', types: ['Aankoop', 'Verkoop'] },
+  { key: 'localMarketKnowledge', label: 'Lokale marktkennis', types: ['Verkoop'] },
+  { key: 'negotiationAndResult', label: 'Onderhandeling en resultaat', types: ['Aankoop'] },
+  { key: 'priceQuality', label: 'Prijs / kwaliteit', types: ['Aankoop', 'Verkoop'] },
+  { key: 'serviceAndGuidance', label: 'Service en begeleiding', types: ['Verkoop'] },
+] as const satisfies ReadonlyArray<{
+  key: keyof ReviewItem;
+  label: string;
+  types: readonly ReviewType[];
+}>;
 
-/** Alleen de deelcijfers die deze review daadwerkelijk heeft. */
+/**
+ * De deelcijfers die bij dit soort review horen én ingevuld zijn. Een review
+ * zonder soort (met de hand ingevoerd) toont alles wat er staat, anders zou
+ * zo'n kaart leeg blijven.
+ */
 export function subjectGrades(review: ReviewItem) {
-  return GRADE_SUBJECTS.map(
-    ({ key, label }): { label: string; value: string | undefined } => ({
-      label,
-      value: formatGrade(review[key] as number | null | undefined),
-    }),
-  ).filter((row): row is { label: string; value: string } => Boolean(row.value));
+  return GRADE_SUBJECTS.filter(
+    ({ types }) => !review.type || (types as readonly string[]).includes(review.type),
+  )
+    .map(
+      ({ key, label }): { label: string; value: string | undefined } => ({
+        label,
+        value: formatGrade(review[key] as number | null | undefined),
+      }),
+    )
+    .filter((row): row is { label: string; value: string } => Boolean(row.value));
 }
 
 /** Staafjes in de scorekaart: afgerond cijfer → aantal. `<= 6` is de restbak. */
