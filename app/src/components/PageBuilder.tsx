@@ -727,6 +727,7 @@ function renderBlock(block: PageBlock) {
         | undefined;
       const recaptcha = block.recaptcha as
         { recaptchaEnabled?: boolean; recaptchaSiteKey?: string } | undefined;
+
       return (
         <ContactForm
           key={block._key}

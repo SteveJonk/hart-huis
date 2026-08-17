@@ -60,6 +60,8 @@
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
 <!-- Format: [YYYY-MM-DD] Description of what went wrong and what to do instead. -->
 
+- [2026-08-17] In een GROQ-projectie met `_type == "x" => { ..., }`-takken: die tak spreidt het hele document opnieuw uit, en de laatste sleutel wint. Alles wat je BOVEN zo'n tak projecteert (`form->{...}`, `aside{..., cta{...}}`, `primaryCta{...}`) wordt daardoor teruggezet naar de ruwe waarde — een reference blijft `{_ref,_type}`. Zet gedeelde veld-projecties altijd NA alle conditionele takken in `PAGE_QUERY`, of herhaal ze binnen de tak.
+
 - [2026-08-17] Nooit een veldnaam hard in `.unset([...])` van de scraper-patch zetten om een hernoeming op te ruimen. Dat bleef staan toen `negotiationAndResult` terugkwam als Aankoop-veld en wiste het cijfer dat `.set()` er net in had gezet. Leid de unset af (alle `SUBSCORES`-velden die deze review níet heeft), dan ruimt hij het andere tabblad op zonder ooit iets te wissen dat wél gescrapet is. Ontbreekt die unset helemaal, dan blijft een oude waarde hangen en noemt élke run dezelfde review "gewijzigd".
 - [2026-08-17] De Funda-widget gebruikt per tabblad andere deelcijferlabels. Niet `SUBSCORES[0].label` gebruiken om te vinden waar het cijferblok begint — dat label staat op het andere tabblad niet op de pagina, waardoor de hele rest van het blok in de reviewtekst belandt. Zoek de eerste treffer van álle labels (`subscoreStart`) en match hoofdletterongevoelig; Funda schrijft "Bereikbaarheid en Communicatie" niet overal hetzelfde.
 

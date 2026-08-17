@@ -153,6 +153,25 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-17T16:15:00Z"
+    },
+    {
+      "id": "bug-009",
+      "timestamp": "2026-08-17T00:00:00Z",
+      "error_message": "Het contactformulier op /contact rendert niet: 'Er is nog geen formulier gekoppeld aan dit blok.'",
+      "file": "app/src/sanity/queries.ts",
+      "root_cause": "In PAGE_QUERY stonden de generieke veld-projecties (form->, aside{}, primaryCta{} ...) BOVEN de `_type == \"x\" => { ... }` takken. Zo'n tak spreidt het hele document opnieuw uit met `...`, en in GROQ wint de laatste sleutel. De `...` van `_type == \"contactFormSection\"` overschreef daardoor `form->{...}` met de ruwe reference {_ref,_type}; PageBuilder's guard `form?._id && form.fields?.length` faalde en toonde de lege staat. Zelfde clobbering trof aside.cta hier en primaryCta/secondaryCta in het hero-blok.",
+      "fix": "Alle generieke veld-projecties naar het einde van de content[]-projectie verplaatst (na alle conditionele takken), met een comment erbij waarom die volgorde ertoe doet. Geverifieerd met groq-js op een mini-dataset en live op /contact (form velden naam/telefoon/email/onderwerp/bericht/akkoord renderen).",
+      "tags": [
+        "groq",
+        "sanity",
+        "page-builder",
+        "contact-form",
+        "conditional-spread",
+        "projection-order"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T00:00:00Z"
     }
   ]
 }

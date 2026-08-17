@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 184453,
-    "total_reads": 51,
+    "total_tokens_estimated": 186066,
+    "total_reads": 52,
     "total_writes": 0,
-    "total_sessions": 27,
-    "anatomy_hits": 26,
+    "total_sessions": 29,
+    "anatomy_hits": 27,
     "anatomy_misses": 25,
-    "repeated_reads_blocked": 11,
-    "estimated_savings_vs_bare_cli": 115101,
-    "real_input_tokens": 23711,
-    "real_output_tokens": 1396989,
-    "real_cache_read_tokens": 347623849,
-    "real_cache_creation_tokens": 6555125,
-    "real_api_calls": 2173
+    "repeated_reads_blocked": 12,
+    "estimated_savings_vs_bare_cli": 116914,
+    "real_input_tokens": 23787,
+    "real_output_tokens": 1415626,
+    "real_cache_read_tokens": 351149266,
+    "real_cache_creation_tokens": 6635572,
+    "real_api_calls": 2213
   },
   "sessions": [
     {
@@ -825,6 +825,36 @@
         "cache_read_input_tokens": 24043265,
         "cache_creation_input_tokens": 219843,
         "api_calls": 147
+      }
+    },
+    {
+      "id": "session-2026-08-17-1954",
+      "agent": "claude",
+      "started": "2026-08-17T17:54:54.686Z",
+      "ended": "2026-08-17T18:00:27.910Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/sanity/queries.ts",
+          "tokens_estimated": 1613,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 1613,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 76,
+        "output_tokens": 18637,
+        "cache_read_input_tokens": 3525417,
+        "cache_creation_input_tokens": 80447,
+        "api_calls": 40
       }
     }
   ],

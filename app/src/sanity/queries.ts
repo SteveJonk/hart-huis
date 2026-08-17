@@ -68,46 +68,6 @@ export const PAGE_QUERY = defineQuery(`
     seo,
     content[]{
       ...,
-      primaryCta${linkExpansion},
-      secondaryCta${linkExpansion},
-      link${linkExpansion},
-      cta${linkExpansion},
-      nvm{
-        ...,
-        cta${linkExpansion}
-      },
-      items[]{
-        ...,
-        link${linkExpansion},
-        cta${linkExpansion}
-      },
-      cards[]{
-        ...,
-        cta${linkExpansion}
-      },
-      person{
-        ...,
-        links[]${linkExpansion}
-      },
-      aside{
-        ...,
-        cta${linkExpansion}
-      },
-      form->{
-        _id,
-        title,
-        showtitle,
-        submitButtonText,
-        fields[]
-      },
-      regions[]{
-        ...,
-        link${linkExpansion}
-      },
-      places[]{
-        ...,
-        link${linkExpansion}
-      },
       _type == "hero" => {
         ...,
         ...${reviewStats}
@@ -150,7 +110,48 @@ export const PAGE_QUERY = defineQuery(`
         faqs[]->{
           ...,
           link${linkExpansion}
-        },
+        }
+      },
+      // Kept last on purpose: a "_type == x => {...}" branch re-spreads the raw
+      // document, so anything projected above it is overwritten by the raw value.
+      primaryCta${linkExpansion},
+      secondaryCta${linkExpansion},
+      link${linkExpansion},
+      cta${linkExpansion},
+      nvm{
+        ...,
+        cta${linkExpansion}
+      },
+      items[]{
+        ...,
+        link${linkExpansion},
+        cta${linkExpansion}
+      },
+      cards[]{
+        ...,
+        cta${linkExpansion}
+      },
+      person{
+        ...,
+        links[]${linkExpansion}
+      },
+      aside{
+        ...,
+        cta${linkExpansion}
+      },
+      form->{
+        _id,
+        title,
+        showtitle,
+        submitButtonText,
+        fields[]
+      },
+      regions[]{
+        ...,
+        link${linkExpansion}
+      },
+      places[]{
+        ...,
         link${linkExpansion}
       }
     }

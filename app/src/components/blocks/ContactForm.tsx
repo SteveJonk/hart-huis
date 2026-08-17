@@ -138,7 +138,10 @@ function Field({ field }: { field: ContactFormField }) {
     return (
       <>
         {(field.checkboxOptions ?? []).map((option) => (
-          <div key={option} className='my-1.5 mb-[26px] flex items-start gap-3 max-sm:gap-3.5'>
+          <div
+            key={option}
+            className='my-1.5 mb-[26px] flex items-start gap-3 max-sm:gap-3.5'
+          >
             <input
               type='checkbox'
               id={`${id}-${option.slice(0, 12)}`}
@@ -275,8 +278,8 @@ export function ContactForm({
     setStatus('sending');
     setError(null);
     try {
-      const response = await fetch('/api/submit-form', {method: 'POST', body});
-      const result = (await response.json()) as {success?: boolean; message?: string};
+      const response = await fetch('/api/submit-form', { method: 'POST', body });
+      const result = (await response.json()) as { success?: boolean; message?: string };
       if (!response.ok || !result.success) {
         throw new Error(result.message || 'Versturen is niet gelukt.');
       }
@@ -309,7 +312,6 @@ export function ContactForm({
           <p className='mb-10 max-w-[48ch] leading-[1.7] text-ink-70 max-sm:mb-8 max-sm:max-w-none'>
             {lead}
           </p>
-
           {status === 'done' ? (
             <div className='rounded border-l-[3px] border-sage-deep bg-white px-10 py-11'>
               <h3 className='mb-2.5 text-[1.6rem]'>{successTitle}</h3>
@@ -324,7 +326,10 @@ export function ContactForm({
               {toRows(form.fields).map((row) => {
                 const key = row.map((field) => field.name).join('-');
                 return row.length === 2 ? (
-                  <div key={key} className='grid grid-cols-2 gap-5 max-sm:grid-cols-1 max-sm:gap-0'>
+                  <div
+                    key={key}
+                    className='grid grid-cols-2 gap-5 max-sm:grid-cols-1 max-sm:gap-0'
+                  >
                     {row.map((field) => (
                       <Field key={field.name} field={field} />
                     ))}
@@ -394,7 +399,9 @@ export function ContactForm({
                     </span>
                     <span>
                       <b className='block text-[0.94rem] font-semibold'>{item.title}</b>
-                      <span className='text-[0.83rem] text-ink-45'>{item.subtitle}</span>
+                      <span className='text-[0.83rem] text-ink-45'>
+                        {item.subtitle}
+                      </span>
                     </span>
                   </li>
                 ))}
