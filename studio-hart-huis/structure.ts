@@ -2,7 +2,10 @@ import {BlockElementIcon} from '@sanity/icons/BlockElement'
 import {CogIcon} from '@sanity/icons/Cog'
 import {EnvelopeIcon} from '@sanity/icons/Envelope'
 import {MenuIcon} from '@sanity/icons/Menu'
+import {RefreshIcon} from '@sanity/icons/Refresh'
+import {WrenchIcon} from '@sanity/icons/Wrench'
 import type {StructureResolver} from 'sanity/structure'
+import {FundaReviews} from './tools/FundaReviewsTool'
 
 const SINGLETONS = ['navigation', 'footer', 'formGeneralSettings']
 
@@ -37,6 +40,23 @@ export const structure: StructureResolver = (S) =>
             .schemaType('formGeneralSettings')
             .documentId('formGeneralSettings')
             .title('Form settings'),
+        ),
+      S.divider(),
+      // Losse acties die geen document zijn. Groeit vanzelf als er meer bijkomt.
+      S.listItem()
+        .title('Tools')
+        .id('tools')
+        .icon(WrenchIcon)
+        .child(
+          S.list()
+            .title('Tools')
+            .items([
+              S.listItem()
+                .title('Funda-reviews')
+                .id('funda-reviews')
+                .icon(RefreshIcon)
+                .child(S.component(FundaReviews).title('Funda-reviews').id('funda-reviews')),
+            ]),
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(

@@ -3,18 +3,18 @@
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
     "total_tokens_estimated": 184453,
-    "total_reads": 40,
+    "total_reads": 51,
     "total_writes": 0,
-    "total_sessions": 19,
+    "total_sessions": 27,
     "anatomy_hits": 26,
-    "anatomy_misses": 14,
-    "repeated_reads_blocked": 9,
+    "anatomy_misses": 25,
+    "repeated_reads_blocked": 11,
     "estimated_savings_vs_bare_cli": 115101,
-    "real_input_tokens": 16960,
-    "real_output_tokens": 905405,
-    "real_cache_read_tokens": 251414353,
-    "real_cache_creation_tokens": 4447436,
-    "real_api_calls": 1454
+    "real_input_tokens": 23711,
+    "real_output_tokens": 1396989,
+    "real_cache_read_tokens": 347623849,
+    "real_cache_creation_tokens": 6555125,
+    "real_api_calls": 2173
   },
   "sessions": [
     {
@@ -591,6 +591,240 @@
         "cache_read_input_tokens": 33171669,
         "cache_creation_input_tokens": 378938,
         "api_calls": 201
+      }
+    },
+    {
+      "id": "session-2026-08-15-2029",
+      "agent": "claude",
+      "started": "2026-08-15T20:29:48.009Z",
+      "ended": "2026-08-15T20:55:00.458Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/scrape-funda-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 192,
+        "output_tokens": 72953,
+        "cache_read_input_tokens": 13069266,
+        "cache_creation_input_tokens": 325981,
+        "api_calls": 103
+      }
+    },
+    {
+      "id": "session-2026-08-15-2029",
+      "agent": "claude",
+      "started": "2026-08-15T20:29:48.009Z",
+      "ended": "2026-08-15T20:55:34.604Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/scrape-funda-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 197,
+        "output_tokens": 74519,
+        "cache_read_input_tokens": 13619680,
+        "cache_creation_input_tokens": 331127,
+        "api_calls": 106
+      }
+    },
+    {
+      "id": "session-2026-08-15-2029",
+      "agent": "claude",
+      "started": "2026-08-15T20:29:48.009Z",
+      "ended": "2026-08-15T21:30:42.952Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/scrape-funda-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 201,
+        "output_tokens": 75616,
+        "cache_read_input_tokens": 13836589,
+        "cache_creation_input_tokens": 478697,
+        "api_calls": 108
+      }
+    },
+    {
+      "id": "session-2026-08-15-2029",
+      "agent": "claude",
+      "started": "2026-08-15T20:29:48.009Z",
+      "ended": "2026-08-15T21:31:06.820Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/scrape-funda-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 209,
+        "output_tokens": 76255,
+        "cache_read_input_tokens": 14569986,
+        "cache_creation_input_tokens": 480145,
+        "api_calls": 112
+      }
+    },
+    {
+      "id": "session-2026-08-17-1502",
+      "agent": "claude",
+      "started": "2026-08-17T13:02:44.819Z",
+      "ended": "2026-08-17T13:09:04.219Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/app/api/scrape-funda-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 1883,
+        "output_tokens": 24878,
+        "cache_read_input_tokens": 3844466,
+        "cache_creation_input_tokens": 90129,
+        "api_calls": 43
+      }
+    },
+    {
+      "id": "session-2026-08-17-1502",
+      "agent": "claude",
+      "started": "2026-08-17T13:02:44.819Z",
+      "ended": "2026-08-17T13:29:20.595Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/app/api/scrape-funda-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/scripts/check-funda-reviews.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/lib/funda-reviews.ts",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 3,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 1990,
+        "output_tokens": 73492,
+        "cache_read_input_tokens": 13226244,
+        "cache_creation_input_tokens": 181767,
+        "api_calls": 100
+      }
+    },
+    {
+      "id": "session-2026-08-17-1502",
+      "agent": "claude",
+      "started": "2026-08-17T13:02:44.819Z",
+      "ended": "2026-08-17T13:53:11.210Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/app/api/scrape-funda-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/scripts/check-funda-reviews.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/lib/funda-reviews.ts",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 3,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 2079,
+        "output_tokens": 93871,
+        "cache_read_input_tokens": 24043265,
+        "cache_creation_input_tokens": 219843,
+        "api_calls": 147
       }
     }
   ],

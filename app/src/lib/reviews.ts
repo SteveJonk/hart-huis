@@ -21,31 +21,77 @@ export type ReviewItem = {
   type?: ReviewType | null;
   date?: string | null;
   grade?: number | null;
+  accessibilityAndCommunication?: number | null;
   expertise?: number | null;
   localMarketKnowledge?: number | null;
   negotiationAndResult?: number | null;
   priceQuality?: number | null;
+  serviceAndGuidance?: number | null;
 };
 
 /**
  * De deelcijfers, in de volgorde waarin ze in de kaarttabel staan.
  * Los van het totaalcijfer (`grade`), dat als los rondje getoond wordt.
+ *
+ * Funda vraagt per soort andere criteria uit — een koper beoordeelt de
+ * onderhandeling, een verkoper de begeleiding — dus `types` zegt op welke
+ * kaart een rij thuishoort. Labels en velden horen hetzelfde te heten als in
+ * `src/lib/funda-reviews.ts`, waar de scraper ze uit de widget leest.
  */
 export const GRADE_SUBJECTS = [
-  { key: 'expertise', label: 'Deskundigheid' },
-  { key: 'localMarketKnowledge', label: 'Lokale marktkennis' },
-  { key: 'negotiationAndResult', label: 'Onderhandeling en resultaat' },
-  { key: 'priceQuality', label: 'Prijs-kwaliteit' },
-] as const satisfies ReadonlyArray<{ key: keyof ReviewItem; label: string }>;
+  {
+    key: 'accessibilityAndCommunication',
+    label: 'Bereikbaarheid en communicatie',
+    types: ['Aankoop'],
+  },
+  { key: 'expertise', label: 'Deskundigheid', types: ['Aankoop', 'Verkoop'] },
+  { key: 'localMarketKnowledge', label: 'Lokale marktkennis', types: ['Verkoop'] },
+  { key: 'negotiationAndResult', label: 'Onderhandeling en resultaat', types: ['Aankoop'] },
+  { key: 'priceQuality', label: 'Prijs / kwaliteit', types: ['Aankoop', 'Verkoop'] },
+  { key: 'serviceAndGuidance', label: 'Service en begeleiding', types: ['Verkoop'] },
+] as const satisfies ReadonlyArray<{
+  key: keyof ReviewItem;
+  label: string;
+  types: readonly ReviewType[];
+}>;
 
-/** Alleen de deelcijfers die deze review daadwerkelijk heeft. */
+/**
+ * De deelcijfers die bij dit soort review horen én ingevuld zijn. Een review
+ * zonder soort (met de hand ingevoerd) toont alles wat er staat, anders zou
+ * zo'n kaart leeg blijven.
+ */
 export function subjectGrades(review: ReviewItem) {
-  return GRADE_SUBJECTS.map(
-    ({ key, label }): { label: string; value: string | undefined } => ({
-      label,
-      value: formatGrade(review[key] as number | null | undefined),
-    }),
-  ).filter((row): row is { label: string; value: string } => Boolean(row.value));
+  return GRADE_SUBJECTS.filter(
+    ({ types }) => !review.type || (types as readonly string[]).includes(review.type),
+  )
+    .map(
+      ({ key, label }): { label: string; value: string | undefined } => ({
+        label,
+        value: formatGrade(review[key] as number | null | undefined),
+      }),
+    )
+    .filter((row): row is { label: string; value: string } => Boolean(row.value));
+}
+
+/**
+ * Vanaf hoeveel tekens een beoordeling op de kaart wordt ingekort. Sommige
+ * reviewers schrijven een halve pagina; zonder grens rekt één zo'n kaart de
+ * hele rij op.
+ */
+export const QUOTE_LIMIT = 250;
+
+/** Knipt op een spatie, zodat er geen half woord voor de puntjes staat. */
+export function truncateQuote(
+  quote: string,
+  limit = QUOTE_LIMIT,
+): { text: string; truncated: boolean } {
+  if (quote.length <= limit) return { text: quote, truncated: false };
+
+  const cut = quote.slice(0, limit);
+  const lastSpace = cut.lastIndexOf(' ');
+  const head = lastSpace > 0 ? cut.slice(0, lastSpace) : cut;
+
+  return { text: `${head.replace(/[\s,;:.!?-]+$/, '')}…`, truncated: true };
 }
 
 /** Staafjes in de scorekaart: afgerond cijfer → aantal. `<= 6` is de restbak. */
@@ -100,7 +146,10 @@ export function reviewScore(stats: ReviewStats, fallback?: string): string | und
 }
 
 /** Idem voor "84 keer beoordeeld". 0 reviews telt als "niets afgeleid". */
-export function reviewCountLabel(stats: ReviewStats, fallback?: string): string | undefined {
+export function reviewCountLabel(
+  stats: ReviewStats,
+  fallback?: string,
+): string | undefined {
   return stats.totaalReviews ? `${stats.totaalReviews} keer beoordeeld` : fallback;
 }
 

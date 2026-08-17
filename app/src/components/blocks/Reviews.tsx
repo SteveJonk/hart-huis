@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+
 import { ArrowLink } from "@/components/ui/ArrowLink";
 import { IconArrow, IconArrowLeft } from "@/components/ui/IconArrow";
 import { Reveal } from "@/components/ui/Reveal";
@@ -11,6 +13,7 @@ import {
   formatGrade,
   formatReviewDate,
   subjectGrades,
+  truncateQuote,
   type ReviewItem,
 } from "@/lib/reviews";
 import { SITE } from "@/lib/site";
@@ -43,9 +46,62 @@ const DEFAULTS: Required<Omit<ReviewsProps, "link" | "showGrades">> &
     link: { label: "Alle beoordelingen bekijken", href: "#" },
   };
 
+/** Cijferrondje, naam, datum en de soort-tag. Staat op de kaart én in de dialog. */
+function ReviewMeta({ review }: { review: ReviewItem }) {
+  const grade = formatGrade(review.grade);
+  const date = formatReviewDate(review.date);
+
+  return (
+    <header className="mb-5 flex items-center gap-3.5 max-xs:flex-wrap">
+      {grade ? (
+        <span className="grid size-[52px] shrink-0 place-items-center rounded-full bg-sand font-display text-[1.12rem] font-medium">
+          {grade}
+        </span>
+      ) : (
+        <span className="block h-[26px] font-display text-[3.4rem] leading-[0.55] text-sand">
+          &rdquo;
+        </span>
+      )}
+      <span className="min-w-0 flex-1 leading-[1.4]">
+        <b className="block text-[0.92rem] font-semibold">{review.name}</b>
+        {date ? <span className="text-[0.79rem] text-ink-45">{date}</span> : null}
+      </span>
+      {review.type ? (
+        <span className="rounded-pill border border-sage-deep/30 px-[11px] py-1.5 text-[0.6rem] font-semibold tracking-[0.14em] text-sage-deep uppercase">
+          {review.type}
+        </span>
+      ) : null}
+    </header>
+  );
+}
+
+/** Deelcijfertabel. Leeg als de review geen cijfers heeft. */
+function ReviewGrades({ rows }: { rows: ReturnType<typeof subjectGrades> }) {
+  if (rows.length === 0) return null;
+
+  return (
+    <dl className="mt-[22px] border-t border-cream pt-4 text-[0.83rem]">
+      {rows.map((row) => (
+        <div
+          key={row.label}
+          className="flex items-baseline justify-between gap-4 py-[5px]"
+        >
+          <dt className="text-ink-45">{row.label}</dt>
+          <dd className="font-semibold tabular-nums">{row.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 /**
  * Eén beoordeling. De sizing zit bewust níet op de kaart zelf: de carousel
  * wikkelt hem in een basis-/snap-div, de /beoordelingen-grid plaatst hem direct.
+ *
+ * Een lange beoordeling wordt ingekort en gaat achter "Lees meer" in een
+ * `<dialog>`. Uitklappen in de kaart zelf zou de hele rij (en in de carousel
+ * ook de kaarten ernaast) meerekken; een dialog staat in de top layer, dus de
+ * `overflow-x` van de carousel knipt hem niet af.
  */
 export function ReviewCard({
   review,
@@ -54,8 +110,8 @@ export function ReviewCard({
   review: ReviewItem;
   showGrades?: boolean;
 }) {
-  const grade = formatGrade(review.grade);
-  const date = formatReviewDate(review.date);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const { text, truncated } = truncateQuote(review.quote);
   const grades = showGrades ? subjectGrades(review) : [];
 
   return (
@@ -67,44 +123,72 @@ export function ReviewCard({
         "max-sm:px-[26px] max-sm:pt-[30px] max-sm:pb-[26px]",
       )}
     >
-      <header className="mb-5 flex items-center gap-3.5 max-xs:flex-wrap">
-        {grade ? (
-          <span className="grid size-[52px] shrink-0 place-items-center rounded-full bg-sand font-display text-[1.12rem] font-medium">
-            {grade}
-          </span>
-        ) : (
-          <span className="block h-[26px] font-display text-[3.4rem] leading-[0.55] text-sand">
-            &rdquo;
-          </span>
-        )}
-        <span className="min-w-0 flex-1 leading-[1.4]">
-          <b className="block text-[0.92rem] font-semibold">{review.name}</b>
-          {date ? <span className="text-[0.79rem] text-ink-45">{date}</span> : null}
-        </span>
-        {review.type ? (
-          <span className="rounded-pill border border-sage-deep/30 px-[11px] py-1.5 text-[0.6rem] font-semibold tracking-[0.14em] text-sage-deep uppercase">
-            {review.type}
-          </span>
-        ) : null}
-      </header>
+      <ReviewMeta review={review} />
 
       <p className="flex-1 font-display text-[1.18rem] leading-[1.55] text-ink italic max-sm:text-[1.06rem]">
-        {review.quote}
+        {text}
       </p>
 
-      {grades.length > 0 ? (
-        <dl className="mt-[22px] border-t border-cream pt-4 text-[0.83rem]">
-          {grades.map((row) => (
-            <div
-              key={row.label}
-              className="flex items-baseline justify-between gap-4 py-[5px]"
-            >
-              <dt className="text-ink-45">{row.label}</dt>
-              <dd className="font-semibold tabular-nums">{row.value}</dd>
+      {truncated ? (
+        <>
+          <button
+            type="button"
+            onClick={() => dialogRef.current?.showModal()}
+            className={cn(
+              "mt-3.5 self-start text-[0.83rem] font-semibold text-sage-deep underline underline-offset-[3px]",
+              "transition-colors duration-[250ms] ease-brand hover:text-ink",
+            )}
+          >
+            Lees meer
+            <span className="sr-only"> over de beoordeling van {review.name}</span>
+          </button>
+
+          <dialog
+            ref={dialogRef}
+            // Een klik naast de kaart komt op de dialog zelf terecht, niet op
+            // de inhoud — daarom zit alle padding op de div erbinnen.
+            onClick={(event) => {
+              if (event.target === dialogRef.current) dialogRef.current?.close();
+            }}
+            className={cn(
+              "m-auto w-[min(620px,calc(100vw-2rem))] rounded bg-white p-0 text-ink shadow-card",
+              "backdrop:bg-ink/55 backdrop:backdrop-blur-[2px]",
+            )}
+          >
+            <div className="max-h-[80vh] overflow-y-auto px-[34px] pt-9 max-sm:px-[26px] max-sm:pt-[30px]">
+              <ReviewMeta review={review} />
+
+              <p className="font-display text-[1.18rem] leading-[1.55] whitespace-pre-line text-ink italic max-sm:text-[1.06rem]">
+                {review.quote}
+              </p>
+
+              <ReviewGrades rows={grades} />
+
+              {/* Plakt onderaan: bij een lange beoordeling staat de knop
+                  anders duizend pixels naar beneden. */}
+              <form
+                method="dialog"
+                className={cn(
+                  "sticky bottom-0 -mx-[34px] mt-7 border-t border-cream bg-white px-[34px] pt-4 pb-7",
+                  "max-sm:-mx-[26px] max-sm:px-[26px] max-sm:pb-[30px]",
+                )}
+              >
+                <button
+                  type="submit"
+                  className={cn(
+                    "rounded-pill border border-ink/22 px-5 py-2 text-[0.83rem] font-semibold",
+                    "transition duration-300 ease-brand hover:border-ink hover:bg-ink hover:text-cream",
+                  )}
+                >
+                  Sluiten
+                </button>
+              </form>
             </div>
-          ))}
-        </dl>
+          </dialog>
+        </>
       ) : null}
+
+      <ReviewGrades rows={grades} />
     </article>
   );
 }

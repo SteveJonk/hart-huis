@@ -52,10 +52,12 @@ const reviewCard = /* groq */ `{
   type,
   date,
   grade,
+  accessibilityAndCommunication,
   expertise,
   localMarketKnowledge,
   negotiationAndResult,
-  priceQuality
+  priceQuality,
+  serviceAndGuidance
 }`;
 
 export const PAGE_QUERY = defineQuery(`

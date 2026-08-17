@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-13
+> Last updated: 2026-08-17
 
 ---
 
@@ -50,6 +50,7 @@
 - 4 nieuwe blocks: `beoordelingenHero` (scorekaart + cijferverdeling), `uitgelichteReview` (referentie naar één review), `reviewGrid` (client: filter Alle/Verkopers/Kopers + 9 per keer), `werkwijze` (donker, genummerd); `ctaBand` hergebruikt
 - images in `app/public/images/beoordelingen/`; geseed met `npm run seed:beoordelingen` + `seed:nav`
 - `ReviewCard` is nu gedeeld: cijferrondje, naam, datum, type-tag, en de deelcijfertabel achter `showGrades` (uit op home, aan op /beoordelingen)
+- beoordelingen langer dan 250 tekens worden ingekort met "Lees meer" → hele tekst in een native `<dialog>` (top layer, dus de carousel knipt hem niet af); `ReviewMeta` en `ReviewGrades` zijn daarvoor uit de kaart getrokken en staan ook in de dialog
 - sizing van de carousel is naar een wrapper-div verhuisd zodat dezelfde kaart in een grid past
 
 **Review-aggregates**
@@ -58,6 +59,16 @@
 - home hero-badge en reviews-blok lezen hetzelfde afgeleide cijfer, met de CMS-waarde als fallback
 - `npm run check:reviews` dekt formatting, fallback, deelcijfers en de verdeling
 
+**Funda-review-scraper**
+- scrapet de **beoordelingenwidget** (`funda.nl/beoordelingenwidget/live/{id}/1/{type}/p{page}/`), niet de gewone pagina's — die zitten achter een bot-challenge
+- `app/src/lib/funda-reviews.ts` is de pure parser (geen fetch, geen Sanity), `app/src/app/api/scrape-funda-reviews/route.ts` de route, `app/src/sanity/write-client.ts` de schrijfclient
+- beide tabbladen + paginering; `_id` = `funda-review-<hash van type+naam+adres+datum>`, dus idempotent en verwijzingen blijven heel
+- aan te roepen via **Tools → Funda-reviews** in de linkerkolom van de studio (`tools/FundaReviewsTool.tsx`, ingehangen in `structure.ts`) en dagelijks via de cron in `app/vercel.json`
+- `?dryRun=1` schrijft niets weg, `?debug=1` geeft de ruwe tekst terug
+- **deelcijfers per soort** (2026-08-17): Aankoop = bereikbaarheid en communicatie / deskundigheid / onderhandeling en resultaat / prijs / kwaliteit, Verkoop = deskundigheid / lokale marktkennis / prijs / kwaliteit / service en begeleiding. `SUBSCORES` is één platte lijst van alle zes (parser), `GRADE_SUBJECTS.types` bepaalt de kaart, `alleenBij()` verbergt ze in de studio. De **Aankoop-labels zijn nog niet tegen een echte pagina gecontroleerd**
+- `npm run check:funda` draait tegen **echte opgeslagen pagina's** (verkoop p1, verkoop p9 mét reacties van de makelaar, aankoop p1) en dekt de parser, de reactie-overslag, de ontdubbeling en de paginering
+- alles staat beschreven in `docs/funda-review-scraper.md`
+
 ---
 
 ## 🚀 Next phase
@@ -65,7 +76,11 @@
 **Goal:** Alle designs uit `app/example-designs/` zijn nu geïmplementeerd. Wat resteert is afmaken en aanscherpen.
 
 ### Open punten
-1. De scraper die `review`-documenten vult (grade, deelcijfers, type, date) moet nog gebouwd worden — schema en front-end staan klaar.
+1. **De scraper is lokaal tegen de echte Funda gedraaid (17-08-2026) en klopt: 42 verkoop + 12 aankoop = 54, zonder waarschuwingen** — precies wat de widget zelf noemt. De fixtures zijn nu echte pagina's. Wat resteert vóór de eerste échte run:
+   a. `?dryRun=1` draaien op de gedeployde site en de uitkomst nalopen
+   b. daarna de 4 mock-reviews uit `seed:home` weggooien — die hebben geen cijfers maar tellen wel mee in `reviewStats`
+   c. env zetten: `SANITY_API_WRITE_TOKEN`, `CRON_SECRET`, `FUNDA_SCRAPER_SECRET`, `STUDIO_ORIGIN` op Vercel; `SANITY_STUDIO_SCRAPER_URL` + `SANITY_STUDIO_SCRAPER_SECRET` in de studio
+   d. op Hobby is een functie na 60s afgekapt — 14 pagina's × 1,2s wachttijd is ~20s, dus dat past, maar houd het in de gaten als het aantal reviews groeit
 2. Met 4 reviews is de "toon meer" van `reviewGrid` (>9) nog niet met echte data uitgeprobeerd.
 3. De makelaarskaart op de objectpagina is nog hardcoded in `src/lib/object-content.ts` — naar het `woning`-schema (of een gedeeld makelaar-document) zodra er een tweede makelaar is.
 4. `aanbiedingsTekstEngels` wordt opgeslagen en geseed maar nergens gerenderd — er is nog geen taalwissel op de objectpagina.
@@ -89,7 +104,15 @@
 ## 🔧 Useful commands
 
 ```bash
-# add the most-used commands here so the next session has them ready
+cd app
+npm run check:funda      # parser van de Funda-scraper tegen de fixture
+npm run check:reviews    # afgeleide review-cijfers
+npm run check:tekst      # Realworks-aanbiedingstekst
+npm run seed:sanity      # alle pagina's seeden (vereist SANITY_API_WRITE_TOKEN)
+
+# de scraper uitproberen zonder iets op te slaan
+curl -H "x-scraper-secret: $FUNDA_SCRAPER_SECRET" \
+  'https://<site>/api/scrape-funda-reviews?dryRun=1'
 ```
 
 ---

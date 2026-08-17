@@ -145,3 +145,35 @@
 | 14:45 | review-aggregates afgeleid i.p.v. singleton: reviewStats-projectie in PAGE_QUERY (count aankoop/verkoop + math::avg cijfer), reviewScore/reviewCountLabel helpers met CMS-fallback | src/sanity/queries.ts, src/lib/reviews.ts, src/components/PageBuilder.tsx, scripts/check-reviews.ts | check:reviews + tsc groen; PAGE_QUERY live gedraaid: 4 reviews, cijfer null -> fallback "9,6" werkt | ~22k |
 | 15:05 | hero-badge op home leest nu hetzelfde afgeleide cijfer: reviewStats ook in de `hero`-blokprojectie, badgeValue via reviewScore() met CMS-fallback | src/sanity/queries.ts, src/components/PageBuilder.tsx | live geverifieerd: hero + reviews krijgen beide de aggregates; cijfer nog null -> fallback "9,6", count -> "4 keer beoordeeld" | ~9k |
 | 16:20 | /beoordelingen gebouwd uit beoordelingen.html: 4 nieuwe blocks (beoordelingenHero, uitgelichteReview, reviewGrid, werkwijze) + schema's + seed; ReviewCard uitgebreid met cijferrondje, type-tag, datum en deelcijfertabel achter `showGrades` | src/components/blocks/{BeoordelingenHero,UitgelichteReview,ReviewGrid,Werkwijze}.tsx, blocks/Reviews.tsx, PageBuilder.tsx, sanity/queries.ts, lib/{reviews,beoordelingen-content}.ts, studio schemaTypes, scripts/seed/beoordelingen.ts | tsc (app+studio) + lint + check:reviews groen; pagina geseed en in de browser geverifieerd: 8,8 / 4 beoordelingen, filters 4/2/2, 4 kaarten met tabel; home heeft 0 tabellen | ~78k |
+
+## Session: 2026-08-15 20:29
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 20:35 | Verkenning voor de funda review-scraper: review-schema/queries/seed-patroon in kaart gebracht, funda-URL's van kantoor 10356 gevonden (2 tabs × 2 plaatsen, paginering via /pN/) | .wolf/cerebrum.md | geblokkeerd: funda.nl geeft 403 via de egress-proxy, dus geen DOM-inspectie; gewacht op het script van de gebruiker (paste kwam leeg binnen) | ~35k |
+| 20:50 | Funda-review-scraper gebouwd: pure parser (`src/lib/funda-reviews.ts`) op de beoordelingenwidget, route `/api/scrape-funda-reviews` met dryRun/debug + dubbele auth (cron-bearer en studio-secret), schrijfclient, studioknop, dagelijkse Vercel-cron, fixture-test | src/lib/funda-reviews.ts, src/app/api/scrape-funda-reviews/route.ts, src/sanity/write-client.ts, studio tools/FundaReviewsTool.tsx, sanity.config.ts, vercel.json, scripts/check-funda-reviews.ts + fixtures/, docs/funda-review-scraper.md | tsc (app+studio) + lint (app+studio) + check:funda + check:reviews groen; next build compileert en typecheckt maar kan hier niet afronden (Sanity-API geblokkeerd door de egress-proxy) | ~95k |
+| 20:52 | Deelcijfer `negotiationAndResult` → `serviceAndGuidance` ("Service en begeleiding") zodat het schema de vier criteria van Funda volgt; oude veld wordt door de route ge-unset | studio schemaTypes/reviewType.ts, src/lib/reviews.ts, src/sanity/queries.ts, scripts/check-reviews.ts | check:reviews groen; geen andere verwijzingen meer naar het oude veld | ~8k |
+| 21:20 | Funda-scraperknop verhuisd van de bovenbalk (`tools:` in sanity.config) naar een eigen groep **Tools** in de linkerkolom (`structure.ts`, `S.component(FundaReviews)`); dubbele h1 weg en paneelkleuren op Sanity's card-variabelen gezet zodat het donkere thema klopt | studio-hart-huis/structure.ts, sanity.config.ts, tools/FundaReviewsTool.tsx, docs/funda-review-scraper.md | tsc + eslint studio groen | ~12k |
+
+## Session: 2026-08-17 14:30
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-17 15:00
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-17 15:01
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-17 15:02
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 15:40 | Deelcijfers per reviewsoort: Aankoop krijgt bereikbaarheid+onderhandeling, Verkoop marktkennis+begeleiding | reviewType.ts, funda-reviews.ts, reviews.ts, queries.ts, route.ts, 2 checks, docs | check:reviews + check:funda + tsc + lint groen | ~14k |
+| 16:55 | Paginering gefixt (URL is /live/{id}/1/{type}/pN/), reacties van de makelaar overgeslagen, entities gedecodeerd, cijfer in de dedup-sleutel | funda-reviews.ts, check-funda-reviews.ts, 3 echte fixtures, docs | live run: 42 verkoop + 12 aankoop = 54, geen warnings | ~40k |
+| 17:30 | Lange beoordelingen op 250 tekens ingekort met 'Lees meer' in een native <dialog> | Reviews.tsx, reviews.ts, check-reviews.ts | in de browser getest: kaart 248 tekens, dialog 1241, Esc + backdrop + sticky Sluiten werken, mobiel 337px breed | ~12k |
