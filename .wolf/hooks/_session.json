@@ -6,13 +6,23 @@
       "count": 1,
       "tokens": 0,
       "first_read": "2026-08-17T13:03:36.476Z"
+    },
+    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/scripts/check-funda-reviews.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-17T13:19:10.426Z"
+    },
+    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/lib/funda-reviews.ts": {
+      "count": 2,
+      "tokens": 0,
+      "first_read": "2026-08-17T13:24:45.863Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
   "anatomy_hits": 0,
-  "anatomy_misses": 1,
-  "repeated_reads_warned": 0,
+  "anatomy_misses": 3,
+  "repeated_reads_warned": 1,
   "cerebrum_warnings": 0,
-  "stop_count": 1
+  "stop_count": 2
 }

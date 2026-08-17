@@ -59,13 +59,13 @@
 - `npm run check:reviews` dekt formatting, fallback, deelcijfers en de verdeling
 
 **Funda-review-scraper**
-- scrapet de **beoordelingenwidget** (`funda.nl/beoordelingenwidget/{id}/{page}/{colors}/{type}`), niet de gewone pagina's — die zitten achter een bot-challenge
+- scrapet de **beoordelingenwidget** (`funda.nl/beoordelingenwidget/live/{id}/1/{type}/p{page}/`), niet de gewone pagina's — die zitten achter een bot-challenge
 - `app/src/lib/funda-reviews.ts` is de pure parser (geen fetch, geen Sanity), `app/src/app/api/scrape-funda-reviews/route.ts` de route, `app/src/sanity/write-client.ts` de schrijfclient
 - beide tabbladen + paginering; `_id` = `funda-review-<hash van type+naam+adres+datum>`, dus idempotent en verwijzingen blijven heel
 - aan te roepen via **Tools → Funda-reviews** in de linkerkolom van de studio (`tools/FundaReviewsTool.tsx`, ingehangen in `structure.ts`) en dagelijks via de cron in `app/vercel.json`
 - `?dryRun=1` schrijft niets weg, `?debug=1` geeft de ruwe tekst terug
 - **deelcijfers per soort** (2026-08-17): Aankoop = bereikbaarheid en communicatie / deskundigheid / onderhandeling en resultaat / prijs / kwaliteit, Verkoop = deskundigheid / lokale marktkennis / prijs / kwaliteit / service en begeleiding. `SUBSCORES` is één platte lijst van alle zes (parser), `GRADE_SUBJECTS.types` bepaalt de kaart, `alleenBij()` verbergt ze in de studio. De **Aankoop-labels zijn nog niet tegen een echte pagina gecontroleerd**
-- `npm run check:funda` dekt de parser, de ontdubbeling en de paginering-guard
+- `npm run check:funda` draait tegen **echte opgeslagen pagina's** (verkoop p1, verkoop p9 mét reacties van de makelaar, aankoop p1) en dekt de parser, de reactie-overslag, de ontdubbeling en de paginering
 - alles staat beschreven in `docs/funda-review-scraper.md`
 
 ---
@@ -75,12 +75,11 @@
 **Goal:** Alle designs uit `app/example-designs/` zijn nu geïmplementeerd. Wat resteert is afmaken en aanscherpen.
 
 ### Open punten
-1. **De scraper is nog nooit tegen de echte Funda gedraaid** — funda.nl is geblokkeerd vanuit de bouwomgeving. Te doen, in deze volgorde:
-   a. sla een echte widget-pagina op over `app/scripts/fixtures/funda-widget.html` heen en draai `npm run check:funda`; doe dat ook voor het Aankoop-tabblad (`?debug=1&type=Aankoop`) — die vier labels zijn nog nooit tegen echte HTML gezien
-   b. controleer in de browser of pagina 1 en pagina 2 van de widget-URL écht andere reviews geven (de route stopt zelf als dat niet zo is, met een waarschuwing)
-   c. `?dryRun=1` draaien en de uitkomst nalopen vóór de eerste echte run
-   d. daarna de 4 mock-reviews uit `seed:home` weggooien — die hebben geen cijfers maar tellen wel mee in `reviewStats`
-   e. env zetten: `SANITY_API_WRITE_TOKEN`, `CRON_SECRET`, `FUNDA_SCRAPER_SECRET`, `STUDIO_ORIGIN` op Vercel; `SANITY_STUDIO_SCRAPER_URL` + `SANITY_STUDIO_SCRAPER_SECRET` in de studio
+1. **De scraper is lokaal tegen de echte Funda gedraaid (17-08-2026) en klopt: 42 verkoop + 12 aankoop = 54, zonder waarschuwingen** — precies wat de widget zelf noemt. De fixtures zijn nu echte pagina's. Wat resteert vóór de eerste échte run:
+   a. `?dryRun=1` draaien op de gedeployde site en de uitkomst nalopen
+   b. daarna de 4 mock-reviews uit `seed:home` weggooien — die hebben geen cijfers maar tellen wel mee in `reviewStats`
+   c. env zetten: `SANITY_API_WRITE_TOKEN`, `CRON_SECRET`, `FUNDA_SCRAPER_SECRET`, `STUDIO_ORIGIN` op Vercel; `SANITY_STUDIO_SCRAPER_URL` + `SANITY_STUDIO_SCRAPER_SECRET` in de studio
+   d. op Hobby is een functie na 60s afgekapt — 14 pagina's × 1,2s wachttijd is ~20s, dus dat past, maar houd het in de gaten als het aantal reviews groeit
 2. Met 4 reviews is de "toon meer" van `reviewGrid` (>9) nog niet met echte data uitgeprobeerd.
 3. De makelaarskaart op de objectpagina is nog hardcoded in `src/lib/object-content.ts` — naar het `woning`-schema (of een gedeeld makelaar-document) zodra er een tweede makelaar is.
 4. `aanbiedingsTekstEngels` wordt opgeslagen en geseed maar nergens gerenderd — er is nog geen taalwissel op de objectpagina.

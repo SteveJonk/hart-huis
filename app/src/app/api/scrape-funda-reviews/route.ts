@@ -16,7 +16,6 @@ import { createHash, timingSafeEqual } from 'node:crypto';
 import { NextResponse } from 'next/server';
 import {
   DEFAULT_MAKELAAR_ID,
-  DEFAULT_WIDGET_COLORS,
   FUNDA_REVIEW_TYPES,
   SUBSCORES,
   buildWidgetUrl,
@@ -120,7 +119,7 @@ function toDocument(review: ScrapedReview): ReviewDocument {
     _type: 'review',
     fundaKey: review.key,
     quote: review.quote,
-    name: review.name,
+    name: review.address,
     type: review.type,
   };
 
@@ -162,7 +161,9 @@ async function upsertReviews(reviews: ScrapedReview[]) {
     // zonder gelijktrekken zou elke run alles "gewijzigd" noemen.
     if (!current) {
       created += 1;
-    } else if (SCRAPED_FIELDS.every((field) => (current[field] ?? undefined) === doc[field])) {
+    } else if (
+      SCRAPED_FIELDS.every((field) => (current[field] ?? undefined) === doc[field])
+    ) {
       unchanged += 1;
       continue;
     } else {
@@ -173,7 +174,9 @@ async function upsertReviews(reviews: ScrapedReview[]) {
     const { _id, _type, ...fields } = doc;
     // Deelcijfers van het ándere tabblad horen hier niet te staan. Zonder dit
     // blijft een oude waarde hangen en noemt elke run dezelfde review gewijzigd.
-    const stale = SUBSCORES.map(({ field }) => field).filter((field) => doc[field] === undefined);
+    const stale = SUBSCORES.map(({ field }) => field).filter(
+      (field) => doc[field] === undefined,
+    );
     transaction
       .createIfNotExists({ _id, _type })
       // Funda is de bron: een gewijzigde tekst of cijfer overschrijft Sanity.
@@ -193,8 +196,8 @@ async function handle(request: Request) {
   }
 
   const { searchParams } = new URL(request.url);
-  const id = searchParams.get('id') || process.env.FUNDA_MAKELAAR_ID || DEFAULT_MAKELAAR_ID;
-  const colors = searchParams.get('colors') || DEFAULT_WIDGET_COLORS;
+  const id =
+    searchParams.get('id') || process.env.FUNDA_MAKELAAR_ID || DEFAULT_MAKELAAR_ID;
   const dryRun = searchParams.get('dryRun') === '1';
   const debug = searchParams.get('debug') === '1';
   const maxPages = Number(searchParams.get('maxPages')) || undefined;
@@ -207,7 +210,7 @@ async function handle(request: Request) {
   try {
     if (debug) {
       // ruwe tekst terug, zodat de regexes te controleren zijn als er 0 uitkomt
-      const url = buildWidgetUrl({ id, page: 1, type: types[0], colors });
+      const url = buildWidgetUrl({ id, page: 1, type: types[0] });
       const html = await fetchPage(url);
       return NextResponse.json(
         { url, length: html.length, text: stripTags(html).slice(0, 20000) },
@@ -221,7 +224,12 @@ async function handle(request: Request) {
     let pagesFetched = 0;
 
     for (const type of types) {
-      const result = await scrapeFundaReviews({ id, type, colors, maxPages, fetchPage });
+      const result = await scrapeFundaReviews({
+        id,
+        type,
+        maxPages,
+        fetchPage,
+      });
       scraped.push(...result.reviews);
       warnings.push(...result.warnings);
       perType[type] = result.reviews.length;
@@ -229,7 +237,9 @@ async function handle(request: Request) {
     }
 
     if (scraped.length === 0) {
-      warnings.push('Geen enkele review herkend — draai ?debug=1 en controleer het sjabloon');
+      warnings.push(
+        'Geen enkele review herkend — draai ?debug=1 en controleer het sjabloon',
+      );
     }
 
     const summary = {
@@ -246,12 +256,18 @@ async function handle(request: Request) {
       return NextResponse.json({ ...summary, reviews: scraped }, { headers: cors });
     }
 
-    const written = scraped.length > 0 ? await upsertReviews(scraped) : { created: 0, updated: 0, unchanged: 0 };
+    const written =
+      scraped.length > 0
+        ? await upsertReviews(scraped)
+        : { created: 0, updated: 0, unchanged: 0 };
     return NextResponse.json({ ...summary, ...written }, { headers: cors });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     console.error('[scrape-funda-reviews]', message);
-    return NextResponse.json({ ok: false, error: message }, { status: 500, headers: cors });
+    return NextResponse.json(
+      { ok: false, error: message },
+      { status: 500, headers: cors },
+    );
   }
 }
 

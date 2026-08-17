@@ -175,3 +175,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 15:40 | Deelcijfers per reviewsoort: Aankoop krijgt bereikbaarheid+onderhandeling, Verkoop marktkennis+begeleiding | reviewType.ts, funda-reviews.ts, reviews.ts, queries.ts, route.ts, 2 checks, docs | check:reviews + check:funda + tsc + lint groen | ~14k |
+| 16:55 | Paginering gefixt (URL is /live/{id}/1/{type}/pN/), reacties van de makelaar overgeslagen, entities gedecodeerd, cijfer in de dedup-sleutel | funda-reviews.ts, check-funda-reviews.ts, 3 echte fixtures, docs | live run: 42 verkoop + 12 aankoop = 54, geen warnings | ~40k |

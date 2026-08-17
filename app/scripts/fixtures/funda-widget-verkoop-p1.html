@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head prefix="og: http://ogp.me/ns#">
+
+
+
+
+
+
+    <title>Funda</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta charset="utf-8">
+
+
+
+
+
+
+
+<meta name="robots" content="noindex">
+
+<meta name="google" content="nositelinkssearchbox" />
+<meta name="format-detection" content="telephone=no" />
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var insertAdsByGoogle = function(){ var t=document.createElement("script"),e="https:"==document.location.protocol;t.src=(e?"https:":"http:")+"//securepubads.g.doubleclick.net/tag/js/gpt.js";var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(t,o)};
+    // to make sure that google ads are only loaded after the consent is available
+    var loadDFPafterConsent = function() {
+        var cnt = 0;
+        var consentSetInterval = setInterval(function() {
+            cnt += 1;
+            // Bail if we have not gotten a consent response after 60 seconds.
+            if (cnt === 600) clearInterval(consentSetInterval);
+            if (typeof window.__tcfapi !== 'undefined') {
+                // Check if window.__tcfapi has been set
+                clearInterval(consentSetInterval);
+                window.__tcfapi('addEventListener', 2, function(
+                    tcData,
+                    listenerSuccess
+                ) {
+                    if (listenerSuccess) {
+                        if (
+                            tcData.eventStatus === 'tcloaded' ||
+                            tcData.eventStatus === 'useractioncomplete'
+                        ) {
+                            if (!tcData.gdprApplies) {
+                                // GDPR DOES NOT APPLY
+                                insertAdsByGoogle();
+                                // console.log('No GDPR');
+                            } else {
+                                // GDPR DOES APPLY
+                                // Purpose 1 refers to the storage and/or access of information on a device.
+                                var hasDeviceStorageAndAccessConsent =
+                                    tcData.purpose.consents[1] || false;
+                                // Google Requires Consent for Purpose 1
+                                if (hasDeviceStorageAndAccessConsent) {
+                                    // GLOBAL VENDOR LIST - https://iabeurope.eu/vendor-list-tcf-v2-0/
+                                    // CHECK FOR GOOGLE ADVERTISING PRODUCTS CONSENT. (IAB Vendor ID 755)
+                                    var hasGoogleAdvertisingProductsConsent =
+                                        tcData.vendor.consents[755] || false;
+                                    // Check if the user gave Google Advertising Products consent (iab vendor 755)
+                                    if (hasGoogleAdvertisingProductsConsent) {
+                                        insertAdsByGoogle();
+                                        // console.log('GDPR & Consent');
+                                    }
+                                } else {
+                                    insertAdsByGoogle();
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            cnt++;
+        }, 100);
+    };
+    // Initialize DFP
+    
+</script>
+
+    <script type="text/javascript">
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function() {
+            loadDFPafterConsent();
+        })();
+    </script>
+
+
+
+
+<link rel="dns-prefetch" href="https://assets.fstatic.nl" />
+<link rel="dns-prefetch" href="https://cloud.funda.nl" />
+<link rel="dns-prefetch" href="https://ads.pubmatic.com" />
+<link rel="dns-prefetch" href="https://api.rlcdn.com/" />
+<link rel="dns-prefetch" href="https://api.seg.funda.nl/" />
+<link rel="dns-prefetch" href="https://cdn.floorplanner.com/" />
+<link rel="dns-prefetch" href="https://cdn.optimizely.com/" />
+<link rel="dns-prefetch" href="https://evs.seg.funda.nl" />
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com/" />
+<link rel="dns-prefetch" href="https://cm.g.doubleclick.net" />
+<link rel="dns-prefetch" href="https://dondraper.funda.io" />
+<link rel="dns-prefetch" href="https://fastlane.rubiconproject.com" />
+<link rel="dns-prefetch" href="https://gum.criteo.com/" />
+<link rel="dns-prefetch" href="https://idsync.segment.com" />
+<link rel="dns-prefetch" href="https://logx.optimizely.com/" />
+<link rel="dns-prefetch" href="https://map0.funda.nl/" />
+<link rel="dns-prefetch" href="https://map1.funda.nl/" />
+<link rel="dns-prefetch" href="https://map2.funda.nl/" />
+<link rel="dns-prefetch" href="https://map3.funda.nl/" />
+<link rel="dns-prefetch" href="https://maps.googleapis.com" />
+<link rel="dns-prefetch" href="https://maps.gstatic.com" />
+<link rel="dns-prefetch" href="https://mts0.googleapis.com/" />
+<link rel="dns-prefetch" href="https://mts1.googleapis.com/" />
+<link rel="dns-prefetch" href="https://securepubads.g.doubleclick.net" />
+<link rel="dns-prefetch" href="https://token.rubiconproject.com/" />
+<link rel="dns-prefetch" href="https://www.google-analytics.com" />
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+<link rel="dns-prefetch" href="https://zb.funda.info" />
+<link rel="dns-prefetch" href="https://www.funda-consument.nl.kpnis.nl" />
+<link rel="dns-prefetch" href="https://sdk.privacy-center.org" />
+<link rel="dns-prefetch" href="https://geolocation.onetrust.com" />
+
+
+    <script>
+        !function(e,s){"use strict";"querySelector"in s&&"addEventListener"in e&&(s.documentElement.className+=" js",function(e,t,n){{var i,o;"undefined"==typeof useCookie&&(!1===t&&(n=-1),i=n?((o=new Date).setTime(o.getTime()+24*n*60*60*1e3),"; expires="+o.toGMTString()):"",s.cookie=e+"="+t+i+"; path=/")}}("html-classes"," js"))}(window,window.document);
+    </script>
+
+<script>
+    (function() {
+        /*! grunt-grunticon Stylesheet Loader - v2.1.6 | https://github.com/filamentgroup/grunticon | (c) 2015 Scott Jehl, Filament Group, Inc. | MIT license. */
+		(function(e){function n(n,t,o,a){"use strict";var i=e.document.createElement("link"),r=t||e.document.getElementsByTagName("script")[0],d=e.document.styleSheets;return i.rel="stylesheet",i.href=n,i.media="only x",a&&(i.onload=a),r.parentNode.insertBefore(i,r),i.onloadcssdefined=function(e){for(var t,o=0;d.length>o;o++)d[o].href&&d[o].href.indexOf(n)>-1&&(t=!0);t?e():setTimeout(function(){i.onloadcssdefined(e)})},i.onloadcssdefined(function(){i.media=o||"all"}),i}function t(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)}var o=function(a,i){"use strict";if(a&&3===a.length){var r=e.Image,d=!(!document.createElementNS||!document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||e.opera&&-1===navigator.userAgent.indexOf("Chrome")||-1!==navigator.userAgent.indexOf("Series40")),c=new r;c.onerror=function(){o.method="png",o.href=a[2],n(a[2])},c.onload=function(){var e=1===c.width&&1===c.height,r=a[e&&d?0:e?1:2];o.method=e&&d?"svg":e?"datapng":"png",o.href=r,t(n(r),i)},c.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",document.documentElement.className+=" grunticon"}};o.loadCSS=n,o.onloadCSS=t,e.grunticon=o})(this);(function(e,n){"use strict";var t=n.document,o="grunticon:",r=function(e){if(t.attachEvent?"complete"===t.readyState:"loading"!==t.readyState)e();else{var n=!1;t.addEventListener("readystatechange",function(){n||(n=!0,e())},!1)}},a=function(e){return n.document.querySelector('link[href$="'+e+'"]')},i=function(e){var n,t,r,a,i,c,d={};if(n=e.sheet,!n)return d;t=n.cssRules?n.cssRules:n.rules;for(var s=0;t.length>s;s++)r=t[s].cssText,a=o+t[s].selectorText,i=r.split(");")[0].match(/US\-ASCII\,([^"']+)/),i&&i[1]&&(c=decodeURIComponent(i[1]),d[a]=c);return d},c=function(e){var n,r,a;r="data-grunticon-embed";for(var i in e){a=i.slice(o.length);try{n=t.querySelectorAll(a+"["+r+"]")}catch(c){continue}if(n.length)for(var d=0;n.length>d;d++)n[d].innerHTML=e[i],n[d].style.backgroundImage="none",n[d].removeAttribute(r)}return n},d=function(n){"svg"===e.method&&r(function(){c(i(a(e.href))),"function"==typeof n&&n()})};e.embedIcons=c,e.getCSS=a,e.getIcons=i,e.ready=r,e.svgLoadedCallback=d,e.embedSVG=d})(grunticon,this);(function(e,n){"use strict";var t=n.document,o=function(e,t){var o=new n.XMLHttpRequest;return"withCredentials"in o?o.open("GET",e,!0):n.XDomainRequest!==void 0&&(o=new n.XDomainRequest,o.open("GET",e)),t&&(o.onload=t),o.send(),o},r=function(n){"svg"===e.method&&e.ready(function(){o(e.href,function(){var o=t.createElement("style");o.innerHTML=this.responseText;var r=e.getCSS(e.href);r&&(r.parentNode.insertBefore(o,r),r.parentNode.removeChild(r),e.embedIcons(e.getIcons(o)),"function"==typeof n&&n())})})};e.ajaxGet=o,e.svgLoadedCORSCallback=r,e.embedSVGCors=r})(grunticon,this);
+        
+		grunticon(['https://assets.fstatic.nl/master-338307/assets/components/app-icons/icons.data.svg.css',
+		           'https://assets.fstatic.nl/master-338307/assets/components/app-icons/icons.data.png.css',
+                   'https://assets.fstatic.nl/master-338307/assets/components/app-icons/icons.fallback.css'], grunticon.svgLoadedCORSCallback);
+    }());
+</script>
+<noscript>
+    <link rel="stylesheet" href="https://assets.fstatic.nl/master-338307/assets/components/app-icons/icons.fallback.css">
+</noscript>
+
+
+
+
+<script data-test-gtm-script>
+    // Fill GtmDataLayer with data
+    gtmDataLayer = window.gtmDataLayer || [];
+    gtmDataLayer.push({
+            'userId' : '4700449f-8876-46cd-a719-62c9c08d82b3',
+            'isAnonymous' : 'true',
+            'language' : 'nl',
+            'allowPersonalisatie' : 'false',
+            'allowAdvertenties' : 'false',
+            'allowAnalytisch' : 'false',
+            'allowFunctioneel' : 'false',
+            'explicitAcceptOfCookies' : 'false',
+            'isCookieModalClosed' : 'false',
+    });
+
+    // Initialize Google Tag Manager
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'gtmDataLayer', 'GTM-NPB6HG');
+</script>
+
+
+    <script type="application/ld+json" data-tracking-global-properties>{"listing_offering_type":"unknown","content_tags":["v1"],"site":"funda","site_section":"unknown","site_locale":"nl","channel":"web","page_type":"unknown","logged_in":false,"full_path":"/beoordelingenwidget/live/10356/1/verkoop/p1/","full_url":"http://beta.funda.nl/beoordelingenwidget/live/10356/1/verkoop/p1/","hashedemailsalted":"00000000-0000-0000-0000-000000000000"}</script>
+    <script type="text/javascript" data-test-segment-script data-segment-script data-user-fundadesk data-user-fundadesk-url="https://www.fundadesk.nl/">
+        
+        !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://evs.seg.funda.nl/analytics.js/v1/"+key+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="oTWv6OLNW9wOGkbUg6xcF1VqB3cfXXh0";analytics._cdn = "https://evs.seg.funda.nl";analytics.SNIPPET_VERSION="4.15.3";
+        analytics.load("oTWv6OLNW9wOGkbUg6xcF1VqB3cfXXh0");
+        analytics.ready(function() {
+          window.dispatchEvent(new Event("analyticsLoaded"));
+        });
+        }}();
+    </script>
+        <script type="application/ld+json" data-user-anonymous>{"anonymousId":"4700449f-8876-46cd-a719-62c9c08d82b3"}</script>
+
+
+<link href="https://assets.fstatic.nl/master-338307/assets/tailwind.css" rel="stylesheet" type="text/css" /><link href="https://assets.fstatic.nl/master-338307/assets/index-fundawonen.css" rel="stylesheet" type="text/css" />
+<link rel="preload" href="https://assets.fstatic.nl/master-338307/assets/components/app-fonts/proximanova-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://assets.fstatic.nl/master-338307/assets/components/app-fonts/proximanova-semibold.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://assets.fstatic.nl/master-338307/assets/funda-apple-touch-icon.png">
+<link rel="icon" type="image/png" href="https://assets.fstatic.nl/master-338307/assets/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://assets.fstatic.nl/master-338307/assets/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="https://assets.fstatic.nl/master-338307/assets/manifest.funda.json">
+<link rel="shortcut icon" href="https://assets.fstatic.nl/master-338307/assets/favicon.ico">
+
+<meta name="apple-mobile-web-app-title" content="funda">
+<meta name="application-name" content="funda">
+<meta name="msapplication-config" content="https://assets.fstatic.nl/master-338307/assets/browserconfig.xml">
+<meta name="theme-color" content="#FFFFFF">
+
+
+<meta property="fb:app_id" content="201092619940862">
+
+
+<meta property="fb:pages" content="81616238153">
+
+    
+    
+</head>
+<body>
+<noscript id="gtmDataLayerNoscript">
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-NPB6HG&userId=4700449f-8876-46cd-a719-62c9c08d82b3&isAnonymous=true&language=nl&allowPersonalisatie=false&allowAdvertenties=false&allowAnalytisch=false&allowFunctioneel=false&explicitAcceptOfCookies=false&isCookieModalClosed=false"
+                 height="0" width="0" style="display: none; visibility: hidden"></iframe>
+</noscript>
+
+<main id="content" role="main">
+
+<div class="beoordelingen-widget" data-iframe-height-updater>
+
+
+    <div class="user-reviews container">
+
+        
+    <!--Frontend needs this parameter to determine the url when clicking on "Bekijk per vestiging"-->
+
+
+<div class="user-reviews-averages" data-component="user-reviews-averages" data-user-reviews-averages>
+    <div class="user-reviews-toggle">
+        <div class="user-reviews-toggle-title">
+            <h2 class="h4">Beoordelingen gemiddelde</h2>
+            <div class="user-reviews-toggle-title__number is-high">
+                9,6
+            </div>
+        </div>
+
+        <p class="fd-color-neutral-50 mb-8">
+            Het gemiddelde is gebaseerd op 54 beoordelingen in de laatste 24 maanden.<br>
+            De makelaar nodigde afgelopen jaar 71% van de klanten uit voor het schrijven van een beoordeling.<br>
+            Hoe komen deze beoordelingen tot stand?
+            <a href="https://help.funda.nl/hc/nl/sections/5632545057298?utm_source=funda&amp;utm_medium=beoordelingen" target="_blank">
+                Lees meer.
+            </a>
+        </p>
+    </div>
+    
+
+</div>
+            <div class="user-reviews-toggle-buttons">
+
+    <p class="user-reviews-toggle-button is-active" review-kind="verkoop (42)">
+        <a class="user-reviews-toggle-link" href="/beoordelingenwidget/live/10356/1/verkoop/">
+            <span class="user-reviews-toggle-label">
+                Verkoop (42)
+            </span>
+        </a>
+    </p>   
+    <p class="user-reviews-toggle-button " review-kind="aankoop (12)">
+        <a class="user-reviews-toggle-link" href="/beoordelingenwidget/live/10356/1/aankoop/">
+            <span class="user-reviews-toggle-label">
+                Aankoop (12)
+            </span>
+        </a>
+    </p>   
+
+    </div>
+
+      <h2 class="user-reviews-list-title" data-pagination-scroll-anchor>Verkoop beoordelingen</h2>
+     <form class="user-reviews-form" method="POST"
+           data-user-review-paging
+           novalidate>
+         <div class="app-spinner" data-user-reviews-spinner>
+    <svg class="svg-circular" viewBox="0 0 48 48">
+        <circle class="path"
+                cx="24"
+                cy="24"
+                r="20"
+                fill="none"
+                stroke-width="3"
+                stroke-dasharray="89,200"
+                stroke-dashoffset="-124" />
+    </svg>
+    <img class="gif-circular" src="https://assets.fstatic.nl/master-338307/assets/components/app-spinner/spinner.gif" />
+</div>
+
+         <div class="user-reviews-output" data-instant-search-output="results">
+             <section class="user-reviews" data-instant-search-output="results">
+<article class="user-review">
+
+    <header class="user-review-header">
+        <section class="user-review-seller-details">
+            <div class="user-review-author" itemprop="username">Een funda gebruiker </div>
+            <a class="user-review-address"  itemprop="objectName">Koperwiek 22</a>
+            <time class="user-review-timestamp" itemprop="dateCreated">
+                <span class="user-review-timestamp-prefix">Geschreven op</span>
+                15 augustus 2026
+            </time>
+        </section>
+        <div class="user-review-number is-high" itemprop="reviewGrade">
+            9,8
+        </div>
+    </header>
+
+    <section class="user-review-recommendation">
+        <span class="user-review-recommendation-icon">
+            <span class="icon icon-thumbs-up-blue"></span>
+        </span>
+        <span class="user-review-recommendation-text">
+            Ik zou deze makelaar aanbevelen.
+        </span>
+    </section>
+
+    <div class="user-review-description" itemprop="reviewDescription">
+        <div class="collapse-text" data-collapse-text>
+            <div class="collapse-text-container" data-text-container>
+                Dorien is een prettige makelaar, 
+Zij heeft het huis op een goede manier snel kunnen.
+Ik zou haar opnieuw als makelaar nemen bij een eventuele aan of verkoop. 
+
+            </div>
+            <a class="collapse-trigger collapse-expand-trigger is-hidden" data-text-expand>
+                <span class='icon icon-plus-blue' data-grunticon-embed></span>
+                Lees volledige beoordeling
+            </a>
+            <a class="collapse-trigger collapse-collapse-trigger is-hidden" data-text-collapse>
+                <span class='icon icon-minus-blue' data-grunticon-embed></span>
+                Sluit beoordeling
+            </a>
+        </div>
+    </div>
+    
+    <section class="user-review-averages">
+        <div class="user-reviews-averages-panel" data-height-sync="">
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Deskundigheid</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Lokale marktkennis</dt>
+                    <dd class="user-reviews-averages-value">9</dd>
+                </dl>
+            </div>
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Prijs / kwaliteit</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Service en begeleiding</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+</article>
+
+
+
+
+<article class="user-review">
+
+    <header class="user-review-header">
+        <section class="user-review-seller-details">
+            <div class="user-review-author" itemprop="username">Een funda gebruiker </div>
+            <a class="user-review-address"  itemprop="objectName">Milaanstraat 25</a>
+            <time class="user-review-timestamp" itemprop="dateCreated">
+                <span class="user-review-timestamp-prefix">Geschreven op</span>
+                12 juli 2026
+            </time>
+        </section>
+        <div class="user-review-number is-high" itemprop="reviewGrade">
+            10,0
+        </div>
+    </header>
+
+    <section class="user-review-recommendation">
+        <span class="user-review-recommendation-icon">
+            <span class="icon icon-thumbs-up-blue"></span>
+        </span>
+        <span class="user-review-recommendation-text">
+            Ik zou deze makelaar aanbevelen.
+        </span>
+    </section>
+
+    <div class="user-review-description" itemprop="reviewDescription">
+        <div class="collapse-text" data-collapse-text>
+            <div class="collapse-text-container" data-text-container>
+                Dorien heeft ons goed begeleid bij de verkoop van ons huis. We zijn zeer tevreden. De verkoopstrategie was goed en Dorien was goed bereikbaar.
+            </div>
+            <a class="collapse-trigger collapse-expand-trigger is-hidden" data-text-expand>
+                <span class='icon icon-plus-blue' data-grunticon-embed></span>
+                Lees volledige beoordeling
+            </a>
+            <a class="collapse-trigger collapse-collapse-trigger is-hidden" data-text-collapse>
+                <span class='icon icon-minus-blue' data-grunticon-embed></span>
+                Sluit beoordeling
+            </a>
+        </div>
+    </div>
+    
+    <section class="user-review-averages">
+        <div class="user-reviews-averages-panel" data-height-sync="">
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Deskundigheid</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Lokale marktkennis</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+            </div>
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Prijs / kwaliteit</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Service en begeleiding</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+</article>
+
+
+
+
+<article class="user-review">
+
+    <header class="user-review-header">
+        <section class="user-review-seller-details">
+            <div class="user-review-author" itemprop="username">Een funda gebruiker </div>
+            <a class="user-review-address"  itemprop="objectName">Aletta Jacobsstraat 37</a>
+            <time class="user-review-timestamp" itemprop="dateCreated">
+                <span class="user-review-timestamp-prefix">Geschreven op</span>
+                10 juli 2026
+            </time>
+        </section>
+        <div class="user-review-number is-high" itemprop="reviewGrade">
+            8,5
+        </div>
+    </header>
+
+    <section class="user-review-recommendation">
+        <span class="user-review-recommendation-icon">
+            <span class="icon icon-thumbs-up-blue"></span>
+        </span>
+        <span class="user-review-recommendation-text">
+            Ik zou deze makelaar aanbevelen.
+        </span>
+    </section>
+
+    <div class="user-review-description" itemprop="reviewDescription">
+        <div class="collapse-text" data-collapse-text>
+            <div class="collapse-text-container" data-text-container>
+                Wij zijn erg tevreden over Tessa ze is enthousiast en heeft ons goed geholpen bij het verkopen van onze woning
+            </div>
+            <a class="collapse-trigger collapse-expand-trigger is-hidden" data-text-expand>
+                <span class='icon icon-plus-blue' data-grunticon-embed></span>
+                Lees volledige beoordeling
+            </a>
+            <a class="collapse-trigger collapse-collapse-trigger is-hidden" data-text-collapse>
+                <span class='icon icon-minus-blue' data-grunticon-embed></span>
+                Sluit beoordeling
+            </a>
+        </div>
+    </div>
+    
+    <section class="user-review-averages">
+        <div class="user-reviews-averages-panel" data-height-sync="">
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Deskundigheid</dt>
+                    <dd class="user-reviews-averages-value">8</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Lokale marktkennis</dt>
+                    <dd class="user-reviews-averages-value">8</dd>
+                </dl>
+            </div>
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Prijs / kwaliteit</dt>
+                    <dd class="user-reviews-averages-value">9</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Service en begeleiding</dt>
+                    <dd class="user-reviews-averages-value">9</dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+</article>
+
+
+
+
+<article class="user-review">
+
+    <header class="user-review-header">
+        <section class="user-review-seller-details">
+            <div class="user-review-author" itemprop="username">milan wolff </div>
+            <a class="user-review-address"  itemprop="objectName">Jacques Perklaan 54 II</a>
+            <time class="user-review-timestamp" itemprop="dateCreated">
+                <span class="user-review-timestamp-prefix">Geschreven op</span>
+                7 juli 2026
+            </time>
+        </section>
+        <div class="user-review-number is-high" itemprop="reviewGrade">
+            10,0
+        </div>
+    </header>
+
+    <section class="user-review-recommendation">
+        <span class="user-review-recommendation-icon">
+            <span class="icon icon-thumbs-up-blue"></span>
+        </span>
+        <span class="user-review-recommendation-text">
+            Ik zou deze makelaar aanbevelen.
+        </span>
+    </section>
+
+    <div class="user-review-description" itemprop="reviewDescription">
+        <div class="collapse-text" data-collapse-text>
+            <div class="collapse-text-container" data-text-container>
+                Wij weden geholpen door Hart &amp; Huis Makelaardij. Wat hebben zij ons geweldig geholpen met het zoeken van ons aankoop. Wij gaven aan wat onze wensen waren en die zijn gelukt in onze aankoop. 
+
+Altijd makkelijk contact, er wordt altijd snel gereageerd en wat voor ons erg belangrijk was in dat er niet gepushed. Het advies was altijd eerlijk. Met onze eerste bezichtiging dachten wij al snel, dit huis is best mooi, misschien moeten we bieden. Hart &amp; Huis liet duidelijk weten dat wij hier gewoon niet op moesten bieden want er komen betere huizen aan voor ook een mooiere prijs en in een leukere buurt. Dus zo geschiede, ons huis in een leuke wijk met al onze wensen erbij geplakt. 
+
+Mee naar bezichtigingen en lukte dit niet gingen wij apart van elkaar en bespraken we dit na over de telefoon.
+
+Ook werden er suggesties gedaan vanuit Hart &amp; Huis om naar bepaalde woningen te gaan kijken. Hoe fijn als de makelaar met je meedenkt en met je meekijkt naar mogelijkheden.
+
+Ook na de verkoop werden wij nog steeds goed geholpen met het aanleveren van de juiste documenten en waar te vinden.
+
+Ik kan niet anders zeggen dan: &quot;Wij zijn echt geweldig geholpen aan onze mooie woning.&quot;
+
+Hart &amp; Huis Makelaardij echt onwijs bedankt. Ik raad iedereen jullie aan!
+            </div>
+            <a class="collapse-trigger collapse-expand-trigger is-hidden" data-text-expand>
+                <span class='icon icon-plus-blue' data-grunticon-embed></span>
+                Lees volledige beoordeling
+            </a>
+            <a class="collapse-trigger collapse-collapse-trigger is-hidden" data-text-collapse>
+                <span class='icon icon-minus-blue' data-grunticon-embed></span>
+                Sluit beoordeling
+            </a>
+        </div>
+    </div>
+    
+    <section class="user-review-averages">
+        <div class="user-reviews-averages-panel" data-height-sync="">
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Deskundigheid</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Lokale marktkennis</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+            </div>
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Prijs / kwaliteit</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Service en begeleiding</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+</article>
+
+
+
+
+<article class="user-review">
+
+    <header class="user-review-header">
+        <section class="user-review-seller-details">
+            <div class="user-review-author" itemprop="username">Een funda gebruiker </div>
+            <a class="user-review-address"  itemprop="objectName">Flemingstraat 96 a</a>
+            <time class="user-review-timestamp" itemprop="dateCreated">
+                <span class="user-review-timestamp-prefix">Geschreven op</span>
+                4 juni 2026
+            </time>
+        </section>
+        <div class="user-review-number is-high" itemprop="reviewGrade">
+            10,0
+        </div>
+    </header>
+
+    <section class="user-review-recommendation">
+        <span class="user-review-recommendation-icon">
+            <span class="icon icon-thumbs-up-blue"></span>
+        </span>
+        <span class="user-review-recommendation-text">
+            Ik zou deze makelaar aanbevelen.
+        </span>
+    </section>
+
+    <div class="user-review-description" itemprop="reviewDescription">
+        <div class="collapse-text" data-collapse-text>
+            <div class="collapse-text-container" data-text-container>
+                Wij zijn heel erg blij met Tessa. Ze is professioneel, duidelijk in de communicatie en zelfs buiten kantoor tijden te bereiken wat super fijn is als je zelf aan het werk bent. Ze heeft goede markt kennis en wij raden haar zeker aan als makelaar! 
+            </div>
+            <a class="collapse-trigger collapse-expand-trigger is-hidden" data-text-expand>
+                <span class='icon icon-plus-blue' data-grunticon-embed></span>
+                Lees volledige beoordeling
+            </a>
+            <a class="collapse-trigger collapse-collapse-trigger is-hidden" data-text-collapse>
+                <span class='icon icon-minus-blue' data-grunticon-embed></span>
+                Sluit beoordeling
+            </a>
+        </div>
+    </div>
+    
+    <section class="user-review-averages">
+        <div class="user-reviews-averages-panel" data-height-sync="">
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Deskundigheid</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Lokale marktkennis</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+            </div>
+            <div class="user-reviews-averages-column">
+                <dl class="user-reviews-averages-item" data-height-sync-id="upper-row">
+                    <dt class="user-reviews-averages-description">Prijs / kwaliteit</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+                <dl class="user-reviews-averages-item" data-height-sync-id="lower-row">
+                    <dt class="user-reviews-averages-description">Service en begeleiding</dt>
+                    <dd class="user-reviews-averages-value">10</dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+</article>
+
+
+
+
+</section>
+         </div>
+
+<nav class="pagination">
+    <div class="py-8 border-t border-b border-neutral-20"
+        aria-label="paginering"
+        data-component="pagination"
+        data-pagination
+        data-instant-search-output="pagination">
+            <input data-pagination-input type="hidden" name="pagination-page-number-next" value="1">
+
+
+<div class="pagination-pages">
+
+            <a aria-current="page" href="/beoordelingenwidget/live/10356/1/verkoop/" data-pagination-page="1">
+                <span>Pagina</span> 1
+            </a>
+                <a href="/beoordelingenwidget/live/10356/1/verkoop/" data-pagination-page="2">
+                    <span>Pagina</span> 2
+                </a>
+                <a href="/beoordelingenwidget/live/10356/1/verkoop/" data-pagination-page="3">
+                    <span>Pagina</span> 3
+                </a>
+                <a href="/beoordelingenwidget/live/10356/1/verkoop/" data-pagination-page="4">
+                    <span>Pagina</span> 4
+                </a>
+                <a href="/beoordelingenwidget/live/10356/1/verkoop/" data-pagination-page="5">
+                    <span>Pagina</span> 5
+                </a>
+                <a href="/beoordelingenwidget/live/10356/1/verkoop/" data-pagination-page="6">
+                    <span>Pagina</span> 6
+                </a>
+                <a href="/beoordelingenwidget/live/10356/1/verkoop/" data-pagination-page="7">
+                    <span>Pagina</span> 7
+                </a>
+                <p class="pagination-label">van</p>
+                <a href="/beoordelingenwidget/live/10356/1/verkoop/" data-pagination-page="9">
+                    <span>Pagina</span> 9
+                </a>
+</div>
+
+        <a rel="next" href="/beoordelingenwidget/live/10356/1/verkoop/" data-pagination-page="2">
+            Volgende
+            <span class="icon-arrow-right-blue" data-grunticon-embed></span>
+        </a>
+
+
+    </div>
+</nav>
+     </form>
+
+    </div>
+    <div class="widget-footer">
+    <div class="container">
+        <a class="office-link" href="/makelaars/haarlem/10356-hart-en-huis-makelaardij/" target="_blank"><span class="icon icon-external-blue"></span>Bekijk ons kantoor op funda</a>
+
+        <div class="logo-section">
+            <a class="logo" target="_blank" rel="home" href="/" title="Naar home" data-component="logo">
+                <img alt="funda logo"
+                     src="https://assets.fstatic.nl/master-338307/assets/components/logo/fundawonen-logo.svg">
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+</main>
+
+<script type="text/javascript" src="https://www.datadoghq-browser-agent.com/datadog-logs-eu.js"></script>
+<script>
+    window.DD_LOGS && DD_LOGS.init({
+        clientToken: 'pub3196ca2f04eed55f858c57dfdb2b818b',
+        forwardErrorsToLogs: false,
+        sampleRate: 100
+    });
+    DD_LOGS.addLoggerGlobalContext('Site', 'funda.website.frontend');
+</script>
+
+    <div id="app-one-tap-login" client-id="344940471830-hondavaajfo0elo4caammd56o274d8vo.apps.googleusercontent.com"></div>
+
+
+
+
+<script>__PUBLIC_PATH__ = "https://assets.fstatic.nl/master-338307/assets/";</script>
+
+<script>
+    [
+            'https://assets.fstatic.nl/master-338307/assets/advertisements.js',
+            'https://assets.fstatic.nl/master-338307/assets/vendor.js',
+            'https://assets.fstatic.nl/master-338307/assets/index.js',
+    ].forEach(function(url) {
+        var script = document.createElement('script');
+        script.src = url;
+        script.async = false;
+        document.head.appendChild(script);
+    });
+</script>
+
+<div data-bd-placeholder></div>
+<script type="text/javascript"  src="/HMGzwGSKCg6-cIIF_yjJDI_bJT8/zbYYLmYr/KAcFTX0B/SHta/fWtEO3MT?v=d407c10b-7442-2f3d-7090-4c22d8230213" defer></script></body>
+</html>

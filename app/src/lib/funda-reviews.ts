@@ -3,7 +3,7 @@
  * eigen site embedden. De gewone funda.nl-pagina's zitten achter een
  * bot-challenge; deze widget-URL gaf bij het testen gewoon HTML terug.
  *
- *   https://www.funda.nl/beoordelingenwidget/{makelaarId}/{page}/{colors}/{type}
+ *   https://www.funda.nl/beoordelingenwidget/live/{makelaarId}/{page}/{type}
  *
  * Alles hier is puur: geen fetch, geen Sanity. `scrapeFundaReviews()` krijgt
  * zijn fetch geïnjecteerd, zodat `npm run check:funda` de hele lus tegen een
@@ -14,9 +14,6 @@ import { createHash } from 'node:crypto';
 export type FundaReviewType = 'Aankoop' | 'Verkoop';
 
 export const FUNDA_REVIEW_TYPES: readonly FundaReviewType[] = ['Aankoop', 'Verkoop'];
-
-/** Standaardkleuren uit de embed zoals die op de site van het kantoor staat. */
-export const DEFAULT_WIDGET_COLORS = '3=D7C3B9;6=61';
 
 /** Makelaar-id van Hart & Huis op Funda. */
 export const DEFAULT_MAKELAAR_ID = '10356';
@@ -65,14 +62,40 @@ export type ScrapedReview = {
   grade?: number;
 } & Partial<Record<SubscoreField, number>>;
 
+/**
+ * Het paginanummer staat achteraan als `pN`, niet in het segment na het
+ * makelaar-id — dat is een vast `1`. Het type staat er in kleine letters in, en
+ * de afsluitende slash hoort erbij: zonder slash antwoordt Funda met een 301.
+ *
+ *   .../beoordelingenwidget/live/10356/1/verkoop/p2/
+ */
 export function buildWidgetUrl(options: {
   id: string;
   page: number;
   type: FundaReviewType;
-  colors?: string;
 }): string {
-  const colors = options.colors || DEFAULT_WIDGET_COLORS;
-  return `https://www.funda.nl/beoordelingenwidget/${options.id}/${options.page}/${colors}/${options.type}`;
+  const type = options.type.toLowerCase();
+  return `https://www.funda.nl/beoordelingenwidget/live/${options.id}/1/${type}/p${options.page}/`;
+}
+
+const NAMED_ENTITIES: Record<string, string> = {
+  nbsp: ' ',
+  amp: '&',
+  quot: '"',
+  apos: "'",
+  lt: '<',
+  gt: '>',
+};
+
+/** In één doorgang, anders wordt een gedecodeerde `&` nóg een keer gelezen. */
+const ENTITY = /&(?:#(\d+)|#x([0-9a-f]+)|([a-z]+));/gi;
+
+/** Funda codeert accenten als nummer: "idee&#235;n" → "ideeën". */
+function decodeEntity(match: string, dec?: string, hex?: string, name?: string): string {
+  if (dec) return String.fromCodePoint(Number(dec));
+  if (hex) return String.fromCodePoint(parseInt(hex, 16));
+  // een naam die we niet kennen laten we staan, dat is beter dan hem wissen
+  return NAMED_ENTITIES[name!.toLowerCase()] ?? match;
 }
 
 /**
@@ -86,12 +109,7 @@ export function stripTags(html: string): string {
     .replace(/<br\s*\/?>/gi, '\n')
     .replace(/<\/(p|div|li|h[1-6])>/gi, '\n')
     .replace(/<[^>]+>/g, '\n')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;|&apos;/g, "'")
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
+    .replace(ENTITY, decodeEntity)
     .replace(/[ \t]+/g, ' ')
     .replace(/\n{2,}/g, '\n')
     .trim();
@@ -155,14 +173,24 @@ export function parseGrade(input: string | undefined): number | undefined {
   return value;
 }
 
-/** Stabiel over herhaalde runs, zodat een review zichzelf niet dupliceert. */
+/**
+ * Stabiel over herhaalde runs, zodat een review zichzelf niet dupliceert.
+ *
+ * Het cijfer zit erin omdat naam + adres + datum niet uniek is: twee bewoners
+ * van hetzelfde huis schrijven allebei "Een funda gebruiker" op dezelfde dag.
+ * Dat is echt gebeurd (Surinamestraat 24, 1 juni 2025) en zonder het cijfer
+ * viel er één van de twee weg. Bewust géén stuk van de reviewtekst erin: dan
+ * zou een verbetering in de parser alle sleutels omgooien en elke review
+ * opnieuw aanmaken.
+ */
 export function reviewKey(parts: {
   type: string;
   name: string;
   address: string;
   date: string;
+  grade?: number;
 }): string {
-  const raw = [parts.type, parts.name, parts.address, parts.date]
+  const raw = [parts.type, parts.name, parts.address, parts.date, String(parts.grade ?? '')]
     .map((part) => part.trim().toLowerCase().replace(/\s+/g, ' '))
     .join('|');
   return createHash('sha1').update(raw).digest('hex').slice(0, 16);
@@ -230,19 +258,25 @@ export function parseReviews(html: string, type: FundaReviewType): ScrapedReview
     const before = text.slice(previousEnd, markerStart);
     const after = text.slice(markerStart + marker[0].length, nextStart);
 
+    // De makelaar mag onder een beoordeling reageren, en zo'n reactie heeft
+    // zijn eigen "Geschreven op". Zonder deze check wordt elke reactie een
+    // review met de deelcijfers van de vorige review als "adres".
+    if (isReply(before)) continue;
+
     const dateText = marker[1].trim();
     const { name, address } = parseNameAndAddress(before);
     if (!name && !address) continue;
 
+    const scores = parseScores(after);
     const review: ScrapedReview = {
-      key: reviewKey({ type, name, address, date: dateText }),
+      key: reviewKey({ type, name, address, date: dateText, grade: scores.grade }),
       name: name || address,
       address,
       type,
       dateText,
       date: parseDutchDate(dateText),
       quote: '',
-      ...parseScores(after),
+      ...scores,
     };
 
     review.quote = parseQuote(after);
@@ -255,6 +289,16 @@ export function parseReviews(html: string, type: FundaReviewType): ScrapedReview
 }
 
 /**
+ * "Reactie van Hart & Huis Makelaardij" staat direct boven de datum van een
+ * reactie van de makelaar zelf — daar staat bij een echte beoordeling de naam
+ * van de reviewer.
+ */
+function isReply(before: string): boolean {
+  const previousLine = lines(before).at(-1) ?? '';
+  return /^Reactie van\b/i.test(previousLine);
+}
+
+/**
  * De regels vlak vóór "Geschreven op" bevatten naam en adres. Op welke regel
  * ze staan verschilt, dus we gaan op cijfers af: een adres heeft een huisnummer
  * of postcode, een naam niet.
@@ -262,7 +306,9 @@ export function parseReviews(html: string, type: FundaReviewType): ScrapedReview
 function parseNameAndAddress(before: string): { name: string; address: string } {
   const candidates = lines(before).slice(-4);
   const address = [...candidates].reverse().find((line) => /\d/.test(line)) ?? '';
-  const name = [...candidates].reverse().find((line) => line !== address && !/\d/.test(line)) ?? '';
+  const name =
+    [...candidates].reverse().find((line) => line !== address && !/\d/.test(line)) ??
+    '';
   return { name, address };
 }
 
@@ -271,11 +317,15 @@ function parseScores(after: string): Partial<Record<'grade' | SubscoreField, num
   const scores: Partial<Record<'grade' | SubscoreField, number>> = {};
 
   const head = after.slice(0, subscoreStart(after));
-  const grade = parseGrade(head.match(new RegExp(String.raw`(?:^|\n)\s*(${GRADE_PATTERN})\s*(?:\n|$)`))?.[1]);
+  const grade = parseGrade(
+    head.match(new RegExp(String.raw`(?:^|\n)\s*(${GRADE_PATTERN})\s*(?:\n|$)`))?.[1],
+  );
   if (grade !== undefined) scores.grade = grade;
 
   for (const { field, label } of SUBSCORES) {
-    const match = after.match(new RegExp(`${labelPattern(label)}\\s*\\n?\\s*(${GRADE_PATTERN})`, 'i'));
+    const match = after.match(
+      new RegExp(`${labelPattern(label)}\\s*\\n?\\s*(${GRADE_PATTERN})`, 'i'),
+    );
     const value = parseGrade(match?.[1]);
     if (value !== undefined) scores[field] = value;
   }
@@ -298,7 +348,9 @@ const RECOMMENDATION_MAX_LENGTH = 120;
 function parseQuote(after: string): string {
   let body = lines(after.slice(0, subscoreStart(after)));
 
-  const gradeLine = body.findIndex((line) => new RegExp(`^${GRADE_PATTERN}$`).test(line));
+  const gradeLine = body.findIndex((line) =>
+    new RegExp(`^${GRADE_PATTERN}$`).test(line),
+  );
   if (gradeLine !== -1) body = body.slice(gradeLine + 1);
 
   if (
@@ -312,16 +364,18 @@ function parseQuote(after: string): string {
   return body.join(' ').replace(/\s+/g, ' ').trim();
 }
 
-/** Hoogste "Pagina N" in de paginering, of null als die er niet staat. */
-export function detectLastPage(html: string): number | null {
-  const pages = [...html.matchAll(/Pagina\s*(\d+)/gi)].map((match) => Number(match[1]));
-  return pages.length ? Math.max(...pages) : null;
+/**
+ * Voorbij de laatste pagina antwoordt de widget gewoon met 200 en deze zin.
+ * Dat is het stopsignaal van de lus — betrouwbaarder dan de paginering
+ * uitrekenen, en het onderscheidt "hier houdt het op" van "de parser is stuk".
+ */
+export function isEmptyPage(html: string): boolean {
+  return /geen beoordelingen om te tonen/i.test(html);
 }
 
 export type ScrapeOptions = {
   id: string;
   type: FundaReviewType;
-  colors?: string;
   maxPages?: number;
   delayMs?: number;
   fetchPage: (url: string) => Promise<string>;
@@ -331,47 +385,56 @@ export type ScrapeOptions = {
 export type ScrapeResult = {
   reviews: ScrapedReview[];
   pagesFetched: number;
-  lastPage: number | null;
   warnings: string[];
 };
 
 const DEFAULT_MAX_PAGES = 100;
 const DEFAULT_DELAY_MS = 1200;
 
-const defaultSleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+const defaultSleep = (ms: number) =>
+  new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 /**
- * Loopt de paginering af tot er niets nieuws meer bijkomt.
+ * Loopt `p1`, `p2`, … af tot de widget zegt dat er niets meer is.
  *
- * Of het paginanummer in de widget-URL écht andere reviews teruggeeft is niet
- * bevestigd, dus we vertrouwen er niet op: zodra een pagina alleen reviews
- * oplevert die we al hebben, stoppen we. Bij één pagina die zichzelf herhaalt
- * eindigen we dus na twee requests in plaats van honderd.
+ * Bewust niet de paginering uitlezen om te weten wanneer we klaar zijn: die
+ * toont een venster ("1 2 3 … 9") en gaat dus mis zodra Funda dat sjabloon
+ * verandert. Eén pagina te ver ophalen kost één request en is nooit fout.
+ *
+ * De dubbelencheck blijft eronder liggen: gaf `pN` ooit weer dezelfde reviews
+ * terug als `pN-1`, dan stoppen we na twee requests in plaats van honderd.
  */
-export async function scrapeFundaReviews(options: ScrapeOptions): Promise<ScrapeResult> {
+export async function scrapeFundaReviews(
+  options: ScrapeOptions,
+): Promise<ScrapeResult> {
   const maxPages = options.maxPages ?? DEFAULT_MAX_PAGES;
   const delayMs = options.delayMs ?? DEFAULT_DELAY_MS;
   const sleep = options.sleep ?? defaultSleep;
 
   const seen = new Map<string, ScrapedReview>();
   const warnings: string[] = [];
-  let lastPage: number | null = null;
   let pagesFetched = 0;
+  let parsed = 0;
 
   for (let page = 1; page <= maxPages; page += 1) {
     const html = await options.fetchPage(buildWidgetUrl({ ...options, page }));
     pagesFetched += 1;
 
-    if (lastPage === null) lastPage = detectLastPage(html);
-
     const reviews = parseReviews(html, options.type);
     if (reviews.length === 0) {
-      if (page === 1) warnings.push(`${options.type}: pagina 1 leverde 0 reviews op`);
+      // Geen reviews én geen "er zijn geen beoordelingen": dan lag het niet aan
+      // het einde van de lijst maar aan ons.
+      if (!isEmptyPage(html)) {
+        warnings.push(
+          `${options.type}: pagina ${page} leverde 0 reviews op en zegt niet dat hij leeg is — sjabloon gewijzigd?`,
+        );
+      } else if (page === 1) {
+        warnings.push(`${options.type}: dit tabblad heeft geen beoordelingen`);
+      }
       break;
     }
 
     const fresh = reviews.filter((review) => !seen.has(review.key));
-    for (const review of fresh) seen.set(review.key, review);
 
     if (fresh.length === 0) {
       warnings.push(
@@ -380,11 +443,22 @@ export async function scrapeFundaReviews(options: ScrapeOptions): Promise<Scrape
       break;
     }
 
-    if (lastPage && page >= lastPage) break;
-    if (page === maxPages) warnings.push(`${options.type}: gestopt op de limiet van ${maxPages} pagina's`);
+    for (const review of fresh) seen.set(review.key, review);
+    parsed += reviews.length;
+
+    if (page === maxPages)
+      warnings.push(`${options.type}: gestopt op de limiet van ${maxPages} pagina's`);
 
     await sleep(delayMs);
   }
 
-  return { reviews: [...seen.values()], pagesFetched, lastPage, warnings };
+  // Twee reviews met dezelfde sleutel worden één document in Sanity. Dat mag
+  // niet stilletjes gebeuren — zie `reviewKey` voor waar de sleutel op rust.
+  if (parsed > seen.size) {
+    warnings.push(
+      `${options.type}: ${parsed - seen.size} review(s) deelden een sleutel met een andere en zijn samengevallen`,
+    );
+  }
+
+  return { reviews: [...seen.values()], pagesFetched, warnings };
 }

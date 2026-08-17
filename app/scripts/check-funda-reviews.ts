@@ -2,10 +2,14 @@
  * Kleinste ding dat faalt als de Funda-parser breekt.
  * Run met: npm run check:funda
  *
- * Draait tegen `scripts/fixtures/funda-widget.html`. Zolang dat een nagebouwde
- * pagina is bewijst deze test alleen dat de parser doet wat hij belooft op de
- * structuur die we verwachten — niet dat die structuur klopt. Vervang de
- * fixture door een echte opgeslagen widget-pagina en draai dit opnieuw.
+ * De fixtures zijn **echte opgeslagen widget-pagina's** (17 augustus 2026):
+ * verkoop p1, verkoop p9 (de laatste, mét reacties van de makelaar) en aankoop
+ * p1. Deze test bewijst dus dat de parser werkt op de HTML zoals Funda die die
+ * dag teruggaf. Ververs ze met:
+ *
+ *   curl -s -A 'Mozilla/5.0' \
+ *     'https://www.funda.nl/beoordelingenwidget/live/10356/1/verkoop/p1/' \
+ *     > app/scripts/fixtures/funda-widget-verkoop-p1.html
  */
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -13,20 +17,41 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   buildWidgetUrl,
-  detectLastPage,
+  isEmptyPage,
   parseDutchDate,
   parseGrade,
   parseReviews,
   reviewDocumentId,
   reviewKey,
   scrapeFundaReviews,
+  stripTags,
   type FundaReviewType,
 } from '../src/lib/funda-reviews';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const fixture = readFileSync(path.join(__dirname, 'fixtures/funda-widget.html'), 'utf8');
+const fixture = (name: string) =>
+  readFileSync(path.join(__dirname, 'fixtures', `funda-widget-${name}.html`), 'utf8');
+
+const verkoopP1 = fixture('verkoop-p1');
+/** De laatste verkooppagina — hier staan ook reacties van de makelaar. */
+const verkoopP9 = fixture('verkoop-p9');
+const aankoopP1 = fixture('aankoop-p1');
+
+/** Wat de widget teruggeeft voorbij de laatste pagina. */
+const LEEG = '<html><body><p>Er zijn geen beoordelingen om te tonen.</p></body></html>';
 
 // ---------------------------------------------------------------- losse delen
+
+// het paginanummer staat achteraan als pN, het type in kleine letters, en de
+// slash op het eind hoort erbij — zonder slash antwoordt Funda met een 301
+assert.equal(
+  buildWidgetUrl({ id: '10356', page: 2, type: 'Verkoop' }),
+  'https://www.funda.nl/beoordelingenwidget/live/10356/1/verkoop/p2/',
+);
+assert.equal(
+  buildWidgetUrl({ id: '10356', page: 1, type: 'Aankoop' }),
+  'https://www.funda.nl/beoordelingenwidget/live/10356/1/aankoop/p1/',
+);
 
 assert.equal(parseDutchDate('12 juli 2026'), '2026-07-12');
 assert.equal(parseDutchDate('3 maart 2026'), '2026-03-03');
@@ -39,6 +64,14 @@ assert.equal(parseGrade('10'), 10);
 // buiten 0-10 is geen cijfer maar een verkeerd gelezen getal
 assert.equal(parseGrade('12'), undefined);
 assert.equal(parseGrade(''), undefined);
+
+// Funda codeert accenten als nummer; die horen niet zo in Sanity te belanden
+assert.equal(stripTags('<p>idee&#235;n &amp; caf&#xe9;</p>'), 'ideeën & café');
+// een naam die we niet kennen laten we liever staan dan wissen
+assert.equal(stripTags('<p>&hellip;</p>'), '&hellip;');
+
+assert.equal(isEmptyPage(LEEG), true);
+assert.equal(isEmptyPage(verkoopP1), false);
 
 // dezelfde review levert altijd hetzelfde id op, ook met andere spatiëring
 const key = reviewKey({ type: 'Verkoop', name: 'Marloes B.', address: 'Kerkstraat 12', date: '12 juli 2026' });
@@ -53,85 +86,86 @@ assert.notEqual(
 );
 assert.match(reviewDocumentId(key), /^funda-review-[0-9a-f]{16}$/);
 
-assert.equal(
-  buildWidgetUrl({ id: '10356', page: 2, type: 'Verkoop' }),
-  'https://www.funda.nl/beoordelingenwidget/10356/2/3=D7C3B9;6=61/Verkoop',
-);
+// twee bewoners van hetzelfde huis schrijven allebei anoniem op dezelfde dag —
+// dat is echt gebeurd, en alleen het cijfer houdt ze uit elkaar
+const zelfdeHuis = { type: 'Verkoop', name: 'Een funda gebruiker', address: 'Surinamestraat 24', date: '1 juni 2025' };
+assert.notEqual(reviewKey({ ...zelfdeHuis, grade: 10 }), reviewKey({ ...zelfdeHuis, grade: 9 }));
 
-assert.equal(detectLastPage(fixture), 2);
-assert.equal(detectLastPage('<p>geen paginering</p>'), null);
+// ------------------------------------------------------------ Verkoop-tabblad
 
-// ------------------------------------------------------------------- parseren
+const verkoop = parseReviews(verkoopP1, 'Verkoop');
+assert.equal(verkoop.length, 5, 'vijf beoordelingen per pagina');
 
-const reviews = parseReviews(fixture, 'Verkoop');
-assert.equal(reviews.length, 2, 'beide beoordelingen uit de fixture');
+const [eerste] = verkoop;
+assert.equal(eerste.name, 'Een funda gebruiker');
+assert.equal(eerste.address, 'Koperwiek 22');
+assert.equal(eerste.date, '2026-08-15');
+assert.equal(eerste.type, 'Verkoop');
+assert.equal(eerste.grade, 9.8);
+assert.equal(eerste.expertise, 10);
+assert.equal(eerste.localMarketKnowledge, 9);
+assert.equal(eerste.priceQuality, 10);
+assert.equal(eerste.serviceAndGuidance, 10);
+// de criteria van het andere tabblad staan niet op deze pagina
+assert.equal(eerste.accessibilityAndCommunication, undefined);
+assert.equal(eerste.negotiationAndResult, undefined);
 
-const [first, second] = reviews;
+// de boilerplate van Funda hoort er niet in, de tekst van de reviewer wel
+assert.match(eerste.quote, /^Dorien is een prettige makelaar/);
+assert.doesNotMatch(eerste.quote, /aanbevelen\./);
+// een naam of adres van de vólgende review mag niet in de vorige belanden
+assert.doesNotMatch(eerste.quote, /Milaanstraat/);
+// elke review heeft een tekst, een cijfer en vier deelcijfers
+for (const review of verkoop) {
+  assert.ok(review.quote.length > 20, `korte quote bij ${review.address}`);
+  assert.ok(review.grade !== undefined, `geen cijfer bij ${review.address}`);
+  assert.ok(review.expertise !== undefined, `geen deskundigheid bij ${review.address}`);
+  assert.ok(review.serviceAndGuidance !== undefined, `geen begeleiding bij ${review.address}`);
+}
 
-assert.equal(first.name, 'Marloes B.');
-assert.equal(first.address, 'Kerkstraat 12, Haarlem');
-assert.equal(first.date, '2026-07-12');
-assert.equal(first.type, 'Verkoop');
-assert.equal(first.grade, 9.5);
-assert.equal(first.expertise, 10);
-assert.equal(first.localMarketKnowledge, 10);
-assert.equal(first.priceQuality, 9);
-assert.equal(first.serviceAndGuidance, 9);
-
-// de aanbevelingsregel hoort er niet in, de tekst van de reviewer wel — ook
-// als die zelf "aanbevelen" schrijft
-assert.equal(
-  first.quote,
-  'Fantastische begeleiding gehad bij de verkoop van ons huis. Altijd snel antwoord op vragen & echt betrokken. Ik kan ze zeker aanbevelen.',
-);
-assert.doesNotMatch(first.quote, /zou deze makelaar aanbevelen/);
-// de tweede review gebruikt de andere formulering van dezelfde boilerplate
-assert.doesNotMatch(second.quote, /beveelt deze makelaar aan/);
-
-// een naam van de vólgende review mag niet in de vorige belanden
-assert.doesNotMatch(first.quote, /De Vries/);
-assert.equal(second.name, 'Familie De Vries');
-assert.equal(second.grade, 10);
-assert.equal(second.quote, 'Dorien nam ons stap voor stap mee door het hele proces. Fijne samenwerking.');
-
-// ------------------------------------------------------- het andere tabblad
+// --------------------------------------------- reacties van de makelaar zelf
 
 /**
- * Aankoop vraagt vier ándere criteria uit dan Verkoop. Bewust inline en niet
- * als tweede fixture: er is nog geen echte Aankoop-pagina opgeslagen, dus dit
- * bewijst alleen dat de parser beide labelsets aankan. De hoofdletters wijken
- * met opzet af — Funda schrijft ze niet overal hetzelfde.
+ * Onder een beoordeling mag de makelaar reageren, en zo'n reactie heeft zijn
+ * eigen "Geschreven op". Die mag er niet als beoordeling in belanden: hij heeft
+ * geen cijfers, dus hij zou het gemiddelde en de telling op /beoordelingen
+ * vervuilen — en het "adres" werd het laatste deelcijfer van de review erboven.
  */
-const aankoopFixture = `
-<div class="beoordeling">
-  <div class="naam">Joost en Anne</div>
-  <div class="woning">Zijlweg 8, Haarlem<span>Geschreven op 4 mei 2026</span></div>
-  <div class="cijfer">9</div>
-  <div class="aanbeveling">Deze klant zou deze makelaar aanbevelen.</div>
-  <p>Scherp onderhandeld, we kregen het huis onder de vraagprijs.</p>
-  <div class="deelcijfer"><span>Bereikbaarheid en Communicatie</span><span>9,5</span></div>
-  <div class="deelcijfer"><span>Deskundigheid</span><span>9</span></div>
-  <div class="deelcijfer"><span>Onderhandeling en resultaat</span><span>10</span></div>
-  <div class="deelcijfer"><span>Prijs / kwaliteit</span><span>8</span></div>
-</div>`;
+const metReacties = parseReviews(verkoopP9, 'Verkoop');
+assert.equal(metReacties.length, 2, 'twee beoordelingen, twee reacties overgeslagen');
+assert.deepEqual(
+  metReacties.map((review) => review.address),
+  ['de Leeuwstraat 2', 'Joh van der Waeyenstraat 2'],
+);
+for (const review of metReacties) {
+  assert.ok(review.grade !== undefined, `geen cijfer bij ${review.address}`);
+  assert.ok(review.expertise !== undefined, `geen deelcijfers bij ${review.address}`);
+  assert.doesNotMatch(review.quote, /Bedankt voor de mooie beoordeling/);
+}
 
-const [aankoop] = parseReviews(aankoopFixture, 'Aankoop');
-assert.equal(aankoop.name, 'Joost en Anne');
-assert.equal(aankoop.grade, 9);
-assert.equal(aankoop.accessibilityAndCommunication, 9.5);
-assert.equal(aankoop.expertise, 9);
-assert.equal(aankoop.negotiationAndResult, 10);
-assert.equal(aankoop.priceQuality, 8);
-// criteria van het andere tabblad blijven leeg in plaats van 0
-assert.equal(aankoop.localMarketKnowledge, undefined);
-assert.equal(aankoop.serviceAndGuidance, undefined);
-// het cijferblok begint hier bij een ánder label dan bij Verkoop; de tekst
-// mag daar niet in doorlopen
-assert.equal(aankoop.quote, 'Scherp onderhandeld, we kregen het huis onder de vraagprijs.');
+// ------------------------------------------------------------ Aankoop-tabblad
 
-// en andersom: een Verkoop-review krijgt geen Aankoop-cijfers
-assert.equal(first.negotiationAndResult, undefined);
-assert.equal(first.accessibilityAndCommunication, undefined);
+const aankoop = parseReviews(aankoopP1, 'Aankoop');
+assert.equal(aankoop.length, 5);
+
+const [koper] = aankoop;
+assert.equal(koper.name, 'Sophie Schipperijn');
+assert.equal(koper.address, 'Volhardingstraat 2 A03');
+assert.equal(koper.date, '2026-06-16');
+assert.equal(koper.grade, 10);
+// Aankoop vraagt vier ándere criteria uit dan Verkoop
+assert.equal(koper.accessibilityAndCommunication, 10);
+assert.equal(koper.expertise, 10);
+assert.equal(koper.negotiationAndResult, 10);
+assert.equal(koper.priceQuality, 10);
+assert.equal(koper.localMarketKnowledge, undefined);
+assert.equal(koper.serviceAndGuidance, undefined);
+// het cijferblok begint hier bij een ánder label; de tekst mag daar niet in
+// doorlopen
+assert.equal(
+  koper.quote,
+  'Fijne en persoonlijke begeleiding, waarbij goed mee werd gedacht en waardevolle informatie en advies werd gegeven. Zonder Dorien was het mij zeker niet gelukt om wat te kopen, dus ik ben erg blij met deze keuze!',
+);
 
 // -------------------------------------------------------------- de hele lus
 
@@ -145,35 +179,58 @@ async function run(pages: Record<number, string>, type: FundaReviewType = 'Verko
       delayMs: 0,
       fetchPage: async (url) => {
         fetched.push(url);
-        const page = Number(url.match(/\/(\d+)\/\d=/)?.[1] ?? 1);
-        return pages[page] ?? '';
+        const page = Number(url.match(/\/p(\d+)\/$/)?.[1] ?? 1);
+        return pages[page] ?? LEEG;
       },
     }),
   };
 }
 
 async function checkPagination() {
-  // "Pagina 2" in de fixture: er wordt een tweede pagina opgehaald
-  const twoPages = await run({ 1: fixture, 2: fixture.replace(/Marloes B\./, 'Sanne K.') });
-  assert.equal(twoPages.result.pagesFetched, 2);
-  assert.equal(twoPages.result.lastPage, 2);
-  assert.equal(twoPages.result.reviews.length, 3, 'Sanne erbij, de rest ontdubbeld');
+  // twee echte pagina's achter elkaar: allemaal verschillende reviews, en de
+  // lus stopt pas als de widget zegt dat er niets meer is
+  const beide = await run({ 1: verkoopP1, 2: verkoopP9 });
+  assert.equal(beide.result.pagesFetched, 3, 'p1, p2 en de lege p3');
+  assert.equal(beide.result.reviews.length, 7, '5 van p1 + de 2 echte van p9');
+  assert.deepEqual(beide.result.warnings, []);
+  assert.deepEqual(beide.fetched.slice(-1), [
+    'https://www.funda.nl/beoordelingenwidget/live/10356/1/verkoop/p3/',
+  ]);
 
-  // Als het paginanummer genegeerd wordt en pagina 2 hetzelfde teruggeeft,
-  // stoppen we na twee requests in plaats van door te blijven pompen.
-  const repeating = await run({ 1: fixture, 2: fixture });
-  assert.equal(repeating.result.pagesFetched, 2);
-  assert.equal(repeating.result.reviews.length, 2);
-  assert.match(repeating.result.warnings.join(' '), /herhaalde pagina/);
+  // Gaf pN ooit weer hetzelfde terug als pN-1, dan stoppen we na twee requests
+  // in plaats van door te blijven pompen.
+  const herhaling = await run({ 1: verkoopP1, 2: verkoopP1 });
+  assert.equal(herhaling.result.pagesFetched, 2);
+  assert.equal(herhaling.result.reviews.length, 5);
+  assert.match(herhaling.result.warnings.join(' '), /herhaalde pagina/);
+
+  // Vallen twee reviews tóch op dezelfde sleutel, dan wordt het er één in
+  // Sanity — dat mag niet stil gebeuren.
+  const dubbel = await run({ 1: verkoopP1 + verkoopP1 });
+  assert.match(dubbel.result.warnings.join(' '), /deelden een sleutel/);
 
   // Een leeg tabblad is geen crash, maar wel een waarschuwing.
-  const empty = await run({});
-  assert.equal(empty.result.reviews.length, 0);
-  assert.match(empty.result.warnings.join(' '), /0 reviews/);
+  const leeg = await run({});
+  assert.equal(leeg.result.reviews.length, 0);
+  assert.match(leeg.result.warnings.join(' '), /geen beoordelingen/);
+
+  // Een pagina die niets zegt én niets oplevert is een kapotte parser, geen
+  // einde van de lijst — die moet hard opvallen.
+  const stuk = await run({ 1: '<html><body><p>iets heel anders</p></body></html>' });
+  assert.match(stuk.result.warnings.join(' '), /sjabloon gewijzigd/);
+
+  // Aankoop loopt door dezelfde lus, met zijn eigen URL's
+  const kopers = await run({ 1: aankoopP1 }, 'Aankoop');
+  assert.equal(kopers.result.reviews.length, 5);
+  assert.match(kopers.fetched[0], /\/aankoop\/p1\/$/);
 }
 
 checkPagination()
-  .then(() => console.log(`✓ funda-parser ok — ${reviews.length} reviews uit de fixture`))
+  .then(() =>
+    console.log(
+      `✓ funda-parser ok — ${verkoop.length} verkoop- + ${aankoop.length} aankoopreviews uit echte pagina's`,
+    ),
+  )
   .catch((error) => {
     console.error(error);
     process.exit(1);

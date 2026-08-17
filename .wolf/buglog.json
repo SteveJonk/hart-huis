@@ -76,6 +76,83 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-17T15:40:00Z"
+    },
+    {
+      "id": "bug-005",
+      "timestamp": "2026-08-17T16:20:00Z",
+      "error_message": "Gebruiker: 'Only pagination does not work' — de scraper haalde altijd pagina 1 op",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "buildWidgetUrl zette het paginanummer in het segment ná het makelaar-id en het type met een hoofdletter. De echte widget-URL is /beoordelingenwidget/live/{id}/1/{type in kleine letters}/p{page}/ — dat segment is een vaste 1 en het paginanummer staat achteraan als pN. Zonder afsluitende slash antwoordt Funda bovendien met een 301.",
+      "fix": "URL-opbouw gecorrigeerd. Ook detectLastPage weggehaald: de paginering toont maar een venster van nummers, dus daar het einde uit afleiden is fragiel. De lus stopt nu op 'Er zijn geen beoordelingen om te tonen' (isEmptyPage), en waarschuwt als een pagina 0 reviews geeft zonder die zin — dan ligt het aan de parser.",
+      "tags": [
+        "funda",
+        "scraper",
+        "paginering",
+        "url"
+      ],
+      "related_bugs": [
+        "bug-006"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T16:20:00Z"
+    },
+    {
+      "id": "bug-006",
+      "timestamp": "2026-08-17T16:35:00Z",
+      "error_message": "Live run gaf 48 verkoopreviews terwijl de widget er 42 noemt; sommige zonder cijfer, één met adres '9' en cijfer 1",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "Vanaf pagina 3 staan er reacties van de makelaar onder een beoordeling ('Reactie van Hart & Huis Makelaardij'). Zo'n reactie heeft zijn eigen 'Geschreven op', dus de parser maakte er een review van — met het laatste deelcijfer van de review erboven als 'adres'. Die nepreviews hebben geen cijfers en zouden het gemiddelde en de telling op /beoordelingen vervuilen.",
+      "fix": "isReply(): staat er vlak vóór de datum een regel die met 'Reactie van' begint, dan is het blok een reactie en wordt het overgeslagen. Fixture verkoop p9 (met twee reacties) toegevoegd aan check:funda.",
+      "tags": [
+        "funda",
+        "scraper",
+        "parser",
+        "reviews",
+        "reactie"
+      ],
+      "related_bugs": [
+        "bug-005",
+        "bug-007"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T16:35:00Z"
+    },
+    {
+      "id": "bug-007",
+      "timestamp": "2026-08-17T16:50:00Z",
+      "error_message": "41 unieke reviews uit 42 geparsede: één verkoopreview viel weg bij het ontdubbelen",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "reviewKey hashte type + naam + adres + datum. Twee bewoners van Surinamestraat 24 schreven op 1 juni 2025 allebei een beoordeling, allebei anoniem als 'Een funda gebruiker' — zelfde sleutel, dus zelfde Sanity-_id, dus één van de twee verdween.",
+      "fix": "Het cijfer (10 vs 9) zit nu in de hash. Bewust geen stuk reviewtekst: dan zou elke verbetering in de parser alle sleutels omgooien en alles opnieuw aanmaken. Botsen er ooit tóch twee, dan zet de lus dat als waarschuwing in het antwoord in plaats van er stilletjes één te laten vallen.",
+      "tags": [
+        "funda",
+        "scraper",
+        "dedup",
+        "hash",
+        "sanity"
+      ],
+      "related_bugs": [
+        "bug-006"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T16:50:00Z"
+    },
+    {
+      "id": "bug-008",
+      "timestamp": "2026-08-17T16:15:00Z",
+      "error_message": "Reviewtekst bevatte letterlijk 'idee&#235;n' in plaats van 'ideeën'",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "stripTags decodeerde alleen een handvol benoemde entiteiten (&nbsp; &amp; &quot; &#39; &lt; &gt;). Funda codeert accenten als nummer, dus die kwamen als ruwe entiteit in Sanity terecht.",
+      "fix": "Eén decodeerstap voor decimale, hexadecimale en benoemde entiteiten, in één doorgang zodat een gedecodeerde & niet nog eens gelezen wordt. Onbekende namen blijven staan in plaats van te verdwijnen.",
+      "tags": [
+        "funda",
+        "scraper",
+        "html",
+        "entities"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T16:15:00Z"
     }
   ]
 }

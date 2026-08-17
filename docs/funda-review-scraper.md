@@ -10,10 +10,16 @@ bot-challenge — maar de **beoordelingenwidget** die makelaars op hun eigen sit
 embedden:
 
 ```
-https://www.funda.nl/beoordelingenwidget/{makelaarId}/{page}/{colors}/{type}
+https://www.funda.nl/beoordelingenwidget/live/{makelaarId}/1/{type}/p{page}/
 ```
 
-`type` is `Aankoop` of `Verkoop`, `makelaarId` is `10356` voor Hart & Huis.
+`type` is `aankoop` of `verkoop` (kleine letters), `makelaarId` is `10356` voor
+Hart & Huis. Het segment tussen het id en het type is een vaste `1` — het
+paginanummer staat achteraan als `p1`, `p2`, … De slash op het eind hoort erbij:
+zonder slash antwoordt Funda met een 301. Voorbij de laatste pagina komt er een
+gewone 200 terug met "Er zijn geen beoordelingen om te tonen" — dát is het
+stopsignaal van de lus, niet de paginering onderaan de widget (die toont maar
+een venster van paginanummers).
 
 | Onderdeel | Bestand |
 | --- | --- |
@@ -25,10 +31,15 @@ https://www.funda.nl/beoordelingenwidget/{makelaarId}/{page}/{colors}/{type}
 | Test | `app/scripts/check-funda-reviews.ts` (`npm run check:funda`) |
 
 Elke review krijgt een `_id` van `funda-review-<hash>`, waarbij de hash over
-type + naam + adres + datum gaat. Een tweede run raakt dus dezelfde documenten
-aan in plaats van kopieën te maken, en verwijzingen (zoals de uitgelichte
-review op /beoordelingen) blijven heel. Funda is de bron: bij een wijziging
-overschrijft de scraper de tekst en de cijfers in Sanity.
+type + naam + adres + datum + cijfer gaat. Het cijfer zit erin omdat de rest
+niet uniek is: twee bewoners van hetzelfde huis schrijven allebei als "Een funda
+gebruiker" op dezelfde dag (Surinamestraat 24, 1 juni 2025). Vallen er ooit tóch
+twee op dezelfde sleutel, dan zegt het antwoord dat erbij.
+
+Een tweede run raakt dus dezelfde documenten aan in plaats van kopieën te maken,
+en verwijzingen (zoals de uitgelichte review op /beoordelingen) blijven heel.
+Funda is de bron: bij een wijziging overschrijft de scraper de tekst en de
+cijfers in Sanity.
 
 ## Instellen
 
@@ -83,31 +94,35 @@ curl -H "x-scraper-secret: $FUNDA_SCRAPER_SECRET" \
 ```
 
 Parameters: `dryRun=1`, `debug=1`, `type=Aankoop|Verkoop`, `maxPages=N`,
-`id=<makelaarId>`, `colors=<widgetkleuren>`.
+`id=<makelaarId>`.
 
-## Wat nog niet geverifieerd is
+## Wat wel en niet geverifieerd is
 
-funda.nl was niet bereikbaar vanuit de omgeving waarin dit gebouwd is (de
-egress-proxy blokkeert de host), dus:
+Op 17 augustus 2026 is de scraper voor het eerst tegen de echte funda.nl
+gedraaid (lokaal, zonder wegschrijven): **42 verkoop- en 12 aankoopreviews over
+10 respectievelijk 4 pagina's, zonder waarschuwingen** — precies de aantallen
+die de widget zelf bovenaan noemt. Alle 54 hadden een cijfer, een datum en vier
+deelcijfers.
 
-1. **De HTML-structuur is afgeleid uit het scrape-script, niet uit funda.nl.**
-   `app/scripts/fixtures/funda-widget.html` is een nagebouwde pagina. De test
-   bewijst dat de parser doet wat hij belooft op die structuur — niet dat die
-   structuur klopt. Sla een echte pagina op over de fixture heen en draai
-   `npm run check:funda` opnieuw:
+De fixtures onder `app/scripts/fixtures/` zijn sindsdien **echte opgeslagen
+pagina's** (verkoop p1, verkoop p9 en aankoop p1), dus `npm run check:funda`
+draait tegen de HTML zoals Funda die die dag teruggaf. Ververs ze zo:
 
-   ```bash
-   curl -s 'https://www.funda.nl/beoordelingenwidget/10356/1/3=D7C3B9;6=61/Verkoop' \
-     > app/scripts/fixtures/funda-widget.html
-   ```
+```bash
+curl -s -A 'Mozilla/5.0' \
+  'https://www.funda.nl/beoordelingenwidget/live/10356/1/verkoop/p1/' \
+  > app/scripts/fixtures/funda-widget-verkoop-p1.html
+```
 
-2. **Of het paginanummer in de widget-URL werkt, is onbevestigd.** De scraper
-   vertrouwt er niet op: zodra een pagina alleen reviews oplevert die hij al
-   heeft, stopt hij en zet er een waarschuwing bij in het antwoord. Blijkt de
-   paginering niet te werken, dan zie je dat terug als "pagina 2 herhaalde
-   pagina 1" plus een verdacht laag aantal reviews.
+Wat nog aandacht vraagt:
 
-3. **De deelcijfers verschillen per tabblad.** Funda vraagt kopers en verkopers
+1. **Het sjabloon kan wijzigen.** Levert een pagina 0 reviews op zonder te
+   zeggen dat hij leeg is, dan zegt het antwoord "sjabloon gewijzigd?" — draai
+   dan `?debug=1` en vergelijk de labels. Twee dingen waar de parser op steunt:
+   "Geschreven op" markeert het begin van een blok, en "Reactie van …" markeert
+   een reactie van de makelaar (die is géén beoordeling en wordt overgeslagen).
+
+2. **De deelcijfers verschillen per tabblad.** Funda vraagt kopers en verkopers
    andere criteria:
 
    | Aankoop | Verkoop |
@@ -126,10 +141,6 @@ egress-proxy blokkeert de host), dus:
    bepaalt `GRADE_SUBJECTS` in `app/src/lib/reviews.ts`, op `type`. In de studio
    verbergt het schema de velden van het andere type.
 
-   De Aankoop-labels zijn **nog niet tegen een echte pagina gecontroleerd** —
-   die van Verkoop wel. Levert de eerste echte run lege Aankoop-deelcijfers op,
-   draai dan `?debug=1&type=Aankoop` en vergelijk de labels.
-
-4. **De vier mock-reviews uit `npm run seed:home` staan er nog.** Die hebben
+3. **De vier mock-reviews uit `npm run seed:home` staan er nog.** Die hebben
    geen cijfers en tellen wel mee in `reviewStats`. Verwijder ze in de studio
    zodra de eerste echte run geslaagd is.
