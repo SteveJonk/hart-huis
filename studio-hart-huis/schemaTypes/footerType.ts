@@ -37,6 +37,11 @@ export const footerType = defineType({
   icon: BlockElementIcon,
   fields: [
     defineField({
+      name: 'paragraph',
+      title: 'Paragraph',
+      type: 'text',
+    }),
+    defineField({
       name: 'socialLinks',
       title: 'Social links',
       type: 'array',
@@ -46,9 +51,17 @@ export const footerType = defineType({
           name: 'socialLink',
           fields: [
             defineField({
+              title: 'Platform',
               name: 'platform',
               type: 'string',
-              validation: (rule) => rule.required(),
+              options: {
+                list: [
+                  {title: 'Facebook', value: 'facebook'},
+                  {title: 'Instagram', value: 'instagram'},
+                  {title: 'LinkedIn', value: 'linkedin'},
+                ],
+                layout: 'dropdown',
+              },
             }),
             defineField({
               name: 'url',

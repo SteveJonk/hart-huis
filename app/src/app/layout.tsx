@@ -29,6 +29,7 @@ type SanityNavigation = {
 } | null;
 
 type SanityFooter = {
+  paragraph?: string | null;
   linkGroups?: Array<{
     title?: string | null;
     links?: SanityLabeledLink[] | null;

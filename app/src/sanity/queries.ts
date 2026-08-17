@@ -223,6 +223,7 @@ export const NAVIGATION_QUERY = defineQuery(`
 
 export const FOOTER_QUERY = defineQuery(`
   *[_id == "footer"][0]{
+    paragraph,
     linkGroups[]{
       title,
       links[]${linkExpansion}

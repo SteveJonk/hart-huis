@@ -1,12 +1,7 @@
 import { LogoMark } from '@/components/ui/LogoMark';
 import { Wrap } from '@/components/ui/Wrap';
 import { cn } from '@/lib/cn';
-import {
-  FOOTER_CERTS,
-  SITE,
-  type FooterLinkGroup,
-  type NavLink,
-} from '@/lib/site';
+import { FOOTER_CERTS, SITE, type FooterLinkGroup, type NavLink } from '@/lib/site';
 import Link from 'next/link';
 
 function FooterLinkList({ links }: { links: NavLink[] }) {
@@ -27,14 +22,12 @@ function FooterLinkList({ links }: { links: NavLink[] }) {
 }
 
 type SiteFooterProps = {
+  paragraph?: string | null;
   linkGroups?: FooterLinkGroup[] | null;
   copyright?: string | null;
 };
 
-export function SiteFooter({
-  linkGroups = [],
-  copyright,
-}: SiteFooterProps) {
+export function SiteFooter({ linkGroups = [], copyright }: SiteFooterProps) {
   const groups = linkGroups ?? [];
 
   return (

@@ -90,10 +90,12 @@ export function ObjectGrid({
   }, [items, status, plaats, prijs, sortering]);
 
   const page = shown.slice(0, visible);
-  const reset = <T,>(set: (value: T) => void) => (value: T) => {
-    set(value);
-    setVisible(AANBOD_PAGE_SIZE);
-  };
+  const reset =
+    <T,>(set: (value: T) => void) =>
+    (value: T) => {
+      set(value);
+      setVisible(AANBOD_PAGE_SIZE);
+    };
 
   const gridCta =
     shown.length > 0 ? (
