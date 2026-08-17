@@ -3,64 +3,32 @@ import { notFound } from 'next/navigation';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import type { ListingItem } from '@/components/blocks/Listings';
 import { ObjectDescription } from '@/components/object/ObjectDescription';
-import { ObjectFeatures, type KenmerkGroep } from '@/components/object/ObjectFeatures';
+import { ObjectFeatures } from '@/components/object/ObjectFeatures';
 import { ObjectGallery, type GalleryPhoto } from '@/components/object/ObjectGallery';
 import { ObjectHeader } from '@/components/object/ObjectHeader';
 import { ObjectSidebar } from '@/components/object/ObjectSidebar';
 import { SimilarObjects } from '@/components/object/SimilarObjects';
 import { Wrap } from '@/components/ui/Wrap';
 import { client } from '@/sanity/client';
-import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
-import { pageMetadata, type SanitySeo } from '@/sanity/metadata';
+import { imageSrc, toImage } from '@/sanity/image';
+import { pageMetadata } from '@/sanity/metadata';
 import { WONING_QUERY } from '@/sanity/queries';
+import type { WONING_QUERY_RESULT } from '@/sanity/sanity.types';
 import { euro } from '@/lib/format';
 import { OBJECT_CTA, statusOf } from '@/lib/object-content';
 
 const options = { next: { revalidate: 30 } };
 
-type WoningCard = {
-  adres: string;
-  slug: string;
-  plaats: string;
-  status?: string | null;
-  prijs?: number | null;
-  woonoppervlak?: number | null;
-  kamers?: number | null;
-  foto?: SanityImage | null;
-};
-
-type Woning = {
-  adres: string;
-  slug: string;
-  postcode?: string | null;
-  plaats: string;
-  status?: string | null;
-  prijs?: number | null;
-  prijsConditie?: string | null;
-  aangebodenSinds?: string | null;
-  aanvaarding?: string | null;
-  soortWoning?: string | null;
-  bouwjaar?: number | null;
-  woonoppervlak?: number | null;
-  perceel?: number | null;
-  inhoud?: number | null;
-  kamers?: number | null;
-  slaapkamers?: number | null;
-  energielabel?: string | null;
-  kenmerkGroepen?: KenmerkGroep[] | null;
-  aanbiedingsTekst?: string | null;
-  fotos?: SanityImage[] | null;
-  brochureUrl?: string | null;
-  seo?: SanitySeo | null;
-  vergelijkbaar?: WoningCard[] | null;
-};
+/** Precies wat WONING_QUERY teruggeeft — afgeleid, niet nagetypt. */
+type Woning = NonNullable<WONING_QUERY_RESULT>;
+type WoningCard = Woning['vergelijkbaar'][number];
 
 type ObjectPageProps = {
   params: Promise<{ slug: string }>;
 };
 
 function getWoning(slug: string) {
-  return client.fetch<Woning | null>(WONING_QUERY, { slug }, options);
+  return client.fetch(WONING_QUERY, { slug }, options);
 }
 
 function toCard(woning: WoningCard): ListingItem {

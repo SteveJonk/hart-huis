@@ -190,3 +190,12 @@
 | 20:10 | Contactformulier gefixt: generieke veld-projecties in PAGE_QUERY na de conditionele takken gezet (conditionele `...` clobberde `form->`), debug-log/`<pre>` weg, CONTACT_FORM_QUERY terug naar defineQuery | app/src/sanity/queries.ts, app/src/components/PageBuilder.tsx, app/src/components/blocks/ContactForm.tsx | Form rendert op /contact (6 velden), tsc schoon, groq-js-test bevestigt form-> + hero/aside cta | ~25k |
 | 21:05 | Home: `listings` toont nu de 3 nieuwste woningen en `reviews` de 8 nieuwste reviews, handmatige selectie uit beide schema's gehaald; `toListing` naar Listings.tsx verhuisd (client boundary); seed opgeschoond | app/src/sanity/queries.ts, PageBuilder.tsx, Listings.tsx, ObjectGrid.tsx, scripts/seed/home.ts, studio: listingsType/reviewsType | 3 kaarten + 8 reviews live op /, /beoordelingen weer 9 kaarten, tsc + lint schoon | ~40k |
 | 21:35 | Mobiel-zoom-bug in reviews-carousel gefixt: `[contain:layout]` op de track — zonder die regel lekte de scrollbare breedte naar de paginabreedte zodra er 8 i.p.v. ~4 kaarten stonden | app/src/components/blocks/Reviews.tsx | docSW 375 op mobiel / 1280 op desktop met 8 kaarten, carousel + dialog blijven werken | ~15k |
+
+## Session: 2026-08-17 20:02
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 20:15 | Redirected typegen output to app/src/sanity, added query glob for app | studio-hart-huis/sanity-typegen.json (new), studio-hart-huis/sanity.types.ts → app/src/sanity/sanity.types.ts (git mv) | Config added; `openwolf` CLI unavailable here so anatomy.md not rescanned — run `openwolf scan` next session | ~2k |
+| 20:40 | Typegen-config verplaatst naar `typegen` in sanity.cli.ts (los bestand is deprecated); schema.json + types nu in app/src/sanity; `--force` en `--enforce-required-fields` toegevoegd; `npm run typegen` werkt vanuit beide mappen | studio-hart-huis/{sanity.cli.ts,package.json}, app/package.json, app/src/sanity/{schema.json,sanity.types.ts} | Werkt, herhaalbaar, 6 queries + 70 schematypes | ~12k |
+| 20:55 | Gegenereerde queryresultaat-types overgenomen op de fetch-grens; ~87 regels handgeschreven types weg | app/src/app/layout.tsx, app/src/app/api/submit-form/route.ts, app/src/app/aanbod/[slug]/page.tsx | tsc + eslint schoon | ~10k |
+| 21:10 | PageBuilder getypt vanuit PAGE_QUERY_RESULT i.p.v. `[key: string]: unknown`; 143 van de 159 casts weg, default-tak is nu `never` | app/src/components/PageBuilder.tsx | tsc + eslint schoon; 2 latente bugs gevonden (bug-013 seo, bug-014 badgeValue) | ~18k |

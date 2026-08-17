@@ -23,20 +23,6 @@ const sans = Inter_Tight({
 
 const options = { next: { revalidate: 30 } };
 
-type SanityNavigation = {
-  navLeft?: SanityLabeledLink[] | null;
-  navRight?: SanityLabeledLink[] | null;
-} | null;
-
-type SanityFooter = {
-  paragraph?: string | null;
-  linkGroups?: Array<{
-    title?: string | null;
-    links?: SanityLabeledLink[] | null;
-  } | null> | null;
-  copyright?: string | null;
-} | null;
-
 function asNavLinks(links: SanityLabeledLink[] | null | undefined): NavLink[] {
   return (links ?? [])
     .map((link) => toLabeledHref(link))
@@ -49,21 +35,19 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const [navigation, footer] = await Promise.all([
-    client.fetch<SanityNavigation>(NAVIGATION_QUERY, {}, options),
-    client.fetch<SanityFooter>(FOOTER_QUERY, {}, options),
+    client.fetch(NAVIGATION_QUERY, {}, options),
+    client.fetch(FOOTER_QUERY, {}, options),
   ]);
 
   const navLeft = asNavLinks(navigation?.navLeft);
   const navRight = asNavLinks(navigation?.navRight);
 
-  const linkGroups: FooterLinkGroup[] = (footer?.linkGroups ?? [])
-    .filter((group): group is { title: string; links?: SanityLabeledLink[] | null } =>
-      Boolean(group?.title),
-    )
-    .map((group) => ({
-      title: group.title,
-      links: asNavLinks(group.links),
-    }));
+  // flatMap in plaats van filter + type-predicate: het queryresultaat is een
+  // union (een ontbrekend document geeft overal null), en een predicate zou
+  // daar een eigen vorm overheen leggen die niet meer klopt.
+  const linkGroups: FooterLinkGroup[] = (footer?.linkGroups ?? []).flatMap((group) =>
+    group.title ? [{ title: group.title, links: asNavLinks(group.links) }] : [],
+  );
 
   return (
     <html

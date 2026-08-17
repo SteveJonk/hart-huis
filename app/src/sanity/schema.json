@@ -10,21 +10,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "body": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "cta": {
           "type": "objectAttribute",
@@ -48,21 +48,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "name": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "role": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "links": {
           "type": "objectAttribute",
@@ -76,7 +76,7 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "link": {
                   "type": "objectAttribute",
@@ -116,14 +116,14 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "body": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "items": {
           "type": "objectAttribute",
@@ -155,14 +155,14 @@
                       }
                     ]
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "title": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "subtitle": {
                   "type": "objectAttribute",
@@ -333,7 +333,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "_type": {
           "type": "objectAttribute",
@@ -473,7 +473,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
@@ -668,7 +668,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "review": {
           "type": "objectAttribute",
@@ -676,7 +676,7 @@
             "type": "inline",
             "name": "review.reference"
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -713,7 +713,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "titleHighlight": {
           "type": "objectAttribute",
@@ -832,7 +832,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "titleHighlight": {
           "type": "objectAttribute",
@@ -877,21 +877,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "columns": {
           "type": "objectAttribute",
@@ -905,14 +905,14 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "body": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -928,7 +928,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "cta": {
           "type": "objectAttribute",
@@ -979,7 +979,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -990,7 +990,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -1043,21 +1043,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "form": {
           "type": "objectAttribute",
@@ -1065,7 +1065,7 @@
             "type": "inline",
             "name": "contactForm.reference"
           },
-          "optional": true
+          "optional": false
         },
         "note": {
           "type": "objectAttribute",
@@ -1079,14 +1079,14 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "successBody": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "aside": {
           "type": "objectAttribute",
@@ -1153,7 +1153,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -1164,28 +1164,28 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "body": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "person": {
           "type": "objectAttribute",
@@ -1193,7 +1193,7 @@
             "type": "inline",
             "name": "person"
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -1241,28 +1241,28 @@
                       }
                     ]
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "title": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "body": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "value": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "note": {
                   "type": "objectAttribute",
@@ -1293,7 +1293,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -1316,21 +1316,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "titleHighlight": {
           "type": "objectAttribute",
@@ -1344,7 +1344,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "primaryCta": {
           "type": "objectAttribute",
@@ -1403,7 +1403,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -1414,7 +1414,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -1437,21 +1437,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "cards": {
           "type": "objectAttribute",
@@ -1465,21 +1465,21 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "title": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "body": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "items": {
                   "type": "objectAttribute",
@@ -1493,7 +1493,7 @@
                           "value": {
                             "type": "string"
                           },
-                          "optional": true
+                          "optional": false
                         },
                         "included": {
                           "type": "objectAttribute",
@@ -1516,7 +1516,7 @@
                       }
                     }
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "cta": {
                   "type": "objectAttribute",
@@ -1524,7 +1524,7 @@
                     "type": "inline",
                     "name": "cta"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "dark": {
                   "type": "objectAttribute",
@@ -1547,7 +1547,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -1570,21 +1570,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "items": {
           "type": "objectAttribute",
@@ -1598,14 +1598,14 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "body": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -1621,7 +1621,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -1644,14 +1644,14 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "paragraphs": {
           "type": "objectAttribute",
@@ -1661,7 +1661,7 @@
               "type": "string"
             }
           },
-          "optional": true
+          "optional": false
         },
         "cta": {
           "type": "objectAttribute",
@@ -1712,7 +1712,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -1723,7 +1723,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -1746,21 +1746,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "items": {
           "type": "objectAttribute",
@@ -1788,21 +1788,21 @@
                       }
                     ]
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "title": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "body": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -1818,7 +1818,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -1841,21 +1841,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "items": {
           "type": "objectAttribute",
@@ -1869,21 +1869,21 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "title": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "body": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "image": {
                   "type": "objectAttribute",
@@ -1907,7 +1907,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -1966,7 +1966,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -1977,21 +1977,21 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "stampValue": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "stampLabel": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "secondaryImage": {
           "type": "objectAttribute",
@@ -2034,7 +2034,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -2045,7 +2045,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "caption": {
           "type": "objectAttribute",
@@ -2075,14 +2075,14 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "titleHighlight": {
           "type": "objectAttribute",
@@ -2096,7 +2096,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "motto": {
           "type": "objectAttribute",
@@ -2140,14 +2140,14 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "body": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "link": {
                   "type": "objectAttribute",
@@ -2155,7 +2155,7 @@
                     "type": "inline",
                     "name": "link"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -2171,7 +2171,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -2194,21 +2194,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "places": {
           "type": "objectAttribute",
@@ -2222,7 +2222,7 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "link": {
                   "type": "objectAttribute",
@@ -2230,7 +2230,7 @@
                     "type": "inline",
                     "name": "link"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -2246,7 +2246,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -2299,21 +2299,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "intro": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "link": {
           "type": "objectAttribute",
@@ -2343,7 +2343,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -2402,7 +2402,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -2413,42 +2413,42 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "quote": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "initials": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "name": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "place": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -2471,21 +2471,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "cta": {
           "type": "objectAttribute",
@@ -2507,21 +2507,21 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "title": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "body": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "image": {
                   "type": "objectAttribute",
@@ -2529,7 +2529,7 @@
                     "type": "inline",
                     "name": "items.object.image"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -2545,7 +2545,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -2568,21 +2568,21 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "image": {
           "type": "objectAttribute",
@@ -2625,7 +2625,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -2636,7 +2636,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "items": {
           "type": "objectAttribute",
@@ -2680,21 +2680,21 @@
                       }
                     ]
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "title": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "body": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -2710,7 +2710,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -2740,14 +2740,14 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "label": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -2763,7 +2763,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -2822,7 +2822,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -2833,7 +2833,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "breadcrumbLabel": {
           "type": "objectAttribute",
@@ -2847,14 +2847,14 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "titleHighlight": {
           "type": "objectAttribute",
@@ -2868,7 +2868,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "primaryCta": {
           "type": "objectAttribute",
@@ -2943,7 +2943,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -2954,28 +2954,28 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "body": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "primaryCta": {
           "type": "objectAttribute",
@@ -3014,7 +3014,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "cta": {
           "type": "objectAttribute",
@@ -3043,7 +3043,7 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "link": {
                   "type": "objectAttribute",
@@ -3051,7 +3051,7 @@
                     "type": "inline",
                     "name": "link"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -3090,28 +3090,28 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "scoreLabel": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "reviewCountLabel": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "intro": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "showGrades": {
           "type": "objectAttribute",
@@ -3185,7 +3185,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -3196,7 +3196,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "secondaryImage": {
           "type": "objectAttribute",
@@ -3239,7 +3239,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -3250,35 +3250,35 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "quote": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "attribution": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "cta": {
           "type": "objectAttribute",
@@ -3309,14 +3309,14 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "lead": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "items": {
           "type": "objectAttribute",
@@ -3330,21 +3330,21 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "title": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "description": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "image": {
                   "type": "objectAttribute",
@@ -3352,7 +3352,7 @@
                     "type": "inline",
                     "name": "object.image"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "link": {
                   "type": "objectAttribute",
@@ -3360,7 +3360,7 @@
                     "type": "inline",
                     "name": "link"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -3376,7 +3376,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "nvm": {
           "type": "objectAttribute",
@@ -3443,7 +3443,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -3454,35 +3454,35 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "stampValue": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "stampLabel": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "titleHighlight": {
           "type": "objectAttribute",
@@ -3499,7 +3499,7 @@
               "type": "string"
             }
           },
-          "optional": true
+          "optional": false
         },
         "facts": {
           "type": "objectAttribute",
@@ -3513,14 +3513,14 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "label": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 }
               },
               "rest": {
@@ -3605,7 +3605,7 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "_type": {
                   "type": "objectAttribute",
@@ -3628,21 +3628,21 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "titleHighlight": {
           "type": "objectAttribute",
@@ -3656,7 +3656,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "primaryCta": {
           "type": "objectAttribute",
@@ -3664,7 +3664,7 @@
             "type": "inline",
             "name": "cta"
           },
-          "optional": true
+          "optional": false
         },
         "secondaryCta": {
           "type": "objectAttribute",
@@ -3672,14 +3672,14 @@
             "type": "inline",
             "name": "cta"
           },
-          "optional": true
+          "optional": false
         },
         "badgeLabel": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -4239,7 +4239,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "linkType": {
           "type": "objectAttribute",
@@ -4256,7 +4256,7 @@
               }
             ]
           },
-          "optional": true
+          "optional": false
         },
         "internalLink": {
           "type": "objectAttribute",
@@ -4304,7 +4304,7 @@
               }
             ]
           },
-          "optional": true
+          "optional": false
         },
         "internalLink": {
           "type": "objectAttribute",
@@ -4483,7 +4483,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "_type": {
                 "type": "objectAttribute",
@@ -4520,7 +4520,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "links": {
                 "type": "objectAttribute",
@@ -4534,7 +4534,7 @@
                         "value": {
                           "type": "string"
                         },
-                        "optional": true
+                        "optional": false
                       },
                       "linkType": {
                         "type": "objectAttribute",
@@ -4551,7 +4551,7 @@
                             }
                           ]
                         },
-                        "optional": true
+                        "optional": false
                       },
                       "internalLink": {
                         "type": "objectAttribute",
@@ -4670,7 +4670,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "linkType": {
                 "type": "objectAttribute",
@@ -4687,7 +4687,7 @@
                     }
                   ]
                 },
-                "optional": true
+                "optional": false
               },
               "internalLink": {
                 "type": "objectAttribute",
@@ -4739,7 +4739,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "linkType": {
                 "type": "objectAttribute",
@@ -4756,7 +4756,7 @@
                     }
                   ]
                 },
-                "optional": true
+                "optional": false
               },
               "internalLink": {
                 "type": "objectAttribute",
@@ -4875,7 +4875,7 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "slug": {
         "type": "objectAttribute",
@@ -4883,7 +4883,7 @@
           "type": "inline",
           "name": "slug"
         },
-        "optional": true
+        "optional": false
       },
       "postcode": {
         "type": "objectAttribute",
@@ -4897,7 +4897,7 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "status": {
         "type": "objectAttribute",
@@ -4918,7 +4918,7 @@
             }
           ]
         },
-        "optional": true
+        "optional": false
       },
       "prijs": {
         "type": "objectAttribute",
@@ -5068,7 +5068,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "rijen": {
                 "type": "objectAttribute",
@@ -5082,7 +5082,7 @@
                         "value": {
                           "type": "string"
                         },
-                        "optional": true
+                        "optional": false
                       },
                       "waarde": {
                         "type": "objectAttribute",
@@ -5273,28 +5273,28 @@
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         },
         "bottom": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         },
         "left": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         },
         "right": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -5317,28 +5317,28 @@
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         },
         "y": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         },
         "height": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         },
         "width": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -5361,7 +5361,7 @@
           "value": {
             "type": "string"
           },
-          "optional": true
+          "optional": false
         },
         "source": {
           "type": "objectAttribute",
@@ -5413,14 +5413,14 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "name": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "type": {
         "type": "objectAttribute",
@@ -5544,14 +5544,14 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "answer": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "link": {
         "type": "objectAttribute",
@@ -5610,7 +5610,7 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "slug": {
         "type": "objectAttribute",
@@ -5618,7 +5618,7 @@
           "type": "inline",
           "name": "slug"
         },
-        "optional": true
+        "optional": false
       },
       "seo": {
         "type": "objectAttribute",
@@ -5678,35 +5678,35 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "smtpUsername": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "smtpPassword": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "successMessage": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "confirmationSubject": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "confirmationMessage": {
         "type": "objectAttribute",
@@ -5792,7 +5792,7 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "class": {
         "type": "objectAttribute",
@@ -5813,7 +5813,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "type": {
                 "type": "objectAttribute",
@@ -5879,7 +5879,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": true
+                "optional": false
               },
               "selectOptions": {
                 "type": "objectAttribute",
@@ -5946,7 +5946,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "submitButtonText": {
         "type": "objectAttribute",
@@ -6091,21 +6091,21 @@
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         },
         "width": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         },
         "aspectRatio": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": true
+          "optional": false
         }
       }
     }
@@ -6260,35 +6260,35 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "extension": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "mimeType": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "size": {
         "type": "objectAttribute",
         "value": {
           "type": "number"
         },
-        "optional": true
+        "optional": false
       },
       "assetId": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "uploadId": {
         "type": "objectAttribute",
@@ -6302,14 +6302,14 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "url": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "source": {
         "type": "objectAttribute",
@@ -6433,35 +6433,35 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "extension": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "mimeType": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "size": {
         "type": "objectAttribute",
         "value": {
           "type": "number"
         },
-        "optional": true
+        "optional": false
       },
       "assetId": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "uploadId": {
         "type": "objectAttribute",
@@ -6475,14 +6475,14 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "url": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "metadata": {
         "type": "objectAttribute",

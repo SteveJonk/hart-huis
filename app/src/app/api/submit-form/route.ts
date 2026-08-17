@@ -11,27 +11,6 @@ export const runtime = 'nodejs';
 /** Bigger uploads are rejected rather than silently dropped from the mail. */
 const MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024;
 
-type FormDefinition = {
-  _id: string;
-  title?: string | null;
-  fields?: Array<{
-    label?: string | null;
-    name?: string | null;
-    type?: string | null;
-    isRequired?: boolean | null;
-  }> | null;
-} | null;
-
-type FormSettings = {
-  adminEmail?: string | null;
-  smtpUsername?: string | null;
-  smtpPassword?: string | null;
-  confirmationSubject?: string | null;
-  confirmationMessage?: string | null;
-  recaptchaEnabled?: boolean | null;
-  recaptchaSecretKey?: string | null;
-} | null;
-
 /** Google's siteverify. Returns false on any doubt — this gate fails closed. */
 async function verifyRecaptcha(token: string, secret: string) {
   try {
@@ -76,8 +55,8 @@ export async function POST(request: Request) {
 
   // The form definition is the allow-list: unknown keys never reach the mail.
   const [form, settings] = await Promise.all([
-    client.fetch<FormDefinition>(CONTACT_FORM_QUERY, { formId }, { cache: 'no-store' }),
-    client.fetch<FormSettings>(CONTACT_FORM_SETTINGS_QUERY, {}, { cache: 'no-store' }),
+    client.fetch(CONTACT_FORM_QUERY, { formId }, { cache: 'no-store' }),
+    client.fetch(CONTACT_FORM_SETTINGS_QUERY, {}, { cache: 'no-store' }),
   ]);
   if (!form) return fail('Onbekend formulier.', 404);
 
