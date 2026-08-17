@@ -32,12 +32,6 @@ export const reviewsType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'reviews',
-      type: 'array',
-      of: [defineArrayMember({type: 'reference', to: [{type: 'review'}]})],
-      validation: (rule) => rule.min(1).required(),
-    }),
-    defineField({
       name: 'showGrades',
       title: 'Deelcijfers tonen',
       description: 'Zet de tabel met deelcijfers per beoordeling aan op de kaarten.',

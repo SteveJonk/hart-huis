@@ -12,7 +12,7 @@ import { FactBar } from '@/components/blocks/FactBar';
 import { Faq } from '@/components/blocks/Faq';
 import { Hero } from '@/components/blocks/Hero';
 import { Intro } from '@/components/blocks/Intro';
-import { Listings } from '@/components/blocks/Listings';
+import { Listings, toListing } from '@/components/blocks/Listings';
 import { MediaText } from '@/components/blocks/MediaText';
 import { ObjectGrid } from '@/components/blocks/ObjectGrid';
 import { PageHero } from '@/components/blocks/PageHero';
@@ -255,36 +255,22 @@ function renderBlock(block: PageBlock) {
       );
     }
     case 'listings': {
-      const items = (
-        block.items as
-          | Array<{
-              status: string;
-              sold?: boolean;
-              place: string;
-              title: string;
-              meta: string;
-              price: string;
-              image: SanityImage;
-              link?: SanityLink;
-            }>
-          | undefined
-      )
-        ?.map((item, index) => {
-          const href = resolveHref(item.link);
-          if (!href) return null;
-          return {
-            status: item.status,
-            tone: item.sold ? ('burgundy' as const) : ('white' as const),
-            place: item.place,
-            title: item.title,
-            meta: item.meta,
-            price: item.price,
-            href,
-            image: toImage(item.image, 800, 600) ?? { src: '', alt: '' },
-            delay: (index === 0 ? undefined : index) as 1 | 2 | 3 | undefined,
-          };
-        })
-        .filter((item): item is NonNullable<typeof item> => Boolean(item));
+      // De drie nieuwste woningen, dezelfde kaart als op /aanbod.
+      const items = (block.objecten as SanityWoningCard[] | undefined)?.map(
+        (woning, index) => ({
+          ...toListing({
+            slug: woning.slug,
+            adres: woning.adres,
+            plaats: woning.plaats,
+            status: woning.status,
+            prijs: woning.prijs,
+            woonoppervlak: woning.woonoppervlak,
+            kamers: woning.kamers,
+            image: toImage(woning.foto, 800, 600),
+          }),
+          delay: (index === 0 ? undefined : index) as 1 | 2 | 3 | undefined,
+        }),
+      );
       const regions = (
         block.regions as Array<{ label?: string; link?: SanityLink }> | undefined
       )

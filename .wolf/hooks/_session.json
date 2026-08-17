@@ -3,16 +3,21 @@
   "started": "2026-08-17T17:54:54.686Z",
   "files_read": {
     "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/sanity/queries.ts": {
-      "count": 2,
+      "count": 3,
       "tokens": 1613,
       "first_read": "2026-08-17T17:55:55.089Z"
+    },
+    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/blocks/Listings.tsx": {
+      "count": 1,
+      "tokens": 1475,
+      "first_read": "2026-08-17T18:08:47.161Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 1,
+  "anatomy_hits": 2,
   "anatomy_misses": 0,
-  "repeated_reads_warned": 1,
+  "repeated_reads_warned": 2,
   "cerebrum_warnings": 0,
-  "stop_count": 1
+  "stop_count": 3
 }

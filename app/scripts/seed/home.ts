@@ -2,7 +2,6 @@
 import {
   HERO_SLIDES,
   INTRO_FACTS,
-  LISTINGS,
   REVIEWS,
   SERVICES,
 } from '../../src/lib/home-content';
@@ -37,7 +36,7 @@ async function upsertReview(review: (typeof REVIEWS)[number]) {
   return created._id;
 }
 
-async function buildHomeContent(reviewIds: string[]) {
+async function buildHomeContent() {
   console.log('Building home blocks…');
 
   const heroSlides = await Promise.all(
@@ -70,20 +69,6 @@ async function buildHomeContent(reviewIds: string[]) {
   const storySecondary = await uploadImage(
     '/images/story-small.jpg',
     'Gevels in het centrum van Haarlem',
-  );
-
-  const listingItems = await Promise.all(
-    LISTINGS.map(async (listing) => ({
-      _key: key(listing.title),
-      status: listing.status,
-      sold: Boolean(listing.sold),
-      place: listing.place,
-      title: listing.title,
-      meta: listing.meta,
-      price: listing.price,
-      link: externalLink(listing.href),
-      image: await uploadImage(listing.image, listing.imageAlt),
-    })),
   );
 
   const ctaImage = await uploadImage(
@@ -152,11 +137,6 @@ async function buildHomeContent(reviewIds: string[]) {
       scoreLabel: 'OP FUNDA',
       reviewCountLabel: `${SITE.reviewCount} keer beoordeeld`,
       intro: 'Door kopers én verkopers, rechtstreeks vanuit Funda en Google.',
-      reviews: reviewIds.map((id) => ({
-        _type: 'reference' as const,
-        _ref: id,
-        _key: key(id),
-      })),
       link: cta('Alle beoordelingen bekijken', '#'),
     },
     {
@@ -164,7 +144,6 @@ async function buildHomeContent(reviewIds: string[]) {
       _key: key('home-listings'),
       title: 'Actueel aanbod',
       cta: cta('Bekijk alle woningen', '#'),
-      items: listingItems,
       regionsLabel: 'Ook actief in:',
       regions: REGIONS.map((label) => ({
         _key: key(label),
@@ -187,11 +166,10 @@ async function buildHomeContent(reviewIds: string[]) {
 
 export async function seedHome() {
   console.log('Reviews');
-  const reviewIds: string[] = [];
   for (const review of REVIEWS) {
-    reviewIds.push(await upsertReview(review));
+    await upsertReview(review);
   }
 
   console.log('\nHome page');
-  await upsertPage('home', 'Home', await buildHomeContent(reviewIds));
+  await upsertPage('home', 'Home', await buildHomeContent());
 }

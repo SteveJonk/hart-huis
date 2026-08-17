@@ -69,6 +69,12 @@
 - `npm run check:funda` draait tegen **echte opgeslagen pagina's** (verkoop p1, verkoop p9 mét reacties van de makelaar, aankoop p1) en dekt de parser, de reactie-overslag, de ontdubbeling en de paginering
 - alles staat beschreven in `docs/funda-review-scraper.md`
 
+### Home-blokken automatisch gevuld (2026-08-17)
+- `listings` toont de **3 nieuwste woningen** en `reviews` de **8 nieuwste reviews**, beide rechtstreeks uit de dataset — de handmatige selectie is uit `listingsType`/`reviewsType` gehaald
+- de kaarten komen via `toListing()` uit `Listings.tsx` (staat daar en niet in `ObjectGrid.tsx`, want die is een client component)
+- `seed:home` schrijft de oude `items`/`reviews`-velden niet meer weg; draai hem één keer om ze uit het bestaande home-document te halen
+- **regel:** geen `...` in een `_type == "x" => { ... }`-tak van `PAGE_QUERY` — die overschrijft de projecties eromheen
+
 ---
 
 ## 🚀 Next phase

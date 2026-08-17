@@ -5,7 +5,10 @@ import { ReviewCard } from '@/components/blocks/Reviews';
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/Reveal';
 import { Wrap } from '@/components/ui/Wrap';
-import { BEOORDELINGEN_GRID, BEOORDELINGEN_PAGE_SIZE } from '@/lib/beoordelingen-content';
+import {
+  BEOORDELINGEN_GRID,
+  BEOORDELINGEN_PAGE_SIZE,
+} from '@/lib/beoordelingen-content';
 import { cn } from '@/lib/cn';
 import type { ReviewItem } from '@/lib/reviews';
 
@@ -92,8 +95,12 @@ export function ReviewGrid({
                 'max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:gap-[18px]',
               )}
             >
-              {shown.slice(0, visible).map((review) => (
-                <ReviewCard key={review.name} review={review} showGrades />
+              {shown.slice(0, visible).map((review, index) => (
+                <ReviewCard
+                  key={review.name + '-' + index}
+                  review={review}
+                  showGrades
+                />
               ))}
             </div>
           </Reveal>

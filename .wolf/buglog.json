@@ -172,6 +172,63 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-17T00:00:00Z"
+    },
+    {
+      "id": "bug-010",
+      "timestamp": "2026-08-17T20:40:00Z",
+      "error_message": "reviewGrid op /beoordelingen kreeg items: null nadat de gedeelde projecties onder de conditionele takken waren gezet.",
+      "file": "app/src/sanity/queries.ts",
+      "root_cause": "De generieke `items[]{...}` staat op elk blok en projecteert het ruwe `items`-veld; reviewGrid heeft dat veld niet en zet zelf `\"items\": *[_type == \"review\"]`. Onderaan gezet won de generieke sleutel.",
+      "fix": "De `...` uit alle `_type == \"x\" => { ... }`-takken gehaald, zodat er niets meer geclobberd wordt, en de gedeelde projecties weer bovenaan gezet. Getest met groq-js op hero/reviews/listings/reviewGrid/objectGrid/faqs.",
+      "tags": [
+        "groq",
+        "sanity",
+        "page-builder",
+        "projection-order",
+        "review-grid"
+      ],
+      "related_bugs": [
+        "bug-009"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T20:40:00Z"
+    },
+    {
+      "id": "bug-011",
+      "timestamp": "2026-08-17T21:00:00Z",
+      "error_message": "Home gaf een 500 na het importeren van toListing uit ObjectGrid in PageBuilder.",
+      "file": "app/src/components/blocks/Listings.tsx",
+      "root_cause": "ObjectGrid.tsx is een 'use client'-module; elke export daaruit is een client reference, dus een server component (PageBuilder) kan de functie niet aanroepen.",
+      "fix": "toListing + de twee icoontjes verhuisd naar Listings.tsx (geen 'use client'), met een geexporteerd type WoningCardInput. ObjectGrid importeert het daar nu vandaan.",
+      "tags": [
+        "next",
+        "rsc",
+        "use-client",
+        "page-builder",
+        "listings"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T21:00:00Z"
+    },
+    {
+      "id": "bug-012",
+      "timestamp": "2026-08-17T21:30:00Z",
+      "error_message": "Gebruiker: 'je kunt op mobiel heel ver uitzoomen, de paginabreedte is de volledige breedte van alle reviews samen' — na het tonen van 8 i.p.v. ~4 reviews op de home.",
+      "file": "app/src/components/blocks/Reviews.tsx",
+      "root_cause": "De reviews-carousel-track (`flex overflow-x-auto`) lekte zijn interne scrollbreedte door naar `document.documentElement.scrollWidth` zodra er genoeg kaarten waren (bevestigd: 7 kaarten bleef 375px, 8 kaarten liep op naar 2455px op een 375px-viewport). `contain: layout` ontbrak op de track, dus de browser liet de children buiten hun overflow:auto-doos meetellen voor de lay-out van voorouderelementen — een pre-existing CSS-fragiliteit die met de eerdere ~4 curated reviews nooit een drempel raakte. Vandaag's wijziging (top 8 tonen i.p.v. handmatige selectie) triggerde het.",
+      "fix": "`[contain:layout]` toegevoegd aan de track-div in Reviews.tsx. Geverifieerd: 8 kaarten blijven binnen 375px op mobiel en binnen 1280px op desktop, carousel scrollt nog, 'Lees meer'-dialog opent nog.",
+      "tags": [
+        "css",
+        "overflow",
+        "mobile",
+        "carousel",
+        "contain",
+        "reviews"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T21:30:00Z"
     }
   ]
 }

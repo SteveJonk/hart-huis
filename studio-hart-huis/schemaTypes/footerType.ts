@@ -24,9 +24,7 @@ const footerLinkMember = defineArrayMember({
       return {
         title: title || 'Link',
         subtitle:
-          linkType === 'internal'
-            ? internalTitle || 'Internal page'
-            : href || 'External URL',
+          linkType === 'internal' ? internalTitle || 'Internal page' : href || 'External URL',
       }
     },
   },
@@ -38,6 +36,32 @@ export const footerType = defineType({
   type: 'document',
   icon: BlockElementIcon,
   fields: [
+    defineField({
+      name: 'socialLinks',
+      title: 'Social links',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'socialLink',
+          fields: [
+            defineField({
+              name: 'platform',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'url',
+              type: 'url',
+              validation: (rule) => rule.required().uri({scheme: ['http', 'https']}),
+            }),
+          ],
+          preview: {
+            select: {title: 'platform', subtitle: 'url'},
+          },
+        }),
+      ],
+    }),
     defineField({
       name: 'linkGroups',
       title: 'Link groups',
@@ -67,32 +91,6 @@ export const footerType = defineType({
                 subtitle: `${count} link${count === 1 ? '' : 's'}`,
               }
             },
-          },
-        }),
-      ],
-    }),
-    defineField({
-      name: 'socialLinks',
-      title: 'Social links',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          name: 'socialLink',
-          fields: [
-            defineField({
-              name: 'platform',
-              type: 'string',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: 'url',
-              type: 'url',
-              validation: (rule) => rule.required().uri({scheme: ['http', 'https']}),
-            }),
-          ],
-          preview: {
-            select: {title: 'platform', subtitle: 'url'},
           },
         }),
       ],

@@ -6,7 +6,9 @@ import { RevealLink } from '@/components/ui/RevealLink';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { Wrap } from '@/components/ui/Wrap';
 import { cn } from '@/lib/cn';
+import { euro } from '@/lib/format';
 import { LISTINGS } from '@/lib/home-content';
+import { statusOf } from '@/lib/object-content';
 import { REGIONS } from '@/lib/site';
 import Link from 'next/link';
 
@@ -79,6 +81,77 @@ const toneClass: Record<ListingTone, string> = {
   sand: 'bg-sand text-burgundy',
   burgundy: 'bg-burgundy text-white',
 };
+
+/** De velden van een `woning` die een kaart nodig heeft. */
+export type WoningCardInput = {
+  slug: string;
+  adres: string;
+  plaats: string;
+  status?: string | null;
+  prijs?: number | null;
+  woonoppervlak?: number | null;
+  kamers?: number | null;
+  image?: ListingImage;
+};
+
+function IconArea() {
+  return (
+    <svg width='13' height='13' viewBox='0 0 24 24' fill='none' aria-hidden>
+      <path
+        d='M4 4h16v16H4zM4 9h5M4 15h5M15 4v5M15 15v5'
+        stroke='currentColor'
+        strokeWidth='1.5'
+      />
+    </svg>
+  );
+}
+
+function IconRooms() {
+  return (
+    <svg width='13' height='13' viewBox='0 0 24 24' fill='none' aria-hidden>
+      <path
+        d='M6 21V4h9v17M15 12h3v9M11 12.5h.01'
+        stroke='currentColor'
+        strokeWidth='1.5'
+        strokeLinejoin='round'
+      />
+    </svg>
+  );
+}
+
+/**
+ * Eén woning naar een kaart. Staat hier en niet in ObjectGrid, want die is een
+ * client component: de server kan er dan geen functie uit aanroepen.
+ */
+export function toListing(item: WoningCardInput): ListingItem {
+  const { label, tone } = statusOf(item.status);
+
+  return {
+    href: `/aanbod/${item.slug}`,
+    status: label,
+    tone,
+    place: item.plaats,
+    title: item.adres,
+    price: euro(item.prijs) ?? 'Prijs op aanvraag',
+    image: item.image ?? { src: '', alt: item.adres },
+    meta: (
+      <>
+        {item.woonoppervlak ? (
+          <span className='flex items-center gap-1.5 whitespace-nowrap'>
+            <IconArea />
+            {item.woonoppervlak} m²
+          </span>
+        ) : null}
+        {item.kamers ? (
+          <span className='flex items-center gap-1.5 whitespace-nowrap'>
+            <IconRooms />
+            {item.kamers} kamers
+          </span>
+        ) : null}
+      </>
+    ),
+  };
+}
 
 export function ListingCard({ listing }: { listing: ListingItem }) {
   return (

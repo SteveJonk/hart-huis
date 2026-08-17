@@ -1,7 +1,11 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ListingCard, type ListingItem } from '@/components/blocks/Listings';
+import {
+  ListingCard,
+  toListing,
+  type WoningCardInput,
+} from '@/components/blocks/Listings';
 import { Button } from '@/components/ui/Button';
 import { Wrap } from '@/components/ui/Wrap';
 import {
@@ -15,19 +19,9 @@ import {
   AANBOD_STATUS_FILTERS,
 } from '@/lib/aanbod-content';
 import { cn } from '@/lib/cn';
-import { euro } from '@/lib/format';
-import { statusOf } from '@/lib/object-content';
 
-export type ObjectGridItem = {
-  slug: string;
-  adres: string;
-  plaats: string;
-  status?: string | null;
-  prijs?: number | null;
-  woonoppervlak?: number | null;
-  kamers?: number | null;
+export type ObjectGridItem = WoningCardInput & {
   aangebodenSinds?: string | null;
-  image?: { src: string; alt: string };
 };
 
 export type ObjectGridCta = {
@@ -43,31 +37,6 @@ export type ObjectGridProps = {
   emptyBody?: string;
 };
 
-function IconArea() {
-  return (
-    <svg width='13' height='13' viewBox='0 0 24 24' fill='none' aria-hidden>
-      <path
-        d='M4 4h16v16H4zM4 9h5M4 15h5M15 4v5M15 15v5'
-        stroke='currentColor'
-        strokeWidth='1.5'
-      />
-    </svg>
-  );
-}
-
-function IconRooms() {
-  return (
-    <svg width='13' height='13' viewBox='0 0 24 24' fill='none' aria-hidden>
-      <path
-        d='M6 21V4h9v17M15 12h3v9M11 12.5h.01'
-        stroke='currentColor'
-        strokeWidth='1.5'
-        strokeLinejoin='round'
-      />
-    </svg>
-  );
-}
-
 const selectClass = cn(
   'w-full appearance-none rounded-pill border border-ink/18 bg-white',
   'py-[13px] pr-10 pl-[18px] text-[0.84rem] font-medium text-ink',
@@ -77,36 +46,6 @@ const selectClass = cn(
   'bg-[length:6px_6px,6px_6px] bg-[position:calc(100%-20px)_21px,calc(100%-14px)_21px] bg-no-repeat',
   'max-sm:py-3 max-sm:pr-9 max-sm:pl-[15px] max-sm:text-[0.8rem]',
 );
-
-function toListing(item: ObjectGridItem): ListingItem {
-  const { label, tone } = statusOf(item.status);
-
-  return {
-    href: `/aanbod/${item.slug}`,
-    status: label,
-    tone,
-    place: item.plaats,
-    title: item.adres,
-    price: euro(item.prijs) ?? 'Prijs op aanvraag',
-    image: item.image ?? { src: '', alt: item.adres },
-    meta: (
-      <>
-        {item.woonoppervlak ? (
-          <span className='flex items-center gap-1.5 whitespace-nowrap'>
-            <IconArea />
-            {item.woonoppervlak} m²
-          </span>
-        ) : null}
-        {item.kamers ? (
-          <span className='flex items-center gap-1.5 whitespace-nowrap'>
-            <IconRooms />
-            {item.kamers} kamers
-          </span>
-        ) : null}
-      </>
-    ),
-  };
-}
 
 /** Filter bar + listing grid, filtered and sorted in the browser over all objects. */
 export function ObjectGrid({

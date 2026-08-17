@@ -68,52 +68,6 @@ export const PAGE_QUERY = defineQuery(`
     seo,
     content[]{
       ...,
-      _type == "hero" => {
-        ...,
-        ...${reviewStats}
-      },
-      _type == "reviews" => {
-        ...,
-        reviews[]->${reviewCard},
-        ...${reviewStats},
-        link${linkExpansion}
-      },
-      _type == "beoordelingenHero" => {
-        ...,
-        ...${reviewStats},
-        ...${reviewDistribution},
-        primaryCta${linkExpansion},
-        secondaryCta${linkExpansion}
-      },
-      _type == "uitgelichteReview" => {
-        ...,
-        review->${reviewCard}
-      },
-      _type == "reviewGrid" => {
-        ...,
-        "items": *[_type == "review"] | order(date desc)${reviewCard}
-      },
-      _type == "objectGrid" => {
-        ...,
-        ctaCard{..., cta${linkExpansion}},
-        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)${woningCard}
-      },
-      _type == "contactFormSection" => {
-        ...,
-        "recaptcha": *[_type == "formGeneralSettings"][0]{
-          recaptchaEnabled,
-          recaptchaSiteKey
-        }
-      },
-      _type == "faqs" => {
-        ...,
-        faqs[]->{
-          ...,
-          link${linkExpansion}
-        }
-      },
-      // Kept last on purpose: a "_type == x => {...}" branch re-spreads the raw
-      // document, so anything projected above it is overwritten by the raw value.
       primaryCta${linkExpansion},
       secondaryCta${linkExpansion},
       link${linkExpansion},
@@ -153,6 +107,45 @@ export const PAGE_QUERY = defineQuery(`
       places[]{
         ...,
         link${linkExpansion}
+      },
+      // Geen "..." in de takken hieronder: die spreidt het ruwe document
+      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de
+      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.
+      _type == "hero" => {
+        ...${reviewStats}
+      },
+      _type == "reviews" => {
+        "reviews": *[_type == "review"] | order(date desc)[0...8]${reviewCard},
+        ...${reviewStats}
+      },
+      _type == "beoordelingenHero" => {
+        ...${reviewStats},
+        ...${reviewDistribution}
+      },
+      _type == "uitgelichteReview" => {
+        review->${reviewCard}
+      },
+      _type == "reviewGrid" => {
+        "items": *[_type == "review"] | order(date desc)${reviewCard}
+      },
+      _type == "objectGrid" => {
+        ctaCard{..., cta${linkExpansion}},
+        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)${woningCard}
+      },
+      _type == "listings" => {
+        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]${woningCard}
+      },
+      _type == "contactFormSection" => {
+        "recaptcha": *[_type == "formGeneralSettings"][0]{
+          recaptchaEnabled,
+          recaptchaSiteKey
+        }
+      },
+      _type == "faqs" => {
+        faqs[]->{
+          ...,
+          link${linkExpansion}
+        }
       }
     }
   }
