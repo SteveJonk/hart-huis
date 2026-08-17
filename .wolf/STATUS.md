@@ -10,6 +10,12 @@
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
 
+**Sanity TypeGen (17-08-2026)**
+- Config staat als `typegen`-sleutel in `studio-hart-huis/sanity.cli.ts`; `schema.json` én `sanity.types.ts` staan nu in `app/src/sanity/`. `npm run typegen` werkt vanuit de app én de studio (de app delegeert). Draaien moet vanuit de studio: de CLI eist een studio-project-root.
+- Extract draait met `--force` (script faalde eerder op elke tweede run) en `--enforce-required-fields`.
+- `client.fetch(QUERY)` typt zichzelf via de module-augmentatie — de handgeschreven queryvormen in `layout.tsx`, `api/submit-form/route.ts` en `aanbod/[slug]/page.tsx` zijn weg (~87 regels).
+- `PageBuilder.tsx` is getypt vanuit `PAGE_QUERY_RESULT`: 143 van de 159 casts weg, `default`-tak is `never`, dus een niet-afgehandeld blok is voortaan een build-fout.
+
 **Pages implemented from `app/example-designs/`**
 - `home.html` → home page (hero, intro, services, story, reviews, listings, ctaBand)
 - `verkoop.html` → /verkoop (pageHero, factBar, benefits, steps, quoteBand, faqs, regionBlock, crossLinks, ctaBand)
@@ -92,6 +98,8 @@
 4. `aanbiedingsTekstEngels` wordt opgeslagen en geseed maar nergens gerenderd — er is nog geen taalwissel op de objectpagina.
 5. Met 6 objecten is de aanbod-grid "toon meer" (>9) en de CTA-kaart-na-6 nog niet met echte data uitgeprobeerd.
 6. `SITE.fundaScore` / `SITE.reviewCount` zijn nu alleen nog fallback; de factBar op /verkoop gebruikt `SITE.fundaScore` nog hardcoded.
+7. **`woning` heeft geen `seo`-veld** terwijl `WONING_QUERY` het wél selecteert (`seo: null` in de gegenereerde types) — objectpagina's krijgen dus nooit CMS-SEO. Keuze: veld toevoegen aan het schema zoals `page` dat heeft, of de dode selectie uit de query halen. Zie bug-013.
+8. Na elke schemawijziging `npm run typegen` draaien en `app/src/sanity/{schema.json,sanity.types.ts}` meecommitten — beide staan in git en zijn nu de bron van de types.
 
 ## 📁 Active architecture
 

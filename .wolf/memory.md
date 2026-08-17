@@ -196,3 +196,6 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 20:15 | Redirected typegen output to app/src/sanity, added query glob for app | studio-hart-huis/sanity-typegen.json (new), studio-hart-huis/sanity.types.ts → app/src/sanity/sanity.types.ts (git mv) | Config added; `openwolf` CLI unavailable here so anatomy.md not rescanned — run `openwolf scan` next session | ~2k |
+| 20:40 | Typegen-config verplaatst naar `typegen` in sanity.cli.ts (los bestand is deprecated); schema.json + types nu in app/src/sanity; `--force` en `--enforce-required-fields` toegevoegd; `npm run typegen` werkt vanuit beide mappen | studio-hart-huis/{sanity.cli.ts,package.json}, app/package.json, app/src/sanity/{schema.json,sanity.types.ts} | Werkt, herhaalbaar, 6 queries + 70 schematypes | ~12k |
+| 20:55 | Gegenereerde queryresultaat-types overgenomen op de fetch-grens; ~87 regels handgeschreven types weg | app/src/app/layout.tsx, app/src/app/api/submit-form/route.ts, app/src/app/aanbod/[slug]/page.tsx | tsc + eslint schoon | ~10k |
+| 21:10 | PageBuilder getypt vanuit PAGE_QUERY_RESULT i.p.v. `[key: string]: unknown`; 143 van de 159 casts weg, default-tak is nu `never` | app/src/components/PageBuilder.tsx | tsc + eslint schoon; 2 latente bugs gevonden (bug-013 seo, bug-014 badgeValue) | ~18k |
