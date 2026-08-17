@@ -16,29 +16,29 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: ../app/src/sanity/schema.json
 export type Nvm = {
-  badge?: string;
-  title?: string;
-  body?: string;
+  badge: string;
+  title: string;
+  body: string;
   cta?: Cta;
 };
 
 export type Person = {
-  initials?: string;
-  name?: string;
-  role?: string;
+  initials: string;
+  name: string;
+  role: string;
   links?: Array<{
-    label?: string;
+    label: string;
     link?: Link;
     _key: string;
   }>;
 };
 
 export type Aside = {
-  title?: string;
-  body?: string;
+  title: string;
+  body: string;
   items?: Array<{
-    icon?: "phone" | "whatsapp" | "mail" | "pin";
-    title?: string;
+    icon: "phone" | "whatsapp" | "mail" | "pin";
+    title: string;
     subtitle?: string;
     _key: string;
   }>;
@@ -69,7 +69,7 @@ export type ObjectImage = {
   media?: unknown; // Unable to locate the referenced type "object.image.media" in schema
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
-  alt?: string;
+  alt: string;
   _type: "image";
 };
 
@@ -93,7 +93,7 @@ export type TimelineItemsObjectImage = {
 export type Werkwijze = {
   _type: "werkwijze";
   eyebrow?: string;
-  title?: string;
+  title: string;
   lead?: string;
   items?: Array<{
     number?: string;
@@ -120,7 +120,7 @@ export type ReviewReference = {
 export type UitgelichteReview = {
   _type: "uitgelichteReview";
   eyebrow?: string;
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
@@ -128,14 +128,14 @@ export type UitgelichteReview = {
     alt?: string;
     _type: "image";
   };
-  review?: ReviewReference;
+  review: ReviewReference;
 };
 
 export type BeoordelingenHero = {
   _type: "beoordelingenHero";
   breadcrumbLabel?: string;
   eyebrow?: string;
-  title?: string;
+  title: string;
   titleHighlight?: string;
   lead?: string;
   primaryCta?: Cta;
@@ -155,7 +155,7 @@ export type AanbodHeader = {
   _type: "aanbodHeader";
   breadcrumbLabel?: string;
   eyebrow?: string;
-  title?: string;
+  title: string;
   titleHighlight?: string;
   lead?: string;
   aside?: AanbodHeaderAside;
@@ -163,21 +163,21 @@ export type AanbodHeader = {
 
 export type RouteBlock = {
   _type: "routeBlock";
-  eyebrow?: string;
-  title?: string;
-  lead?: string;
-  columns?: Array<{
-    title?: string;
-    body?: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  columns: Array<{
+    title: string;
+    body: string;
     _key: string;
   }>;
   cta?: Cta;
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
 };
@@ -191,39 +191,39 @@ export type ContactFormReference = {
 
 export type ContactFormSection = {
   _type: "contactFormSection";
-  eyebrow?: string;
-  title?: string;
-  lead?: string;
-  form?: ContactFormReference;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  form: ContactFormReference;
   note?: string;
-  successTitle?: string;
-  successBody?: string;
+  successTitle: string;
+  successBody: string;
   aside?: Aside;
 };
 
 export type PersonBlock = {
   _type: "personBlock";
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
-  eyebrow?: string;
-  title?: string;
-  body?: string;
-  person?: Person;
+  eyebrow: string;
+  title: string;
+  body: string;
+  person: Person;
 };
 
 export type ContactWays = {
   _type: "contactWays";
-  items?: Array<{
-    icon?: "phone" | "whatsapp" | "mail" | "pin";
-    title?: string;
-    body?: string;
-    value?: string;
+  items: Array<{
+    icon: "phone" | "whatsapp" | "mail" | "pin";
+    title: string;
+    body: string;
+    value: string;
     note?: string;
     link?: Link;
     _key: string;
@@ -232,38 +232,38 @@ export type ContactWays = {
 
 export type SplitHero = {
   _type: "splitHero";
-  breadcrumbLabel?: string;
-  eyebrow?: string;
-  title?: string;
+  breadcrumbLabel: string;
+  eyebrow: string;
+  title: string;
   titleHighlight?: string;
-  lead?: string;
+  lead: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
 };
 
 export type CompareCards = {
   _type: "compareCards";
-  eyebrow?: string;
-  title?: string;
-  lead?: string;
-  cards?: Array<{
-    label?: string;
-    title?: string;
-    body?: string;
-    items?: Array<{
-      text?: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  cards: Array<{
+    label: string;
+    title: string;
+    body: string;
+    items: Array<{
+      text: string;
       included?: boolean;
       _key: string;
     }>;
-    cta?: Cta;
+    cta: Cta;
     dark?: boolean;
     _key: string;
   }>;
@@ -271,54 +271,54 @@ export type CompareCards = {
 
 export type Assurances = {
   _type: "assurances";
-  eyebrow?: string;
-  title?: string;
-  lead?: string;
-  items?: Array<{
-    title?: string;
-    body?: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: Array<{
+    title: string;
+    body: string;
     _key: string;
   }>;
 };
 
 export type MediaText = {
   _type: "mediaText";
-  eyebrow?: string;
-  title?: string;
-  paragraphs?: Array<string>;
+  eyebrow: string;
+  title: string;
+  paragraphs: Array<string>;
   cta?: Cta;
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
 };
 
 export type ValueCards = {
   _type: "valueCards";
-  eyebrow?: string;
-  title?: string;
-  lead?: string;
-  items?: Array<{
-    icon?: "heart" | "rings" | "lines";
-    title?: string;
-    body?: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: Array<{
+    icon: "heart" | "rings" | "lines";
+    title: string;
+    body: string;
     _key: string;
   }>;
 };
 
 export type Timeline = {
   _type: "timeline";
-  eyebrow?: string;
-  title?: string;
-  lead?: string;
-  items?: Array<{
-    year?: string;
-    title?: string;
-    body?: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: Array<{
+    year: string;
+    title: string;
+    body: string;
     image?: TimelineItemsObjectImage;
     _key: string;
   }>;
@@ -326,22 +326,22 @@ export type Timeline = {
 
 export type DuoPhotos = {
   _type: "duoPhotos";
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
-  stampValue?: string;
-  stampLabel?: string;
-  secondaryImage?: {
+  stampValue: string;
+  stampLabel: string;
+  secondaryImage: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
   caption?: string;
@@ -349,32 +349,32 @@ export type DuoPhotos = {
 
 export type PageOpener = {
   _type: "pageOpener";
-  eyebrow?: string;
-  title?: string;
+  eyebrow: string;
+  title: string;
   titleHighlight?: string;
-  lead?: string;
+  lead: string;
   motto?: string;
   attribution?: string;
 };
 
 export type CrossLinks = {
   _type: "crossLinks";
-  items?: Array<{
-    title?: string;
-    body?: string;
-    link?: Link;
+  items: Array<{
+    title: string;
+    body: string;
+    link: Link;
     _key: string;
   }>;
 };
 
 export type RegionBlock = {
   _type: "regionBlock";
-  eyebrow?: string;
-  title?: string;
-  lead?: string;
-  places?: Array<{
-    label?: string;
-    link?: Link;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  places: Array<{
+    label: string;
+    link: Link;
     _key: string;
   }>;
 };
@@ -388,11 +388,11 @@ export type FaqReference = {
 
 export type Faqs = {
   _type: "faqs";
-  eyebrow?: string;
-  title?: string;
-  intro?: string;
+  eyebrow: string;
+  title: string;
+  intro: string;
   link?: Cta;
-  faqs?: Array<
+  faqs: Array<
     {
       _key: string;
     } & FaqReference
@@ -401,160 +401,160 @@ export type Faqs = {
 
 export type QuoteBand = {
   _type: "quoteBand";
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
-  eyebrow?: string;
-  quote?: string;
-  initials?: string;
-  name?: string;
-  place?: string;
+  eyebrow: string;
+  quote: string;
+  initials: string;
+  name: string;
+  place: string;
 };
 
 export type Steps = {
   _type: "steps";
-  eyebrow?: string;
-  title?: string;
-  lead?: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
   cta?: Cta;
-  items?: Array<{
-    number?: string;
-    title?: string;
-    body?: string;
-    image?: ItemsObjectImage;
+  items: Array<{
+    number: string;
+    title: string;
+    body: string;
+    image: ItemsObjectImage;
     _key: string;
   }>;
 };
 
 export type Benefits = {
   _type: "benefits";
-  eyebrow?: string;
-  title?: string;
-  lead?: string;
-  image?: {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
-  items?: Array<{
-    icon?:
+  items: Array<{
+    icon:
       "person" | "camera" | "chart" | "doc" | "house" | "renovate" | "scale";
-    title?: string;
-    body?: string;
+    title: string;
+    body: string;
     _key: string;
   }>;
 };
 
 export type FactBar = {
   _type: "factBar";
-  facts?: Array<{
-    value?: string;
-    label?: string;
+  facts: Array<{
+    value: string;
+    label: string;
     _key: string;
   }>;
 };
 
 export type PageHero = {
   _type: "pageHero";
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
   breadcrumbLabel?: string;
-  eyebrow?: string;
-  title?: string;
+  eyebrow: string;
+  title: string;
   titleHighlight?: string;
-  lead?: string;
+  lead: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
 };
 
 export type CtaBand = {
   _type: "ctaBand";
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
-  eyebrow?: string;
-  title?: string;
-  body?: string;
+  eyebrow: string;
+  title: string;
+  body: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
 };
 
 export type Listings = {
   _type: "listings";
-  title?: string;
+  title: string;
   cta?: Cta;
   regionsLabel?: string;
   regions?: Array<{
-    label?: string;
-    link?: Link;
+    label: string;
+    link: Link;
     _key: string;
   }>;
 };
 
 export type Reviews = {
   _type: "reviews";
-  score?: string;
-  scoreLabel?: string;
-  reviewCountLabel?: string;
-  intro?: string;
+  score: string;
+  scoreLabel: string;
+  reviewCountLabel: string;
+  intro: string;
   showGrades?: boolean;
   link?: Cta;
 };
 
 export type Story = {
   _type: "story";
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
-  secondaryImage?: {
+  secondaryImage: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
-  eyebrow?: string;
-  title?: string;
-  quote?: string;
-  attribution?: string;
+  eyebrow: string;
+  title: string;
+  quote: string;
+  attribution: string;
   cta?: Cta;
 };
 
 export type Services = {
   _type: "services";
-  title?: string;
-  lead?: string;
-  items?: Array<{
-    label?: string;
-    title?: string;
-    description?: string;
-    image?: ObjectImage;
-    link?: Link;
+  title: string;
+  lead: string;
+  items: Array<{
+    label: string;
+    title: string;
+    description: string;
+    image: ObjectImage;
+    link: Link;
     _key: string;
   }>;
   nvm?: Nvm;
@@ -562,23 +562,23 @@ export type Services = {
 
 export type Intro = {
   _type: "intro";
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
   };
-  stampValue?: string;
-  stampLabel?: string;
-  eyebrow?: string;
-  title?: string;
+  stampValue: string;
+  stampLabel: string;
+  eyebrow: string;
+  title: string;
   titleHighlight?: string;
-  leads?: Array<string>;
+  leads: Array<string>;
   facts?: Array<{
-    value?: string;
-    label?: string;
+    value: string;
+    label: string;
     _key: string;
   }>;
   link?: Cta;
@@ -586,22 +586,22 @@ export type Intro = {
 
 export type Hero = {
   _type: "hero";
-  slides?: Array<{
+  slides: Array<{
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
+    alt: string;
     _type: "image";
     _key: string;
   }>;
-  eyebrow?: string;
-  title?: string;
+  eyebrow: string;
+  title: string;
   titleHighlight?: string;
-  lead?: string;
-  primaryCta?: Cta;
-  secondaryCta?: Cta;
-  badgeLabel?: string;
+  lead: string;
+  primaryCta: Cta;
+  secondaryCta: Cta;
+  badgeLabel: string;
 };
 
 export type PageBuilder = Array<
@@ -715,15 +715,15 @@ export type PageReference = {
 
 export type Cta = {
   _type: "cta";
-  label?: string;
-  linkType?: "internal" | "external";
+  label: string;
+  linkType: "internal" | "external";
   internalLink?: PageReference;
   href?: string;
 };
 
 export type Link = {
   _type: "link";
-  linkType?: "internal" | "external";
+  linkType: "internal" | "external";
   internalLink?: PageReference;
   href?: string;
 };
@@ -751,15 +751,15 @@ export type Footer = {
   paragraph?: string;
   socialLinks?: Array<{
     platform?: "facebook" | "instagram" | "linkedin";
-    url?: string;
+    url: string;
     _type: "socialLink";
     _key: string;
   }>;
   linkGroups?: Array<{
-    title?: string;
+    title: string;
     links?: Array<{
-      label?: string;
-      linkType?: "internal" | "external";
+      label: string;
+      linkType: "internal" | "external";
       internalLink?: PageReference;
       href?: string;
       _type: "footerLink";
@@ -778,16 +778,16 @@ export type Navigation = {
   _updatedAt: string;
   _rev: string;
   navLeft?: Array<{
-    label?: string;
-    linkType?: "internal" | "external";
+    label: string;
+    linkType: "internal" | "external";
     internalLink?: PageReference;
     href?: string;
     _type: "navLink";
     _key: string;
   }>;
   navRight?: Array<{
-    label?: string;
-    linkType?: "internal" | "external";
+    label: string;
+    linkType: "internal" | "external";
     internalLink?: PageReference;
     href?: string;
     _type: "navLink";
@@ -809,11 +809,11 @@ export type Woning = {
   _updatedAt: string;
   _rev: string;
   realworksId?: number;
-  adres?: string;
-  slug?: Slug;
+  adres: string;
+  slug: Slug;
   postcode?: string;
-  plaats?: string;
-  status?: "beschikbaar" | "voorbehoud" | "verkocht";
+  plaats: string;
+  status: "beschikbaar" | "voorbehoud" | "verkocht";
   prijs?: number;
   prijsConditie?: "k.k." | "v.o.n.";
   aangebodenSinds?: string;
@@ -828,9 +828,9 @@ export type Woning = {
   energielabel?:
     "A+++" | "A++" | "A+" | "A" | "B" | "C" | "D" | "E" | "F" | "G";
   kenmerkGroepen?: Array<{
-    titel?: string;
+    titel: string;
     rijen?: Array<{
-      label?: string;
+      label: string;
       waarde?: Array<string>;
       _type: "kenmerk";
       _key: string;
@@ -858,23 +858,23 @@ export type Woning = {
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
 };
 
 export type SanityImageHotspot = {
   _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 };
 
 export type Slug = {
   _type: "slug";
-  current?: string;
+  current: string;
   source?: string;
 };
 
@@ -884,8 +884,8 @@ export type Review = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  quote?: string;
-  name?: string;
+  quote: string;
+  name: string;
   type?: "Aankoop" | "Verkoop";
   date?: string;
   grade?: number;
@@ -904,8 +904,8 @@ export type Faq = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  answer?: string;
+  title: string;
+  answer: string;
   link?: Cta;
   afterLink?: string;
 };
@@ -916,8 +916,8 @@ export type Page = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  slug?: Slug;
+  title: string;
+  slug: Slug;
   seo?: Seo;
   content?: PageBuilder;
 };
@@ -928,11 +928,11 @@ export type FormGeneralSettings = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  adminEmail?: string;
-  smtpUsername?: string;
-  smtpPassword?: string;
-  successMessage?: string;
-  confirmationSubject?: string;
+  adminEmail: string;
+  smtpUsername: string;
+  smtpPassword: string;
+  successMessage: string;
+  confirmationSubject: string;
   confirmationMessage?: string;
   recaptchaEnabled?: boolean;
   recaptchaSiteKey?: string;
@@ -947,10 +947,10 @@ export type ContactForm = {
   _rev: string;
   title?: string;
   showtitle?: boolean;
-  id?: string;
+  id: string;
   class?: string;
-  fields?: Array<{
-    label?: string;
+  fields: Array<{
+    label: string;
     type?:
       | "text"
       | "email"
@@ -963,7 +963,7 @@ export type ContactForm = {
       | "radio";
     showPlaceholder?: boolean;
     placeholder?: string;
-    name?: string;
+    name: string;
     selectOptions?: Array<string>;
     radioOptions?: Array<string>;
     checkboxOptions?: Array<string>;
@@ -996,9 +996,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
+  height: number;
+  width: number;
+  aspectRatio: number;
 };
 
 export type SanityImageMetadata = {
@@ -1024,14 +1024,14 @@ export type SanityFileAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
+  sha1hash: string;
+  extension: string;
+  mimeType: string;
+  size: number;
+  assetId: string;
   uploadId?: string;
-  path?: string;
-  url?: string;
+  path: string;
+  url: string;
   source?: SanityAssetSourceData;
 };
 
@@ -1053,14 +1053,14 @@ export type SanityImageAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
+  sha1hash: string;
+  extension: string;
+  mimeType: string;
+  size: number;
+  assetId: string;
   uploadId?: string;
-  path?: string;
-  url?: string;
+  path: string;
+  url: string;
   metadata?: SanityImageMetadata;
   source?: SanityAssetSourceData;
 };
@@ -1149,8 +1149,8 @@ export type AllSanitySchemaTypes =
 // Query: *[_type == "page" && slug.current == $slug][0]{    _id,    title,    slug,    seo,    content[]{      ...,      primaryCta{  ...,  internalLink->{    "slug": slug.current  }},      secondaryCta{  ...,  internalLink->{    "slug": slug.current  }},      link{  ...,  internalLink->{    "slug": slug.current  }},      cta{  ...,  internalLink->{    "slug": slug.current  }},      nvm{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      items[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }},        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      cards[]{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      person{        ...,        links[]{  ...,  internalLink->{    "slug": slug.current  }}      },      aside{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      form->{        _id,        title,        showtitle,        submitButtonText,        fields[]      },      regions[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      places[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      // Geen "..." in de takken hieronder: die spreidt het ruwe document      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.      _type == "hero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "reviews" => {        "reviews": *[_type == "review"] | order(date desc)[0...8]{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance},        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "beoordelingenHero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)},        ...{  "cijfer10": count(*[_type == "review" && grade >= 9.5]),  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])}      },      _type == "uitgelichteReview" => {        review->{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "reviewGrid" => {        "items": *[_type == "review"] | order(date desc){  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "objectGrid" => {        ctaCard{..., cta{  ...,  internalLink->{    "slug": slug.current  }}},        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "listings" => {        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "contactFormSection" => {        "recaptcha": *[_type == "formGeneralSettings"][0]{          recaptchaEnabled,          recaptchaSiteKey        }      },      _type == "faqs" => {        faqs[]->{          ...,          link{  ...,  internalLink->{    "slug": slug.current  }}        }      }    }  }
 export type PAGE_QUERY_RESULT = {
   _id: string;
-  title: string | null;
-  slug: Slug | null;
+  title: string;
+  slug: Slug;
   seo: Seo | null;
   content: Array<
     | {
@@ -1158,7 +1158,7 @@ export type PAGE_QUERY_RESULT = {
         _type: "aanbodHeader";
         breadcrumbLabel?: string;
         eyebrow?: string;
-        title?: string;
+        title: string;
         titleHighlight?: string;
         lead?: string;
         aside: {
@@ -1166,10 +1166,10 @@ export type PAGE_QUERY_RESULT = {
           body?: string;
           cta: {
             _type: "cta";
-            label?: string;
-            linkType?: "external" | "internal";
+            label: string;
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
           } | null;
@@ -1189,16 +1189,16 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "assurances";
-        eyebrow?: string;
-        title?: string;
-        lead?: string;
+        eyebrow: string;
+        title: string;
+        lead: string;
         items: Array<{
-          title?: string;
-          body?: string;
+          title: string;
+          body: string;
           _key: string;
           link: null;
           cta: null;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1214,19 +1214,19 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "benefits";
-        eyebrow?: string;
-        title?: string;
-        lead?: string;
-        image?: {
+        eyebrow: string;
+        title: string;
+        lead: string;
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
         items: Array<{
-          icon?:
+          icon:
             | "camera"
             | "chart"
             | "doc"
@@ -1234,12 +1234,12 @@ export type PAGE_QUERY_RESULT = {
             | "person"
             | "renovate"
             | "scale";
-          title?: string;
-          body?: string;
+          title: string;
+          body: string;
           _key: string;
           link: null;
           cta: null;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1257,24 +1257,24 @@ export type PAGE_QUERY_RESULT = {
         _type: "beoordelingenHero";
         breadcrumbLabel?: string;
         eyebrow?: string;
-        title?: string;
+        title: string;
         titleHighlight?: string;
         lead?: string;
         primaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
         secondaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
@@ -1303,30 +1303,30 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "compareCards";
-        eyebrow?: string;
-        title?: string;
-        lead?: string;
+        eyebrow: string;
+        title: string;
+        lead: string;
         cards: Array<{
-          label?: string;
-          title?: string;
-          body?: string;
-          items?: Array<{
-            text?: string;
+          label: string;
+          title: string;
+          body: string;
+          items: Array<{
+            text: string;
             included?: boolean;
             _key: string;
           }>;
           cta: {
             _type: "cta";
-            label?: string;
-            linkType?: "external" | "internal";
+            label: string;
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
-          } | null;
+          };
           dark?: boolean;
           _key: string;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1342,16 +1342,16 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "contactFormSection";
-        eyebrow?: string;
-        title?: string;
-        lead?: string;
+        eyebrow: string;
+        title: string;
+        lead: string;
         form: {
           _id: string;
           title: string | null;
           showtitle: boolean | null;
           submitButtonText: string | null;
           fields: Array<{
-            label?: string;
+            label: string;
             type?:
               | "checkbox"
               | "email"
@@ -1364,7 +1364,7 @@ export type PAGE_QUERY_RESULT = {
               | "url";
             showPlaceholder?: boolean;
             placeholder?: string;
-            name?: string;
+            name: string;
             selectOptions?: Array<string>;
             radioOptions?: Array<string>;
             checkboxOptions?: Array<string>;
@@ -1372,26 +1372,26 @@ export type PAGE_QUERY_RESULT = {
             note?: string;
             isRequired?: boolean;
             _key: string;
-          }> | null;
-        } | null;
+          }>;
+        };
         note?: string;
-        successTitle?: string;
-        successBody?: string;
+        successTitle: string;
+        successBody: string;
         aside: {
-          title?: string;
-          body?: string;
+          title: string;
+          body: string;
           items?: Array<{
-            icon?: "mail" | "phone" | "pin" | "whatsapp";
-            title?: string;
+            icon: "mail" | "phone" | "pin" | "whatsapp";
+            title: string;
             subtitle?: string;
             _key: string;
           }>;
           cta: {
             _type: "cta";
-            label?: string;
-            linkType?: "external" | "internal";
+            label: string;
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
           } | null;
@@ -1415,22 +1415,22 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "contactWays";
         items: Array<{
-          icon?: "mail" | "phone" | "pin" | "whatsapp";
-          title?: string;
-          body?: string;
-          value?: string;
+          icon: "mail" | "phone" | "pin" | "whatsapp";
+          title: string;
+          body: string;
+          value: string;
           note?: string;
           link: {
             _type: "link";
-            linkType?: "external" | "internal";
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
           } | null;
           _key: string;
           cta: null;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1447,19 +1447,19 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "crossLinks";
         items: Array<{
-          title?: string;
-          body?: string;
+          title: string;
+          body: string;
           link: {
             _type: "link";
-            linkType?: "external" | "internal";
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
-          } | null;
+          };
           _key: string;
           cta: null;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1475,32 +1475,32 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "ctaBand";
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
-        eyebrow?: string;
-        title?: string;
-        body?: string;
+        eyebrow: string;
+        title: string;
+        body: string;
         primaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
         secondaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
@@ -1518,22 +1518,22 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "duoPhotos";
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
-        stampValue?: string;
-        stampLabel?: string;
-        secondaryImage?: {
+        stampValue: string;
+        stampLabel: string;
+        secondaryImage: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
         caption?: string;
@@ -1553,9 +1553,9 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "factBar";
-        facts?: Array<{
-          value?: string;
-          label?: string;
+        facts: Array<{
+          value: string;
+          label: string;
           _key: string;
         }>;
         primaryCta: null;
@@ -1574,15 +1574,15 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "faqs";
-        eyebrow?: string;
-        title?: string;
-        intro?: string;
+        eyebrow: string;
+        title: string;
+        intro: string;
         link: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
@@ -1592,19 +1592,19 @@ export type PAGE_QUERY_RESULT = {
           _createdAt: string;
           _updatedAt: string;
           _rev: string;
-          title?: string;
-          answer?: string;
+          title: string;
+          answer: string;
           link: {
             _type: "cta";
-            label?: string;
-            linkType?: "external" | "internal";
+            label: string;
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
           } | null;
           afterLink?: string;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         cta: null;
@@ -1620,38 +1620,38 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "hero";
-        slides?: Array<{
+        slides: Array<{
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
           _key: string;
         }>;
-        eyebrow?: string;
-        title?: string;
+        eyebrow: string;
+        title: string;
         titleHighlight?: string;
-        lead?: string;
+        lead: string;
         primaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
-        } | null;
+        };
         secondaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
-        } | null;
-        badgeLabel?: string;
+        };
+        badgeLabel: string;
         link: null;
         cta: null;
         nvm: null;
@@ -1670,31 +1670,31 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "intro";
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
-        stampValue?: string;
-        stampLabel?: string;
-        eyebrow?: string;
-        title?: string;
+        stampValue: string;
+        stampLabel: string;
+        eyebrow: string;
+        title: string;
         titleHighlight?: string;
-        leads?: Array<string>;
+        leads: Array<string>;
         facts?: Array<{
-          value?: string;
-          label?: string;
+          value: string;
+          label: string;
           _key: string;
         }>;
         link: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
@@ -1713,27 +1713,27 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "listings";
-        title?: string;
+        title: string;
         cta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
         regionsLabel?: string;
         regions: Array<{
-          label?: string;
+          label: string;
           link: {
             _type: "link";
-            linkType?: "external" | "internal";
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
-          } | null;
+          };
           _key: string;
         }> | null;
         primaryCta: null;
@@ -1747,10 +1747,10 @@ export type PAGE_QUERY_RESULT = {
         form: null;
         places: null;
         objecten: Array<{
-          adres: string | null;
-          slug: string | null;
-          plaats: string | null;
-          status: "beschikbaar" | "verkocht" | "voorbehoud" | null;
+          adres: string;
+          slug: string;
+          plaats: string;
+          status: "beschikbaar" | "verkocht" | "voorbehoud";
           prijs: number | null;
           woonoppervlak: number | null;
           kamers: number | null;
@@ -1769,24 +1769,24 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "mediaText";
-        eyebrow?: string;
-        title?: string;
-        paragraphs?: Array<string>;
+        eyebrow: string;
+        title: string;
+        paragraphs: Array<string>;
         cta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
         primaryCta: null;
@@ -1809,10 +1809,10 @@ export type PAGE_QUERY_RESULT = {
           body?: string;
           cta: {
             _type: "cta";
-            label?: string;
-            linkType?: "external" | "internal";
+            label: string;
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
           } | null;
@@ -1832,10 +1832,10 @@ export type PAGE_QUERY_RESULT = {
         regions: null;
         places: null;
         objecten: Array<{
-          adres: string | null;
-          slug: string | null;
-          plaats: string | null;
-          status: "beschikbaar" | "verkocht" | "voorbehoud" | null;
+          adres: string;
+          slug: string;
+          plaats: string;
+          status: "beschikbaar" | "verkocht" | "voorbehoud";
           prijs: number | null;
           woonoppervlak: number | null;
           kamers: number | null;
@@ -1854,34 +1854,34 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "pageHero";
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
         breadcrumbLabel?: string;
-        eyebrow?: string;
-        title?: string;
+        eyebrow: string;
+        title: string;
         titleHighlight?: string;
-        lead?: string;
+        lead: string;
         primaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
         secondaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
@@ -1899,10 +1899,10 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "pageOpener";
-        eyebrow?: string;
-        title?: string;
+        eyebrow: string;
+        title: string;
         titleHighlight?: string;
-        lead?: string;
+        lead: string;
         motto?: string;
         attribution?: string;
         primaryCta: null;
@@ -1921,28 +1921,28 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "personBlock";
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
-        eyebrow?: string;
-        title?: string;
-        body?: string;
+        eyebrow: string;
+        title: string;
+        body: string;
         person: {
-          initials?: string;
-          name?: string;
-          role?: string;
+          initials: string;
+          name: string;
+          role: string;
           links: Array<{
-            label?: string;
+            label: string;
             link?: Link;
             _key: string;
             internalLink: null;
           }> | null;
-        } | null;
+        };
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1958,19 +1958,19 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "quoteBand";
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
-        eyebrow?: string;
-        quote?: string;
-        initials?: string;
-        name?: string;
-        place?: string;
+        eyebrow: string;
+        quote: string;
+        initials: string;
+        name: string;
+        place: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1987,21 +1987,21 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "regionBlock";
-        eyebrow?: string;
-        title?: string;
-        lead?: string;
+        eyebrow: string;
+        title: string;
+        lead: string;
         places: Array<{
-          label?: string;
+          label: string;
           link: {
             _type: "link";
-            linkType?: "external" | "internal";
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
-          } | null;
+          };
           _key: string;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2026,8 +2026,8 @@ export type PAGE_QUERY_RESULT = {
         cta: null;
         nvm: null;
         items: Array<{
-          quote: string | null;
-          name: string | null;
+          quote: string;
+          name: string;
           type: "Aankoop" | "Verkoop" | null;
           date: string | null;
           grade: number | null;
@@ -2048,17 +2048,17 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "reviews";
-        score?: string;
-        scoreLabel?: string;
-        reviewCountLabel?: string;
-        intro?: string;
+        score: string;
+        scoreLabel: string;
+        reviewCountLabel: string;
+        intro: string;
         showGrades?: boolean;
         link: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
@@ -2074,8 +2074,8 @@ export type PAGE_QUERY_RESULT = {
         regions: null;
         places: null;
         reviews: Array<{
-          quote: string | null;
-          name: string | null;
+          quote: string;
+          name: string;
           type: "Aankoop" | "Verkoop" | null;
           date: string | null;
           grade: number | null;
@@ -2094,29 +2094,29 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "routeBlock";
-        eyebrow?: string;
-        title?: string;
-        lead?: string;
-        columns?: Array<{
-          title?: string;
-          body?: string;
+        eyebrow: string;
+        title: string;
+        lead: string;
+        columns: Array<{
+          title: string;
+          body: string;
           _key: string;
         }>;
         cta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
         primaryCta: null;
@@ -2134,34 +2134,34 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "services";
-        title?: string;
-        lead?: string;
+        title: string;
+        lead: string;
         items: Array<{
-          label?: string;
-          title?: string;
-          description?: string;
-          image?: ObjectImage;
+          label: string;
+          title: string;
+          description: string;
+          image: ObjectImage;
           link: {
             _type: "link";
-            linkType?: "external" | "internal";
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
-          } | null;
+          };
           _key: string;
           cta: null;
-        }> | null;
+        }>;
         nvm: {
-          badge?: string;
-          title?: string;
-          body?: string;
+          badge: string;
+          title: string;
+          body: string;
           cta: {
             _type: "cta";
-            label?: string;
-            linkType?: "external" | "internal";
+            label: string;
+            linkType: "external" | "internal";
             internalLink: {
-              slug: string | null;
+              slug: string;
             } | null;
             href?: string;
           } | null;
@@ -2180,35 +2180,35 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "splitHero";
-        breadcrumbLabel?: string;
-        eyebrow?: string;
-        title?: string;
+        breadcrumbLabel: string;
+        eyebrow: string;
+        title: string;
         titleHighlight?: string;
-        lead?: string;
+        lead: string;
         primaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
         secondaryCta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
         link: null;
@@ -2225,27 +2225,27 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "steps";
-        eyebrow?: string;
-        title?: string;
-        lead?: string;
+        eyebrow: string;
+        title: string;
+        lead: string;
         cta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
         items: Array<{
-          number?: string;
-          title?: string;
-          body?: string;
-          image?: ItemsObjectImage;
+          number: string;
+          title: string;
+          body: string;
+          image: ItemsObjectImage;
           _key: string;
           link: null;
           cta: null;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2260,32 +2260,32 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "story";
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
-        secondaryImage?: {
+        secondaryImage: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
+          alt: string;
           _type: "image";
         };
-        eyebrow?: string;
-        title?: string;
-        quote?: string;
-        attribution?: string;
+        eyebrow: string;
+        title: string;
+        quote: string;
+        attribution: string;
         cta: {
           _type: "cta";
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
         } | null;
@@ -2304,18 +2304,18 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "timeline";
-        eyebrow?: string;
-        title?: string;
-        lead?: string;
+        eyebrow: string;
+        title: string;
+        lead: string;
         items: Array<{
-          year?: string;
-          title?: string;
-          body?: string;
+          year: string;
+          title: string;
+          body: string;
           image?: TimelineItemsObjectImage;
           _key: string;
           link: null;
           cta: null;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2332,7 +2332,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "uitgelichteReview";
         eyebrow?: string;
-        image?: {
+        image: {
           asset?: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
@@ -2341,8 +2341,8 @@ export type PAGE_QUERY_RESULT = {
           _type: "image";
         };
         review: {
-          quote: string | null;
-          name: string | null;
+          quote: string;
+          name: string;
           type: "Aankoop" | "Verkoop" | null;
           date: string | null;
           grade: number | null;
@@ -2352,7 +2352,7 @@ export type PAGE_QUERY_RESULT = {
           negotiationAndResult: number | null;
           priceQuality: number | null;
           serviceAndGuidance: number | null;
-        } | null;
+        };
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2369,17 +2369,17 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "valueCards";
-        eyebrow?: string;
-        title?: string;
-        lead?: string;
+        eyebrow: string;
+        title: string;
+        lead: string;
         items: Array<{
-          icon?: "heart" | "lines" | "rings";
-          title?: string;
-          body?: string;
+          icon: "heart" | "lines" | "rings";
+          title: string;
+          body: string;
           _key: string;
           link: null;
           cta: null;
-        }> | null;
+        }>;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2396,7 +2396,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "werkwijze";
         eyebrow?: string;
-        title?: string;
+        title: string;
         lead?: string;
         items: Array<{
           number?: string;
@@ -2426,11 +2426,11 @@ export type PAGE_QUERY_RESULT = {
 // Query: *[_type == "woning" && slug.current == $slug][0]{    _id,    adres,    "slug": slug.current,    postcode,    plaats,    status,    prijs,    prijsConditie,    aangebodenSinds,    aanvaarding,    soortWoning,    bouwjaar,    woonoppervlak,    perceel,    inhoud,    kamers,    slaapkamers,    energielabel,    kenmerkGroepen[]{      titel,      rijen[]{label, waarde}    },    aanbiedingsTekst,    aanbiedingsTekstEngels,    fotos,    "brochureUrl": brochure.asset->url,    seo,    "vergelijkbaar": *[_type == "woning" && _id != ^._id]      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}  }
 export type WONING_QUERY_RESULT = {
   _id: string;
-  adres: string | null;
-  slug: string | null;
+  adres: string;
+  slug: string;
   postcode: string | null;
-  plaats: string | null;
-  status: "beschikbaar" | "verkocht" | "voorbehoud" | null;
+  plaats: string;
+  status: "beschikbaar" | "verkocht" | "voorbehoud";
   prijs: number | null;
   prijsConditie: "k.k." | "v.o.n." | null;
   aangebodenSinds: string | null;
@@ -2445,9 +2445,9 @@ export type WONING_QUERY_RESULT = {
   energielabel:
     "A" | "A+" | "A++" | "A+++" | "B" | "C" | "D" | "E" | "F" | "G" | null;
   kenmerkGroepen: Array<{
-    titel: string | null;
+    titel: string;
     rijen: Array<{
-      label: string | null;
+      label: string;
       waarde: Array<string> | null;
     }> | null;
   }> | null;
@@ -2465,10 +2465,10 @@ export type WONING_QUERY_RESULT = {
   brochureUrl: string | null;
   seo: null;
   vergelijkbaar: Array<{
-    adres: string | null;
-    slug: string | null;
-    plaats: string | null;
-    status: "beschikbaar" | "verkocht" | "voorbehoud" | null;
+    adres: string;
+    slug: string;
+    plaats: string;
+    status: "beschikbaar" | "verkocht" | "voorbehoud";
     prijs: number | null;
     woonoppervlak: number | null;
     kamers: number | null;
@@ -2492,8 +2492,8 @@ export type CONTACT_FORM_QUERY_RESULT = {
   _id: string;
   title: string | null;
   fields: Array<{
-    label: string | null;
-    name: string | null;
+    label: string;
+    name: string;
     type:
       | "checkbox"
       | "email"
@@ -2506,17 +2506,17 @@ export type CONTACT_FORM_QUERY_RESULT = {
       | "url"
       | null;
     isRequired: boolean | null;
-  }> | null;
+  }>;
 } | null;
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: CONTACT_FORM_SETTINGS_QUERY
 // Query: *[_type == "formGeneralSettings"][0]{    adminEmail,    smtpUsername,    smtpPassword,    confirmationSubject,    confirmationMessage,    recaptchaEnabled,    recaptchaSecretKey  }
 export type CONTACT_FORM_SETTINGS_QUERY_RESULT = {
-  adminEmail: string | null;
-  smtpUsername: string | null;
-  smtpPassword: string | null;
-  confirmationSubject: string | null;
+  adminEmail: string;
+  smtpUsername: string;
+  smtpPassword: string;
+  confirmationSubject: string;
   confirmationMessage: string | null;
   recaptchaEnabled: boolean | null;
   recaptchaSecretKey: string | null;
@@ -2532,20 +2532,20 @@ export type NAVIGATION_QUERY_RESULT =
     }
   | {
       navLeft: Array<{
-        label?: string;
-        linkType?: "external" | "internal";
+        label: string;
+        linkType: "external" | "internal";
         internalLink: {
-          slug: string | null;
+          slug: string;
         } | null;
         href?: string;
         _type: "navLink";
         _key: string;
       }> | null;
       navRight: Array<{
-        label?: string;
-        linkType?: "external" | "internal";
+        label: string;
+        linkType: "external" | "internal";
         internalLink: {
-          slug: string | null;
+          slug: string;
         } | null;
         href?: string;
         _type: "navLink";
@@ -2567,12 +2567,12 @@ export type FOOTER_QUERY_RESULT =
   | {
       paragraph: string | null;
       linkGroups: Array<{
-        title: string | null;
+        title: string;
         links: Array<{
-          label?: string;
-          linkType?: "external" | "internal";
+          label: string;
+          linkType: "external" | "internal";
           internalLink: {
-            slug: string | null;
+            slug: string;
           } | null;
           href?: string;
           _type: "footerLink";
@@ -2581,7 +2581,7 @@ export type FOOTER_QUERY_RESULT =
       }> | null;
       socialLinks: Array<{
         platform: "facebook" | "instagram" | "linkedin" | null;
-        url: string | null;
+        url: string;
       }> | null;
       copyright: string | null;
     }
