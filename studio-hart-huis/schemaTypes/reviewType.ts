@@ -2,12 +2,13 @@ import {CommentIcon} from '@sanity/icons/Comment'
 import {defineField, defineType} from 'sanity'
 
 /** Cijfers komen straks uit de scraper; daarom optioneel. */
-const scoreField = (name: string, title: string) =>
+const scoreField = (name: string, title: string, hidden?: (parent: any) => boolean) =>
   defineField({
     name,
     title,
     type: 'number',
     validation: (rule) => rule.min(0).max(10),
+    hidden,
   })
 
 export const reviewType = defineType({
@@ -42,8 +43,26 @@ export const reviewType = defineType({
     scoreField('grade', 'Cijfer'),
     scoreField('expertise', 'Deskundigheid'),
     scoreField('localMarketKnowledge', 'Lokale marktkennis'),
-    scoreField('negotiationAndResult', 'Onderhandeling en resultaat'),
-    scoreField('priceQuality', 'Prijs-kwaliteit'),
+    scoreField(
+      'negotiationAndResult',
+      'Onderhandeling en resultaat',
+      ({parent}) => parent?.type === 'Verkoop',
+    ),
+    scoreField('priceQuality', 'Prijs / kwaliteit'),
+    scoreField(
+      'serviceAndGuidance',
+      'Service en begeleiding',
+      ({parent}) => parent?.type === 'Aankoop',
+    ),
+    defineField({
+      name: 'fundaKey',
+      title: 'Funda-sleutel',
+      description:
+        'Vingerafdruk van de beoordeling op Funda. Wordt door de scraper gezet — niet aanpassen, anders komt de review er bij de volgende run dubbel in.',
+      type: 'string',
+      readOnly: true,
+      hidden: ({value}) => !value,
+    }),
   ],
   preview: {
     select: {title: 'name', subtitle: 'type'},

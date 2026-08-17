@@ -1,48 +1,12 @@
 {
-  "session_id": "session-2026-08-13-1300",
-  "started": "2026-08-13T11:00:01.357Z",
-  "files_read": {
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/PageBuilder.tsx": {
-      "count": 1,
-      "tokens": 6530,
-      "first_read": "2026-08-13T11:00:33.840Z"
-    },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/example-designs/beoordelingen.html": {
-      "count": 2,
-      "tokens": 106755,
-      "first_read": "2026-08-13T11:48:45.784Z"
-    },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/blocks/AanbodHeader.tsx": {
-      "count": 1,
-      "tokens": 1000,
-      "first_read": "2026-08-13T11:50:24.481Z"
-    },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/blocks/ObjectGrid.tsx": {
-      "count": 2,
-      "tokens": 3146,
-      "first_read": "2026-08-13T11:50:27.920Z"
-    },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/lib/reviews.ts": {
-      "count": 1,
-      "tokens": 429,
-      "first_read": "2026-08-13T11:52:07.281Z"
-    },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/blocks/Reviews.tsx": {
-      "count": 1,
-      "tokens": 1616,
-      "first_read": "2026-08-13T11:52:52.798Z"
-    },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/sanity/queries.ts": {
-      "count": 1,
-      "tokens": 1247,
-      "first_read": "2026-08-13T11:56:10.675Z"
-    }
-  },
+  "session_id": "session-2026-08-17-1430",
+  "started": "2026-08-17T12:30:28.832Z",
+  "files_read": {},
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 7,
+  "anatomy_hits": 0,
   "anatomy_misses": 0,
-  "repeated_reads_warned": 2,
+  "repeated_reads_warned": 0,
   "cerebrum_warnings": 0,
-  "stop_count": 7
+  "stop_count": 0
 }

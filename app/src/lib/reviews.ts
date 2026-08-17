@@ -25,17 +25,22 @@ export type ReviewItem = {
   localMarketKnowledge?: number | null;
   negotiationAndResult?: number | null;
   priceQuality?: number | null;
+  serviceAndGuidance?: number | null;
 };
 
 /**
  * De deelcijfers, in de volgorde waarin ze in de kaarttabel staan.
  * Los van het totaalcijfer (`grade`), dat als los rondje getoond wordt.
+ *
+ * Labels en volgorde volgen de vier criteria die Funda zelf uitvraagt — de
+ * scraper leest ze letterlijk uit de beoordelingenwidget, dus ze horen hier
+ * hetzelfde te heten als in `src/lib/funda-reviews.ts`.
  */
 export const GRADE_SUBJECTS = [
   { key: 'expertise', label: 'Deskundigheid' },
   { key: 'localMarketKnowledge', label: 'Lokale marktkennis' },
-  { key: 'negotiationAndResult', label: 'Onderhandeling en resultaat' },
-  { key: 'priceQuality', label: 'Prijs-kwaliteit' },
+  { key: 'priceQuality', label: 'Prijs / kwaliteit' },
+  { key: 'serviceAndGuidance', label: 'Service en begeleiding' },
 ] as const satisfies ReadonlyArray<{ key: keyof ReviewItem; label: string }>;
 
 /** Alleen de deelcijfers die deze review daadwerkelijk heeft. */
@@ -100,7 +105,10 @@ export function reviewScore(stats: ReviewStats, fallback?: string): string | und
 }
 
 /** Idem voor "84 keer beoordeeld". 0 reviews telt als "niets afgeleid". */
-export function reviewCountLabel(stats: ReviewStats, fallback?: string): string | undefined {
+export function reviewCountLabel(
+  stats: ReviewStats,
+  fallback?: string,
+): string | undefined {
   return stats.totaalReviews ? `${stats.totaalReviews} keer beoordeeld` : fallback;
 }
 

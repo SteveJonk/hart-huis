@@ -46,7 +46,7 @@ assert.deepEqual(
   }),
   [
     { label: 'Deskundigheid', value: '9,5' },
-    { label: 'Prijs-kwaliteit', value: '8,0' },
+    { label: 'Prijs / kwaliteit', value: '8,0' },
   ],
 );
 assert.deepEqual(subjectGrades({ quote: 'q', name: 'n' }), []);

@@ -25,6 +25,10 @@
 
 - `openwolf.md` (~328 tok)
 
+## docs/
+
+- `funda-review-scraper.md` — Hoe de scraper werkt, welke env-variabelen hij nodig heeft en wat er nog niet geverifieerd is. (~1200 tok)
+
 ## .cursor/rules/
 
 - `openwolf.mdc` (~87 tok)
@@ -115,6 +119,7 @@
 - `tsconfig.json` — TypeScript configuration (~192 tok)
 - `tsconfig.tsbuildinfo` (~44031 tok)
 
+- `vercel.json` — Dagelijkse cron die de Funda-review-scraper aanroept (04:00 UTC). (~40 tok)
 ## app/example-designs/
 
 - `!aanbod.html` — Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem (~245118 tok)
@@ -130,10 +135,15 @@
 ## app/scripts/
 
 - `check-aanbiedingstekst.ts` — assert-based check of the Realworks text parser (`npm run check:tekst`). (~359 tok)
+- `check-funda-reviews.ts` — Smallest thing that fails if de Funda-parser breekt. Draait tegen een fixture. (~950 tok)
 - `check-reviews.ts` — Smallest thing that fails if de afgeleide review-cijfers breken. (~687 tok)
 - `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~556 tok)
   - fn `parseTargets` L38-49 (~106 tok)
   - fn `main` L50-66 (~119 tok)
+
+## app/scripts/fixtures/
+
+- `funda-widget.html` — Nagebouwde widget-pagina voor de parsertest. Vervangen door een echte opgeslagen pagina. (~700 tok)
 
 ## app/scripts/seed/
 
@@ -215,6 +225,10 @@
   - fn `fail` L54-57 (~35 tok)
   - fn `escapeHtml` L58-65 (~48 tok)
   - fn `POST` L66-188 (~1278 tok)
+
+## app/src/app/api/scrape-funda-reviews/
+
+- `route.ts` — Haalt beide Funda-tabbladen op en zet ze als reviews in Sanity. Auth via cron-bearer of studio-secret; dryRun/debug. (~1750 tok)
 
 ## app/src/components/
 
@@ -383,6 +397,7 @@
 - `cn.ts` — Exports cn (~37 tok)
 - `contact-content.ts` — Icons shared by the contact cards and the form aside. (~1741 tok)
 - `format.ts` — `euro()`, `longDate()`, `shortDate()` for object data. (~228 tok)
+- `funda-reviews.ts` — Pure parser voor de Funda-beoordelingenwidget: HTML -> reviews, paginering, stabiele sleutels. Geen fetch, geen Sanity. (~1850 tok)
 - `home-content.ts` — Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more (~1046 tok)
 - `links.ts` — Resolve a Sanity link/cta object to a usable href. (~258 tok)
 - `object-content.ts` — Status labels/tones, back link, makelaar card, CTA copy for the object page. (~518 tok)
@@ -410,9 +425,11 @@
   - fn `pageMetadata` L23-57 (~353 tok)
 - `queries.ts` — Resolve internal page references on link/cta objects. (~1613 tok)
 
+- `write-client.ts` — Sanity-client met schrijftoken voor server-side routes. Los van client.ts, dat tokenloos blijft. (~180 tok)
 ## studio-hart-huis/
 
 - `.gitignore` — Git ignore rules (~112 tok)
+- `environment.d.ts` — Declareert de SANITY_STUDIO_* env-variabelen; de studio heeft geen @types/node. (~110 tok)
 - `eslint.config.mjs` — ESLint flat configuration (~21 tok)
 - `package-lock.json` — npm lock file (~171292 tok)
 - `package.json` — Node.js package manifest (~253 tok)
@@ -482,6 +499,10 @@
 - `linkFields.ts` — Shared internal/external link fields for `link` and `cta` objects. (~407 tok)
 - `linkType.ts` — Exports linkType (~54 tok)
 - `seoType.ts` — Exports seoType (~231 tok)
+
+## studio-hart-huis/tools/
+
+- `FundaReviewsTool.tsx` — Paneel onder Tools in de linkerkolom dat de scraper-route aanroept, met een testknop die niets wegschrijft. (~1150 tok)
 
 ## studio-hart-huis/static/
 

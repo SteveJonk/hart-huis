@@ -37,6 +37,24 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-13T14:10:00Z"
+    },
+    {
+      "id": "bug-003",
+      "timestamp": "2026-08-15T20:47:00Z",
+      "error_message": "check:funda faalde: quote begon met 'Deze klant beveelt deze makelaar aan.' in plaats van met de tekst van de reviewer",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "De aanbevelingsregel van Funda werd herkend met /\\baanbevel/i, maar de formulering kan ook 'beveelt ... aan' zijn — dan matcht dat patroon niet en blijft de boilerplate in de reviewtekst staan.",
+      "fix": "Patroon verbreed naar /aanbevel|beveelt/i. Daarnaast knipt parseQuote nu op de losse getalregel (het totaalcijfer) en gooit hooguit een korte eerste regel weg, in plaats van op de laatste 'aanbevelen' in het blok te zoeken — reviewers schrijven dat woord zelf ook en dan verdween de halve beoordeling.",
+      "tags": [
+        "funda",
+        "scraper",
+        "parser",
+        "regex",
+        "reviews"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-15T20:47:00Z"
     }
   ]
 }

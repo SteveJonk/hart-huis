@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-13
+> Last updated: 2026-08-15
 
 ---
 
@@ -58,6 +58,16 @@
 - home hero-badge en reviews-blok lezen hetzelfde afgeleide cijfer, met de CMS-waarde als fallback
 - `npm run check:reviews` dekt formatting, fallback, deelcijfers en de verdeling
 
+**Funda-review-scraper**
+- scrapet de **beoordelingenwidget** (`funda.nl/beoordelingenwidget/{id}/{page}/{colors}/{type}`), niet de gewone pagina's — die zitten achter een bot-challenge
+- `app/src/lib/funda-reviews.ts` is de pure parser (geen fetch, geen Sanity), `app/src/app/api/scrape-funda-reviews/route.ts` de route, `app/src/sanity/write-client.ts` de schrijfclient
+- beide tabbladen + paginering; `_id` = `funda-review-<hash van type+naam+adres+datum>`, dus idempotent en verwijzingen blijven heel
+- aan te roepen via **Tools → Funda-reviews** in de linkerkolom van de studio (`tools/FundaReviewsTool.tsx`, ingehangen in `structure.ts`) en dagelijks via de cron in `app/vercel.json`
+- `?dryRun=1` schrijft niets weg, `?debug=1` geeft de ruwe tekst terug
+- deelcijfer `negotiationAndResult` → **`serviceAndGuidance`** ("Service en begeleiding"): de widget vraagt Deskundigheid / Lokale marktkennis / Prijs / kwaliteit / Service en begeleiding uit
+- `npm run check:funda` dekt de parser, de ontdubbeling en de paginering-guard
+- alles staat beschreven in `docs/funda-review-scraper.md`
+
 ---
 
 ## 🚀 Next phase
@@ -65,7 +75,12 @@
 **Goal:** Alle designs uit `app/example-designs/` zijn nu geïmplementeerd. Wat resteert is afmaken en aanscherpen.
 
 ### Open punten
-1. De scraper die `review`-documenten vult (grade, deelcijfers, type, date) moet nog gebouwd worden — schema en front-end staan klaar.
+1. **De scraper is nog nooit tegen de echte Funda gedraaid** — funda.nl is geblokkeerd vanuit de bouwomgeving. Te doen, in deze volgorde:
+   a. sla een echte widget-pagina op over `app/scripts/fixtures/funda-widget.html` heen en draai `npm run check:funda`
+   b. controleer in de browser of pagina 1 en pagina 2 van de widget-URL écht andere reviews geven (de route stopt zelf als dat niet zo is, met een waarschuwing)
+   c. `?dryRun=1` draaien en de uitkomst nalopen vóór de eerste echte run
+   d. daarna de 4 mock-reviews uit `seed:home` weggooien — die hebben geen cijfers maar tellen wel mee in `reviewStats`
+   e. env zetten: `SANITY_API_WRITE_TOKEN`, `CRON_SECRET`, `FUNDA_SCRAPER_SECRET`, `STUDIO_ORIGIN` op Vercel; `SANITY_STUDIO_SCRAPER_URL` + `SANITY_STUDIO_SCRAPER_SECRET` in de studio
 2. Met 4 reviews is de "toon meer" van `reviewGrid` (>9) nog niet met echte data uitgeprobeerd.
 3. De makelaarskaart op de objectpagina is nog hardcoded in `src/lib/object-content.ts` — naar het `woning`-schema (of een gedeeld makelaar-document) zodra er een tweede makelaar is.
 4. `aanbiedingsTekstEngels` wordt opgeslagen en geseed maar nergens gerenderd — er is nog geen taalwissel op de objectpagina.
@@ -89,7 +104,15 @@
 ## 🔧 Useful commands
 
 ```bash
-# add the most-used commands here so the next session has them ready
+cd app
+npm run check:funda      # parser van de Funda-scraper tegen de fixture
+npm run check:reviews    # afgeleide review-cijfers
+npm run check:tekst      # Realworks-aanbiedingstekst
+npm run seed:sanity      # alle pagina's seeden (vereist SANITY_API_WRITE_TOKEN)
+
+# de scraper uitproberen zonder iets op te slaan
+curl -H "x-scraper-secret: $FUNDA_SCRAPER_SECRET" \
+  'https://<site>/api/scrape-funda-reviews?dryRun=1'
 ```
 
 ---

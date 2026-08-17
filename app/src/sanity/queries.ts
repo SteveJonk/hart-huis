@@ -55,7 +55,8 @@ const reviewCard = /* groq */ `{
   expertise,
   localMarketKnowledge,
   negotiationAndResult,
-  priceQuality
+  priceQuality,
+  serviceAndGuidance
 }`;
 
 export const PAGE_QUERY = defineQuery(`
