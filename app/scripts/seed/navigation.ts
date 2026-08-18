@@ -63,6 +63,7 @@ async function upsertFooter() {
   const taxatieLink = await pageLink('Taxatie', 'taxatie');
   const overOnsLink = await pageLink('Over ons', 'over-ons');
   const contactLink = await pageLink('Contact', 'contact');
+  const beoordelingenLink = await pageLink('Beoordelingen', 'beoordelingen');
 
   const doc = {
     _id: 'footer',
@@ -71,17 +72,12 @@ async function upsertFooter() {
       {
         _key: key('footer-diensten'),
         title: 'Diensten',
-        links: [verkoopLink, aankoopLink, taxatieLink, navLinkExternal('NVM', '#')],
+        links: [verkoopLink, aankoopLink, taxatieLink],
       },
       {
         _key: key('footer-snel-naar'),
         title: 'Snel naar',
-        links: [
-          aanbodLink,
-          navLinkExternal('Beoordelingen', '#'),
-          overOnsLink,
-          contactLink,
-        ],
+        links: [aanbodLink, beoordelingenLink, overOnsLink, contactLink],
       },
     ],
     socialLinks: [],

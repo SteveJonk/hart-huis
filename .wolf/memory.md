@@ -199,3 +199,47 @@
 | 20:40 | Typegen-config verplaatst naar `typegen` in sanity.cli.ts (los bestand is deprecated); schema.json + types nu in app/src/sanity; `--force` en `--enforce-required-fields` toegevoegd; `npm run typegen` werkt vanuit beide mappen | studio-hart-huis/{sanity.cli.ts,package.json}, app/package.json, app/src/sanity/{schema.json,sanity.types.ts} | Werkt, herhaalbaar, 6 queries + 70 schematypes | ~12k |
 | 20:55 | Gegenereerde queryresultaat-types overgenomen op de fetch-grens; ~87 regels handgeschreven types weg | app/src/app/layout.tsx, app/src/app/api/submit-form/route.ts, app/src/app/aanbod/[slug]/page.tsx | tsc + eslint schoon | ~10k |
 | 21:10 | PageBuilder getypt vanuit PAGE_QUERY_RESULT i.p.v. `[key: string]: unknown`; 143 van de 159 casts weg, default-tak is nu `never` | app/src/components/PageBuilder.tsx | tsc + eslint schoon; 2 latente bugs gevonden (bug-013 seo, bug-014 badgeValue) | ~18k |
+
+## Session: 2026-08-18 09:54
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-18 10:14
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-18 11:47
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-18 11:48
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-18 aankoop
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| — | CSS-diff aankoop.html tegen !verkoop.html | example-designs/ | alleen `.zoekblok` (= nvmstrip) is nieuw; rest is de bestaande template | ~4k |
+| — | 9 jpegs uitgepakt | public/images/aankoop/*.jpg | pagehero, waarom, step-1..5, quote, cta | ~1k |
+| — | Copy-constanten | src/lib/aankoop-content.ts | nieuw | ~4k |
+| — | Icoonset gedeeld gemaakt | ui/BlockIcon.tsx, Benefits.tsx, verkoop-content.ts | + search/eye/clock; Benefit.icon = BlockIconName | ~3k |
+| — | Strip uit Services getrokken | ui/Strip.tsx, Services.tsx | home rendert identiek (mt-70px, NVM-badge gecheckt) | ~3k |
+| — | Nieuw blok | blocks/HighlightStrip.tsx + highlightStripType.ts | icoon- of tekstmerk, los inzetbaar | ~3k |
+| — | Schema + typegen | schemaTypes/index.ts, pageBuilderType.ts, sanity.types.ts | typegen faalde eerst: type niet in de export-array | ~2k |
+| — | Seed-target | scripts/seed/aankoop.ts, seed.ts, package.json | npm run seed:aankoop; Aankoop in nav/footer nu intern | ~3k |
+| — | Preview gecontroleerd via DOM | — | 11 secties, iconen en strip kloppen; screenshots bleven leeg | ~7k |
+
+## Session: 2026-08-18 14:03
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-18 14:06
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|

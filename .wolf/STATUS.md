@@ -85,7 +85,7 @@
 
 ## 🚀 Next phase
 
-**Goal:** Alle designs uit `app/example-designs/` zijn nu geïmplementeerd. Wat resteert is afmaken en aanscherpen.
+**Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`). Wat resteert is afmaken en aanscherpen.
 
 ### Open punten
 1. **De scraper is lokaal tegen de echte Funda gedraaid (17-08-2026) en klopt: 42 verkoop + 12 aankoop = 54, zonder waarschuwingen** — precies wat de widget zelf noemt. De fixtures zijn nu echte pagina's. Wat resteert vóór de eerste échte run:

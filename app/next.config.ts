@@ -5,6 +5,7 @@ import type { NextConfig } from 'next';
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   // Anchor Turbopack to this app; stray ~/ lockfiles otherwise become the root.
   turbopack: {
     root: projectRoot,
