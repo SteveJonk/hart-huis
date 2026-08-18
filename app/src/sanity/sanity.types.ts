@@ -778,6 +778,7 @@ export type Footer = {
     _type: "image";
   };
   paragraph?: string;
+  whatsapp?: string;
   socialLinks?: Array<{
     platform?: "facebook" | "instagram" | "linkedin";
     url: string;
@@ -797,6 +798,11 @@ export type Footer = {
     _type: "linkGroup";
     _key: string;
   }>;
+  contactInfo?: {
+    address?: Array<string>;
+    phone?: string;
+    email?: string;
+  };
   certificationLogos?: Array<{
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -2649,11 +2655,13 @@ export type NAVIGATION_QUERY_RESULT =
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: FOOTER_QUERY
-// Query: *[_id == "footer"][0]{    logo{ alt, "url": asset->url },    paragraph,    linkGroups[]{      title,      links[]{  ...,  internalLink->{    "slug": slug.current  }}    },    socialLinks[]{ platform, url },    certificationLogos[]{ alt, url, asset },    copyright  }
+// Query: *[_id == "footer"][0]{    logo{ alt, "url": asset->url },    paragraph,    whatsapp,    contactInfo{      address,      phone,      email    },    linkGroups[]{      title,      links[]{  ...,  internalLink->{    "slug": slug.current  }}    },    socialLinks[]{ platform, url },    certificationLogos[]{ alt, url, asset },    copyright  }
 export type FOOTER_QUERY_RESULT =
   | {
       logo: null;
       paragraph: null;
+      whatsapp: null;
+      contactInfo: null;
       linkGroups: null;
       socialLinks: null;
       certificationLogos: null;
@@ -2665,6 +2673,8 @@ export type FOOTER_QUERY_RESULT =
         url: string | null;
       } | null;
       paragraph: null;
+      whatsapp: null;
+      contactInfo: null;
       linkGroups: null;
       socialLinks: null;
       certificationLogos: null;
@@ -2676,6 +2686,12 @@ export type FOOTER_QUERY_RESULT =
         url: string | null;
       } | null;
       paragraph: string | null;
+      whatsapp: string | null;
+      contactInfo: {
+        address: Array<string> | null;
+        phone: string | null;
+        email: string | null;
+      } | null;
       linkGroups: Array<{
         title: string;
         links: Array<{
@@ -2711,6 +2727,6 @@ declare module "@sanity/client" {
     '\n  *[_type == "contactForm" && _id == $formId][0]{\n    _id,\n    title,\n    fields[]{label, name, type, isRequired}\n  }\n': CONTACT_FORM_QUERY_RESULT;
     '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    smtpUsername,\n    smtpPassword,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey\n  }\n': CONTACT_FORM_SETTINGS_QUERY_RESULT;
     '\n  *[_id == "navigation"][0]{\n    logo{ alt, "url": asset->url },\n    navLeft[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n    navRight[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n  }\n': NAVIGATION_QUERY_RESULT;
-    '\n  *[_id == "footer"][0]{\n    logo{ alt, "url": asset->url },\n    paragraph,\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n    },\n    socialLinks[]{ platform, url },\n    certificationLogos[]{ alt, url, asset },\n    copyright\n  }\n': FOOTER_QUERY_RESULT;
+    '\n  *[_id == "footer"][0]{\n    logo{ alt, "url": asset->url },\n    paragraph,\n    whatsapp,\n    contactInfo{\n      address,\n      phone,\n      email\n    },\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n    },\n    socialLinks[]{ platform, url },\n    certificationLogos[]{ alt, url, asset },\n    copyright\n  }\n': FOOTER_QUERY_RESULT;
   }
 }

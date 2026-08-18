@@ -226,6 +226,12 @@ export const FOOTER_QUERY = defineQuery(`
   *[_id == "footer"][0]{
     logo{ alt, "url": asset->url },
     paragraph,
+    whatsapp,
+    contactInfo{
+      address,
+      phone,
+      email
+    },
     linkGroups[]{
       title,
       links[]${linkExpansion}

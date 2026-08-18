@@ -6,6 +6,7 @@ import { imageSrc, type SanityImage } from '@/sanity/image';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FOOTER_QUERY_RESULT } from '@/sanity/sanity.types';
+import { parsePhoneNumber } from '@/lib/phone';
 
 function FooterLinkList({ links }: { links: NavLink[] }) {
   return (
@@ -36,12 +37,19 @@ type SiteFooterProps = {
     url: string | null;
   } | null;
   paragraph?: string | null;
+  contactInfo?: {
+    address?: string[] | null;
+    phone?: string | null;
+    email?: string | null;
+  } | null;
   linkGroups?: FooterLinkGroup[] | null;
   copyright?: string | null;
   certificationLogos?: CertificationLogo[] | null;
 };
 
 export function SiteFooter({
+  paragraph,
+  contactInfo,
   linkGroups = [],
   copyright,
   certificationLogos,
@@ -66,10 +74,11 @@ export function SiteFooter({
         >
           <div>
             <LogoMark variant='footer' logo={logo} />
-            <p className='max-w-[270px] text-[0.9rem] leading-[1.75] text-taupe'>
-              Jouw NVM-makelaar voor verkoop, aankoop en taxaties in Haarlem en
-              omstreken.
-            </p>
+            {paragraph && (
+              <p className='max-w-[270px] text-[0.9rem] leading-[1.75] text-taupe'>
+                {paragraph}
+              </p>
+            )}
           </div>
           {groups.map((group) => (
             <div key={group.title}>
@@ -84,27 +93,35 @@ export function SiteFooter({
               Contact
             </h5>
             <ul className='list-none'>
-              <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
-                {SITE.address[0]}
-                <br />
-                {SITE.address[1]}
-              </li>
-              <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
-                <Link
-                  href={SITE.phoneHref}
-                  className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
-                >
-                  {SITE.phone}
-                </Link>
-              </li>
-              <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
-                <Link
-                  href={SITE.emailHref}
-                  className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
-                >
-                  {SITE.email}
-                </Link>
-              </li>
+              {contactInfo?.address && (
+                <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
+                  {contactInfo?.address.map((address) => (
+                    <span className='block' key={address}>
+                      {address}
+                    </span>
+                  ))}
+                </li>
+              )}
+              {contactInfo?.phone && (
+                <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
+                  <Link
+                    href={`tel:${parsePhoneNumber(contactInfo.phone)}`}
+                    className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
+                  >
+                    {contactInfo.phone}
+                  </Link>
+                </li>
+              )}
+              {contactInfo?.email && (
+                <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
+                  <Link
+                    href={`mailto:${contactInfo.email}`}
+                    className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
+                  >
+                    {contactInfo.email}
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

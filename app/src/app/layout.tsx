@@ -63,11 +63,13 @@ export default async function RootLayout({
         {children}
         <SiteFooter
           logo={footer?.logo}
+          paragraph={footer?.paragraph}
+          contactInfo={footer?.contactInfo}
           linkGroups={linkGroups}
           copyright={footer?.copyright}
           certificationLogos={footer?.certificationLogos}
         />
-        <WhatsAppButton />
+        {footer?.whatsapp && <WhatsAppButton href={footer.whatsapp} />}
       </body>
     </html>
   );

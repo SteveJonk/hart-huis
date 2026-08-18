@@ -57,6 +57,11 @@ export const footerType = defineType({
       type: 'text',
     }),
     defineField({
+      name: 'whatsapp',
+      title: 'WhatsApp button',
+      type: 'url',
+    }),
+    defineField({
       name: 'socialLinks',
       title: 'Social links',
       type: 'array',
@@ -120,6 +125,33 @@ export const footerType = defineType({
               }
             },
           },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'contactInfo',
+      title: 'Contact info',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'address',
+          title: 'Address',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              type: 'string',
+            }),
+          ],
+        }),
+        defineField({
+          name: 'phone',
+          title: 'Phone',
+          type: 'string',
+        }),
+        defineField({
+          name: 'email',
+          title: 'Email',
+          type: 'email',
         }),
       ],
     }),
