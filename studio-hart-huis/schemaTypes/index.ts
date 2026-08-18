@@ -10,6 +10,7 @@ import {duoPhotosType} from './blocks/duoPhotosType'
 import {factBarType} from './blocks/factBarType'
 import {faqsType} from './blocks/faqsType'
 import {heroType} from './blocks/heroType'
+import {highlightStripType} from './blocks/highlightStripType'
 import {introType} from './blocks/introType'
 import {listingsType} from './blocks/listingsType'
 import {mediaTextType} from './blocks/mediaTextType'
@@ -89,4 +90,5 @@ export const schemaTypes = [
   uitgelichteReviewType,
   reviewGridType,
   werkwijzeType,
+  highlightStripType,
 ]
