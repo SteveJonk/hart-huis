@@ -37,6 +37,21 @@ export const footerType = defineType({
   icon: BlockElementIcon,
   fields: [
     defineField({
+      name: 'logo',
+      title: 'Logo',
+      description: 'Logo that shows in the footer.',
+      type: 'image',
+      options: {accept: 'image/svg+xml,image/png,image/webp'},
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt text',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+      ],
+    }),
+    defineField({
       name: 'paragraph',
       title: 'Paragraph',
       type: 'text',
@@ -104,6 +119,34 @@ export const footerType = defineType({
                 subtitle: `${count} link${count === 1 ? '' : 's'}`,
               }
             },
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'certificationLogos',
+      title: 'Certification logos',
+      description: 'Logos shown in the footer bottom bar (e.g. NVM, Funda, NWWI).',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'image',
+          name: 'certificationLogo',
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Alt text',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'url',
+              title: 'URL',
+              type: 'string',
+            }),
+          ],
+          preview: {
+            select: {title: 'alt', media: 'asset'},
           },
         }),
       ],

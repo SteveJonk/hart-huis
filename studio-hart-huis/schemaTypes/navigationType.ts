@@ -24,9 +24,7 @@ const navLinkMember = defineArrayMember({
       return {
         title: title || 'Link',
         subtitle:
-          linkType === 'internal'
-            ? internalTitle || 'Internal page'
-            : href || 'External URL',
+          linkType === 'internal' ? internalTitle || 'Internal page' : href || 'External URL',
       }
     },
   },
@@ -38,6 +36,21 @@ export const navigationType = defineType({
   type: 'document',
   icon: MenuIcon,
   fields: [
+    defineField({
+      name: 'logo',
+      title: 'Logo',
+      description: 'Logo that shows in the navigation bar.',
+      type: 'image',
+      options: {accept: 'image/svg+xml,image/png,image/webp'},
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt text',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+      ],
+    }),
     defineField({
       name: 'navLeft',
       title: 'Left links',

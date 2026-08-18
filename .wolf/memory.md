@@ -243,3 +243,25 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+
+## Session: 2026-08-18 20:26
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-18 20:28
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-18 20:30
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-18 20:31
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 20:35 | Added CMS-manageable certificationLogos field to footerType, rendered footer cert logos (NVM/Funda/NWWI/VGC/RegTax) from app/example-designs/logos, copied to public/images/logos as default fallback | footerType.ts, queries.ts, SiteFooter.tsx, layout.tsx, site.ts | done, tsc clean | ~15k |
+| 21:00 | Added CMS logo override for header LogoMark (navigation.logo, SVG/PNG); fixed pre-existing footer certificationLogos bug (imageSrc was passed the whole object instead of .asset, and nullable types mismatched) | navigationType.ts, LogoMark.tsx, SiteHeader.tsx, layout.tsx, queries.ts, SiteFooter.tsx | done, tsc clean | ~12k |

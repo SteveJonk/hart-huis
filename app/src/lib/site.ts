@@ -17,7 +17,13 @@ export type FooterLinkGroup = {
   links: NavLink[];
 };
 
-export const FOOTER_CERTS = ['NVM', 'FUNDA', 'NWWI', 'VASTGOEDCERT'] as const;
+export const DEFAULT_FOOTER_LOGOS = [
+  { src: '/images/logos/NVM.png', alt: 'NVM' },
+  { src: '/images/logos/funda.png', alt: 'Funda' },
+  { src: '/images/logos/nwwi.png', alt: 'NWWI' },
+  { src: '/images/logos/vgc.png', alt: 'VastgoedCert' },
+  { src: '/images/logos/regtax.png', alt: 'RegTax' },
+] as const;
 
 export const REGIONS = [
   'Heemstede',

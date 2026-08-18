@@ -268,6 +268,18 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-17T21:05:00Z"
+    },
+    {
+      "id": "bug-015",
+      "timestamp": "2026-08-18T00:00:00Z",
+      "error_message": "TS2345: Argument of type 'CertificationLogo' is not assignable to parameter of type 'SanityImage | null | undefined' — imageSrc() call on footer cert logos.",
+      "file": "app/src/components/layout/SiteFooter.tsx",
+      "root_cause": "certificationLogos map called `imageSrc(logo, 160)` with the whole array-member object (which also carries `alt` and `url` link fields), instead of `logo.asset` — the actual Sanity image reference. Went unnoticed because SanityImage's structural type still overlapped enough to type-check under the old (non-nullable) field types.",
+      "fix": "Changed to `imageSrc(logo.asset, 160)` and made `asset`/`url` nullable in the local `CertificationLogo` type to match the generated query types.",
+      "tags": ["sanity", "typegen", "footer", "image"],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-18T00:00:00Z"
     }
   ]
 }

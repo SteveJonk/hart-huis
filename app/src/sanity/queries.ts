@@ -216,6 +216,7 @@ export const CONTACT_FORM_SETTINGS_QUERY = defineQuery(`
 
 export const NAVIGATION_QUERY = defineQuery(`
   *[_id == "navigation"][0]{
+    logo{ alt, "url": asset->url },
     navLeft[]${linkExpansion},
     navRight[]${linkExpansion}
   }
@@ -223,12 +224,14 @@ export const NAVIGATION_QUERY = defineQuery(`
 
 export const FOOTER_QUERY = defineQuery(`
   *[_id == "footer"][0]{
+    logo{ alt, "url": asset->url },
     paragraph,
     linkGroups[]{
       title,
       links[]${linkExpansion}
     },
     socialLinks[]{ platform, url },
+    certificationLogos[]{ alt, url, asset },
     copyright
   }
 `);

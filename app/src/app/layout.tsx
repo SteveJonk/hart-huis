@@ -59,9 +59,14 @@ export default async function RootLayout({
         <meta name='apple-mobile-web-app-title' content='MyWebSite' />
       </head>
       <body className='min-h-full'>
-        <SiteHeader navLeft={navLeft} navRight={navRight} />
+        <SiteHeader navLeft={navLeft} navRight={navRight} logo={navigation?.logo} />
         {children}
-        <SiteFooter linkGroups={linkGroups} copyright={footer?.copyright} />
+        <SiteFooter
+          logo={footer?.logo}
+          linkGroups={linkGroups}
+          copyright={footer?.copyright}
+          certificationLogos={footer?.certificationLogos}
+        />
         <WhatsAppButton />
       </body>
     </html>

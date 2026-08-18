@@ -95,9 +95,13 @@ export function AanbodHeader({
           </p>
         </div>
 
-        <div className='rounded bg-sand px-[30px] py-7 max-sm:px-[22px] max-sm:py-6'>
-          <b className='mb-2 block font-display text-[1.3rem] font-medium'>{asideTitle}</b>
-          <p className='mb-[18px] text-[0.9rem] leading-[1.6] text-[#5d4a43]'>{asideBody}</p>
+        <div className='rounded bg-sand px-[30px] py-7 max-sm:px-[22px] max-sm:py-6 max-sm:hidden'>
+          <b className='mb-2 block font-display text-[1.3rem] font-medium'>
+            {asideTitle}
+          </b>
+          <p className='mb-[18px] text-[0.9rem] leading-[1.6] text-[#5d4a43]'>
+            {asideBody}
+          </p>
           <Button href={asideCta.href} size='sm' className='w-full justify-center'>
             {asideCta.label}
           </Button>

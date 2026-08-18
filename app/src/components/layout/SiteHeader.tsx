@@ -102,9 +102,14 @@ function Burger({
 type SiteHeaderProps = {
   navLeft?: NavLink[] | null;
   navRight?: NavLink[] | null;
+  logo?: { url: string | null; alt: string } | null;
 };
 
-export function SiteHeader({ navLeft = [], navRight = [] }: SiteHeaderProps) {
+export function SiteHeader({
+  navLeft = [],
+  navRight = [],
+  logo,
+}: SiteHeaderProps) {
   const stuck = useStickyTopbar();
   const { open, toggle, close } = useMobileNav();
   const left = navLeft ?? [];
@@ -129,7 +134,7 @@ export function SiteHeader({ navLeft = [], navRight = [] }: SiteHeaderProps) {
       >
         <DesktopNav links={left} stuck={stuck} />
         <Link href='/' aria-label={SITE.name}>
-          <LogoMark stuck={stuck} />
+          <LogoMark stuck={stuck} logo={logo} />
         </Link>
         <DesktopNav links={right} align='end' stuck={stuck} />
         <Burger open={open} stuck={stuck} onToggle={toggle} />

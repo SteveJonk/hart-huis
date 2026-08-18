@@ -769,6 +769,14 @@ export type Footer = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  logo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
   paragraph?: string;
   socialLinks?: Array<{
     platform?: "facebook" | "instagram" | "linkedin";
@@ -789,7 +797,33 @@ export type Footer = {
     _type: "linkGroup";
     _key: string;
   }>;
+  certificationLogos?: Array<{
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    url?: string;
+    _type: "certificationLogo";
+    _key: string;
+  }>;
   copyright?: string;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 };
 
 export type Navigation = {
@@ -798,6 +832,14 @@ export type Navigation = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  logo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
   navLeft?: Array<{
     label: string;
     linkType: "internal" | "external";
@@ -875,22 +917,6 @@ export type Woning = {
     media?: unknown;
     _type: "file";
   };
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
 };
 
 export type Slug = {
@@ -1146,11 +1172,11 @@ export type AllSanitySchemaTypes =
   | Link
   | Seo
   | Footer
+  | SanityImageCrop
+  | SanityImageHotspot
   | Navigation
   | SanityFileAssetReference
   | Woning
-  | SanityImageCrop
-  | SanityImageHotspot
   | Slug
   | Review
   | Faq
@@ -2578,13 +2604,26 @@ export type CONTACT_FORM_SETTINGS_QUERY_RESULT = {
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: NAVIGATION_QUERY
-// Query: *[_id == "navigation"][0]{    navLeft[]{  ...,  internalLink->{    "slug": slug.current  }},    navRight[]{  ...,  internalLink->{    "slug": slug.current  }}  }
+// Query: *[_id == "navigation"][0]{    logo{ alt, "url": asset->url },    navLeft[]{  ...,  internalLink->{    "slug": slug.current  }},    navRight[]{  ...,  internalLink->{    "slug": slug.current  }}  }
 export type NAVIGATION_QUERY_RESULT =
   | {
+      logo: null;
       navLeft: null;
       navRight: null;
     }
   | {
+      logo: {
+        alt: string;
+        url: string | null;
+      } | null;
+      navLeft: null;
+      navRight: null;
+    }
+  | {
+      logo: {
+        alt: string;
+        url: string | null;
+      } | null;
       navLeft: Array<{
         label: string;
         linkType: "external" | "internal";
@@ -2610,15 +2649,32 @@ export type NAVIGATION_QUERY_RESULT =
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: FOOTER_QUERY
-// Query: *[_id == "footer"][0]{    paragraph,    linkGroups[]{      title,      links[]{  ...,  internalLink->{    "slug": slug.current  }}    },    socialLinks[]{ platform, url },    copyright  }
+// Query: *[_id == "footer"][0]{    logo{ alt, "url": asset->url },    paragraph,    linkGroups[]{      title,      links[]{  ...,  internalLink->{    "slug": slug.current  }}    },    socialLinks[]{ platform, url },    certificationLogos[]{ alt, url, asset },    copyright  }
 export type FOOTER_QUERY_RESULT =
   | {
+      logo: null;
       paragraph: null;
       linkGroups: null;
       socialLinks: null;
+      certificationLogos: null;
       copyright: null;
     }
   | {
+      logo: {
+        alt: string;
+        url: string | null;
+      } | null;
+      paragraph: null;
+      linkGroups: null;
+      socialLinks: null;
+      certificationLogos: null;
+      copyright: null;
+    }
+  | {
+      logo: {
+        alt: string;
+        url: string | null;
+      } | null;
       paragraph: string | null;
       linkGroups: Array<{
         title: string;
@@ -2637,6 +2693,11 @@ export type FOOTER_QUERY_RESULT =
         platform: "facebook" | "instagram" | "linkedin" | null;
         url: string;
       }> | null;
+      certificationLogos: Array<{
+        alt: string;
+        url: string | null;
+        asset: SanityImageAssetReference | null;
+      }> | null;
       copyright: string | null;
     }
   | null;
@@ -2649,7 +2710,7 @@ declare module "@sanity/client" {
     '\n  *[_type == "woning" && slug.current == $slug][0]{\n    _id,\n    adres,\n    "slug": slug.current,\n    postcode,\n    plaats,\n    status,\n    prijs,\n    prijsConditie,\n    aangebodenSinds,\n    aanvaarding,\n    soortWoning,\n    bouwjaar,\n    woonoppervlak,\n    perceel,\n    inhoud,\n    kamers,\n    slaapkamers,\n    energielabel,\n    kenmerkGroepen[]{\n      titel,\n      rijen[]{label, waarde}\n    },\n    aanbiedingsTekst,\n    aanbiedingsTekstEngels,\n    fotos,\n    "brochureUrl": brochure.asset->url,\n    seo,\n    "vergelijkbaar": *[_type == "woning" && _id != ^._id]\n      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n  }\n': WONING_QUERY_RESULT;
     '\n  *[_type == "contactForm" && _id == $formId][0]{\n    _id,\n    title,\n    fields[]{label, name, type, isRequired}\n  }\n': CONTACT_FORM_QUERY_RESULT;
     '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    smtpUsername,\n    smtpPassword,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey\n  }\n': CONTACT_FORM_SETTINGS_QUERY_RESULT;
-    '\n  *[_id == "navigation"][0]{\n    navLeft[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n    navRight[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n  }\n': NAVIGATION_QUERY_RESULT;
-    '\n  *[_id == "footer"][0]{\n    paragraph,\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n    },\n    socialLinks[]{ platform, url },\n    copyright\n  }\n': FOOTER_QUERY_RESULT;
+    '\n  *[_id == "navigation"][0]{\n    logo{ alt, "url": asset->url },\n    navLeft[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n    navRight[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n  }\n': NAVIGATION_QUERY_RESULT;
+    '\n  *[_id == "footer"][0]{\n    logo{ alt, "url": asset->url },\n    paragraph,\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n    },\n    socialLinks[]{ platform, url },\n    certificationLogos[]{ alt, url, asset },\n    copyright\n  }\n': FOOTER_QUERY_RESULT;
   }
 }
