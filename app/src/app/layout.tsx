@@ -68,6 +68,7 @@ export default async function RootLayout({
           linkGroups={linkGroups}
           copyright={footer?.copyright}
           certificationLogos={footer?.certificationLogos}
+          socialLinks={footer?.socialLinks}
         />
         {footer?.whatsapp && <WhatsAppButton href={footer.whatsapp} />}
       </body>

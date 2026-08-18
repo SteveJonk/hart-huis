@@ -1,4 +1,5 @@
 import { LogoMark } from '@/components/ui/LogoMark';
+import { SocialIcon, type SocialPlatform } from '@/components/ui/SocialIcon';
 import { Wrap } from '@/components/ui/Wrap';
 import { cn } from '@/lib/cn';
 import { SITE, type FooterLinkGroup, type NavLink } from '@/lib/site';
@@ -45,6 +46,7 @@ type SiteFooterProps = {
   linkGroups?: FooterLinkGroup[] | null;
   copyright?: string | null;
   certificationLogos?: CertificationLogo[] | null;
+  socialLinks?: { platform?: SocialPlatform | null; url?: string | null }[] | null;
 };
 
 export function SiteFooter({
@@ -53,9 +55,13 @@ export function SiteFooter({
   linkGroups = [],
   copyright,
   certificationLogos,
+  socialLinks,
   logo,
 }: SiteFooterProps) {
   const groups = linkGroups ?? [];
+  const socials = (socialLinks ?? []).flatMap((s) =>
+    s.platform && s.url ? [{ platform: s.platform, url: s.url }] : [],
+  );
   const logos = certificationLogos?.map((logo) => ({
     src: imageSrc(logo.asset, 160),
     url: logo.url ?? '',
@@ -78,6 +84,23 @@ export function SiteFooter({
               <p className='max-w-[270px] text-[0.9rem] leading-[1.75] text-taupe'>
                 {paragraph}
               </p>
+            )}
+            {socials.length > 0 && (
+              <div className='mt-5 flex gap-3'>
+                {socials.map((social) => (
+                  <Link
+                    key={social.platform}
+                    href={social.url}
+                    target='_blank'
+                    aria-label={social.platform}
+                    className='grid size-9 place-items-center rounded-full border border-white/22 text-mist opacity-80 transition-opacity duration-200 hover:opacity-100'
+                  >
+                    <span className='size-4'>
+                      <SocialIcon platform={social.platform} />
+                    </span>
+                  </Link>
+                ))}
+              </div>
             )}
           </div>
           {groups.map((group) => (

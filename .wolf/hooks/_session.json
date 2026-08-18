@@ -33,16 +33,26 @@
       "first_read": "2026-08-18T18:56:36.191Z"
     },
     "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/layout/SiteFooter.tsx": {
-      "count": 3,
+      "count": 4,
       "tokens": 1124,
       "first_read": "2026-08-18T18:58:04.993Z"
+    },
+    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/studio-hart-huis/schemaTypes/footerType.ts": {
+      "count": 1,
+      "tokens": 879,
+      "first_read": "2026-08-18T19:58:36.715Z"
+    },
+    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/layout/WhatsAppButton.tsx": {
+      "count": 1,
+      "tokens": 445,
+      "first_read": "2026-08-18T19:59:04.187Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 5,
+  "anatomy_hits": 7,
   "anatomy_misses": 2,
-  "repeated_reads_warned": 5,
+  "repeated_reads_warned": 6,
   "cerebrum_warnings": 0,
-  "stop_count": 5
+  "stop_count": 6
 }
