@@ -11,6 +11,7 @@ import { DuoPhotos } from '@/components/blocks/DuoPhotos';
 import { FactBar } from '@/components/blocks/FactBar';
 import { Faq } from '@/components/blocks/Faq';
 import { Hero } from '@/components/blocks/Hero';
+import { HighlightStrip } from '@/components/blocks/HighlightStrip';
 import { Intro } from '@/components/blocks/Intro';
 import { Listings, toListing } from '@/components/blocks/Listings';
 import { MediaText } from '@/components/blocks/MediaText';
@@ -31,6 +32,7 @@ import { Timeline } from '@/components/blocks/Timeline';
 import { UitgelichteReview } from '@/components/blocks/UitgelichteReview';
 import { ValueCards } from '@/components/blocks/ValueCards';
 import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
+import type { BlockIconName } from '@/components/ui/BlockIcon';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
 import type { PAGE_QUERY_RESULT } from '@/sanity/sanity.types';
 import { resolveHref, type SanityLabeledLink, type SanityLink } from '@/lib/links';
@@ -747,6 +749,18 @@ function renderBlock(block: PageBlock) {
               ? { enabled: true, siteKey: recaptcha.recaptchaSiteKey }
               : undefined
           }
+        />
+      );
+    }
+    case 'highlightStrip': {
+      return (
+        <HighlightStrip
+          key={block._key}
+          badge={block.badge ?? undefined}
+          icon={block.icon as BlockIconName | undefined}
+          title={block.title ?? undefined}
+          body={block.body ?? undefined}
+          cta={toCta(block.cta)}
         />
       );
     }

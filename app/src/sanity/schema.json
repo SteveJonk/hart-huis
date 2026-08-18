@@ -449,6 +449,88 @@
     }
   },
   {
+    "name": "highlightStrip",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "highlightStrip"
+          }
+        },
+        "icon": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "search"
+              },
+              {
+                "type": "string",
+                "value": "eye"
+              },
+              {
+                "type": "string",
+                "value": "clock"
+              },
+              {
+                "type": "string",
+                "value": "house"
+              },
+              {
+                "type": "string",
+                "value": "chart"
+              },
+              {
+                "type": "string",
+                "value": "doc"
+              },
+              {
+                "type": "string",
+                "value": "person"
+              }
+            ]
+          },
+          "optional": true
+        },
+        "badge": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "title": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": false
+        },
+        "body": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": false
+        },
+        "cta": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "cta"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
     "name": "werkwijze",
     "type": "type",
     "value": {
@@ -2677,6 +2759,18 @@
                       {
                         "type": "string",
                         "value": "scale"
+                      },
+                      {
+                        "type": "string",
+                        "value": "search"
+                      },
+                      {
+                        "type": "string",
+                        "value": "eye"
+                      },
+                      {
+                        "type": "string",
+                        "value": "clock"
                       }
                     ]
                   },
@@ -4095,6 +4189,21 @@
             "rest": {
               "type": "inline",
               "name": "routeBlock"
+            }
+          },
+          {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "highlightStrip"
             }
           },
           {

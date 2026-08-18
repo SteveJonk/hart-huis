@@ -11,6 +11,7 @@
  * scripts/seed/<page>.ts.
  */
 import {seedAanbod} from './seed/aanbod'
+import {seedAankoop} from './seed/aankoop'
 import {seedBeoordelingen} from './seed/beoordelingen'
 import {seedContact} from './seed/contact'
 import {seedHome} from './seed/home'
@@ -26,6 +27,7 @@ const TARGETS = {
   verkoop: seedVerkoop,
   'over-ons': seedOverOns,
   taxatie: seedTaxatie,
+  aankoop: seedAankoop,
   contact: seedContact,
   objecten: seedObjecten,
   aanbod: seedAanbod,

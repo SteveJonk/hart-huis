@@ -1,3 +1,4 @@
+import type { BlockIconName } from "@/components/ui/BlockIcon";
 import { SITE } from "@/lib/site";
 
 export type Fact = { value: string; label: string };
@@ -5,7 +6,7 @@ export type Fact = { value: string; label: string };
 export type Benefit = {
   title: string;
   body: string;
-  icon: "person" | "camera" | "chart" | "doc" | "house" | "renovate" | "scale";
+  icon: BlockIconName;
 };
 
 export type Step = {

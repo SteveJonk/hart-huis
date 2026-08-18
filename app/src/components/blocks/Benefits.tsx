@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BlockIcon } from "@/components/ui/BlockIcon";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Lead } from "@/components/ui/Lead";
 import { Reveal } from "@/components/ui/Reveal";
@@ -31,92 +32,6 @@ const DEFAULTS: Required<BenefitsProps> = {
   items: VERKOOP_BENEFITS,
 };
 
-function BenefitIcon({ icon }: { icon: Benefit["icon"] }) {
-  const common = {
-    width: 19,
-    height: 19,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    "aria-hidden": true as const,
-  };
-
-  switch (icon) {
-    case "person":
-      return (
-        <svg {...common}>
-          <path
-            d="M12 12a4 4 0 100-8 4 4 0 000 8zM5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          />
-        </svg>
-      );
-    case "camera":
-      return (
-        <svg {...common}>
-          <path
-            d="M3 7h18v13H3zM8 7l1.5-3h5L16 7M12 17a3.5 3.5 0 100-7 3.5 3.5 0 000 7z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          />
-        </svg>
-      );
-    case "chart":
-      return (
-        <svg {...common}>
-          <path
-            d="M4 19V9m5 10V5m5 14v-7m5 7V8"
-            stroke="currentColor"
-            strokeWidth="1.6"
-          />
-        </svg>
-      );
-    case "doc":
-      return (
-        <svg {...common}>
-          <path
-            d="M6 3h9l4 4v14H6zM15 3v4h4M9 13h6M9 17h4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          />
-        </svg>
-      );
-    case "house":
-      return (
-        <svg {...common}>
-          <path
-            d="M4 10.5 12 4l8 6.5V20H4zM10 20v-6h4v6"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-      );
-    case "renovate":
-      return (
-        <svg {...common}>
-          <path
-            d="M3 20h18M6 20V9l6-4 6 4v11M10 20v-5h4v5"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-      );
-    case "scale":
-      return (
-        <svg {...common}>
-          <path
-            d="M12 4v16M5 9 12 4l7 5M4 20h6M14 20h6"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-      );
-  }
-}
-
 export function Benefits({
   eyebrow = DEFAULTS.eyebrow,
   title = DEFAULTS.title,
@@ -137,7 +52,7 @@ export function Benefits({
             {items.map((item) => (
               <li key={item.title} className="flex items-start gap-[18px]">
                 <span className="grid size-11 shrink-0 place-items-center rounded-full bg-sand text-burgundy max-sm:size-10">
-                  <BenefitIcon icon={item.icon} />
+                  <BlockIcon icon={item.icon} />
                 </span>
                 <div>
                   <b className="mb-1.5 block text-[1.02rem]">{item.title}</b>

@@ -90,6 +90,15 @@ export type TimelineItemsObjectImage = {
   _type: "image";
 };
 
+export type HighlightStrip = {
+  _type: "highlightStrip";
+  icon?: "search" | "eye" | "clock" | "house" | "chart" | "doc" | "person";
+  badge?: string;
+  title: string;
+  body: string;
+  cta?: Cta;
+};
+
 export type Werkwijze = {
   _type: "werkwijze";
   eyebrow?: string;
@@ -446,7 +455,16 @@ export type Benefits = {
   };
   items: Array<{
     icon:
-      "person" | "camera" | "chart" | "doc" | "house" | "renovate" | "scale";
+      | "person"
+      | "camera"
+      | "chart"
+      | "doc"
+      | "house"
+      | "renovate"
+      | "scale"
+      | "search"
+      | "eye"
+      | "clock";
     title: string;
     body: string;
     _key: string;
@@ -686,6 +704,9 @@ export type PageBuilder = Array<
   | ({
       _key: string;
     } & RouteBlock)
+  | ({
+      _key: string;
+    } & HighlightStrip)
   | ({
       _key: string;
     } & AanbodHeader)
@@ -1082,6 +1103,7 @@ export type AllSanitySchemaTypes =
   | ObjectImage
   | ItemsObjectImage
   | TimelineItemsObjectImage
+  | HighlightStrip
   | Werkwijze
   | ReviewGrid
   | ReviewReference
@@ -1229,11 +1251,14 @@ export type PAGE_QUERY_RESULT = {
           icon:
             | "camera"
             | "chart"
+            | "clock"
             | "doc"
+            | "eye"
             | "house"
             | "person"
             | "renovate"
-            | "scale";
+            | "scale"
+            | "search";
           title: string;
           body: string;
           _key: string;
@@ -1666,6 +1691,35 @@ export type PAGE_QUERY_RESULT = {
         totaalAankoop: number;
         totaalVerkoop: number;
         gemiddeldCijfer: number;
+      }
+    | {
+        _key: string;
+        _type: "highlightStrip";
+        icon?:
+          "chart" | "clock" | "doc" | "eye" | "house" | "person" | "search";
+        badge?: string;
+        title: string;
+        body: string;
+        cta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
       }
     | {
         _key: string;
