@@ -271,3 +271,4 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+| 17:16 | Extended form-plugin settings with Mailjet API key/secret, wired into submit-form | studio-hart-huis/schemaTypes/formGeneralSettingsType.ts, sanity.config.ts, app/src/app/api/submit-form/route.ts, queries.ts, schema.json, sanity.types.ts | typegen + tsc clean | ~9000 |

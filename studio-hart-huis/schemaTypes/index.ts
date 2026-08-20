@@ -34,6 +34,7 @@ import {timelineType} from './blocks/timelineType'
 import {valueCardsType} from './blocks/valueCardsType'
 import {faqType} from './faqType'
 import {footerType} from './footerType'
+import {formGeneralSettingsType} from './formGeneralSettingsType'
 import {navigationType} from './navigationType'
 import {ctaType} from './objects/ctaType'
 import {linkType} from './objects/linkType'
@@ -51,6 +52,7 @@ export const schemaTypes = [
   woningType,
   navigationType,
   footerType,
+  formGeneralSettingsType,
   // Shared objects
   seoType,
   linkType,

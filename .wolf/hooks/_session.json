@@ -18,7 +18,7 @@
       "first_read": "2026-08-20T17:07:17.640Z"
     },
     "/home/user/hart-huis/app/src/app/api/submit-form/route.ts": {
-      "count": 1,
+      "count": 2,
       "tokens": 1645,
       "first_read": "2026-08-20T17:07:34.898Z"
     },
@@ -26,13 +26,33 @@
       "count": 1,
       "tokens": 150,
       "first_read": "2026-08-20T17:08:07.041Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/index.ts": {
+      "count": 1,
+      "tokens": 870,
+      "first_read": "2026-08-20T17:10:52.318Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/structure.ts": {
+      "count": 1,
+      "tokens": 675,
+      "first_read": "2026-08-20T17:10:52.866Z"
+    },
+    "/home/user/hart-huis/app/src/sanity/queries.ts": {
+      "count": 1,
+      "tokens": 1682,
+      "first_read": "2026-08-20T17:10:59.023Z"
+    },
+    "/home/user/hart-huis/app/src/sanity/schema.json": {
+      "count": 1,
+      "tokens": 45913,
+      "first_read": "2026-08-20T17:11:05.308Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 4,
+  "anatomy_hits": 8,
   "anatomy_misses": 0,
-  "repeated_reads_warned": 0,
+  "repeated_reads_warned": 1,
   "cerebrum_warnings": 0,
-  "stop_count": 1
+  "stop_count": 2
 }

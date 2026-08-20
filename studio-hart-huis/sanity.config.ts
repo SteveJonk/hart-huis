@@ -15,6 +15,13 @@ export default defineConfig({
   plugins: [structureTool({structure}), contactFormPlugin(), visionTool()],
 
   schema: {
-    types: schemaTypes,
+    // contactFormPlugin() registers its own `formGeneralSettings` type with a
+    // fixed field set and no way to configure it. Drop the plugin's copy and
+    // use ours (studio-hart-huis/schemaTypes/formGeneralSettingsType.ts),
+    // which reproduces its fields and adds mailjetApiKey.
+    types: (prev) => [
+      ...prev.filter((type) => type.name !== 'formGeneralSettings'),
+      ...schemaTypes,
+    ],
   },
 })
