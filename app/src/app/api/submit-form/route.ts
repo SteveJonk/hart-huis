@@ -42,6 +42,51 @@ function escapeHtml(value: string) {
     .replace(/"/g, '&quot;');
 }
 
+/** Sends via Mailjet's HTTP API (v3.1). Throws on a non-2xx response. */
+async function sendViaMailjet(
+  { apiKey, apiSecret }: { apiKey: string; apiSecret: string },
+  message: {
+    fromEmail: string;
+    fromName: string;
+    to: string;
+    replyTo?: string;
+    subject: string;
+    html: string;
+    attachments: { filename: string; content: Buffer }[];
+  },
+) {
+  const auth = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
+
+  const response = await fetch('https://api.mailjet.com/v3.1/send', {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${auth}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      Messages: [
+        {
+          From: { Email: message.fromEmail, Name: message.fromName },
+          To: [{ Email: message.to }],
+          ...(message.replyTo ? { ReplyTo: { Email: message.replyTo } } : {}),
+          Subject: message.subject,
+          HTMLPart: message.html,
+          Attachments: message.attachments.map((attachment) => ({
+            ContentType: 'application/octet-stream',
+            Filename: attachment.filename,
+            Base64Content: attachment.content.toString('base64'),
+          })),
+        },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => '');
+    throw new Error(`Mailjet responded ${response.status}: ${body}`);
+  }
+}
+
 export async function POST(request: Request) {
   let body: FormData;
   try {
@@ -122,10 +167,15 @@ export async function POST(request: Request) {
   // project id, so credentials belong in the environment.
   const smtpUser = process.env.SMTP_USER || settings?.smtpUsername;
   const smtpPass = process.env.SMTP_PASSWORD || settings?.smtpPassword;
+  const mailjetApiKey = process.env.MAILJET_API_KEY || settings?.mailjetApiKey;
+  const mailjetApiSecret = process.env.MAILJET_API_SECRET || settings?.mailjetApiSecret;
   const adminEmail = process.env.CONTACT_ADMIN_EMAIL || settings?.adminEmail;
 
-  if (!smtpUser || !smtpPass || !adminEmail) {
-    console.error('submit-form: missing SMTP settings (env or formGeneralSettings)');
+  // Mailjet is preferred when configured; Gmail SMTP is the fallback.
+  const useMailjet = Boolean(mailjetApiKey && mailjetApiSecret);
+
+  if (!adminEmail || (!useMailjet && (!smtpUser || !smtpPass))) {
+    console.error('submit-form: missing mail settings (env or formGeneralSettings)');
     return fail(
       'Het formulier is nog niet ingesteld. Bel of mail ons in de tussentijd.',
       500,
@@ -142,21 +192,40 @@ export async function POST(request: Request) {
     )
     .join('');
 
-  try {
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: { user: smtpUser, pass: smtpPass },
-    });
+  const subject = settings?.confirmationSubject || `Nieuw bericht via ${form.title ?? 'de website'}`;
+  const html = `<p>${escapeHtml(settings?.confirmationMessage || 'Er is een nieuw bericht binnengekomen via de website.')}</p>
+        <table style="border-collapse:collapse;width:100%;margin-top:16px;">${rows}</table>`;
+  const replyTo = answers.find(({ label }) => /mail/i.test(label))?.value;
 
-    await transporter.sendMail({
-      from: `Hart & Huis website <${smtpUser}>`,
-      to: adminEmail,
-      replyTo: answers.find(({ label }) => /mail/i.test(label))?.value,
-      subject: settings?.confirmationSubject || `Nieuw bericht via ${form.title ?? 'de website'}`,
-      html: `<p>${escapeHtml(settings?.confirmationMessage || 'Er is een nieuw bericht binnengekomen via de website.')}</p>
-        <table style="border-collapse:collapse;width:100%;margin-top:16px;">${rows}</table>`,
-      attachments,
-    });
+  try {
+    if (useMailjet) {
+      await sendViaMailjet(
+        { apiKey: mailjetApiKey!, apiSecret: mailjetApiSecret! },
+        {
+          fromEmail: smtpUser || adminEmail!,
+          fromName: 'Hart & Huis website',
+          to: adminEmail!,
+          replyTo,
+          subject,
+          html,
+          attachments,
+        },
+      );
+    } else {
+      const transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: { user: smtpUser, pass: smtpPass },
+      });
+
+      await transporter.sendMail({
+        from: `Hart & Huis website <${smtpUser}>`,
+        to: adminEmail,
+        replyTo,
+        subject,
+        html,
+        attachments,
+      });
+    }
   } catch (error) {
     console.error('submit-form: sending failed', error);
     return fail('Versturen is niet gelukt. Probeer het later opnieuw.', 502);

@@ -207,6 +207,8 @@ export const CONTACT_FORM_SETTINGS_QUERY = defineQuery(`
     adminEmail,
     smtpUsername,
     smtpPassword,
+    mailjetApiKey,
+    mailjetApiSecret,
     confirmationSubject,
     confirmationMessage,
     recaptchaEnabled,

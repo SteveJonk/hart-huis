@@ -1,58 +1,58 @@
 {
-  "session_id": "session-2026-08-18-2031",
-  "started": "2026-08-18T18:31:58.321Z",
+  "session_id": "session-2026-08-20-1706",
+  "started": "2026-08-20T17:06:53.347Z",
   "files_read": {
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/app/layout.tsx": {
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/blocks/contactFormSectionType.ts": {
+      "count": 1,
+      "tokens": 846,
+      "first_read": "2026-08-20T17:07:16.869Z"
+    },
+    "/home/user/hart-huis/app/src/components/blocks/ContactForm.tsx": {
+      "count": 1,
+      "tokens": 3819,
+      "first_read": "2026-08-20T17:07:17.559Z"
+    },
+    "/home/user/hart-huis/app/scripts/seed/contact.ts": {
+      "count": 1,
+      "tokens": 1490,
+      "first_read": "2026-08-20T17:07:17.640Z"
+    },
+    "/home/user/hart-huis/app/src/app/api/submit-form/route.ts": {
       "count": 2,
-      "tokens": 666,
-      "first_read": "2026-08-18T18:32:10.006Z"
+      "tokens": 1645,
+      "first_read": "2026-08-20T17:07:34.898Z"
     },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/01-metadata/robots.md": {
+    "/home/user/hart-huis/studio-hart-huis/sanity.config.ts": {
       "count": 1,
-      "tokens": 0,
-      "first_read": "2026-08-18T18:32:15.052Z"
+      "tokens": 150,
+      "first_read": "2026-08-20T17:08:07.041Z"
     },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/sitemap.ts": {
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/index.ts": {
       "count": 1,
-      "tokens": 0,
-      "first_read": "2026-08-18T18:35:02.801Z"
+      "tokens": 870,
+      "first_read": "2026-08-20T17:10:52.318Z"
     },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/ui/LogoMark.tsx": {
-      "count": 3,
-      "tokens": 638,
-      "first_read": "2026-08-18T18:55:56.729Z"
-    },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/layout/SiteHeader.tsx": {
+    "/home/user/hart-huis/studio-hart-huis/structure.ts": {
       "count": 1,
-      "tokens": 1467,
-      "first_read": "2026-08-18T18:56:04.256Z"
+      "tokens": 675,
+      "first_read": "2026-08-20T17:10:52.866Z"
     },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/lib/site.ts": {
+    "/home/user/hart-huis/app/src/sanity/queries.ts": {
       "count": 1,
-      "tokens": 190,
-      "first_read": "2026-08-18T18:56:36.191Z"
+      "tokens": 1682,
+      "first_read": "2026-08-20T17:10:59.023Z"
     },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/layout/SiteFooter.tsx": {
-      "count": 4,
-      "tokens": 1124,
-      "first_read": "2026-08-18T18:58:04.993Z"
-    },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/studio-hart-huis/schemaTypes/footerType.ts": {
+    "/home/user/hart-huis/app/src/sanity/schema.json": {
       "count": 1,
-      "tokens": 879,
-      "first_read": "2026-08-18T19:58:36.715Z"
-    },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/components/layout/WhatsAppButton.tsx": {
-      "count": 1,
-      "tokens": 445,
-      "first_read": "2026-08-18T19:59:04.187Z"
+      "tokens": 45913,
+      "first_read": "2026-08-20T17:11:05.308Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 7,
-  "anatomy_misses": 2,
-  "repeated_reads_warned": 6,
+  "anatomy_hits": 8,
+  "anatomy_misses": 0,
+  "repeated_reads_warned": 1,
   "cerebrum_warnings": 0,
-  "stop_count": 6
+  "stop_count": 2
 }

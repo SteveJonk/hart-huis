@@ -75,6 +75,11 @@
 - `npm run check:funda` draait tegen **echte opgeslagen pagina's** (verkoop p1, verkoop p9 mét reacties van de makelaar, aankoop p1) en dekt de parser, de reactie-overslag, de ontdubbeling en de paginering
 - alles staat beschreven in `docs/funda-review-scraper.md`
 
+**Mailjet als mailtransport (20-08-2026)**
+- `formGeneralSettings` (het plugin-singleton "Form settings") is overgenomen in `studio-hart-huis/schemaTypes/formGeneralSettingsType.ts` — zelfde velden als de plugin plus `mailjetApiKey` + `mailjetApiSecret`. `sanity.config.ts` filtert de plugin-versie uit `prev` en gebruikt deze i.p.v.
+- `app/src/app/api/submit-form/route.ts` verstuurt via Mailjet's HTTP API (`https://api.mailjet.com/v3.1/send`) zodra `MAILJET_API_KEY`/`MAILJET_API_SECRET` (env, of de Studio-velden als fallback) gezet zijn; anders valt hij terug op de bestaande Gmail SMTP/nodemailer-route
+- `npm run typegen` gedraaid, `schema.json` + `sanity.types.ts` meegecommit
+
 ### Home-blokken automatisch gevuld (2026-08-17)
 - `listings` toont de **3 nieuwste woningen** en `reviews` de **8 nieuwste reviews**, beide rechtstreeks uit de dataset — de handmatige selectie is uit `listingsType`/`reviewsType` gehaald
 - de kaarten komen via `toListing()` uit `Listings.tsx` (staat daar en niet in `ObjectGrid.tsx`, want die is een client component)
