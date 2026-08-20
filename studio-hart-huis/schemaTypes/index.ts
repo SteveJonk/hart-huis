@@ -41,8 +41,10 @@ import {valueCardsType} from './blocks/valueCardsType'
 import {faqType} from './faqType'
 import {footerType} from './footerType'
 import {formGeneralSettingsType} from './formGeneralSettingsType'
+import {multiStepFormType} from './multiStepFormType'
 import {navigationType} from './navigationType'
 import {ctaType} from './objects/ctaType'
+import {formFieldType} from './objects/formFieldType'
 import {linkType} from './objects/linkType'
 import {seoType} from './objects/seoType'
 import {pageBuilderType} from './pageBuilderType'
@@ -59,10 +61,12 @@ export const schemaTypes = [
   navigationType,
   footerType,
   formGeneralSettingsType,
+  multiStepFormType,
   // Shared objects
   seoType,
   linkType,
   ctaType,
+  formFieldType,
   pageBuilderType,
   // Blocks
   heroType,

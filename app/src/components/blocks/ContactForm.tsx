@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, useState, type FormEvent, type ReactNode } from 'react';
-import Link from 'next/link';
+import { useRef, useState, type FormEvent } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { FormField } from '@/components/form/fields';
 import { Button } from '@/components/ui/Button';
 import { ContactIcon } from '@/components/ui/ContactIcon';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -10,30 +10,13 @@ import { Reveal } from '@/components/ui/Reveal';
 import { Wrap } from '@/components/ui/Wrap';
 import { cn } from '@/lib/cn';
 import { CONTACT_FORM, type ContactIconName } from '@/lib/contact-content';
+import { toFieldRows, type FormFieldDefinition } from '@/lib/form-fields';
 
-/** Field shape as authored in the Sanity contact-form plugin. */
-export type ContactFormField = {
-  label: string;
-  name: string;
-  type:
-    | 'text'
-    | 'email'
-    | 'tel'
-    | 'url'
-    | 'textarea'
-    | 'select'
-    | 'radio'
-    | 'checkbox'
-    | 'file';
-  isRequired?: boolean;
-  showPlaceholder?: boolean;
-  placeholder?: string;
-  helpText?: string;
-  note?: string;
-  selectOptions?: string[];
-  radioOptions?: string[];
-  checkboxOptions?: string[];
-};
+/**
+ * Field shape as authored in the Sanity contact-form plugin — the same shape
+ * the shared renderer takes, so both form types go through one code path.
+ */
+export type ContactFormField = FormFieldDefinition;
 
 export type ContactFormDefinition = {
   id: string;
@@ -86,162 +69,6 @@ const DEFAULTS = {
     items: [...CONTACT_FORM.aside.items],
   } as ContactFormAside,
 };
-
-/** Fields that sit two-per-row on desktop, like the design. */
-const NARROW_TYPES = new Set(['text', 'email', 'tel', 'url', 'select']);
-
-const inputClass = cn(
-  'w-full rounded-[3px] border border-ink/16 bg-white px-[18px] py-4 text-[0.97rem] text-ink',
-  'transition-[border-color,box-shadow] duration-250 ease-brand placeholder:text-ink-45',
-  'focus:border-sage-deep focus:shadow-[0_0_0_3px_rgba(95,112,87,0.16)] focus:outline-none',
-);
-
-const labelClass =
-  'mb-[9px] block text-[0.78rem] font-semibold tracking-[0.1em] text-ink-70 uppercase';
-
-const selectCaret = {
-  backgroundImage:
-    'linear-gradient(45deg,transparent 50%,#5f544e 50%),linear-gradient(135deg,#5f544e 50%,transparent 50%)',
-  backgroundPosition: 'calc(100% - 21px) 24px, calc(100% - 15px) 24px',
-  backgroundSize: '6px 6px, 6px 6px',
-  backgroundRepeat: 'no-repeat',
-} as const;
-
-/** Turns `[label](href)` in editor copy into a real link. */
-function linkify(text: string): ReactNode {
-  const parts = text.split(/\[([^\]]+)\]\(([^)]+)\)/g);
-  if (parts.length === 1) return text;
-
-  const nodes: ReactNode[] = [];
-  for (let i = 0; i < parts.length; i += 3) {
-    if (parts[i]) nodes.push(parts[i]);
-    if (parts[i + 1]) {
-      nodes.push(
-        <Link
-          key={i}
-          href={parts[i + 2]}
-          className='text-sage-deep underline underline-offset-[3px]'
-        >
-          {parts[i + 1]}
-        </Link>,
-      );
-    }
-  }
-  return nodes;
-}
-
-function Field({ field }: { field: ContactFormField }) {
-  const id = `field-${field.name}`;
-  const placeholder = field.showPlaceholder ? field.label : field.placeholder;
-
-  if (field.type === 'checkbox') {
-    return (
-      <>
-        {(field.checkboxOptions ?? []).map((option) => (
-          <div
-            key={option}
-            className='my-1.5 mb-[26px] flex items-start gap-3 max-sm:gap-3.5'
-          >
-            <input
-              type='checkbox'
-              id={`${id}-${option.slice(0, 12)}`}
-              name={field.name}
-              value={option}
-              required={field.isRequired}
-              className='mt-px size-[22px] shrink-0 cursor-pointer accent-sage-deep max-sm:size-[26px]'
-            />
-            <label
-              htmlFor={`${id}-${option.slice(0, 12)}`}
-              className='cursor-pointer text-[0.88rem] leading-[1.6] text-ink-70'
-            >
-              {linkify(option)}
-            </label>
-          </div>
-        ))}
-      </>
-    );
-  }
-
-  return (
-    <div className='mb-5'>
-      <label htmlFor={id} className={labelClass}>
-        {field.label}
-      </label>
-
-      {field.type === 'textarea' ? (
-        <textarea
-          id={id}
-          name={field.name}
-          required={field.isRequired}
-          placeholder={placeholder}
-          className={cn(inputClass, 'min-h-[150px] resize-y leading-[1.6]')}
-        />
-      ) : field.type === 'select' ? (
-        <select
-          id={id}
-          name={field.name}
-          required={field.isRequired}
-          style={selectCaret}
-          className={cn(inputClass, 'cursor-pointer appearance-none pr-[46px]')}
-        >
-          {(field.selectOptions ?? []).map((option) => (
-            <option key={option}>{option}</option>
-          ))}
-        </select>
-      ) : field.type === 'radio' ? (
-        <div className='flex flex-wrap gap-x-6 gap-y-2.5'>
-          {(field.radioOptions ?? []).map((option) => (
-            <label
-              key={option}
-              className='flex cursor-pointer items-center gap-2.5 text-[0.95rem] text-ink-70'
-            >
-              <input
-                type='radio'
-                name={field.name}
-                value={option}
-                required={field.isRequired}
-                className='size-[18px] cursor-pointer accent-sage-deep'
-              />
-              {option}
-            </label>
-          ))}
-        </div>
-      ) : (
-        <input
-          type={field.type}
-          id={id}
-          name={field.name}
-          required={field.isRequired}
-          placeholder={placeholder}
-          className={inputClass}
-        />
-      )}
-
-      {field.helpText ? (
-        <p className='mt-2 text-[0.82rem] text-ink-45'>{linkify(field.helpText)}</p>
-      ) : null}
-    </div>
-  );
-}
-
-/** Groups consecutive narrow fields into rows of two, wide fields stand alone. */
-function toRows(fields: ContactFormField[]): ContactFormField[][] {
-  const rows: ContactFormField[][] = [];
-  for (const field of fields) {
-    const last = rows[rows.length - 1];
-    if (
-      NARROW_TYPES.has(field.type) &&
-      last &&
-      last.length === 1 &&
-      NARROW_TYPES.has(last[0].type)
-    ) {
-      last.push(field);
-    } else {
-      rows.push([field]);
-    }
-  }
-  return rows;
-}
 
 export function ContactForm({
   eyebrow = DEFAULTS.eyebrow,
@@ -323,7 +150,7 @@ export function ContactForm({
                 <h3 className='mb-6 text-[1.4rem]'>{form.title}</h3>
               ) : null}
 
-              {toRows(form.fields).map((row) => {
+              {toFieldRows(form.fields).map((row) => {
                 const key = row.map((field) => field.name).join('-');
                 return row.length === 2 ? (
                   <div
@@ -331,11 +158,11 @@ export function ContactForm({
                     className='grid grid-cols-2 gap-5 max-sm:grid-cols-1 max-sm:gap-0'
                   >
                     {row.map((field) => (
-                      <Field key={field.name} field={field} />
+                      <FormField key={field.name} field={field} variant='stacked' />
                     ))}
                   </div>
                 ) : (
-                  <Field key={key} field={row[0]} />
+                  <FormField key={key} field={row[0]} variant='stacked' />
                 );
               })}
 

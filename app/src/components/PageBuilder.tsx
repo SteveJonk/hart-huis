@@ -3,7 +3,7 @@ import { Assurances } from '@/components/blocks/Assurances';
 import { Benefits } from '@/components/blocks/Benefits';
 import { BeoordelingenHero } from '@/components/blocks/BeoordelingenHero';
 import { CompareCards } from '@/components/blocks/CompareCards';
-import { ContactForm, type ContactFormField } from '@/components/blocks/ContactForm';
+import { ContactForm } from '@/components/blocks/ContactForm';
 import { ContactWays } from '@/components/blocks/ContactWays';
 import { CrossLinks } from '@/components/blocks/CrossLinks';
 import { CtaBand } from '@/components/blocks/CtaBand';
@@ -41,6 +41,7 @@ import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import type { BlockIconName } from '@/components/ui/BlockIcon';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
 import type { PAGE_QUERY_RESULT } from '@/sanity/sanity.types';
+import type { FormFieldDefinition } from '@/lib/form-fields';
 import { resolveHref, type SanityLabeledLink, type SanityLink } from '@/lib/links';
 import {
   reviewCountLabel,
@@ -698,7 +699,7 @@ function renderBlock(block: PageBlock) {
             title?: string;
             showtitle?: boolean;
             submitButtonText?: string;
-            fields?: ContactFormField[];
+            fields?: FormFieldDefinition[];
           }
         | undefined;
       const aside = block.aside as
@@ -784,9 +785,25 @@ function renderBlock(block: PageBlock) {
       );
     }
     case 'formHero': {
+      // Unset keys come back as null from GROQ, so they are normalised to
+      // undefined here rather than leaking null into the component's defaults.
       const form = block.form as
-        | { _id?: string; fields?: ContactFormField[] }
+        | {
+            _id?: string;
+            submitButtonText?: string | null;
+            nextButtonText?: string | null;
+            backButtonText?: string | null;
+            successTitle?: string | null;
+            successBody?: string | null;
+            steps?: Array<{ title?: string | null; fields?: FormFieldDefinition[] }>;
+          }
         | undefined;
+
+      // A step without fields would render a page the user cannot fill in.
+      const steps = (form?.steps ?? [])
+        .map((step) => ({ title: step.title ?? undefined, fields: step.fields ?? [] }))
+        .filter((step) => step.fields.length > 0);
+
       return (
         <FormHero
           key={block._key}
@@ -803,12 +820,18 @@ function renderBlock(block: PageBlock) {
           formTitle={block.formTitle}
           formLead={block.formLead}
           form={
-            form?._id && form.fields?.length
-              ? { id: form._id, fields: form.fields }
+            form?._id && steps.length
+              ? {
+                  id: form._id,
+                  steps,
+                  nextButtonText: form.nextButtonText ?? undefined,
+                  backButtonText: form.backButtonText ?? undefined,
+                  submitButtonText: form.submitButtonText ?? undefined,
+                  successTitle: form.successTitle ?? undefined,
+                  successBody: form.successBody ?? undefined,
+                }
               : undefined
           }
-          successTitle={block.successTitle}
-          successBody={block.successBody}
           privacyNote={block.privacyNote}
         />
       );

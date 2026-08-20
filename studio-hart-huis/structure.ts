@@ -31,6 +31,7 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('review').title('Reviews'),
       S.divider(),
       S.documentTypeListItem('contactForm').title('Forms').icon(EnvelopeIcon),
+      S.documentTypeListItem('multiStepForm').title('Multi-step forms').icon(EnvelopeIcon),
       S.listItem()
         .title('Form settings')
         .id('formGeneralSettings')
@@ -62,6 +63,14 @@ export const structure: StructureResolver = (S) =>
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() &&
-          !['page', 'woning', 'faq', 'review', 'contactForm', ...SINGLETONS].includes(item.getId()!),
+          ![
+            'page',
+            'woning',
+            'faq',
+            'review',
+            'contactForm',
+            'multiStepForm',
+            ...SINGLETONS,
+          ].includes(item.getId()!),
       ),
     ])

@@ -168,11 +168,11 @@ export type IconCards = {
   }>;
 };
 
-export type ContactFormReference = {
+export type MultiStepFormReference = {
   _ref: string;
   _type: "reference";
   _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "contactForm";
+  [internalGroqTypeReferenceTo]?: "multiStepForm";
 };
 
 export type FormHero = {
@@ -196,9 +196,7 @@ export type FormHero = {
   reviewNote: string;
   formTitle: string;
   formLead: string;
-  form: ContactFormReference;
-  successTitle: string;
-  successBody: string;
+  form: MultiStepFormReference;
   privacyNote: string;
 };
 
@@ -301,6 +299,13 @@ export type RouteBlock = {
     alt: string;
     _type: "image";
   };
+};
+
+export type ContactFormReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "contactForm";
 };
 
 export type ContactFormSection = {
@@ -850,6 +855,29 @@ export type PageBuilder = Array<
     } & CenteredCta)
 >;
 
+export type FormField = {
+  _type: "formField";
+  label: string;
+  name: string;
+  type:
+    | "text"
+    | "email"
+    | "tel"
+    | "url"
+    | "textarea"
+    | "select"
+    | "radio"
+    | "checkbox"
+    | "file";
+  width?: "full" | "half";
+  isRequired?: boolean;
+  placeholder?: string;
+  helpText?: string;
+  selectOptions?: Array<string>;
+  radioOptions?: Array<string>;
+  checkboxOptions?: Array<string>;
+};
+
 export type PageReference = {
   _ref: string;
   _type: "reference";
@@ -884,6 +912,31 @@ export type Seo = {
     _type: "image";
   };
   noIndex?: boolean;
+};
+
+export type MultiStepForm = {
+  _id: string;
+  _type: "multiStepForm";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  id: string;
+  steps: Array<{
+    title?: string;
+    fields: Array<
+      {
+        _key: string;
+      } & FormField
+    >;
+    _type: "formStep";
+    _key: string;
+  }>;
+  nextButtonText?: string;
+  backButtonText?: string;
+  submitButtonText: string;
+  successTitle: string;
+  successBody: string;
 };
 
 export type FormGeneralSettings = {
@@ -1265,7 +1318,7 @@ export type AllSanitySchemaTypes =
   | PersonQuote
   | NumberedSteps
   | IconCards
-  | ContactFormReference
+  | MultiStepFormReference
   | FormHero
   | HighlightStrip
   | Werkwijze
@@ -1276,6 +1329,7 @@ export type AllSanitySchemaTypes =
   | ObjectGrid
   | AanbodHeader
   | RouteBlock
+  | ContactFormReference
   | ContactFormSection
   | PersonBlock
   | ContactWays
@@ -1304,10 +1358,12 @@ export type AllSanitySchemaTypes =
   | Intro
   | Hero
   | PageBuilder
+  | FormField
   | PageReference
   | Cta
   | Link
   | Seo
+  | MultiStepForm
   | FormGeneralSettings
   | Footer
   | SanityImageCrop
@@ -1331,7 +1387,7 @@ export type AllSanitySchemaTypes =
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{    _id,    title,    slug,    seo,    content[]{      ...,      primaryCta{  ...,  internalLink->{    "slug": slug.current  }},      secondaryCta{  ...,  internalLink->{    "slug": slug.current  }},      link{  ...,  internalLink->{    "slug": slug.current  }},      cta{  ...,  internalLink->{    "slug": slug.current  }},      nvm{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      items[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }},        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      cards[]{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      person{        ...,        links[]{  ...,  internalLink->{    "slug": slug.current  }}      },      aside{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      form->{        _id,        title,        showtitle,        submitButtonText,        fields[]      },      regions[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      places[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      // Geen "..." in de takken hieronder: die spreidt het ruwe document      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.      _type == "hero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "reviews" => {        "reviews": *[_type == "review"] | order(date desc)[0...8]{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance},        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "beoordelingenHero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)},        ...{  "cijfer10": count(*[_type == "review" && grade >= 9.5]),  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])}      },      _type == "uitgelichteReview" => {        review->{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "reviewGrid" => {        "items": *[_type == "review"] | order(date desc){  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "objectGrid" => {        ctaCard{..., cta{  ...,  internalLink->{    "slug": slug.current  }}},        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "listings" => {        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "contactFormSection" => {        "recaptcha": *[_type == "formGeneralSettings"][0]{          recaptchaEnabled,          recaptchaSiteKey        }      },      _type == "faqs" => {        faqs[]->{          ...,          link{  ...,  internalLink->{    "slug": slug.current  }}        }      }    }  }
+// Query: *[_type == "page" && slug.current == $slug][0]{    _id,    title,    slug,    seo,    content[]{      ...,      primaryCta{  ...,  internalLink->{    "slug": slug.current  }},      secondaryCta{  ...,  internalLink->{    "slug": slug.current  }},      link{  ...,  internalLink->{    "slug": slug.current  }},      cta{  ...,  internalLink->{    "slug": slug.current  }},      nvm{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      items[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }},        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      cards[]{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      person{        ...,        links[]{  ...,  internalLink->{    "slug": slug.current  }}      },      aside{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      // Covers both form documents: contactForm (plugin, flat fields) and      // multiStepForm (ours, steps[].fields). The keys the other one does      // not have simply come back null.      form->{        _id,        title,        showtitle,        submitButtonText,        fields[],        nextButtonText,        backButtonText,        successTitle,        successBody,        steps[]{          title,          fields[]        }      },      regions[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      places[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      // Geen "..." in de takken hieronder: die spreidt het ruwe document      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.      _type == "hero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "reviews" => {        "reviews": *[_type == "review"] | order(date desc)[0...8]{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance},        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "beoordelingenHero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)},        ...{  "cijfer10": count(*[_type == "review" && grade >= 9.5]),  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])}      },      _type == "uitgelichteReview" => {        review->{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "reviewGrid" => {        "items": *[_type == "review"] | order(date desc){  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "objectGrid" => {        ctaCard{..., cta{  ...,  internalLink->{    "slug": slug.current  }}},        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "listings" => {        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "contactFormSection" => {        "recaptcha": *[_type == "formGeneralSettings"][0]{          recaptchaEnabled,          recaptchaSiteKey        }      },      _type == "faqs" => {        faqs[]->{          ...,          link{  ...,  internalLink->{    "slug": slug.current  }}        }      }    }  }
 export type PAGE_QUERY_RESULT = {
   _id: string;
   title: string;
@@ -1596,6 +1652,11 @@ export type PAGE_QUERY_RESULT = {
             isRequired?: boolean;
             _key: string;
           }>;
+          nextButtonText: null;
+          backButtonText: null;
+          successTitle: null;
+          successBody: null;
+          steps: null;
         };
         note?: string;
         successTitle: string;
@@ -1864,35 +1925,23 @@ export type PAGE_QUERY_RESULT = {
         formLead: string;
         form: {
           _id: string;
-          title: string | null;
-          showtitle: boolean | null;
-          submitButtonText: string | null;
-          fields: Array<{
-            label: string;
-            type?:
-              | "checkbox"
-              | "email"
-              | "file"
-              | "radio"
-              | "select"
-              | "tel"
-              | "text"
-              | "textarea"
-              | "url";
-            showPlaceholder?: boolean;
-            placeholder?: string;
-            name: string;
-            selectOptions?: Array<string>;
-            radioOptions?: Array<string>;
-            checkboxOptions?: Array<string>;
-            helpText?: string;
-            note?: string;
-            isRequired?: boolean;
-            _key: string;
+          title: string;
+          showtitle: null;
+          submitButtonText: string;
+          fields: null;
+          nextButtonText: string | null;
+          backButtonText: string | null;
+          successTitle: string;
+          successBody: string;
+          steps: Array<{
+            title: string | null;
+            fields: Array<
+              {
+                _key: string;
+              } & FormField
+            >;
           }>;
         };
-        successTitle: string;
-        successBody: string;
         privacyNote: string;
         primaryCta: null;
         secondaryCta: null;
@@ -2931,28 +2980,49 @@ export type WONING_QUERY_RESULT = {
 } | null;
 
 // Source: ../app/src/sanity/queries.ts
-// Variable: CONTACT_FORM_QUERY
-// Query: *[_type == "contactForm" && _id == $formId][0]{    _id,    title,    fields[]{label, name, type, isRequired}  }
-export type CONTACT_FORM_QUERY_RESULT = {
-  _id: string;
-  title: string | null;
-  fields: Array<{
-    label: string;
-    name: string;
-    type:
-      | "checkbox"
-      | "email"
-      | "file"
-      | "radio"
-      | "select"
-      | "tel"
-      | "text"
-      | "textarea"
-      | "url"
-      | null;
-    isRequired: boolean | null;
-  }>;
-} | null;
+// Variable: FORM_QUERY
+// Query: *[_id == $formId && (_type == "contactForm" || _type == "multiStepForm")][0]{    _id,    title,    "fields": coalesce(      fields[]{label, name, type, isRequired},      steps[].fields[]{label, name, type, isRequired}    )  }
+export type FORM_QUERY_RESULT =
+  | {
+      _id: string;
+      title: string | null;
+      fields: Array<{
+        label: string;
+        name: string;
+        type:
+          | "checkbox"
+          | "email"
+          | "file"
+          | "radio"
+          | "select"
+          | "tel"
+          | "text"
+          | "textarea"
+          | "url"
+          | null;
+        isRequired: boolean | null;
+      }>;
+    }
+  | {
+      _id: string;
+      title: string;
+      fields: Array<{
+        label: string;
+        name: string;
+        type:
+          | "checkbox"
+          | "email"
+          | "file"
+          | "radio"
+          | "select"
+          | "tel"
+          | "text"
+          | "textarea"
+          | "url";
+        isRequired: boolean | null;
+      }>;
+    }
+  | null;
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: CONTACT_FORM_SETTINGS_QUERY
@@ -3083,9 +3153,9 @@ export type FOOTER_QUERY_RESULT =
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n  *[_type == "page" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    seo,\n    content[]{\n      ...,\n      primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      nvm{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      items[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      cards[]{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      person{\n        ...,\n        links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      aside{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      form->{\n        _id,\n        title,\n        showtitle,\n        submitButtonText,\n        fields[]\n      },\n      regions[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      places[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // Geen "..." in de takken hieronder: die spreidt het ruwe document\n      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de\n      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.\n      _type == "hero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "reviews" => {\n        "reviews": *[_type == "review"] | order(date desc)[0...8]{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n},\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "beoordelingenHero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n},\n        ...{\n  "cijfer10": count(*[_type == "review" && grade >= 9.5]),\n  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),\n  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),\n  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),\n  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])\n}\n      },\n      _type == "uitgelichteReview" => {\n        review->{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "reviewGrid" => {\n        "items": *[_type == "review"] | order(date desc){\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "objectGrid" => {\n        ctaCard{..., cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}},\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "listings" => {\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "contactFormSection" => {\n        "recaptcha": *[_type == "formGeneralSettings"][0]{\n          recaptchaEnabled,\n          recaptchaSiteKey\n        }\n      },\n      _type == "faqs" => {\n        faqs[]->{\n          ...,\n          link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        }\n      }\n    }\n  }\n': PAGE_QUERY_RESULT;
+    '\n  *[_type == "page" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    seo,\n    content[]{\n      ...,\n      primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      nvm{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      items[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      cards[]{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      person{\n        ...,\n        links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      aside{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // Covers both form documents: contactForm (plugin, flat fields) and\n      // multiStepForm (ours, steps[].fields). The keys the other one does\n      // not have simply come back null.\n      form->{\n        _id,\n        title,\n        showtitle,\n        submitButtonText,\n        fields[],\n        nextButtonText,\n        backButtonText,\n        successTitle,\n        successBody,\n        steps[]{\n          title,\n          fields[]\n        }\n      },\n      regions[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      places[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // Geen "..." in de takken hieronder: die spreidt het ruwe document\n      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de\n      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.\n      _type == "hero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "reviews" => {\n        "reviews": *[_type == "review"] | order(date desc)[0...8]{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n},\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "beoordelingenHero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n},\n        ...{\n  "cijfer10": count(*[_type == "review" && grade >= 9.5]),\n  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),\n  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),\n  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),\n  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])\n}\n      },\n      _type == "uitgelichteReview" => {\n        review->{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "reviewGrid" => {\n        "items": *[_type == "review"] | order(date desc){\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "objectGrid" => {\n        ctaCard{..., cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}},\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "listings" => {\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "contactFormSection" => {\n        "recaptcha": *[_type == "formGeneralSettings"][0]{\n          recaptchaEnabled,\n          recaptchaSiteKey\n        }\n      },\n      _type == "faqs" => {\n        faqs[]->{\n          ...,\n          link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        }\n      }\n    }\n  }\n': PAGE_QUERY_RESULT;
     '\n  *[_type == "woning" && slug.current == $slug][0]{\n    _id,\n    adres,\n    "slug": slug.current,\n    postcode,\n    plaats,\n    status,\n    prijs,\n    prijsConditie,\n    aangebodenSinds,\n    aanvaarding,\n    soortWoning,\n    bouwjaar,\n    woonoppervlak,\n    perceel,\n    inhoud,\n    kamers,\n    slaapkamers,\n    energielabel,\n    kenmerkGroepen[]{\n      titel,\n      rijen[]{label, waarde}\n    },\n    aanbiedingsTekst,\n    aanbiedingsTekstEngels,\n    fotos,\n    "brochureUrl": brochure.asset->url,\n    seo,\n    "vergelijkbaar": *[_type == "woning" && _id != ^._id]\n      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n  }\n': WONING_QUERY_RESULT;
-    '\n  *[_type == "contactForm" && _id == $formId][0]{\n    _id,\n    title,\n    fields[]{label, name, type, isRequired}\n  }\n': CONTACT_FORM_QUERY_RESULT;
+    '\n  *[_id == $formId && (_type == "contactForm" || _type == "multiStepForm")][0]{\n    _id,\n    title,\n    "fields": coalesce(\n      fields[]{label, name, type, isRequired},\n      steps[].fields[]{label, name, type, isRequired}\n    )\n  }\n': FORM_QUERY_RESULT;
     '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    smtpUsername,\n    smtpPassword,\n    mailjetApiKey,\n    mailjetApiSecret,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey\n  }\n': CONTACT_FORM_SETTINGS_QUERY_RESULT;
     '\n  *[_id == "navigation"][0]{\n    logo{ alt, "url": asset->url },\n    navLeft[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n    navRight[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n  }\n': NAVIGATION_QUERY_RESULT;
     '\n  *[_id == "footer"][0]{\n    logo{ alt, "url": asset->url },\n    paragraph,\n    whatsapp,\n    contactInfo{\n      address,\n      phone,\n      email\n    },\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n    },\n    socialLinks[]{ platform, url },\n    certificationLogos[]{ alt, url, asset },\n    copyright\n  }\n': FOOTER_QUERY_RESULT;

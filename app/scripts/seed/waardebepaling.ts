@@ -6,9 +6,8 @@
 import {
   WAARDEBEPALING_FAQ,
   WAARDEBEPALING_FAQ_INTRO,
-  WAARDEBEPALING_FORM_FIELDS,
+  WAARDEBEPALING_FORM,
   WAARDEBEPALING_FORM_ID,
-  WAARDEBEPALING_FORM_TITLE,
   WAARDEBEPALING_HERO,
   WAARDEBEPALING_KRIJGT,
   WAARDEBEPALING_KRIJGT_INTRO,
@@ -23,37 +22,48 @@ import {client, cta, key, upsertFaq, upsertPage, uploadImage} from './shared'
 
 async function upsertWaardebepalingForm() {
   const existingId = await client.fetch<string | null>(
-    `*[_type == "contactForm" && id == $id][0]._id`,
+    `*[_type == "multiStepForm" && id == $id][0]._id`,
     {id: WAARDEBEPALING_FORM_ID},
   )
 
   const doc = {
-    _type: 'contactForm' as const,
-    title: WAARDEBEPALING_FORM_TITLE,
-    showtitle: false,
-    id: WAARDEBEPALING_FORM_ID,
-    submitButtonText: 'Vraag gratis waardebepaling aan',
-    fields: WAARDEBEPALING_FORM_FIELDS.map((field) => ({
-      _key: key(field.name),
-      label: field.label,
-      name: field.name,
-      type: field.type,
-      isRequired: field.isRequired,
-      showPlaceholder: false,
-      ...('placeholder' in field ? {placeholder: field.placeholder} : {}),
-      ...('selectOptions' in field ? {selectOptions: [...field.selectOptions]} : {}),
-      ...('checkboxOptions' in field ? {checkboxOptions: [...field.checkboxOptions]} : {}),
+    _type: 'multiStepForm' as const,
+    title: WAARDEBEPALING_FORM.title,
+    id: WAARDEBEPALING_FORM.id,
+    nextButtonText: WAARDEBEPALING_FORM.nextButtonText,
+    backButtonText: WAARDEBEPALING_FORM.backButtonText,
+    submitButtonText: WAARDEBEPALING_FORM.submitButtonText,
+    successTitle: WAARDEBEPALING_FORM.successTitle,
+    successBody: WAARDEBEPALING_FORM.successBody,
+    steps: WAARDEBEPALING_FORM.steps.map((step, index) => ({
+      _key: key(`step-${index}`),
+      _type: 'formStep' as const,
+      ...(step.title ? {title: step.title} : {}),
+      fields: step.fields.map((field) => ({
+        _key: key(field.name),
+        _type: 'formField' as const,
+        label: field.label,
+        name: field.name,
+        type: field.type,
+        width: field.width ?? 'full',
+        isRequired: Boolean(field.isRequired),
+        ...(field.placeholder ? {placeholder: field.placeholder} : {}),
+        ...(field.helpText ? {helpText: field.helpText} : {}),
+        ...(field.selectOptions ? {selectOptions: [...field.selectOptions]} : {}),
+        ...(field.radioOptions ? {radioOptions: [...field.radioOptions]} : {}),
+        ...(field.checkboxOptions ? {checkboxOptions: [...field.checkboxOptions]} : {}),
+      })),
     })),
   }
 
   if (existingId) {
     await client.patch(existingId).set(doc).commit()
-    console.log(`  ↻ form ${WAARDEBEPALING_FORM_TITLE}`)
+    console.log(`  ↻ form ${WAARDEBEPALING_FORM.title}`)
     return existingId
   }
 
   const created = await client.create(doc)
-  console.log(`  + form ${WAARDEBEPALING_FORM_TITLE}`)
+  console.log(`  + form ${WAARDEBEPALING_FORM.title}`)
   return created._id
 }
 
@@ -80,8 +90,6 @@ async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
       formTitle: WAARDEBEPALING_HERO.formTitle,
       formLead: WAARDEBEPALING_HERO.formLead,
       form: {_type: 'reference' as const, _ref: formId},
-      successTitle: WAARDEBEPALING_HERO.successTitle,
-      successBody: WAARDEBEPALING_HERO.successBody,
       privacyNote: WAARDEBEPALING_HERO.privacyNote,
     },
     {

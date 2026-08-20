@@ -1,4 +1,5 @@
 import type { BlockIconName } from "@/components/ui/BlockIcon";
+import type { MultiStepFormDefinition } from "@/lib/form-fields";
 import { SITE } from "@/lib/site";
 import type { FaqItem } from "@/lib/verkoop-content";
 
@@ -21,8 +22,6 @@ export const WAARDEBEPALING_HERO = {
   reviewNote: "van kopers en verkopers uit Haarlem, Spaarndam en Velsen.",
   formTitle: "Vraag je waardebepaling aan",
   formLead: "Twee korte stappen, klaar in een minuut.",
-  successTitle: "Gelukt, we nemen contact op",
-  successBody: `Dorien belt je binnen één werkdag om een moment af te spreken. Liever eerder? Bel gerust op ${SITE.phone}.`,
   privacyNote:
     "Je gegevens gaan alleen naar ons. Geen nieuwsbrieven waar je niet om vroeg, en je zit nergens aan vast.",
 } as const;
@@ -30,82 +29,109 @@ export const WAARDEBEPALING_HERO = {
 export const WAARDEBEPALING_FORM_TITLE = "Waardebepaling";
 export const WAARDEBEPALING_FORM_ID = "waardebepaling";
 
-export type WaardebepalingFormField =
-  | {
-      label: string;
-      name: string;
-      type: "text";
-      isRequired: true;
-      placeholder: string;
-    }
-  | {
-      label: string;
-      name: string;
-      type: "select";
-      isRequired: true;
-      selectOptions: readonly string[];
-    }
-  | {
-      label: string;
-      name: string;
-      type: "email" | "tel";
-      isRequired: true;
-      placeholder: string;
-    }
-  | {
-      label: string;
-      name: string;
-      type: "checkbox";
-      isRequired: true;
-      checkboxOptions: readonly string[];
-    };
-
-export const WAARDEBEPALING_WONINGTYPE_OPTIONS = [
-  "Tussenwoning",
-  "Hoekwoning of 2-onder-1-kap",
-  "Vrijstaande woning",
-  "Appartement",
-  "Anders",
-] as const;
-
-export const WAARDEBEPALING_TERMIJN_OPTIONS = [
-  "Binnen 3 maanden",
-  "Over 3 tot 6 maanden",
-  "Ergens dit jaar",
-  "Weet ik nog niet, ik oriënteer me",
-] as const;
-
-/** Fields for the `contactForm` document this hero's wizard posts to. */
-export const WAARDEBEPALING_FORM_FIELDS: WaardebepalingFormField[] = [
-  { label: "Postcode", name: "postcode", type: "text", isRequired: true, placeholder: "2026 ZK" },
-  { label: "Huisnummer", name: "huisnr", type: "text", isRequired: true, placeholder: "288" },
-  {
-    label: "Type woning",
-    name: "woningtype",
-    type: "select",
-    isRequired: true,
-    selectOptions: WAARDEBEPALING_WONINGTYPE_OPTIONS,
-  },
-  { label: "Naam", name: "naam", type: "text", isRequired: true, placeholder: "Voor- en achternaam" },
-  { label: "E-mailadres", name: "mail", type: "email", isRequired: true, placeholder: "jij@voorbeeld.nl" },
-  { label: "Telefoonnummer", name: "tel", type: "tel", isRequired: true, placeholder: "06 - 12 34 56 78" },
-  {
-    label: "Wanneer wil je verkopen?",
-    name: "termijn",
-    type: "select",
-    isRequired: true,
-    selectOptions: WAARDEBEPALING_TERMIJN_OPTIONS,
-  },
-  {
-    label: "Akkoord",
-    name: "akkoord",
-    type: "checkbox",
-    isRequired: true,
-    checkboxOptions: [
-      "Hart & Huis mag contact met me opnemen over mijn aanvraag. Zie de [privacyverklaring](#).",
-    ],
-  },
-];
+/**
+ * The `multiStepForm` document the hero points at. Nothing here is special-
+ * cased in the front end: the component renders whatever steps and fields it
+ * finds, so editors can add a step or reorder fields without a code change.
+ */
+export const WAARDEBEPALING_FORM: MultiStepFormDefinition & { title: string } = {
+  title: WAARDEBEPALING_FORM_TITLE,
+  id: WAARDEBEPALING_FORM_ID,
+  nextButtonText: "Verder",
+  backButtonText: "Terug naar stap 1",
+  submitButtonText: "Vraag gratis waardebepaling aan",
+  successTitle: "Gelukt, we nemen contact op",
+  successBody: `Dorien belt je binnen één werkdag om een moment af te spreken. Liever eerder? Bel gerust op ${SITE.phone}.`,
+  steps: [
+    {
+      fields: [
+        {
+          label: "Postcode",
+          name: "postcode",
+          type: "text",
+          width: "half",
+          isRequired: true,
+          placeholder: "2026 ZK",
+        },
+        {
+          label: "Huisnummer",
+          name: "huisnr",
+          type: "text",
+          width: "half",
+          isRequired: true,
+          placeholder: "288",
+        },
+        {
+          label: "Type woning",
+          name: "woningtype",
+          type: "select",
+          width: "full",
+          isRequired: true,
+          placeholder: "Maak een keuze",
+          selectOptions: [
+            "Tussenwoning",
+            "Hoekwoning of 2-onder-1-kap",
+            "Vrijstaande woning",
+            "Appartement",
+            "Anders",
+          ],
+        },
+      ],
+    },
+    {
+      fields: [
+        {
+          label: "Naam",
+          name: "naam",
+          type: "text",
+          width: "full",
+          isRequired: true,
+          placeholder: "Voor- en achternaam",
+        },
+        {
+          label: "E-mailadres",
+          name: "mail",
+          type: "email",
+          width: "half",
+          isRequired: true,
+          placeholder: "jij@voorbeeld.nl",
+        },
+        {
+          label: "Telefoonnummer",
+          name: "tel",
+          type: "tel",
+          width: "half",
+          isRequired: true,
+          placeholder: "06 - 12 34 56 78",
+        },
+        {
+          label: "Wanneer wil je verkopen?",
+          name: "termijn",
+          type: "select",
+          width: "full",
+          isRequired: true,
+          placeholder: "Maak een keuze",
+          selectOptions: [
+            "Binnen 3 maanden",
+            "Over 3 tot 6 maanden",
+            "Ergens dit jaar",
+            "Weet ik nog niet, ik oriënteer me",
+          ],
+        },
+        {
+          label: "Akkoord",
+          name: "akkoord",
+          type: "checkbox",
+          width: "full",
+          isRequired: true,
+          checkboxOptions: [
+            "Hart & Huis mag contact met me opnemen over mijn aanvraag. Zie de [privacyverklaring](#).",
+          ],
+        },
+      ],
+    },
+  ],
+};
 
 export type IconCardItem = {
   icon: BlockIconName;

@@ -93,12 +93,23 @@ export const PAGE_QUERY = defineQuery(`
         ...,
         cta${linkExpansion}
       },
+      // Covers both form documents: contactForm (plugin, flat fields) and
+      // multiStepForm (ours, steps[].fields). The keys the other one does
+      // not have simply come back null.
       form->{
         _id,
         title,
         showtitle,
         submitButtonText,
-        fields[]
+        fields[],
+        nextButtonText,
+        backButtonText,
+        successTitle,
+        successBody,
+        steps[]{
+          title,
+          fields[]
+        }
       },
       regions[]{
         ...,
@@ -189,12 +200,20 @@ export const WONING_QUERY = defineQuery(`
   }
 `);
 
-/** Fields of one form, by document id. Used to validate submissions server-side. */
-export const CONTACT_FORM_QUERY = defineQuery(`
-  *[_type == "contactForm" && _id == $formId][0]{
+/**
+ * Fields of one form, by document id — the allow-list for a submission.
+ * Both form types resolve to the same flat shape: `contactForm` keeps its
+ * fields at the root, `multiStepForm` spreads them over steps, and `coalesce`
+ * picks whichever one this document actually has.
+ */
+export const FORM_QUERY = defineQuery(`
+  *[_id == $formId && (_type == "contactForm" || _type == "multiStepForm")][0]{
     _id,
     title,
-    fields[]{label, name, type, isRequired}
+    "fields": coalesce(
+      fields[]{label, name, type, isRequired},
+      steps[].fields[]{label, name, type, isRequired}
+    )
   }
 `);
 

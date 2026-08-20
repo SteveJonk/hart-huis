@@ -83,7 +83,13 @@
 **`hart-en-huis-lp-waardebepaling_1.html` → /waardebepaling (20-08-2026)**
 - Landing page met een tweestaps-aanvraagformulier, niet aan navigatie gekoppeld (per opdracht — `seed:nav` hoeft niet te draaien)
 - 6 nieuwe blocks in `src/components/blocks/`, bewust generiek genoemd (herbruikbaar voor andere LP's, niet naar deze pagina vernoemd): `FormHero` (client, wizard-formulier), `IconCards`, `NumberedSteps`, `PersonQuote`, `QuoteStrip`, `CenteredCta`; `faqs` hergebruikt. Zelfde voor de Sanity-typenamen (`formHero`, `iconCards`, `numberedSteps`, `personQuote`, `quoteStrip`, `centeredCta`)
-- het wizard-formulier post naar hetzelfde generieke `/api/submit-form` als het contactformulier — een `contactForm`-document (`id: "waardebepaling"`) draagt de velden, `FormHero` split ze zelf over twee stappen met een voortgangsbalk
+
+**Formulieren in Sanity (20-08-2026)**
+- nieuw documenttype `multiStepForm` (Studio → **Multi-step forms**) met `steps[] → fields[]`, plus een herbruikbaar `formField`-object. Stappen, velden, veldbreedte, knopteksten en de bevestiging zijn volledig redactioneel — geen codewijziging nodig om een veld of stap toe te voegen
+- `MultiStepForm` (`src/components/form/`) rendert het: voortgangsbalk, validatie per stap, terug/verder, verzenden en de bevestiging. `FormHero` is nu alleen nog omlijsting (foto, kop, USP's, scorekaart) en bevat geen veldkennis meer — de oude versie had de veldnamen hardcoded
+- `src/lib/form-fields.ts` bevat de veldvorm + `toFieldRows()` (rij-indeling) zonder React, `fields.tsx` rendert één veld in twee varianten: `stacked` (contactpagina) en `compact` (kaart). `ContactForm` gebruikt dezelfde renderer, dus de veldopmaak staat nog maar op één plek
+- `/api/submit-form` bedient beide soorten via één `FORM_QUERY` met `coalesce(fields, steps[].fields)` — de veldenlijst uit het document blijft de allow-list
+- `npm run check:form` dekt de rij-indeling van beide soorten (borgt dat /contact niet herschikt) en unieke veldnamen; uitleg staat in `docs/formulieren.md`
 - makelaarsfoto hergebruikt `public/images/contact/dorien.jpg` (zelfde foto als op /contact); alleen de herobackground is nieuw, in `public/images/waardebepaling/`
 - `BlockIcon` kreeg een `heart`-icoon erbij (paden uit het origineel)
 - eigen seed script `npm run seed:waardebepaling` (schrijft het formulier, de FAQs en de pagina); nog niet gedraaid tegen Sanity

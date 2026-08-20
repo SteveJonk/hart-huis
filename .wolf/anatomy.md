@@ -131,6 +131,7 @@
 ## app/scripts/
 
 - `check-aanbiedingstekst.ts` — assert-based check of the Realworks text parser (`npm run check:tekst`). (~359 tok)
+- `check-form.ts` — Smallest thing that fails if de rij-indeling van CMS-formulieren of unieke veldnamen breken (`npm run check:form`). (~700 tok)
 - `check-funda-reviews.ts` — Smallest thing that fails if de Funda-parser breekt. Draait tegen een fixture. (~2840 tok)
   - fn `fixture` L32-171 (~1834 tok)
   - fn `run` L172-188 (~120 tok)
@@ -339,13 +340,18 @@
   - fn `ValueCards` L61-105 (~493 tok)
 - `VerkoopCta.tsx` — DEFAULTS (~248 tok)
 - `CenteredCta.tsx` — Gecentreerde afsluiting op sand, geen foto, twee knoppen. Generiek (gebruikt door /waardebepaling). (~500 tok)
-- `FormHero.tsx` — Client. Hero met achtergrondfoto en een tweestaps-aanvraagformulier; post naar `/api/submit-form` via een `contactForm`-document. Generiek (gebruikt door /waardebepaling). (~2600 tok)
+- `FormHero.tsx` — Hero met achtergrondfoto naast een formulierkaart. Alleen omlijsting: het formulier zelf komt uit een `multiStepForm`-document via `MultiStepForm`. Generiek (gebruikt door /waardebepaling). (~1200 tok)
 - `IconCards.tsx` — Drie iconkaarten zonder foto. Generiek (gebruikt door /waardebepaling als "wat je krijgt"). (~750 tok)
 - `NumberedSteps.tsx` — Sand band met genummerde kaarten, geen sticky foto. Generiek (gebruikt door /waardebepaling als "hoe het werkt"). (~650 tok)
 - `PersonQuote.tsx` — Foto naast intro + citaat van één persoon. Generiek (gebruikt door /waardebepaling voor de makelaar-intro). (~700 tok)
 - `QuoteStrip.tsx` — Donkere band met scorebadge en meerdere citaten naast elkaar. Generiek (gebruikt door /waardebepaling). (~800 tok)
 - `Werkwijze.tsx` — Donkere uitlegsectie met genummerde punten. (~811 tok)
   - fn `Werkwijze` L28-79 (~605 tok)
+
+## app/src/components/form/
+
+- `MultiStepForm.tsx` — Client. Rendert een Sanity-formulier over 1+ stappen: voortgangsbalk, validatie per stap (`noValidate` + `reportValidity`), verzenden naar /api/submit-form, bevestiging. (~1900 tok)
+- `fields.tsx` — Rendert één veld voor alle negen veldtypes, in twee varianten (`stacked` = contactpagina, `compact` = kaart); bevat ook `linkify`. Gedeeld door ContactForm en MultiStepForm. (~1400 tok)
 
 ## app/src/components/layout/
 
@@ -424,6 +430,7 @@
 - `chrome.ts` — Scroll threshold (px) before the topbar gets the stuck state. (~62 tok)
 - `cn.ts` — Exports cn (~37 tok)
 - `contact-content.ts` — Icons shared by the contact cards and the form aside. (~1741 tok)
+- `form-fields.ts` — Veldvorm van CMS-formulieren + `toFieldRows()` (rij-indeling: expliciete `width`, met de narrow-type-heuristiek als fallback). Geen React. (~600 tok)
 - `format.ts` — `euro()`, `longDate()`, `shortDate()` for object data. (~228 tok)
 - `funda-reviews.ts` — Pure parser voor de Funda-beoordelingenwidget: HTML -> reviews, paginering, stabiele sleutels. Geen fetch, geen Sanity. (~4510 tok)
   - fn `buildWidgetUrl` L72-93 (~168 tok)

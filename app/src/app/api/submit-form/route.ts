@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { client } from '@/sanity/client';
 import {
-  CONTACT_FORM_QUERY,
   CONTACT_FORM_SETTINGS_QUERY,
+  FORM_QUERY,
 } from '@/sanity/queries';
 
 export const runtime = 'nodejs';
@@ -100,7 +100,7 @@ export async function POST(request: Request) {
 
   // The form definition is the allow-list: unknown keys never reach the mail.
   const [form, settings] = await Promise.all([
-    client.fetch(CONTACT_FORM_QUERY, { formId }, { cache: 'no-store' }),
+    client.fetch(FORM_QUERY, { formId }, { cache: 'no-store' }),
     client.fetch(CONTACT_FORM_SETTINGS_QUERY, {}, { cache: 'no-store' }),
   ]);
   if (!form) return fail('Onbekend formulier.', 404);

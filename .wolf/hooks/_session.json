@@ -53,7 +53,7 @@
       "first_read": "2026-08-20T17:48:53.695Z"
     },
     "/home/user/hart-huis/app/src/components/blocks/ContactForm.tsx": {
-      "count": 1,
+      "count": 4,
       "tokens": 3819,
       "first_read": "2026-08-20T17:48:53.965Z"
     },
@@ -293,7 +293,7 @@
       "first_read": "2026-08-20T18:17:01.985Z"
     },
     "/home/user/hart-huis/app/src/lib/waardebepaling-content.ts": {
-      "count": 1,
+      "count": 2,
       "tokens": 0,
       "first_read": "2026-08-20T18:17:36.258Z"
     },
@@ -321,13 +321,33 @@
       "count": 1,
       "tokens": 0,
       "first_read": "2026-08-20T18:19:49.885Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/structure.ts": {
+      "count": 1,
+      "tokens": 675,
+      "first_read": "2026-08-20T18:31:22.635Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/sanity.config.ts": {
+      "count": 1,
+      "tokens": 150,
+      "first_read": "2026-08-20T18:31:22.913Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/reviewType.ts": {
+      "count": 1,
+      "tokens": 697,
+      "first_read": "2026-08-20T18:33:19.519Z"
+    },
+    "/home/user/hart-huis/app/src/lib/contact-content.ts": {
+      "count": 1,
+      "tokens": 1741,
+      "first_read": "2026-08-20T18:35:46.079Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 41,
+  "anatomy_hits": 45,
   "anatomy_misses": 22,
-  "repeated_reads_warned": 11,
+  "repeated_reads_warned": 15,
   "cerebrum_warnings": 0,
-  "stop_count": 1
+  "stop_count": 2
 }

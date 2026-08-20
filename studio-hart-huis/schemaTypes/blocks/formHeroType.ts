@@ -54,17 +54,11 @@ export const formHeroType = defineType({
       name: 'form',
       title: 'Form',
       type: 'reference',
-      to: [{type: 'contactForm'}],
-      description: 'Het formulier dat verstuurd wordt. Velden staan onder Forms.',
+      to: [{type: 'multiStepForm'}],
+      description:
+        'Het formulier dat verstuurd wordt. Stappen, velden, knoppen en de bevestiging staan onder Multi-step forms.',
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'successTitle',
-      type: 'string',
-      description: 'Getoond na een geslaagde aanvraag.',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({name: 'successBody', type: 'text', rows: 3, validation: (rule) => rule.required()}),
     defineField({
       name: 'privacyNote',
       type: 'string',
