@@ -4,13 +4,13 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Wrap } from "@/components/ui/Wrap";
 import { WAARDEBEPALING_WIE } from "@/lib/waardebepaling-content";
 
-export type WaardebepalingWieImage = {
+export type PersonQuoteImage = {
   src: string;
   alt: string;
 };
 
-export type WaardebepalingWieProps = {
-  image?: WaardebepalingWieImage;
+export type PersonQuoteProps = {
+  image?: PersonQuoteImage;
   eyebrow?: string;
   title?: string;
   paragraphs?: string[];
@@ -18,7 +18,7 @@ export type WaardebepalingWieProps = {
   name?: string;
 };
 
-const DEFAULTS: Required<WaardebepalingWieProps> = {
+const DEFAULTS: Required<PersonQuoteProps> = {
   image: { src: WAARDEBEPALING_WIE.image, alt: WAARDEBEPALING_WIE.imageAlt },
   eyebrow: WAARDEBEPALING_WIE.eyebrow,
   title: WAARDEBEPALING_WIE.title,
@@ -27,15 +27,15 @@ const DEFAULTS: Required<WaardebepalingWieProps> = {
   name: WAARDEBEPALING_WIE.name,
 };
 
-/** Foto naast intro + citaat van de makelaar — "wie er langskomt" op /waardebepaling. */
-export function WaardebepalingWie({
+/** Foto naast intro + citaat van één persoon. */
+export function PersonQuote({
   image = DEFAULTS.image,
   eyebrow = DEFAULTS.eyebrow,
   title = DEFAULTS.title,
   paragraphs = DEFAULTS.paragraphs,
   quote = DEFAULTS.quote,
   name = DEFAULTS.name,
-}: WaardebepalingWieProps = {}) {
+}: PersonQuoteProps = {}) {
   return (
     <section className="py-[110px] max-sm:py-[76px]">
       <Wrap className="grid grid-cols-[0.72fr_1.28fr] items-center gap-[66px] max-lg:gap-11 max-md:grid-cols-1">

@@ -82,8 +82,8 @@
 
 **`hart-en-huis-lp-waardebepaling_1.html` → /waardebepaling (20-08-2026)**
 - Landing page met een tweestaps-aanvraagformulier, niet aan navigatie gekoppeld (per opdracht — `seed:nav` hoeft niet te draaien)
-- 6 nieuwe blocks in `src/components/blocks/`: `WaardebepalingHero` (client, wizard-formulier), `WaardebepalingKrijgt`, `WaardebepalingStappen`, `WaardebepalingWie`, `WaardebepalingReviews`, `WaardebepalingSlot`; `faqs` hergebruikt
-- het wizard-formulier post naar hetzelfde generieke `/api/submit-form` als het contactformulier — een `contactForm`-document (`id: "waardebepaling"`) draagt de velden, `WaardebepalingHero` split ze zelf over twee stappen met een voortgangsbalk
+- 6 nieuwe blocks in `src/components/blocks/`, bewust generiek genoemd (herbruikbaar voor andere LP's, niet naar deze pagina vernoemd): `FormHero` (client, wizard-formulier), `IconCards`, `NumberedSteps`, `PersonQuote`, `QuoteStrip`, `CenteredCta`; `faqs` hergebruikt. Zelfde voor de Sanity-typenamen (`formHero`, `iconCards`, `numberedSteps`, `personQuote`, `quoteStrip`, `centeredCta`)
+- het wizard-formulier post naar hetzelfde generieke `/api/submit-form` als het contactformulier — een `contactForm`-document (`id: "waardebepaling"`) draagt de velden, `FormHero` split ze zelf over twee stappen met een voortgangsbalk
 - makelaarsfoto hergebruikt `public/images/contact/dorien.jpg` (zelfde foto als op /contact); alleen de herobackground is nieuw, in `public/images/waardebepaling/`
 - `BlockIcon` kreeg een `heart`-icoon erbij (paden uit het origineel)
 - eigen seed script `npm run seed:waardebepaling` (schrijft het formulier, de FAQs en de pagina); nog niet gedraaid tegen Sanity

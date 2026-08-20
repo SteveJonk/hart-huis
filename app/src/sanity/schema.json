@@ -449,7 +449,7 @@
     }
   },
   {
-    "name": "waardebepalingSlot",
+    "name": "centeredCta",
     "type": "type",
     "value": {
       "type": "object",
@@ -458,7 +458,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "waardebepalingSlot"
+            "value": "centeredCta"
           }
         },
         "eyebrow": {
@@ -502,7 +502,7 @@
     }
   },
   {
-    "name": "waardebepalingReviews",
+    "name": "quoteStrip",
     "type": "type",
     "value": {
       "type": "object",
@@ -511,7 +511,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "waardebepalingReviews"
+            "value": "quoteStrip"
           }
         },
         "score": {
@@ -598,7 +598,7 @@
     }
   },
   {
-    "name": "waardebepalingWie",
+    "name": "personQuote",
     "type": "type",
     "value": {
       "type": "object",
@@ -607,7 +607,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "waardebepalingWie"
+            "value": "personQuote"
           }
         },
         "image": {
@@ -706,7 +706,7 @@
     }
   },
   {
-    "name": "waardebepalingStappen",
+    "name": "numberedSteps",
     "type": "type",
     "value": {
       "type": "object",
@@ -715,7 +715,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "waardebepalingStappen"
+            "value": "numberedSteps"
           }
         },
         "eyebrow": {
@@ -787,7 +787,7 @@
     }
   },
   {
-    "name": "waardebepalingKrijgt",
+    "name": "iconCards",
     "type": "type",
     "value": {
       "type": "object",
@@ -796,7 +796,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "waardebepalingKrijgt"
+            "value": "iconCards"
           }
         },
         "eyebrow": {
@@ -944,7 +944,7 @@
     }
   },
   {
-    "name": "waardebepalingHero",
+    "name": "formHero",
     "type": "type",
     "value": {
       "type": "object",
@@ -953,7 +953,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "waardebepalingHero"
+            "value": "formHero"
           }
         },
         "image": {
@@ -4952,7 +4952,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "waardebepalingHero"
+              "name": "formHero"
             }
           },
           {
@@ -4967,7 +4967,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "waardebepalingKrijgt"
+              "name": "iconCards"
             }
           },
           {
@@ -4982,7 +4982,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "waardebepalingStappen"
+              "name": "numberedSteps"
             }
           },
           {
@@ -4997,7 +4997,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "waardebepalingWie"
+              "name": "personQuote"
             }
           },
           {
@@ -5012,7 +5012,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "waardebepalingReviews"
+              "name": "quoteStrip"
             }
           },
           {
@@ -5027,7 +5027,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "waardebepalingSlot"
+              "name": "centeredCta"
             }
           }
         ]

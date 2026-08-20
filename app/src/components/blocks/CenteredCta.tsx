@@ -4,17 +4,17 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Wrap } from "@/components/ui/Wrap";
 import { WAARDEBEPALING_SLOT } from "@/lib/waardebepaling-content";
 
-export type WaardebepalingSlotCta = { label: string; href: string };
+export type CenteredCtaCta = { label: string; href: string };
 
-export type WaardebepalingSlotProps = {
+export type CenteredCtaProps = {
   eyebrow?: string;
   title?: string;
   body?: string;
-  primaryCta?: WaardebepalingSlotCta;
-  secondaryCta?: WaardebepalingSlotCta;
+  primaryCta?: CenteredCtaCta;
+  secondaryCta?: CenteredCtaCta;
 };
 
-const DEFAULTS: Required<WaardebepalingSlotProps> = {
+const DEFAULTS: Required<CenteredCtaProps> = {
   eyebrow: WAARDEBEPALING_SLOT.eyebrow,
   title: WAARDEBEPALING_SLOT.title,
   body: WAARDEBEPALING_SLOT.body,
@@ -23,13 +23,13 @@ const DEFAULTS: Required<WaardebepalingSlotProps> = {
 };
 
 /** Gecentreerde afsluiting op sandkleurige achtergrond, geen foto. */
-export function WaardebepalingSlot({
+export function CenteredCta({
   eyebrow = DEFAULTS.eyebrow,
   title = DEFAULTS.title,
   body = DEFAULTS.body,
   primaryCta = DEFAULTS.primaryCta,
   secondaryCta = DEFAULTS.secondaryCta,
-}: WaardebepalingSlotProps = {}) {
+}: CenteredCtaProps = {}) {
   return (
     <section className="relative overflow-hidden bg-sand py-[104px] text-center max-sm:py-[76px]">
       <div

@@ -107,7 +107,7 @@ export const WAARDEBEPALING_FORM_FIELDS: WaardebepalingFormField[] = [
   },
 ];
 
-export type WaardebepalingCard = {
+export type IconCardItem = {
   icon: BlockIconName;
   title: string;
   body: string;
@@ -119,7 +119,7 @@ export const WAARDEBEPALING_KRIJGT_INTRO = {
   lead: "Online waardecheckers gooien er een gemiddelde uit op basis van je postcode. Wij komen kijken — want de staat van je dak, je tuin en je indeling zie je niet in een database.",
 } as const;
 
-export const WAARDEBEPALING_KRIJGT: WaardebepalingCard[] = [
+export const WAARDEBEPALING_KRIJGT: IconCardItem[] = [
   {
     icon: "chart",
     title: "Een realistische vraagprijs",
@@ -137,7 +137,7 @@ export const WAARDEBEPALING_KRIJGT: WaardebepalingCard[] = [
   },
 ];
 
-export type WaardebepalingStep = { number: string; title: string; body: string };
+export type NumberedStepItem = { number: string; title: string; body: string };
 
 export const WAARDEBEPALING_STAPPEN_INTRO = {
   eyebrow: "Hoe het werkt",
@@ -145,7 +145,7 @@ export const WAARDEBEPALING_STAPPEN_INTRO = {
   lead: "Je hoeft niets voor te bereiden en niets op te ruimen. We beoordelen het huis, niet je interieur.",
 } as const;
 
-export const WAARDEBEPALING_STAPPEN: WaardebepalingStep[] = [
+export const WAARDEBEPALING_STAPPEN: NumberedStepItem[] = [
   {
     number: "01",
     title: "Je vult het formulier in",
@@ -177,7 +177,7 @@ export const WAARDEBEPALING_WIE = {
   name: "Dorien Hollemans · NVM Register Makelaar & Taxateur",
 } as const;
 
-export type WaardebepalingReview = { quote: string; score: string; meta: string };
+export type QuoteStripItem = { quote: string; score: string; meta: string };
 
 export const WAARDEBEPALING_REVIEWS_INTRO = {
   score: "9,6",
@@ -187,7 +187,7 @@ export const WAARDEBEPALING_REVIEWS_INTRO = {
   link: { label: "Bekijk ons Funda-profiel", href: "#" },
 } as const;
 
-export const WAARDEBEPALING_REVIEWS: WaardebepalingReview[] = [
+export const WAARDEBEPALING_REVIEWS: QuoteStripItem[] = [
   {
     quote:
       "Onze woning stond binnen twee weken onder voorbehoud verkocht. De verkoopstrategie klopte en we werden overal in meegenomen, ook als er even niets te melden was.",

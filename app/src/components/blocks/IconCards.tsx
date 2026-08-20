@@ -5,30 +5,30 @@ import { Wrap } from "@/components/ui/Wrap";
 import {
   WAARDEBEPALING_KRIJGT,
   WAARDEBEPALING_KRIJGT_INTRO,
-  type WaardebepalingCard,
+  type IconCardItem,
 } from "@/lib/waardebepaling-content";
 
-export type WaardebepalingKrijgtProps = {
+export type IconCardsProps = {
   eyebrow?: string;
   title?: string;
   lead?: string;
-  items?: WaardebepalingCard[];
+  items?: IconCardItem[];
 };
 
-const DEFAULTS: Required<WaardebepalingKrijgtProps> = {
+const DEFAULTS: Required<IconCardsProps> = {
   eyebrow: WAARDEBEPALING_KRIJGT_INTRO.eyebrow,
   title: WAARDEBEPALING_KRIJGT_INTRO.title,
   lead: WAARDEBEPALING_KRIJGT_INTRO.lead,
   items: WAARDEBEPALING_KRIJGT,
 };
 
-/** Drie iconkaarten, geen foto — "wat je krijgt" op /waardebepaling. */
-export function WaardebepalingKrijgt({
+/** Drie iconkaarten, geen foto. */
+export function IconCards({
   eyebrow = DEFAULTS.eyebrow,
   title = DEFAULTS.title,
   lead = DEFAULTS.lead,
   items = DEFAULTS.items,
-}: WaardebepalingKrijgtProps = {}) {
+}: IconCardsProps = {}) {
   return (
     <section className="py-[110px] max-sm:py-[76px]">
       <Wrap>

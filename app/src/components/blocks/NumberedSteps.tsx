@@ -4,30 +4,30 @@ import { Wrap } from "@/components/ui/Wrap";
 import {
   WAARDEBEPALING_STAPPEN,
   WAARDEBEPALING_STAPPEN_INTRO,
-  type WaardebepalingStep,
+  type NumberedStepItem,
 } from "@/lib/waardebepaling-content";
 
-export type WaardebepalingStappenProps = {
+export type NumberedStepsProps = {
   eyebrow?: string;
   title?: string;
   lead?: string;
-  items?: WaardebepalingStep[];
+  items?: NumberedStepItem[];
 };
 
-const DEFAULTS: Required<WaardebepalingStappenProps> = {
+const DEFAULTS: Required<NumberedStepsProps> = {
   eyebrow: WAARDEBEPALING_STAPPEN_INTRO.eyebrow,
   title: WAARDEBEPALING_STAPPEN_INTRO.title,
   lead: WAARDEBEPALING_STAPPEN_INTRO.lead,
   items: WAARDEBEPALING_STAPPEN,
 };
 
-/** Sand band met drie genummerde kaarten — "hoe het werkt" op /waardebepaling. */
-export function WaardebepalingStappen({
+/** Sand band met drie genummerde kaarten, geen sticky foto. */
+export function NumberedSteps({
   eyebrow = DEFAULTS.eyebrow,
   title = DEFAULTS.title,
   lead = DEFAULTS.lead,
   items = DEFAULTS.items,
-}: WaardebepalingStappenProps = {}) {
+}: NumberedStepsProps = {}) {
   return (
     <section className="relative overflow-hidden bg-sand py-[104px] max-sm:py-[76px]">
       <div

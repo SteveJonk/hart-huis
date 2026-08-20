@@ -1,11 +1,12 @@
 import {StarIcon} from '@sanity/icons/Star'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-export const waardebepalingReviewsType = defineType({
-  name: 'waardebepalingReviews',
-  title: 'Waardebepaling — reviews',
+export const quoteStripType = defineType({
+  name: 'quoteStrip',
+  title: 'Quote strip',
   type: 'object',
   icon: StarIcon,
+  description: 'Donkere band met een scorebadge en meerdere citaten naast elkaar.',
   fields: [
     defineField({name: 'score', type: 'string', validation: (rule) => rule.required()}),
     defineField({name: 'scoreLabel', type: 'string', validation: (rule) => rule.required()}),
@@ -38,7 +39,7 @@ export const waardebepalingReviewsType = defineType({
   preview: {
     select: {title: 'title'},
     prepare({title}) {
-      return {title: title || 'Reviews', subtitle: 'Waardebepaling — reviews'}
+      return {title: title || 'Quote strip', subtitle: 'Quote strip'}
     },
   },
 })

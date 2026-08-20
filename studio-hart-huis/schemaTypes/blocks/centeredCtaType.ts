@@ -1,9 +1,9 @@
 import {BellIcon} from '@sanity/icons/Bell'
 import {defineField, defineType} from 'sanity'
 
-export const waardebepalingSlotType = defineType({
-  name: 'waardebepalingSlot',
-  title: 'Waardebepaling — afsluiting',
+export const centeredCtaType = defineType({
+  name: 'centeredCta',
+  title: 'Centered CTA',
   type: 'object',
   icon: BellIcon,
   description: 'Gecentreerde afsluiting met twee knoppen, geen foto.',
@@ -17,7 +17,7 @@ export const waardebepalingSlotType = defineType({
   preview: {
     select: {title: 'title'},
     prepare({title}) {
-      return {title: title || 'Afsluiting', subtitle: 'Waardebepaling — afsluiting'}
+      return {title: title || 'Centered CTA', subtitle: 'Centered CTA'}
     },
   },
 })

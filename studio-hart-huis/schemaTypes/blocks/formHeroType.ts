@@ -1,12 +1,12 @@
 import {HomeIcon} from '@sanity/icons/Home'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-export const waardebepalingHeroType = defineType({
-  name: 'waardebepalingHero',
-  title: 'Waardebepaling hero',
+export const formHeroType = defineType({
+  name: 'formHero',
+  title: 'Form hero',
   type: 'object',
   icon: HomeIcon,
-  description: 'Hero met achtergrondfoto en het aanvraagformulier voor een waardebepaling.',
+  description: 'Hero met achtergrondfoto en een aanvraagformulier (bv. voor een waardebepaling).',
   fields: [
     defineField({
       name: 'image',
@@ -75,7 +75,7 @@ export const waardebepalingHeroType = defineType({
   preview: {
     select: {title: 'title', media: 'image'},
     prepare({title, media}) {
-      return {title: title || 'Waardebepaling hero', subtitle: 'Waardebepaling hero', media}
+      return {title: title || 'Form hero', subtitle: 'Form hero', media}
     },
   },
 })

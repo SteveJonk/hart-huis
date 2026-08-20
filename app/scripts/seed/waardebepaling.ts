@@ -65,7 +65,7 @@ async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
 
   return [
     {
-      _type: 'waardebepalingHero',
+      _type: 'formHero',
       _key: key('waardebepaling-hero'),
       image: heroImage,
       eyebrow: WAARDEBEPALING_HERO.eyebrow,
@@ -85,7 +85,7 @@ async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
       privacyNote: WAARDEBEPALING_HERO.privacyNote,
     },
     {
-      _type: 'waardebepalingKrijgt',
+      _type: 'iconCards',
       _key: key('waardebepaling-krijgt'),
       eyebrow: WAARDEBEPALING_KRIJGT_INTRO.eyebrow,
       title: WAARDEBEPALING_KRIJGT_INTRO.title,
@@ -93,7 +93,7 @@ async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
       items: WAARDEBEPALING_KRIJGT.map((item) => ({...item, _key: key(item.title)})),
     },
     {
-      _type: 'waardebepalingStappen',
+      _type: 'numberedSteps',
       _key: key('waardebepaling-stappen'),
       eyebrow: WAARDEBEPALING_STAPPEN_INTRO.eyebrow,
       title: WAARDEBEPALING_STAPPEN_INTRO.title,
@@ -101,7 +101,7 @@ async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
       items: WAARDEBEPALING_STAPPEN.map((item) => ({...item, _key: key(item.number)})),
     },
     {
-      _type: 'waardebepalingWie',
+      _type: 'personQuote',
       _key: key('waardebepaling-wie'),
       image: wieImage,
       eyebrow: WAARDEBEPALING_WIE.eyebrow,
@@ -111,7 +111,7 @@ async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
       name: WAARDEBEPALING_WIE.name,
     },
     {
-      _type: 'waardebepalingReviews',
+      _type: 'quoteStrip',
       _key: key('waardebepaling-reviews'),
       score: WAARDEBEPALING_REVIEWS_INTRO.score,
       scoreLabel: WAARDEBEPALING_REVIEWS_INTRO.scoreLabel,
@@ -134,7 +134,7 @@ async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
       })),
     },
     {
-      _type: 'waardebepalingSlot',
+      _type: 'centeredCta',
       _key: key('waardebepaling-slot'),
       eyebrow: WAARDEBEPALING_SLOT.eyebrow,
       title: WAARDEBEPALING_SLOT.title,

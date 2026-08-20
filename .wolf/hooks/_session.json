@@ -128,7 +128,7 @@
       "first_read": "2026-08-20T17:50:56.171Z"
     },
     "/home/user/hart-huis/app/src/components/PageBuilder.tsx": {
-      "count": 5,
+      "count": 8,
       "tokens": 6904,
       "first_read": "2026-08-20T17:50:56.449Z"
     },
@@ -246,13 +246,88 @@
       "count": 1,
       "tokens": 503,
       "first_read": "2026-08-20T18:07:16.220Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/blocks/formHeroType.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:14:02.931Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/blocks/iconCardsType.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:14:33.919Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/blocks/numberedStepsType.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:14:52.385Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/blocks/personQuoteType.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:15:07.125Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/blocks/quoteStripType.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:15:27.265Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/blocks/centeredCtaType.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:15:47.938Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/index.ts": {
+      "count": 1,
+      "tokens": 870,
+      "first_read": "2026-08-20T18:16:10.617Z"
+    },
+    "/home/user/hart-huis/app/src/components/blocks/FormHero.tsx": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:16:43.407Z"
+    },
+    "/home/user/hart-huis/app/src/components/blocks/IconCards.tsx": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:17:01.985Z"
+    },
+    "/home/user/hart-huis/app/src/lib/waardebepaling-content.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:17:36.258Z"
+    },
+    "/home/user/hart-huis/app/src/components/blocks/NumberedSteps.tsx": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:17:51.547Z"
+    },
+    "/home/user/hart-huis/app/src/components/blocks/PersonQuote.tsx": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:18:10.359Z"
+    },
+    "/home/user/hart-huis/app/src/components/blocks/QuoteStrip.tsx": {
+      "count": 2,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:18:26.786Z"
+    },
+    "/home/user/hart-huis/app/src/components/blocks/CenteredCta.tsx": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:18:48.532Z"
+    },
+    "/home/user/hart-huis/app/scripts/seed/waardebepaling.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-08-20T18:19:49.885Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 40,
-  "anatomy_misses": 8,
-  "repeated_reads_warned": 7,
+  "anatomy_hits": 41,
+  "anatomy_misses": 22,
+  "repeated_reads_warned": 11,
   "cerebrum_warnings": 0,
-  "stop_count": 0
+  "stop_count": 1
 }

@@ -31,12 +31,12 @@ import { Stories } from '@/components/blocks/Stories';
 import { Timeline } from '@/components/blocks/Timeline';
 import { UitgelichteReview } from '@/components/blocks/UitgelichteReview';
 import { ValueCards } from '@/components/blocks/ValueCards';
-import { WaardebepalingHero } from '@/components/blocks/WaardebepalingHero';
-import { WaardebepalingKrijgt } from '@/components/blocks/WaardebepalingKrijgt';
-import { WaardebepalingReviews } from '@/components/blocks/WaardebepalingReviews';
-import { WaardebepalingSlot } from '@/components/blocks/WaardebepalingSlot';
-import { WaardebepalingStappen } from '@/components/blocks/WaardebepalingStappen';
-import { WaardebepalingWie } from '@/components/blocks/WaardebepalingWie';
+import { CenteredCta } from '@/components/blocks/CenteredCta';
+import { FormHero } from '@/components/blocks/FormHero';
+import { IconCards } from '@/components/blocks/IconCards';
+import { NumberedSteps } from '@/components/blocks/NumberedSteps';
+import { PersonQuote } from '@/components/blocks/PersonQuote';
+import { QuoteStrip } from '@/components/blocks/QuoteStrip';
 import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import type { BlockIconName } from '@/components/ui/BlockIcon';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
@@ -783,12 +783,12 @@ function renderBlock(block: PageBlock) {
         />
       );
     }
-    case 'waardebepalingHero': {
+    case 'formHero': {
       const form = block.form as
         | { _id?: string; fields?: ContactFormField[] }
         | undefined;
       return (
-        <WaardebepalingHero
+        <FormHero
           key={block._key}
           image={toImage(block.image, 2400, 1600)}
           eyebrow={block.eyebrow}
@@ -813,9 +813,9 @@ function renderBlock(block: PageBlock) {
         />
       );
     }
-    case 'waardebepalingKrijgt': {
+    case 'iconCards': {
       return (
-        <WaardebepalingKrijgt
+        <IconCards
           key={block._key}
           eyebrow={block.eyebrow}
           title={block.title}
@@ -828,9 +828,9 @@ function renderBlock(block: PageBlock) {
         />
       );
     }
-    case 'waardebepalingStappen': {
+    case 'numberedSteps': {
       return (
-        <WaardebepalingStappen
+        <NumberedSteps
           key={block._key}
           eyebrow={block.eyebrow}
           title={block.title}
@@ -843,9 +843,9 @@ function renderBlock(block: PageBlock) {
         />
       );
     }
-    case 'waardebepalingWie': {
+    case 'personQuote': {
       return (
-        <WaardebepalingWie
+        <PersonQuote
           key={block._key}
           image={toImage(block.image, 800, 1000)}
           eyebrow={block.eyebrow}
@@ -856,9 +856,9 @@ function renderBlock(block: PageBlock) {
         />
       );
     }
-    case 'waardebepalingReviews': {
+    case 'quoteStrip': {
       return (
-        <WaardebepalingReviews
+        <QuoteStrip
           key={block._key}
           score={block.score}
           scoreLabel={block.scoreLabel}
@@ -873,9 +873,9 @@ function renderBlock(block: PageBlock) {
         />
       );
     }
-    case 'waardebepalingSlot': {
+    case 'centeredCta': {
       return (
-        <WaardebepalingSlot
+        <CenteredCta
           key={block._key}
           eyebrow={block.eyebrow}
           title={block.title}

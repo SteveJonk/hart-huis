@@ -7,15 +7,15 @@ import { Wrap } from '@/components/ui/Wrap';
 import { cn } from '@/lib/cn';
 import type { ContactFormField } from './ContactForm';
 
-export type WaardebepalingHeroImage = { src: string; alt: string };
+export type FormHeroImage = { src: string; alt: string };
 
-export type WaardebepalingHeroForm = {
+export type FormHeroForm = {
   id: string;
   fields: ContactFormField[];
 };
 
-export type WaardebepalingHeroProps = {
-  image?: WaardebepalingHeroImage;
+export type FormHeroProps = {
+  image?: FormHeroImage;
   eyebrow?: string;
   title?: string;
   titleHighlight?: string;
@@ -28,7 +28,7 @@ export type WaardebepalingHeroProps = {
   reviewNote?: string;
   formTitle?: string;
   formLead?: string;
-  form?: WaardebepalingHeroForm;
+  form?: FormHeroForm;
   successTitle?: string;
   successBody?: string;
   privacyNote?: string;
@@ -74,7 +74,7 @@ function linkify(text: string): ReactNode {
 }
 
 function TextField({ field }: { field: ContactFormField }) {
-  const id = `wb-${field.name}`;
+  const id = `field-${field.name}`;
   return (
     <div className='mb-4'>
       <label htmlFor={id} className={labelClass}>
@@ -93,7 +93,7 @@ function TextField({ field }: { field: ContactFormField }) {
 }
 
 function SelectField({ field }: { field: ContactFormField }) {
-  const id = `wb-${field.name}`;
+  const id = `field-${field.name}`;
   return (
     <div className='mb-4'>
       <label htmlFor={id} className={labelClass}>
@@ -116,7 +116,7 @@ function SelectField({ field }: { field: ContactFormField }) {
   );
 }
 
-export function WaardebepalingHero({
+export function FormHero({
   image,
   eyebrow,
   title,
@@ -134,7 +134,7 @@ export function WaardebepalingHero({
   successTitle,
   successBody,
   privacyNote,
-}: WaardebepalingHeroProps) {
+}: FormHeroProps) {
   const [step, setStep] = useState<1 | 2>(1);
   const [status, setStatus] = useState<'idle' | 'sending' | 'done'>('idle');
   const [error, setError] = useState<string | null>(null);
@@ -318,13 +318,13 @@ export function WaardebepalingHero({
                       <div className='my-1 mb-5 flex items-start gap-3'>
                         <input
                           type='checkbox'
-                          id='wb-akkoord'
+                          id='field-akkoord'
                           name={akkoord.name}
                           required={akkoord.isRequired}
                           className='mt-[3px] size-[20px] shrink-0 cursor-pointer accent-sage-deep'
                         />
                         <label
-                          htmlFor='wb-akkoord'
+                          htmlFor='field-akkoord'
                           className='cursor-pointer text-[0.85rem] leading-[1.6] text-ink-70 [&_a]:text-sage-deep'
                         >
                           {linkify(akkoord.checkboxOptions?.[0] ?? '')}

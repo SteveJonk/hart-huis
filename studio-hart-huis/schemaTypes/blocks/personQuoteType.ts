@@ -1,11 +1,12 @@
 import {BlockquoteIcon} from '@sanity/icons/Blockquote'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-export const waardebepalingWieType = defineType({
-  name: 'waardebepalingWie',
-  title: 'Waardebepaling — wie er langskomt',
+export const personQuoteType = defineType({
+  name: 'personQuote',
+  title: 'Person quote',
   type: 'object',
   icon: BlockquoteIcon,
+  description: 'Foto naast een korte intro en een citaat van één persoon.',
   fields: [
     defineField({
       name: 'image',
@@ -40,7 +41,7 @@ export const waardebepalingWieType = defineType({
   preview: {
     select: {title: 'name', media: 'image'},
     prepare({title, media}) {
-      return {title: title || 'Wie er langskomt', subtitle: 'Waardebepaling — wie er langskomt', media}
+      return {title: title || 'Person quote', subtitle: 'Person quote', media}
     },
   },
 })

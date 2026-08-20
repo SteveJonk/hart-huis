@@ -1,11 +1,12 @@
 import {StackCompactIcon} from '@sanity/icons/StackCompact'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-export const waardebepalingStappenType = defineType({
-  name: 'waardebepalingStappen',
-  title: 'Waardebepaling — hoe het werkt',
+export const numberedStepsType = defineType({
+  name: 'numberedSteps',
+  title: 'Numbered steps',
   type: 'object',
   icon: StackCompactIcon,
+  description: 'Genummerde stappen zonder foto — voor "steps" met een foto, zie Steps.',
   fields: [
     defineField({name: 'eyebrow', type: 'string', validation: (rule) => rule.required()}),
     defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
@@ -31,7 +32,7 @@ export const waardebepalingStappenType = defineType({
   preview: {
     select: {title: 'title'},
     prepare({title}) {
-      return {title: title || 'Hoe het werkt', subtitle: 'Waardebepaling — hoe het werkt'}
+      return {title: title || 'Numbered steps', subtitle: 'Numbered steps'}
     },
   },
 })

@@ -1,9 +1,9 @@
 import {SparklesIcon} from '@sanity/icons/Sparkles'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-export const waardebepalingKrijgtType = defineType({
-  name: 'waardebepalingKrijgt',
-  title: 'Waardebepaling — wat je krijgt',
+export const iconCardsType = defineType({
+  name: 'iconCards',
+  title: 'Icon cards',
   type: 'object',
   icon: SparklesIcon,
   fields: [
@@ -51,7 +51,7 @@ export const waardebepalingKrijgtType = defineType({
   preview: {
     select: {title: 'title'},
     prepare({title}) {
-      return {title: title || 'Wat je krijgt', subtitle: 'Waardebepaling — wat je krijgt'}
+      return {title: title || 'Icon cards', subtitle: 'Icon cards'}
     },
   },
 })

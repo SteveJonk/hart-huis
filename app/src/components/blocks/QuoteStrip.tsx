@@ -4,21 +4,21 @@ import { Wrap } from "@/components/ui/Wrap";
 import {
   WAARDEBEPALING_REVIEWS,
   WAARDEBEPALING_REVIEWS_INTRO,
-  type WaardebepalingReview,
+  type QuoteStripItem,
 } from "@/lib/waardebepaling-content";
 
-export type WaardebepalingReviewsCta = { label: string; href: string };
+export type QuoteStripCta = { label: string; href: string };
 
-export type WaardebepalingReviewsProps = {
+export type QuoteStripProps = {
   score?: string;
   scoreLabel?: string;
   title?: string;
   lead?: string;
-  link?: WaardebepalingReviewsCta;
-  items?: WaardebepalingReview[];
+  link?: QuoteStripCta;
+  items?: QuoteStripItem[];
 };
 
-const DEFAULTS: Required<WaardebepalingReviewsProps> = {
+const DEFAULTS: Required<QuoteStripProps> = {
   score: WAARDEBEPALING_REVIEWS_INTRO.score,
   scoreLabel: WAARDEBEPALING_REVIEWS_INTRO.scoreLabel,
   title: WAARDEBEPALING_REVIEWS_INTRO.title,
@@ -28,14 +28,14 @@ const DEFAULTS: Required<WaardebepalingReviewsProps> = {
 };
 
 /** Donkere band met scorebadge en drie reviewcitaten naast elkaar. */
-export function WaardebepalingReviews({
+export function QuoteStrip({
   score = DEFAULTS.score,
   scoreLabel = DEFAULTS.scoreLabel,
   title = DEFAULTS.title,
   lead = DEFAULTS.lead,
   link = DEFAULTS.link,
   items = DEFAULTS.items,
-}: WaardebepalingReviewsProps = {}) {
+}: QuoteStripProps = {}) {
   return (
     <section className="relative overflow-hidden bg-ink py-[92px] text-cream">
       <div
