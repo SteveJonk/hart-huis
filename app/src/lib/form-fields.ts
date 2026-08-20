@@ -14,18 +14,14 @@ export type FormFieldType =
   | 'checkbox'
   | 'file';
 
-/**
- * One input, as authored in Sanity. Covers both form documents: the
- * contact-form plugin's `contactForm` (no `width`) and our `multiStepForm`
- * (which adds it), so a single renderer serves both.
- */
+/** One input, as authored in the `form` document. */
 export type FormFieldDefinition = {
   label: string;
   name: string;
   type: FormFieldType;
   isRequired?: boolean;
   width?: 'full' | 'half';
-  /** Plugin-only: use the label as the placeholder. */
+  /** Legacy: contact-form-plugin documents used the label as the placeholder. */
   showPlaceholder?: boolean;
   placeholder?: string;
   helpText?: string;
@@ -35,15 +31,23 @@ export type FormFieldDefinition = {
   checkboxOptions?: string[];
 };
 
-export type MultiStepFormStep = {
+export type FormStep = {
   title?: string;
   fields: FormFieldDefinition[];
 };
 
-/** Everything about a form itself, as authored in the `multiStepForm` document. */
-export type MultiStepFormDefinition = {
+/**
+ * A form as authored in the `form` document. A simple form keeps its fields
+ * under `fields`; a multi-step one spreads them over `steps`. Everything the
+ * front end needs is here, so the block that renders it only supplies chrome.
+ */
+export type FormDefinition = {
   id: string;
-  steps: MultiStepFormStep[];
+  title?: string;
+  showTitle?: boolean;
+  mode?: 'simple' | 'steps';
+  fields?: FormFieldDefinition[];
+  steps?: FormStep[];
   nextButtonText?: string;
   backButtonText?: string;
   submitButtonText?: string;
@@ -51,13 +55,33 @@ export type MultiStepFormDefinition = {
   successBody?: string;
 };
 
+/**
+ * The one shape the renderer works with. A simple form becomes a single step,
+ * so there is no second code path for it. Steps without fields are dropped —
+ * they would render a page the visitor cannot fill in or leave.
+ */
+export function toSteps(form: FormDefinition): FormStep[] {
+  const steps =
+    form.mode === 'steps'
+      ? (form.steps ?? [])
+      : [{ fields: form.fields ?? [] }];
+
+  return steps
+    .map((step) => ({ title: step.title, fields: step.fields ?? [] }))
+    .filter((step) => step.fields.length > 0);
+}
+
 /** Types narrow enough to sit two-per-row when no explicit width is authored. */
 const NARROW_TYPES = new Set<FormFieldType>(['text', 'email', 'tel', 'url', 'select']);
 
 /**
- * Groups fields into rows. `multiStepForm` fields carry an explicit `width`,
- * so consecutive half-width ones pair up; plugin fields have none, and fall
- * back to pairing consecutive narrow types the way the contact page always has.
+ * Groups fields into rows: consecutive half-width fields pair up, the rest get
+ * a row of their own.
+ *
+ * Documents written before the form type had a `width` carry none at all, and
+ * fall back to pairing consecutive narrow types — the guess the contact-form
+ * plugin's layout was built on. Once migrated, every field has a width and the
+ * fallback never runs.
  */
 export function toFieldRows(fields: FormFieldDefinition[]): FormFieldDefinition[][] {
   const explicit = fields.some((field) => field.width);

@@ -41,7 +41,7 @@ import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import type { BlockIconName } from '@/components/ui/BlockIcon';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
 import type { PAGE_QUERY_RESULT } from '@/sanity/sanity.types';
-import type { FormFieldDefinition } from '@/lib/form-fields';
+import { toSteps, type FormDefinition, type FormFieldDefinition } from '@/lib/form-fields';
 import { resolveHref, type SanityLabeledLink, type SanityLink } from '@/lib/links';
 import {
   reviewCountLabel,
@@ -87,6 +87,52 @@ function toReviews(value: unknown): ReviewItem[] | undefined {
   return (value as Array<Partial<ReviewItem> | null>)
     .filter((review): review is ReviewItem => Boolean(review?.quote && review?.name))
     .map((review) => ({ ...review }));
+}
+
+/**
+ * Turns a resolved `form->` reference into what the renderer takes. Unset keys
+ * come back as null from GROQ, so they are normalised to undefined rather than
+ * leaking null into the component's defaults.
+ */
+function toFormDefinition(value: unknown): FormDefinition | undefined {
+  const form = value as
+    | {
+        _id?: string;
+        title?: string | null;
+        showTitle?: boolean | null;
+        mode?: string | null;
+        fields?: FormFieldDefinition[] | null;
+        steps?: Array<{ title?: string | null; fields?: FormFieldDefinition[] | null }> | null;
+        submitButtonText?: string | null;
+        nextButtonText?: string | null;
+        backButtonText?: string | null;
+        successTitle?: string | null;
+        successBody?: string | null;
+      }
+    | undefined
+    | null;
+
+  if (!form?._id) return undefined;
+
+  const definition: FormDefinition = {
+    id: form._id,
+    title: form.title ?? undefined,
+    showTitle: form.showTitle ?? undefined,
+    mode: form.mode === 'steps' ? 'steps' : 'simple',
+    fields: form.fields ?? undefined,
+    steps: (form.steps ?? []).map((step) => ({
+      title: step.title ?? undefined,
+      fields: step.fields ?? [],
+    })),
+    submitButtonText: form.submitButtonText ?? undefined,
+    nextButtonText: form.nextButtonText ?? undefined,
+    backButtonText: form.backButtonText ?? undefined,
+    successTitle: form.successTitle ?? undefined,
+    successBody: form.successBody ?? undefined,
+  };
+
+  // A form with nothing fillable would render an empty card.
+  return toSteps(definition).length > 0 ? definition : undefined;
 }
 
 function renderBlock(block: PageBlock) {
@@ -693,15 +739,6 @@ function renderBlock(block: PageBlock) {
       );
     }
     case 'contactFormSection': {
-      const form = block.form as
-        | {
-            _id?: string;
-            title?: string;
-            showtitle?: boolean;
-            submitButtonText?: string;
-            fields?: FormFieldDefinition[];
-          }
-        | undefined;
       const aside = block.aside as
         | {
             title?: string;
@@ -724,19 +761,7 @@ function renderBlock(block: PageBlock) {
           title={block.title}
           lead={block.lead}
           note={block.note}
-          successTitle={block.successTitle}
-          successBody={block.successBody}
-          form={
-            form?._id && form.fields?.length
-              ? {
-                  id: form._id,
-                  title: form.title,
-                  showtitle: form.showtitle,
-                  fields: form.fields,
-                  submitButtonText: form.submitButtonText,
-                }
-              : undefined
-          }
+          form={toFormDefinition(block.form)}
           aside={
             aside?.title && aside.body
               ? {
@@ -785,25 +810,6 @@ function renderBlock(block: PageBlock) {
       );
     }
     case 'formHero': {
-      // Unset keys come back as null from GROQ, so they are normalised to
-      // undefined here rather than leaking null into the component's defaults.
-      const form = block.form as
-        | {
-            _id?: string;
-            submitButtonText?: string | null;
-            nextButtonText?: string | null;
-            backButtonText?: string | null;
-            successTitle?: string | null;
-            successBody?: string | null;
-            steps?: Array<{ title?: string | null; fields?: FormFieldDefinition[] }>;
-          }
-        | undefined;
-
-      // A step without fields would render a page the user cannot fill in.
-      const steps = (form?.steps ?? [])
-        .map((step) => ({ title: step.title ?? undefined, fields: step.fields ?? [] }))
-        .filter((step) => step.fields.length > 0);
-
       return (
         <FormHero
           key={block._key}
@@ -819,19 +825,7 @@ function renderBlock(block: PageBlock) {
           reviewNote={block.reviewNote}
           formTitle={block.formTitle}
           formLead={block.formLead}
-          form={
-            form?._id && steps.length
-              ? {
-                  id: form._id,
-                  steps,
-                  nextButtonText: form.nextButtonText ?? undefined,
-                  backButtonText: form.backButtonText ?? undefined,
-                  submitButtonText: form.submitButtonText ?? undefined,
-                  successTitle: form.successTitle ?? undefined,
-                  successBody: form.successBody ?? undefined,
-                }
-              : undefined
-          }
+          form={toFormDefinition(block.form)}
           privacyNote={block.privacyNote}
         />
       );

@@ -27,10 +27,10 @@
   - images extracted to `app/public/images/taxatie/`
   - only `compareCards` is new; Benefits gained house/renovate/scale icons
 - `contact.html` → /contact (splitHero, contactWays, personBlock, contactFormSection, routeBlock, crossLinks)
-  - images in `app/public/images/contact/`; form runs on the Sanity contact-form plugin
-  - `POST /api/submit-form` mails submissions via nodemailer
+  - images in `app/public/images/contact/`; het formulier is een `form`-document (zie "Formulieren in Sanity")
+  - `POST /api/submit-form` mailt inzendingen via Mailjet
   - reCAPTCHA v2 checkbox is wired: enable it + set the site key under "Form settings"; put the secret in `RECAPTCHA_SECRET_KEY`
-  - **before it can send mail:** fill "Form settings" in the studio, or set SMTP_USER / SMTP_PASSWORD / CONTACT_ADMIN_EMAIL in `app/.env`
+  - **before it can send mail:** fill "Form settings" in the studio, or set MAILJET_API_KEY / MAILJET_API_SECRET / CONTACT_ADMIN_EMAIL in `app/.env`
   - **not yet run:** `cd app && npm run seed:sanity` (needs SANITY_API_WRITE_TOKEN) — /over-ons and /taxatie do not exist in Sanity until then
 
 **SEO**
@@ -76,8 +76,8 @@
 - alles staat beschreven in `docs/funda-review-scraper.md`
 
 **Mailjet als mailtransport (20-08-2026)**
-- `formGeneralSettings` (het plugin-singleton "Form settings") is overgenomen in `studio-hart-huis/schemaTypes/formGeneralSettingsType.ts` — zelfde velden als de plugin plus `mailjetApiKey` + `mailjetApiSecret`. `sanity.config.ts` filtert de plugin-versie uit `prev` en gebruikt deze i.p.v.
-- `app/src/app/api/submit-form/route.ts` verstuurt via Mailjet's HTTP API (`https://api.mailjet.com/v3.1/send`) zodra `MAILJET_API_KEY`/`MAILJET_API_SECRET` (env, of de Studio-velden als fallback) gezet zijn; anders valt hij terug op de bestaande Gmail SMTP/nodemailer-route
+- `formGeneralSettings` ("Form settings") staat in `studio-hart-huis/schemaTypes/formGeneralSettingsType.ts` en is nu Mailjet-only: `adminEmail`, `fromEmail`, `fromName`, `mailjetApiKey`, `mailjetApiSecret`, de mailteksten en de reCAPTCHA-velden. De Gmail-SMTP-velden en het dode `successMessage` zijn eruit
+- `app/src/app/api/submit-form/route.ts` verstuurt via Mailjet's HTTP API (`https://api.mailjet.com/v3.1/send`); nodemailer is verwijderd. Env gaat vóór de Studio-waarden. De afzender moet een door Mailjet gevalideerde afzender zijn, anders weigert Mailjet de mail
 - `npm run typegen` gedraaid, `schema.json` + `sanity.types.ts` meegecommit
 
 **`hart-en-huis-lp-waardebepaling_1.html` → /waardebepaling (20-08-2026)**
@@ -85,15 +85,13 @@
 - 6 nieuwe blocks in `src/components/blocks/`, bewust generiek genoemd (herbruikbaar voor andere LP's, niet naar deze pagina vernoemd): `FormHero` (client, wizard-formulier), `IconCards`, `NumberedSteps`, `PersonQuote`, `QuoteStrip`, `CenteredCta`; `faqs` hergebruikt. Zelfde voor de Sanity-typenamen (`formHero`, `iconCards`, `numberedSteps`, `personQuote`, `quoteStrip`, `centeredCta`)
 
 **Formulieren in Sanity (20-08-2026)**
-- nieuw documenttype `multiStepForm` (Studio → **Multi-step forms**) met `steps[] → fields[]`, plus een herbruikbaar `formField`-object. Stappen, velden, veldbreedte, knopteksten en de bevestiging zijn volledig redactioneel — geen codewijziging nodig om een veld of stap toe te voegen
-- `MultiStepForm` (`src/components/form/`) rendert het: voortgangsbalk, validatie per stap, terug/verder, verzenden en de bevestiging. `FormHero` is nu alleen nog omlijsting (foto, kop, USP's, scorekaart) en bevat geen veldkennis meer — de oude versie had de veldnamen hardcoded
-- `src/lib/form-fields.ts` bevat de veldvorm + `toFieldRows()` (rij-indeling) zonder React, `fields.tsx` rendert één veld in twee varianten: `stacked` (contactpagina) en `compact` (kaart). `ContactForm` gebruikt dezelfde renderer, dus de veldopmaak staat nog maar op één plek
-- `/api/submit-form` bedient beide soorten via één `FORM_QUERY` met `coalesce(fields, steps[].fields)` — de veldenlijst uit het document blijft de allow-list
-- `npm run check:form` dekt de rij-indeling van beide soorten (borgt dat /contact niet herschikt) en unieke veldnamen; uitleg staat in `docs/formulieren.md`
-- makelaarsfoto hergebruikt `public/images/contact/dorien.jpg` (zelfde foto als op /contact); alleen de herobackground is nieuw, in `public/images/waardebepaling/`
-- `BlockIcon` kreeg een `heart`-icoon erbij (paden uit het origineel)
-- eigen seed script `npm run seed:waardebepaling` (schrijft het formulier, de FAQs en de pagina); nog niet gedraaid tegen Sanity
-- `npm run typegen` gedraaid, `schema.json` + `sanity.types.ts` meegecommit
+- **één documenttype `form`** (Studio → Forms) met een veld **mode**: `simple` (standaard, platte `fields[]`) of `steps` (`steps[] → fields[]`). Wisselen mag: de andere container blijft staan maar wordt genegeerd
+- `@multidots/sanity-plugin-contact-form` is **verwijderd**. We gebruikten alleen zijn schema — zijn React-component en zijn `formGeneralSettings` waren al vervangen — en zijn veldvorm kende geen stappen of kolombreedte. Daarmee zijn ook nodemailer en de `types: (prev) => filter`-hack in sanity.config.ts weg
+- versturen gaat **alleen nog via Mailjet** (HTTP API v3.1). `formGeneralSettings` heeft nu `fromEmail`/`fromName` in plaats van de Gmail-SMTP-velden; `successMessage` was dood en is weg
+- `FormRenderer` (`src/components/form/`) rendert beide modi én doet reCAPTCHA, verzenden en de bevestiging. `ContactForm` en `FormHero` zijn nu allebei alleen omlijsting — ContactForm is daardoor geen client component meer
+- `FORM_QUERY` splitst op `mode` (niet `coalesce`!) omdat een gewisselde modus de andere container laat staan; een allow-list uit de verkeerde container weigert élke inzending. `check:form` bewijst met groq-js dat query en renderer het eens zijn
+- **migratie:** `npm run migrate:forms -- --dry-run`, dan zonder vlag. Vervangt elk `contactForm` op zijn plek (zelfde `_id`, dus verwijzingen blijven heel) en schrijft de gegokte kolombreedtes één keer uit. Daarna `seed:contact` + `seed:waardebepaling` voor de knopteksten/bevestigingen, en **Sender address** invullen
+- uitleg voor later: `docs/formulieren.md`
 
 ### Home-blokken automatisch gevuld (2026-08-17)
 - `listings` toont de **3 nieuwste woningen** en `reviews` de **8 nieuwste reviews**, beide rechtstreeks uit de dataset — de handmatige selectie is uit `listingsType`/`reviewsType` gehaald

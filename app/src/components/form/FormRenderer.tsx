@@ -2,29 +2,57 @@
 
 import { useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { flushSync } from 'react-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { cn } from '@/lib/cn';
-import { toFieldRows, type MultiStepFormDefinition } from '@/lib/form-fields';
+import { toFieldRows, toSteps, type FormDefinition } from '@/lib/form-fields';
 import { FormField, type FormFieldVariant } from './fields';
 
-export type MultiStepFormProps = {
-  form: MultiStepFormDefinition;
+/** Public half of the reCAPTCHA settings — the secret stays server-side. */
+export type FormRecaptcha = {
+  enabled: boolean;
+  siteKey: string;
+};
+
+export type FormRendererProps = {
+  form: FormDefinition;
   /** Heading above the form. Hidden once the form has been sent. */
   title?: string;
   lead?: string;
   /** Small print under the form, shown in every state. */
   footer?: ReactNode;
+  recaptcha?: FormRecaptcha;
   variant?: FormFieldVariant;
 };
 
 type Control = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
-const actionButtonClass = cn(
-  'inline-flex w-full items-center justify-center gap-2.5 rounded-pill border border-transparent',
-  'bg-sage px-[28px] py-[17px] text-btn font-semibold text-moss',
+const BUTTON_BASE = cn(
+  'inline-flex items-center justify-center gap-2.5 rounded-pill border border-transparent',
+  'bg-sage text-btn font-semibold text-moss',
   'transition-[background,transform] duration-300 ease-brand hover:-translate-y-0.5 hover:bg-sage-hover',
   'focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-burgundy',
   'disabled:pointer-events-none disabled:opacity-60',
 );
+
+/**
+ * Per-variant chrome. `stacked` is the contact page (inline button, panel
+ * confirmation), `compact` the hero card (full-width button, centred
+ * confirmation with a check mark).
+ */
+const VARIANTS = {
+  stacked: {
+    button: cn(BUTTON_BASE, 'px-[34px] py-[17px] whitespace-nowrap max-sm:w-full'),
+    title: 'mb-6 text-[1.4rem]',
+    lead: 'mb-6 leading-[1.7] text-ink-70',
+    rowGap: 'gap-5',
+  },
+  compact: {
+    button: cn(BUTTON_BASE, 'w-full px-[28px] py-[17px]'),
+    title: 'mb-2 text-[1.55rem]',
+    lead: 'text-[0.92rem] leading-[1.6] text-ink-70',
+    rowGap: 'gap-3.5',
+  },
+} as const satisfies Record<FormFieldVariant, Record<string, string>>;
 
 function IconArrowRight() {
   return (
@@ -34,30 +62,67 @@ function IconArrowRight() {
   );
 }
 
+function SuccessPanel({
+  variant,
+  title,
+  body,
+}: {
+  variant: FormFieldVariant;
+  title?: string;
+  body?: string;
+}) {
+  if (variant === 'stacked') {
+    return (
+      <div className='rounded border-l-[3px] border-sage-deep bg-white px-10 py-11 max-sm:px-6 max-sm:py-8'>
+        {title ? <h3 className='mb-2.5 text-[1.6rem]'>{title}</h3> : null}
+        {body ? <p className='leading-[1.7] text-ink-70'>{body}</p> : null}
+      </div>
+    );
+  }
+
+  return (
+    <div className='py-3 text-center'>
+      <div className='mx-auto mb-4 grid size-[58px] place-items-center rounded-full bg-sage/25 text-sage-deep'>
+        <svg width='30' height='30' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+          <path d='M4 12.5 9.5 18 20 7' stroke='currentColor' strokeWidth='2' />
+        </svg>
+      </div>
+      {title ? <h3 className='mb-2.5 text-[1.6rem]'>{title}</h3> : null}
+      {body ? (
+        <p className='mx-auto max-w-[34ch] text-[0.95rem] leading-[1.7] text-ink-70'>{body}</p>
+      ) : null}
+    </div>
+  );
+}
+
 /**
- * Renders a Sanity-authored form over one or more steps and posts the whole
- * thing to /api/submit-form in one request.
+ * Renders any Sanity `form` — one page of fields or several steps — and posts
+ * the whole thing to /api/submit-form in one request.
  *
  * Every step stays mounted (hidden steps keep their values in the FormData),
  * which is why the form carries `noValidate`: the browser would otherwise
  * refuse to submit over a required field it cannot focus. Validation is driven
  * per step instead — `reportValidity()` still shows the native message.
  */
-export function MultiStepForm({
+export function FormRenderer({
   form,
   title,
   lead,
   footer,
+  recaptcha,
   variant = 'compact',
-}: MultiStepFormProps) {
+}: FormRendererProps) {
   const [step, setStep] = useState(0);
   const [status, setStatus] = useState<'idle' | 'sending' | 'done'>('idle');
   const [error, setError] = useState<string | null>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const steps = form.steps;
+  const styles = VARIANTS[variant];
+  const steps = toSteps(form);
   const total = steps.length;
   const isLastStep = step >= total - 1;
+  const usesRecaptcha = Boolean(recaptcha?.enabled && recaptcha.siteKey);
 
   function controlsOf(index: number): Control[] {
     const container = stepRefs.current[index];
@@ -98,6 +163,15 @@ export function MultiStepForm({
     const body = new FormData(event.currentTarget);
     body.set('formId', form.id);
 
+    if (usesRecaptcha) {
+      const token = recaptchaRef.current?.getValue();
+      if (!token) {
+        setError('Bevestig even dat je geen robot bent.');
+        return;
+      }
+      body.set('recaptchaToken', token);
+    }
+
     setStatus('sending');
     setError(null);
     try {
@@ -108,6 +182,8 @@ export function MultiStepForm({
       }
       setStatus('done');
     } catch (submitError) {
+      // A token is single-use: clear it so a retry gets a fresh one.
+      recaptchaRef.current?.reset();
       setStatus('idle');
       setError(
         submitError instanceof Error
@@ -118,34 +194,15 @@ export function MultiStepForm({
   }
 
   if (status === 'done') {
-    return (
-      <>
-        <div className='py-3 text-center'>
-          <div className='mx-auto mb-4 grid size-[58px] place-items-center rounded-full bg-sage/25 text-sage-deep'>
-            <svg width='30' height='30' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
-              <path d='M4 12.5 9.5 18 20 7' stroke='currentColor' strokeWidth='2' />
-            </svg>
-          </div>
-          {form.successTitle ? (
-            <h3 className='mb-2.5 text-[1.6rem]'>{form.successTitle}</h3>
-          ) : null}
-          {form.successBody ? (
-            <p className='mx-auto max-w-[34ch] text-[0.95rem] leading-[1.7] text-ink-70'>
-              {form.successBody}
-            </p>
-          ) : null}
-        </div>
-        {footer}
-      </>
-    );
+    return <SuccessPanel variant={variant} title={form.successTitle} body={form.successBody} />;
   }
 
   return (
     <>
       {title || lead ? (
-        <div className='mb-6'>
-          {title ? <h2 className='mb-2 text-[1.55rem]'>{title}</h2> : null}
-          {lead ? <p className='text-[0.92rem] leading-[1.6] text-ink-70'>{lead}</p> : null}
+        <div className={variant === 'compact' ? 'mb-6' : undefined}>
+          {title ? <h2 className={styles.title}>{title}</h2> : null}
+          {lead ? <p className={styles.lead}>{lead}</p> : null}
         </div>
       ) : null}
 
@@ -164,6 +221,10 @@ export function MultiStepForm({
       ) : null}
 
       <form onSubmit={onSubmit} noValidate>
+        {form.showTitle && form.title ? (
+          <h3 className={styles.title}>{form.title}</h3>
+        ) : null}
+
         {steps.map((formStep, index) => (
           <div
             key={index}
@@ -172,14 +233,18 @@ export function MultiStepForm({
             }}
             hidden={index !== step}
           >
-            {formStep.title ? (
-              <h3 className='mb-4 text-[1.15rem]'>{formStep.title}</h3>
-            ) : null}
+            {formStep.title ? <h3 className='mb-4 text-[1.15rem]'>{formStep.title}</h3> : null}
 
             {toFieldRows(formStep.fields).map((row) => {
               const key = row.map((field) => field.name).join('-');
               return row.length === 2 ? (
-                <div key={key} className='grid grid-cols-2 gap-3.5 max-sm:grid-cols-1 max-sm:gap-0'>
+                <div
+                  key={key}
+                  className={cn(
+                    'grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-0',
+                    styles.rowGap,
+                  )}
+                >
                   {row.map((field) => (
                     <FormField
                       key={field.name}
@@ -190,16 +255,17 @@ export function MultiStepForm({
                   ))}
                 </div>
               ) : (
-                <FormField
-                  key={key}
-                  field={row[0]}
-                  variant={variant}
-                  idPrefix={form.id}
-                />
+                <FormField key={key} field={row[0]} variant={variant} idPrefix={form.id} />
               );
             })}
           </div>
         ))}
+
+        {usesRecaptcha && isLastStep ? (
+          <div className='mb-6'>
+            <ReCAPTCHA ref={recaptchaRef} sitekey={recaptcha!.siteKey} />
+          </div>
+        ) : null}
 
         {error ? (
           <p role='alert' className='mb-4 text-[0.9rem] text-burgundy'>
@@ -208,13 +274,11 @@ export function MultiStepForm({
         ) : null}
 
         {isLastStep ? (
-          <button type='submit' disabled={status === 'sending'} className={actionButtonClass}>
-            {status === 'sending'
-              ? 'Bezig met versturen…'
-              : (form.submitButtonText ?? 'Verstuur')}
+          <button type='submit' disabled={status === 'sending'} className={styles.button}>
+            {status === 'sending' ? 'Bezig met versturen…' : (form.submitButtonText ?? 'Verstuur')}
           </button>
         ) : (
-          <button type='button' onClick={goNext} className={actionButtonClass}>
+          <button type='button' onClick={goNext} className={styles.button}>
             {form.nextButtonText ?? 'Verder'}
             <IconArrowRight />
           </button>
@@ -229,9 +293,9 @@ export function MultiStepForm({
             ← {form.backButtonText ?? 'Terug'}
           </button>
         ) : null}
-      </form>
 
-      {footer}
+        {footer}
+      </form>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import type { FormDefinition, FormFieldDefinition } from "@/lib/form-fields";
 import { SITE } from "@/lib/site";
 
 /** Icons shared by the contact cards and the form aside. */
@@ -86,8 +87,6 @@ export const CONTACT_FORM = {
   title: "Liever eerst even schrijven?",
   lead: "Vertel kort waar het over gaat, dan bellen of mailen we je terug. Je zit nergens aan vast en we zetten je niet op een lijst.",
   note: "We reageren binnen één werkdag — vaak eerder.",
-  successTitle: "Bedankt, je bericht staat bij ons klaar",
-  successBody: `Dorien neemt binnen één werkdag contact met je op. Heb je haast? Bel gerust even op ${SITE.phone}.`,
   aside: {
     title: "Liever direct contact?",
     body: "Sommige dingen bespreek je makkelijker even in het echt dan per mail.",
@@ -113,14 +112,15 @@ export const CONTACT_FORM = {
 } as const;
 
 /**
- * Seeded into the plugin's `contactForm` document. Field names end up as the
- * keys in the notification email, so keep them stable.
+ * Seeded into the `form` document as a simple (single page) form. Field names
+ * end up as the keys in the notification email, so keep them stable.
  */
-export const CONTACT_FORM_FIELDS = [
+export const CONTACT_FORM_FIELDS: FormFieldDefinition[] = [
   {
     label: "Naam",
     name: "naam",
     type: "text",
+    width: "half",
     isRequired: true,
     placeholder: "Voor- en achternaam",
   },
@@ -128,6 +128,7 @@ export const CONTACT_FORM_FIELDS = [
     label: "Telefoonnummer",
     name: "telefoon",
     type: "tel",
+    width: "half",
     isRequired: false,
     placeholder: "06 - 12 34 56 78",
   },
@@ -135,6 +136,7 @@ export const CONTACT_FORM_FIELDS = [
     label: "E-mailadres",
     name: "email",
     type: "email",
+    width: "half",
     isRequired: true,
     placeholder: "jij@voorbeeld.nl",
   },
@@ -142,6 +144,7 @@ export const CONTACT_FORM_FIELDS = [
     label: "Waar gaat het over?",
     name: "onderwerp",
     type: "select",
+    width: "half",
     isRequired: false,
     selectOptions: [
       "Ik wil mijn woning verkopen",
@@ -155,6 +158,7 @@ export const CONTACT_FORM_FIELDS = [
     label: "Je bericht",
     name: "bericht",
     type: "textarea",
+    width: "full",
     isRequired: false,
     placeholder: "Waar kunnen we je mee helpen?",
   },
@@ -162,14 +166,31 @@ export const CONTACT_FORM_FIELDS = [
     label: "Akkoord",
     name: "akkoord",
     type: "checkbox",
+    width: "full",
     isRequired: true,
     checkboxOptions: [
       "Ik ga ermee akkoord dat Hart & Huis mijn gegevens gebruikt om contact met me op te nemen. Meer hierover in de [privacyverklaring](/privacy).",
     ],
   },
-] as const;
+];
 
 export const CONTACT_FORM_TITLE = "Contactformulier";
+export const CONTACT_FORM_ID = "contact";
+
+/**
+ * The `form` document /contact points at: one page of fields, which is the
+ * default mode. The same document type also does multi-step — see
+ * WAARDEBEPALING_FORM.
+ */
+export const CONTACT_FORM_DEFINITION: FormDefinition & { title: string } = {
+  title: CONTACT_FORM_TITLE,
+  id: CONTACT_FORM_ID,
+  mode: "simple",
+  submitButtonText: "Verstuur bericht",
+  successTitle: "Bedankt, je bericht staat bij ons klaar",
+  successBody: `Dorien neemt binnen één werkdag contact met je op. Heb je haast? Bel gerust even op ${SITE.phone}.`,
+  fields: CONTACT_FORM_FIELDS,
+};
 
 export const CONTACT_ROUTE = {
   eyebrow: "Route en openingstijden",

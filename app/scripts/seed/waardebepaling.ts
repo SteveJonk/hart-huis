@@ -1,5 +1,5 @@
 /**
- * Seeds the /waardebepaling FAQs, the contact-form document for its
+ * Seeds the /waardebepaling FAQs, the multi-step `form` document for its
  * wizard, and the /waardebepaling page. Not linked from navigation —
  * seed:nav does not need to run for this page.
  */
@@ -7,7 +7,6 @@ import {
   WAARDEBEPALING_FAQ,
   WAARDEBEPALING_FAQ_INTRO,
   WAARDEBEPALING_FORM,
-  WAARDEBEPALING_FORM_ID,
   WAARDEBEPALING_HERO,
   WAARDEBEPALING_KRIJGT,
   WAARDEBEPALING_KRIJGT_INTRO,
@@ -18,54 +17,7 @@ import {
   WAARDEBEPALING_STAPPEN_INTRO,
   WAARDEBEPALING_WIE,
 } from '../../src/lib/waardebepaling-content'
-import {client, cta, key, upsertFaq, upsertPage, uploadImage} from './shared'
-
-async function upsertWaardebepalingForm() {
-  const existingId = await client.fetch<string | null>(
-    `*[_type == "multiStepForm" && id == $id][0]._id`,
-    {id: WAARDEBEPALING_FORM_ID},
-  )
-
-  const doc = {
-    _type: 'multiStepForm' as const,
-    title: WAARDEBEPALING_FORM.title,
-    id: WAARDEBEPALING_FORM.id,
-    nextButtonText: WAARDEBEPALING_FORM.nextButtonText,
-    backButtonText: WAARDEBEPALING_FORM.backButtonText,
-    submitButtonText: WAARDEBEPALING_FORM.submitButtonText,
-    successTitle: WAARDEBEPALING_FORM.successTitle,
-    successBody: WAARDEBEPALING_FORM.successBody,
-    steps: WAARDEBEPALING_FORM.steps.map((step, index) => ({
-      _key: key(`step-${index}`),
-      _type: 'formStep' as const,
-      ...(step.title ? {title: step.title} : {}),
-      fields: step.fields.map((field) => ({
-        _key: key(field.name),
-        _type: 'formField' as const,
-        label: field.label,
-        name: field.name,
-        type: field.type,
-        width: field.width ?? 'full',
-        isRequired: Boolean(field.isRequired),
-        ...(field.placeholder ? {placeholder: field.placeholder} : {}),
-        ...(field.helpText ? {helpText: field.helpText} : {}),
-        ...(field.selectOptions ? {selectOptions: [...field.selectOptions]} : {}),
-        ...(field.radioOptions ? {radioOptions: [...field.radioOptions]} : {}),
-        ...(field.checkboxOptions ? {checkboxOptions: [...field.checkboxOptions]} : {}),
-      })),
-    })),
-  }
-
-  if (existingId) {
-    await client.patch(existingId).set(doc).commit()
-    console.log(`  ↻ form ${WAARDEBEPALING_FORM.title}`)
-    return existingId
-  }
-
-  const created = await client.create(doc)
-  console.log(`  + form ${WAARDEBEPALING_FORM.title}`)
-  return created._id
-}
+import {cta, key, uploadImage, upsertFaq, upsertForm, upsertPage} from './shared'
 
 async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
   console.log('Building waardebepaling blocks…')
@@ -155,7 +107,7 @@ async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
 
 export async function seedWaardebepaling() {
   console.log('Waardebepaling form')
-  const formId = await upsertWaardebepalingForm()
+  const formId = await upsertForm(WAARDEBEPALING_FORM)
 
   console.log('\nWaardebepaling FAQs')
   const faqIds: string[] = []

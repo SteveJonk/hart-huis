@@ -1,10 +1,6 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
 import { client } from '@/sanity/client';
-import {
-  CONTACT_FORM_SETTINGS_QUERY,
-  FORM_QUERY,
-} from '@/sanity/queries';
+import { FORM_QUERY, FORM_SETTINGS_QUERY } from '@/sanity/queries';
 
 export const runtime = 'nodejs';
 
@@ -101,7 +97,7 @@ export async function POST(request: Request) {
   // The form definition is the allow-list: unknown keys never reach the mail.
   const [form, settings] = await Promise.all([
     client.fetch(FORM_QUERY, { formId }, { cache: 'no-store' }),
-    client.fetch(CONTACT_FORM_SETTINGS_QUERY, {}, { cache: 'no-store' }),
+    client.fetch(FORM_SETTINGS_QUERY, {}, { cache: 'no-store' }),
   ]);
   if (!form) return fail('Onbekend formulier.', 404);
 
@@ -165,16 +161,15 @@ export async function POST(request: Request) {
 
   // Env wins over the Studio settings: a dataset is readable by anyone with the
   // project id, so credentials belong in the environment.
-  const smtpUser = process.env.SMTP_USER || settings?.smtpUsername;
-  const smtpPass = process.env.SMTP_PASSWORD || settings?.smtpPassword;
   const mailjetApiKey = process.env.MAILJET_API_KEY || settings?.mailjetApiKey;
   const mailjetApiSecret = process.env.MAILJET_API_SECRET || settings?.mailjetApiSecret;
   const adminEmail = process.env.CONTACT_ADMIN_EMAIL || settings?.adminEmail;
+  // Mailjet only accepts a sender it has validated; fall back to the recipient,
+  // which is the one address we know belongs to this account.
+  const fromEmail = process.env.MAILJET_FROM_EMAIL || settings?.fromEmail || adminEmail;
+  const fromName = settings?.fromName || 'Hart & Huis website';
 
-  // Mailjet is preferred when configured; Gmail SMTP is the fallback.
-  const useMailjet = Boolean(mailjetApiKey && mailjetApiSecret);
-
-  if (!adminEmail || (!useMailjet && (!smtpUser || !smtpPass))) {
+  if (!adminEmail || !mailjetApiKey || !mailjetApiSecret) {
     console.error('submit-form: missing mail settings (env or formGeneralSettings)');
     return fail(
       'Het formulier is nog niet ingesteld. Bel of mail ons in de tussentijd.',
@@ -198,34 +193,18 @@ export async function POST(request: Request) {
   const replyTo = answers.find(({ label }) => /mail/i.test(label))?.value;
 
   try {
-    if (useMailjet) {
-      await sendViaMailjet(
-        { apiKey: mailjetApiKey!, apiSecret: mailjetApiSecret! },
-        {
-          fromEmail: smtpUser || adminEmail!,
-          fromName: 'Hart & Huis website',
-          to: adminEmail!,
-          replyTo,
-          subject,
-          html,
-          attachments,
-        },
-      );
-    } else {
-      const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: { user: smtpUser, pass: smtpPass },
-      });
-
-      await transporter.sendMail({
-        from: `Hart & Huis website <${smtpUser}>`,
+    await sendViaMailjet(
+      { apiKey: mailjetApiKey, apiSecret: mailjetApiSecret },
+      {
+        fromEmail: fromEmail!,
+        fromName,
         to: adminEmail,
         replyTo,
         subject,
         html,
         attachments,
-      });
-    }
+      },
+    );
   } catch (error) {
     console.error('submit-form: sending failed', error);
     return fail('Versturen is niet gelukt. Probeer het later opnieuw.', 502);

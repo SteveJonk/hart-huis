@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { MultiStepForm } from '@/components/form/MultiStepForm';
+import { FormRenderer } from '@/components/form/FormRenderer';
 import { Wrap } from '@/components/ui/Wrap';
-import type { MultiStepFormDefinition } from '@/lib/form-fields';
+import type { FormDefinition } from '@/lib/form-fields';
 
 export type FormHeroImage = { src: string; alt: string };
 
@@ -19,14 +19,14 @@ export type FormHeroProps = {
   reviewNote?: string;
   formTitle?: string;
   formLead?: string;
-  form?: MultiStepFormDefinition;
+  form?: FormDefinition;
   privacyNote?: string;
 };
 
 /**
- * Photo hero with a form card beside it. The card is only chrome — the steps,
- * fields, buttons and confirmation all come from the `multiStepForm` document
- * that `form` points at, so this block works for any form.
+ * Photo hero with a form card beside it. The card is only chrome — the fields,
+ * steps, buttons and confirmation all come from the `form` document that
+ * `form` points at, so this block works for any form.
  */
 export function FormHero({
   image,
@@ -119,7 +119,7 @@ export function FormHero({
           className='rounded-[6px] bg-white px-9 pt-9 pb-8 max-sm:px-6 max-sm:pt-7 max-sm:pb-6'
         >
           {form ? (
-            <MultiStepForm
+            <FormRenderer
               form={form}
               title={formTitle}
               lead={formLead}

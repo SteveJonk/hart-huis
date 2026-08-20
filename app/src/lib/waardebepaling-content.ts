@@ -1,5 +1,5 @@
 import type { BlockIconName } from "@/components/ui/BlockIcon";
-import type { MultiStepFormDefinition } from "@/lib/form-fields";
+import type { FormDefinition } from "@/lib/form-fields";
 import { SITE } from "@/lib/site";
 import type { FaqItem } from "@/lib/verkoop-content";
 
@@ -30,13 +30,14 @@ export const WAARDEBEPALING_FORM_TITLE = "Waardebepaling";
 export const WAARDEBEPALING_FORM_ID = "waardebepaling";
 
 /**
- * The `multiStepForm` document the hero points at. Nothing here is special-
- * cased in the front end: the component renders whatever steps and fields it
- * finds, so editors can add a step or reorder fields without a code change.
+ * The `form` document the hero points at, in `steps` mode. Nothing here is
+ * special-cased in the front end: the renderer draws whatever steps and fields
+ * it finds, so editors can add a step or reorder fields without a code change.
  */
-export const WAARDEBEPALING_FORM: MultiStepFormDefinition & { title: string } = {
+export const WAARDEBEPALING_FORM: FormDefinition & { title: string } = {
   title: WAARDEBEPALING_FORM_TITLE,
   id: WAARDEBEPALING_FORM_ID,
+  mode: "steps",
   nextButtonText: "Verder",
   backButtonText: "Terug naar stap 1",
   submitButtonText: "Vraag gratis waardebepaling aan",

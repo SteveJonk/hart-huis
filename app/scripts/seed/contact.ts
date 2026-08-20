@@ -1,61 +1,21 @@
 /**
- * Seeds the /contact page, plus the form document it points at.
+ * Seeds the /contact page, plus the `form` document it points at (a simple,
+ * single-page form — editors manage it under "Forms" in the studio).
  *
- * The form itself lives in the `contactForm` type from
- * @multidots/sanity-plugin-contact-form, so editors manage the fields under
- * "Forms" in the studio. Mail settings (admin address, SMTP) are NOT seeded —
- * fill those in under "Form settings", or set SMTP_USER / SMTP_PASSWORD /
- * CONTACT_ADMIN_EMAIL in the app environment.
+ * Mail settings are NOT seeded: fill those in under "Form settings", or set
+ * MAILJET_API_KEY / MAILJET_API_SECRET / CONTACT_ADMIN_EMAIL in the app
+ * environment.
  */
 import {
   CONTACT_CROSSLINKS,
   CONTACT_FORM,
-  CONTACT_FORM_FIELDS,
-  CONTACT_FORM_TITLE,
+  CONTACT_FORM_DEFINITION,
   CONTACT_HERO,
   CONTACT_PERSON,
   CONTACT_ROUTE,
   CONTACT_WAYS,
 } from '../../src/lib/contact-content'
-import {client, cta, externalLink, key, uploadImage, upsertPage} from './shared'
-
-const FORM_ID = 'contact'
-
-async function upsertContactForm() {
-  const existingId = await client.fetch<string | null>(
-    `*[_type == "contactForm" && id == $id][0]._id`,
-    {id: FORM_ID},
-  )
-
-  const doc = {
-    _type: 'contactForm' as const,
-    title: CONTACT_FORM_TITLE,
-    showtitle: false,
-    id: FORM_ID,
-    submitButtonText: 'Verstuur bericht',
-    fields: CONTACT_FORM_FIELDS.map((field) => ({
-      _key: key(field.name),
-      label: field.label,
-      name: field.name,
-      type: field.type,
-      isRequired: field.isRequired,
-      showPlaceholder: false,
-      ...('placeholder' in field ? {placeholder: field.placeholder} : {}),
-      ...('selectOptions' in field ? {selectOptions: [...field.selectOptions]} : {}),
-      ...('checkboxOptions' in field ? {checkboxOptions: [...field.checkboxOptions]} : {}),
-    })),
-  }
-
-  if (existingId) {
-    await client.patch(existingId).set(doc).commit()
-    console.log(`  ↻ form ${CONTACT_FORM_TITLE}`)
-    return existingId
-  }
-
-  const created = await client.create(doc)
-  console.log(`  + form ${CONTACT_FORM_TITLE}`)
-  return created._id
-}
+import {cta, externalLink, key, uploadImage, upsertForm, upsertPage} from './shared'
 
 async function buildContactContent(formId: string) {
   console.log('Building contact blocks…')
@@ -119,8 +79,6 @@ async function buildContactContent(formId: string) {
       lead: CONTACT_FORM.lead,
       form: {_type: 'reference' as const, _ref: formId},
       note: CONTACT_FORM.note,
-      successTitle: CONTACT_FORM.successTitle,
-      successBody: CONTACT_FORM.successBody,
       aside: {
         title: CONTACT_FORM.aside.title,
         body: CONTACT_FORM.aside.body,
@@ -162,7 +120,7 @@ async function buildContactContent(formId: string) {
 
 export async function seedContact() {
   console.log('Contact form')
-  const formId = await upsertContactForm()
+  const formId = await upsertForm(CONTACT_FORM_DEFINITION)
 
   console.log('\nContact page')
   await upsertPage('contact', 'Contact', await buildContactContent(formId))

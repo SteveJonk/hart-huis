@@ -12,6 +12,7 @@ import {createReadStream, existsSync} from 'node:fs'
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {createClient, type SanityClient} from '@sanity/client'
+import type {FormDefinition, FormFieldDefinition} from '../../src/lib/form-fields'
 import type {FaqItem} from '../../src/lib/verkoop-content'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -144,5 +145,72 @@ export async function upsertPage(slug: string, title: string, content: unknown[]
 
   const created = await client.create(doc)
   console.log(`✓ page /${slug === 'home' ? '' : slug} created (${created._id})`)
+  return created._id
+}
+
+/**
+ * Writes one `form` document, keyed on its `id` so re-seeding updates the same
+ * document and every page reference to it keeps working. Returns the `_id` the
+ * blocks should point at.
+ *
+ * Only the container the mode uses is written: a simple form gets `fields`, a
+ * multi-step one `steps`. Writing both would leave the unused one lying around
+ * to confuse the next editor.
+ */
+export async function upsertForm(form: FormDefinition & {title: string}) {
+  const mode = form.mode ?? 'simple'
+
+  const fieldDoc = (field: FormFieldDefinition) => ({
+    _key: key(field.name),
+    _type: 'formField' as const,
+    label: field.label,
+    name: field.name,
+    type: field.type,
+    width: field.width ?? 'full',
+    isRequired: Boolean(field.isRequired),
+    ...(field.placeholder ? {placeholder: field.placeholder} : {}),
+    ...(field.helpText ? {helpText: field.helpText} : {}),
+    ...(field.selectOptions ? {selectOptions: [...field.selectOptions]} : {}),
+    ...(field.radioOptions ? {radioOptions: [...field.radioOptions]} : {}),
+    ...(field.checkboxOptions ? {checkboxOptions: [...field.checkboxOptions]} : {}),
+  })
+
+  const doc: {_type: 'form'; [field: string]: unknown} = {
+    _type: 'form',
+    title: form.title,
+    id: form.id,
+    mode,
+    showTitle: Boolean(form.showTitle),
+    submitButtonText: form.submitButtonText ?? 'Verstuur',
+    successTitle: form.successTitle,
+    successBody: form.successBody,
+  }
+
+  if (mode === 'steps') {
+    doc.nextButtonText = form.nextButtonText ?? 'Verder'
+    doc.backButtonText = form.backButtonText ?? 'Terug'
+    doc.steps = (form.steps ?? []).map((step, index) => ({
+      _key: key(`step-${index}`),
+      _type: 'formStep' as const,
+      ...(step.title ? {title: step.title} : {}),
+      fields: step.fields.map(fieldDoc),
+    }))
+  } else {
+    doc.fields = (form.fields ?? []).map(fieldDoc)
+  }
+
+  const existingId = await client.fetch<string | null>(
+    `*[_type == "form" && id == $id][0]._id`,
+    {id: form.id},
+  )
+
+  if (existingId) {
+    await client.patch(existingId).set(doc).commit()
+    console.log(`  ↻ form ${form.title}`)
+    return existingId
+  }
+
+  const created = await client.create(doc)
+  console.log(`  + form ${form.title}`)
   return created._id
 }

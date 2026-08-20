@@ -2,11 +2,12 @@ import {CogIcon} from '@sanity/icons/Cog'
 import {defineField, defineType} from 'sanity'
 
 /**
- * Overrides @multidots/sanity-plugin-contact-form's `formGeneralSettings`
- * document (same name, so it replaces the plugin's version — see
- * sanity.config.ts). The plugin doesn't export its field list or let you
- * configure the type, so the original fields are reproduced here from its
- * dist bundle and must be kept in sync by hand on plugin upgrades.
+ * Mail and spam settings shared by every `form`. Sending goes through
+ * Mailjet's HTTP API; see app/src/app/api/submit-form/route.ts.
+ *
+ * The API credentials here are a fallback only. A Sanity dataset is readable
+ * by anyone who knows the project id, so in production these belong in the
+ * app environment (MAILJET_API_KEY / MAILJET_API_SECRET), which wins.
  */
 export const formGeneralSettingsType = defineType({
   name: 'formGeneralSettings',
@@ -22,48 +23,37 @@ export const formGeneralSettingsType = defineType({
       validation: (rule) => rule.required().email(),
     }),
     defineField({
-      name: 'smtpUsername',
-      title: 'Gmail SMTP Username',
+      name: 'fromEmail',
+      title: 'Sender address',
       type: 'string',
-      description: 'Use full Gmail address since we use Gmail SMTP.',
-      validation: (rule) => rule.required().email(),
+      description:
+        'Address the mail is sent from. Must be a sender Mailjet has validated, otherwise it is rejected. Falls back to the admin address.',
+      validation: (rule) => rule.email(),
     }),
     defineField({
-      name: 'smtpPassword',
-      title: 'Gmail SMTP Password',
+      name: 'fromName',
+      title: 'Sender name',
       type: 'string',
-      description: 'Use Gmail App Password since we use Gmail SMTP.',
-      validation: (rule) => rule.required(),
+      initialValue: 'Hart & Huis website',
     }),
     defineField({
       name: 'mailjetApiKey',
       title: 'Mailjet API Key',
       type: 'string',
-      description:
-        'Public API key for Mailjet, used together with the secret key below. Fallback only — prefer MAILJET_API_KEY in the app environment, since a Sanity dataset is world-readable.',
+      description: 'Fallback only — prefer MAILJET_API_KEY in the app environment.',
     }),
     defineField({
       name: 'mailjetApiSecret',
       title: 'Mailjet API Secret',
       type: 'string',
-      description:
-        'Secret key for Mailjet. Fallback only — prefer MAILJET_API_SECRET in the app environment, since a Sanity dataset is world-readable.',
-    }),
-    defineField({
-      name: 'successMessage',
-      title: 'Success Message',
-      type: 'text',
-      rows: 3,
-      validation: (rule) => rule.required(),
-      description: 'Message displayed to the user after successful submission.',
-      initialValue: 'Thank you for your submission! We will get back to you soon.',
+      description: 'Fallback only — prefer MAILJET_API_SECRET in the app environment.',
     }),
     defineField({
       name: 'confirmationSubject',
       title: 'Email Subject',
       type: 'string',
-      description: 'Subject line for the confirmation email sent to the admin.',
-      initialValue: 'New Submission',
+      description: 'Subject line of the mail sent to the admin.',
+      initialValue: 'Nieuw bericht via de website',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -71,8 +61,8 @@ export const formGeneralSettingsType = defineType({
       title: 'Email Message',
       type: 'text',
       rows: 4,
-      description: 'Message body for the confirmation email sent to the admin.',
-      initialValue: 'Hi Admin,\n\nA new submission has been made to your form. Please check below details.',
+      description: 'Intro above the table of answers in the mail to the admin.',
+      initialValue: 'Er is een nieuw bericht binnengekomen via de website.',
     }),
     defineField({
       name: 'recaptchaEnabled',

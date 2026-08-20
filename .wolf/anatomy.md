@@ -131,12 +131,13 @@
 ## app/scripts/
 
 - `check-aanbiedingstekst.ts` — assert-based check of the Realworks text parser (`npm run check:tekst`). (~359 tok)
-- `check-form.ts` — Smallest thing that fails if de rij-indeling van CMS-formulieren of unieke veldnamen breken (`npm run check:form`). (~700 tok)
+- `check-form.ts` — Smallest thing that fails if de vorm/rij-indeling van CMS-formulieren breekt, veldnamen dubbel raken, of FORM_QUERY (de allow-list) en de renderer uit elkaar lopen — die laatste wordt met groq-js tegen fixtures gecontroleerd. (~1400 tok)
 - `check-funda-reviews.ts` — Smallest thing that fails if de Funda-parser breekt. Draait tegen een fixture. (~2840 tok)
   - fn `fixture` L32-171 (~1834 tok)
   - fn `run` L172-188 (~120 tok)
   - fn `checkPagination` L189-238 (~609 tok)
 - `check-reviews.ts` — Smallest thing that fails if de afgeleide review-cijfers breken. (~1194 tok)
+- `migrate-forms.ts` — Eenmalig: zet `contactForm`-documenten (verwijderde plugin) om naar het `form`-type, op hun plek zodat `_id` en verwijzingen heel blijven. `--dry-run` laat zien wat er zou veranderen. (~1300 tok)
 - `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~575 tok)
   - fn `parseTargets` L40-51 (~106 tok)
   - fn `main` L52-68 (~119 tok)
@@ -270,7 +271,7 @@
   - fn `IconCheck` L26-33 (~62 tok)
   - fn `IconCross` L34-42 (~80 tok)
   - fn `CompareCards` L43-153 (~1345 tok)
-- `ContactForm.tsx` — Field shape as authored in the Sanity contact-form plugin. (~3819 tok)
+- `ContactForm.tsx` — Server component: kop, notitie en de contact-zijkaart rondom FormRenderer. Bevat geen veldkennis meer. (~1200 tok)
   - fn `linkify` L111-132 (~150 tok)
   - fn `Field` L133-227 (~825 tok)
   - fn `toRows` L228-245 (~116 tok)
@@ -340,7 +341,7 @@
   - fn `ValueCards` L61-105 (~493 tok)
 - `VerkoopCta.tsx` — DEFAULTS (~248 tok)
 - `CenteredCta.tsx` — Gecentreerde afsluiting op sand, geen foto, twee knoppen. Generiek (gebruikt door /waardebepaling). (~500 tok)
-- `FormHero.tsx` — Hero met achtergrondfoto naast een formulierkaart. Alleen omlijsting: het formulier zelf komt uit een `multiStepForm`-document via `MultiStepForm`. Generiek (gebruikt door /waardebepaling). (~1200 tok)
+- `FormHero.tsx` — Hero met achtergrondfoto naast een formulierkaart. Alleen omlijsting: het formulier zelf komt uit een `form`-document via FormRenderer. Generiek (gebruikt door /waardebepaling). (~1200 tok)
 - `IconCards.tsx` — Drie iconkaarten zonder foto. Generiek (gebruikt door /waardebepaling als "wat je krijgt"). (~750 tok)
 - `NumberedSteps.tsx` — Sand band met genummerde kaarten, geen sticky foto. Generiek (gebruikt door /waardebepaling als "hoe het werkt"). (~650 tok)
 - `PersonQuote.tsx` — Foto naast intro + citaat van één persoon. Generiek (gebruikt door /waardebepaling voor de makelaar-intro). (~700 tok)
@@ -350,8 +351,8 @@
 
 ## app/src/components/form/
 
-- `MultiStepForm.tsx` — Client. Rendert een Sanity-formulier over 1+ stappen: voortgangsbalk, validatie per stap (`noValidate` + `reportValidity`), verzenden naar /api/submit-form, bevestiging. (~1900 tok)
-- `fields.tsx` — Rendert één veld voor alle negen veldtypes, in twee varianten (`stacked` = contactpagina, `compact` = kaart); bevat ook `linkify`. Gedeeld door ContactForm en MultiStepForm. (~1400 tok)
+- `FormRenderer.tsx` — Client. Rendert elk `form`-document, simpel of in stappen: voortgangsbalk, validatie per stap (`noValidate` + `reportValidity`), reCAPTCHA, verzenden naar /api/submit-form, bevestiging. (~2300 tok)
+- `fields.tsx` — Rendert één veld voor alle negen veldtypes, in twee varianten (`stacked` = contactpagina, `compact` = kaart); bevat ook `linkify`. Gedeeld door FormRenderer (en dus door beide formulierblokken). (~1400 tok)
 
 ## app/src/components/layout/
 
@@ -430,7 +431,7 @@
 - `chrome.ts` — Scroll threshold (px) before the topbar gets the stuck state. (~62 tok)
 - `cn.ts` — Exports cn (~37 tok)
 - `contact-content.ts` — Icons shared by the contact cards and the form aside. (~1741 tok)
-- `form-fields.ts` — Veldvorm van CMS-formulieren + `toFieldRows()` (rij-indeling: expliciete `width`, met de narrow-type-heuristiek als fallback). Geen React. (~600 tok)
+- `form-fields.ts` — Veldvorm van CMS-formulieren, `toSteps()` (modus → één vorm) + `toFieldRows()` (rij-indeling: expliciete `width`, met de narrow-type-heuristiek als fallback voor niet-gemigreerde documenten). Geen React. (~800 tok)
 - `format.ts` — `euro()`, `longDate()`, `shortDate()` for object data. (~228 tok)
 - `funda-reviews.ts` — Pure parser voor de Funda-beoordelingenwidget: HTML -> reviews, paginering, stabiele sleutels. Geen fetch, geen Sanity. (~4510 tok)
   - fn `buildWidgetUrl` L72-93 (~168 tok)

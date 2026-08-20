@@ -15,7 +15,7 @@ export const contactFormSectionType = defineType({
       name: 'form',
       title: 'Form',
       type: 'reference',
-      to: [{type: 'contactForm'}],
+      to: [{type: 'form'}],
       description: 'The form to display. Fields are managed under Forms.',
       validation: (rule) => rule.required(),
     }),
@@ -23,18 +23,6 @@ export const contactFormSectionType = defineType({
       name: 'note',
       type: 'string',
       description: 'Small print under the submit button.',
-    }),
-    defineField({
-      name: 'successTitle',
-      type: 'string',
-      description: 'Shown instead of the form after a successful submission.',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'successBody',
-      type: 'text',
-      rows: 3,
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'aside',
