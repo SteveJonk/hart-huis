@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 207626,
-    "total_reads": 85,
+    "total_tokens_estimated": 215576,
+    "total_reads": 90,
     "total_writes": 0,
-    "total_sessions": 44,
-    "anatomy_hits": 49,
+    "total_sessions": 45,
+    "anatomy_hits": 53,
     "anatomy_misses": 36,
     "repeated_reads_blocked": 27,
-    "estimated_savings_vs_bare_cli": 137270,
-    "real_input_tokens": 25269,
-    "real_output_tokens": 1688570,
-    "real_cache_read_tokens": 435069674,
-    "real_cache_creation_tokens": 7743889,
-    "real_api_calls": 2967
+    "estimated_savings_vs_bare_cli": 138070,
+    "real_input_tokens": 25297,
+    "real_output_tokens": 1694907,
+    "real_cache_read_tokens": 436025362,
+    "real_cache_creation_tokens": 7829908,
+    "real_api_calls": 2981
   },
   "sessions": [
     {
@@ -1293,6 +1293,60 @@
         "cache_read_input_tokens": 20175089,
         "cache_creation_input_tokens": 148159,
         "api_calls": 166
+      }
+    },
+    {
+      "id": "session-2026-08-20-1706",
+      "agent": "claude",
+      "started": "2026-08-20T17:06:53.347Z",
+      "ended": "2026-08-20T17:08:49.755Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/blocks/contactFormSectionType.ts",
+          "tokens_estimated": 846,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/components/blocks/ContactForm.tsx",
+          "tokens_estimated": 3819,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/scripts/seed/contact.ts",
+          "tokens_estimated": 1490,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/submit-form/route.ts",
+          "tokens_estimated": 1645,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/sanity.config.ts",
+          "tokens_estimated": 150,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 7950,
+        "output_tokens_estimated": 0,
+        "reads_count": 5,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 4
+      },
+      "real_usage": {
+        "input_tokens": 28,
+        "output_tokens": 6337,
+        "cache_read_input_tokens": 955688,
+        "cache_creation_input_tokens": 86019,
+        "api_calls": 14
       }
     }
   ],

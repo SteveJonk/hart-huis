@@ -266,3 +266,8 @@
 | 20:35 | Added CMS-manageable certificationLogos field to footerType, rendered footer cert logos (NVM/Funda/NWWI/VGC/RegTax) from app/example-designs/logos, copied to public/images/logos as default fallback | footerType.ts, queries.ts, SiteFooter.tsx, layout.tsx, site.ts | done, tsc clean | ~15k |
 | 21:00 | Added CMS logo override for header LogoMark (navigation.logo, SVG/PNG); fixed pre-existing footer certificationLogos bug (imageSrc was passed the whole object instead of .asset, and nullable types mismatched) | navigationType.ts, LogoMark.tsx, SiteHeader.tsx, layout.tsx, queries.ts, SiteFooter.tsx | done, tsc clean | ~12k |
 | 22:03 | Rendered footer socialLinks (existing schema) as icon buttons next to logo/paragraph, using new inline-SVG SocialIcon (facebook/instagram/linkedin) | SocialIcon.tsx, SiteFooter.tsx, layout.tsx | done, tsc clean, verified via DOM inspection + temp Sanity patch/revert | ~8k |
+
+## Session: 2026-08-20 17:06
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
