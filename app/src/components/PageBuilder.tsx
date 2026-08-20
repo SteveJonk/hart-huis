@@ -3,7 +3,7 @@ import { Assurances } from '@/components/blocks/Assurances';
 import { Benefits } from '@/components/blocks/Benefits';
 import { BeoordelingenHero } from '@/components/blocks/BeoordelingenHero';
 import { CompareCards } from '@/components/blocks/CompareCards';
-import { ContactForm, type ContactFormField } from '@/components/blocks/ContactForm';
+import { ContactForm } from '@/components/blocks/ContactForm';
 import { ContactWays } from '@/components/blocks/ContactWays';
 import { CrossLinks } from '@/components/blocks/CrossLinks';
 import { CtaBand } from '@/components/blocks/CtaBand';
@@ -31,10 +31,17 @@ import { Stories } from '@/components/blocks/Stories';
 import { Timeline } from '@/components/blocks/Timeline';
 import { UitgelichteReview } from '@/components/blocks/UitgelichteReview';
 import { ValueCards } from '@/components/blocks/ValueCards';
+import { CenteredCta } from '@/components/blocks/CenteredCta';
+import { FormHero } from '@/components/blocks/FormHero';
+import { IconCards } from '@/components/blocks/IconCards';
+import { NumberedSteps } from '@/components/blocks/NumberedSteps';
+import { PersonQuote } from '@/components/blocks/PersonQuote';
+import { QuoteStrip } from '@/components/blocks/QuoteStrip';
 import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import type { BlockIconName } from '@/components/ui/BlockIcon';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
 import type { PAGE_QUERY_RESULT } from '@/sanity/sanity.types';
+import { toSteps, type FormDefinition, type FormFieldDefinition } from '@/lib/form-fields';
 import { resolveHref, type SanityLabeledLink, type SanityLink } from '@/lib/links';
 import {
   reviewCountLabel,
@@ -80,6 +87,52 @@ function toReviews(value: unknown): ReviewItem[] | undefined {
   return (value as Array<Partial<ReviewItem> | null>)
     .filter((review): review is ReviewItem => Boolean(review?.quote && review?.name))
     .map((review) => ({ ...review }));
+}
+
+/**
+ * Turns a resolved `form->` reference into what the renderer takes. Unset keys
+ * come back as null from GROQ, so they are normalised to undefined rather than
+ * leaking null into the component's defaults.
+ */
+function toFormDefinition(value: unknown): FormDefinition | undefined {
+  const form = value as
+    | {
+        _id?: string;
+        title?: string | null;
+        showTitle?: boolean | null;
+        mode?: string | null;
+        fields?: FormFieldDefinition[] | null;
+        steps?: Array<{ title?: string | null; fields?: FormFieldDefinition[] | null }> | null;
+        submitButtonText?: string | null;
+        nextButtonText?: string | null;
+        backButtonText?: string | null;
+        successTitle?: string | null;
+        successBody?: string | null;
+      }
+    | undefined
+    | null;
+
+  if (!form?._id) return undefined;
+
+  const definition: FormDefinition = {
+    id: form._id,
+    title: form.title ?? undefined,
+    showTitle: form.showTitle ?? undefined,
+    mode: form.mode === 'steps' ? 'steps' : 'simple',
+    fields: form.fields ?? undefined,
+    steps: (form.steps ?? []).map((step) => ({
+      title: step.title ?? undefined,
+      fields: step.fields ?? [],
+    })),
+    submitButtonText: form.submitButtonText ?? undefined,
+    nextButtonText: form.nextButtonText ?? undefined,
+    backButtonText: form.backButtonText ?? undefined,
+    successTitle: form.successTitle ?? undefined,
+    successBody: form.successBody ?? undefined,
+  };
+
+  // A form with nothing fillable would render an empty card.
+  return toSteps(definition).length > 0 ? definition : undefined;
 }
 
 function renderBlock(block: PageBlock) {
@@ -686,15 +739,6 @@ function renderBlock(block: PageBlock) {
       );
     }
     case 'contactFormSection': {
-      const form = block.form as
-        | {
-            _id?: string;
-            title?: string;
-            showtitle?: boolean;
-            submitButtonText?: string;
-            fields?: ContactFormField[];
-          }
-        | undefined;
       const aside = block.aside as
         | {
             title?: string;
@@ -717,19 +761,7 @@ function renderBlock(block: PageBlock) {
           title={block.title}
           lead={block.lead}
           note={block.note}
-          successTitle={block.successTitle}
-          successBody={block.successBody}
-          form={
-            form?._id && form.fields?.length
-              ? {
-                  id: form._id,
-                  title: form.title,
-                  showtitle: form.showtitle,
-                  fields: form.fields,
-                  submitButtonText: form.submitButtonText,
-                }
-              : undefined
-          }
+          form={toFormDefinition(block.form)}
           aside={
             aside?.title && aside.body
               ? {
@@ -774,6 +806,99 @@ function renderBlock(block: PageBlock) {
           columns={block.columns as { title: string; body: string }[] | undefined}
           cta={toCta(block.cta)}
           image={toImage(block.image, 900, 1125)}
+        />
+      );
+    }
+    case 'formHero': {
+      return (
+        <FormHero
+          key={block._key}
+          image={toImage(block.image, 2400, 1600)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          titleHighlight={block.titleHighlight ?? undefined}
+          lead={block.lead}
+          usps={block.usps as string[] | undefined}
+          score={block.score}
+          scoreLabel={block.scoreLabel}
+          reviewCount={block.reviewCount}
+          reviewNote={block.reviewNote}
+          formTitle={block.formTitle}
+          formLead={block.formLead}
+          form={toFormDefinition(block.form)}
+          privacyNote={block.privacyNote}
+        />
+      );
+    }
+    case 'iconCards': {
+      return (
+        <IconCards
+          key={block._key}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
+          items={
+            block.items as
+              | Array<{ icon: BlockIconName; title: string; body: string }>
+              | undefined
+          }
+        />
+      );
+    }
+    case 'numberedSteps': {
+      return (
+        <NumberedSteps
+          key={block._key}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
+          items={
+            block.items as
+              | Array<{ number: string; title: string; body: string }>
+              | undefined
+          }
+        />
+      );
+    }
+    case 'personQuote': {
+      return (
+        <PersonQuote
+          key={block._key}
+          image={toImage(block.image, 800, 1000)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          paragraphs={block.paragraphs as string[] | undefined}
+          quote={block.quote}
+          name={block.name}
+        />
+      );
+    }
+    case 'quoteStrip': {
+      return (
+        <QuoteStrip
+          key={block._key}
+          score={block.score}
+          scoreLabel={block.scoreLabel}
+          title={block.title}
+          lead={block.lead}
+          link={toCta(block.link)}
+          items={
+            block.items as
+              | Array<{ quote: string; score: string; meta: string }>
+              | undefined
+          }
+        />
+      );
+    }
+    case 'centeredCta': {
+      return (
+        <CenteredCta
+          key={block._key}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          body={block.body}
+          primaryCta={toCta(block.primaryCta)}
+          secondaryCta={toCta(block.secondaryCta)}
         />
       );
     }

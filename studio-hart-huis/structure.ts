@@ -30,7 +30,7 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('faq').title('FAQs'),
       S.documentTypeListItem('review').title('Reviews'),
       S.divider(),
-      S.documentTypeListItem('contactForm').title('Forms').icon(EnvelopeIcon),
+      S.documentTypeListItem('form').title('Forms').icon(EnvelopeIcon),
       S.listItem()
         .title('Form settings')
         .id('formGeneralSettings')
@@ -62,6 +62,6 @@ export const structure: StructureResolver = (S) =>
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() &&
-          !['page', 'woning', 'faq', 'review', 'contactForm', ...SINGLETONS].includes(item.getId()!),
+          !['page', 'woning', 'faq', 'review', 'form', ...SINGLETONS].includes(item.getId()!),
       ),
     ])

@@ -93,12 +93,23 @@ export const PAGE_QUERY = defineQuery(`
         ...,
         cta${linkExpansion}
       },
+      // A simple form keeps its fields at the root, a multi-step one spreads
+      // them over steps; the container the mode does not use comes back null.
       form->{
         _id,
         title,
-        showtitle,
+        showTitle,
+        mode,
+        fields[],
+        steps[]{
+          title,
+          fields[]
+        },
         submitButtonText,
-        fields[]
+        nextButtonText,
+        backButtonText,
+        successTitle,
+        successBody
       },
       regions[]{
         ...,
@@ -189,24 +200,36 @@ export const WONING_QUERY = defineQuery(`
   }
 `);
 
-/** Fields of one form, by document id. Used to validate submissions server-side. */
-export const CONTACT_FORM_QUERY = defineQuery(`
-  *[_type == "contactForm" && _id == $formId][0]{
+/**
+ * Fields of one form, by document id — the allow-list for a submission.
+ *
+ * A simple form keeps its fields at the root and a multi-step one spreads them
+ * over steps, so this flattens whichever the mode says. It must branch on
+ * `mode` and not just take the first non-null: switching a form's mode leaves
+ * the other container behind, and an allow-list built from the container the
+ * visitor did not fill in would reject every submission. `check:form` asserts
+ * this stays in step with the renderer.
+ */
+export const FORM_QUERY = defineQuery(`
+  *[_id == $formId && _type == "form"][0]{
     _id,
     title,
-    fields[]{label, name, type, isRequired}
+    "fields": select(
+      mode == "steps" => steps[].fields[]{label, name, type, isRequired},
+      fields[]{label, name, type, isRequired}
+    )
   }
 `);
 
 /**
- * Mail settings for the contact-form plugin. Server-side only — it holds SMTP
+ * Mail and spam settings shared by every form. Server-side only — it holds
  * credentials, so never fetch this from a client component.
  */
-export const CONTACT_FORM_SETTINGS_QUERY = defineQuery(`
+export const FORM_SETTINGS_QUERY = defineQuery(`
   *[_type == "formGeneralSettings"][0]{
     adminEmail,
-    smtpUsername,
-    smtpPassword,
+    fromEmail,
+    fromName,
     mailjetApiKey,
     mailjetApiSecret,
     confirmationSubject,

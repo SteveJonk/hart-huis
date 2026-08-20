@@ -38,5 +38,11 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'uitgelichteReview'}),
     defineArrayMember({type: 'reviewGrid'}),
     defineArrayMember({type: 'werkwijze'}),
+    defineArrayMember({type: 'formHero'}),
+    defineArrayMember({type: 'iconCards'}),
+    defineArrayMember({type: 'numberedSteps'}),
+    defineArrayMember({type: 'personQuote'}),
+    defineArrayMember({type: 'quoteStrip'}),
+    defineArrayMember({type: 'centeredCta'}),
   ],
 })

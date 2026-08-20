@@ -131,11 +131,13 @@
 ## app/scripts/
 
 - `check-aanbiedingstekst.ts` — assert-based check of the Realworks text parser (`npm run check:tekst`). (~359 tok)
+- `check-form.ts` — Smallest thing that fails if de vorm/rij-indeling van CMS-formulieren breekt, veldnamen dubbel raken, of FORM_QUERY (de allow-list) en de renderer uit elkaar lopen — die laatste wordt met groq-js tegen fixtures gecontroleerd. (~1400 tok)
 - `check-funda-reviews.ts` — Smallest thing that fails if de Funda-parser breekt. Draait tegen een fixture. (~2840 tok)
   - fn `fixture` L32-171 (~1834 tok)
   - fn `run` L172-188 (~120 tok)
   - fn `checkPagination` L189-238 (~609 tok)
 - `check-reviews.ts` — Smallest thing that fails if de afgeleide review-cijfers breken. (~1194 tok)
+- `migrate-forms.ts` — Eenmalig: zet `contactForm`-documenten (verwijderde plugin) om naar het `form`-type, op hun plek zodat `_id` en verwijzingen heel blijven. `--dry-run` laat zien wat er zou veranderen. (~1300 tok)
 - `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~575 tok)
   - fn `parseTargets` L40-51 (~106 tok)
   - fn `main` L52-68 (~119 tok)
@@ -193,6 +195,7 @@
   - fn `buildTaxatieContent` L22-155 (~1192 tok)
   - fn `seedTaxatie` L156-166 (~82 tok)
 - `verkoop.ts` — Seeds the verkoop FAQs and the /verkoop page. (~1320 tok)
+- `waardebepaling.ts` — Seeds the waardebepaling `contactForm` doc, FAQs, and the /waardebepaling page. Not wired into nav. (~1550 tok)
   - fn `buildVerkoopContent` L16-130 (~1133 tok)
   - fn `seedVerkoop` L131-141 (~82 tok)
 
@@ -268,7 +271,7 @@
   - fn `IconCheck` L26-33 (~62 tok)
   - fn `IconCross` L34-42 (~80 tok)
   - fn `CompareCards` L43-153 (~1345 tok)
-- `ContactForm.tsx` — Field shape as authored in the Sanity contact-form plugin. (~3819 tok)
+- `ContactForm.tsx` — Server component: kop, notitie en de contact-zijkaart rondom FormRenderer. Bevat geen veldkennis meer. (~1200 tok)
   - fn `linkify` L111-132 (~150 tok)
   - fn `Field` L133-227 (~825 tok)
   - fn `toRows` L228-245 (~116 tok)
@@ -337,8 +340,19 @@
   - fn `ValueIcon` L24-60 (~273 tok)
   - fn `ValueCards` L61-105 (~493 tok)
 - `VerkoopCta.tsx` — DEFAULTS (~248 tok)
+- `CenteredCta.tsx` — Gecentreerde afsluiting op sand, geen foto, twee knoppen. Generiek (gebruikt door /waardebepaling). (~500 tok)
+- `FormHero.tsx` — Hero met achtergrondfoto naast een formulierkaart. Alleen omlijsting: het formulier zelf komt uit een `form`-document via FormRenderer. Generiek (gebruikt door /waardebepaling). (~1200 tok)
+- `IconCards.tsx` — Drie iconkaarten zonder foto. Generiek (gebruikt door /waardebepaling als "wat je krijgt"). (~750 tok)
+- `NumberedSteps.tsx` — Sand band met genummerde kaarten, geen sticky foto. Generiek (gebruikt door /waardebepaling als "hoe het werkt"). (~650 tok)
+- `PersonQuote.tsx` — Foto naast intro + citaat van één persoon. Generiek (gebruikt door /waardebepaling voor de makelaar-intro). (~700 tok)
+- `QuoteStrip.tsx` — Donkere band met scorebadge en meerdere citaten naast elkaar. Generiek (gebruikt door /waardebepaling). (~800 tok)
 - `Werkwijze.tsx` — Donkere uitlegsectie met genummerde punten. (~811 tok)
   - fn `Werkwijze` L28-79 (~605 tok)
+
+## app/src/components/form/
+
+- `FormRenderer.tsx` — Client. Rendert elk `form`-document, simpel of in stappen: voortgangsbalk, validatie per stap (`noValidate` + `reportValidity`), reCAPTCHA, verzenden naar /api/submit-form, bevestiging. (~2300 tok)
+- `fields.tsx` — Rendert één veld voor alle negen veldtypes, in twee varianten (`stacked` = contactpagina, `compact` = kaart); bevat ook `linkify`. Gedeeld door FormRenderer (en dus door beide formulierblokken). (~1400 tok)
 
 ## app/src/components/layout/
 
@@ -417,6 +431,7 @@
 - `chrome.ts` — Scroll threshold (px) before the topbar gets the stuck state. (~62 tok)
 - `cn.ts` — Exports cn (~37 tok)
 - `contact-content.ts` — Icons shared by the contact cards and the form aside. (~1741 tok)
+- `form-fields.ts` — Veldvorm van CMS-formulieren, `toSteps()` (modus → één vorm) + `toFieldRows()` (rij-indeling: expliciete `width`, met de narrow-type-heuristiek als fallback voor niet-gemigreerde documenten). Geen React. (~800 tok)
 - `format.ts` — `euro()`, `longDate()`, `shortDate()` for object data. (~228 tok)
 - `funda-reviews.ts` — Pure parser voor de Funda-beoordelingenwidget: HTML -> reviews, paginering, stabiele sleutels. Geen fetch, geen Sanity. (~4510 tok)
   - fn `buildWidgetUrl` L72-93 (~168 tok)
@@ -458,6 +473,7 @@
 - `site.ts` — Exports SITE, NavLink, FooterLinkGroup, FOOTER_CERTS, REGIONS (~190 tok)
 - `taxatie-content.ts` — Exports TAXATIE_HERO, TAXATIE_FACTS, TAXATIE_BENEFITS_IMAGE, TAXATIE_BENEFITS_INTRO + 14 more (~3127 tok)
 - `verkoop-content.ts` — Plain answer text. Optional `link` is inserted before `afterLink`. (~2201 tok)
+- `waardebepaling-content.ts` — Copy + form field defs for /waardebepaling, incl. the wizard's `contactForm` field list (`WAARDEBEPALING_FORM_FIELDS`). (~2400 tok)
 
 ## app/src/sanity/
 
@@ -512,6 +528,7 @@
 - `assurancesType.ts` — Exports assurancesType (~368 tok)
 - `benefitsType.ts` — Exports benefitsType (~682 tok)
 - `beoordelingenHeroType.ts` — Opener van /beoordelingen. Het cijfer, het aantal en de staafjes worden (~455 tok)
+- `centeredCtaType.ts` — Gecentreerde afsluiting met twee knoppen, geen foto. Generiek. (~250 tok)
 - `compareCardsType.ts` — Exports compareCardsType (~707 tok)
 - `contactFormSectionType.ts` — Exports contactFormSectionType (~846 tok)
 - `contactWaysType.ts` — Exports contactWaysType (~530 tok)
@@ -520,16 +537,21 @@
 - `duoPhotosType.ts` — Exports duoPhotosType (~366 tok)
 - `factBarType.ts` — Exports factBarType (~289 tok)
 - `faqsType.ts` — Exports faqsType (~264 tok)
+- `formHeroType.ts` — Hero met achtergrondfoto en een aanvraagformulier (referentie naar een `contactForm`-document). Generiek. (~600 tok)
 - `heroType.ts` — Exports heroType (~626 tok)
 - `highlightStripType.ts` — Exports highlightStripType (~409 tok)
+- `iconCardsType.ts` — Rij iconkaarten zonder foto. Generiek. (~450 tok)
 - `introType.ts` — Exports introType (~686 tok)
 - `listingsType.ts` — Exports listingsType (~320 tok)
 - `mediaTextType.ts` — Exports mediaTextType (~341 tok)
+- `numberedStepsType.ts` — Genummerde stappen zonder foto (voor stappen mét foto, zie `stepsType`). Generiek. (~300 tok)
 - `objectGridType.ts` — Exports objectGridType — CTA-kaart + lege-staat teksten; de woningen komen uit PAGE_QUERY (~315 tok)
 - `pageHeroType.ts` — Exports pageHeroType (~479 tok)
 - `pageOpenerType.ts` — Exports pageOpenerType (~288 tok)
+- `personQuoteType.ts` — Foto naast een korte intro en een citaat van één persoon. Generiek. (~330 tok)
 - `personType.ts` — Exports personType (~561 tok)
 - `quoteBandType.ts` — Exports quoteBandType (~363 tok)
+- `quoteStripType.ts` — Donkere band met een scorebadge en meerdere citaten naast elkaar. Generiek. (~350 tok)
 - `regionBlockType.ts` — Exports regionBlockType (~342 tok)
 - `reviewGridType.ts` — Alle beoordelingen met filters. De reviews worden hier niet geselecteerd: (~268 tok)
 - `reviewsType.ts` — Exports reviewsType (~380 tok)
