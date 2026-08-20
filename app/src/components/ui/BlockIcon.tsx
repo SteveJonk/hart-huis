@@ -12,7 +12,8 @@ export type BlockIconName =
   | "scale"
   | "search"
   | "eye"
-  | "clock";
+  | "clock"
+  | "heart";
 
 type BlockIconProps = {
   icon: BlockIconName;
@@ -125,6 +126,17 @@ export function BlockIcon({ icon, size = 19 }: BlockIconProps) {
         <svg {...common}>
           <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.5" />
           <path d="M12 7v5.3l3.4 2" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+      );
+    case "heart":
+      return (
+        <svg {...common}>
+          <path
+            d="M12 20s-7.5-4.6-7.5-9.6A4.4 4.4 0 0112 7.5a4.4 4.4 0 017.5 2.9c0 5-7.5 9.6-7.5 9.6z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
         </svg>
       );
   }

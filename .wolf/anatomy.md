@@ -193,6 +193,7 @@
   - fn `buildTaxatieContent` L22-155 (~1192 tok)
   - fn `seedTaxatie` L156-166 (~82 tok)
 - `verkoop.ts` — Seeds the verkoop FAQs and the /verkoop page. (~1320 tok)
+- `waardebepaling.ts` — Seeds the waardebepaling `contactForm` doc, FAQs, and the /waardebepaling page. Not wired into nav. (~1550 tok)
   - fn `buildVerkoopContent` L16-130 (~1133 tok)
   - fn `seedVerkoop` L131-141 (~82 tok)
 
@@ -337,6 +338,12 @@
   - fn `ValueIcon` L24-60 (~273 tok)
   - fn `ValueCards` L61-105 (~493 tok)
 - `VerkoopCta.tsx` — DEFAULTS (~248 tok)
+- `WaardebepalingHero.tsx` — Client. Hero met achtergrondfoto en het tweestaps-aanvraagformulier; post naar `/api/submit-form` via een `contactForm`-document. (~2600 tok)
+- `WaardebepalingKrijgt.tsx` — Drie iconkaarten zonder foto — "wat je krijgt" op /waardebepaling. (~750 tok)
+- `WaardebepalingStappen.tsx` — Sand band met drie genummerde kaarten, geen sticky foto. (~650 tok)
+- `WaardebepalingWie.tsx` — Foto naast intro + citaat van de makelaar. (~700 tok)
+- `WaardebepalingReviews.tsx` — Donkere band met scorebadge en drie reviewcitaten naast elkaar. (~800 tok)
+- `WaardebepalingSlot.tsx` — Gecentreerde afsluiting op sand, geen foto, twee knoppen. (~500 tok)
 - `Werkwijze.tsx` — Donkere uitlegsectie met genummerde punten. (~811 tok)
   - fn `Werkwijze` L28-79 (~605 tok)
 
@@ -458,6 +465,7 @@
 - `site.ts` — Exports SITE, NavLink, FooterLinkGroup, FOOTER_CERTS, REGIONS (~190 tok)
 - `taxatie-content.ts` — Exports TAXATIE_HERO, TAXATIE_FACTS, TAXATIE_BENEFITS_IMAGE, TAXATIE_BENEFITS_INTRO + 14 more (~3127 tok)
 - `verkoop-content.ts` — Plain answer text. Optional `link` is inserted before `afterLink`. (~2201 tok)
+- `waardebepaling-content.ts` — Copy + form field defs for /waardebepaling, incl. the wizard's `contactForm` field list (`WAARDEBEPALING_FORM_FIELDS`). (~2400 tok)
 
 ## app/src/sanity/
 

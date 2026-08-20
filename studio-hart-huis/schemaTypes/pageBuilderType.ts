@@ -38,5 +38,11 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'uitgelichteReview'}),
     defineArrayMember({type: 'reviewGrid'}),
     defineArrayMember({type: 'werkwijze'}),
+    defineArrayMember({type: 'waardebepalingHero'}),
+    defineArrayMember({type: 'waardebepalingKrijgt'}),
+    defineArrayMember({type: 'waardebepalingStappen'}),
+    defineArrayMember({type: 'waardebepalingWie'}),
+    defineArrayMember({type: 'waardebepalingReviews'}),
+    defineArrayMember({type: 'waardebepalingSlot'}),
   ],
 })

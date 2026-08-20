@@ -90,6 +90,118 @@ export type TimelineItemsObjectImage = {
   _type: "image";
 };
 
+export type WaardebepalingSlot = {
+  _type: "waardebepalingSlot";
+  eyebrow: string;
+  title: string;
+  body: string;
+  primaryCta?: Cta;
+  secondaryCta?: Cta;
+};
+
+export type WaardebepalingReviews = {
+  _type: "waardebepalingReviews";
+  score: string;
+  scoreLabel: string;
+  title: string;
+  lead: string;
+  link?: Cta;
+  items: Array<{
+    quote: string;
+    score: string;
+    meta: string;
+    _key: string;
+  }>;
+};
+
+export type WaardebepalingWie = {
+  _type: "waardebepalingWie";
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  eyebrow: string;
+  title: string;
+  paragraphs: Array<string>;
+  quote: string;
+  name: string;
+};
+
+export type WaardebepalingStappen = {
+  _type: "waardebepalingStappen";
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: Array<{
+    number: string;
+    title: string;
+    body: string;
+    _key: string;
+  }>;
+};
+
+export type WaardebepalingKrijgt = {
+  _type: "waardebepalingKrijgt";
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: Array<{
+    icon:
+      | "person"
+      | "camera"
+      | "chart"
+      | "doc"
+      | "house"
+      | "renovate"
+      | "scale"
+      | "search"
+      | "eye"
+      | "clock"
+      | "heart";
+    title: string;
+    body: string;
+    _key: string;
+  }>;
+};
+
+export type ContactFormReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "contactForm";
+};
+
+export type WaardebepalingHero = {
+  _type: "waardebepalingHero";
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  eyebrow: string;
+  title: string;
+  titleHighlight?: string;
+  lead: string;
+  usps: Array<string>;
+  score: string;
+  scoreLabel: string;
+  reviewCount: string;
+  reviewNote: string;
+  formTitle: string;
+  formLead: string;
+  form: ContactFormReference;
+  successTitle: string;
+  successBody: string;
+  privacyNote: string;
+};
+
 export type HighlightStrip = {
   _type: "highlightStrip";
   icon?: "search" | "eye" | "clock" | "house" | "chart" | "doc" | "person";
@@ -189,13 +301,6 @@ export type RouteBlock = {
     alt: string;
     _type: "image";
   };
-};
-
-export type ContactFormReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "contactForm";
 };
 
 export type ContactFormSection = {
@@ -725,6 +830,24 @@ export type PageBuilder = Array<
   | ({
       _key: string;
     } & Werkwijze)
+  | ({
+      _key: string;
+    } & WaardebepalingHero)
+  | ({
+      _key: string;
+    } & WaardebepalingKrijgt)
+  | ({
+      _key: string;
+    } & WaardebepalingStappen)
+  | ({
+      _key: string;
+    } & WaardebepalingWie)
+  | ({
+      _key: string;
+    } & WaardebepalingReviews)
+  | ({
+      _key: string;
+    } & WaardebepalingSlot)
 >;
 
 export type PageReference = {
@@ -1137,6 +1260,13 @@ export type AllSanitySchemaTypes =
   | ObjectImage
   | ItemsObjectImage
   | TimelineItemsObjectImage
+  | WaardebepalingSlot
+  | WaardebepalingReviews
+  | WaardebepalingWie
+  | WaardebepalingStappen
+  | WaardebepalingKrijgt
+  | ContactFormReference
+  | WaardebepalingHero
   | HighlightStrip
   | Werkwijze
   | ReviewGrid
@@ -1146,7 +1276,6 @@ export type AllSanitySchemaTypes =
   | ObjectGrid
   | AanbodHeader
   | RouteBlock
-  | ContactFormReference
   | ContactFormSection
   | PersonBlock
   | ContactWays
@@ -2473,6 +2602,234 @@ export type PAGE_QUERY_RESULT = {
         link: null;
         cta: null;
         nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "waardebepalingHero";
+        image: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        eyebrow: string;
+        title: string;
+        titleHighlight?: string;
+        lead: string;
+        usps: Array<string>;
+        score: string;
+        scoreLabel: string;
+        reviewCount: string;
+        reviewNote: string;
+        formTitle: string;
+        formLead: string;
+        form: {
+          _id: string;
+          title: string | null;
+          showtitle: boolean | null;
+          submitButtonText: string | null;
+          fields: Array<{
+            label: string;
+            type?:
+              | "checkbox"
+              | "email"
+              | "file"
+              | "radio"
+              | "select"
+              | "tel"
+              | "text"
+              | "textarea"
+              | "url";
+            showPlaceholder?: boolean;
+            placeholder?: string;
+            name: string;
+            selectOptions?: Array<string>;
+            radioOptions?: Array<string>;
+            checkboxOptions?: Array<string>;
+            helpText?: string;
+            note?: string;
+            isRequired?: boolean;
+            _key: string;
+          }>;
+        };
+        successTitle: string;
+        successBody: string;
+        privacyNote: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "waardebepalingKrijgt";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        items: Array<{
+          icon:
+            | "camera"
+            | "chart"
+            | "clock"
+            | "doc"
+            | "eye"
+            | "heart"
+            | "house"
+            | "person"
+            | "renovate"
+            | "scale"
+            | "search";
+          title: string;
+          body: string;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "waardebepalingReviews";
+        score: string;
+        scoreLabel: string;
+        title: string;
+        lead: string;
+        link: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        items: Array<{
+          quote: string;
+          score: string;
+          meta: string;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        primaryCta: null;
+        secondaryCta: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "waardebepalingSlot";
+        eyebrow: string;
+        title: string;
+        body: string;
+        primaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        secondaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "waardebepalingStappen";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        items: Array<{
+          number: string;
+          title: string;
+          body: string;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "waardebepalingWie";
+        image: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        eyebrow: string;
+        title: string;
+        paragraphs: Array<string>;
+        quote: string;
+        name: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
         cards: null;
         person: null;
         aside: null;

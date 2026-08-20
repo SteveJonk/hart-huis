@@ -18,6 +18,12 @@ import {beoordelingenHeroType} from './blocks/beoordelingenHeroType'
 import {objectGridType} from './blocks/objectGridType'
 import {reviewGridType} from './blocks/reviewGridType'
 import {uitgelichteReviewType} from './blocks/uitgelichteReviewType'
+import {waardebepalingHeroType} from './blocks/waardebepalingHeroType'
+import {waardebepalingKrijgtType} from './blocks/waardebepalingKrijgtType'
+import {waardebepalingReviewsType} from './blocks/waardebepalingReviewsType'
+import {waardebepalingSlotType} from './blocks/waardebepalingSlotType'
+import {waardebepalingStappenType} from './blocks/waardebepalingStappenType'
+import {waardebepalingWieType} from './blocks/waardebepalingWieType'
 import {werkwijzeType} from './blocks/werkwijzeType'
 import {pageHeroType} from './blocks/pageHeroType'
 import {pageOpenerType} from './blocks/pageOpenerType'
@@ -93,4 +99,10 @@ export const schemaTypes = [
   reviewGridType,
   werkwijzeType,
   highlightStripType,
+  waardebepalingHeroType,
+  waardebepalingKrijgtType,
+  waardebepalingStappenType,
+  waardebepalingWieType,
+  waardebepalingReviewsType,
+  waardebepalingSlotType,
 ]

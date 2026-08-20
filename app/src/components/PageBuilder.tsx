@@ -31,6 +31,12 @@ import { Stories } from '@/components/blocks/Stories';
 import { Timeline } from '@/components/blocks/Timeline';
 import { UitgelichteReview } from '@/components/blocks/UitgelichteReview';
 import { ValueCards } from '@/components/blocks/ValueCards';
+import { WaardebepalingHero } from '@/components/blocks/WaardebepalingHero';
+import { WaardebepalingKrijgt } from '@/components/blocks/WaardebepalingKrijgt';
+import { WaardebepalingReviews } from '@/components/blocks/WaardebepalingReviews';
+import { WaardebepalingSlot } from '@/components/blocks/WaardebepalingSlot';
+import { WaardebepalingStappen } from '@/components/blocks/WaardebepalingStappen';
+import { WaardebepalingWie } from '@/components/blocks/WaardebepalingWie';
 import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import type { BlockIconName } from '@/components/ui/BlockIcon';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
@@ -774,6 +780,108 @@ function renderBlock(block: PageBlock) {
           columns={block.columns as { title: string; body: string }[] | undefined}
           cta={toCta(block.cta)}
           image={toImage(block.image, 900, 1125)}
+        />
+      );
+    }
+    case 'waardebepalingHero': {
+      const form = block.form as
+        | { _id?: string; fields?: ContactFormField[] }
+        | undefined;
+      return (
+        <WaardebepalingHero
+          key={block._key}
+          image={toImage(block.image, 2400, 1600)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          titleHighlight={block.titleHighlight ?? undefined}
+          lead={block.lead}
+          usps={block.usps as string[] | undefined}
+          score={block.score}
+          scoreLabel={block.scoreLabel}
+          reviewCount={block.reviewCount}
+          reviewNote={block.reviewNote}
+          formTitle={block.formTitle}
+          formLead={block.formLead}
+          form={
+            form?._id && form.fields?.length
+              ? { id: form._id, fields: form.fields }
+              : undefined
+          }
+          successTitle={block.successTitle}
+          successBody={block.successBody}
+          privacyNote={block.privacyNote}
+        />
+      );
+    }
+    case 'waardebepalingKrijgt': {
+      return (
+        <WaardebepalingKrijgt
+          key={block._key}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
+          items={
+            block.items as
+              | Array<{ icon: BlockIconName; title: string; body: string }>
+              | undefined
+          }
+        />
+      );
+    }
+    case 'waardebepalingStappen': {
+      return (
+        <WaardebepalingStappen
+          key={block._key}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead}
+          items={
+            block.items as
+              | Array<{ number: string; title: string; body: string }>
+              | undefined
+          }
+        />
+      );
+    }
+    case 'waardebepalingWie': {
+      return (
+        <WaardebepalingWie
+          key={block._key}
+          image={toImage(block.image, 800, 1000)}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          paragraphs={block.paragraphs as string[] | undefined}
+          quote={block.quote}
+          name={block.name}
+        />
+      );
+    }
+    case 'waardebepalingReviews': {
+      return (
+        <WaardebepalingReviews
+          key={block._key}
+          score={block.score}
+          scoreLabel={block.scoreLabel}
+          title={block.title}
+          lead={block.lead}
+          link={toCta(block.link)}
+          items={
+            block.items as
+              | Array<{ quote: string; score: string; meta: string }>
+              | undefined
+          }
+        />
+      );
+    }
+    case 'waardebepalingSlot': {
+      return (
+        <WaardebepalingSlot
+          key={block._key}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          body={block.body}
+          primaryCta={toCta(block.primaryCta)}
+          secondaryCta={toCta(block.secondaryCta)}
         />
       );
     }

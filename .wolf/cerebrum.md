@@ -88,6 +88,9 @@
 
 - [2026-08-13] The aanbod grid reuses `ListingCard` a third time; `meta` is typed `ReactNode` so the home page can pass a plain string while /aanbod passes icon + label spans. Widening the type beat adding a second meta prop.
 
+- [2026-08-20] `npm run typegen` needs `sanity` on PATH in `studio-hart-huis` (i.e. `npm install` run there), and `tsc --noEmit` in `app` needs `app/node_modules` too — neither was present at session start in this environment. Install both before trusting a "clean" typecheck.
+- [2026-08-20] Tailwind's default spacing scale skips some numbers (e.g. `15` isn't a step — `14` and `16` are, nothing between). A class like `pb-15` silently generates no CSS instead of erroring. When translating a design's exact px value, use bracket notation (`pb-[60px]`) unless the number is a known scale step.
+
 ## Decision Log
 
 - [2026-08-15] De scraper is één Next-route (`/api/scrape-funda-reviews`) met twéé authenticatiepaden in plaats van twee routes: de Vercel-cron met `Authorization: Bearer $CRON_SECRET`, de studioknop met `x-scraper-secret: $FUNDA_SCRAPER_SECRET`. Gescheiden secrets omdat een gedeployde studio een publieke JS-bundle is — dat secret lekt per definitie, dus het mag nooit hetzelfde zijn als dat van de cron. De blootstelling is bewust geaccepteerd: het ergste wat iemand ermee kan is een scrape starten.
@@ -97,6 +100,7 @@
 - [2026-08-13] `woning` keeps a hybrid shape (typed core fields + free-form `kenmerkGroepen`) instead of modelling all ~40 Realworks enum arrays as fields. The typed ones are exactly what aanbod.html filters and object.html's specs bar need; everything else is display-only table rows, so mapping enums to labels belongs in the import, not in the schema.
 - [2026-08-13] The object page reuses `ListingCard` (exported from Listings) and `CtaBand`, and got 6 new components for what had no equivalent (gallery+lightbox, kop/specs, collapsible omschrijving, kenmerkentabel, sticky zijkaart, share button). The design's "vergelijkbare woningen" grid is the home page's listing grid with a sand background, so only the pill tone needed widening.
 - [2026-08-13] Seed objects use `createOrReplace` with `_id: woning-<slug>` instead of the fetch-then-patch style of the page seeds — re-running is idempotent without a lookup query, and mock docs need no id stability beyond the slug.
+- [2026-08-20] /waardebepaling's two-step wizard form posts through the existing generic `/api/submit-form` route by creating a `contactForm` document (like /contact does) rather than a bespoke endpoint — the route's field list is the allow-list already, so a second UI over the same submission mechanism needed no server changes. `WaardebepalingHero` renders that one `<form>` but splits its fields into two visually-toggled steps (`hidden` attribute, not unmounted) so a single FormData still carries everything on final submit.
 
 <!-- Significant technical decisions with rationale. Why X was chosen over Y. -->
 

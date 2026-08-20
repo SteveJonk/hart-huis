@@ -21,6 +21,7 @@ import {seedOverOns} from './seed/over-ons'
 import {projectRef} from './seed/shared'
 import {seedTaxatie} from './seed/taxatie'
 import {seedVerkoop} from './seed/verkoop'
+import {seedWaardebepaling} from './seed/waardebepaling'
 
 const TARGETS = {
   home: seedHome,
@@ -32,6 +33,7 @@ const TARGETS = {
   objecten: seedObjecten,
   aanbod: seedAanbod,
   beoordelingen: seedBeoordelingen,
+  waardebepaling: seedWaardebepaling,
   nav: seedNavigation,
 } as const
 

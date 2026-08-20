@@ -272,3 +272,14 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 17:16 | Extended form-plugin settings with Mailjet API key/secret, wired into submit-form | studio-hart-huis/schemaTypes/formGeneralSettingsType.ts, sanity.config.ts, app/src/app/api/submit-form/route.ts, queries.ts, schema.json, sanity.types.ts | typegen + tsc clean | ~9000 |
+
+## Session: 2026-08-20 17:47
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-20 waardebepaling
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 18:10 | Abstracted example-designs/hart-en-huis-lp-waardebepaling_1.html into /waardebepaling: 6 new blocks (WaardebepalingHero client wizard-form + Krijgt/Stappen/Wie/Reviews/Slot), 6 new Sanity block types, heart icon added to BlockIcon, wizard form reuses /api/submit-form via a contactForm doc, dedicated seed:waardebepaling script, not linked in nav per instructions | studio-hart-huis/schemaTypes/{index.ts,pageBuilderType.ts,blocks/waardebepaling*.ts}, app/src/components/{PageBuilder.tsx,blocks/Waardebepaling*.tsx,ui/BlockIcon.tsx}, app/src/lib/waardebepaling-content.ts, app/scripts/seed/waardebepaling.ts, app/scripts/seed.ts, app/package.json, app/public/images/waardebepaling/hero.jpg | typegen + tsc + eslint clean; next build compiles (fails only at page-data collection for lack of Sanity env, unrelated to change) | ~140k |

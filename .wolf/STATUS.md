@@ -80,6 +80,15 @@
 - `app/src/app/api/submit-form/route.ts` verstuurt via Mailjet's HTTP API (`https://api.mailjet.com/v3.1/send`) zodra `MAILJET_API_KEY`/`MAILJET_API_SECRET` (env, of de Studio-velden als fallback) gezet zijn; anders valt hij terug op de bestaande Gmail SMTP/nodemailer-route
 - `npm run typegen` gedraaid, `schema.json` + `sanity.types.ts` meegecommit
 
+**`hart-en-huis-lp-waardebepaling_1.html` → /waardebepaling (20-08-2026)**
+- Landing page met een tweestaps-aanvraagformulier, niet aan navigatie gekoppeld (per opdracht — `seed:nav` hoeft niet te draaien)
+- 6 nieuwe blocks in `src/components/blocks/`: `WaardebepalingHero` (client, wizard-formulier), `WaardebepalingKrijgt`, `WaardebepalingStappen`, `WaardebepalingWie`, `WaardebepalingReviews`, `WaardebepalingSlot`; `faqs` hergebruikt
+- het wizard-formulier post naar hetzelfde generieke `/api/submit-form` als het contactformulier — een `contactForm`-document (`id: "waardebepaling"`) draagt de velden, `WaardebepalingHero` split ze zelf over twee stappen met een voortgangsbalk
+- makelaarsfoto hergebruikt `public/images/contact/dorien.jpg` (zelfde foto als op /contact); alleen de herobackground is nieuw, in `public/images/waardebepaling/`
+- `BlockIcon` kreeg een `heart`-icoon erbij (paden uit het origineel)
+- eigen seed script `npm run seed:waardebepaling` (schrijft het formulier, de FAQs en de pagina); nog niet gedraaid tegen Sanity
+- `npm run typegen` gedraaid, `schema.json` + `sanity.types.ts` meegecommit
+
 ### Home-blokken automatisch gevuld (2026-08-17)
 - `listings` toont de **3 nieuwste woningen** en `reviews` de **8 nieuwste reviews**, beide rechtstreeks uit de dataset — de handmatige selectie is uit `listingsType`/`reviewsType` gehaald
 - de kaarten komen via `toListing()` uit `Listings.tsx` (staat daar en niet in `ObjectGrid.tsx`, want die is een client component)
@@ -90,7 +99,7 @@
 
 ## 🚀 Next phase
 
-**Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`). Wat resteert is afmaken en aanscherpen.
+**Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026, waardebepaling 20-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`, `npm run seed:waardebepaling`). Wat resteert is afmaken en aanscherpen. `hart-en-huis-lp-zoekopdracht.html` staat nog open.
 
 ### Open punten
 1. **De scraper is lokaal tegen de echte Funda gedraaid (17-08-2026) en klopt: 42 verkoop + 12 aankoop = 54, zonder waarschuwingen** — precies wat de widget zelf noemt. De fixtures zijn nu echte pagina's. Wat resteert vóór de eerste échte run:
