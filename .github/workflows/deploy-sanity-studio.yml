@@ -21,6 +21,15 @@ jobs:
     defaults:
       run:
         working-directory: studio-hart-huis
+
+    # Vite bakt `process.env.SANITY_STUDIO_*` bij het bouwen in de bundle, dus
+    # deze moeten hier staan en niet pas bij het deployen. Op job-niveau zodat
+    # zowel `sanity build` als de herbouw binnen `sanity deploy` ze meekrijgt.
+    # Lokaal komen ze uit studio-hart-huis/.env — die staat in .gitignore.
+    env:
+      SANITY_STUDIO_SCRAPER_URL: ${{ vars.SANITY_STUDIO_SCRAPER_URL }}
+      SANITY_STUDIO_SCRAPER_SECRET: ${{ secrets.SANITY_STUDIO_SCRAPER_SECRET }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -34,6 +43,20 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # Zonder deze twee bouwt de studio gewoon door en zegt de Funda-tool
+      # daarna "Nog niet ingesteld" — een stille fout die je pas in de
+      # gedeployde studio ziet. Liever hier hard falen.
+      - name: Check studio env vars
+        run: |
+          missing=0
+          for var in SANITY_STUDIO_SCRAPER_URL SANITY_STUDIO_SCRAPER_SECRET; do
+            if [ -z "${!var}" ]; then
+              echo "::error::$var is leeg. Zet hem bij Settings > Secrets and variables > Actions."
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] || exit 1
 
       - name: Build studio
         run: npm run build
