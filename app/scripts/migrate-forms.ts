@@ -5,137 +5,122 @@
  *   npm run migrate:forms -- --dry-run   # show what would change
  *   npm run migrate:forms
  *
- * Each document is replaced **in place**, keeping its `_id`, so every page that
- * references a form keeps working. `_type` cannot be patched, so this deletes
- * and recreates in a single transaction — atomic, and the id never frees up.
+ * `_type` is immutable and Sanity treats a delete+create of the same `_id`
+ * inside one transaction as modifying it, so the id cannot be kept. Instead
+ * each form is recreated under a new id and every reference to it is
+ * repointed before the old document is deleted — so no page ever points at a
+ * document that is not there.
+ *
+ * Safe to re-run: a form is matched on its `id` field, so a second run updates
+ * the document the first run made instead of adding another one.
  *
  * Field widths did not exist in the plugin's schema; the layout came from a
  * guess in the front end. That guess is applied once here and written down, so
  * the rendered layout stays the same while becoming editable.
  */
+import {writeFileSync} from 'node:fs'
+import path from 'node:path'
+import {
+  isDraft,
+  publishedId,
+  repoint,
+  toFormDoc,
+  type SanityDocument,
+} from './form-migration'
 import {client} from './seed/shared'
-
-type PluginField = {
-  _key?: string
-  label?: string
-  name?: string
-  type?: string
-  isRequired?: boolean
-  showPlaceholder?: boolean
-  placeholder?: string
-  helpText?: string
-  note?: string
-  selectOptions?: string[]
-  radioOptions?: string[]
-  checkboxOptions?: string[]
-}
-
-type PluginForm = {
-  _id: string
-  title?: string
-  showtitle?: boolean
-  id?: string
-  fields?: PluginField[]
-}
-
-/** The types the old front end paired two-per-row. */
-const NARROW = new Set(['text', 'email', 'tel', 'url', 'select'])
-
-/**
- * Reproduces the old guess as explicit widths: a narrow field directly after
- * another narrow one shared its row, so both are half width.
- */
-function withWidths(fields: PluginField[]) {
-  const widths: ('full' | 'half')[] = fields.map(() => 'full')
-
-  fields.forEach((field, index) => {
-    if (widths[index] === 'half') return
-    const next = fields[index + 1]
-    if (NARROW.has(field.type ?? '') && next && NARROW.has(next.type ?? '')) {
-      widths[index] = 'half'
-      widths[index + 1] = 'half'
-    }
-  })
-
-  return fields.map((field, index) => ({...field, width: widths[index]}))
-}
-
-function toFormDoc(form: PluginForm) {
-  const fields = withWidths(form.fields ?? []).map((field, index) => ({
-    _key: field._key || `field-${index}`,
-    _type: 'formField' as const,
-    label: field.label ?? field.name ?? `Veld ${index + 1}`,
-    name: field.name ?? `veld${index + 1}`,
-    type: field.type ?? 'text',
-    width: field.width,
-    isRequired: Boolean(field.isRequired),
-    // The plugin could use the label as the placeholder; write that out so the
-    // rendered form keeps the same placeholders without the extra flag.
-    ...(field.showPlaceholder && field.label
-      ? {placeholder: field.label}
-      : field.placeholder
-        ? {placeholder: field.placeholder}
-        : {}),
-    ...(field.helpText ? {helpText: field.helpText} : {}),
-    ...(field.selectOptions?.length ? {selectOptions: field.selectOptions} : {}),
-    ...(field.radioOptions?.length ? {radioOptions: field.radioOptions} : {}),
-    ...(field.checkboxOptions?.length ? {checkboxOptions: field.checkboxOptions} : {}),
-  }))
-
-  return {
-    _id: form._id,
-    _type: 'form' as const,
-    title: form.title || 'Formulier',
-    id: form.id || form._id,
-    mode: 'simple' as const,
-    showTitle: Boolean(form.showtitle),
-    // The plugin had no per-form submit label or confirmation copy; the seeds
-    // set the real text, these are only so the document validates meanwhile.
-    submitButtonText: 'Verstuur',
-    successTitle: 'Bedankt voor je bericht',
-    successBody: 'We nemen zo snel mogelijk contact met je op.',
-    fields,
-  }
-}
 
 async function main() {
   const dryRun = process.argv.includes('--dry-run')
 
-  const forms = await client.fetch<PluginForm[]>(
-    `*[_type == "contactForm"]{_id, title, showtitle, id, fields}`,
-  )
+  // Whole documents, drafts included — a draft carries unpublished edits we
+  // must not throw away.
+  const forms = await client.fetch<SanityDocument[]>(`*[_type == "contactForm"]`)
 
   if (forms.length === 0) {
     console.log('Geen contactForm-documenten gevonden — niets te migreren.')
     return
   }
 
-  console.log(`${forms.length} contactForm-document(en) gevonden.\n`)
+  const published = forms.filter((form) => !isDraft(form._id))
+  const drafts = forms.filter((form) => isDraft(form._id))
 
-  for (const form of forms) {
-    const doc = toFormDoc(form)
-    const referencedBy = await client.fetch<number>(
-      `count(*[references($id)])`,
-      {id: form._id},
+  console.log(
+    `${forms.length} contactForm-document(en): ${published.length} gepubliceerd, ${drafts.length} concept.\n`,
+  )
+
+  if (!dryRun) {
+    const backup = path.join(process.cwd(), `form-migration-backup-${Date.now()}.json`)
+    writeFileSync(backup, JSON.stringify(forms, null, 2))
+    console.log(`Back-up van de originelen: ${backup}\n`)
+  }
+
+  // Old published id -> new published id, used to repoint every reference.
+  const mapping = new Map<string, string>()
+  const writes: SanityDocument[] = []
+
+  for (const form of published) {
+    const key = (form.id as string) || publishedId(form._id)
+
+    // If the seeds already created a form with this id, migrate onto that one
+    // instead of adding a second document with the same id.
+    const existing = await client.fetch<string | null>(
+      `*[_type == "form" && id == $key][0]._id`,
+      {key},
     )
+    const newId = existing || `form-${key}`
 
-    console.log(`${dryRun ? '·' : '→'} ${doc.title} (${doc._id})`)
-    console.log(`    id: ${doc.id} · ${doc.fields.length} velden · ${referencedBy} verwijzing(en)`)
-    for (const field of doc.fields) {
+    mapping.set(form._id, newId)
+
+    const migrated = toFormDoc(form, newId)
+    writes.push(migrated)
+
+    const draft = drafts.find((item) => publishedId(item._id) === form._id)
+    if (draft) writes.push(toFormDoc(draft, `drafts.${newId}`))
+
+    console.log(`${dryRun ? '·' : '→'} ${migrated.title}`)
+    console.log(`    ${form._id}  ->  ${newId}${existing ? ' (bestaand form-document)' : ''}`)
+    if (draft) console.log(`    concept meeverhuisd: ${draft._id} -> drafts.${newId}`)
+    for (const field of migrated.fields) {
       console.log(`    - ${field.name} (${field.type}, ${field.width})`)
     }
+  }
 
-    if (dryRun) continue
+  const orphanDrafts = drafts.filter((draft) => !mapping.has(publishedId(draft._id)))
+  for (const draft of orphanDrafts) {
+    console.log(`! concept zonder gepubliceerde versie, overgeslagen: ${draft._id}`)
+  }
 
-    // Delete + create in one transaction: the _id survives, so references hold.
-    await client.transaction().delete(form._id).create(doc).commit()
-    console.log('    ✓ omgezet naar type "form"')
+  // Documents pointing at a form: pages, and their drafts.
+  const referencing = await client.fetch<SanityDocument[]>(
+    `*[references($ids)]`,
+    {ids: [...mapping.keys()]},
+  )
+  console.log(`\n${referencing.length} document(en) verwijzen naar een formulier.`)
+  for (const document of referencing) {
+    console.log(`    ${document._type} ${document._id}`)
   }
 
   if (dryRun) {
     console.log('\nDry run — er is niets gewijzigd.')
     return
   }
+
+  // Order matters: create the new forms, repoint everything at them, and only
+  // then remove the originals. At no point does a page reference a gap.
+  const transaction = client.transaction()
+  for (const document of writes) transaction.createOrReplace(document)
+  for (const document of referencing) {
+    transaction.createOrReplace(repoint(document, mapping) as SanityDocument)
+  }
+  await transaction.commit()
+  console.log('\n✓ formulieren aangemaakt en verwijzingen omgezet')
+
+  const cleanup = client.transaction()
+  for (const form of [...published, ...drafts]) {
+    if (mapping.has(publishedId(form._id))) cleanup.delete(form._id)
+  }
+  await cleanup.commit()
+  console.log('✓ oude contactForm-documenten verwijderd')
 
   console.log(
     [

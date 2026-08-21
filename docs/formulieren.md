@@ -119,11 +119,29 @@ npm run migrate:forms -- --dry-run   # laat zien wat er zou veranderen
 npm run migrate:forms
 ```
 
-Elk document wordt **op zijn plek** vervangen: hetzelfde `_id`, dus alle
-paginaverwijzingen blijven werken. `_type` is niet te patchen, dus het script
-verwijdert en maakt opnieuw aan in één transactie. De kolombreedtes die de oude
-front-end gokte worden daarbij één keer uitgerekend en opgeschreven, zodat de
-weergave gelijk blijft maar wél redactioneel wordt.
+`_type` is onveranderlijk, en Sanity ziet een delete + create van hetzelfde
+`_id` binnen één transactie als een wijziging daarvan ("immutable attribute
+`_type` may not be modified"). Het `_id` kan dus niet blijven. Het script maakt
+daarom eerst het nieuwe `form`-document aan (`form-<id>`, bv. `form-contact`),
+zet dan **elke verwijzing** ernaartoe om, en verwijdert het oude document pas
+daarna — zo wijst geen enkele pagina ooit naar iets dat er niet is.
+
+Verder:
+
+- **opnieuw draaien mag.** Een formulier wordt gematcht op zijn `id`-veld, dus
+  een tweede run werkt hetzelfde document bij in plaats van er nog één te maken.
+  Draaide je `seed:contact` al vóór de migratie, dan wordt dát document
+  gebruikt en komt er geen dubbele bij.
+- **concepten verhuizen mee.** Onpublished bewerkingen (`drafts.…`) worden mee
+  omgezet, zodat niemand werk kwijtraakt.
+- er wordt eerst een back-up van de originelen weggeschreven naar
+  `app/form-migration-backup-<tijd>.json` (staat in `.gitignore`).
+- de kolombreedtes die de oude front-end gokte worden één keer uitgerekend en
+  opgeschreven, zodat de weergave gelijk blijft maar wél redactioneel wordt.
+
+De omzetting zelf (`scripts/form-migration.ts`) bevat geen Sanity-client en
+wordt door `npm run check:form` getest: de rij-indeling moet identiek blijven en
+verwijzingen moeten allemaal meeverhuizen.
 
 Daarna:
 
