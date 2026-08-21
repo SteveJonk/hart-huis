@@ -81,6 +81,10 @@ export function FormField({
   const placeholder = field.showPlaceholder ? field.label : field.placeholder;
   const controlClass = cn(controlBase, styles.control);
 
+  // Hidden fields are drawn by the renderer itself — it is the only place that
+  // knows the page context their value is filled from.
+  if (field.type === 'hidden') return null;
+
   // Checkboxes carry their own label per option, so they skip the field label.
   if (field.type === 'checkbox') {
     return (

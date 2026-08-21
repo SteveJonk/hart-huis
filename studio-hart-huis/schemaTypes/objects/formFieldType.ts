@@ -6,6 +6,12 @@ const alleenVoor =
   ({parent}: {parent?: {type?: string}}) =>
     !types.includes(parent?.type ?? '')
 
+/** The opposite: hide a field *for* these input types. */
+const nietVoor =
+  (...types: string[]) =>
+  ({parent}: {parent?: {type?: string}}) =>
+    types.includes(parent?.type ?? '')
+
 /**
  * One input in a form. Mirrors the field shape of the contact-form plugin so
  * both kinds of form render through the same React field renderer; `width` is
@@ -43,9 +49,26 @@ export const formFieldType = defineType({
           {title: 'Radio buttons', value: 'radio'},
           {title: 'Checkboxes', value: 'checkbox'},
           {title: 'File upload', value: 'file'},
+          {title: 'Verborgen veld', value: 'hidden'},
         ],
       },
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'defaultValue',
+      title: 'Waarde',
+      type: 'string',
+      description:
+        'De waarde die wordt meegestuurd. Tussen dubbele accolades vult de pagina zelf iets in: ' +
+        '{{adres}}, {{postcode}}, {{plaats}}, {{prijs}} en {{url}} op een objectpagina. ' +
+        'Een token dat de pagina niet kent blijft leeg.',
+      hidden: alleenVoor('hidden'),
+      validation: (rule) =>
+        rule.custom((value, context) =>
+          (context.parent as {type?: string} | undefined)?.type === 'hidden' && !value
+            ? 'Een verborgen veld zonder waarde stuurt niets mee.'
+            : true,
+        ),
     }),
     defineField({
       name: 'width',
@@ -60,8 +83,15 @@ export const formFieldType = defineType({
         layout: 'radio',
         direction: 'horizontal',
       },
+      hidden: nietVoor('hidden'),
     }),
-    defineField({name: 'isRequired', title: 'Required', type: 'boolean', initialValue: false}),
+    defineField({
+      name: 'isRequired',
+      title: 'Required',
+      type: 'boolean',
+      initialValue: false,
+      hidden: nietVoor('hidden'),
+    }),
     defineField({
       name: 'placeholder',
       type: 'string',
@@ -73,6 +103,7 @@ export const formFieldType = defineType({
       name: 'helpText',
       type: 'string',
       description: 'Small print under the field. Supports [label](https://link).',
+      hidden: nietVoor('hidden'),
     }),
     defineField({
       name: 'selectOptions',

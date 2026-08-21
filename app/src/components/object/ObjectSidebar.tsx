@@ -1,8 +1,11 @@
+import type { FormRecaptcha } from '@/components/form/FormRenderer';
+import { ObjectContactDialog } from '@/components/object/ObjectContactDialog';
 import { ShareButton } from '@/components/object/ShareButton';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/cn';
+import type { FormDefinition } from '@/lib/form-fields';
 import { euro, shortDate } from '@/lib/format';
-import { OBJECT_MAKELAAR, OBJECT_VIEWING_CTA, statusOf } from '@/lib/object-content';
+import { OBJECT_MAKELAAR, statusOf } from '@/lib/object-content';
 import { SITE } from '@/lib/site';
 
 type ObjectSidebarProps = {
@@ -15,6 +18,17 @@ type ObjectSidebarProps = {
   woonoppervlak?: number | null;
   perceel?: number | null;
   brochureUrl?: string | null;
+  /** De knop bovenaan: label, en het formulier dat erachter opent. */
+  cta: {
+    label: string;
+    fallbackHref: string;
+    form?: FormDefinition;
+    dialogTitle?: string;
+    dialogLead?: string;
+    recaptcha?: FormRecaptcha;
+    /** Wat de verborgen velden in het formulier invullen. */
+    context: Record<string, string>;
+  };
 };
 
 const pillTone = {
@@ -75,6 +89,7 @@ export function ObjectSidebar({
   woonoppervlak,
   perceel,
   brochureUrl,
+  cta,
 }: ObjectSidebarProps) {
   const { label, tone } = statusOf(status);
   const conditie = [
@@ -113,9 +128,21 @@ export function ObjectSidebar({
         ) : null}
         <span className='mb-[22px] block text-[0.83rem] text-ink-45'>{conditie}</span>
 
-        <Button href={OBJECT_VIEWING_CTA.href} className='mb-2.5 w-full justify-center'>
-          {OBJECT_VIEWING_CTA.label}
-        </Button>
+        {cta.form ? (
+          <ObjectContactDialog
+            label={cta.label}
+            form={cta.form}
+            title={cta.dialogTitle}
+            lead={cta.dialogLead}
+            recaptcha={cta.recaptcha}
+            context={cta.context}
+            className='mb-2.5 w-full'
+          />
+        ) : (
+          <Button href={cta.fallbackHref} className='mb-2.5 w-full justify-center'>
+            {cta.label}
+          </Button>
+        )}
         <Button href={SITE.phoneHref} variant='ink' className='w-full justify-center'>
           {SITE.phone}
         </Button>

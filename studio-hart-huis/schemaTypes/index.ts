@@ -43,6 +43,7 @@ import {footerType} from './footerType'
 import {formGeneralSettingsType} from './formGeneralSettingsType'
 import {formType} from './formType'
 import {navigationType} from './navigationType'
+import {objectSettingsType} from './objectSettingsType'
 import {ctaType} from './objects/ctaType'
 import {formFieldType} from './objects/formFieldType'
 import {linkType} from './objects/linkType'
@@ -62,6 +63,7 @@ export const schemaTypes = [
   footerType,
   formGeneralSettingsType,
   formType,
+  objectSettingsType,
   // Shared objects
   seoType,
   linkType,

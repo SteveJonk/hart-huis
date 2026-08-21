@@ -18,6 +18,7 @@ import {seedHome} from './seed/home'
 import {seedNavigation} from './seed/navigation'
 import {seedNvm} from './seed/nvm'
 import {seedObjecten} from './seed/objecten'
+import {seedObjectpagina} from './seed/objectpagina'
 import {seedOverOns} from './seed/over-ons'
 import {projectRef} from './seed/shared'
 import {seedTaxatie} from './seed/taxatie'
@@ -33,6 +34,7 @@ const TARGETS = {
   aankoop: seedAankoop,
   contact: seedContact,
   objecten: seedObjecten,
+  objectpagina: seedObjectpagina,
   aanbod: seedAanbod,
   beoordelingen: seedBeoordelingen,
   nvm: seedNvm,

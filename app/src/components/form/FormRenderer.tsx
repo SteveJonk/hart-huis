@@ -4,7 +4,7 @@ import { useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { cn } from '@/lib/cn';
-import { toFieldRows, toSteps, type FormDefinition } from '@/lib/form-fields';
+import { fillTokens, toFieldRows, toSteps, type FormDefinition } from '@/lib/form-fields';
 import { FormField, type FormFieldVariant } from './fields';
 
 /** Public half of the reCAPTCHA settings — the secret stays server-side. */
@@ -22,6 +22,11 @@ export type FormRendererProps = {
   footer?: ReactNode;
   recaptcha?: FormRecaptcha;
   variant?: FormFieldVariant;
+  /**
+   * Values the surrounding page knows and the visitor does not type — the
+   * object's address, say. A hidden field picks them up by `{{token}}`.
+   */
+  context?: Record<string, string>;
 };
 
 type Control = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
@@ -111,6 +116,7 @@ export function FormRenderer({
   footer,
   recaptcha,
   variant = 'compact',
+  context,
 }: FormRendererProps) {
   const [step, setStep] = useState(0);
   const [status, setStatus] = useState<'idle' | 'sending' | 'done'>('idle');
@@ -234,6 +240,17 @@ export function FormRenderer({
             hidden={index !== step}
           >
             {formStep.title ? <h3 className='mb-4 text-[1.15rem]'>{formStep.title}</h3> : null}
+
+            {formStep.fields
+              .filter((field) => field.type === 'hidden')
+              .map((field) => (
+                <input
+                  key={field.name}
+                  type='hidden'
+                  name={field.name}
+                  value={fillTokens(field.defaultValue ?? '', context)}
+                />
+              ))}
 
             {toFieldRows(formStep.fields).map((row) => {
               const key = row.map((field) => field.name).join('-');

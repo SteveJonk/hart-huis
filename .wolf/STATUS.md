@@ -126,6 +126,15 @@
 
 ---
 
+**Bezichtigingsformulier op de objectpagina (21-08-2026)**
+- De knop op de prijskaart opent een native `<dialog>` met een CMS-formulier: `ObjectContactDialog` (client) + `FormRenderer`
+- Nieuw veldtype **Verborgen veld** op `formField`: een `defaultValue` met `{{adres}}`, `{{straat}}`, `{{postcode}}`, `{{plaats}}`, `{{prijs}}` of `{{url}}`. De objectpagina vult die in, zodat in de mail staat om welke woning het gaat. `fillTokens()` staat in `form-fields.ts`, de renderer krijgt er een `context`-prop voor
+- Nieuw singleton **Objectpagina** (`objectSettings`): knoptekst, het formulier achter de knop, kop + tekst boven het formulier, en een terugvallink voor als er (nog) geen formulier gekozen is
+- `WONING_QUERY` haalt dat document + de reCAPTCHA-instellingen op; de `form->`-projectie is uit PAGE_QUERY gehaald en gedeeld (`formProjection`), en `toFormDefinition()` is van PageBuilder naar `form-fields.ts` verhuisd
+- `SITE.baseUrl` toegevoegd (nodig voor `{{url}}`) en meteen hergebruikt in `sitemap.ts` en `robots.ts`
+- `check:form` dekt nu ook verborgen velden (rij-indeling, tokens, allow-list)
+- **nog te seeden:** `npm run seed:objectpagina`
+
 ## 🚀 Next phase
 
 **Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026, waardebepaling 20-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`, `npm run seed:waardebepaling`). Wat resteert is afmaken en aanscherpen. **Alle designs uit `app/example-designs/` zijn nu geïmplementeerd** (nvm en zoekopdracht toegevoegd 21-08-2026). Wat resteert is seeden en aanscherpen: `npm run seed:nvm && npm run seed:nav`, `npm run seed:zoekopdracht`, en `npm run seed:waardebepaling` opnieuw vanwege bug-018.
@@ -143,7 +152,8 @@
 6. `SITE.fundaScore` / `SITE.reviewCount` zijn nu alleen nog fallback; de factBar op /verkoop gebruikt `SITE.fundaScore` nog hardcoded.
 7. **`woning` heeft geen `seo`-veld** terwijl `WONING_QUERY` het wél selecteert (`seo: null` in de gegenereerde types) — objectpagina's krijgen dus nooit CMS-SEO. Keuze: veld toevoegen aan het schema zoals `page` dat heeft, of de dode selectie uit de query halen. Zie bug-013.
 8. `npm run typegen` faalt op de default node (v17) van deze machine; draai hem met `export PATH="$HOME/.nvm/versions/node/v22.18.0/bin:$PATH"` ervoor.
-9. Na elke schemawijziging `npm run typegen` draaien en `app/src/sanity/{schema.json,sanity.types.ts}` meecommitten — beide staan in git en zijn nu de bron van de types.
+9. Het bezichtigingsformulier staat nog niet in Sanity: `npm run seed:objectpagina`. Daarna beheert de redactie het formulier én de knop zelf (Forms + Objectpagina in de studio).
+10. Na elke schemawijziging `npm run typegen` draaien en `app/src/sanity/{schema.json,sanity.types.ts}` meecommitten — beide staan in git en zijn nu de bron van de types.
 
 ## 📁 Active architecture
 
@@ -166,7 +176,9 @@ cd app
 npm run check:funda      # parser van de Funda-scraper tegen de fixture
 npm run check:reviews    # afgeleide review-cijfers
 npm run check:tekst      # Realworks-aanbiedingstekst
+npm run check:form       # rij-indeling, verborgen velden en de allow-list van CMS-formulieren
 npm run seed:sanity      # alle pagina's seeden (vereist SANITY_API_WRITE_TOKEN)
+npm run seed:objectpagina # bezichtigingsformulier + de knop op de objectpagina
 
 # de scraper uitproberen zonder iets op te slaan
 curl -H "x-scraper-secret: $FUNDA_SCRAPER_SECRET" \

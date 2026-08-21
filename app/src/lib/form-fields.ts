@@ -12,7 +12,9 @@ export type FormFieldType =
   | 'select'
   | 'radio'
   | 'checkbox'
-  | 'file';
+  | 'file'
+  /** Not drawn: submitted as-is, so the mail carries context the visitor never typed. */
+  | 'hidden';
 
 /** One input, as authored in the `form` document. */
 export type FormFieldDefinition = {
@@ -26,6 +28,8 @@ export type FormFieldDefinition = {
   placeholder?: string;
   helpText?: string;
   note?: string;
+  /** Hidden fields only: the value to submit, with `{{token}}` placeholders. */
+  defaultValue?: string;
   selectOptions?: string[];
   radioOptions?: string[];
   checkboxOptions?: string[];
@@ -71,12 +75,23 @@ export function toSteps(form: FormDefinition): FormStep[] {
     .filter((step) => step.fields.length > 0);
 }
 
+/**
+ * `{{adres}}` -> context.adres. A token the page does not know becomes empty
+ * rather than leaking the raw `{{…}}` into the mail.
+ */
+export function fillTokens(value: string, context: Record<string, string> = {}) {
+  return value.replace(/\{\{\s*([a-zA-Z0-9_-]+)\s*\}\}/g, (_, token: string) =>
+    context[token] ?? '',
+  );
+}
+
 /** Types narrow enough to sit two-per-row when no explicit width is authored. */
 const NARROW_TYPES = new Set<FormFieldType>(['text', 'email', 'tel', 'url', 'select']);
 
 /**
  * Groups fields into rows: consecutive half-width fields pair up, the rest get
- * a row of their own.
+ * a row of their own. Hidden fields are left out — they draw nothing, and a row
+ * of their own would break the pairing of the fields around them.
  *
  * Documents written before the form type had a `width` carry none at all, and
  * fall back to pairing consecutive narrow types — the guess the contact-form
@@ -84,10 +99,11 @@ const NARROW_TYPES = new Set<FormFieldType>(['text', 'email', 'tel', 'url', 'sel
  * fallback never runs.
  */
 export function toFieldRows(fields: FormFieldDefinition[]): FormFieldDefinition[][] {
-  const explicit = fields.some((field) => field.width);
+  const visible = fields.filter((field) => field.type !== 'hidden');
+  const explicit = visible.some((field) => field.width);
   const rows: FormFieldDefinition[][] = [];
 
-  for (const field of fields) {
+  for (const field of visible) {
     const last = rows[rows.length - 1];
     const pairs = explicit
       ? field.width === 'half' && last?.length === 1 && last[0].width === 'half'
@@ -100,4 +116,50 @@ export function toFieldRows(fields: FormFieldDefinition[]): FormFieldDefinition[
   }
 
   return rows;
+}
+
+/**
+ * Turns a resolved `form->` reference into what the renderer takes. Unset keys
+ * come back as null from GROQ, so they are normalised to undefined rather than
+ * leaking null into the component's defaults.
+ */
+export function toFormDefinition(value: unknown): FormDefinition | undefined {
+  const form = value as
+    | {
+        _id?: string;
+        title?: string | null;
+        showTitle?: boolean | null;
+        mode?: string | null;
+        fields?: FormFieldDefinition[] | null;
+        steps?: Array<{ title?: string | null; fields?: FormFieldDefinition[] | null }> | null;
+        submitButtonText?: string | null;
+        nextButtonText?: string | null;
+        backButtonText?: string | null;
+        successTitle?: string | null;
+        successBody?: string | null;
+      }
+    | undefined
+    | null;
+
+  if (!form?._id) return undefined;
+
+  const definition: FormDefinition = {
+    id: form._id,
+    title: form.title ?? undefined,
+    showTitle: form.showTitle ?? undefined,
+    mode: form.mode === 'steps' ? 'steps' : 'simple',
+    fields: form.fields ?? undefined,
+    steps: (form.steps ?? []).map((step) => ({
+      title: step.title ?? undefined,
+      fields: step.fields ?? [],
+    })),
+    submitButtonText: form.submitButtonText ?? undefined,
+    nextButtonText: form.nextButtonText ?? undefined,
+    backButtonText: form.backButtonText ?? undefined,
+    successTitle: form.successTitle ?? undefined,
+    successBody: form.successBody ?? undefined,
+  };
+
+  // A form with nothing fillable would render an empty card.
+  return toSteps(definition).length > 0 ? definition : undefined;
 }

@@ -14,8 +14,9 @@
  */
 import assert from 'node:assert/strict'
 import {evaluate, parse} from 'groq-js'
-import {toFieldRows, toSteps, type FormFieldDefinition} from '../src/lib/form-fields'
+import {fillTokens, toFieldRows, toSteps, type FormFieldDefinition} from '../src/lib/form-fields'
 import {CONTACT_FORM_DEFINITION, CONTACT_FORM_FIELDS} from '../src/lib/contact-content'
+import {OBJECT_FORM} from '../src/lib/object-content'
 import {WAARDEBEPALING_FORM} from '../src/lib/waardebepaling-content'
 import {FORM_QUERY} from '../src/sanity/queries'
 import {repoint, toFormDoc, type SanityDocument} from './form-migration'
@@ -97,9 +98,39 @@ assert.deepEqual(
   'un-migrated documents must not stack every field',
 )
 
+// 2b. A hidden field draws nothing, so it must not take a row — and must not
+//     break the pairing of the two half-width fields it sits between either.
+assert.deepEqual(
+  names(
+    toFieldRows([
+      {label: 'Woning', name: 'object', type: 'hidden', defaultValue: '{{adres}}'},
+      text('a', 'half'),
+      {label: 'Woning', name: 'object2', type: 'hidden', defaultValue: '{{adres}}'},
+      text('b', 'half'),
+    ]),
+  ),
+  [['a', 'b']],
+)
+assert.deepEqual(names(toFieldRows(OBJECT_FORM.fields ?? [])), [
+  ['naam'],
+  ['email', 'telefoon'],
+  ['moment'],
+  ['bericht'],
+  ['akkoord'],
+])
+
+// The value of a hidden field is filled in by the page it is rendered on. An
+// unknown token becomes empty rather than leaking `{{…}}` into the mail.
+assert.equal(
+  fillTokens('{{adres}} — {{url}}', {adres: 'Kees \'t Hoenstraat 7', url: '/aanbod/x'}),
+  "Kees 't Hoenstraat 7 — /aanbod/x",
+)
+assert.equal(fillTokens('{{ adres }}', {adres: 'Haarlem'}), 'Haarlem')
+assert.equal(fillTokens('{{onbekend}}!', {}), '!')
+
 // 3. Field names are the keys a submission is mailed under, so they must be
 //    unique across the whole form — not just within a step.
-for (const form of [CONTACT_FORM_DEFINITION, WAARDEBEPALING_FORM]) {
+for (const form of [CONTACT_FORM_DEFINITION, WAARDEBEPALING_FORM, OBJECT_FORM]) {
   const fieldNames = toSteps(form).flatMap((step) => step.fields.map((field) => field.name))
   assert.equal(
     new Set(fieldNames).size,
@@ -181,6 +212,9 @@ const stale = [{fields: [{label: 'Stale', name: 'stale', type: 'text', isRequire
 async function checkAllowList() {
   for (const [label, document] of Object.entries({
     simple: {_id: 'a', _type: 'form', ...CONTACT_FORM_DEFINITION},
+    // A hidden field is submitted like any other, so it has to be on the
+    // allow-list — without it the object's address is dropped from the mail.
+    hidden: {_id: 'e', _type: 'form', ...OBJECT_FORM},
     steps: {_id: 'b', _type: 'form', ...WAARDEBEPALING_FORM},
     // Switching mode leaves the other container behind. The query must follow
     // `mode` like toSteps does, not just take whichever container is filled.
