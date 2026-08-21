@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Reveal } from '@/components/ui/Reveal';
 import { Wrap } from '@/components/ui/Wrap';
@@ -14,6 +15,8 @@ export type WerkwijzeProps = {
   eyebrow?: string;
   title?: string;
   lead?: string;
+  /** Optioneel: knop onder de intro. */
+  cta?: { label: string; href: string };
   items?: readonly WerkwijzeItem[];
 };
 
@@ -29,6 +32,7 @@ export function Werkwijze({
   eyebrow = DEFAULTS.eyebrow,
   title = DEFAULTS.title,
   lead = DEFAULTS.lead,
+  cta,
   items = DEFAULTS.items,
 }: WerkwijzeProps = {}) {
   return (
@@ -55,6 +59,16 @@ export function Werkwijze({
             {title}
           </h2>
           <p className='max-w-[38ch] leading-[1.75] text-taupe max-md:max-w-none'>{lead}</p>
+          {cta ? (
+            <Button
+              href={cta.href}
+              variant='primary'
+              size='sm'
+              className='mt-[26px] max-sm:w-full max-sm:justify-center'
+            >
+              {cta.label}
+            </Button>
+          ) : null}
         </Reveal>
 
         <Reveal delay={1}>

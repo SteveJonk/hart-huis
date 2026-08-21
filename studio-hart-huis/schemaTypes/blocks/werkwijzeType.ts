@@ -15,6 +15,7 @@ export const werkwijzeType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({name: 'lead', type: 'text', rows: 3}),
+    defineField({name: 'cta', title: 'Knop', type: 'cta', description: 'Optioneel.'}),
     defineField({
       name: 'items',
       title: 'Punten',

@@ -12,6 +12,13 @@ export const compareCardsType = defineType({
     defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
     defineField({name: 'lead', type: 'text', rows: 4, validation: (rule) => rule.required()}),
     defineField({
+      name: 'spaceTop',
+      title: 'Ruimte boven',
+      type: 'boolean',
+      description: 'Aanzetten als er een gekleurde band direct boven deze sectie staat.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'cards',
       type: 'array',
       of: [
@@ -41,7 +48,11 @@ export const compareCardsType = defineType({
               ],
               validation: (rule) => rule.min(1).required(),
             }),
-            defineField({name: 'cta', type: 'cta', validation: (rule) => rule.required()}),
+            defineField({
+              name: 'cta',
+              type: 'cta',
+              description: 'Optioneel — leeglaten laat de knop weg.',
+            }),
             defineField({
               name: 'dark',
               title: 'Dark card',

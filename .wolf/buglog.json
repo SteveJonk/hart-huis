@@ -276,10 +276,52 @@
       "file": "app/src/components/layout/SiteFooter.tsx",
       "root_cause": "certificationLogos map called `imageSrc(logo, 160)` with the whole array-member object (which also carries `alt` and `url` link fields), instead of `logo.asset` — the actual Sanity image reference. Went unnoticed because SanityImage's structural type still overlapped enough to type-check under the old (non-nullable) field types.",
       "fix": "Changed to `imageSrc(logo.asset, 160)` and made `asset`/`url` nullable in the local `CertificationLogo` type to match the generated query types.",
-      "tags": ["sanity", "typegen", "footer", "image"],
+      "tags": [
+        "sanity",
+        "typegen",
+        "footer",
+        "image"
+      ],
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-18T00:00:00Z"
+    },
+    {
+      "id": "bug-016",
+      "timestamp": "2026-08-21T08:15:00Z",
+      "error_message": "sanity deploy: Error deploying studio schemas and manifests: Error: Worker error: Failed to parse source for import analysis because the content contains invalid JS syntax. If you are using JSX, make sure to name the file with the .jsx or .tsx extension.",
+      "file": "studio-hart-huis/package.json",
+      "root_cause": "pnpm-lock.yaml had drifted (uncommitted, from an earlier `pnpm install`) so the transitive dep `@sanity/sdk-react` resolved to 2.20.0 instead of the previously-locked 2.19.0. That release ships un-transpiled JSX (`<ComlinkTokenRefreshProvider>...`) inside `dist/index.js` — a packaging bug, since `.js` files aren't parsed with a JSX loader. `sanity build` doesn't hit it (browser bundle), but `sanity manifest extract` (run by `sanity deploy` for schema/manifest sync, and standalone via `npx sanity manifest extract`) SSR-bundles the full dependency tree with `noExternal: true` and trips on it.",
+      "fix": "Pinned the version with `\"pnpm\": { \"overrides\": { \"@sanity/sdk-react\": \"2.19.0\" } }` in studio-hart-huis/package.json, then `rm -rf node_modules && pnpm install`. Verified with `npx sanity manifest extract` (now succeeds) and `npx sanity build`/`npx sanity deploy --dry-run -y`. To debug a similar CLI worker error with no useful stack trace, rerun with `DEBUG=sanity:*` — it prints the underlying vite error object including `loc`/`frame` before the CLI strips it down to a bare message.",
+      "tags": [
+        "sanity",
+        "deploy",
+        "pnpm",
+        "lockfile",
+        "sdk-react",
+        "vite",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T08:15:00Z"
+    },
+    {
+      "id": "bug-017",
+      "timestamp": "2026-08-21T13:00:00Z",
+      "error_message": "De linkerhelft van de topbar (Verkoop/Aankoop/Taxatie) is leeg op de gedeployde site.",
+      "file": "app/scripts/seed/navigation.ts",
+      "root_cause": "seedNavigation() berekende verkoopLink/aankoopLink/taxatieLink wel, maar zette ze niet in het navigation-document. Omdat de seed createOrReplace gebruikt, wiste elke `seed:nav` het navLeft-veld volledig.",
+      "fix": "navLeft: [verkoopLink, aankoopLink, taxatieLink, nvmLink] toegevoegd aan het navigation-document. Draai `npm run seed:nav` om het te herstellen.",
+      "tags": [
+        "seed",
+        "navigation",
+        "sanity",
+        "createOrReplace"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T13:00:00Z"
     }
   ]
 }

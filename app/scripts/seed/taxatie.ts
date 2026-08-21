@@ -82,7 +82,7 @@ async function buildTaxatieContent(faqIds: string[]) {
           text: item.text,
           included: item.included !== false,
         })),
-        cta: cta(card.cta.label, card.cta.href),
+        ...(card.cta ? {cta: cta(card.cta.label, card.cta.href)} : {}),
         dark: Boolean(card.dark),
       })),
     },

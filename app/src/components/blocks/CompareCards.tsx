@@ -13,10 +13,12 @@ export type CompareCardsProps = {
   eyebrow?: string;
   title?: string;
   lead?: string;
+  /** Ruimte boven de sectie, nodig als er een gekleurde band vóór staat. */
+  spaceTop?: boolean;
   cards?: CompareCard[];
 };
 
-const DEFAULTS: Required<CompareCardsProps> = {
+const DEFAULTS: Required<Omit<CompareCardsProps, 'spaceTop'>> = {
   eyebrow: TAXATIE_COMPARE_INTRO.eyebrow,
   title: TAXATIE_COMPARE_INTRO.title,
   lead: TAXATIE_COMPARE_INTRO.lead,
@@ -44,10 +46,16 @@ export function CompareCards({
   eyebrow = DEFAULTS.eyebrow,
   title = DEFAULTS.title,
   lead = DEFAULTS.lead,
+  spaceTop = false,
   cards = DEFAULTS.cards,
 }: CompareCardsProps = {}) {
   return (
-    <section className='pb-[122px] max-sm:pb-[82px]'>
+    <section
+      className={cn(
+        'pb-[122px] max-sm:pb-[82px]',
+        spaceTop && 'pt-[122px] max-sm:pt-[82px]',
+      )}
+    >
       <Wrap>
         <Reveal className='mb-[52px] max-w-[640px] max-sm:mb-[34px] max-sm:max-w-none'>
           <Eyebrow>{eyebrow}</Eyebrow>
@@ -104,7 +112,12 @@ export function CompareCards({
                   >
                     {card.body}
                   </p>
-                  <ul className='mb-[30px] list-none'>
+                  <ul
+                    className={cn(
+                      'list-none',
+                      card.cta ? 'mb-[30px]' : 'mb-0',
+                    )}
+                  >
                     {card.items.map((item) => {
                       const included = item.included !== false;
                       return (
@@ -134,13 +147,15 @@ export function CompareCards({
                       );
                     })}
                   </ul>
-                  <Button
-                    href={card.cta.href}
-                    variant={card.dark ? 'primary' : 'ink'}
-                    className='w-full justify-center'
-                  >
-                    {card.cta.label}
-                  </Button>
+                  {card.cta ? (
+                    <Button
+                      href={card.cta.href}
+                      variant={card.dark ? 'primary' : 'ink'}
+                      className='w-full justify-center'
+                    >
+                      {card.cta.label}
+                    </Button>
+                  ) : null}
                 </div>
               </div>
             </Reveal>

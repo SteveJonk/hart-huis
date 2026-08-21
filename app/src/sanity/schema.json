@@ -875,6 +875,18 @@
                       {
                         "type": "string",
                         "value": "heart"
+                      },
+                      {
+                        "type": "string",
+                        "value": "diploma"
+                      },
+                      {
+                        "type": "string",
+                        "value": "shield"
+                      },
+                      {
+                        "type": "string",
+                        "value": "mail"
                       }
                     ]
                   },
@@ -1221,6 +1233,14 @@
           "type": "objectAttribute",
           "value": {
             "type": "string"
+          },
+          "optional": true
+        },
+        "cta": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "cta"
           },
           "optional": true
         },
@@ -2151,6 +2171,13 @@
           },
           "optional": false
         },
+        "spaceTop": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "cards": {
           "type": "objectAttribute",
           "value": {
@@ -2222,7 +2249,7 @@
                     "type": "inline",
                     "name": "cta"
                   },
-                  "optional": false
+                  "optional": true
                 },
                 "dark": {
                   "type": "objectAttribute",
@@ -3387,6 +3414,18 @@
                       {
                         "type": "string",
                         "value": "clock"
+                      },
+                      {
+                        "type": "string",
+                        "value": "diploma"
+                      },
+                      {
+                        "type": "string",
+                        "value": "shield"
+                      },
+                      {
+                        "type": "string",
+                        "value": "mail"
                       }
                     ]
                   },

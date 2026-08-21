@@ -161,7 +161,10 @@ export type IconCards = {
       | "search"
       | "eye"
       | "clock"
-      | "heart";
+      | "heart"
+      | "diploma"
+      | "shield"
+      | "mail";
     title: string;
     body: string;
     _key: string;
@@ -214,6 +217,7 @@ export type Werkwijze = {
   eyebrow?: string;
   title: string;
   lead?: string;
+  cta?: Cta;
   items?: Array<{
     number?: string;
     title?: string;
@@ -364,6 +368,7 @@ export type CompareCards = {
   eyebrow: string;
   title: string;
   lead: string;
+  spaceTop?: boolean;
   cards: Array<{
     label: string;
     title: string;
@@ -373,7 +378,7 @@ export type CompareCards = {
       included?: boolean;
       _key: string;
     }>;
-    cta: Cta;
+    cta?: Cta;
     dark?: boolean;
     _key: string;
   }>;
@@ -565,7 +570,10 @@ export type Benefits = {
       | "scale"
       | "search"
       | "eye"
-      | "clock";
+      | "clock"
+      | "diploma"
+      | "shield"
+      | "mail";
     title: string;
     body: string;
     _key: string;
@@ -1430,13 +1438,16 @@ export type PAGE_QUERY_RESULT = {
             | "camera"
             | "chart"
             | "clock"
+            | "diploma"
             | "doc"
             | "eye"
             | "house"
+            | "mail"
             | "person"
             | "renovate"
             | "scale"
-            | "search";
+            | "search"
+            | "shield";
           title: string;
           body: string;
           _key: string;
@@ -1544,6 +1555,7 @@ export type PAGE_QUERY_RESULT = {
         eyebrow: string;
         title: string;
         lead: string;
+        spaceTop?: boolean;
         cards: Array<{
           label: string;
           title: string;
@@ -1561,7 +1573,7 @@ export type PAGE_QUERY_RESULT = {
               slug: string;
             } | null;
             href?: string;
-          };
+          } | null;
           dark?: boolean;
           _key: string;
         }>;
@@ -1997,14 +2009,17 @@ export type PAGE_QUERY_RESULT = {
             | "camera"
             | "chart"
             | "clock"
+            | "diploma"
             | "doc"
             | "eye"
             | "heart"
             | "house"
+            | "mail"
             | "person"
             | "renovate"
             | "scale"
-            | "search";
+            | "search"
+            | "shield";
           title: string;
           body: string;
           _key: string;
@@ -2844,6 +2859,15 @@ export type PAGE_QUERY_RESULT = {
         eyebrow?: string;
         title: string;
         lead?: string;
+        cta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
         items: Array<{
           number?: string;
           title?: string;
@@ -2855,7 +2879,6 @@ export type PAGE_QUERY_RESULT = {
         primaryCta: null;
         secondaryCta: null;
         link: null;
-        cta: null;
         nvm: null;
         cards: null;
         person: null;

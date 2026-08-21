@@ -299,6 +299,7 @@ function renderBlock(block: PageBlock) {
           eyebrow={block.eyebrow}
           title={block.title}
           lead={block.lead}
+          cta={toCta(block.cta)}
           items={block.items as WerkwijzeItem[] | undefined}
         />
       );
@@ -633,26 +634,21 @@ function renderBlock(block: PageBlock) {
               dark?: boolean;
             }>
           | undefined
-      )
-        ?.map((card) => {
-          const cardCta = toCta(card.cta);
-          if (!cardCta) return null;
-          return {
-            label: card.label,
-            title: card.title,
-            body: card.body,
-            items: card.items ?? [],
-            cta: cardCta,
-            dark: card.dark,
-          };
-        })
-        .filter((card): card is NonNullable<typeof card> => Boolean(card));
+      )?.map((card) => ({
+        label: card.label,
+        title: card.title,
+        body: card.body,
+        items: card.items ?? [],
+        cta: toCta(card.cta),
+        dark: card.dark,
+      }));
       return (
         <CompareCards
           key={block._key}
           eyebrow={block.eyebrow}
           title={block.title}
           lead={block.lead}
+          spaceTop={block.spaceTop ?? false}
           cards={cards}
         />
       );

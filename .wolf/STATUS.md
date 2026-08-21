@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-17
+> Last updated: 2026-08-21
 
 ---
 
@@ -32,6 +32,14 @@
   - reCAPTCHA v2 checkbox is wired: enable it + set the site key under "Form settings"; put the secret in `RECAPTCHA_SECRET_KEY`
   - **before it can send mail:** fill "Form settings" in the studio, or set MAILJET_API_KEY / MAILJET_API_SECRET / CONTACT_ADMIN_EMAIL in `app/.env`
   - **not yet run:** `cd app && npm run seed:sanity` (needs SANITY_API_WRITE_TOKEN) — /over-ons and /taxatie do not exist in Sanity until then
+
+**`hart-en-huis-nvm.html` → /nvm (21-08-2026)**
+- **Geen nieuwe blocks.** Alle negen secties komen uit bestaande blocks: `pageHero`, `factBar`, `benefits`, `iconCards`, `werkwijze`, `compareCards`, `faqs`, `crossLinks`, `ctaBand`
+- Wat er wél bij kwam: drie line-icons (`diploma`, `shield`, `mail`) in `BlockIcon` + de iconlijsten van `benefits`/`iconCards`; een optionele `cta` op `werkwijze` (de erecode-band heeft een knop); een optionele `cta` op een `compareCards`-kaart (de kaart "makelaar zonder keurmerk" hoort er geen te hebben) plus een `spaceTop`-schakelaar omdat de sectie hier onder een donkere band staat; `iconCards` gaat op tablet naar twee kolommen zodra er meer dan drie kaarten zijn
+- images in `app/public/images/nvm/`; copy in `src/lib/nvm-content.ts`
+- **nog te seeden:** `npm run seed:nvm && npm run seed:nav`
+- `seed:nav` schreef `navLeft` helemaal niet weg (bug-017) — de linkerhelft van de topbar was daardoor leeg. Nu staat er `Verkoop / Aankoop / Taxatie / NVM`, en NVM staat ook in de footer onder Diensten
+
 
 **SEO**
 - `seo` object type on the `page` document is now rendered: `PAGE_QUERY` selects it, `app/src/sanity/metadata.ts` maps it to Next Metadata, `generateMetadata` added to `/` and `/[slug]`
@@ -103,7 +111,7 @@
 
 ## 🚀 Next phase
 
-**Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026, waardebepaling 20-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`, `npm run seed:waardebepaling`). Wat resteert is afmaken en aanscherpen. `hart-en-huis-lp-zoekopdracht.html` staat nog open.
+**Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026, waardebepaling 20-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`, `npm run seed:waardebepaling`). Wat resteert is afmaken en aanscherpen. `hart-en-huis-lp-zoekopdracht.html` is het laatste openstaande design (nvm toegevoegd 21-08-2026; nog te seeden: `npm run seed:nvm && npm run seed:nav`).
 
 ### Open punten
 1. **De scraper is lokaal tegen de echte Funda gedraaid (17-08-2026) en klopt: 42 verkoop + 12 aankoop = 54, zonder waarschuwingen** — precies wat de widget zelf noemt. De fixtures zijn nu echte pagina's. Wat resteert vóór de eerste échte run:
@@ -117,7 +125,8 @@
 5. Met 6 objecten is de aanbod-grid "toon meer" (>9) en de CTA-kaart-na-6 nog niet met echte data uitgeprobeerd.
 6. `SITE.fundaScore` / `SITE.reviewCount` zijn nu alleen nog fallback; de factBar op /verkoop gebruikt `SITE.fundaScore` nog hardcoded.
 7. **`woning` heeft geen `seo`-veld** terwijl `WONING_QUERY` het wél selecteert (`seo: null` in de gegenereerde types) — objectpagina's krijgen dus nooit CMS-SEO. Keuze: veld toevoegen aan het schema zoals `page` dat heeft, of de dode selectie uit de query halen. Zie bug-013.
-8. Na elke schemawijziging `npm run typegen` draaien en `app/src/sanity/{schema.json,sanity.types.ts}` meecommitten — beide staan in git en zijn nu de bron van de types.
+8. `npm run typegen` faalt op de default node (v17) van deze machine; draai hem met `export PATH="$HOME/.nvm/versions/node/v22.18.0/bin:$PATH"` ervoor.
+9. Na elke schemawijziging `npm run typegen` draaien en `app/src/sanity/{schema.json,sanity.types.ts}` meecommitten — beide staan in git en zijn nu de bron van de types.
 
 ## 📁 Active architecture
 
