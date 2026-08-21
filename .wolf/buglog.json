@@ -340,6 +340,42 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-21T14:10:00Z"
+    },
+    {
+      "id": "bug-019",
+      "timestamp": "2026-08-21T20:30:00Z",
+      "error_message": "De Deploy Sanity Studio action draait niet bij een push naar main of het mergen van een PR.",
+      "file": ".github/workflows/deploy-sanity-studio.yml",
+      "root_cause": "De workflow had een `paths: studio-hart-huis/**` filter. Elke commit op main sinds de workflow bestaat raakte alleen .github/, .wolf/ of app/ aan, dus GitHub sloeg de run terecht over. Het leek een kapotte trigger maar was het filter.",
+      "fix": "`paths`-filter verwijderd zodat de workflow op elke push naar main draait; `concurrency` toegevoegd zodat een nieuwe push een lopende deploy annuleert.",
+      "tags": [
+        "github-actions",
+        "ci",
+        "sanity",
+        "deploy",
+        "paths-filter",
+        "trigger"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T20:30:00Z"
+    },
+    {
+      "id": "bug-020",
+      "timestamp": "2026-08-21T20:30:00Z",
+      "error_message": "Error: Nonexistent flag: --no-bust-cache (sanity deploy, exit code 2)",
+      "file": ".github/workflows/deploy-sanity-studio.yml",
+      "root_cause": "`--no-bust-cache` bestaat niet in deze versie van de Sanity CLI; het vlaggetje was verzonnen bij het schrijven van de workflow en nooit tegen `sanity deploy --help` gecontroleerd.",
+      "fix": "Vlag verwijderd en vervangen door `--yes` (unattended), want zonder `studioHost` in sanity.cli.ts kan `sanity deploy` interactief om een hostname vragen en dan hangt de CI-run.",
+      "tags": [
+        "github-actions",
+        "sanity-cli",
+        "deploy",
+        "cli-flags"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T20:30:00Z"
     }
   ]
 }

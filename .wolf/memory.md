@@ -363,3 +363,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 19:45 | Added GitHub Action to build+deploy Sanity Studio on push to main (paths: studio-hart-huis/**), using SANITY_AUTH_TOKEN secret | .github/workflows/deploy-sanity-studio.yml | Created, not yet tested (needs SANITY_AUTH_TOKEN secret set in repo settings) | ~1500 |
+| 20:30 | Diagnosed why the action never fired: `paths: studio-hart-huis/**` filter — no commit on main since the workflow landed touched that folder. Removed the filter, added `concurrency`, bumped checkout/setup-node to v5, replaced invalid `--no-bust-cache` with `--yes` | .github/workflows/deploy-sanity-studio.yml, .wolf/buglog.json | Fixed; bug-019 + bug-020 logged. SANITY_AUTH_TOKEN secret does exist (manual run got past auth into a flag error) | ~4000 |
