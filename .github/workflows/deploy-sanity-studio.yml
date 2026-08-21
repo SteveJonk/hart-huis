@@ -39,8 +39,13 @@ jobs:
         run: npm run build
 
       # --yes: unattended, anders vraagt de CLI om een studio-hostname en
-      # blijft de run hangen. De hostname komt van de al gedeployde studio.
+      # blijft de run hangen.
+      # --url: de studio waar naartoe gedeployd wordt, uit de repository
+      # variable SANITY_STUDIO_HOSTNAME (Settings > Secrets and variables >
+      # Actions > Variables). Geen secret — de hostname staat toch publiek.
+      # Is de variable leeg, dan valt de CLI terug op de al gedeployde studio.
       - name: Deploy to Sanity
-        run: npm run deploy -- --yes
+        run: npm run deploy -- --yes ${STUDIO_HOSTNAME:+--url "$STUDIO_HOSTNAME"}
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          STUDIO_HOSTNAME: ${{ vars.SANITY_STUDIO_HOSTNAME }}

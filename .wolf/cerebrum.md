@@ -8,6 +8,9 @@
 
 <!-- How the user likes things done. Code style, tools, patterns, communication. -->
 
+- **CI-configuratie hoort in GitHub, niet hardcoded in de repo.** Voor de studio-hostname koos de gebruiker expliciet een GitHub repository *variable* (`vars.SANITY_STUDIO_HOSTNAME`) boven `studioHost` in `sanity.cli.ts`. Bied bij dit soort keuzes eerst de env-var/variable-route aan. Secrets → `secrets.*`, niet-geheime config → `vars.*`.
+- **Scoping in workflows is gewenst, niet overbodig.** De `paths`-filter op de deploy-workflow werd bewust teruggezet. Verwijder zulke filters niet om "het simpeler te maken"; los het onderliggende probleem op (zie Do-Not-Repeat 2026-08-21).
+
 ## Key Learnings
 
 - **Project:** hart-huis
@@ -75,6 +78,10 @@
 - **`SiteHeader`/`SiteFooter` verhuisden uit `layout.tsx` naar een nieuwe `PageWrapper.tsx`** (async server component, fetcht `NAVIGATION_QUERY`/`FOOTER_QUERY` zelf; heette eerst `SiteChrome`, op 21-08-2026 hernoemd) omdat de root layout geen toegang heeft tot de `page`-data van de huidige route — `isLandingPage` is alleen bekend waar `PAGE_QUERY` al gefetcht wordt. `layout.tsx` is nu alleen nog html/body/fonts; elke leaf-route (`page.tsx` home, `[slug]/page.tsx`, `aanbod/[slug]/page.tsx`, `not-found.tsx`) wrapt zijn eigen `<main>` in `<PageWrapper minimal={...}>`. Het objectdetail en de 404-pagina krijgen altijd de volledige nav (`minimal` default `false`).
 
 ## Do-Not-Repeat
+
+- **2026-08-21 — Verzin geen CLI-vlaggen.** `sanity deploy --no-bust-cache` bestaat niet; de CI-run viel om met exit 2. Controleer een vlag tegen `--help` (of de docs) vóór je hem in een workflow zet.
+- **2026-08-21 — "De action draait niet" is niet automatisch een storing.** Bij een `paths`-filter is overslaan correct gedrag als de commit die paden niet raakt. Kijk eerst met `git log --name-only` welke bestanden er echt veranderden, vóór je aan de trigger sleutelt. Verwijder het filter niet als diagnose.
+- **2026-08-21 — `sanity deploy` hangt in CI zonder `--yes`.** Zonder `studioHost` in `sanity.cli.ts` vraagt de CLI interactief om een hostname; op een runner zonder TTY loopt dat vast tot de timeout.
 
 - [2026-08-18] Een nieuw bloktype registreren in `pageBuilderType.ts` is niet genoeg: zonder de import + regel in de `schemaTypes`-array van `index.ts` faalt `npm run typegen` met "Unknown type: <naam>". Beide bestanden aanpassen, daarna typegen draaien.
 - [2026-08-18] Poort 3000 is vaak bezet door een ander project van de gebruiker; `.claude/launch.json` staat daarom op `autoPort: true`. Controleer bij een vreemde pagina eerst of je wel op de hart-huis-server zit.
