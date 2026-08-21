@@ -6,7 +6,14 @@ on:
       - main
     paths:
       - "studio-hart-huis/**"
+      # De workflow zelf, zodat een wijziging hieraan meteen getest wordt.
+      - ".github/workflows/deploy-sanity-studio.yml"
   workflow_dispatch:
+
+# Eén deploy tegelijk; een nieuwe push annuleert een lopende run.
+concurrency:
+  group: deploy-sanity-studio
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -16,10 +23,10 @@ jobs:
         working-directory: studio-hart-huis
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -31,7 +38,14 @@ jobs:
       - name: Build studio
         run: npm run build
 
+      # --yes: unattended, anders vraagt de CLI om een studio-hostname en
+      # blijft de run hangen.
+      # --url: de studio waar naartoe gedeployd wordt, uit de repository
+      # variable SANITY_STUDIO_HOSTNAME (Settings > Secrets and variables >
+      # Actions > Variables). Geen secret — de hostname staat toch publiek.
+      # Is de variable leeg, dan valt de CLI terug op de al gedeployde studio.
       - name: Deploy to Sanity
-        run: npm run deploy
+        run: npm run deploy -- --yes ${STUDIO_HOSTNAME:+--url "$STUDIO_HOSTNAME"}
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          STUDIO_HOSTNAME: ${{ vars.SANITY_STUDIO_HOSTNAME }}
