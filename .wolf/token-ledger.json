@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 399966,
-    "total_reads": 345,
+    "total_tokens_estimated": 402013,
+    "total_reads": 347,
     "total_writes": 0,
-    "total_sessions": 51,
-    "anatomy_hits": 228,
+    "total_sessions": 54,
+    "anatomy_hits": 230,
     "anatomy_misses": 111,
     "repeated_reads_blocked": 78,
-    "estimated_savings_vs_bare_cli": 379544,
-    "real_input_tokens": 27364,
-    "real_output_tokens": 2307178,
-    "real_cache_read_tokens": 708131283,
-    "real_cache_creation_tokens": 10447073,
-    "real_api_calls": 4015
+    "estimated_savings_vs_bare_cli": 379944,
+    "real_input_tokens": 27386,
+    "real_output_tokens": 2310534,
+    "real_cache_read_tokens": 708906393,
+    "real_cache_creation_tokens": 10489712,
+    "real_api_calls": 4026
   },
   "sessions": [
     {
@@ -2997,6 +2997,42 @@
         "cache_read_input_tokens": 110517878,
         "cache_creation_input_tokens": 1119299,
         "api_calls": 390
+      }
+    },
+    {
+      "id": "session-2026-08-21-1550",
+      "agent": "claude",
+      "started": "2026-08-21T13:50:08.089Z",
+      "ended": "2026-08-21T13:51:23.350Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/sanity/queries.ts",
+          "tokens_estimated": 1986,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/sanity/client.ts",
+          "tokens_estimated": 61,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 2047,
+        "output_tokens_estimated": 0,
+        "reads_count": 2,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 2
+      },
+      "real_usage": {
+        "input_tokens": 22,
+        "output_tokens": 3356,
+        "cache_read_input_tokens": 775110,
+        "cache_creation_input_tokens": 42639,
+        "api_calls": 11
       }
     }
   ],

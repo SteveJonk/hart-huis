@@ -245,6 +245,18 @@ export const FORM_SETTINGS_QUERY = defineQuery(`
   }
 `);
 
+/** Slugs for the sitemap: every `page` (except `home`, which is `/`) and every `woning`. */
+export const SITEMAP_QUERY = defineQuery(`{
+  "pages": *[_type == "page" && slug.current != "home"]{
+    "slug": slug.current,
+    _updatedAt
+  },
+  "objecten": *[_type == "woning"]{
+    "slug": slug.current,
+    _updatedAt
+  }
+}`);
+
 export const NAVIGATION_QUERY = defineQuery(`
   *[_id == "navigation"][0]{
     logo{ alt, "url": asset->url },

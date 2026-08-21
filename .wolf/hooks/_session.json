@@ -1,10 +1,21 @@
 {
-  "session_id": "session-2026-08-21-1519",
-  "started": "2026-08-21T13:19:57.283Z",
-  "files_read": {},
+  "session_id": "session-2026-08-21-1550",
+  "started": "2026-08-21T13:50:08.089Z",
+  "files_read": {
+    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/sanity/queries.ts": {
+      "count": 1,
+      "tokens": 1986,
+      "first_read": "2026-08-21T13:50:24.220Z"
+    },
+    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/sanity/client.ts": {
+      "count": 1,
+      "tokens": 61,
+      "first_read": "2026-08-21T13:50:24.435Z"
+    }
+  },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 0,
+  "anatomy_hits": 2,
   "anatomy_misses": 0,
   "repeated_reads_warned": 0,
   "cerebrum_warnings": 0,

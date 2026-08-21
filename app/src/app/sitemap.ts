@@ -1,24 +1,30 @@
 import type { MetadataRoute } from 'next';
+import { client } from '@/sanity/client';
+import { SITEMAP_QUERY } from '@/sanity/queries';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const BASE_URL = 'https://www.hartenhuis.nl';
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const { pages, objecten } = await client.fetch(SITEMAP_QUERY);
+
   return [
     {
-      url: 'https://www.hartenhuis.nl',
+      url: BASE_URL,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
-    {
-      url: 'https://www.hartenhuis.nl/aanbod',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+    ...pages.map((page) => ({
+      url: `${BASE_URL}/${page.slug}`,
+      lastModified: new Date(page._updatedAt),
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
-    },
-    {
-      url: 'https://www.hartenhuis.nl/aankoop',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
-    },
+    })),
+    ...objecten.map((woning) => ({
+      url: `${BASE_URL}/aanbod/${woning.slug}`,
+      lastModified: new Date(woning._updatedAt),
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    })),
   ];
 }

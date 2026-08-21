@@ -335,3 +335,18 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 15:22 | per-form mail (ontvangers/onderwerp/bericht + bevestiging naar invuller) | formType.ts, queries.ts, submit-form/route.ts, docs/formulieren.md | typegen + check:form + lint groen | ~25k |
+
+## Session: 2026-08-21 15:28
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-21 15:49
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-21 15:50
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
