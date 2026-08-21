@@ -1,12 +1,14 @@
 /**
  * Smallest thing that fails if the CMS-driven form layout breaks.
  *
- * Four rules are load-bearing and easy to regress:
+ * Five rules are load-bearing and easy to regress:
  *   1. `toSteps` turns either mode into the one shape the renderer draws;
  *   2. half-width fields pair up, and legacy documents without any width fall
  *      back to the guess the contact page's layout was built on;
  *   3. field names are unique per form — they are the mail's keys;
- *   4. FORM_QUERY, which is the server's allow-list, resolves to exactly the
+ *   4. migrating a plugin document keeps the rendered layout and carries every
+ *      reference over to the new id;
+ *   5. FORM_QUERY, which is the server's allow-list, resolves to exactly the
  *      fields the renderer shows. If those two disagree the form silently
  *      stops accepting submissions.
  */
@@ -16,6 +18,7 @@ import {toFieldRows, toSteps, type FormFieldDefinition} from '../src/lib/form-fi
 import {CONTACT_FORM_DEFINITION, CONTACT_FORM_FIELDS} from '../src/lib/contact-content'
 import {WAARDEBEPALING_FORM} from '../src/lib/waardebepaling-content'
 import {FORM_QUERY} from '../src/sanity/queries'
+import {repoint, toFormDoc, type SanityDocument} from './form-migration'
 
 function names(rows: FormFieldDefinition[][]) {
   return rows.map((row) => row.map((field) => field.name))
@@ -117,7 +120,61 @@ for (const form of [CONTACT_FORM_DEFINITION, WAARDEBEPALING_FORM]) {
   }
 }
 
-// 4. The server's allow-list must match what the renderer draws, in order.
+// 4. Migration: a plugin document must come out rendering identically, and
+//    every reference to it must follow it to the new id — a missed one leaves
+//    a page pointing at a document the migration then deletes.
+const legacy: SanityDocument = {
+  _id: 'old-id',
+  _type: 'contactForm',
+  id: 'contact',
+  title: 'Contactformulier',
+  showtitle: true,
+  // A wide field between narrow ones: the row layout here is only reproduced
+  // if the width guess is right, so this fixture pins withWidths() down.
+  fields: [
+    {_key: 'a', label: 'Naam', name: 'naam', type: 'text', showPlaceholder: true},
+    {_key: 'b', label: 'Bericht', name: 'bericht', type: 'textarea', isRequired: true},
+    {_key: 'c', label: 'Telefoon', name: 'telefoon', type: 'tel'},
+    {_key: 'd', label: 'E-mail', name: 'email', type: 'email'},
+  ],
+}
+
+const migrated = toFormDoc(legacy, 'form-contact')
+assert.equal(migrated._type, 'form')
+assert.equal(migrated.mode, 'simple', 'a plugin form is always single-page')
+assert.equal(migrated.showTitle, true, 'showtitle -> showTitle')
+// The guessed layout is written down, so the rendered rows do not move.
+assert.deepEqual(
+  names(toFieldRows(migrated.fields as FormFieldDefinition[])),
+  names(toFieldRows(legacy.fields as FormFieldDefinition[])),
+  'migration changed the row layout',
+)
+// showPlaceholder became a real placeholder, so the flag is no longer needed.
+assert.equal(migrated.fields[0].placeholder, 'Naam')
+assert.equal(migrated.fields[1].isRequired, true)
+assert.deepEqual(
+  names(toFieldRows(migrated.fields as FormFieldDefinition[])),
+  [['naam'], ['bericht'], ['telefoon', 'email']],
+)
+
+const mapping = new Map([['old-id', 'form-contact']])
+const page = {
+  _id: 'page-contact',
+  _type: 'page',
+  content: [
+    {_type: 'contactFormSection', form: {_type: 'reference', _ref: 'old-id'}},
+    {_type: 'faqs', faqs: [{_type: 'reference', _ref: 'keep-me'}]},
+  ],
+}
+assert.deepEqual(repoint(page, mapping), {
+  ...page,
+  content: [
+    {_type: 'contactFormSection', form: {_type: 'reference', _ref: 'form-contact'}},
+    {_type: 'faqs', faqs: [{_type: 'reference', _ref: 'keep-me'}]},
+  ],
+})
+
+// 5. The server's allow-list must match what the renderer draws, in order.
 const tree = parse(FORM_QUERY)
 const stale = [{fields: [{label: 'Stale', name: 'stale', type: 'text', isRequired: true}]}]
 
