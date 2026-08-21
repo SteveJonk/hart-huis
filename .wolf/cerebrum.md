@@ -71,12 +71,15 @@
 
 - **De twee landingspagina-designs delen letterlijk hun stylesheet.** `!waardebepaling.html` en `hart-en-huis-lp-zoekopdracht.html` hebben een byte-identiek `<style>`-blok (1190 regels). Een nieuwe LP uit die familie is dus puur copy + een `form`-document: `formHero`, `iconCards`, `numberedSteps`, `personQuote`, `quoteStrip`, `faqs`, `centeredCta`. Diff eerst de style-blokken (`sed -n '/^<style>/,/^<\/style>/p'`) voordat je ook maar één component opent.
 
-- **De kale LP-nav en -footer uit de designs zijn niet geïmplementeerd.** /waardebepaling en /zoekopdracht draaien op de gewone `SiteHeader`/`SiteFooter` uit `layout.tsx`. Bewuste lijn — wijk daar niet stilletjes van af voor één pagina.
+- ~~**De kale LP-nav en -footer uit de designs zijn niet geïmplementeerd.**~~ — **herzien 21-08-2026**: `page` heeft nu een `isLandingPage` Boolean (studio: "Landingspagina"). `SiteHeader` kreeg een `minimal`-prop die de nav-items en de burger volledig weglaat (alleen het logo, gelinkt naar home, gecentreerd via `col-start-2`). Iedere `page`-document kan zo zonder codewijziging een landingspagina worden.
+- **`SiteHeader`/`SiteFooter` verhuisden uit `layout.tsx` naar een nieuwe `PageWrapper.tsx`** (async server component, fetcht `NAVIGATION_QUERY`/`FOOTER_QUERY` zelf; heette eerst `SiteChrome`, op 21-08-2026 hernoemd) omdat de root layout geen toegang heeft tot de `page`-data van de huidige route — `isLandingPage` is alleen bekend waar `PAGE_QUERY` al gefetcht wordt. `layout.tsx` is nu alleen nog html/body/fonts; elke leaf-route (`page.tsx` home, `[slug]/page.tsx`, `aanbod/[slug]/page.tsx`, `not-found.tsx`) wrapt zijn eigen `<main>` in `<PageWrapper minimal={...}>`. Het objectdetail en de 404-pagina krijgen altijd de volledige nav (`minimal` default `false`).
 
 ## Do-Not-Repeat
 
 - [2026-08-18] Een nieuw bloktype registreren in `pageBuilderType.ts` is niet genoeg: zonder de import + regel in de `schemaTypes`-array van `index.ts` faalt `npm run typegen` met "Unknown type: <naam>". Beide bestanden aanpassen, daarna typegen draaien.
 - [2026-08-18] Poort 3000 is vaak bezet door een ander project van de gebruiker; `.claude/launch.json` staat daarom op `autoPort: true`. Controleer bij een vreemde pagina eerst of je wel op de hart-huis-server zit.
+- [2026-08-21] Er is **geen** `.prettierrc` in de repo — de single-quote stijl overal in `app/src` is puur conventie, niet afgedwongen (eslint-config-next checkt geen quote-stijl). `npx prettier --write` zonder opties zet dus stilzwijgend om naar double quotes. Gebruik `npx prettier --single-quote --write` (of run prettier helemaal niet en fix indentatie handmatig) om de conventie niet te breken.
+- [2026-08-21] Een lokale `npm run build` faalt in deze sandbox altijd op elke pagina die `client.fetch` aanroept tijdens prerender — `api.sanity.io` staat niet in de egress-allowlist (net als funda.nl, zie eerdere learning) en zonder `NEXT_PUBLIC_SANITY_PROJECT_ID` faalt de clientconstructie zelfs eerder. Dat is geen regressie van code die je net schreef; controleer met `tsc --noEmit` + `eslint` of de build zo ver komt als de pagina's die *wél* al Sanity fetchten vóór je wijziging.
 
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
 <!-- Format: [YYYY-MM-DD] Description of what went wrong and what to do instead. -->

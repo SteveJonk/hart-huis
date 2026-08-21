@@ -2,9 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import type { ListingItem } from '@/components/blocks/Listings';
+import { PageWrapper } from '@/components/layout/PageWrapper';
 import { ObjectDescription } from '@/components/object/ObjectDescription';
 import { ObjectFeatures } from '@/components/object/ObjectFeatures';
-import { ObjectGallery, type GalleryPhoto } from '@/components/object/ObjectGallery';
+import {
+  ObjectGallery,
+  type GalleryPhoto,
+} from '@/components/object/ObjectGallery';
 import { ObjectHeader } from '@/components/object/ObjectHeader';
 import { ObjectSidebar } from '@/components/object/ObjectSidebar';
 import { SimilarObjects } from '@/components/object/SimilarObjects';
@@ -52,7 +56,9 @@ function toCard(woning: WoningCard): ListingItem {
   };
 }
 
-export async function generateMetadata({ params }: ObjectPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ObjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const woning = await getWoning(slug);
 
@@ -80,54 +86,57 @@ export default async function ObjectPage({ params }: ObjectPageProps) {
       if (!src) return null;
       return {
         src,
-        alt: foto.alt || `${woning.adres} in ${woning.plaats} — foto ${index + 1}`,
+        alt:
+          foto.alt || `${woning.adres} in ${woning.plaats} — foto ${index + 1}`,
       };
     })
     .filter((photo): photo is GalleryPhoto => Boolean(photo));
 
   return (
-    <main>
-      <ObjectGallery photos={photos} />
+    <PageWrapper>
+      <main>
+        <ObjectGallery photos={photos} />
 
-      <section className='pt-[52px] pb-[118px] max-md:pt-[38px] max-md:pb-[82px]'>
-        <Wrap className='grid grid-cols-[1.5fr_0.5fr] items-start gap-16 max-lg:grid-cols-[1.4fr_0.6fr] max-lg:gap-10 max-md:grid-cols-1'>
-          <div>
-            <ObjectHeader
+        <section className="pt-[52px] pb-[118px] max-md:pt-[38px] max-md:pb-[82px]">
+          <Wrap className="grid grid-cols-[1.5fr_0.5fr] items-start gap-16 max-lg:grid-cols-[1.4fr_0.6fr] max-lg:gap-10 max-md:grid-cols-1">
+            <div>
+              <ObjectHeader
+                adres={woning.adres}
+                postcode={woning.postcode}
+                plaats={woning.plaats}
+                prijs={woning.prijs}
+                prijsConditie={woning.prijsConditie}
+                soortWoning={woning.soortWoning}
+                bouwjaar={woning.bouwjaar}
+                woonoppervlak={woning.woonoppervlak}
+                perceel={woning.perceel}
+                inhoud={woning.inhoud}
+                kamers={woning.kamers}
+                slaapkamers={woning.slaapkamers}
+                energielabel={woning.energielabel}
+              />
+              <ObjectDescription tekst={woning.aanbiedingsTekst} />
+              <ObjectFeatures groepen={woning.kenmerkGroepen} />
+            </div>
+
+            <ObjectSidebar
               adres={woning.adres}
-              postcode={woning.postcode}
-              plaats={woning.plaats}
+              status={woning.status}
               prijs={woning.prijs}
               prijsConditie={woning.prijsConditie}
-              soortWoning={woning.soortWoning}
-              bouwjaar={woning.bouwjaar}
+              aanvaarding={woning.aanvaarding}
+              aangebodenSinds={woning.aangebodenSinds}
               woonoppervlak={woning.woonoppervlak}
               perceel={woning.perceel}
-              inhoud={woning.inhoud}
-              kamers={woning.kamers}
-              slaapkamers={woning.slaapkamers}
-              energielabel={woning.energielabel}
+              brochureUrl={woning.brochureUrl}
             />
-            <ObjectDescription tekst={woning.aanbiedingsTekst} />
-            <ObjectFeatures groepen={woning.kenmerkGroepen} />
-          </div>
+          </Wrap>
+        </section>
 
-          <ObjectSidebar
-            adres={woning.adres}
-            status={woning.status}
-            prijs={woning.prijs}
-            prijsConditie={woning.prijsConditie}
-            aanvaarding={woning.aanvaarding}
-            aangebodenSinds={woning.aangebodenSinds}
-            woonoppervlak={woning.woonoppervlak}
-            perceel={woning.perceel}
-            brochureUrl={woning.brochureUrl}
-          />
-        </Wrap>
-      </section>
+        <SimilarObjects items={(woning.vergelijkbaar ?? []).map(toCard)} />
 
-      <SimilarObjects items={(woning.vergelijkbaar ?? []).map(toCard)} />
-
-      <CtaBand {...OBJECT_CTA} />
-    </main>
+        <CtaBand {...OBJECT_CTA} />
+      </main>
+    </PageWrapper>
   );
 }

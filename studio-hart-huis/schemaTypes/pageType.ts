@@ -24,6 +24,14 @@ export const pageType = defineType({
       type: 'seo',
     }),
     defineField({
+      name: 'isLandingPage',
+      title: 'Landingspagina',
+      description:
+        'Gebruikt een minimale topbar: alleen het logo, gelinkt naar home, zonder menu-items.',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'content',
       type: 'pageBuilder',
     }),

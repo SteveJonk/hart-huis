@@ -110,6 +110,14 @@
 - **migratie:** `npm run migrate:forms -- --dry-run`, dan zonder vlag. Vervangt elk `contactForm` op zijn plek (zelfde `_id`, dus verwijzingen blijven heel) en schrijft de gegokte kolombreedtes één keer uit. Daarna `seed:contact` + `seed:waardebepaling` voor de knopteksten/bevestigingen, en **Sender address** invullen
 - uitleg voor later: `docs/formulieren.md`
 
+**Landingspagina-Boolean → minimale nav (21-08-2026)**
+- `page` heeft een nieuw veld `isLandingPage` (studio: "Landingspagina"); elke pagina kan er zo een worden, geen aparte routing nodig
+- `SiteHeader` kreeg een `minimal`-prop: verbergt beide `DesktopNav`s en de burger, logo blijft gecentreerd en linkt naar `/`
+- `SiteHeader`/`SiteFooter`/`WhatsAppButton` verhuisden uit `layout.tsx` naar een nieuwe `PageWrapper.tsx` (async server component; heette eerst `SiteChrome`, op verzoek hernoemd), omdat de root layout `isLandingPage` niet kon zien — dat komt alleen mee waar `PAGE_QUERY` al gefetcht wordt. `layout.tsx` is nu kaal (html/body/fonts); elke leaf-route wrapt zelf in `<PageWrapper minimal={...}>`: home, `[slug]`, `aanbod/[slug]` (altijd volledige nav) en `not-found.tsx` (altijd volledige nav)
+- `npm run typegen` gedraaid, `schema.json` + `sanity.types.ts` meegecommit
+- **nog niet geseed op een pagina** — zet `isLandingPage` aan op /waardebepaling en/of /zoekopdracht in de studio om te verifiëren (die twee draaiden al zonder nav-links, dus het zichtbare verschil is klein; test liever eerst op een pagina mét navigatie-items)
+- lokale `npm run build` komt niet verder dan het prerenderen omdat `api.sanity.io` niet in de sandbox-egress-allowlist zit — geen regressie, zie cerebrum Do-Not-Repeat 21-08-2026
+
 ### Home-blokken automatisch gevuld (2026-08-17)
 - `listings` toont de **3 nieuwste woningen** en `reviews` de **8 nieuwste reviews**, beide rechtstreeks uit de dataset — de handmatige selectie is uit `listingsType`/`reviewsType` gehaald
 - de kaarten komen via `toListing()` uit `Listings.tsx` (staat daar en niet in `ObjectGrid.tsx`, want die is een client component)

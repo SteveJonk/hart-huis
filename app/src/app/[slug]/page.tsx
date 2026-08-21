@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { PageBuilder } from '@/components/PageBuilder';
+import { PageWrapper } from '@/components/layout/PageWrapper';
 import { client } from '@/sanity/client';
 import { pageMetadata } from '@/sanity/metadata';
 import { PAGE_QUERY } from '@/sanity/queries';
@@ -11,7 +12,9 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
   if (slug === 'home') {
@@ -35,8 +38,10 @@ export default async function SanityPage({ params }: PageProps) {
   }
 
   return (
-    <main>
-      <PageBuilder content={page.content} />
-    </main>
+    <PageWrapper minimal={Boolean(page.isLandingPage)}>
+      <main>
+        <PageBuilder content={page.content} />
+      </main>
+    </PageWrapper>
   );
 }

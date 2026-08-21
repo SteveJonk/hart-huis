@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PageBuilder } from '@/components/PageBuilder';
+import { PageWrapper } from '@/components/layout/PageWrapper';
 import { client } from '@/sanity/client';
 import { pageMetadata } from '@/sanity/metadata';
 import { PAGE_QUERY } from '@/sanity/queries';
@@ -21,8 +22,10 @@ export default async function HomePage() {
   }
 
   return (
-    <main>
-      <PageBuilder content={page.content} />
-    </main>
+    <PageWrapper minimal={Boolean(page.isLandingPage)}>
+      <main>
+        <PageBuilder content={page.content} />
+      </main>
+    </PageWrapper>
   );
 }
