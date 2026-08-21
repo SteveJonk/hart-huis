@@ -377,6 +377,30 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-21T20:30:00Z"
+    },
+    {
+      "id": "bug-021",
+      "timestamp": "2026-08-21T21:20:00Z",
+      "error_message": "In de gedeployde studio meldt de Funda-tool: \"Nog niet ingesteld. Zet SANITY_STUDIO_SCRAPER_URL en SANITY_STUDIO_SCRAPER_SECRET in studio-hart-huis/.env en start de studio opnieuw.\"",
+      "file": ".github/workflows/deploy-sanity-studio.yml",
+      "root_cause": "Vite vervangt `process.env.SANITY_STUDIO_*` bij het BOUWEN door de letterlijke waarde. De workflow bouwde zonder die variabelen — `studio-hart-huis/.env` staat in .gitignore en bestaat dus niet op de runner — dus beide werden `undefined` ingebakken en de tool viel terug op zijn lege-staat. De deploy zelf slaagde, dus er was geen enkel signaal dat er iets mis was.",
+      "fix": "De twee variabelen op job-niveau in de workflow gezet (`vars.SANITY_STUDIO_SCRAPER_URL` + `secrets.SANITY_STUDIO_SCRAPER_SECRET`), zodat zowel `sanity build` als de herbouw binnen `sanity deploy` ze meekrijgt. Plus een guard-stap die de run afbreekt met ::error:: als er een leeg is, zodat dezelfde stille fout niet nog eens ongemerkt gedeployd wordt. docs/funda-review-scraper.md uitgebreid met een 'Studio — gedeployd' sectie.",
+      "tags": [
+        "github-actions",
+        "ci",
+        "sanity",
+        "deploy",
+        "env-vars",
+        "vite",
+        "build-time",
+        "silent-failure"
+      ],
+      "related_bugs": [
+        "bug-019",
+        "bug-020"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T21:20:00Z"
     }
   ]
 }

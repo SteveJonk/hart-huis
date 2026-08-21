@@ -61,7 +61,7 @@ Zonder `CRON_SECRET` wordt de cron met 401 afgewezen — zet hem dus.
 > vanaf Pro. Loopt hij op Hobby uit de tijd, verlaag dan `delayMs` of draai de
 > tabbladen apart met `?type=Verkoop` en `?type=Aankoop`.
 
-### Studio
+### Studio — lokaal
 
 In `studio-hart-huis/.env`:
 
@@ -69,6 +69,23 @@ In `studio-hart-huis/.env`:
 SANITY_STUDIO_SCRAPER_URL=https://<site>/api/scrape-funda-reviews
 SANITY_STUDIO_SCRAPER_SECRET=<zelfde waarde als FUNDA_SCRAPER_SECRET>
 ```
+
+### Studio — gedeployd
+
+Vite bakt `SANITY_STUDIO_*` bij het **bouwen** in de bundle, dus `.env` lokaal
+zetten is niet genoeg: de gedeployde studio krijgt wat er tijdens `sanity build`
+in de omgeving stond. Die staat in `.gitignore` en dus niet op de CI-runner.
+
+Zet ze daarom ook in GitHub, onder **Settings → Secrets and variables → Actions**:
+
+| Naam | Waar | Waarom |
+| --- | --- | --- |
+| `SANITY_STUDIO_SCRAPER_URL` | Variables | Gewone URL, geen geheim |
+| `SANITY_STUDIO_SCRAPER_SECRET` | Secrets | Houdt hem uit de repo en maskeert hem in de logs |
+
+`.github/workflows/deploy-sanity-studio.yml` zet ze op job-niveau en breekt de
+run af als er één leeg is — anders deployt de studio gewoon en meldt de tool
+daarna "Nog niet ingesteld", een fout die je pas in productie ziet.
 
 Daarna staat het in de linkerkolom van de studio onder **Tools → Funda-reviews**,
 met een knop "Reviews ophalen" en een knop "Eerst testen" (die schrijft niets weg).
