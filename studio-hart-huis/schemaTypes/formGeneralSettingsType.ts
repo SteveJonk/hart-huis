@@ -19,7 +19,8 @@ export const formGeneralSettingsType = defineType({
       name: 'adminEmail',
       title: 'Admin Email',
       type: 'string',
-      description: 'The email address where submissions should be sent.',
+      description:
+        'Default recipient. A form with its own "Ontvangers" under Mail overrides this.',
       validation: (rule) => rule.required().email(),
     }),
     defineField({
@@ -52,7 +53,8 @@ export const formGeneralSettingsType = defineType({
       name: 'confirmationSubject',
       title: 'Email Subject',
       type: 'string',
-      description: 'Subject line of the mail sent to the admin.',
+      description:
+        'Default subject of the mail to the admin. A form can override it under Mail.',
       initialValue: 'Nieuw bericht via de website',
       validation: (rule) => rule.required(),
     }),
@@ -61,7 +63,8 @@ export const formGeneralSettingsType = defineType({
       title: 'Email Message',
       type: 'text',
       rows: 4,
-      description: 'Intro above the table of answers in the mail to the admin.',
+      description:
+        'Default intro above the table of answers. A form can override it under Mail.',
       initialValue: 'Er is een nieuw bericht binnengekomen via de website.',
     }),
     defineField({

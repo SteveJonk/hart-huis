@@ -20,6 +20,7 @@ export const formType = defineType({
   groups: [
     {name: 'content', title: 'Fields', default: true},
     {name: 'labels', title: 'Buttons & confirmation'},
+    {name: 'mail', title: 'Mail'},
   ],
   fields: [
     defineField({
@@ -157,6 +158,74 @@ export const formType = defineType({
       rows: 3,
       group: 'labels',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'mailRecipients',
+      title: 'Ontvangers',
+      type: 'string',
+      group: 'mail',
+      description:
+        'Waar deze inzending heen gaat. Meerdere adressen mogen, gescheiden door een komma. Leeg = het Admin Email uit Form settings.',
+      validation: (rule) =>
+        rule.custom((value) => {
+          if (!value) return true
+          const bad = value
+            .split(',')
+            .map((address) => address.trim())
+            .filter((address) => address && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(address))
+          return bad.length ? `Geen geldig e-mailadres: ${bad.join(', ')}` : true
+        }),
+    }),
+    defineField({
+      name: 'mailSubject',
+      title: 'Onderwerp',
+      type: 'string',
+      group: 'mail',
+      description: 'Onderwerp van de mail naar de ontvangers. Leeg = de tekst uit Form settings.',
+    }),
+    defineField({
+      name: 'mailMessage',
+      title: 'Bericht',
+      type: 'text',
+      rows: 4,
+      group: 'mail',
+      description: 'Introtekst boven de tabel met antwoorden. Leeg = de tekst uit Form settings.',
+    }),
+    defineField({
+      name: 'sendCopyToSubmitter',
+      title: 'Stuur ook een mail naar de invuller',
+      type: 'boolean',
+      initialValue: false,
+      group: 'mail',
+      description:
+        'Gebruikt het eerste veld van het type E-mail in dit formulier als ontvanger. Zonder zo\'n veld gebeurt er niets.',
+    }),
+    defineField({
+      name: 'copySubject',
+      title: 'Onderwerp (mail naar invuller)',
+      type: 'string',
+      group: 'mail',
+      hidden: ({document}) => !document?.sendCopyToSubmitter,
+      validation: (rule) =>
+        rule.custom((value, context) =>
+          context.document?.sendCopyToSubmitter && !value
+            ? 'Vul een onderwerp in voor de mail naar de invuller.'
+            : true,
+        ),
+    }),
+    defineField({
+      name: 'copyMessage',
+      title: 'Bericht (mail naar invuller)',
+      type: 'text',
+      rows: 4,
+      group: 'mail',
+      hidden: ({document}) => !document?.sendCopyToSubmitter,
+      validation: (rule) =>
+        rule.custom((value, context) =>
+          context.document?.sendCopyToSubmitter && !value
+            ? 'Vul een bericht in voor de mail naar de invuller.'
+            : true,
+        ),
     }),
   ],
   preview: {

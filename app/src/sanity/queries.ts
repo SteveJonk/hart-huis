@@ -214,6 +214,12 @@ export const FORM_QUERY = defineQuery(`
   *[_id == $formId && _type == "form"][0]{
     _id,
     title,
+    mailRecipients,
+    mailSubject,
+    mailMessage,
+    sendCopyToSubmitter,
+    copySubject,
+    copyMessage,
     "fields": select(
       mode == "steps" => steps[].fields[]{label, name, type, isRequired},
       fields[]{label, name, type, isRequired}

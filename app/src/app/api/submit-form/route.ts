@@ -30,6 +30,14 @@ function fail(message: string, status: number) {
   return NextResponse.json({ success: false, message }, { status });
 }
 
+/** "a@x.nl, b@x.nl" -> ["a@x.nl", "b@x.nl"]. Semicolons count as separators too. */
+function splitEmails(value?: string | null) {
+  return (value ?? '')
+    .split(/[,;]/)
+    .map((email) => email.trim())
+    .filter(Boolean);
+}
+
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, '&amp;')
@@ -44,7 +52,7 @@ async function sendViaMailjet(
   message: {
     fromEmail: string;
     fromName: string;
-    to: string;
+    to: string[];
     replyTo?: string;
     subject: string;
     html: string;
@@ -63,7 +71,7 @@ async function sendViaMailjet(
       Messages: [
         {
           From: { Email: message.fromEmail, Name: message.fromName },
-          To: [{ Email: message.to }],
+          To: message.to.map((email) => ({ Email: email })),
           ...(message.replyTo ? { ReplyTo: { Email: message.replyTo } } : {}),
           Subject: message.subject,
           HTMLPart: message.html,
@@ -118,6 +126,8 @@ export async function POST(request: Request) {
 
   const answers: { label: string; value: string }[] = [];
   const attachments: { filename: string; content: Buffer }[] = [];
+  /** First answer to an e-mail field — the address the copy mail goes to. */
+  let submitterEmail = '';
 
   for (const field of form.fields ?? []) {
     if (!field?.name) continue;
@@ -154,6 +164,7 @@ export async function POST(request: Request) {
       if (field.isRequired) return fail(`Veld "${label}" is verplicht.`, 400);
       continue;
     }
+    if (field.type === 'email' && !submitterEmail) submitterEmail = text;
     answers.push({ label, value: text });
   }
 
@@ -169,7 +180,11 @@ export async function POST(request: Request) {
   const fromEmail = process.env.MAILJET_FROM_EMAIL || settings?.fromEmail || adminEmail;
   const fromName = settings?.fromName || 'Hart & Huis website';
 
-  if (!adminEmail || !mailjetApiKey || !mailjetApiSecret) {
+  // Per-form recipients win over the shared admin address; both are valid.
+  const recipients = splitEmails(form.mailRecipients);
+  if (recipients.length === 0 && adminEmail) recipients.push(adminEmail);
+
+  if (recipients.length === 0 || !fromEmail || !mailjetApiKey || !mailjetApiSecret) {
     console.error('submit-form: missing mail settings (env or formGeneralSettings)');
     return fail(
       'Het formulier is nog niet ingesteld. Bel of mail ons in de tussentijd.',
@@ -187,27 +202,53 @@ export async function POST(request: Request) {
     )
     .join('');
 
-  const subject = settings?.confirmationSubject || `Nieuw bericht via ${form.title ?? 'de website'}`;
-  const html = `<p>${escapeHtml(settings?.confirmationMessage || 'Er is een nieuw bericht binnengekomen via de website.')}</p>
+  const withAnswers = (intro: string) =>
+    `<p>${escapeHtml(intro).replace(/\n/g, '<br>')}</p>
         <table style="border-collapse:collapse;width:100%;margin-top:16px;">${rows}</table>`;
-  const replyTo = answers.find(({ label }) => /mail/i.test(label))?.value;
+
+  const subject =
+    form.mailSubject ||
+    settings?.confirmationSubject ||
+    `Nieuw bericht via ${form.title ?? 'de website'}`;
+  const html = withAnswers(
+    form.mailMessage ||
+      settings?.confirmationMessage ||
+      'Er is een nieuw bericht binnengekomen via de website.',
+  );
+  const replyTo = submitterEmail || answers.find(({ label }) => /mail/i.test(label))?.value;
+
+  const credentials = { apiKey: mailjetApiKey, apiSecret: mailjetApiSecret };
 
   try {
-    await sendViaMailjet(
-      { apiKey: mailjetApiKey, apiSecret: mailjetApiSecret },
-      {
-        fromEmail: fromEmail!,
-        fromName,
-        to: adminEmail,
-        replyTo,
-        subject,
-        html,
-        attachments,
-      },
-    );
+    await sendViaMailjet(credentials, {
+      fromEmail: fromEmail!,
+      fromName,
+      to: recipients,
+      replyTo,
+      subject,
+      html,
+      attachments,
+    });
   } catch (error) {
     console.error('submit-form: sending failed', error);
     return fail('Versturen is niet gelukt. Probeer het later opnieuw.', 502);
+  }
+
+  // The visitor's copy is a courtesy: the submission already succeeded above,
+  // so a failure here is logged, not reported back as a failed submission.
+  if (form.sendCopyToSubmitter && submitterEmail) {
+    try {
+      await sendViaMailjet(credentials, {
+        fromEmail: fromEmail!,
+        fromName,
+        to: [submitterEmail],
+        subject: form.copySubject || subject,
+        html: withAnswers(form.copyMessage || ''),
+        attachments: [],
+      });
+    } catch (error) {
+      console.error('submit-form: copy to submitter failed', error);
+    }
   }
 
   return NextResponse.json({ success: true });

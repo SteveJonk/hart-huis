@@ -324,3 +324,14 @@
 | 15:15 | seed afgeleid van waardebepaling.ts | app/scripts/seed/zoekopdracht.ts, seed.ts, package.json | `npm run seed:zoekopdracht` | ~2k |
 | 15:20 | bug-018: `titleAfter` was een dode prop op FormHero | formHeroType.ts, PageBuilder.tsx, beide seeds | /waardebepaling verloor ' waard?' — opnieuw seeden | ~2k |
 | 15:25 | typegen + tsc + check:form + build | app/src/sanity/* | groen | ~2k |
+
+## Session: 2026-08-21 15:13
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-21 15:19
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 15:22 | per-form mail (ontvangers/onderwerp/bericht + bevestiging naar invuller) | formType.ts, queries.ts, submit-form/route.ts, docs/formulieren.md | typegen + check:form + lint groen | ~25k |

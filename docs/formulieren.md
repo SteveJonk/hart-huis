@@ -81,6 +81,24 @@ De afzender moet een door Mailjet **gevalideerde** afzender zijn, anders weigert
 Mailjet de mail. Een dataset is leesbaar voor iedereen die het project-id kent,
 dus zet de sleutels in productie in de omgeving en niet in de Studio.
 
+#### Per formulier: tabblad **Mail**
+
+Ontvanger, onderwerp en bericht kunnen per formulier anders. Staat het veld leeg,
+dan geldt de instelling uit Form settings.
+
+| Veld | Wat het doet |
+| --- | --- |
+| **Ontvangers** | waar déze inzending heen gaat; meerdere adressen gescheiden door een komma (of puntkomma). Leeg = Admin Email |
+| **Onderwerp** / **Bericht** | onderwerp en introtekst boven de antwoordtabel. Leeg = de teksten uit Form settings |
+| **Stuur ook een mail naar de invuller** | zet de bevestigingsmail aan |
+| **Onderwerp / Bericht (mail naar invuller)** | de teksten van díé mail; verplicht zodra de schakelaar aan staat |
+
+De bevestigingsmail gaat naar het **eerste veld van het type E-mail** in het
+formulier. Heeft het formulier zo'n veld niet, of vulde de bezoeker het niet in,
+dan gebeurt er niets. Hij bevat dezelfde antwoordtabel, maar geen bijlagen. Gaat
+hij mis, dan wordt dat gelogd en niet aan de bezoeker gemeld — de inzending zelf
+is dan immers al gelukt.
+
 ## Waar het in de code zit
 
 | Bestand | Rol |
