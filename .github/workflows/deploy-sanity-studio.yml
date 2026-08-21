@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "studio-hart-huis/**"
+      # De workflow zelf, zodat een wijziging hieraan meteen getest wordt.
+      - ".github/workflows/deploy-sanity-studio.yml"
   workflow_dispatch:
 
 # Eén deploy tegelijk; een nieuwe push annuleert een lopende run.
