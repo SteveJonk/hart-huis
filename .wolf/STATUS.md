@@ -41,6 +41,15 @@
 - `seed:nav` schreef `navLeft` helemaal niet weg (bug-017) — de linkerhelft van de topbar was daardoor leeg. Nu staat er `Verkoop / Aankoop / Taxatie / NVM`, en NVM staat ook in de footer onder Diensten
 
 
+**`hart-en-huis-lp-zoekopdracht.html` → /zoekopdracht (21-08-2026)**
+- **Geen nieuwe blocks, geen nieuwe componenten.** Het `<style>`-blok is byte-identiek aan dat van `!waardebepaling.html`, dus dezelfde zeven blocks: `formHero`, `iconCards`, `numberedSteps`, `personQuote`, `quoteStrip`, `faqs`, `centeredCta`
+- copy + formulierdefinitie in `src/lib/zoekopdracht-content.ts`; tweestaps `form`-document `zoekopdracht` (plaats/budget/slaapkamers → naam/mail/tel/termijn/akkoord)
+- hero in `app/public/images/zoekopdracht/`; de Dorien-foto is dezelfde als op /waardebepaling en komt uit `/images/contact/dorien.jpg`
+- niet aan navigatie gekoppeld, net als /waardebepaling — `seed:nav` hoeft niet
+- **nog te seeden:** `npm run seed:zoekopdracht`
+- bug-018 meegenomen: `titleAfter` op `formHero` was een dode prop (geen schemaveld, niet doorgegeven in PageBuilder). /waardebepaling miste daardoor ' waard?' in de kop — **`npm run seed:waardebepaling` opnieuw draaien** om dat te herstellen
+
+
 **SEO**
 - `seo` object type on the `page` document is now rendered: `PAGE_QUERY` selects it, `app/src/sanity/metadata.ts` maps it to Next Metadata, `generateMetadata` added to `/` and `/[slug]`
 - ogImage → og:image 1200×630 + `twitter:card=summary_large_image`; noIndex → `robots: {index:false, follow:false}`
@@ -111,7 +120,7 @@
 
 ## 🚀 Next phase
 
-**Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026, waardebepaling 20-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`, `npm run seed:waardebepaling`). Wat resteert is afmaken en aanscherpen. `hart-en-huis-lp-zoekopdracht.html` is het laatste openstaande design (nvm toegevoegd 21-08-2026; nog te seeden: `npm run seed:nvm && npm run seed:nav`).
+**Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026, waardebepaling 20-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`, `npm run seed:waardebepaling`). Wat resteert is afmaken en aanscherpen. **Alle designs uit `app/example-designs/` zijn nu geïmplementeerd** (nvm en zoekopdracht toegevoegd 21-08-2026). Wat resteert is seeden en aanscherpen: `npm run seed:nvm && npm run seed:nav`, `npm run seed:zoekopdracht`, en `npm run seed:waardebepaling` opnieuw vanwege bug-018.
 
 ### Open punten
 1. **De scraper is lokaal tegen de echte Funda gedraaid (17-08-2026) en klopt: 42 verkoop + 12 aankoop = 54, zonder waarschuwingen** — precies wat de widget zelf noemt. De fixtures zijn nu echte pagina's. Wat resteert vóór de eerste échte run:

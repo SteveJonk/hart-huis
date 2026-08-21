@@ -191,6 +191,7 @@ export type FormHero = {
   eyebrow: string;
   title: string;
   titleHighlight?: string;
+  titleAfter?: string;
   lead: string;
   usps: Array<string>;
   score: string;
@@ -1874,6 +1875,7 @@ export type PAGE_QUERY_RESULT = {
         eyebrow: string;
         title: string;
         titleHighlight?: string;
+        titleAfter?: string;
         lead: string;
         usps: Array<string>;
         score: string;

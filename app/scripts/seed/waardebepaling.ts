@@ -33,6 +33,7 @@ async function buildWaardebepalingContent(formId: string, faqIds: string[]) {
       eyebrow: WAARDEBEPALING_HERO.eyebrow,
       title: WAARDEBEPALING_HERO.titleBefore,
       titleHighlight: WAARDEBEPALING_HERO.titleEm,
+      titleAfter: WAARDEBEPALING_HERO.titleAfter,
       lead: WAARDEBEPALING_HERO.lead,
       usps: [...WAARDEBEPALING_HERO.usps],
       score: WAARDEBEPALING_HERO.score,

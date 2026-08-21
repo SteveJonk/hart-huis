@@ -322,6 +322,24 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-21T13:00:00Z"
+    },
+    {
+      "id": "bug-018",
+      "timestamp": "2026-08-21T14:10:00Z",
+      "error_message": "De kop op /waardebepaling eindigt op 'Wat is jouw huis vandaag' — het staartje ' waard?' ontbreekt.",
+      "file": "studio-hart-huis/schemaTypes/blocks/formHeroType.ts",
+      "root_cause": "FormHero heeft een `titleAfter`-prop, maar het formHero-schema had het veld niet en PageBuilder gaf het niet door. De prop was dus dood; WAARDEBEPALING_HERO.titleAfter werd nergens geseed.",
+      "fix": "Veld `titleAfter` toegevoegd aan formHeroType, doorgegeven in PageBuilder, en meegegeven in de seeds van waardebepaling en zoekopdracht. Draai `npm run seed:waardebepaling` om de bestaande pagina te herstellen.",
+      "tags": [
+        "formHero",
+        "sanity",
+        "schema",
+        "pagebuilder",
+        "dode-prop"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T14:10:00Z"
     }
   ]
 }

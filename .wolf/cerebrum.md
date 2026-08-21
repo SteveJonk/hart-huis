@@ -69,6 +69,10 @@
 
 - **`createOrReplace` in de seeds wist velden die de seed niet schrijft.** `navigation` en `footer` gaan zo, dus élk veld dat in het document hoort te staan moet in `seed/navigation.ts` staan; wat je vergeet is na `seed:nav` weg. Zie bug-017.
 
+- **De twee landingspagina-designs delen letterlijk hun stylesheet.** `!waardebepaling.html` en `hart-en-huis-lp-zoekopdracht.html` hebben een byte-identiek `<style>`-blok (1190 regels). Een nieuwe LP uit die familie is dus puur copy + een `form`-document: `formHero`, `iconCards`, `numberedSteps`, `personQuote`, `quoteStrip`, `faqs`, `centeredCta`. Diff eerst de style-blokken (`sed -n '/^<style>/,/^<\/style>/p'`) voordat je ook maar één component opent.
+
+- **De kale LP-nav en -footer uit de designs zijn niet geïmplementeerd.** /waardebepaling en /zoekopdracht draaien op de gewone `SiteHeader`/`SiteFooter` uit `layout.tsx`. Bewuste lijn — wijk daar niet stilletjes van af voor één pagina.
+
 ## Do-Not-Repeat
 
 - [2026-08-18] Een nieuw bloktype registreren in `pageBuilderType.ts` is niet genoeg: zonder de import + regel in de `schemaTypes`-array van `index.ts` faalt `npm run typegen` met "Unknown type: <naam>". Beide bestanden aanpassen, daarna typegen draaien.
@@ -104,6 +108,8 @@
 - [2026-08-20] Tailwind's default spacing scale skips some numbers (e.g. `15` isn't a step — `14` and `16` are, nothing between). A class like `pb-15` silently generates no CSS instead of erroring. When translating a design's exact px value, use bracket notation (`pb-[60px]`) unless the number is a known scale step.
 
 - [2026-08-21] `npm run typegen` (en alles wat de sanity-CLI aanroept) faalt op de standaard `node` van deze machine (v17.8.0) met `ERR_UNKNOWN_FILE_EXTENSION ... /sanity/bin/sanity`. Dat is geen configfout: zet een moderne Node voorop en het werkt — `export PATH="$HOME/.nvm/versions/node/v22.18.0/bin:$PATH"`.
+
+- [2026-08-21] Een prop op een block-component betekent niet dat de CMS hem ooit vult. `FormHero.titleAfter` bestond, maar het `formHero`-schema had het veld niet en `PageBuilder` gaf het niet door — de kop op /waardebepaling miste stilzwijgend zijn staartje. Bij het overnemen van een design: loop de props van het hergebruikte block na tegen het schema én tegen de `case` in PageBuilder, niet alleen tegen de component. Zie bug-018.
 
 ## Decision Log
 

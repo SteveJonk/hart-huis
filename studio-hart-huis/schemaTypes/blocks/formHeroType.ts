@@ -25,6 +25,12 @@ export const formHeroType = defineType({
     defineField({name: 'eyebrow', type: 'string', validation: (rule) => rule.required()}),
     defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
     defineField({name: 'titleHighlight', type: 'string'}),
+    defineField({
+      name: 'titleAfter',
+      title: 'Title after highlight',
+      type: 'string',
+      description: 'Staart van de kop, achter het uitgelichte woord.',
+    }),
     defineField({name: 'lead', type: 'text', rows: 3, validation: (rule) => rule.required()}),
     defineField({
       name: 'usps',

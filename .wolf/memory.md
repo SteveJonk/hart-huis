@@ -311,3 +311,16 @@
 | 15:10 | Werkwijze kreeg optionele cta, CompareCards optionele cta + spaceTop, IconCards 2-koloms tablet bij >3 kaarten | src/components/blocks/*, studio schemaTypes/blocks/* | geen nieuwe blocks nodig | ~4k |
 | 15:20 | seed voor de pagina + NVM in nav/footer | app/scripts/seed/nvm.ts, seed.ts, navigation.ts, package.json | `npm run seed:nvm` | ~3k |
 | 15:30 | typegen + tsc + build | app/src/sanity/{schema.json,sanity.types.ts} | groen | ~2k |
+
+## Session: 2026-08-21 15:01
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## 2026-08-21 — Zoekopdracht-LP geabstraheerd
+| 15:00 | CSS van beide LP-designs gediffed | example-designs/{!waardebepaling,hart-en-huis-lp-zoekopdracht}.html | byte-identiek (1190 regels) — dezelfde 7 blocks, alleen andere copy | ~4k |
+| 15:04 | hero-afbeelding uit base64; Dorien-foto is dezelfde als /waardebepaling | app/public/images/zoekopdracht/hero.jpg | dorien.jpg hergebruikt uit /images/contact/ | ~1k |
+| 15:10 | copy + formulierdefinitie | app/src/lib/zoekopdracht-content.ts | tweestaps: plaats/budget/kamers → naam/mail/tel/termijn/akkoord | ~6k |
+| 15:15 | seed afgeleid van waardebepaling.ts | app/scripts/seed/zoekopdracht.ts, seed.ts, package.json | `npm run seed:zoekopdracht` | ~2k |
+| 15:20 | bug-018: `titleAfter` was een dode prop op FormHero | formHeroType.ts, PageBuilder.tsx, beide seeds | /waardebepaling verloor ' waard?' — opnieuw seeden | ~2k |
+| 15:25 | typegen + tsc + check:form + build | app/src/sanity/* | groen | ~2k |

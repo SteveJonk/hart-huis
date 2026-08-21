@@ -813,6 +813,7 @@ function renderBlock(block: PageBlock) {
           eyebrow={block.eyebrow}
           title={block.title}
           titleHighlight={block.titleHighlight ?? undefined}
+          titleAfter={block.titleAfter ?? undefined}
           lead={block.lead}
           usps={block.usps as string[] | undefined}
           score={block.score}

@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-21T12:55:33.468Z
-> Files: 263 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-21T13:07:17.828Z
+> Files: 265 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -113,23 +113,23 @@
 - `next-env.d.ts` — / <reference types="next" /> (~71 tok)
 - `next.config.ts` — Next.js configuration (~148 tok)
 - `package-lock.json` — npm lock file (~197103 tok)
-- `package.json` — Node.js package manifest (~565 tok)
+- `package.json` — Node.js package manifest (~587 tok)
 - `postcss.config.mjs` — Declares config (~26 tok)
 - `tailwind.config.ts` — Tailwind CSS configuration (~946 tok)
 - `tsconfig.json` — TypeScript configuration (~192 tok)
-- `tsconfig.tsbuildinfo` (~46057 tok)
+- `tsconfig.tsbuildinfo` (~47667 tok)
 - `vercel.json` — Dagelijkse cron die de Funda-review-scraper aanroept (04:00 UTC). (~46 tok)
 
 ## app/example-designs/
 
 - `!aanbod.html` — Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem (~245118 tok)
+- `!beoordelingen.html` — Beoordelingen — Hart &amp; Huis Makelaardij Haarlem (~106755 tok)
 - `!contact.html` — Contact — Hart &amp; Huis Makelaardij Haarlem (~115609 tok)
+- `!nvm.html` — NVM-makelaar in Haarlem — Hart &amp; Huis Makelaardij (~169771 tok)
 - `!over-ons.html` — Over ons — Dorien Hollemans, Hart &amp; Huis Makelaardij Haarlem (~205364 tok)
+- `!waardebepaling.html` — Gratis waardebepaling van je woning — Hart &amp; Huis Makelaardij Haarlem (~130825 tok)
 - `.DS_Store` (~1639 tok)
-- `beoordelingen.html` — Beoordelingen — Hart &amp; Huis Makelaardij Haarlem (~106755 tok)
-- `hart-en-huis-lp-waardebepaling_1.html` — Gratis waardebepaling van je woning — Hart &amp; Huis Makelaardij Haarlem (~130825 tok)
 - `hart-en-huis-lp-zoekopdracht.html` — Gratis zoekopdracht — Hart &amp; Huis Makelaardij Haarlem (~118122 tok)
-- `hart-en-huis-nvm.html` — NVM-makelaar in Haarlem — Hart &amp; Huis Makelaardij (~169771 tok)
 
 ## app/public/
 
@@ -156,9 +156,9 @@
   - fn `repoint` L88-103 (~154 tok)
 - `migrate-forms.ts` — Eenmalig: zet `contactForm`-documenten (verwijderde plugin) om naar het `form`-type, op hun plek zodat `_id` en verwijzingen heel blijven. `--dry-run` laat zien wat er zou veranderen. (~1438 tok)
   - fn `main` L32-139 (~1106 tok)
-- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~616 tok)
-  - fn `parseTargets` L44-55 (~106 tok)
-  - fn `main` L56-72 (~119 tok)
+- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~641 tok)
+  - fn `parseTargets` L46-57 (~106 tok)
+  - fn `main` L58-74 (~119 tok)
 
 ## app/scripts/fixtures/
 
@@ -218,9 +218,12 @@
 - `verkoop.ts` — Seeds the verkoop FAQs and the /verkoop page. (~1320 tok)
   - fn `buildVerkoopContent` L16-130 (~1133 tok)
   - fn `seedVerkoop` L131-141 (~82 tok)
-- `waardebepaling.ts` — Seeds the waardebepaling `contactForm` doc, FAQs, and the /waardebepaling page. Not wired into nav. (~1252 tok)
-  - fn `buildWaardebepalingContent` L22-107 (~941 tok)
-  - fn `seedWaardebepaling` L108-121 (~126 tok)
+- `waardebepaling.ts` — Seeds the /waardebepaling FAQs, the multi-step `form` document for its (~1267 tok)
+  - fn `buildWaardebepalingContent` L22-108 (~955 tok)
+  - fn `seedWaardebepaling` L109-122 (~126 tok)
+- `zoekopdracht.ts` — Seeds the /zoekopdracht FAQs, the multi-step `form` document for its (~1220 tok)
+  - fn `buildZoekopdrachtContent` L22-108 (~922 tok)
+  - fn `seedZoekopdracht` L109-122 (~120 tok)
 
 ## app/src/
 
@@ -275,13 +278,13 @@
 
 ## app/src/components/
 
-- `PageBuilder.tsx` — Reviews zonder quote of naam zijn onbruikbaar op een kaart en vallen af. (~7982 tok)
+- `PageBuilder.tsx` — Reviews zonder quote of naam zijn onbruikbaar op een kaart en vallen af. (~7997 tok)
   - fn `toCta` L70-75 (~49 tok)
   - fn `toLabeledLink` L76-84 (~99 tok)
   - fn `toReviews` L85-96 (~145 tok)
   - fn `toFormDefinition` L97-137 (~398 tok)
-  - fn `renderBlock` L138-911 (~6291 tok)
-  - fn `PageBuilder` L912-917 (~60 tok)
+  - fn `renderBlock` L138-912 (~6306 tok)
+  - fn `PageBuilder` L913-918 (~60 tok)
 
 ## app/src/components/blocks/
 
@@ -515,6 +518,7 @@
 - `taxatie-content.ts` — Weglaten laat de knop weg — de vergelijkingskaart zonder aanbod. (~3148 tok)
 - `verkoop-content.ts` — Plain answer text. Optional `link` is inserted before `afterLink`. (~2201 tok)
 - `waardebepaling-content.ts` — Copy + form field defs for /waardebepaling, incl. the wizard's `contactForm` field list (`WAARDEBEPALING_FORM_FIELDS`). (~3053 tok)
+- `zoekopdracht-content.ts` — Het `form`-document waar de hero naar wijst, in `steps`-modus. (~3032 tok)
 
 ## app/src/sanity/
 
@@ -523,8 +527,8 @@
 - `metadata.ts` — Map a page document's `seo` object onto Next metadata. Unset fields fall back to the root layout. (~511 tok)
   - fn `pageMetadata` L23-57 (~353 tok)
 - `queries.ts` — Resolve internal page references on link/cta objects. (~1986 tok)
-- `sanity.types.ts` — --------------------------------------------------------------------------------- (~23046 tok)
-- `schema.json` (~53569 tok)
+- `sanity.types.ts` — --------------------------------------------------------------------------------- (~23061 tok)
+- `schema.json` (~53615 tok)
 - `write-client.ts` — Sanity-client met schrijftoken voor server-side routes. Los van client.ts, dat tokenloos blijft. (~268 tok)
 
 ## docs/
@@ -538,8 +542,8 @@
 - `environment.d.ts` — Declareert de SANITY_STUDIO_* env-variabelen; de studio heeft geen @types/node. (~161 tok)
 - `eslint.config.mjs` — ESLint flat configuration (~21 tok)
 - `package-lock.json` — npm lock file (~173788 tok)
-- `package.json` — Node.js package manifest (~314 tok)
-- `pnpm-lock.yaml` — pnpm lock file (~110372 tok)
+- `package.json` — Node.js package manifest (~291 tok)
+- `pnpm-lock.yaml` — pnpm lock file (~111114 tok)
 - `README.md` — Project documentation (~131 tok)
 - `sanity.cli.ts` — Typegen draait vanuit de studio — de CLI heeft een studio-project-root (~249 tok)
 - `sanity.config.ts` (~121 tok)
@@ -582,7 +586,7 @@
 - `duoPhotosType.ts` — Exports duoPhotosType (~366 tok)
 - `factBarType.ts` — Exports factBarType (~289 tok)
 - `faqsType.ts` — Exports faqsType (~264 tok)
-- `formHeroType.ts` — Hero met achtergrondfoto en een aanvraagformulier (referentie naar een `contactForm`-document). Generiek. (~734 tok)
+- `formHeroType.ts` — Exports formHeroType (~786 tok)
 - `heroType.ts` — Exports heroType (~626 tok)
 - `highlightStripType.ts` — Exports highlightStripType (~409 tok)
 - `iconCardsType.ts` — Rij iconkaarten zonder foto. Generiek. (~636 tok)

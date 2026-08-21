@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-21T12:55:33.468Z",
-    "fileCount": 263,
+    "lastScanned": "2026-08-21T13:07:17.828Z",
+    "fileCount": 265,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "f6900cb6f4e8b93fd1b4e7b71c860f9fe40b0a73c9603c968a3d66680e33fe36",
-    "storeUpdatedAt": "2026-08-21T12:55:33.470Z"
+    "renderedHash": "f9618074847499faa3427dfed2047a860e8a715902a1fb45622cf2cfe9d33aeb",
+    "storeUpdatedAt": "2026-08-21T13:07:17.829Z"
   },
   "files": {
     ".claude/commands/reframe.md": {
@@ -15,7 +15,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1785834177283.9353,
-      "updatedAt": "2026-08-21T12:55:33.412Z",
+      "updatedAt": "2026-08-21T13:07:17.714Z",
       "source": "scan"
     },
     ".claude/commands/security-audit.md": {
@@ -24,7 +24,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1785834177283.637,
-      "updatedAt": "2026-08-21T12:55:33.412Z",
+      "updatedAt": "2026-08-21T13:07:17.715Z",
       "source": "scan"
     },
     ".claude/launch.json": {
@@ -33,7 +33,7 @@
       "hash": "1c79881343c518ab",
       "size": 249,
       "mtimeMs": 1787047201237.4795,
-      "updatedAt": "2026-08-21T12:55:33.413Z",
+      "updatedAt": "2026-08-21T13:07:17.716Z",
       "source": "scan"
     },
     ".claude/rules/openwolf.md": {
@@ -42,7 +42,7 @@
       "hash": "6d735b2c1c54a916",
       "size": 1323,
       "mtimeMs": 1785834177112.1697,
-      "updatedAt": "2026-08-21T12:55:33.413Z",
+      "updatedAt": "2026-08-21T13:07:17.716Z",
       "source": "scan"
     },
     ".claude/settings.json": {
@@ -51,7 +51,7 @@
       "hash": "f68759bb50af5ee4",
       "size": 1799,
       "mtimeMs": 1785834177111.7556,
-      "updatedAt": "2026-08-21T12:55:33.414Z",
+      "updatedAt": "2026-08-21T13:07:17.716Z",
       "source": "scan"
     },
     ".cursor/rules/openwolf.mdc": {
@@ -60,7 +60,7 @@
       "hash": "25a895da2047ef4d",
       "size": 323,
       "mtimeMs": 1785834177282.8696,
-      "updatedAt": "2026-08-21T12:55:33.414Z",
+      "updatedAt": "2026-08-21T13:07:17.717Z",
       "source": "scan"
     },
     ".DS_Store": {
@@ -69,7 +69,7 @@
       "hash": "b3d3ed919a335b2b",
       "size": 10244,
       "mtimeMs": 1786686758378.9355,
-      "updatedAt": "2026-08-21T12:55:33.414Z",
+      "updatedAt": "2026-08-21T13:07:17.717Z",
       "source": "scan"
     },
     ".gitignore": {
@@ -78,7 +78,7 @@
       "hash": "e2eb93a61ffd7877",
       "size": 9,
       "mtimeMs": 1785392122288.7588,
-      "updatedAt": "2026-08-21T12:55:33.414Z",
+      "updatedAt": "2026-08-21T13:07:17.717Z",
       "source": "scan"
     },
     ".opencode/command/reframe.md": {
@@ -87,7 +87,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1785834177284.3032,
-      "updatedAt": "2026-08-21T12:55:33.415Z",
+      "updatedAt": "2026-08-21T13:07:17.718Z",
       "source": "scan"
     },
     ".opencode/command/security-audit.md": {
@@ -96,7 +96,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1785834177284.1458,
-      "updatedAt": "2026-08-21T12:55:33.415Z",
+      "updatedAt": "2026-08-21T13:07:17.718Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/anatomy.ts": {
@@ -105,7 +105,7 @@
       "hash": "de2a14445289179f",
       "size": 10257,
       "mtimeMs": 1785834177278.7407,
-      "updatedAt": "2026-08-21T12:55:33.416Z",
+      "updatedAt": "2026-08-21T13:07:17.720Z",
       "source": "scan",
       "symbols": [
         {
@@ -221,7 +221,7 @@
       "hash": "0193b1022c8e098b",
       "size": 1881,
       "mtimeMs": 1785834177279.1472,
-      "updatedAt": "2026-08-21T12:55:33.417Z",
+      "updatedAt": "2026-08-21T13:07:17.720Z",
       "source": "scan",
       "symbols": [
         {
@@ -302,7 +302,7 @@
       "hash": "5044a1f76c74f535",
       "size": 3782,
       "mtimeMs": 1785834177279.532,
-      "updatedAt": "2026-08-21T12:55:33.417Z",
+      "updatedAt": "2026-08-21T13:07:17.720Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/post-read.ts": {
@@ -311,7 +311,7 @@
       "hash": "1bc80c56ad0cfd32",
       "size": 2200,
       "mtimeMs": 1785834177279.9321,
-      "updatedAt": "2026-08-21T12:55:33.417Z",
+      "updatedAt": "2026-08-21T13:07:17.721Z",
       "source": "scan",
       "symbols": [
         {
@@ -329,7 +329,7 @@
       "hash": "02ba6ccd8d82475c",
       "size": 11300,
       "mtimeMs": 1785834177280.4854,
-      "updatedAt": "2026-08-21T12:55:33.418Z",
+      "updatedAt": "2026-08-21T13:07:17.721Z",
       "source": "scan",
       "symbols": [
         {
@@ -396,7 +396,7 @@
       "hash": "88c051b64b073c6a",
       "size": 2401,
       "mtimeMs": 1785834177280.8362,
-      "updatedAt": "2026-08-21T12:55:33.418Z",
+      "updatedAt": "2026-08-21T13:07:17.721Z",
       "source": "scan",
       "symbols": [
         {
@@ -414,7 +414,7 @@
       "hash": "c3b34d216601e76f",
       "size": 4092,
       "mtimeMs": 1785834177281.0354,
-      "updatedAt": "2026-08-21T12:55:33.418Z",
+      "updatedAt": "2026-08-21T13:07:17.721Z",
       "source": "scan",
       "symbols": [
         {
@@ -460,7 +460,7 @@
       "hash": "dda2df097f6d5874",
       "size": 3340,
       "mtimeMs": 1785834177281.3862,
-      "updatedAt": "2026-08-21T12:55:33.418Z",
+      "updatedAt": "2026-08-21T13:07:17.722Z",
       "source": "scan",
       "symbols": [
         {
@@ -499,7 +499,7 @@
       "hash": "5f8633a3904ee5ce",
       "size": 5057,
       "mtimeMs": 1785834177281.7463,
-      "updatedAt": "2026-08-21T12:55:33.418Z",
+      "updatedAt": "2026-08-21T13:07:17.722Z",
       "source": "scan",
       "symbols": [
         {
@@ -538,7 +538,7 @@
       "hash": "47f4dfb03abf55f9",
       "size": 757,
       "mtimeMs": 1785834177281.9375,
-      "updatedAt": "2026-08-21T12:55:33.419Z",
+      "updatedAt": "2026-08-21T13:07:17.722Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf.ts": {
@@ -547,7 +547,7 @@
       "hash": "a29f91aadb9a324d",
       "size": 261,
       "mtimeMs": 1785834177282.0498,
-      "updatedAt": "2026-08-21T12:55:33.419Z",
+      "updatedAt": "2026-08-21T13:07:17.722Z",
       "source": "scan"
     },
     "AGENTS.md": {
@@ -556,7 +556,7 @@
       "hash": "8c90778623bf50ac",
       "size": 271,
       "mtimeMs": 1785834177282.5024,
-      "updatedAt": "2026-08-21T12:55:33.419Z",
+      "updatedAt": "2026-08-21T13:07:17.723Z",
       "source": "scan"
     },
     "app/.dockerignore": {
@@ -565,7 +565,7 @@
       "hash": "912e79244524b0a4",
       "size": 45,
       "mtimeMs": 1787054835478.2004,
-      "updatedAt": "2026-08-21T12:55:33.419Z",
+      "updatedAt": "2026-08-21T13:07:17.723Z",
       "source": "scan"
     },
     "app/.DS_Store": {
@@ -574,7 +574,7 @@
       "hash": "4f68ca7921859aab",
       "size": 14340,
       "mtimeMs": 1787315961424.985,
-      "updatedAt": "2026-08-21T12:55:33.419Z",
+      "updatedAt": "2026-08-21T13:07:17.723Z",
       "source": "scan"
     },
     "app/.gitignore": {
@@ -583,7 +583,7 @@
       "hash": "a6b5507a8671f3f6",
       "size": 538,
       "mtimeMs": 1787299035598.895,
-      "updatedAt": "2026-08-21T12:55:33.419Z",
+      "updatedAt": "2026-08-21T13:07:17.723Z",
       "source": "scan"
     },
     "app/AGENTS.md": {
@@ -592,7 +592,7 @@
       "hash": "e3447d84251880fb",
       "size": 327,
       "mtimeMs": 1785834093957.9656,
-      "updatedAt": "2026-08-21T12:55:33.419Z",
+      "updatedAt": "2026-08-21T13:07:17.724Z",
       "source": "scan"
     },
     "app/CLAUDE.md": {
@@ -601,7 +601,7 @@
       "hash": "336cc4fbf19beaad",
       "size": 11,
       "mtimeMs": 1785834093958.6213,
-      "updatedAt": "2026-08-21T12:55:33.419Z",
+      "updatedAt": "2026-08-21T13:07:17.724Z",
       "source": "scan"
     },
     "app/Dockerfile": {
@@ -610,7 +610,7 @@
       "hash": "3ee40c582fa54d65",
       "size": 647,
       "mtimeMs": 1787054839171.4258,
-      "updatedAt": "2026-08-21T12:55:33.420Z",
+      "updatedAt": "2026-08-21T13:07:17.724Z",
       "source": "scan"
     },
     "app/eslint.config.mjs": {
@@ -619,7 +619,7 @@
       "hash": "870f1adccecf3051",
       "size": 465,
       "mtimeMs": 1785087937158.6077,
-      "updatedAt": "2026-08-21T12:55:33.420Z",
+      "updatedAt": "2026-08-21T13:07:17.724Z",
       "source": "scan"
     },
     "app/example-designs/!aanbod.html": {
@@ -628,7 +628,16 @@
       "hash": "3523ccb1ab45b801",
       "size": 919267,
       "mtimeMs": 1786544646497.3599,
-      "updatedAt": "2026-08-21T12:55:33.422Z",
+      "updatedAt": "2026-08-21T13:07:17.729Z",
+      "source": "scan"
+    },
+    "app/example-designs/!beoordelingen.html": {
+      "description": "Beoordelingen — Hart &amp; Huis Makelaardij Haarlem",
+      "tokens": 106755,
+      "hash": "3778dc5759592126",
+      "size": 400355,
+      "mtimeMs": 1786540904307.1616,
+      "updatedAt": "2026-08-21T13:07:17.731Z",
       "source": "scan"
     },
     "app/example-designs/!contact.html": {
@@ -637,7 +646,16 @@
       "hash": "97c4aa747737140b",
       "size": 433573,
       "mtimeMs": 1786545261017.0356,
-      "updatedAt": "2026-08-21T12:55:33.423Z",
+      "updatedAt": "2026-08-21T13:07:17.733Z",
+      "source": "scan"
+    },
+    "app/example-designs/!nvm.html": {
+      "description": "NVM-makelaar in Haarlem — Hart &amp; Huis Makelaardij",
+      "tokens": 169771,
+      "hash": "bbb214e83e3ceb35",
+      "size": 636679,
+      "mtimeMs": 1787298426044.839,
+      "updatedAt": "2026-08-21T13:07:17.736Z",
       "source": "scan"
     },
     "app/example-designs/!over-ons.html": {
@@ -646,7 +664,16 @@
       "hash": "5511c4dee427781e",
       "size": 770145,
       "mtimeMs": 1786544072612.1208,
-      "updatedAt": "2026-08-21T12:55:33.425Z",
+      "updatedAt": "2026-08-21T13:07:17.739Z",
+      "source": "scan"
+    },
+    "app/example-designs/!waardebepaling.html": {
+      "description": "Gratis waardebepaling van je woning — Hart &amp; Huis Makelaardij Haarlem",
+      "tokens": 130825,
+      "hash": "8affaad085c3375d",
+      "size": 490644,
+      "mtimeMs": 1787298426041.0725,
+      "updatedAt": "2026-08-21T13:07:17.741Z",
       "source": "scan"
     },
     "app/example-designs/.DS_Store": {
@@ -655,25 +682,7 @@
       "hash": "f0fbc53c1fc60348",
       "size": 6148,
       "mtimeMs": 1787079675272.231,
-      "updatedAt": "2026-08-21T12:55:33.425Z",
-      "source": "scan"
-    },
-    "app/example-designs/beoordelingen.html": {
-      "description": "Beoordelingen — Hart &amp; Huis Makelaardij Haarlem",
-      "tokens": 106755,
-      "hash": "3778dc5759592126",
-      "size": 400355,
-      "mtimeMs": 1786540904307.1616,
-      "updatedAt": "2026-08-21T12:55:33.426Z",
-      "source": "scan"
-    },
-    "app/example-designs/hart-en-huis-lp-waardebepaling_1.html": {
-      "description": "Gratis waardebepaling van je woning — Hart &amp; Huis Makelaardij Haarlem",
-      "tokens": 130825,
-      "hash": "8affaad085c3375d",
-      "size": 490644,
-      "mtimeMs": 1787298426041.0725,
-      "updatedAt": "2026-08-21T12:55:33.427Z",
+      "updatedAt": "2026-08-21T13:07:17.741Z",
       "source": "scan"
     },
     "app/example-designs/hart-en-huis-lp-zoekopdracht.html": {
@@ -682,16 +691,7 @@
       "hash": "d797f3b835de6255",
       "size": 443028,
       "mtimeMs": 1787298426042.6492,
-      "updatedAt": "2026-08-21T12:55:33.428Z",
-      "source": "scan"
-    },
-    "app/example-designs/hart-en-huis-nvm.html": {
-      "description": "NVM-makelaar in Haarlem — Hart &amp; Huis Makelaardij",
-      "tokens": 169771,
-      "hash": "bbb214e83e3ceb35",
-      "size": 636679,
-      "mtimeMs": 1787298426044.839,
-      "updatedAt": "2026-08-21T12:55:33.430Z",
+      "updatedAt": "2026-08-21T13:07:17.743Z",
       "source": "scan"
     },
     "app/form-migration-backup-1787299038628.json": {
@@ -700,7 +700,7 @@
       "hash": "13da24baf9220066",
       "size": 2262,
       "mtimeMs": 1787299038628.4414,
-      "updatedAt": "2026-08-21T12:55:33.430Z",
+      "updatedAt": "2026-08-21T13:07:17.744Z",
       "source": "scan"
     },
     "app/next-env.d.ts": {
@@ -709,7 +709,7 @@
       "hash": "7b550dda9686c16f",
       "size": 247,
       "mtimeMs": 1787316853804.7466,
-      "updatedAt": "2026-08-21T12:55:33.430Z",
+      "updatedAt": "2026-08-21T13:07:17.744Z",
       "source": "scan"
     },
     "app/next.config.ts": {
@@ -718,7 +718,7 @@
       "hash": "9fcc2a2f0a98aee1",
       "size": 517,
       "mtimeMs": 1787054822787.1206,
-      "updatedAt": "2026-08-21T12:55:33.430Z",
+      "updatedAt": "2026-08-21T13:07:17.745Z",
       "source": "scan"
     },
     "app/package-lock.json": {
@@ -727,16 +727,16 @@
       "hash": "d66b9cbf8e96cc68",
       "size": 689858,
       "mtimeMs": 1787298426046.7268,
-      "updatedAt": "2026-08-21T12:55:33.431Z",
+      "updatedAt": "2026-08-21T13:07:17.746Z",
       "source": "scan"
     },
     "app/package.json": {
       "description": "Node.js package manifest",
-      "tokens": 565,
-      "hash": "62fb707bd101c26d",
-      "size": 1977,
-      "mtimeMs": 1787316784644.733,
-      "updatedAt": "2026-08-21T12:55:33.431Z",
+      "tokens": 587,
+      "hash": "22a1e49e81cd1964",
+      "size": 2054,
+      "mtimeMs": 1787317552607.0437,
+      "updatedAt": "2026-08-21T13:07:17.747Z",
       "source": "scan"
     },
     "app/postcss.config.mjs": {
@@ -745,7 +745,7 @@
       "hash": "dfac7ac2d86d326a",
       "size": 94,
       "mtimeMs": 1785087937158.5386,
-      "updatedAt": "2026-08-21T12:55:33.431Z",
+      "updatedAt": "2026-08-21T13:07:17.747Z",
       "source": "scan"
     },
     "app/public/.DS_Store": {
@@ -754,7 +754,7 @@
       "hash": "92a13dc2c5c09daf",
       "size": 6148,
       "mtimeMs": 1785410057099.7646,
-      "updatedAt": "2026-08-21T12:55:33.431Z",
+      "updatedAt": "2026-08-21T13:07:17.747Z",
       "source": "scan"
     },
     "app/public/llms.txt": {
@@ -763,7 +763,7 @@
       "hash": "70404dff52256846",
       "size": 370,
       "mtimeMs": 1787077951706.5354,
-      "updatedAt": "2026-08-21T12:55:33.432Z",
+      "updatedAt": "2026-08-21T13:07:17.749Z",
       "source": "scan"
     },
     "app/scripts/.DS_Store": {
@@ -772,7 +772,7 @@
       "hash": "22a7ec52b6162b4c",
       "size": 6148,
       "mtimeMs": 1787077529454.621,
-      "updatedAt": "2026-08-21T12:55:33.433Z",
+      "updatedAt": "2026-08-21T13:07:17.749Z",
       "source": "scan"
     },
     "app/scripts/check-aanbiedingstekst.ts": {
@@ -781,7 +781,7 @@
       "hash": "67887acf672f27bb",
       "size": 1256,
       "mtimeMs": 1786611162315.6191,
-      "updatedAt": "2026-08-21T12:55:33.433Z",
+      "updatedAt": "2026-08-21T13:07:17.749Z",
       "source": "scan"
     },
     "app/scripts/check-form.ts": {
@@ -790,7 +790,7 @@
       "hash": "390aeaf41cd3f806",
       "size": 8436,
       "mtimeMs": 1787299035599.347,
-      "updatedAt": "2026-08-21T12:55:33.433Z",
+      "updatedAt": "2026-08-21T13:07:17.750Z",
       "source": "scan",
       "symbols": [
         {
@@ -815,7 +815,7 @@
       "hash": "37234874b3b43d67",
       "size": 9966,
       "mtimeMs": 1786988177924.3538,
-      "updatedAt": "2026-08-21T12:55:33.433Z",
+      "updatedAt": "2026-08-21T13:07:17.750Z",
       "source": "scan",
       "symbols": [
         {
@@ -847,7 +847,7 @@
       "hash": "c1d8f611dab791a7",
       "size": 4191,
       "mtimeMs": 1786988177925.0457,
-      "updatedAt": "2026-08-21T12:55:33.433Z",
+      "updatedAt": "2026-08-21T13:07:17.750Z",
       "source": "scan"
     },
     "app/scripts/fixtures/funda-widget-aankoop-p1.html": {
@@ -856,7 +856,7 @@
       "hash": "97d06c62c303bc83",
       "size": 37291,
       "mtimeMs": 1786988177925.6196,
-      "updatedAt": "2026-08-21T12:55:33.434Z",
+      "updatedAt": "2026-08-21T13:07:17.751Z",
       "source": "scan"
     },
     "app/scripts/fixtures/funda-widget-verkoop-p1.html": {
@@ -865,7 +865,7 @@
       "hash": "d6450159d22968e4",
       "size": 39053,
       "mtimeMs": 1786988177926.3547,
-      "updatedAt": "2026-08-21T12:55:33.434Z",
+      "updatedAt": "2026-08-21T13:07:17.751Z",
       "source": "scan"
     },
     "app/scripts/fixtures/funda-widget-verkoop-p9.html": {
@@ -874,7 +874,7 @@
       "hash": "a54425d08c178c43",
       "size": 30732,
       "mtimeMs": 1786988177927.0415,
-      "updatedAt": "2026-08-21T12:55:33.434Z",
+      "updatedAt": "2026-08-21T13:07:17.752Z",
       "source": "scan"
     },
     "app/scripts/form-migration.ts": {
@@ -883,7 +883,7 @@
       "hash": "0febde107dfffe6d",
       "size": 3749,
       "mtimeMs": 1787299035599.692,
-      "updatedAt": "2026-08-21T12:55:33.434Z",
+      "updatedAt": "2026-08-21T13:07:17.752Z",
       "source": "scan",
       "symbols": [
         {
@@ -929,7 +929,7 @@
       "hash": "ba75be769a917b95",
       "size": 5047,
       "mtimeMs": 1787299035600.1406,
-      "updatedAt": "2026-08-21T12:55:33.434Z",
+      "updatedAt": "2026-08-21T13:07:17.752Z",
       "source": "scan",
       "symbols": [
         {
@@ -947,7 +947,7 @@
       "hash": "8d71751dd2aff759",
       "size": 1728,
       "mtimeMs": 1786617377357.243,
-      "updatedAt": "2026-08-21T12:55:33.434Z",
+      "updatedAt": "2026-08-21T13:07:17.752Z",
       "source": "scan"
     },
     "app/scripts/seed/aankoop.ts": {
@@ -956,7 +956,7 @@
       "hash": "0491d3f5e22c0a53",
       "size": 4646,
       "mtimeMs": 1787047133399.9553,
-      "updatedAt": "2026-08-21T12:55:33.434Z",
+      "updatedAt": "2026-08-21T13:07:17.753Z",
       "source": "scan",
       "symbols": [
         {
@@ -981,7 +981,7 @@
       "hash": "58f779b8ed1fedc1",
       "size": 3161,
       "mtimeMs": 1786622260843.213,
-      "updatedAt": "2026-08-21T12:55:33.434Z",
+      "updatedAt": "2026-08-21T13:07:17.753Z",
       "source": "scan",
       "symbols": [
         {
@@ -1006,7 +1006,7 @@
       "hash": "b6c9f59d83b62934",
       "size": 3932,
       "mtimeMs": 1787298426048.9167,
-      "updatedAt": "2026-08-21T12:55:33.435Z",
+      "updatedAt": "2026-08-21T13:07:17.753Z",
       "source": "scan",
       "symbols": [
         {
@@ -1031,7 +1031,7 @@
       "hash": "5d103f075cbb553f",
       "size": 5694,
       "mtimeMs": 1786990545471.7622,
-      "updatedAt": "2026-08-21T12:55:33.435Z",
+      "updatedAt": "2026-08-21T13:07:17.753Z",
       "source": "scan",
       "symbols": [
         {
@@ -1062,8 +1062,8 @@
       "tokens": 896,
       "hash": "45efada7f87f39a7",
       "size": 3144,
-      "mtimeMs": 1787316795633.5278,
-      "updatedAt": "2026-08-21T12:55:33.435Z",
+      "mtimeMs": 1787317265111.155,
+      "updatedAt": "2026-08-21T13:07:17.754Z",
       "source": "scan",
       "symbols": [
         {
@@ -1122,8 +1122,8 @@
       "tokens": 1185,
       "hash": "4e835a24127c1bc4",
       "size": 4149,
-      "mtimeMs": 1787316784443.1875,
-      "updatedAt": "2026-08-21T12:55:33.435Z",
+      "mtimeMs": 1787317265111.6382,
+      "updatedAt": "2026-08-21T13:07:17.754Z",
       "source": "scan",
       "symbols": [
         {
@@ -1148,7 +1148,7 @@
       "hash": "48b7381c10241df5",
       "size": 29465,
       "mtimeMs": 1786609894741.7761,
-      "updatedAt": "2026-08-21T12:55:33.435Z",
+      "updatedAt": "2026-08-21T13:07:17.755Z",
       "source": "scan",
       "symbols": [
         {
@@ -1208,7 +1208,7 @@
       "hash": "8e122ef9a61ce256",
       "size": 3355,
       "mtimeMs": 1786563303853.5188,
-      "updatedAt": "2026-08-21T12:55:33.436Z",
+      "updatedAt": "2026-08-21T13:07:17.755Z",
       "source": "scan",
       "symbols": [
         {
@@ -1233,7 +1233,7 @@
       "hash": "b8a917bcaaa3579e",
       "size": 6680,
       "mtimeMs": 1787298426049.1868,
-      "updatedAt": "2026-08-21T12:55:33.436Z",
+      "updatedAt": "2026-08-21T13:07:17.756Z",
       "source": "scan",
       "symbols": [
         {
@@ -1292,8 +1292,8 @@
       "tokens": 1424,
       "hash": "950efea5dcdb6f69",
       "size": 4984,
-      "mtimeMs": 1787316839204.7207,
-      "updatedAt": "2026-08-21T12:55:33.436Z",
+      "mtimeMs": 1787317265112.1902,
+      "updatedAt": "2026-08-21T13:07:17.756Z",
       "source": "scan",
       "symbols": [
         {
@@ -1318,7 +1318,7 @@
       "hash": "cb8ee6b7d470220a",
       "size": 4628,
       "mtimeMs": 1786563303853.3809,
-      "updatedAt": "2026-08-21T12:55:33.436Z",
+      "updatedAt": "2026-08-21T13:07:17.756Z",
       "source": "scan",
       "symbols": [
         {
@@ -1338,51 +1338,76 @@
       ]
     },
     "app/scripts/seed/waardebepaling.ts": {
-      "description": "Seeds the waardebepaling `contactForm` doc, FAQs, and the /waardebepaling page. Not wired into nav.",
-      "tokens": 1252,
-      "hash": "3a3009e31f1210f4",
-      "size": 4386,
-      "mtimeMs": 1787298426049.423,
-      "updatedAt": "2026-08-21T12:55:33.436Z",
+      "description": "Seeds the /waardebepaling FAQs, the multi-step `form` document for its",
+      "tokens": 1267,
+      "hash": "c1c56fdf4aa369ee",
+      "size": 4436,
+      "mtimeMs": 1787317546078.1458,
+      "updatedAt": "2026-08-21T13:07:17.757Z",
       "source": "scan",
       "symbols": [
         {
           "name": "buildWaardebepalingContent",
           "kind": "fn",
           "startLine": 22,
-          "endLine": 107,
-          "tokens": 941
+          "endLine": 108,
+          "tokens": 955
         },
         {
           "name": "seedWaardebepaling",
           "kind": "fn",
-          "startLine": 108,
-          "endLine": 121,
+          "startLine": 109,
+          "endLine": 122,
           "tokens": 126
+        }
+      ]
+    },
+    "app/scripts/seed/zoekopdracht.ts": {
+      "description": "Seeds the /zoekopdracht FAQs, the multi-step `form` document for its",
+      "tokens": 1220,
+      "hash": "14945c67c60ca629",
+      "size": 4272,
+      "mtimeMs": 1787317546078.5981,
+      "updatedAt": "2026-08-21T13:07:17.757Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "buildZoekopdrachtContent",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 108,
+          "tokens": 922
+        },
+        {
+          "name": "seedZoekopdracht",
+          "kind": "fn",
+          "startLine": 109,
+          "endLine": 122,
+          "tokens": 120
         }
       ]
     },
     "app/scripts/seed.ts": {
       "description": "Seed Sanity content. Runs every target, or only the ones you name.",
-      "tokens": 616,
-      "hash": "e790078a9e8af524",
-      "size": 2158,
-      "mtimeMs": 1787316784644.431,
-      "updatedAt": "2026-08-21T12:55:33.436Z",
+      "tokens": 641,
+      "hash": "44556c38a222868b",
+      "size": 2245,
+      "mtimeMs": 1787317552606.5625,
+      "updatedAt": "2026-08-21T13:07:17.757Z",
       "source": "scan",
       "symbols": [
         {
           "name": "parseTargets",
           "kind": "fn",
-          "startLine": 44,
-          "endLine": 55,
+          "startLine": 46,
+          "endLine": 57,
           "tokens": 106
         },
         {
           "name": "main",
           "kind": "fn",
-          "startLine": 56,
-          "endLine": 72,
+          "startLine": 58,
+          "endLine": 74,
           "tokens": 119
         }
       ]
@@ -1393,7 +1418,7 @@
       "hash": "10d8e961febdd09b",
       "size": 8196,
       "mtimeMs": 1785410026743.0393,
-      "updatedAt": "2026-08-21T12:55:33.437Z",
+      "updatedAt": "2026-08-21T13:07:17.758Z",
       "source": "scan"
     },
     "app/src/app/[slug]/page.tsx": {
@@ -1402,7 +1427,7 @@
       "hash": "bc809c181947bb06",
       "size": 990,
       "mtimeMs": 1786606840498.2776,
-      "updatedAt": "2026-08-21T12:55:33.437Z",
+      "updatedAt": "2026-08-21T13:07:17.758Z",
       "source": "scan"
     },
     "app/src/app/aanbod/[slug]/page.tsx": {
@@ -1411,7 +1436,7 @@
       "hash": "5c08659eba6255af",
       "size": 4436,
       "mtimeMs": 1787036210821.0867,
-      "updatedAt": "2026-08-21T12:55:33.437Z",
+      "updatedAt": "2026-08-21T13:07:17.759Z",
       "source": "scan",
       "symbols": [
         {
@@ -1450,7 +1475,7 @@
       "hash": "c07cc55965d5a41e",
       "size": 9008,
       "mtimeMs": 1786988177927.6758,
-      "updatedAt": "2026-08-21T12:55:33.437Z",
+      "updatedAt": "2026-08-21T13:07:17.759Z",
       "source": "scan",
       "symbols": [
         {
@@ -1531,7 +1556,7 @@
       "hash": "9dd6fc22859b3e1e",
       "size": 7404,
       "mtimeMs": 1787298426049.7175,
-      "updatedAt": "2026-08-21T12:55:33.438Z",
+      "updatedAt": "2026-08-21T13:07:17.760Z",
       "source": "scan",
       "symbols": [
         {
@@ -1577,7 +1602,7 @@
       "hash": "c2624fe14d9e1637",
       "size": 489,
       "mtimeMs": 1785408681792.3948,
-      "updatedAt": "2026-08-21T12:55:33.438Z",
+      "updatedAt": "2026-08-21T13:07:17.760Z",
       "source": "scan"
     },
     "app/src/app/layout.tsx": {
@@ -1586,7 +1611,7 @@
       "hash": "0dffa332410edbbd",
       "size": 2644,
       "mtimeMs": 1787083187556.856,
-      "updatedAt": "2026-08-21T12:55:33.438Z",
+      "updatedAt": "2026-08-21T13:07:17.761Z",
       "source": "scan",
       "symbols": [
         {
@@ -1611,7 +1636,7 @@
       "hash": "91a78d4fe16316df",
       "size": 436,
       "mtimeMs": 1785402644000,
-      "updatedAt": "2026-08-21T12:55:33.438Z",
+      "updatedAt": "2026-08-21T13:07:17.761Z",
       "source": "scan"
     },
     "app/src/app/not-found.tsx": {
@@ -1620,7 +1645,7 @@
       "hash": "f2fcb973347f6c77",
       "size": 835,
       "mtimeMs": 1785412795354.7793,
-      "updatedAt": "2026-08-21T12:55:33.438Z",
+      "updatedAt": "2026-08-21T13:07:17.761Z",
       "source": "scan"
     },
     "app/src/app/page.tsx": {
@@ -1629,7 +1654,7 @@
       "hash": "724783b017582a4b",
       "size": 752,
       "mtimeMs": 1786606850133.974,
-      "updatedAt": "2026-08-21T12:55:33.438Z",
+      "updatedAt": "2026-08-21T13:07:17.762Z",
       "source": "scan"
     },
     "app/src/app/robots.ts": {
@@ -1638,7 +1663,7 @@
       "hash": "f557b04382347deb",
       "size": 258,
       "mtimeMs": 1787078158805.3252,
-      "updatedAt": "2026-08-21T12:55:33.438Z",
+      "updatedAt": "2026-08-21T13:07:17.762Z",
       "source": "scan"
     },
     "app/src/app/sitemap.ts": {
@@ -1647,7 +1672,7 @@
       "hash": "d7d863aa3577c449",
       "size": 552,
       "mtimeMs": 1787078082645.3396,
-      "updatedAt": "2026-08-21T12:55:33.439Z",
+      "updatedAt": "2026-08-21T13:07:17.762Z",
       "source": "scan"
     },
     "app/src/components/blocks/AanbodHeader.tsx": {
@@ -1656,7 +1681,7 @@
       "hash": "18e19c713164c822",
       "size": 3561,
       "mtimeMs": 1787079435194.7634,
-      "updatedAt": "2026-08-21T12:55:33.439Z",
+      "updatedAt": "2026-08-21T13:07:17.763Z",
       "source": "scan",
       "symbols": [
         {
@@ -1674,7 +1699,7 @@
       "hash": "95c82e286b375224",
       "size": 3032,
       "mtimeMs": 1786560649047.1638,
-      "updatedAt": "2026-08-21T12:55:33.439Z",
+      "updatedAt": "2026-08-21T13:07:17.763Z",
       "source": "scan",
       "symbols": [
         {
@@ -1699,7 +1724,7 @@
       "hash": "7d2f0b422476569a",
       "size": 2730,
       "mtimeMs": 1787046957570.1377,
-      "updatedAt": "2026-08-21T12:55:33.439Z",
+      "updatedAt": "2026-08-21T13:07:17.763Z",
       "source": "scan",
       "symbols": [
         {
@@ -1717,7 +1742,7 @@
       "hash": "0151bc414004d3e0",
       "size": 6315,
       "mtimeMs": 1786622044844.197,
-      "updatedAt": "2026-08-21T12:55:33.439Z",
+      "updatedAt": "2026-08-21T13:07:17.764Z",
       "source": "scan",
       "symbols": [
         {
@@ -1735,7 +1760,7 @@
       "hash": "9b338ebc5b63121b",
       "size": 2132,
       "mtimeMs": 1787298426050.1611,
-      "updatedAt": "2026-08-21T12:55:33.439Z",
+      "updatedAt": "2026-08-21T13:07:17.764Z",
       "source": "scan",
       "symbols": [
         {
@@ -1752,8 +1777,8 @@
       "tokens": 1793,
       "hash": "1cb159744c257b44",
       "size": 6275,
-      "mtimeMs": 1787316839204.0623,
-      "updatedAt": "2026-08-21T12:55:33.440Z",
+      "mtimeMs": 1787317265113.2747,
+      "updatedAt": "2026-08-21T13:07:17.764Z",
       "source": "scan",
       "symbols": [
         {
@@ -1785,7 +1810,7 @@
       "hash": "c2bdfaa48b72e57b",
       "size": 3904,
       "mtimeMs": 1787298426050.3496,
-      "updatedAt": "2026-08-21T12:55:33.440Z",
+      "updatedAt": "2026-08-21T13:07:17.764Z",
       "source": "scan",
       "symbols": [
         {
@@ -1803,7 +1828,7 @@
       "hash": "a584c27a8b2980e2",
       "size": 2406,
       "mtimeMs": 1786607572449.5425,
-      "updatedAt": "2026-08-21T12:55:33.440Z",
+      "updatedAt": "2026-08-21T13:07:17.765Z",
       "source": "scan",
       "symbols": [
         {
@@ -1821,7 +1846,7 @@
       "hash": "23edba36ee511c1f",
       "size": 2218,
       "mtimeMs": 1785415262140.9001,
-      "updatedAt": "2026-08-21T12:55:33.440Z",
+      "updatedAt": "2026-08-21T13:07:17.765Z",
       "source": "scan",
       "symbols": [
         {
@@ -1839,7 +1864,7 @@
       "hash": "9453e19c00bd640b",
       "size": 2762,
       "mtimeMs": 1785413195722.425,
-      "updatedAt": "2026-08-21T12:55:33.440Z",
+      "updatedAt": "2026-08-21T13:07:17.766Z",
       "source": "scan",
       "symbols": [
         {
@@ -1857,7 +1882,7 @@
       "hash": "594f2eece16bda42",
       "size": 3084,
       "mtimeMs": 1786560543137.319,
-      "updatedAt": "2026-08-21T12:55:33.441Z",
+      "updatedAt": "2026-08-21T13:07:17.766Z",
       "source": "scan",
       "symbols": [
         {
@@ -1875,7 +1900,7 @@
       "hash": "0b7344e108a67ec0",
       "size": 1460,
       "mtimeMs": 1785413190284.1921,
-      "updatedAt": "2026-08-21T12:55:33.441Z",
+      "updatedAt": "2026-08-21T13:07:17.766Z",
       "source": "scan"
     },
     "app/src/components/blocks/Faq.tsx": {
@@ -1884,7 +1909,7 @@
       "hash": "e51ade10d399f8e6",
       "size": 3938,
       "mtimeMs": 1785415428516.1208,
-      "updatedAt": "2026-08-21T12:55:33.441Z",
+      "updatedAt": "2026-08-21T13:07:17.767Z",
       "source": "scan",
       "symbols": [
         {
@@ -1902,7 +1927,7 @@
       "hash": "41bd81f7685e6584",
       "size": 5301,
       "mtimeMs": 1787298426050.5852,
-      "updatedAt": "2026-08-21T12:55:33.441Z",
+      "updatedAt": "2026-08-21T13:07:17.767Z",
       "source": "scan",
       "symbols": [
         {
@@ -1920,7 +1945,7 @@
       "hash": "1782bb68412bb1e3",
       "size": 6352,
       "mtimeMs": 1785415619363.6216,
-      "updatedAt": "2026-08-21T12:55:33.441Z",
+      "updatedAt": "2026-08-21T13:07:17.768Z",
       "source": "scan",
       "symbols": [
         {
@@ -1938,7 +1963,7 @@
       "hash": "603f48d83177e489",
       "size": 1138,
       "mtimeMs": 1787047023778.6077,
-      "updatedAt": "2026-08-21T12:55:33.441Z",
+      "updatedAt": "2026-08-21T13:07:17.768Z",
       "source": "scan"
     },
     "app/src/components/blocks/IconCards.tsx": {
@@ -1946,8 +1971,8 @@
       "tokens": 687,
       "hash": "80bff050ff24a3fb",
       "size": 2405,
-      "mtimeMs": 1787316705631.4133,
-      "updatedAt": "2026-08-21T12:55:33.441Z",
+      "mtimeMs": 1787317265113.8245,
+      "updatedAt": "2026-08-21T13:07:17.768Z",
       "source": "scan",
       "symbols": [
         {
@@ -1965,7 +1990,7 @@
       "hash": "e6519b09e9a62195",
       "size": 5319,
       "mtimeMs": 1785413227994.7705,
-      "updatedAt": "2026-08-21T12:55:33.441Z",
+      "updatedAt": "2026-08-21T13:07:17.769Z",
       "source": "scan",
       "symbols": [
         {
@@ -1990,7 +2015,7 @@
       "hash": "bdfa421a9016487f",
       "size": 7017,
       "mtimeMs": 1786990545473.0293,
-      "updatedAt": "2026-08-21T12:55:33.442Z",
+      "updatedAt": "2026-08-21T13:07:17.769Z",
       "source": "scan",
       "symbols": [
         {
@@ -2036,7 +2061,7 @@
       "hash": "a302d9f6c3781a19",
       "size": 2282,
       "mtimeMs": 1786560600830.5215,
-      "updatedAt": "2026-08-21T12:55:33.442Z",
+      "updatedAt": "2026-08-21T13:07:17.769Z",
       "source": "scan",
       "symbols": [
         {
@@ -2054,7 +2079,7 @@
       "hash": "e42e1d2a605c981d",
       "size": 2022,
       "mtimeMs": 1787298426050.8179,
-      "updatedAt": "2026-08-21T12:55:33.442Z",
+      "updatedAt": "2026-08-21T13:07:17.769Z",
       "source": "scan",
       "symbols": [
         {
@@ -2072,7 +2097,7 @@
       "hash": "c41e949c499f5c81",
       "size": 9458,
       "mtimeMs": 1786991702712.6982,
-      "updatedAt": "2026-08-21T12:55:33.442Z",
+      "updatedAt": "2026-08-21T13:07:17.770Z",
       "source": "scan",
       "symbols": [
         {
@@ -2090,7 +2115,7 @@
       "hash": "fb1258a1b0739644",
       "size": 3995,
       "mtimeMs": 1785416736400.1511,
-      "updatedAt": "2026-08-21T12:55:33.442Z",
+      "updatedAt": "2026-08-21T13:07:17.770Z",
       "source": "scan",
       "symbols": [
         {
@@ -2108,7 +2133,7 @@
       "hash": "898d3dcd97cb7497",
       "size": 2295,
       "mtimeMs": 1786560526892.9836,
-      "updatedAt": "2026-08-21T12:55:33.442Z",
+      "updatedAt": "2026-08-21T13:07:17.770Z",
       "source": "scan",
       "symbols": [
         {
@@ -2126,7 +2151,7 @@
       "hash": "dec3de55ff8b8cc2",
       "size": 3775,
       "mtimeMs": 1786607590283.33,
-      "updatedAt": "2026-08-21T12:55:33.442Z",
+      "updatedAt": "2026-08-21T13:07:17.770Z",
       "source": "scan",
       "symbols": [
         {
@@ -2144,7 +2169,7 @@
       "hash": "8337bfe341657f72",
       "size": 2457,
       "mtimeMs": 1787298426050.935,
-      "updatedAt": "2026-08-21T12:55:33.442Z",
+      "updatedAt": "2026-08-21T13:07:17.771Z",
       "source": "scan",
       "symbols": [
         {
@@ -2162,7 +2187,7 @@
       "hash": "7d13572e8a5583bd",
       "size": 2276,
       "mtimeMs": 1785413199718.2004,
-      "updatedAt": "2026-08-21T12:55:33.443Z",
+      "updatedAt": "2026-08-21T13:07:17.771Z",
       "source": "scan",
       "symbols": [
         {
@@ -2180,7 +2205,7 @@
       "hash": "6d747ef6ee7c0184",
       "size": 3645,
       "mtimeMs": 1787298426051.0676,
-      "updatedAt": "2026-08-21T12:55:33.443Z",
+      "updatedAt": "2026-08-21T13:07:17.772Z",
       "source": "scan",
       "symbols": [
         {
@@ -2198,7 +2223,7 @@
       "hash": "57d64e6258679b91",
       "size": 2229,
       "mtimeMs": 1785415274797.0264,
-      "updatedAt": "2026-08-21T12:55:33.443Z",
+      "updatedAt": "2026-08-21T13:07:17.772Z",
       "source": "scan",
       "symbols": [
         {
@@ -2216,7 +2241,7 @@
       "hash": "5e87c243e870c8e7",
       "size": 3974,
       "mtimeMs": 1786990545474.2854,
-      "updatedAt": "2026-08-21T12:55:33.443Z",
+      "updatedAt": "2026-08-21T13:07:17.772Z",
       "source": "scan",
       "symbols": [
         {
@@ -2234,7 +2259,7 @@
       "hash": "63e2d2ae5ddc5821",
       "size": 10797,
       "mtimeMs": 1786991436647.8403,
-      "updatedAt": "2026-08-21T12:55:33.443Z",
+      "updatedAt": "2026-08-21T13:07:17.773Z",
       "source": "scan",
       "symbols": [
         {
@@ -2273,7 +2298,7 @@
       "hash": "15bacaa7b4cb3614",
       "size": 3106,
       "mtimeMs": 1786607699400.1987,
-      "updatedAt": "2026-08-21T12:55:33.443Z",
+      "updatedAt": "2026-08-21T13:07:17.773Z",
       "source": "scan",
       "symbols": [
         {
@@ -2291,7 +2316,7 @@
       "hash": "c730e184d1a313e0",
       "size": 4210,
       "mtimeMs": 1787047023769.6406,
-      "updatedAt": "2026-08-21T12:55:33.443Z",
+      "updatedAt": "2026-08-21T13:07:17.773Z",
       "source": "scan",
       "symbols": [
         {
@@ -2316,7 +2341,7 @@
       "hash": "7f4448009f72a0bd",
       "size": 4342,
       "mtimeMs": 1786607558666.14,
-      "updatedAt": "2026-08-21T12:55:33.443Z",
+      "updatedAt": "2026-08-21T13:07:17.774Z",
       "source": "scan",
       "symbols": [
         {
@@ -2334,7 +2359,7 @@
       "hash": "2f16ec5ec4826c2a",
       "size": 6024,
       "mtimeMs": 1785419839858.5242,
-      "updatedAt": "2026-08-21T12:55:33.444Z",
+      "updatedAt": "2026-08-21T13:07:17.775Z",
       "source": "scan",
       "symbols": [
         {
@@ -2359,7 +2384,7 @@
       "hash": "710c500aa121dbc8",
       "size": 3565,
       "mtimeMs": 1785413186461.6929,
-      "updatedAt": "2026-08-21T12:55:33.444Z",
+      "updatedAt": "2026-08-21T13:07:17.775Z",
       "source": "scan",
       "symbols": [
         {
@@ -2377,7 +2402,7 @@
       "hash": "47280cf16f3ed10d",
       "size": 3106,
       "mtimeMs": 1786560558589.5383,
-      "updatedAt": "2026-08-21T12:55:33.444Z",
+      "updatedAt": "2026-08-21T13:07:17.775Z",
       "source": "scan",
       "symbols": [
         {
@@ -2395,7 +2420,7 @@
       "hash": "371978a44767858d",
       "size": 2630,
       "mtimeMs": 1786622069380.0312,
-      "updatedAt": "2026-08-21T12:55:33.444Z",
+      "updatedAt": "2026-08-21T13:07:17.776Z",
       "source": "scan",
       "symbols": [
         {
@@ -2413,7 +2438,7 @@
       "hash": "703a8fda0ba8595a",
       "size": 3236,
       "mtimeMs": 1786560588922.7517,
-      "updatedAt": "2026-08-21T12:55:33.444Z",
+      "updatedAt": "2026-08-21T13:07:17.776Z",
       "source": "scan",
       "symbols": [
         {
@@ -2438,7 +2463,7 @@
       "hash": "08052a2b80291d6a",
       "size": 866,
       "mtimeMs": 1785413185546.9302,
-      "updatedAt": "2026-08-21T12:55:33.444Z",
+      "updatedAt": "2026-08-21T13:07:17.776Z",
       "source": "scan"
     },
     "app/src/components/blocks/Werkwijze.tsx": {
@@ -2446,8 +2471,8 @@
       "tokens": 930,
       "hash": "865a8f297772b8b2",
       "size": 3255,
-      "mtimeMs": 1787316694442.077,
-      "updatedAt": "2026-08-21T12:55:33.444Z",
+      "mtimeMs": 1787317265114.2244,
+      "updatedAt": "2026-08-21T13:07:17.776Z",
       "source": "scan",
       "symbols": [
         {
@@ -2465,7 +2490,7 @@
       "hash": "7c284124f0daccb3",
       "size": 5802,
       "mtimeMs": 1787298426051.5579,
-      "updatedAt": "2026-08-21T12:55:33.445Z",
+      "updatedAt": "2026-08-21T13:07:17.777Z",
       "source": "scan",
       "symbols": [
         {
@@ -2497,7 +2522,7 @@
       "hash": "122d318a5df4b5ad",
       "size": 10276,
       "mtimeMs": 1787298426051.3306,
-      "updatedAt": "2026-08-21T12:55:33.445Z",
+      "updatedAt": "2026-08-21T13:07:17.777Z",
       "source": "scan",
       "symbols": [
         {
@@ -2529,7 +2554,7 @@
       "hash": "3f5cc6bb6a797c0a",
       "size": 6819,
       "mtimeMs": 1787083183874.7505,
-      "updatedAt": "2026-08-21T12:55:33.445Z",
+      "updatedAt": "2026-08-21T13:07:17.777Z",
       "source": "scan",
       "symbols": [
         {
@@ -2554,7 +2579,7 @@
       "hash": "c448cf73a4a26cbe",
       "size": 5210,
       "mtimeMs": 1787079482414.7515,
-      "updatedAt": "2026-08-21T12:55:33.445Z",
+      "updatedAt": "2026-08-21T13:07:17.778Z",
       "source": "scan",
       "symbols": [
         {
@@ -2593,7 +2618,7 @@
       "hash": "a9c87031d71b88e4",
       "size": 1608,
       "mtimeMs": 1787081668084.7224,
-      "updatedAt": "2026-08-21T12:55:33.445Z",
+      "updatedAt": "2026-08-21T13:07:17.778Z",
       "source": "scan"
     },
     "app/src/components/object/ObjectDescription.tsx": {
@@ -2602,7 +2627,7 @@
       "hash": "5e66d737b694a669",
       "size": 2844,
       "mtimeMs": 1786611315479.8455,
-      "updatedAt": "2026-08-21T12:55:33.446Z",
+      "updatedAt": "2026-08-21T13:07:17.778Z",
       "source": "scan",
       "symbols": [
         {
@@ -2627,7 +2652,7 @@
       "hash": "9d6c39b3a1ff35ad",
       "size": 2460,
       "mtimeMs": 1786611326008.5325,
-      "updatedAt": "2026-08-21T12:55:33.446Z",
+      "updatedAt": "2026-08-21T13:07:17.778Z",
       "source": "scan",
       "symbols": [
         {
@@ -2645,7 +2670,7 @@
       "hash": "37e3641824cbfc52",
       "size": 7721,
       "mtimeMs": 1786611284509.3784,
-      "updatedAt": "2026-08-21T12:55:33.446Z",
+      "updatedAt": "2026-08-21T13:07:17.779Z",
       "source": "scan",
       "symbols": [
         {
@@ -2677,7 +2702,7 @@
       "hash": "0ae6dce70550b5b6",
       "size": 3722,
       "mtimeMs": 1786611433898.564,
-      "updatedAt": "2026-08-21T12:55:33.446Z",
+      "updatedAt": "2026-08-21T13:07:17.779Z",
       "source": "scan",
       "symbols": [
         {
@@ -2709,7 +2734,7 @@
       "hash": "f65c1f6130e303e0",
       "size": 5675,
       "mtimeMs": 1786611353906.9075,
-      "updatedAt": "2026-08-21T12:55:33.446Z",
+      "updatedAt": "2026-08-21T13:07:17.779Z",
       "source": "scan",
       "symbols": [
         {
@@ -2748,7 +2773,7 @@
       "hash": "3f5007d4950d8dbb",
       "size": 890,
       "mtimeMs": 1786611331205.4033,
-      "updatedAt": "2026-08-21T12:55:33.446Z",
+      "updatedAt": "2026-08-21T13:07:17.780Z",
       "source": "scan"
     },
     "app/src/components/object/SimilarObjects.tsx": {
@@ -2757,16 +2782,16 @@
       "hash": "8da9d2e724b2b297",
       "size": 1460,
       "mtimeMs": 1786611884278.9775,
-      "updatedAt": "2026-08-21T12:55:33.446Z",
+      "updatedAt": "2026-08-21T13:07:17.780Z",
       "source": "scan"
     },
     "app/src/components/PageBuilder.tsx": {
       "description": "Reviews zonder quote of naam zijn onbruikbaar op een kaart en vallen af.",
-      "tokens": 7982,
-      "hash": "d49968230c759ebf",
-      "size": 27938,
-      "mtimeMs": 1787316759837.693,
-      "updatedAt": "2026-08-21T12:55:33.446Z",
+      "tokens": 7997,
+      "hash": "afa27d27c8c8435e",
+      "size": 27991,
+      "mtimeMs": 1787317546077.5674,
+      "updatedAt": "2026-08-21T13:07:17.780Z",
       "source": "scan",
       "symbols": [
         {
@@ -2801,14 +2826,14 @@
           "name": "renderBlock",
           "kind": "fn",
           "startLine": 138,
-          "endLine": 911,
-          "tokens": 6291
+          "endLine": 912,
+          "tokens": 6306
         },
         {
           "name": "PageBuilder",
           "kind": "fn",
-          "startLine": 912,
-          "endLine": 917,
+          "startLine": 913,
+          "endLine": 918,
           "tokens": 60
         }
       ]
@@ -2819,7 +2844,7 @@
       "hash": "38475ef714e8affc",
       "size": 1892,
       "mtimeMs": 1785415441511.4055,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.781Z",
       "source": "scan",
       "symbols": [
         {
@@ -2843,8 +2868,8 @@
       "tokens": 1291,
       "hash": "f9bd7fb60c0b46bc",
       "size": 4516,
-      "mtimeMs": 1787316679820.09,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "mtimeMs": 1787317265114.8782,
+      "updatedAt": "2026-08-21T13:07:17.781Z",
       "source": "scan",
       "symbols": [
         {
@@ -2862,7 +2887,7 @@
       "hash": "05f55f040d0a64a8",
       "size": 1553,
       "mtimeMs": 1785415398610.7769,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.781Z",
       "source": "scan"
     },
     "app/src/components/ui/ContactIcon.tsx": {
@@ -2871,7 +2896,7 @@
       "hash": "edabc2df94fe7af8",
       "size": 1998,
       "mtimeMs": 1786607538427.6035,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.781Z",
       "source": "scan",
       "symbols": [
         {
@@ -2889,7 +2914,7 @@
       "hash": "02d1f9bbe083f4cd",
       "size": 657,
       "mtimeMs": 1786560645894.0952,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.782Z",
       "source": "scan"
     },
     "app/src/components/ui/IconArrow.tsx": {
@@ -2898,7 +2923,7 @@
       "hash": "6a5c1f24e03300a7",
       "size": 708,
       "mtimeMs": 1785392743578.4355,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.782Z",
       "source": "scan"
     },
     "app/src/components/ui/Lead.tsx": {
@@ -2907,7 +2932,7 @@
       "hash": "014631b802eaf516",
       "size": 319,
       "mtimeMs": 1785394554923.0151,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.782Z",
       "source": "scan"
     },
     "app/src/components/ui/LogoMark.tsx": {
@@ -2916,7 +2941,7 @@
       "hash": "bdfab3c1ae5160e5",
       "size": 1223,
       "mtimeMs": 1787080757357.1313,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.782Z",
       "source": "scan"
     },
     "app/src/components/ui/Reveal.tsx": {
@@ -2925,7 +2950,7 @@
       "hash": "aec7f6d2a3d1a840",
       "size": 882,
       "mtimeMs": 1785408194057.265,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.782Z",
       "source": "scan"
     },
     "app/src/components/ui/RevealLink.tsx": {
@@ -2934,7 +2959,7 @@
       "hash": "dd12002044baeeb5",
       "size": 969,
       "mtimeMs": 1785415412626.4539,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.783Z",
       "source": "scan"
     },
     "app/src/components/ui/SectionHead.tsx": {
@@ -2943,7 +2968,7 @@
       "hash": "f0ab3aab1f7b059e",
       "size": 559,
       "mtimeMs": 1785394555191.6484,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.783Z",
       "source": "scan"
     },
     "app/src/components/ui/SocialIcon.tsx": {
@@ -2952,7 +2977,7 @@
       "hash": "81cb19db53077731",
       "size": 2131,
       "mtimeMs": 1787083168348.3113,
-      "updatedAt": "2026-08-21T12:55:33.447Z",
+      "updatedAt": "2026-08-21T13:07:17.783Z",
       "source": "scan",
       "symbols": [
         {
@@ -2970,7 +2995,7 @@
       "hash": "1529a1932f9c9d60",
       "size": 2345,
       "mtimeMs": 1787047023723.101,
-      "updatedAt": "2026-08-21T12:55:33.448Z",
+      "updatedAt": "2026-08-21T13:07:17.783Z",
       "source": "scan",
       "symbols": [
         {
@@ -2988,7 +3013,7 @@
       "hash": "bde3116a0bd7d4cd",
       "size": 416,
       "mtimeMs": 1785408054715.1523,
-      "updatedAt": "2026-08-21T12:55:33.448Z",
+      "updatedAt": "2026-08-21T13:07:17.784Z",
       "source": "scan"
     },
     "app/src/hooks/useActiveStep.ts": {
@@ -2997,7 +3022,7 @@
       "hash": "3b0e1f6ea523cbf1",
       "size": 1106,
       "mtimeMs": 1785409638047.68,
-      "updatedAt": "2026-08-21T12:55:33.448Z",
+      "updatedAt": "2026-08-21T13:07:17.784Z",
       "source": "scan"
     },
     "app/src/hooks/useMobileNav.ts": {
@@ -3006,7 +3031,7 @@
       "hash": "59f2e48a7765bf83",
       "size": 984,
       "mtimeMs": 1785392863778.6238,
-      "updatedAt": "2026-08-21T12:55:33.448Z",
+      "updatedAt": "2026-08-21T13:07:17.784Z",
       "source": "scan"
     },
     "app/src/hooks/useRevealOnScroll.ts": {
@@ -3015,7 +3040,7 @@
       "hash": "ff5027d1717a5bf1",
       "size": 906,
       "mtimeMs": 1786561479607.484,
-      "updatedAt": "2026-08-21T12:55:33.448Z",
+      "updatedAt": "2026-08-21T13:07:17.785Z",
       "source": "scan"
     },
     "app/src/hooks/useReviewsCarousel.ts": {
@@ -3024,7 +3049,7 @@
       "hash": "4de275bb0b4be16f",
       "size": 1334,
       "mtimeMs": 1785406817982.6602,
-      "updatedAt": "2026-08-21T12:55:33.448Z",
+      "updatedAt": "2026-08-21T13:07:17.785Z",
       "source": "scan"
     },
     "app/src/hooks/useStickyTopbar.ts": {
@@ -3033,7 +3058,7 @@
       "hash": "e9e5ab97944164eb",
       "size": 826,
       "mtimeMs": 1786560656601.862,
-      "updatedAt": "2026-08-21T12:55:33.448Z",
+      "updatedAt": "2026-08-21T13:07:17.785Z",
       "source": "scan"
     },
     "app/src/lib/aanbiedingstekst.ts": {
@@ -3042,7 +3067,7 @@
       "hash": "417f23580d3dd5fa",
       "size": 2065,
       "mtimeMs": 1786611152891.484,
-      "updatedAt": "2026-08-21T12:55:33.448Z",
+      "updatedAt": "2026-08-21T13:07:17.786Z",
       "source": "scan",
       "symbols": [
         {
@@ -3074,7 +3099,7 @@
       "hash": "69edd82abbe63162",
       "size": 2949,
       "mtimeMs": 1786617190173.3257,
-      "updatedAt": "2026-08-21T12:55:33.448Z",
+      "updatedAt": "2026-08-21T13:07:17.786Z",
       "source": "scan"
     },
     "app/src/lib/aankoop-content.ts": {
@@ -3083,7 +3108,7 @@
       "hash": "8239a515b5c1074c",
       "size": 9754,
       "mtimeMs": 1787046933747.037,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.786Z",
       "source": "scan"
     },
     "app/src/lib/beoordelingen-content.ts": {
@@ -3092,7 +3117,7 @@
       "hash": "9a8e147761f6a739",
       "size": 3242,
       "mtimeMs": 1786621966761.69,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.787Z",
       "source": "scan"
     },
     "app/src/lib/chrome.ts": {
@@ -3101,7 +3126,7 @@
       "hash": "0a9825cfe769c118",
       "size": 214,
       "mtimeMs": 1785392860077.3623,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.787Z",
       "source": "scan"
     },
     "app/src/lib/cn.ts": {
@@ -3110,7 +3135,7 @@
       "hash": "ec1499e69cf8ab14",
       "size": 129,
       "mtimeMs": 1785394522220.3386,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.787Z",
       "source": "scan"
     },
     "app/src/lib/contact-content.ts": {
@@ -3119,7 +3144,7 @@
       "hash": "1a1c42be07ddb1e6",
       "size": 6777,
       "mtimeMs": 1787298426052.2292,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.787Z",
       "source": "scan"
     },
     "app/src/lib/form-fields.ts": {
@@ -3128,7 +3153,7 @@
       "hash": "b9d71eda829f733f",
       "size": 3018,
       "mtimeMs": 1787298426052.4507,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.787Z",
       "source": "scan",
       "symbols": [
         {
@@ -3153,7 +3178,7 @@
       "hash": "8701aed0fafb688d",
       "size": 799,
       "mtimeMs": 1786611222475.6199,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.788Z",
       "source": "scan"
     },
     "app/src/lib/funda-reviews.ts": {
@@ -3162,7 +3187,7 @@
       "hash": "47302cb56e6f1e24",
       "size": 15846,
       "mtimeMs": 1786988177929.0286,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.788Z",
       "source": "scan",
       "symbols": [
         {
@@ -3313,7 +3338,7 @@
       "hash": "468aafd90e1e85ea",
       "size": 3679,
       "mtimeMs": 1786618873059.2969,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.788Z",
       "source": "scan"
     },
     "app/src/lib/links.ts": {
@@ -3322,7 +3347,7 @@
       "hash": "deb9a891b124a1f5",
       "size": 900,
       "mtimeMs": 1785417692764.3281,
-      "updatedAt": "2026-08-21T12:55:33.449Z",
+      "updatedAt": "2026-08-21T13:07:17.788Z",
       "source": "scan"
     },
     "app/src/lib/nvm-content.ts": {
@@ -3330,8 +3355,8 @@
       "tokens": 2965,
       "hash": "0950d61ebb99b972",
       "size": 10398,
-      "mtimeMs": 1787316668135.1074,
-      "updatedAt": "2026-08-21T12:55:33.450Z",
+      "mtimeMs": 1787317265115.3271,
+      "updatedAt": "2026-08-21T13:07:17.789Z",
       "source": "scan"
     },
     "app/src/lib/object-content.ts": {
@@ -3340,7 +3365,7 @@
       "hash": "53f2c1ecb6fa6ff3",
       "size": 1813,
       "mtimeMs": 1786611233980.7998,
-      "updatedAt": "2026-08-21T12:55:33.450Z",
+      "updatedAt": "2026-08-21T13:07:17.789Z",
       "source": "scan",
       "symbols": [
         {
@@ -3358,7 +3383,7 @@
       "hash": "12b28f9d9e1d1d95",
       "size": 6839,
       "mtimeMs": 1786560515058.1301,
-      "updatedAt": "2026-08-21T12:55:33.450Z",
+      "updatedAt": "2026-08-21T13:07:17.789Z",
       "source": "scan"
     },
     "app/src/lib/phone.ts": {
@@ -3367,7 +3392,7 @@
       "hash": "ed08d4d6faddd68b",
       "size": 95,
       "mtimeMs": 1787082971951.2463,
-      "updatedAt": "2026-08-21T12:55:33.450Z",
+      "updatedAt": "2026-08-21T13:07:17.790Z",
       "source": "scan"
     },
     "app/src/lib/reviews.ts": {
@@ -3376,7 +3401,7 @@
       "hash": "677e0f8e14013995",
       "size": 6251,
       "mtimeMs": 1786988177929.5854,
-      "updatedAt": "2026-08-21T12:55:33.450Z",
+      "updatedAt": "2026-08-21T13:07:17.790Z",
       "source": "scan",
       "symbols": [
         {
@@ -3457,7 +3482,7 @@
       "hash": "0a7b9ef28ff5ac39",
       "size": 897,
       "mtimeMs": 1787077801483.3132,
-      "updatedAt": "2026-08-21T12:55:33.450Z",
+      "updatedAt": "2026-08-21T13:07:17.790Z",
       "source": "scan"
     },
     "app/src/lib/taxatie-content.ts": {
@@ -3465,8 +3490,8 @@
       "tokens": 3148,
       "hash": "a23b5d9fcd03db71",
       "size": 11030,
-      "mtimeMs": 1787316711988.5322,
-      "updatedAt": "2026-08-21T12:55:33.451Z",
+      "mtimeMs": 1787317265115.8474,
+      "updatedAt": "2026-08-21T13:07:17.791Z",
       "source": "scan"
     },
     "app/src/lib/verkoop-content.ts": {
@@ -3475,7 +3500,7 @@
       "hash": "c83315f99b805c36",
       "size": 7719,
       "mtimeMs": 1787046965672.8926,
-      "updatedAt": "2026-08-21T12:55:33.451Z",
+      "updatedAt": "2026-08-21T13:07:17.791Z",
       "source": "scan"
     },
     "app/src/lib/waardebepaling-content.ts": {
@@ -3484,7 +3509,16 @@
       "hash": "89b49783c7a1c3fa",
       "size": 10722,
       "mtimeMs": 1787298426052.6282,
-      "updatedAt": "2026-08-21T12:55:33.451Z",
+      "updatedAt": "2026-08-21T13:07:17.791Z",
+      "source": "scan"
+    },
+    "app/src/lib/zoekopdracht-content.ts": {
+      "description": "Het `form`-document waar de hero naar wijst, in `steps`-modus.",
+      "tokens": 3032,
+      "hash": "1754aae06f15b92c",
+      "size": 10668,
+      "mtimeMs": 1787317521273.1094,
+      "updatedAt": "2026-08-21T13:07:17.792Z",
       "source": "scan"
     },
     "app/src/sanity/client.ts": {
@@ -3493,7 +3527,7 @@
       "hash": "3ec432deb90d37d3",
       "size": 211,
       "mtimeMs": 1785089336344.546,
-      "updatedAt": "2026-08-21T12:55:33.451Z",
+      "updatedAt": "2026-08-21T13:07:17.792Z",
       "source": "scan"
     },
     "app/src/sanity/image.ts": {
@@ -3502,7 +3536,7 @@
       "hash": "b01cf2114cc455b3",
       "size": 1024,
       "mtimeMs": 1786611093245.4412,
-      "updatedAt": "2026-08-21T12:55:33.451Z",
+      "updatedAt": "2026-08-21T13:07:17.793Z",
       "source": "scan"
     },
     "app/src/sanity/metadata.ts": {
@@ -3511,7 +3545,7 @@
       "hash": "7acb84c9e55c0cd9",
       "size": 1790,
       "mtimeMs": 1786611390739.419,
-      "updatedAt": "2026-08-21T12:55:33.451Z",
+      "updatedAt": "2026-08-21T13:07:17.793Z",
       "source": "scan",
       "symbols": [
         {
@@ -3529,25 +3563,25 @@
       "hash": "109ca8246c196ac5",
       "size": 6954,
       "mtimeMs": 1787298426053.2036,
-      "updatedAt": "2026-08-21T12:55:33.451Z",
+      "updatedAt": "2026-08-21T13:07:17.793Z",
       "source": "scan"
     },
     "app/src/sanity/sanity.types.ts": {
       "description": "---------------------------------------------------------------------------------",
-      "tokens": 23046,
-      "hash": "2e608ac51507cadf",
-      "size": 80659,
-      "mtimeMs": 1787316825911.5554,
-      "updatedAt": "2026-08-21T12:55:33.452Z",
+      "tokens": 23061,
+      "hash": "a8e1b729922188d8",
+      "size": 80711,
+      "mtimeMs": 1787317573199.8179,
+      "updatedAt": "2026-08-21T13:07:17.795Z",
       "source": "scan"
     },
     "app/src/sanity/schema.json": {
       "description": "",
-      "tokens": 53569,
-      "hash": "6597030788fb1782",
-      "size": 187489,
-      "mtimeMs": 1787316823692.7993,
-      "updatedAt": "2026-08-21T12:55:33.452Z",
+      "tokens": 53615,
+      "hash": "bcce8aab122246c2",
+      "size": 187651,
+      "mtimeMs": 1787317570729.2495,
+      "updatedAt": "2026-08-21T13:07:17.796Z",
       "source": "scan"
     },
     "app/src/sanity/write-client.ts": {
@@ -3556,7 +3590,7 @@
       "hash": "3e340c81ba81915b",
       "size": 942,
       "mtimeMs": 1786988177930.8914,
-      "updatedAt": "2026-08-21T12:55:33.452Z",
+      "updatedAt": "2026-08-21T13:07:17.796Z",
       "source": "scan"
     },
     "app/tailwind.config.ts": {
@@ -3565,7 +3599,7 @@
       "hash": "acbbf29f655cfa27",
       "size": 3308,
       "mtimeMs": 1785396746187.5957,
-      "updatedAt": "2026-08-21T12:55:33.452Z",
+      "updatedAt": "2026-08-21T13:07:17.797Z",
       "source": "scan"
     },
     "app/tsconfig.json": {
@@ -3574,16 +3608,16 @@
       "hash": "5c51df4c59f4510d",
       "size": 670,
       "mtimeMs": 1785087937160.0479,
-      "updatedAt": "2026-08-21T12:55:33.452Z",
+      "updatedAt": "2026-08-21T13:07:17.797Z",
       "source": "scan"
     },
     "app/tsconfig.tsbuildinfo": {
       "description": "",
-      "tokens": 46057,
-      "hash": "14c76c9cee4df220",
-      "size": 172713,
-      "mtimeMs": 1787316840586.558,
-      "updatedAt": "2026-08-21T12:55:33.452Z",
+      "tokens": 47667,
+      "hash": "e4940088eb727431",
+      "size": 178751,
+      "mtimeMs": 1787317576131.9512,
+      "updatedAt": "2026-08-21T13:07:17.798Z",
       "source": "scan"
     },
     "app/vercel.json": {
@@ -3592,7 +3626,7 @@
       "hash": "05219b4c342411fa",
       "size": 160,
       "mtimeMs": 1786988177931.304,
-      "updatedAt": "2026-08-21T12:55:33.452Z",
+      "updatedAt": "2026-08-21T13:07:17.798Z",
       "source": "scan"
     },
     "CLAUDE.md": {
@@ -3601,7 +3635,7 @@
       "hash": "b1ca356fa9d5f3a6",
       "size": 225,
       "mtimeMs": 1785834177112.446,
-      "updatedAt": "2026-08-21T12:55:33.453Z",
+      "updatedAt": "2026-08-21T13:07:17.798Z",
       "source": "scan"
     },
     "docker-compose.yml": {
@@ -3610,7 +3644,7 @@
       "hash": "3b03cc03388a74dc",
       "size": 291,
       "mtimeMs": 1787054841931.5232,
-      "updatedAt": "2026-08-21T12:55:33.453Z",
+      "updatedAt": "2026-08-21T13:07:17.799Z",
       "source": "scan"
     },
     "docs/formulieren.md": {
@@ -3619,7 +3653,7 @@
       "hash": "b2e338e998d4e196",
       "size": 7160,
       "mtimeMs": 1787299035600.632,
-      "updatedAt": "2026-08-21T12:55:33.453Z",
+      "updatedAt": "2026-08-21T13:07:17.799Z",
       "source": "scan"
     },
     "docs/funda-review-scraper.md": {
@@ -3628,7 +3662,7 @@
       "hash": "e0e51df08eba3bf1",
       "size": 6516,
       "mtimeMs": 1786988177931.8477,
-      "updatedAt": "2026-08-21T12:55:33.454Z",
+      "updatedAt": "2026-08-21T13:07:17.800Z",
       "source": "scan"
     },
     "README.md": {
@@ -3637,7 +3671,7 @@
       "hash": "37fe956efdc724d1",
       "size": 474,
       "mtimeMs": 1786988177922.9436,
-      "updatedAt": "2026-08-21T12:55:33.454Z",
+      "updatedAt": "2026-08-21T13:07:17.800Z",
       "source": "scan"
     },
     "studio-hart-huis/.gitignore": {
@@ -3646,7 +3680,7 @@
       "hash": "863fc08c4b06d0a5",
       "size": 442,
       "mtimeMs": 1786988245593.1978,
-      "updatedAt": "2026-08-21T12:55:33.454Z",
+      "updatedAt": "2026-08-21T13:07:17.800Z",
       "source": "scan"
     },
     "studio-hart-huis/.sanity/runtime/app.js": {
@@ -3655,7 +3689,7 @@
       "hash": "8efdad20830ad340",
       "size": 303,
       "mtimeMs": 1787301158371.5208,
-      "updatedAt": "2026-08-21T12:55:33.455Z",
+      "updatedAt": "2026-08-21T13:07:17.801Z",
       "source": "scan"
     },
     "studio-hart-huis/.sanity/runtime/index.html": {
@@ -3664,7 +3698,7 @@
       "hash": "919a3418e8b9d151",
       "size": 8761,
       "mtimeMs": 1787301158370.8872,
-      "updatedAt": "2026-08-21T12:55:33.455Z",
+      "updatedAt": "2026-08-21T13:07:17.801Z",
       "source": "scan"
     },
     "studio-hart-huis/environment.d.ts": {
@@ -3673,7 +3707,7 @@
       "hash": "1e61c9517eb7482c",
       "size": 563,
       "mtimeMs": 1786988177932.7354,
-      "updatedAt": "2026-08-21T12:55:33.455Z",
+      "updatedAt": "2026-08-21T13:07:17.802Z",
       "source": "scan"
     },
     "studio-hart-huis/eslint.config.mjs": {
@@ -3682,7 +3716,7 @@
       "hash": "c5807d719bd7e7fe",
       "size": 78,
       "mtimeMs": 1785064183076.9744,
-      "updatedAt": "2026-08-21T12:55:33.455Z",
+      "updatedAt": "2026-08-21T13:07:17.802Z",
       "source": "scan"
     },
     "studio-hart-huis/package-lock.json": {
@@ -3691,25 +3725,25 @@
       "hash": "db3ec51a12b1cece",
       "size": 608256,
       "mtimeMs": 1787298426056.2202,
-      "updatedAt": "2026-08-21T12:55:33.457Z",
+      "updatedAt": "2026-08-21T13:07:17.804Z",
       "source": "scan"
     },
     "studio-hart-huis/package.json": {
       "description": "Node.js package manifest",
-      "tokens": 314,
-      "hash": "b9e9c017b5795184",
-      "size": 1096,
-      "mtimeMs": 1787299904188.7954,
-      "updatedAt": "2026-08-21T12:55:33.457Z",
+      "tokens": 291,
+      "hash": "4b8339796d234b0a",
+      "size": 1018,
+      "mtimeMs": 1787317262541.6091,
+      "updatedAt": "2026-08-21T13:07:17.804Z",
       "source": "scan"
     },
     "studio-hart-huis/pnpm-lock.yaml": {
       "description": "pnpm lock file",
-      "tokens": 110372,
-      "hash": "3cf9fa2de41a3c5f",
-      "size": 386299,
-      "mtimeMs": 1787299912189.9114,
-      "updatedAt": "2026-08-21T12:55:33.458Z",
+      "tokens": 111114,
+      "hash": "cd7b5345df5da00b",
+      "size": 388896,
+      "mtimeMs": 1787317262543.367,
+      "updatedAt": "2026-08-21T13:07:17.805Z",
       "source": "scan"
     },
     "studio-hart-huis/README.md": {
@@ -3718,7 +3752,7 @@
       "hash": "9bdd511ad54209f8",
       "size": 527,
       "mtimeMs": 1785064182431.047,
-      "updatedAt": "2026-08-21T12:55:33.458Z",
+      "updatedAt": "2026-08-21T13:07:17.805Z",
       "source": "scan"
     },
     "studio-hart-huis/sanity.cli.ts": {
@@ -3727,7 +3761,7 @@
       "hash": "9bab732c830bc387",
       "size": 875,
       "mtimeMs": 1787036210824.5593,
-      "updatedAt": "2026-08-21T12:55:33.458Z",
+      "updatedAt": "2026-08-21T13:07:17.806Z",
       "source": "scan"
     },
     "studio-hart-huis/sanity.config.ts": {
@@ -3736,7 +3770,7 @@
       "hash": "1b9555d04c6817ef",
       "size": 423,
       "mtimeMs": 1787298426056.6462,
-      "updatedAt": "2026-08-21T12:55:33.458Z",
+      "updatedAt": "2026-08-21T13:07:17.806Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/aanbodHeaderType.ts": {
@@ -3745,7 +3779,7 @@
       "hash": "8ca24ea2b522143d",
       "size": 1253,
       "mtimeMs": 1786617278177.1423,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "updatedAt": "2026-08-21T13:07:17.807Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/assurancesType.ts": {
@@ -3754,7 +3788,7 @@
       "hash": "f5f79b942c3c7416",
       "size": 1285,
       "mtimeMs": 1786560726143.7336,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "updatedAt": "2026-08-21T13:07:17.807Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/benefitsType.ts": {
@@ -3762,8 +3796,8 @@
       "tokens": 728,
       "hash": "f2d34365aaa2646b",
       "size": 2546,
-      "mtimeMs": 1787316733005.7095,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "mtimeMs": 1787317265117.7573,
+      "updatedAt": "2026-08-21T13:07:17.807Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/beoordelingenHeroType.ts": {
@@ -3772,7 +3806,7 @@
       "hash": "8d31f4b9d0eba883",
       "size": 1592,
       "mtimeMs": 1786622128019.0623,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "updatedAt": "2026-08-21T13:07:17.808Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/centeredCtaType.ts": {
@@ -3781,7 +3815,7 @@
       "hash": "2555be3c165072a2",
       "size": 888,
       "mtimeMs": 1787298426056.8066,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "updatedAt": "2026-08-21T13:07:17.808Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/compareCardsType.ts": {
@@ -3789,8 +3823,8 @@
       "tokens": 791,
       "hash": "79c4bacf2734a91d",
       "size": 2768,
-      "mtimeMs": 1787316759837.4482,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "mtimeMs": 1787317265118.1023,
+      "updatedAt": "2026-08-21T13:07:17.808Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/contactFormSectionType.ts": {
@@ -3799,7 +3833,7 @@
       "hash": "4128464d57df3fa9",
       "size": 2619,
       "mtimeMs": 1787298426057.0046,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "updatedAt": "2026-08-21T13:07:17.808Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/contactWaysType.ts": {
@@ -3808,7 +3842,7 @@
       "hash": "d39910ec626dc7f9",
       "size": 1853,
       "mtimeMs": 1786607789624.2578,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "updatedAt": "2026-08-21T13:07:17.809Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/crossLinksType.ts": {
@@ -3817,7 +3851,7 @@
       "hash": "84229b651aa969e7",
       "size": 1115,
       "mtimeMs": 1785415057713.1182,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "updatedAt": "2026-08-21T13:07:17.809Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/ctaBandType.ts": {
@@ -3826,7 +3860,7 @@
       "hash": "9c112bfd109e89c0",
       "size": 1166,
       "mtimeMs": 1785413063795.3142,
-      "updatedAt": "2026-08-21T12:55:33.459Z",
+      "updatedAt": "2026-08-21T13:07:17.809Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/duoPhotosType.ts": {
@@ -3835,7 +3869,7 @@
       "hash": "8e379f3468f37824",
       "size": 1278,
       "mtimeMs": 1786560726121.0774,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.809Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/factBarType.ts": {
@@ -3844,7 +3878,7 @@
       "hash": "fea9102e9266f4a3",
       "size": 1010,
       "mtimeMs": 1785413084448.296,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.810Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/faqsType.ts": {
@@ -3853,16 +3887,16 @@
       "hash": "9f84992a20aef4df",
       "size": 924,
       "mtimeMs": 1785413108533.2122,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.810Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/formHeroType.ts": {
-      "description": "Hero met achtergrondfoto en een aanvraagformulier (referentie naar een `contactForm`-document). Generiek.",
-      "tokens": 734,
-      "hash": "fa4ab6dd4dc4db46",
-      "size": 2568,
-      "mtimeMs": 1787298426057.1433,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "description": "Exports formHeroType",
+      "tokens": 786,
+      "hash": "93848011c5506c78",
+      "size": 2751,
+      "mtimeMs": 1787317546077.2058,
+      "updatedAt": "2026-08-21T13:07:17.810Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/heroType.ts": {
@@ -3871,7 +3905,7 @@
       "hash": "954fcf15d2e885a1",
       "size": 2189,
       "mtimeMs": 1786621270904.8347,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.810Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/highlightStripType.ts": {
@@ -3880,7 +3914,7 @@
       "hash": "80d9e7297f01d3fc",
       "size": 1431,
       "mtimeMs": 1787047043176.719,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.811Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/iconCardsType.ts": {
@@ -3888,8 +3922,8 @@
       "tokens": 636,
       "hash": "c0771069f9efcc8a",
       "size": 2225,
-      "mtimeMs": 1787316733005.1362,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "mtimeMs": 1787317265118.46,
+      "updatedAt": "2026-08-21T13:07:17.811Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/introType.ts": {
@@ -3898,7 +3932,7 @@
       "hash": "741d65d7d7f99709",
       "size": 2399,
       "mtimeMs": 1785413256568.5757,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.811Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/listingsType.ts": {
@@ -3907,7 +3941,7 @@
       "hash": "0f4664f92d3d29b6",
       "size": 1118,
       "mtimeMs": 1786990545475.9053,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.812Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/mediaTextType.ts": {
@@ -3916,7 +3950,7 @@
       "hash": "a2b19db266fc7fc8",
       "size": 1192,
       "mtimeMs": 1786560726139.4656,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.812Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/numberedStepsType.ts": {
@@ -3925,7 +3959,7 @@
       "hash": "793f36dbca352bb0",
       "size": 1438,
       "mtimeMs": 1787298426057.3608,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.812Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/objectGridType.ts": {
@@ -3934,7 +3968,7 @@
       "hash": "0cbd91172da12ec1",
       "size": 1102,
       "mtimeMs": 1786617285586.8928,
-      "updatedAt": "2026-08-21T12:55:33.460Z",
+      "updatedAt": "2026-08-21T13:07:17.812Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/pageHeroType.ts": {
@@ -3943,7 +3977,7 @@
       "hash": "fe9b18c92a938e89",
       "size": 1676,
       "mtimeMs": 1785413077593.0142,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.813Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/pageOpenerType.ts": {
@@ -3952,7 +3986,7 @@
       "hash": "aa636902ee6cd871",
       "size": 1007,
       "mtimeMs": 1786560726116.503,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.813Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/personQuoteType.ts": {
@@ -3961,7 +3995,7 @@
       "hash": "1b1b6f36a24ac0b0",
       "size": 1474,
       "mtimeMs": 1787298426057.4702,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.813Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/personType.ts": {
@@ -3970,7 +4004,7 @@
       "hash": "59ad75bde78645ca",
       "size": 1962,
       "mtimeMs": 1786607789628.988,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.813Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/quoteBandType.ts": {
@@ -3979,7 +4013,7 @@
       "hash": "e89a70e799854c51",
       "size": 1270,
       "mtimeMs": 1785413100084.1924,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.814Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/quoteStripType.ts": {
@@ -3988,7 +4022,7 @@
       "hash": "450b6dc4d2e1652b",
       "size": 1655,
       "mtimeMs": 1787298426057.5994,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.814Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/regionBlockType.ts": {
@@ -3997,7 +4031,7 @@
       "hash": "5f6d9448a6739d6d",
       "size": 1196,
       "mtimeMs": 1785415063504.6973,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.814Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/reviewGridType.ts": {
@@ -4006,7 +4040,7 @@
       "hash": "52c773c695913e6c",
       "size": 935,
       "mtimeMs": 1786622140597.4822,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.814Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/reviewsType.ts": {
@@ -4015,7 +4049,7 @@
       "hash": "feef40f31014e72b",
       "size": 1330,
       "mtimeMs": 1786990545476.2454,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.815Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/routeBlockType.ts": {
@@ -4024,7 +4058,7 @@
       "hash": "e669ac88eafe57d0",
       "size": 1819,
       "mtimeMs": 1786607789633.3943,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.816Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/servicesType.ts": {
@@ -4033,7 +4067,7 @@
       "hash": "f8b43f8565d79112",
       "size": 2396,
       "mtimeMs": 1785415062017.9482,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.816Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/splitHeroType.ts": {
@@ -4042,7 +4076,7 @@
       "hash": "4d100ac6e82e4820",
       "size": 1499,
       "mtimeMs": 1786607789619.8772,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.816Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/stepsType.ts": {
@@ -4051,7 +4085,7 @@
       "hash": "c748e46a3ca14f11",
       "size": 1581,
       "mtimeMs": 1785413096292.5088,
-      "updatedAt": "2026-08-21T12:55:33.461Z",
+      "updatedAt": "2026-08-21T13:07:17.816Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/storyType.ts": {
@@ -4060,7 +4094,7 @@
       "hash": "11d20c4b8974f6e2",
       "size": 1595,
       "mtimeMs": 1785413049413.9749,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.817Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/timelineType.ts": {
@@ -4069,7 +4103,7 @@
       "hash": "0535ac1f45c7bc01",
       "size": 1721,
       "mtimeMs": 1786560726125.752,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.817Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/uitgelichteReviewType.ts": {
@@ -4078,7 +4112,7 @@
       "hash": "90b8f22d4f0445c6",
       "size": 1006,
       "mtimeMs": 1786622134207.8027,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.817Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/valueCardsType.ts": {
@@ -4087,7 +4121,7 @@
       "hash": "58de0c4342f59467",
       "size": 1640,
       "mtimeMs": 1786560726135.1118,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.817Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/werkwijzeType.ts": {
@@ -4095,8 +4129,8 @@
       "tokens": 370,
       "hash": "d64d657eb80b523b",
       "size": 1294,
-      "mtimeMs": 1787316733004.2668,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "mtimeMs": 1787317265118.7888,
+      "updatedAt": "2026-08-21T13:07:17.817Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/faqType.ts": {
@@ -4105,7 +4139,7 @@
       "hash": "1f7a05e01a3cc9f2",
       "size": 830,
       "mtimeMs": 1785413103941.8618,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.818Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/footerType.ts": {
@@ -4114,7 +4148,7 @@
       "hash": "c942656bf8c0c659",
       "size": 4892,
       "mtimeMs": 1787082838425.934,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.818Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/formGeneralSettingsType.ts": {
@@ -4123,7 +4157,7 @@
       "hash": "24dddd63543f87fa",
       "size": 3507,
       "mtimeMs": 1787298426057.7742,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.818Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/formType.ts": {
@@ -4132,7 +4166,7 @@
       "hash": "b1b8e29a4281ef63",
       "size": 5508,
       "mtimeMs": 1787298426057.9617,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.818Z",
       "source": "scan",
       "symbols": [
         {
@@ -4150,7 +4184,7 @@
       "hash": "5b26ad8d4c11337b",
       "size": 3700,
       "mtimeMs": 1787298426058.1309,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.819Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/navigationType.ts": {
@@ -4159,7 +4193,7 @@
       "hash": "c9516b2a33480c41",
       "size": 1643,
       "mtimeMs": 1787079675478.4338,
-      "updatedAt": "2026-08-21T12:55:33.462Z",
+      "updatedAt": "2026-08-21T13:07:17.819Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/ctaType.ts": {
@@ -4168,7 +4202,7 @@
       "hash": "d016fc7939d21106",
       "size": 326,
       "mtimeMs": 1785415054580.3945,
-      "updatedAt": "2026-08-21T12:55:33.463Z",
+      "updatedAt": "2026-08-21T13:07:17.819Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/formFieldType.ts": {
@@ -4177,7 +4211,7 @@
       "hash": "89f6be3762f12cd3",
       "size": 3570,
       "mtimeMs": 1787298426058.2751,
-      "updatedAt": "2026-08-21T12:55:33.463Z",
+      "updatedAt": "2026-08-21T13:07:17.820Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/linkFields.ts": {
@@ -4186,7 +4220,7 @@
       "hash": "c355054eed7f2555",
       "size": 1424,
       "mtimeMs": 1785415050987.8442,
-      "updatedAt": "2026-08-21T12:55:33.463Z",
+      "updatedAt": "2026-08-21T13:07:17.820Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/linkType.ts": {
@@ -4195,7 +4229,7 @@
       "hash": "4a6dec2e72655f28",
       "size": 188,
       "mtimeMs": 1785415051978.4214,
-      "updatedAt": "2026-08-21T12:55:33.463Z",
+      "updatedAt": "2026-08-21T13:07:17.820Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/seoType.ts": {
@@ -4204,7 +4238,7 @@
       "hash": "c3937d54e6fc72e3",
       "size": 806,
       "mtimeMs": 1786605655235.7788,
-      "updatedAt": "2026-08-21T12:55:33.463Z",
+      "updatedAt": "2026-08-21T13:07:17.820Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/pageBuilderType.ts": {
@@ -4213,7 +4247,7 @@
       "hash": "e2e749ed05ae71de",
       "size": 1938,
       "mtimeMs": 1787298426058.458,
-      "updatedAt": "2026-08-21T12:55:33.463Z",
+      "updatedAt": "2026-08-21T13:07:17.821Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/pageType.ts": {
@@ -4222,7 +4256,7 @@
       "hash": "302e9947730ed839",
       "size": 744,
       "mtimeMs": 1786605681102.2048,
-      "updatedAt": "2026-08-21T12:55:33.463Z",
+      "updatedAt": "2026-08-21T13:07:17.821Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/reviewType.ts": {
@@ -4231,7 +4265,7 @@
       "hash": "a5f32bd95779b0fd",
       "size": 2443,
       "mtimeMs": 1786988177933.1514,
-      "updatedAt": "2026-08-21T12:55:33.463Z",
+      "updatedAt": "2026-08-21T13:07:17.821Z",
       "source": "scan",
       "symbols": [
         {
@@ -4249,7 +4283,7 @@
       "hash": "101779e5870086b9",
       "size": 9146,
       "mtimeMs": 1786610789327.7375,
-      "updatedAt": "2026-08-21T12:55:33.463Z",
+      "updatedAt": "2026-08-21T13:07:17.821Z",
       "source": "scan"
     },
     "studio-hart-huis/static/.gitkeep": {
@@ -4258,7 +4292,7 @@
       "hash": "7635960718f1ae5c",
       "size": 81,
       "mtimeMs": 1785064182433.0325,
-      "updatedAt": "2026-08-21T12:55:33.464Z",
+      "updatedAt": "2026-08-21T13:07:17.822Z",
       "source": "scan"
     },
     "studio-hart-huis/structure.ts": {
@@ -4267,7 +4301,7 @@
       "hash": "22c48bb9bf0a54e0",
       "size": 2346,
       "mtimeMs": 1787298426058.763,
-      "updatedAt": "2026-08-21T12:55:33.464Z",
+      "updatedAt": "2026-08-21T13:07:17.822Z",
       "source": "scan"
     },
     "studio-hart-huis/tools/FundaReviewsTool.tsx": {
@@ -4276,7 +4310,7 @@
       "hash": "e86716611f63f487",
       "size": 5502,
       "mtimeMs": 1786988177934.495,
-      "updatedAt": "2026-08-21T12:55:33.464Z",
+      "updatedAt": "2026-08-21T13:07:17.822Z",
       "source": "scan",
       "symbols": [
         {
@@ -4301,7 +4335,7 @@
       "hash": "e5a67d7d8cdee156",
       "size": 417,
       "mtimeMs": 1785064182435.5544,
-      "updatedAt": "2026-08-21T12:55:33.464Z",
+      "updatedAt": "2026-08-21T13:07:17.822Z",
       "source": "scan"
     },
     "studio-hart-huis/tsconfig.tsbuildinfo": {
@@ -4310,7 +4344,7 @@
       "hash": "e7c9eb4d7d388487",
       "size": 125933,
       "mtimeMs": 1787047290903.5706,
-      "updatedAt": "2026-08-21T12:55:33.465Z",
+      "updatedAt": "2026-08-21T13:07:17.823Z",
       "source": "scan"
     },
     "template/.DS_Store": {
@@ -4319,7 +4353,7 @@
       "hash": "0fe00154a3fc363b",
       "size": 8196,
       "mtimeMs": 1786686928537.502,
-      "updatedAt": "2026-08-21T12:55:33.465Z",
+      "updatedAt": "2026-08-21T13:07:17.824Z",
       "source": "scan"
     }
   }

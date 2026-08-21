@@ -1043,6 +1043,13 @@
           },
           "optional": true
         },
+        "titleAfter": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "lead": {
           "type": "objectAttribute",
           "value": {
