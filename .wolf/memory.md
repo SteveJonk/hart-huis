@@ -350,3 +350,9 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+
+## Session: 2026-08-21 19:14
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 19:30 | Added `isLandingPage` Boolean to `page` schema; minimal-nav toggle | `pageType.ts`, `queries.ts`, `SiteHeader.tsx`, new `SiteChrome.tsx`, `layout.tsx`, `page.tsx`, `[slug]/page.tsx`, `aanbod/[slug]/page.tsx`, `not-found.tsx` | typegen + tsc + eslint clean; build reaches prerender, fails only on sandboxed Sanity egress (pre-existing) | ~55k |

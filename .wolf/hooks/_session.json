@@ -1,23 +1,43 @@
 {
-  "session_id": "session-2026-08-21-1550",
-  "started": "2026-08-21T13:50:08.089Z",
+  "session_id": "session-2026-08-21-1914",
+  "started": "2026-08-21T19:14:07.233Z",
   "files_read": {
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/sanity/queries.ts": {
+    "/home/user/hart-huis/app/src/app/layout.tsx": {
       "count": 1,
-      "tokens": 1986,
-      "first_read": "2026-08-21T13:50:24.220Z"
+      "tokens": 756,
+      "first_read": "2026-08-21T19:14:25.176Z"
     },
-    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/src/sanity/client.ts": {
+    "/home/user/hart-huis/app/src/app/page.tsx": {
       "count": 1,
-      "tokens": 61,
-      "first_read": "2026-08-21T13:50:24.435Z"
+      "tokens": 215,
+      "first_read": "2026-08-21T19:14:57.268Z"
+    },
+    "/home/user/hart-huis/app/src/components/layout/SiteHeader.tsx": {
+      "count": 1,
+      "tokens": 1489,
+      "first_read": "2026-08-21T19:14:57.714Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/pageType.ts": {
+      "count": 1,
+      "tokens": 213,
+      "first_read": "2026-08-21T19:14:57.720Z"
+    },
+    "/home/user/hart-huis/app/src/app/not-found.tsx": {
+      "count": 1,
+      "tokens": 239,
+      "first_read": "2026-08-21T19:15:36.544Z"
+    },
+    "/home/user/hart-huis/app/src/app/aanbod/[slug]/page.tsx": {
+      "count": 1,
+      "tokens": 1266,
+      "first_read": "2026-08-21T19:16:51.703Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 2,
+  "anatomy_hits": 6,
   "anatomy_misses": 0,
   "repeated_reads_warned": 0,
   "cerebrum_warnings": 0,
-  "stop_count": 1
+  "stop_count": 0
 }

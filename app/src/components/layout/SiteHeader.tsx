@@ -68,11 +68,11 @@ function Burger({
 
   return (
     <button
-      type='button'
-      aria-label='Menu'
+      type="button"
+      aria-label="Menu"
       aria-expanded={open}
       onClick={onToggle}
-      className='relative z-burger mr-[-8px] hidden size-11 max-md:block'
+      className="relative z-burger mr-[-8px] hidden size-11 max-md:block"
     >
       <span
         className={cn(
@@ -103,17 +103,19 @@ type SiteHeaderProps = {
   navLeft?: NavLink[] | null;
   navRight?: NavLink[] | null;
   logo?: { url: string | null; alt: string } | null;
+  minimal?: boolean;
 };
 
 export function SiteHeader({
   navLeft = [],
   navRight = [],
   logo,
+  minimal = false,
 }: SiteHeaderProps) {
   const stuck = useStickyTopbar();
   const { open, toggle, close } = useMobileNav();
-  const left = navLeft ?? [];
-  const right = navRight ?? [];
+  const left = minimal ? [] : (navLeft ?? []);
+  const right = minimal ? [] : (navRight ?? []);
   const navMobile = left.concat(right);
 
   return (
@@ -132,39 +134,45 @@ export function SiteHeader({
           (stuck || open) && 'before:opacity-0',
         )}
       >
-        <DesktopNav links={left} stuck={stuck} />
-        <Link href='/' aria-label={SITE.name}>
+        {!minimal && <DesktopNav links={left} stuck={stuck} />}
+        <Link
+          href="/"
+          aria-label={SITE.name}
+          className={minimal ? 'col-start-2' : undefined}
+        >
           <LogoMark stuck={stuck} logo={logo} />
         </Link>
-        <DesktopNav links={right} align='end' stuck={stuck} />
-        <Burger open={open} stuck={stuck} onToggle={toggle} />
+        {!minimal && <DesktopNav links={right} align="end" stuck={stuck} />}
+        {!minimal && <Burger open={open} stuck={stuck} onToggle={toggle} />}
       </div>
 
-      <nav
-        aria-hidden={!open}
-        className={cn(
-          'fixed inset-0 z-mobilenav flex flex-col justify-center gap-1.5 bg-cream px-wrap',
-          'transition-transform duration-[550ms] ease-brand',
-          open ? 'translate-y-0' : '-translate-y-full',
-          'max-md:justify-start max-md:overflow-y-auto max-md:px-wrap-md max-md:pt-[110px] max-md:pb-11',
-          'max-xs:px-wrap-sm',
-        )}
-      >
-        {navMobile.map((link) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            onClick={close}
-            className={cn(
-              'border-b border-ink/10 py-[9px] font-display text-[2rem]',
-              'max-md:py-[13px] max-md:text-[1.72rem]',
-              'max-xs:py-[11px] max-xs:text-[1.5rem]',
-            )}
-          >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
+      {!minimal && (
+        <nav
+          aria-hidden={!open}
+          className={cn(
+            'fixed inset-0 z-mobilenav flex flex-col justify-center gap-1.5 bg-cream px-wrap',
+            'transition-transform duration-[550ms] ease-brand',
+            open ? 'translate-y-0' : '-translate-y-full',
+            'max-md:justify-start max-md:overflow-y-auto max-md:px-wrap-md max-md:pt-[110px] max-md:pb-11',
+            'max-xs:px-wrap-sm',
+          )}
+        >
+          {navMobile.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              onClick={close}
+              className={cn(
+                'border-b border-ink/10 py-[9px] font-display text-[2rem]',
+                'max-md:py-[13px] max-md:text-[1.72rem]',
+                'max-xs:py-[11px] max-xs:text-[1.5rem]',
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      )}
     </>
   );
 }

@@ -66,6 +66,7 @@ export const PAGE_QUERY = defineQuery(`
     title,
     slug,
     seo,
+    isLandingPage,
     content[]{
       ...,
       primaryCta${linkExpansion},
