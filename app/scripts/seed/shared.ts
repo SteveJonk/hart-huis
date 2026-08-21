@@ -169,6 +169,7 @@ export async function upsertForm(form: FormDefinition & {title: string}) {
     width: field.width ?? 'full',
     isRequired: Boolean(field.isRequired),
     ...(field.placeholder ? {placeholder: field.placeholder} : {}),
+    ...(field.defaultValue ? {defaultValue: field.defaultValue} : {}),
     ...(field.helpText ? {helpText: field.helpText} : {}),
     ...(field.selectOptions ? {selectOptions: [...field.selectOptions]} : {}),
     ...(field.radioOptions ? {radioOptions: [...field.radioOptions]} : {}),

@@ -22,6 +22,28 @@ const woningCard = /* groq */ `{
 }`;
 
 /**
+ * Everything the FormRenderer needs from a `form` document. A simple form keeps
+ * its fields at the root and a multi-step one spreads them over steps; the
+ * container the mode does not use comes back null.
+ */
+const formProjection = /* groq */ `{
+  _id,
+  title,
+  showTitle,
+  mode,
+  fields[],
+  steps[]{
+    title,
+    fields[]
+  },
+  submitButtonText,
+  nextButtonText,
+  backButtonText,
+  successTitle,
+  successBody
+}`;
+
+/**
  * Aggregates over alle reviews, afgeleid bij het uitvoeren van de query.
  * Bewust niet opgeslagen: een afgeleide waarde kan niet verouderen.
  * `math::avg` geeft null zolang geen enkele review een cijfer heeft.
@@ -96,22 +118,7 @@ export const PAGE_QUERY = defineQuery(`
       },
       // A simple form keeps its fields at the root, a multi-step one spreads
       // them over steps; the container the mode does not use comes back null.
-      form->{
-        _id,
-        title,
-        showTitle,
-        mode,
-        fields[],
-        steps[]{
-          title,
-          fields[]
-        },
-        submitButtonText,
-        nextButtonText,
-        backButtonText,
-        successTitle,
-        successBody
-      },
+      form->${formProjection},
       regions[]{
         ...,
         link${linkExpansion}
@@ -197,7 +204,20 @@ export const WONING_QUERY = defineQuery(`
     "brochureUrl": brochure.asset->url,
     seo,
     "vergelijkbaar": *[_type == "woning" && _id != ^._id]
-      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]${woningCard}
+      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]${woningCard},
+    // De knop op de prijskaart: label, venstertekst en het formulier erin. Eén
+    // singleton voor alle objecten — de import schrijft de woningen zelf.
+    "instellingen": *[_id == "objectSettings"][0]{
+      ctaLabel,
+      dialogTitle,
+      dialogLead,
+      fallbackHref,
+      form->${formProjection}
+    },
+    "recaptcha": *[_type == "formGeneralSettings"][0]{
+      recaptchaEnabled,
+      recaptchaSiteKey
+    }
   }
 `);
 

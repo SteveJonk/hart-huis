@@ -13,6 +13,8 @@
 
 ## Key Learnings
 
+- Verborgen velden in een `form`-document zijn het koppelvlak tussen een pagina en een CMS-formulier: veldtype `hidden` + een `defaultValue` met `{{token}}`. De renderer krijgt een `context`-prop en `fillTokens()` (in `form-fields.ts`) vult die in; een onbekend token wordt leeg in plaats van dat `{{…}}` in de mail belandt. `toFieldRows()` slaat verborgen velden over, anders breken ze de paring van twee half-brede velden om zich heen. De server hoeft niets te weten: FORM_QUERY levert ze mee in de allow-list en `/api/submit-form` behandelt ze als tekst.
+
 - **Project:** hart-huis
 - **Description:** Sanity-powered website for **Hart en Huis makelaars**.
 - **Design pipeline:** each page starts as a standalone HTML file in `app/example-designs/`. Sections are abstracted into `src/components/blocks/*.tsx` (Tailwind), copy lands in `src/lib/<page>-content.ts` as component DEFAULTS, a matching Sanity object type goes in `studio-hart-huis/schemaTypes/blocks/`, registered in `schemaTypes/index.ts` + `pageBuilderType.ts`, mapped in `src/components/PageBuilder.tsx`, and seeded from its own `app/scripts/seed/<page>.ts` (registered as a target in `app/scripts/seed.ts`; run one page with `npm run seed:<page>`). Pages render through `src/app/[slug]/page.tsx`; no per-page route files.
@@ -79,6 +81,8 @@
 
 ## Do-Not-Repeat
 
+- [2026-08-21] Draai **niet** `npx openwolf scan` als de CLI niet lokaal geïnstalleerd is: npx haalt 2.4.1 op, en die versie schrijft `anatomy.md` opnieuw zonder de functie-regels (251 `- fn`-regels weg) en overschrijft de met de hand geschreven beschrijvingen met de eerste regel van de JSDoc. Bij twijfel: `git checkout .wolf/anatomy.md` en de nieuwe bestanden met de hand toevoegen — dat mag volgens het protocol.
+
 - **2026-08-21 — Verzin geen CLI-vlaggen.** `sanity deploy --no-bust-cache` bestaat niet; de CI-run viel om met exit 2. Controleer een vlag tegen `--help` (of de docs) vóór je hem in een workflow zet.
 - **2026-08-21 — "De action draait niet" is niet automatisch een storing.** Bij een `paths`-filter is overslaan correct gedrag als de commit die paden niet raakt. Kijk eerst met `git log --name-only` welke bestanden er echt veranderden, vóór je aan de trigger sleutelt. Verwijder het filter niet als diagnose.
 - **2026-08-21 — `sanity deploy` hangt in CI zonder `--yes`.** Zonder `studioHost` in `sanity.cli.ts` vraagt de CLI interactief om een hostname; op een runner zonder TTY loopt dat vast tot de timeout.
@@ -122,6 +126,9 @@
 - [2026-08-21] Een prop op een block-component betekent niet dat de CMS hem ooit vult. `FormHero.titleAfter` bestond, maar het `formHero`-schema had het veld niet en `PageBuilder` gaf het niet door — de kop op /waardebepaling miste stilzwijgend zijn staartje. Bij het overnemen van een design: loop de props van het hergebruikte block na tegen het schema én tegen de `case` in PageBuilder, niet alleen tegen de component. Zie bug-018.
 
 ## Decision Log
+
+- [2026-08-21] De bezichtigingsknop op de objectpagina wordt aangestuurd door één singleton `objectSettings` (knoptekst, formulierreferentie, venstertekst, terugvallink) en **niet** door een veld per `woning`. De Realworks-import schrijft de woningen, dus alles wat daar per object ingesteld wordt, moet bij elk nieuw huis opnieuw. Zonder gekozen formulier blijft de knop een gewone link (`fallbackHref`, standaard /contact), zodat de pagina nooit een knop toont die niets doet.
+- [2026-08-21] Het venster is een native `<dialog>` met `showModal()`: Escape, de top layer en de focus-trap komen dan van de browser in plaats van uit eigen code. De FormRenderer wordt pas gemount als het venster open is — een gesloten venster houdt zo geen half ingevuld formulier vast en heropenen begint weer bij stap één. Let op: Tailwind's preflight nult de marge van álle elementen, dus een `<dialog>` heeft expliciet `m-auto` nodig om nog gecentreerd te staan.
 
 - [2026-08-15] De scraper is één Next-route (`/api/scrape-funda-reviews`) met twéé authenticatiepaden in plaats van twee routes: de Vercel-cron met `Authorization: Bearer $CRON_SECRET`, de studioknop met `x-scraper-secret: $FUNDA_SCRAPER_SECRET`. Gescheiden secrets omdat een gedeployde studio een publieke JS-bundle is — dat secret lekt per definitie, dus het mag nooit hetzelfde zijn als dat van de cron. De blootstelling is bewust geaccepteerd: het ergste wat iemand ermee kan is een scrape starten.
 - [2026-08-15] De paginering van de widget wordt niet vertrouwd maar gemeten. Of `/{page}/` in de widget-URL echt iets doet was onbevestigd, dus stopt `scrapeFundaReviews` zodra een pagina alleen al-geziene sleutels oplevert, met een waarschuwing in het antwoord. Dat is goedkoper dan de aanname vooraf verifiëren en het faalt zichtbaar in plaats van stil.

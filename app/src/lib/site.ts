@@ -1,5 +1,7 @@
 export const SITE = {
   name: 'Hart & Huis Makelaardij',
+  /** Zonder slash aan het eind — sitemap, robots en absolute links plakken er zelf een pad achter. */
+  baseUrl: 'https://www.hartenhuis.nl',
   phone: '023 - 822 39 52',
   phoneHref: 'tel:0238223952',
   email: 'info@hartenhuis.nl',

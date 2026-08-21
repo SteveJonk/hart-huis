@@ -18,8 +18,10 @@ import { imageSrc, toImage } from '@/sanity/image';
 import { pageMetadata } from '@/sanity/metadata';
 import { WONING_QUERY } from '@/sanity/queries';
 import type { WONING_QUERY_RESULT } from '@/sanity/sanity.types';
+import { toFormDefinition } from '@/lib/form-fields';
 import { euro } from '@/lib/format';
-import { OBJECT_CTA, statusOf } from '@/lib/object-content';
+import { OBJECT_CTA, OBJECT_VIEWING_CTA, statusOf } from '@/lib/object-content';
+import { SITE } from '@/lib/site';
 
 const options = { next: { revalidate: 30 } };
 
@@ -72,6 +74,38 @@ export async function generateMetadata({
   });
 }
 
+/**
+ * De knop op de prijskaart. Label, venstertekst en het formulier komen uit het
+ * `objectSettings`-document; de context is wat de verborgen velden in dat
+ * formulier invullen, zodat de mail laat zien om welke woning het gaat.
+ */
+function viewingCta(woning: Woning) {
+  const instellingen = woning.instellingen;
+  const adres = [woning.adres, woning.plaats].filter(Boolean).join(', ');
+
+  return {
+    label: instellingen?.ctaLabel || OBJECT_VIEWING_CTA.label,
+    fallbackHref: instellingen?.fallbackHref || OBJECT_VIEWING_CTA.href,
+    form: toFormDefinition(instellingen?.form),
+    dialogTitle: instellingen?.dialogTitle ?? undefined,
+    dialogLead: instellingen?.dialogLead ?? undefined,
+    recaptcha: woning.recaptcha?.recaptchaEnabled
+      ? {
+          enabled: true,
+          siteKey: woning.recaptcha.recaptchaSiteKey ?? '',
+        }
+      : undefined,
+    context: {
+      adres,
+      straat: woning.adres,
+      postcode: woning.postcode ?? '',
+      plaats: woning.plaats,
+      prijs: euro(woning.prijs) ?? '',
+      url: `${SITE.baseUrl}/aanbod/${woning.slug}`,
+    },
+  };
+}
+
 export default async function ObjectPage({ params }: ObjectPageProps) {
   const { slug } = await params;
   const woning = await getWoning(slug);
@@ -120,6 +154,7 @@ export default async function ObjectPage({ params }: ObjectPageProps) {
             </div>
 
             <ObjectSidebar
+              cta={viewingCta(woning)}
               adres={woning.adres}
               status={woning.status}
               prijs={woning.prijs}

@@ -7,7 +7,7 @@ import {WrenchIcon} from '@sanity/icons/Wrench'
 import type {StructureResolver} from 'sanity/structure'
 import {FundaReviews} from './tools/FundaReviewsTool'
 
-const SINGLETONS = ['navigation', 'footer', 'formGeneralSettings']
+const SINGLETONS = ['navigation', 'footer', 'formGeneralSettings', 'objectSettings']
 
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -26,6 +26,16 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
       S.documentTypeListItem('page').title('Pages'),
       S.documentTypeListItem('woning').title('Objecten'),
+      S.listItem()
+        .title('Objectpagina')
+        .id('objectSettings')
+        .icon(CogIcon)
+        .child(
+          S.document()
+            .schemaType('objectSettings')
+            .documentId('objectSettings')
+            .title('Objectpagina'),
+        ),
       S.divider(),
       S.documentTypeListItem('faq').title('FAQs'),
       S.documentTypeListItem('review').title('Reviews'),

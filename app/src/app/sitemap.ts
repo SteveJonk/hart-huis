@@ -1,8 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { client } from '@/sanity/client';
 import { SITEMAP_QUERY } from '@/sanity/queries';
+import { SITE } from '@/lib/site';
 
-const BASE_URL = 'https://www.hartenhuis.nl';
+const BASE_URL = SITE.baseUrl;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { pages, objecten } = await client.fetch(SITEMAP_QUERY);

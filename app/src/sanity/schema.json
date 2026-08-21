@@ -5119,10 +5119,21 @@
               {
                 "type": "string",
                 "value": "file"
+              },
+              {
+                "type": "string",
+                "value": "hidden"
               }
             ]
           },
           "optional": false
+        },
+        "defaultValue": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         },
         "width": {
           "type": "objectAttribute",
@@ -5409,6 +5420,79 @@
           },
           "optional": true
         }
+      }
+    }
+  },
+  {
+    "name": "objectSettings",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "objectSettings"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "ctaLabel": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
+      "form": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "form.reference"
+        },
+        "optional": true
+      },
+      "dialogTitle": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "dialogLead": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "fallbackHref": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
       }
     }
   },
