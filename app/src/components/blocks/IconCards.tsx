@@ -2,6 +2,7 @@ import { BlockIcon } from "@/components/ui/BlockIcon";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Wrap } from "@/components/ui/Wrap";
+import { cn } from "@/lib/cn";
 import {
   WAARDEBEPALING_KRIJGT,
   WAARDEBEPALING_KRIJGT_INTRO,
@@ -38,11 +39,18 @@ export function IconCards({
           <p className="leading-[1.72] text-ink-70">{lead}</p>
         </Reveal>
 
-        <div className="grid grid-cols-3 gap-[26px] max-md:grid-cols-1">
+        <div
+          className={cn(
+            "grid grid-cols-3 gap-[26px] max-sm:grid-cols-1 max-sm:gap-4",
+            // Meer dan drie kaarten stapelen op tablet naar twee kolommen; drie
+            // kaarten gaan daar direct naar één, zoals op /waardebepaling.
+            items.length > 3 ? "max-md:grid-cols-2" : "max-md:grid-cols-1",
+          )}
+        >
           {items.map((item, index) => (
             <Reveal
               key={item.title}
-              delay={index === 0 ? undefined : (index as 1 | 2)}
+              delay={(index % 3 || undefined) as 1 | 2 | undefined}
               className="rounded-[4px] bg-white px-8 pt-9 pb-8 transition-[transform,box-shadow] duration-[450ms] ease-brand hover:-translate-y-1.5 hover:shadow-[0_30px_58px_-34px_rgba(36,31,28,0.4)]"
             >
               <span className="mb-[22px] grid size-[52px] place-items-center rounded-full bg-sand text-burgundy">

@@ -68,7 +68,8 @@ export type CompareCard = {
   title: string;
   body: string;
   items: CompareItem[];
-  cta: { label: string; href: string };
+  /** Weglaten laat de knop weg — de vergelijkingskaart zonder aanbod. */
+  cta?: { label: string; href: string };
   dark?: boolean;
 };
 

@@ -65,6 +65,10 @@
 
 - **Lange reviewteksten gaan achter een native `<dialog>`.** `truncateQuote()` in `src/lib/reviews.ts` knipt op 250 tekens (op een spatie), `ReviewCard` toont dan "Lees meer" en zet de hele tekst in een `dialog` die met `showModal()` opengaat. Bewust geen uitklap in de kaart: dat rekt de grid-rij én in de carousel de kaarten ernaast mee. `showModal()` zet de dialog in de **top layer**, dus de `overflow-x-auto` van de carousel knipt hem niet af — dat is precies waarom het een dialog is en geen absoluut gepositioneerde div. Esc en focus-trap komen gratis; de backdrop sluit via `event.target === dialogRef.current` (daarom zit alle padding op de div bínnen de dialog), en de Sluiten-knop is `sticky bottom-0` omdat hij bij een lange tekst anders duizend pixels naar beneden staat.
 
+- **Een nieuwe design-pagina levert zelden nieuwe blocks op.** De designs delen hun CSS-klassen: match de klassenamen van het nieuwe design (`grep -l 'class="[^"]*\bfoo\b"' example-designs/*`) tegen de al geïmplementeerde pagina's vóór je iets bouwt. Voor `hart-en-huis-nvm.html` bleken alle negen secties bestaande blocks: `pageHero`, `factBar`, `benefits` (`.krijgt`/`.ulist`), `iconCards` (`.merkt`/`.mkaart` — identieke CSS als `.lpkrt` op /waardebepaling), `werkwijze` (`.erecode` — identieke CSS), `compareCards` (`.vergelijk`/`.vkaart`), `faqs`, `crossLinks`, `ctaBand`. Wat er nodig was, waren drie kleine optionele velden, geen nieuwe blocks.
+
+- **`createOrReplace` in de seeds wist velden die de seed niet schrijft.** `navigation` en `footer` gaan zo, dus élk veld dat in het document hoort te staan moet in `seed/navigation.ts` staan; wat je vergeet is na `seed:nav` weg. Zie bug-017.
+
 ## Do-Not-Repeat
 
 - [2026-08-18] Een nieuw bloktype registreren in `pageBuilderType.ts` is niet genoeg: zonder de import + regel in de `schemaTypes`-array van `index.ts` faalt `npm run typegen` met "Unknown type: <naam>". Beide bestanden aanpassen, daarna typegen draaien.
@@ -98,6 +102,8 @@
 - [2026-08-20] A GROQ comment inside a `defineQuery(\`...\`)` template literal must not contain backticks. Writing `` // covers `contactForm` `` terminated the JS template early; typegen then reported "0 queries from 0 files" and silently regenerated `sanity.types.ts` **without any query types** instead of failing loudly. If typegen suddenly finds 0 queries, look for a stray backtick in a query comment. JSDoc *above* the export is fine — that is outside the literal.
 - [2026-08-20] A multi-step form must keep every step mounted (hidden steps still contribute to `FormData`), which means required fields sit in the DOM while invisible. The browser then refuses to submit and logs "An invalid form control … is not focusable". Put `noValidate` on the `<form>` and drive validation per step with `reportValidity()`. To report an error on a step that is not visible, reveal it first with `flushSync(() => setStep(i))` — an effect that calls setState trips the `react-hooks/set-state-in-effect` lint rule.
 - [2026-08-20] Tailwind's default spacing scale skips some numbers (e.g. `15` isn't a step — `14` and `16` are, nothing between). A class like `pb-15` silently generates no CSS instead of erroring. When translating a design's exact px value, use bracket notation (`pb-[60px]`) unless the number is a known scale step.
+
+- [2026-08-21] `npm run typegen` (en alles wat de sanity-CLI aanroept) faalt op de standaard `node` van deze machine (v17.8.0) met `ERR_UNKNOWN_FILE_EXTENSION ... /sanity/bin/sanity`. Dat is geen configfout: zet een moderne Node voorop en het werkt — `export PATH="$HOME/.nvm/versions/node/v22.18.0/bin:$PATH"`.
 
 ## Decision Log
 

@@ -13,7 +13,10 @@ export type BlockIconName =
   | "search"
   | "eye"
   | "clock"
-  | "heart";
+  | "heart"
+  | "diploma"
+  | "shield"
+  | "mail";
 
 type BlockIconProps = {
   icon: BlockIconName;
@@ -133,6 +136,40 @@ export function BlockIcon({ icon, size = 19 }: BlockIconProps) {
         <svg {...common}>
           <path
             d="M12 20s-7.5-4.6-7.5-9.6A4.4 4.4 0 0112 7.5a4.4 4.4 0 017.5 2.9c0 5-7.5 9.6-7.5 9.6z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "diploma":
+      return (
+        <svg {...common}>
+          <path
+            d="M12 4 3 8.5l9 4.5 9-4.5zM7 11v5c0 1.7 2.2 3 5 3s5-1.3 5-3v-5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "shield":
+      return (
+        <svg {...common}>
+          <path
+            d="M12 3.5 4.5 6.5v6c0 4.5 3.2 7.4 7.5 8.5 4.3-1.1 7.5-4 7.5-8.5v-6z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+          <path d="M9 12.2 11.2 14.5 15.5 10" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+      );
+    case "mail":
+      return (
+        <svg {...common}>
+          <path
+            d="M3 6h18v12H3zM3 7l9 6 9-6"
             stroke="currentColor"
             strokeWidth="1.5"
             strokeLinejoin="round"

@@ -286,3 +286,28 @@
 | 18:25 | Renamed the 6 new blocks + Sanity types from Waardebepaling-prefixed to generic names per user request (FormHero, IconCards, NumberedSteps, PersonQuote, QuoteStrip, CenteredCta / formHero, iconCards, numberedSteps, personQuote, quoteStrip, centeredCta); content module + seed script keep the page name | app/src/components/blocks/{CenteredCta,FormHero,IconCards,NumberedSteps,PersonQuote,QuoteStrip}.tsx (renamed), app/src/components/PageBuilder.tsx, app/src/lib/waardebepaling-content.ts, app/scripts/seed/waardebepaling.ts, studio-hart-huis/schemaTypes/{index.ts,pageBuilderType.ts,blocks/*Type.ts} (renamed) | typegen + tsc (app & studio) + eslint clean | ~35k |
 | 18:55 | Generic CMS-managed multi-step forms: new `multiStepForm` document + reusable `formField` object in Sanity, `MultiStepForm` React component (progress, per-step validation, submit, success), FormHero refactored to pure chrome, ContactForm moved onto the same shared field renderer, one FORM_QUERY serving both form types, new check:form + docs/formulieren.md | studio-hart-huis/{multiStepFormType.ts,objects/formFieldType.ts,blocks/formHeroType.ts,index.ts,structure.ts}, app/src/{lib/form-fields.ts,components/form/{fields.tsx,MultiStepForm.tsx},components/blocks/{FormHero,ContactForm}.tsx,components/PageBuilder.tsx,sanity/queries.ts,app/api/submit-form/route.ts,lib/waardebepaling-content.ts}, app/scripts/{check-form.ts,seed/waardebepaling.ts}, docs/formulieren.md | typegen 6 queries/80 types, tsc (app+studio) + eslint clean, all 4 check:* scripts pass, GROQ coalesce/flatten verified with groq-js against a fake dataset | ~120k |
 | 20:40 | Unified forms into one Sanity type: removed @multidots/sanity-plugin-contact-form, new `form` document with mode simple/steps (simple default), FormRenderer handles both modes + recaptcha + submit + success, ContactForm & FormHero reduced to chrome, Mailjet-only route (nodemailer removed), in-place migration script, check:form now proves FORM_QUERY matches the renderer via groq-js | studio-hart-huis/{formType.ts,formGeneralSettingsType.ts,sanity.config.ts,structure.ts,schemaTypes/index.ts,blocks/{formHeroType,contactFormSectionType}.ts}, app/src/{lib/{form-fields,contact-content,waardebepaling-content}.ts,components/form/{FormRenderer.tsx,fields.tsx},components/blocks/{ContactForm,FormHero}.tsx,components/PageBuilder.tsx,sanity/queries.ts,app/api/submit-form/route.ts}, app/scripts/{check-form.ts,migrate-forms.ts,seed/{shared,contact,waardebepaling}.ts}, docs/formulieren.md | found + fixed a real bug: coalesce() allow-list disagreed with the renderer after a mode switch, which would reject every submission; now select(mode) and covered by check:form. typegen 6 queries/78 types, tsc app+studio clean, eslint clean, 4 check:* pass, studio npm install no longer needs --legacy-peer-deps | ~155k |
+
+## Session: 2026-08-21 10:05
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-21 10:06
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 10:12 | pnpm.overrides pinned @sanity/sdk-react to 2.19.0 to fix `sanity deploy` manifest-extract JSX parse crash (2.20.0 ships untranspiled JSX in dist/index.js) | studio-hart-huis/package.json, pnpm-lock.yaml | fixed, verified via manifest extract + dry-run deploy | ~15k |
+
+## Session: 2026-08-21 14:47
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## 2026-08-21 — NVM-pagina geabstraheerd
+| 14:45 | design gelezen + bestaande blocks vergeleken | app/example-designs/hart-en-huis-nvm.html | 8 van de 9 secties bleken bestaande blocks | ~35k |
+| 14:50 | 3 afbeeldingen uit base64 gehaald | app/public/images/nvm/{pagehero,kantoor,cta}.jpg | ok | ~1k |
+| 15:00 | copy in één content-bestand | app/src/lib/nvm-content.ts | nieuw | ~6k |
+| 15:05 | 3 line-icons toegevoegd | app/src/components/ui/BlockIcon.tsx | diploma/shield/mail | ~1k |
+| 15:10 | Werkwijze kreeg optionele cta, CompareCards optionele cta + spaceTop, IconCards 2-koloms tablet bij >3 kaarten | src/components/blocks/*, studio schemaTypes/blocks/* | geen nieuwe blocks nodig | ~4k |
+| 15:20 | seed voor de pagina + NVM in nav/footer | app/scripts/seed/nvm.ts, seed.ts, navigation.ts, package.json | `npm run seed:nvm` | ~3k |
+| 15:30 | typegen + tsc + build | app/src/sanity/{schema.json,sanity.types.ts} | groen | ~2k |
