@@ -357,3 +357,9 @@
 |------|--------|---------|---------|--------|
 | 19:30 | Added `isLandingPage` Boolean to `page` schema; minimal-nav toggle | `pageType.ts`, `queries.ts`, `SiteHeader.tsx`, new `SiteChrome.tsx`, `layout.tsx`, `page.tsx`, `[slug]/page.tsx`, `aanbod/[slug]/page.tsx`, `not-found.tsx` | typegen + tsc + eslint clean; build reaches prerender, fails only on sandboxed Sanity egress (pre-existing) | ~55k |
 | 19:52 | Renamed `SiteChrome` → `PageWrapper` (user preferred name) | `SiteChrome.tsx` → `PageWrapper.tsx`, 4 leaf-route imports, `.wolf/cerebrum.md`, `.wolf/STATUS.md` | tsc + eslint clean | ~6k |
+
+## Session: 2026-08-21 19:31
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 19:45 | Added GitHub Action to build+deploy Sanity Studio on push to main (paths: studio-hart-huis/**), using SANITY_AUTH_TOKEN secret | .github/workflows/deploy-sanity-studio.yml | Created, not yet tested (needs SANITY_AUTH_TOKEN secret set in repo settings) | ~1500 |
