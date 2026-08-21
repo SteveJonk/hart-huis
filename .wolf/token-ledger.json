@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 402013,
-    "total_reads": 347,
+    "total_tokens_estimated": 406191,
+    "total_reads": 353,
     "total_writes": 0,
     "total_sessions": 55,
-    "anatomy_hits": 230,
+    "anatomy_hits": 236,
     "anatomy_misses": 111,
     "repeated_reads_blocked": 78,
-    "estimated_savings_vs_bare_cli": 379944,
-    "real_input_tokens": 27386,
-    "real_output_tokens": 2310534,
-    "real_cache_read_tokens": 708906393,
-    "real_cache_creation_tokens": 10489712,
-    "real_api_calls": 4026
+    "estimated_savings_vs_bare_cli": 381144,
+    "real_input_tokens": 27518,
+    "real_output_tokens": 2340957,
+    "real_cache_read_tokens": 716330624,
+    "real_cache_creation_tokens": 10644298,
+    "real_api_calls": 4092
   },
   "sessions": [
     {
@@ -3033,6 +3033,66 @@
         "cache_read_input_tokens": 775110,
         "cache_creation_input_tokens": 42639,
         "api_calls": 11
+      }
+    },
+    {
+      "id": "session-2026-08-21-1914",
+      "agent": "claude",
+      "started": "2026-08-21T19:14:07.233Z",
+      "ended": "2026-08-21T19:23:10.159Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/layout.tsx",
+          "tokens_estimated": 756,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/page.tsx",
+          "tokens_estimated": 215,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/components/layout/SiteHeader.tsx",
+          "tokens_estimated": 1489,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/pageType.ts",
+          "tokens_estimated": 213,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/not-found.tsx",
+          "tokens_estimated": 239,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/aanbod/[slug]/page.tsx",
+          "tokens_estimated": 1266,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 4178,
+        "output_tokens_estimated": 0,
+        "reads_count": 6,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 6
+      },
+      "real_usage": {
+        "input_tokens": 132,
+        "output_tokens": 30423,
+        "cache_read_input_tokens": 7424231,
+        "cache_creation_input_tokens": 154586,
+        "api_calls": 66
       }
     }
   ],

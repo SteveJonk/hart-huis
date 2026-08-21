@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import type { ListingItem } from '@/components/blocks/Listings';
-import { SiteChrome } from '@/components/layout/SiteChrome';
+import { PageWrapper } from '@/components/layout/PageWrapper';
 import { ObjectDescription } from '@/components/object/ObjectDescription';
 import { ObjectFeatures } from '@/components/object/ObjectFeatures';
 import {
@@ -93,7 +93,7 @@ export default async function ObjectPage({ params }: ObjectPageProps) {
     .filter((photo): photo is GalleryPhoto => Boolean(photo));
 
   return (
-    <SiteChrome>
+    <PageWrapper>
       <main>
         <ObjectGallery photos={photos} />
 
@@ -137,6 +137,6 @@ export default async function ObjectPage({ params }: ObjectPageProps) {
 
         <CtaBand {...OBJECT_CTA} />
       </main>
-    </SiteChrome>
+    </PageWrapper>
   );
 }

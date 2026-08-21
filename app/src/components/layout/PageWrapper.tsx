@@ -14,15 +14,15 @@ function asNavLinks(links: SanityLabeledLink[] | null | undefined): NavLink[] {
     .filter((link): link is NavLink => Boolean(link));
 }
 
-type SiteChromeProps = {
+type PageWrapperProps = {
   minimal?: boolean;
   children: React.ReactNode;
 };
 
-export async function SiteChrome({
+export async function PageWrapper({
   minimal = false,
   children,
-}: SiteChromeProps) {
+}: PageWrapperProps) {
   const [navigation, footer] = await Promise.all([
     client.fetch(NAVIGATION_QUERY, {}, options),
     client.fetch(FOOTER_QUERY, {}, options),

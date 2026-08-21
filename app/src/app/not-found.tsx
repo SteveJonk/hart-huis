@@ -1,11 +1,11 @@
-import { SiteChrome } from '@/components/layout/SiteChrome';
+import { PageWrapper } from '@/components/layout/PageWrapper';
 import { Button } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Wrap } from '@/components/ui/Wrap';
 
 export default function NotFound() {
   return (
-    <SiteChrome>
+    <PageWrapper>
       <main className="flex min-h-[70vh] items-center py-32 max-sm:py-24">
         <Wrap className="max-w-160">
           <Eyebrow>404</Eyebrow>
@@ -23,6 +23,6 @@ export default function NotFound() {
           </div>
         </Wrap>
       </main>
-    </SiteChrome>
+    </PageWrapper>
   );
 }

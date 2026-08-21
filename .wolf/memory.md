@@ -356,3 +356,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 19:30 | Added `isLandingPage` Boolean to `page` schema; minimal-nav toggle | `pageType.ts`, `queries.ts`, `SiteHeader.tsx`, new `SiteChrome.tsx`, `layout.tsx`, `page.tsx`, `[slug]/page.tsx`, `aanbod/[slug]/page.tsx`, `not-found.tsx` | typegen + tsc + eslint clean; build reaches prerender, fails only on sandboxed Sanity egress (pre-existing) | ~55k |
+| 19:52 | Renamed `SiteChrome` → `PageWrapper` (user preferred name) | `SiteChrome.tsx` → `PageWrapper.tsx`, 4 leaf-route imports, `.wolf/cerebrum.md`, `.wolf/STATUS.md` | tsc + eslint clean | ~6k |
