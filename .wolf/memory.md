@@ -374,3 +374,26 @@
 |------|--------|---------|---------|--------|
 | 21:40 | Bezichtigingsknop op de objectpagina opent nu een `<dialog>` met een CMS-formulier. Nieuw verborgen veldtype in `formField` (waarde met `{{adres}}`-tokens), nieuw singleton `objectSettings` (knoptekst + formulierkeuze + venstertekst), WONING_QUERY haalt beide op, `toFormDefinition` verhuisd van PageBuilder naar form-fields zodat de objectpagina hem ook gebruikt | studio-hart-huis/schemaTypes/{objects/formFieldType.ts,objectSettingsType.ts,index.ts}, structure.ts, app/src/{sanity/queries.ts,lib/{form-fields.ts,object-content.ts,site.ts},components/{form/{FormRenderer,fields},object/{ObjectContactDialog,ObjectSidebar},PageBuilder}.tsx,app/aanbod/[slug]/page.tsx}, scripts/{check-form.ts,seed.ts,seed/{shared,objectpagina}.ts} | typegen + tsc + lint + check:form groen; build compileert (export faalt alleen omdat deze container niet bij api.sanity.io kan). Nog te seeden: `npm run seed:objectpagina` | ~40000 |
 | 21:45 | `SITE.baseUrl` toegevoegd en hergebruikt in sitemap.ts + robots.ts — de objectpagina heeft een absolute URL nodig voor het `{{url}}`-token | app/src/lib/site.ts, app/src/app/{sitemap,robots}.ts | Done, één plek voor het domein | ~1000 |
+
+## Session: 2026-08-24 11:22
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-24 11:25
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-24 11:28
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-24 11:52
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 12:40 | Realworks-mapping geschreven (feed -> `woning`), puur en getest tegen een echte feed | app/src/lib/realworks.ts, app/scripts/check-realworks.ts, app/scripts/fixtures/realworks-objecten.json | `npm run check:realworks` groen, 10 objecten | ~9k |
+| 12:55 | Import-route + gedeelde auth/CORS uit de Funda-route getrokken | app/src/app/api/import-realworks/route.ts, app/src/lib/route-auth.ts, app/src/app/api/scrape-funda-reviews/route.ts | dryRun lokaal 200, 11 objecten uit de live feed | ~6k |
+| 13:05 | Studioknop "Realworks-objecten" + gedeelde panelstijlen, cron 04:30, docs | studio-hart-huis/tools/{RealworksTool.tsx,panelStyles.ts}, structure.ts, app/vercel.json, docs/realworks-import.md | tsc + eslint schoon | ~5k |

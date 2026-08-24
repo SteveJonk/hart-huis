@@ -6,6 +6,7 @@ import {RefreshIcon} from '@sanity/icons/Refresh'
 import {WrenchIcon} from '@sanity/icons/Wrench'
 import type {StructureResolver} from 'sanity/structure'
 import {FundaReviews} from './tools/FundaReviewsTool'
+import {RealworksObjecten} from './tools/RealworksTool'
 
 const SINGLETONS = ['navigation', 'footer', 'formGeneralSettings', 'objectSettings']
 
@@ -66,6 +67,15 @@ export const structure: StructureResolver = (S) =>
                 .id('funda-reviews')
                 .icon(RefreshIcon)
                 .child(S.component(FundaReviews).title('Funda-reviews').id('funda-reviews')),
+              S.listItem()
+                .title('Realworks-objecten')
+                .id('realworks-objecten')
+                .icon(RefreshIcon)
+                .child(
+                  S.component(RealworksObjecten)
+                    .title('Realworks-objecten')
+                    .id('realworks-objecten'),
+                ),
             ]),
         ),
       S.divider(),

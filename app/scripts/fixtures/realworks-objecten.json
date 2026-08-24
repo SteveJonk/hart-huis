@@ -1,0 +1,3469 @@
+{
+ "resultaten": [
+  {
+   "algemeen": {
+    "energieKenmerken": null,
+    "onderhoudswaarderingBinnenMemo": null,
+    "onderhoudswaarderingBuiten": null,
+    "onderhoudswaarderingBuitenMemo": null,
+    "onderhoudswaarderingBinnen": null,
+    "woonhuissoort": null,
+    "woonhuistype": null,
+    "appartementsoort": null,
+    "isolatievormen": null,
+    "dakmaterialen": null,
+    "voorzieningenWonen": [],
+    "appartementkenmerk": null,
+    "verwarmingsoorten": null,
+    "cvKetelBouwjaar": null,
+    "cvKetelBrandstof": null,
+    "cvKetelEigendom": null,
+    "cvCombiketel": false,
+    "warmwatersoorten": null,
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "101603",
+    "appartementOpenPortiek": null,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": null,
+    "totaleWoonkameroppervlakte": 0,
+    "totaleKadestraleOppervlakte": 2795,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "bouwgrond",
+    "bestemmingHuidig": "bouwgrond",
+    "bouwgrondBouwrijp": false,
+    "bijzonderheden": null,
+    "bouwperiode": null,
+    "cvKetelType": null,
+    "bouwgrondoppervlakte": 2795,
+    "bouwjaartoelichting": null,
+    "gebruiksoppervlakteOverig": null,
+    "appartementWoonlaag": null,
+    "energieklasse": null,
+    "energiedatum": null,
+    "energieindex": null,
+    "aantalKamers": "0",
+    "liggingen": [
+     "IN_CENTRUM",
+     "IN_WOONWIJK",
+     "VRIJ_UITZICHT"
+    ],
+    "bouwvorm": "NIET_VAN_TOEPASSING",
+    "inAanbouw": null,
+    "bouwjaar": null,
+    "epc": null,
+    "woonoppervlakte": null,
+    "inhoud": 0
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2025-01-15 09:10:05",
+     "volgnummer": 1,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/213769509.jpg?portalid=18143&check=api_sha256%3A7b4498a57a80913c6df38b43d2ab35ac69e28b66ab845523f138a30adf5879c2"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2025-01-15 09:10:07",
+     "volgnummer": 2,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/213769511.jpg?portalid=18143&check=api_sha256%3A9736c0ade755abac1f51d0485d7a7061b32025e11ca964b4aeeb8a73faea4592"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2025-01-15 09:10:09",
+     "volgnummer": 4,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/213769515.jpg?portalid=18143&check=api_sha256%3A77dcad69b833772d3c159cfc234dc3e0e95a58843aa850e612ee386ec06a5fa4"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2025-01-15 09:10:10",
+     "volgnummer": 5,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/213769517.jpg?portalid=18143&check=api_sha256%3Aef4a9991db204ce03e932437383e2b3890dfe42ff0d789a337f633a21349c99d"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-18 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-18 14:52:14",
+   "relaties": {
+    "medeaanmelders": []
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "6b69dd55-0e3c-405b-83ff-d51ef361643a",
+     "wijzigingsdatum": "2026-07-09 08:04:46",
+     "mengvormtoelichting": null,
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": null,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100114",
+     "invoerdatum": "2025-01-15",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [],
+    "buitenruimte": {
+     "garagecapiciteit": null,
+     "parkeerfaciliteiten": null,
+     "parkeertoelichting": null,
+     "schuurBergingVoorzieningen": null,
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": null,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": 0,
+     "daktoelichting": null,
+     "hoofdtuintype": null,
+     "hoofdtuinAchterom": null,
+     "hoofdtuinlengte": 0,
+     "hoofdtuinbreedte": 0,
+     "schuurBergingSoort": null,
+     "aantalSchurenBergingen": 0,
+     "hoofdtuinoppervlakte": null,
+     "garagevoorzieningen": null,
+     "garagesoorten": null,
+     "garagelengte": 0,
+     "garagebreedte": 0,
+     "tuinTotaleOppervlakte": 0,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": 0,
+     "hoofdtuinlocatie": null,
+     "tuinkwaliteit": null,
+     "oppervlakteExterneBergruimte": null,
+     "tuintypes": null,
+     "daktype": null
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Opmeer",
+       "sectie": "U",
+       "aandeel": "",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "1250",
+       "wijzigingsdatum": "2025-01-15 09:11:41",
+       "oppervlakte": 2795,
+       "invoerdatum": "2025-01-15"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "0",
+     "toevoeging": "ong"
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "A.C. De Graafweg / Middelweg",
+    "straat2": "",
+    "postcode": "1716 KB",
+    "plaats": "OPMEER"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "**Te Koop: Unieke Bouwkavel in Opmeer**\n\nAltijd al zelf uw eigen woning willen realiseren? Dan is dit een unieke kans!\nMidden in Opmeer ligt deze ruime bouwkavel van 2.795 m2 eigen grond. De kavel heeft een woonbestemming met bouwvlak (ca. 365m2).\n\nHet perceel is centraal gelegen nabij uitvalswegen richting A7, Alkmaar, Hoorn en Purmerend. \n\nBenieuwd naar de mogelijkheden en meer informatie? Neem dan snel contact met ons op!",
+    "eigenSiteTekst": "**Te Koop: Unieke Bouwkavel in Opmeer**<br />\n<br />\nAltijd al zelf uw eigen woning willen realiseren? Dan is dit een unieke kans!<br />\nMidden in Opmeer ligt deze ruime bouwkavel van 2.795 m2 eigen grond. De kavel heeft een woonbestemming met bouwvlak (ca. 365m2).<br />\n<br />\nHet perceel is centraal gelegen nabij uitvalswegen richting A7, Alkmaar, Hoorn en Purmerend.<br />\n<br />\nBenieuwd naar de mogelijkheden en meer informatie? Neem dan snel contact met ons op!",
+    "flyertekst": "**Te Koop: Unieke Bouwkavel in Opmeer**<br />\n<br />\n<br />\n<br />\nAltijd al zelf uw eigen woning willen realiseren? Dan is dit een unieke kans!<br />\n<br />\nMidden in Opmeer ligt deze ruime bouwkavel van 2.795 m2 eigen grond. De kavel heeft een woonbestemming met bouwvlak (ca. 365m2).<br />\n<br />\n<br />\n<br />\nHet perceel is centraal gelegen nabij uitvalswegen richting A7, Alkmaar, Hoorn en Purmerend.<br />\n<br />\n<br />\n<br />\nBenieuwd naar de mogelijkheden en meer informatie? Neem dan snel contact met ons op!",
+    "a4Tekst": "**Te Koop: Unieke Bouwkavel in Opmeer**<br />\n<br />\nAltijd al zelf uw eigen woning willen realiseren? Dan is dit een unieke kans!<br />\nMidden in Opmeer ligt deze ruime bouwkavel van 2.795 m2 eigen grond. De kavel heeft een woonbestemming met bouwvlak (ca. 365m2).<br />\n<br />\nHet perceel is centraal gelegen nabij uitvalswegen richting A7, Alkmaar, Hoorn en Purmerend.<br />\n<br />\nBenieuwd naar de mogelijkheden en meer informatie? Neem dan snel contact met ons op!"
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": "VRAAGPRIJS",
+     "appartementVveBijdrage": 0,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": null,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": false,
+     "vveVergadering": false,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": false,
+     "vveOnderhoudsverwachting": false,
+     "vveOpstalverzekering": false,
+     "vveKvkInschrijving": false,
+     "onderVoorbehoudVanaf": null,
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 650000,
+     "huurprijs": null,
+     "status": "BESCHIKBAAR"
+    }
+   },
+   "id": 8710117,
+   "object": {
+    "type": {
+     "objecttype": "BOUWGROND"
+    }
+   }
+  },
+  {
+   "algemeen": {
+    "energieKenmerken": [],
+    "onderhoudswaarderingBinnenMemo": "",
+    "onderhoudswaarderingBuiten": "GOED",
+    "onderhoudswaarderingBuitenMemo": "",
+    "onderhoudswaarderingBinnen": "GOED",
+    "woonhuissoort": null,
+    "woonhuistype": null,
+    "appartementsoort": "PORTIEKFLAT",
+    "isolatievormen": [
+     "MUURISOLATIE",
+     "DUBBEL_GLAS"
+    ],
+    "dakmaterialen": [
+     "BITUMINEUZE_DAKBEDEKKING"
+    ],
+    "voorzieningenWonen": [
+     "MECHANISCHE_VENTILATIE"
+    ],
+    "appartementkenmerk": "APPARTEMENT",
+    "verwarmingsoorten": [
+     "CV_KETEL"
+    ],
+    "cvKetelBouwjaar": "",
+    "cvKetelBrandstof": "GAS",
+    "cvKetelEigendom": "EIGENDOM",
+    "cvCombiketel": false,
+    "warmwatersoorten": [
+     "CV_KETEL"
+    ],
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "101603",
+    "appartementOpenPortiek": false,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": 1,
+    "totaleWoonkameroppervlakte": 0,
+    "totaleKadestraleOppervlakte": 0,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "Woonruimte",
+    "bestemmingHuidig": "Woonruimte",
+    "bouwgrondBouwrijp": null,
+    "bijzonderheden": [
+     "GEDEELTELIJK_GESTOFFEERD"
+    ],
+    "bouwperiode": null,
+    "cvKetelType": "",
+    "bouwgrondoppervlakte": 0,
+    "bouwjaartoelichting": "",
+    "gebruiksoppervlakteOverig": 1,
+    "appartementWoonlaag": 1,
+    "energieklasse": "C",
+    "energiedatum": "2036-02-04",
+    "energieindex": null,
+    "aantalKamers": "4",
+    "liggingen": [
+     "IN_WOONWIJK"
+    ],
+    "bouwvorm": "BESTAANDE_BOUW",
+    "inAanbouw": false,
+    "bouwjaar": "1965",
+    "epc": null,
+    "woonoppervlakte": 77,
+    "inhoud": 245
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2026-07-20 11:55:32",
+     "volgnummer": 1,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/285024885.jpg?portalid=18143&check=api_sha256%3A3909918d95cbd1d159f7eeaa31a72df7806276fda4fe4a4e96275ed22f5e4088"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-07-20 11:55:32",
+     "volgnummer": 2,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/285024963.jpg?portalid=18143&check=api_sha256%3A9b425955ecb383198987f5e0333667453d5ea70cab474998e8d7535cbfae76ca"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-07-20 11:55:32",
+     "volgnummer": 3,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/285024855.jpg?portalid=18143&check=api_sha256%3Ab9e5b2ba32797485661ffba8b93fcbe6b2866a241b18a4a567ce21078ee99b2b"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-07-20 11:55:32",
+     "volgnummer": 4,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/285024859.jpg?portalid=18143&check=api_sha256%3A6ce65ef3ec1ec558a474e2c73abde38f1e6089aecd1970c680830f8a063d8965"
+    },
+    {
+     "vrijgave": true,
+     "soort": "PLATTEGROND",
+     "wijzigingstijdstip": "2026-07-20 11:55:32",
+     "volgnummer": 200,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/285513313.jpg?portalid=18143&check=api_sha256%3Aa91a9acbda791e812d761990ddef9e2f2f2bafc09167679ce8a54c0e8ccfac03"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-18 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-22 09:58:22",
+   "relaties": {
+    "medeaanmelders": []
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "d7f778ca-42b9-4dc5-bfb6-47c7fe992411",
+     "wijzigingsdatum": "2026-08-22 09:58:22",
+     "mengvormtoelichting": "",
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": 2023,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100186",
+     "invoerdatum": "2026-02-05",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "TOILET",
+        "HAL"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [
+        "WOONKAMER"
+       ],
+       "keukentypes": [
+        "DICHTE_KEUKEN"
+       ],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [
+       {
+        "lengte": null,
+        "breedte": null,
+        "voorzieningen": [
+         "DOUCHE",
+         "WASTAFEL"
+        ],
+        "oppervlakte": null
+       }
+      ],
+      "etagesoort": "BEGANE_GROND_OF_FLAT",
+      "etageomschrijving": "Tweede verdieping",
+      "aantalSlaapkamers": 3,
+      "etageligging": null,
+      "aantalKamers": 4
+     }
+    ],
+    "buitenruimte": {
+     "garagecapiciteit": "",
+     "parkeerfaciliteiten": [
+      "OPENBAAR_PARKEREN"
+     ],
+     "parkeertoelichting": "",
+     "schuurBergingVoorzieningen": [
+      "VOORZIEN_VAN_ELEKTRA"
+     ],
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": 2,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": null,
+     "daktoelichting": "",
+     "hoofdtuintype": null,
+     "hoofdtuinAchterom": false,
+     "hoofdtuinlengte": null,
+     "hoofdtuinbreedte": null,
+     "schuurBergingSoort": "INPANDIG",
+     "aantalSchurenBergingen": 1,
+     "hoofdtuinoppervlakte": null,
+     "garagevoorzieningen": null,
+     "garagesoorten": [
+      "GEEN_GARAGE"
+     ],
+     "garagelengte": null,
+     "garagebreedte": null,
+     "tuinTotaleOppervlakte": null,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": null,
+     "hoofdtuinlocatie": null,
+     "tuinkwaliteit": null,
+     "oppervlakteExterneBergruimte": 8,
+     "tuintypes": [
+      "GEEN_TUIN"
+     ],
+     "daktype": "PLAT_DAK"
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "A",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Velsen",
+       "sectie": "O",
+       "aandeel": "32",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "1207",
+       "wijzigingsdatum": "2026-07-20 11:57:13",
+       "oppervlakte": null,
+       "invoerdatum": "2026-07-20"
+      }
+     },
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "A",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Velsen",
+       "sectie": "O",
+       "aandeel": "44",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "1207",
+       "wijzigingsdatum": "2026-07-20 11:58:03",
+       "oppervlakte": null,
+       "invoerdatum": "2026-07-20"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "150",
+     "toevoeging": null
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "Santpoortse Dreef",
+    "straat2": "",
+    "postcode": "2071 TS",
+    "plaats": "SANTPOORT-NOORD"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "Santpoortse Dreef 150 – Santpoort-Noord\n\nRuim 4-kamerappartement met drie slaapkamers, een lichte woonkamer en een fijne ligging in geliefd Santpoort-Noord!\n\nBen je op zoek naar een ruim appartement met een praktische indeling, drie volwaardige slaapkamers én alle dagelijkse voorzieningen binnen handbereik? Dan is dit verzorgde appartement aan de Santpoortse Dreef zeker een bezichtiging waard.\n\nDe woning is gelegen op de tweede verdieping van een keurig appartementencomplex en beschikt over circa 77 m² woonoppervlakte. Dankzij de grote raampartijen valt er veel natuurlijk licht naar binnen, waardoor de woonkamer een prettige en ruimtelijke sfeer heeft. De indeling is efficiënt, waardoor iedere vierkante meter optimaal wordt benut.\n\nDe woonkamer biedt volop ruimte voor een comfortabele zithoek en een royale eettafel. De separate keuken grenst aan het balkon en is een fijne plek voor wie graag kookt. Verder beschikt de woning over maar liefst drie slaapkamers, waardoor het appartement ideaal is voor een gezin, thuiswerkers of iedereen die behoefte heeft aan een extra hobby- of logeerkamer.\n\nDe badkamer is voorzien van een douche en wastafel en daarnaast is er een separaat toilet. Op de begane grond beschikt de woning bovendien over een eigen berging, ideaal voor fietsen en extra opslag.\n\nDe omgeving\n\nSantpoort-Noord staat bekend om zijn rustige, groene karakter en uitstekende bereikbaarheid. Winkels, supermarkten, scholen, sportverenigingen en openbaar vervoer bevinden zich op korte afstand. Ook het NS-station ligt dichtbij, waardoor Haarlem en Amsterdam eenvoudig bereikbaar zijn. Daarnaast fiets je binnen enkele minuten naar de duinen, het strand of recreatiegebied Spaarnwoude.\n\nBijzonderheden\nWoonoppervlakte ca. 77 m²;\nDrie goed bemeten slaapkamers;\nLichte woonkamer met grote raampartijen;\nSeparate keuken met toegang tot het balkon;\nEigen berging op de begane grond;\nEnergielabel C;\nGelegen in een geliefde woonomgeving nabij winkels, openbaar vervoer en uitvalswegen;\nAanvaarding in overleg.",
+    "eigenSiteTekst": "Santpoortse Dreef 150 – Santpoort-Noord<br />\n<br />\nRuim 4-kamerappartement met drie slaapkamers, een lichte woonkamer en een fijne ligging in geliefd Santpoort-Noord!<br />\n<br />\nBen je op zoek naar een ruim appartement met een praktische indeling, drie volwaardige slaapkamers én alle dagelijkse voorzieningen binnen handbereik? Dan is dit verzorgde appartement aan de Santpoortse Dreef zeker een bezichtiging waard.<br />\n<br />\nDe woning is gelegen op de tweede verdieping van een keurig appartementencomplex en beschikt over circa 77 m² woonoppervlakte. Dankzij de grote raampartijen valt er veel natuurlijk licht naar binnen, waardoor de woonkamer een prettige en ruimtelijke sfeer heeft. De indeling is efficiënt, waardoor iedere vierkante meter optimaal wordt benut.<br />\n<br />\nDe woonkamer biedt volop ruimte voor een comfortabele zithoek en een royale eettafel. De separate keuken grenst aan het balkon en is een fijne plek voor wie graag kookt. Verder beschikt de woning over maar liefst drie slaapkamers, waardoor het appartement ideaal is voor een gezin, thuiswerkers of iedereen die behoefte heeft aan een extra hobby- of logeerkamer.<br />\n<br />\nDe badkamer is voorzien van een douche en wastafel en daarnaast is er een separaat toilet. Op de begane grond beschikt de woning bovendien over een eigen berging, ideaal voor fietsen en extra opslag.<br />\n<br />\nDe omgeving<br />\n<br />\nSantpoort-Noord staat bekend om zijn rustige, groene karakter en uitstekende bereikbaarheid. Winkels, supermarkten, scholen, sportverenigingen en openbaar vervoer bevinden zich op korte afstand. Ook het NS-station ligt dichtbij, waardoor Haarlem en Amsterdam eenvoudig bereikbaar zijn. Daarnaast fiets je binnen enkele minuten naar de duinen, het strand of recreatiegebied Spaarnwoude.<br />\n<br />\nBijzonderheden<br />\nWoonoppervlakte ca. 77 m²;<br />\nDrie goed bemeten slaapkamers;<br />\nLichte woonkamer met grote raampartijen;<br />\nSeparate keuken met toegang tot het balkon;<br />\nEigen berging op de begane grond;<br />\nEnergielabel C;<br />\nGelegen in een geliefde woonomgeving nabij winkels, openbaar vervoer en uitvalswegen;<br />\nAanvaarding in overleg.",
+    "flyertekst": "Santpoortse Dreef 150 – Santpoort-Noord<br />\n<br />\n<br />\n<br />\nRuim 4-kamerappartement met drie slaapkamers, een lichte woonkamer en een fijne ligging in geliefd Santpoort-Noord!<br />\n<br />\n<br />\n<br />\nBen je op zoek naar een ruim appartement met een praktische indeling, drie volwaardige slaapkamers én alle dagelijkse voorzieningen binnen handbereik? Dan is dit verzorgde appartement aan de Santpoortse Dreef zeker een bezichtiging waard.<br />\n<br />\n<br />\n<br />\nDe woning is gelegen op de tweede verdieping van een keurig appartementencomplex en beschikt over circa 77 m² woonoppervlakte. Dankzij de grote raampartijen valt er veel natuurlijk licht naar binnen, waardoor de woonkamer een prettige en ruimtelijke sfeer heeft. De indeling is efficiënt, waardoor iedere vierkante meter optimaal wordt benut.<br />\n<br />\n<br />\n<br />\nDe woonkamer biedt volop ruimte voor een comfortabele zithoek en een royale eettafel. De separate keuken grenst aan het balkon en is een fijne plek voor wie graag kookt. Verder beschikt de woning over maar liefst drie slaapkamers, waardoor het appartement ideaal is voor een gezin, thuiswerkers of iedereen die behoefte heeft aan een extra hobby- of logeerkamer.<br />\n<br />\n<br />\n<br />\nDe badkamer is voorzien van een douche en wastafel en daarnaast is er een separaat toilet. Op de begane grond beschikt de woning bovendien over een eigen berging, ideaal voor fietsen en extra opslag.<br />\n<br />\n<br />\n<br />\nDe omgeving<br />\n<br />\n<br />\n<br />\nSantpoort-Noord staat bekend om zijn rustige, groene karakter en uitstekende bereikbaarheid. Winkels, supermarkten, scholen, sportverenigingen en openbaar vervoer bevinden zich op korte afstand. Ook het NS-station ligt dichtbij, waardoor Haarlem en Amsterdam eenvoudig bereikbaar zijn. Daarnaast fiets je binnen enkele minuten naar de duinen, het strand of recreatiegebied Spaarnwoude.<br />\n<br />\n<br />\n<br />\nBijzonderheden<br />\n<br />\nWoonoppervlakte ca. 77 m²;<br />\n<br />\nDrie goed bemeten slaapkamers;<br />\n<br />\nLichte woonkamer met grote raampartijen;<br />\n<br />\nSeparate keuken met toegang tot het balkon;<br />\n<br />\nEigen berging op de begane grond;<br />\n<br />\nEnergielabel C;<br />\n<br />\nGelegen in een geliefde woonomgeving nabij winkels, openbaar vervoer en uitvalswegen;<br />\n<br />\nAanvaarding in overleg.",
+    "a4Tekst": "Santpoortse Dreef 150 – Santpoort-Noord<br />\n<br />\nRuim 4-kamerappartement met drie slaapkamers, een lichte woonkamer en een fijne ligging in geliefd Santpoort-Noord!<br />\n<br />\nBen je op zoek naar een ruim appartement met een praktische indeling, drie volwaardige slaapkamers én alle dagelijkse voorzieningen binnen handbereik? Dan is dit verzorgde appartement aan de Santpoortse Dreef zeker een bezichtiging waard.<br />\n<br />\nDe woning is gelegen op de tweede verdieping van een keurig appartementencomplex en beschikt over circa 77 m² woonoppervlakte. Dankzij de grote raampartijen valt er veel natuurlijk licht naar binnen, waardoor de woonkamer een prettige en ruimtelijke sfeer heeft. De indeling is efficiënt, waardoor iedere vierkante meter optimaal wordt benut.<br />\n<br />\nDe woonkamer biedt volop ruimte voor een comfortabele zithoek en een royale eettafel. De separate keuken grenst aan het balkon en is een fijne plek voor wie graag kookt. Verder beschikt de woning over maar liefst drie slaapkamers, waardoor het appartement ideaal is voor een gezin, thuiswerkers of iedereen die behoefte heeft aan een extra hobby- of logeerkamer.<br />\n<br />\nDe badkamer is voorzien van een douche en wastafel en daarnaast is er een separaat toilet. Op de begane grond beschikt de woning bovendien over een eigen berging, ideaal voor fietsen en extra opslag.<br />\n<br />\nDe omgeving<br />\n<br />\nSantpoort-Noord staat bekend om zijn rustige, groene karakter en uitstekende bereikbaarheid. Winkels, supermarkten, scholen, sportverenigingen en openbaar vervoer bevinden zich op korte afstand. Ook het NS-station ligt dichtbij, waardoor Haarlem en Amsterdam eenvoudig bereikbaar zijn. Daarnaast fiets je binnen enkele minuten naar de duinen, het strand of recreatiegebied Spaarnwoude.<br />\n<br />\nBijzonderheden<br />\nWoonoppervlakte ca. 77 m²;<br />\nDrie goed bemeten slaapkamers;<br />\nLichte woonkamer met grote raampartijen;<br />\nSeparate keuken met toegang tot het balkon;<br />\nEigen berging op de begane grond;<br />\nEnergielabel C;<br />\nGelegen in een geliefde woonomgeving nabij winkels, openbaar vervoer en uitvalswegen;<br />\nAanvaarding in overleg."
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": "VRAAGPRIJS",
+     "appartementVveBijdrage": 218.45,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": null,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": true,
+     "vveVergadering": true,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": true,
+     "vveOnderhoudsverwachting": true,
+     "vveOpstalverzekering": true,
+     "vveKvkInschrijving": true,
+     "onderVoorbehoudVanaf": null,
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 395000,
+     "huurprijs": null,
+     "status": "BESCHIKBAAR"
+    }
+   },
+   "id": 9933022,
+   "object": {
+    "type": {
+     "objecttype": "APPARTEMENT"
+    }
+   }
+  },
+  {
+   "algemeen": {
+    "energieKenmerken": [],
+    "onderhoudswaarderingBinnenMemo": "",
+    "onderhoudswaarderingBuiten": "GOED",
+    "onderhoudswaarderingBuitenMemo": "",
+    "onderhoudswaarderingBinnen": "GOED",
+    "woonhuissoort": "EENGEZINSWONING",
+    "woonhuistype": "HOEKWONING",
+    "appartementsoort": null,
+    "isolatievormen": [
+     "VLOERISOLATIE",
+     "DUBBEL_GLAS"
+    ],
+    "dakmaterialen": [
+     "PANNEN"
+    ],
+    "voorzieningenWonen": [
+     "MECHANISCHE_VENTILATIE"
+    ],
+    "appartementkenmerk": null,
+    "verwarmingsoorten": [
+     "CV_KETEL"
+    ],
+    "cvKetelBouwjaar": "2023",
+    "cvKetelBrandstof": "GAS",
+    "cvKetelEigendom": "EIGENDOM",
+    "cvCombiketel": true,
+    "warmwatersoorten": [
+     "CV_KETEL"
+    ],
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "100000",
+    "appartementOpenPortiek": null,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": null,
+    "totaleWoonkameroppervlakte": 25,
+    "totaleKadestraleOppervlakte": 170,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "Woonruimte",
+    "bestemmingHuidig": "Woonruimte",
+    "bouwgrondBouwrijp": null,
+    "bijzonderheden": [],
+    "bouwperiode": null,
+    "cvKetelType": "Remeha Tzerra",
+    "bouwgrondoppervlakte": 0,
+    "bouwjaartoelichting": "",
+    "gebruiksoppervlakteOverig": 0,
+    "appartementWoonlaag": null,
+    "energieklasse": "C",
+    "energiedatum": "2036-03-20",
+    "energieindex": null,
+    "aantalKamers": "5",
+    "liggingen": [
+     "IN_WOONWIJK",
+     "VRIJ_UITZICHT"
+    ],
+    "bouwvorm": "BESTAANDE_BOUW",
+    "inAanbouw": false,
+    "bouwjaar": "1962",
+    "epc": null,
+    "woonoppervlakte": 106,
+    "inhoud": 362
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2026-06-17 12:25:56",
+     "volgnummer": 1,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/277488948.jpg?portalid=18143&check=api_sha256%3Ac12dc63646ddc9b854aa8d8f690c60aa188ba1eb902555ef972f56f2c034a986"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-06-17 12:25:57",
+     "volgnummer": 25,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/277488992.jpg?portalid=18143&check=api_sha256%3A71cc7292b801b98bfff09204f00e6167884d4c5ee120a67f46ea982fd92f3bda"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-06-17 12:25:57",
+     "volgnummer": 17,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/277488954.jpg?portalid=18143&check=api_sha256%3A8739c5992f654f97eb5bd31496fb0b1dfb0ddc185bfc4a0da8dba5c44e0c89eb"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-06-17 12:25:57",
+     "volgnummer": 19,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/277488970.jpg?portalid=18143&check=api_sha256%3Abcdb96d5d9dccf38a8b86a6e9730f177157194970e868186f6228210e72affa1"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-18 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-21 15:16:36",
+   "relaties": {
+    "medeaanmelders": [
+     {
+      "nvmNummer": "82501"
+     }
+    ]
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "9747cf73-f8c7-492c-8517-38db8d139b56",
+     "wijzigingsdatum": "2026-08-16 13:50:22",
+     "mengvormtoelichting": "",
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": 2023,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100193",
+     "invoerdatum": "2026-03-05",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "OVERLOOP",
+        "WASRUIMTE"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [
+       {
+        "lengte": 249,
+        "breedte": 275,
+        "voorzieningen": [
+         "LIGBAD",
+         "TOILET",
+         "DOUCHE"
+        ],
+        "oppervlakte": 7
+       }
+      ],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "1e Verdieping",
+      "aantalSlaapkamers": 2,
+      "etageligging": null,
+      "aantalKamers": 2
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "2e Verdieping",
+      "aantalSlaapkamers": 2,
+      "etageligging": null,
+      "aantalKamers": 2
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "TOILET",
+        "HAL"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": 246,
+       "keukenbreedte": 200,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "2022",
+       "keukenoppervlakte": 5,
+       "woonkamertypes": [
+        "WOONKAMER",
+        "DOORZONKAMER"
+       ],
+       "keukentypes": [
+        "OPEN_KEUKEN",
+        "INBOUWAPPARATUUR"
+       ],
+       "woonkamerlengte": 703,
+       "woonkamerbreedte": 358,
+       "woonkameroppervlakte": 25
+      },
+      "badkamers": [],
+      "etagesoort": "BEGANE_GROND_OF_FLAT",
+      "etageomschrijving": "Begane grond",
+      "aantalSlaapkamers": 0,
+      "etageligging": null,
+      "aantalKamers": 1
+     }
+    ],
+    "buitenruimte": {
+     "garagecapiciteit": "",
+     "parkeerfaciliteiten": [
+      "OPENBAAR_PARKEREN"
+     ],
+     "parkeertoelichting": "",
+     "schuurBergingVoorzieningen": null,
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": 0,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": null,
+     "daktoelichting": "",
+     "hoofdtuintype": "ACHTERTUIN",
+     "hoofdtuinAchterom": true,
+     "hoofdtuinlengte": 750,
+     "hoofdtuinbreedte": 700,
+     "schuurBergingSoort": "VRIJSTAAND_STEEN",
+     "aantalSchurenBergingen": 1,
+     "hoofdtuinoppervlakte": 53,
+     "garagevoorzieningen": null,
+     "garagesoorten": [
+      "GEEN_GARAGE"
+     ],
+     "garagelengte": null,
+     "garagebreedte": null,
+     "tuinTotaleOppervlakte": null,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": null,
+     "hoofdtuinlocatie": "ZUIDOOST",
+     "tuinkwaliteit": "VERZORGD",
+     "oppervlakteExterneBergruimte": 7,
+     "tuintypes": [
+      "ACHTERTUIN",
+      "VOORTUIN"
+     ],
+     "daktype": "ZADELDAK"
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Haarlem",
+       "sectie": "Q",
+       "aandeel": "",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "1077",
+       "wijzigingsdatum": "2026-06-08 11:56:35",
+       "oppervlakte": 146,
+       "invoerdatum": "2026-06-08"
+      }
+     },
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Haarlem",
+       "sectie": "Q",
+       "aandeel": "",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "1176",
+       "wijzigingsdatum": "2026-06-08 11:57:00",
+       "oppervlakte": 24,
+       "invoerdatum": "2026-06-08"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "175",
+     "toevoeging": null
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "Engelandlaan",
+    "straat2": "",
+    "postcode": "2034 PL",
+    "plaats": "HAARLEM"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "**English below**\n\nLicht, ruim en verrassend compleet wonen op een fijne plek in Haarlem!\n\nBen je op zoek naar een ruime gezinswoning met een zonnige tuin, vrij uitzicht op een centrale locatie in Haarlem? Kom dan kijken bij deze fijne eengezinswoning aan de Engelandlaan 175!\n\nMet een woonoppervlakte van circa 106 m² biedt deze woning verrassend veel leefruimte. De ligging op de hoek zorgt voor extra lichtinval en een prettig gevoel van ruimte, terwijl je aan de voorzijde geniet van vrij uitzicht.\n\nDe woonkamer is heerlijk licht dankzij de grote raampartijen en staat in directe verbinding met de achtertuin. De verzorgde achtertuin ligt gunstig op het zuidoosten, waardoor je hier vrijwel de hele dag van de zon kunt genieten. Met een achterom en een vrijstaande stenen berging is de tuin bovendien praktisch ingericht.\n\nOp de eerste verdieping bevinden zich 2 slaapkamers, een wasruimte en de badkamer met douche, ligbad en 2e toilet. \n\nDe tweede verdieping biedt 2 slaapkamers welke ook gebruikt kunnen worden als thuiswerkplek, logeerkamer of hobbyruimte. Hierdoor groeit de woning moeiteloos mee met jouw woonwensen.\n\nDe woning is gebouwd in 1962 en beschikt over een energielabel C. Dankzij vloerisolatie, dubbel glas en een in 2023 geplaatste Remeha cv-ketel woon je hier comfortabel en energiezuiniger dan je wellicht zou verwachten.\n\nDe ligging is bijzonder prettig. In de directe omgeving vind je scholen, winkels, sportvoorzieningen en openbaar vervoer. Bovendien ben je binnen enkele minuten in het gezellige centrum van Haarlem, terwijl ook uitvalswegen richting Amsterdam, Schiphol en de kust eenvoudig bereikbaar zijn.\n\nKortom: een ruime hoekwoning met veel licht, een zonnige tuin, vrij uitzicht op een fijne locatie in Haarlem. \n\nGoed om te weten:\n- ruime hoekwoning met ca. 106 m² woonoppervlakte\n- gelegen op een perceel van 170 m² eigen grond\n- keuken vernieuwd in 2022\n- vrij uitzicht aan de voorzijde\n- lichte woonkamer met grote raampartijen\n- zonnige achtertuin met achterom\n- royale voortuin\n- 4 slaapkamers\n- energielabel C\n- voorzien van vloerisolatie en dubbel glas\n- Remeha cv-ketel uit 2023 (eigendom)\n- centrum van Haarlem op korte afstand\n\n**English**\n\nBright, spacious and surprisingly complete family home in a great location in Haarlem!\n\nAre you looking for a spacious family home with a sunny garden, open views and a convenient location in Haarlem? Then be sure to visit this lovely family home at Engelandlaan 175!\n\nWith approximately 106 m² of living space, this property offers an impressive amount of room. Its corner position provides extra natural light and a pleasant sense of space, while the front of the house enjoys unobstructed views.\n\nThe living room is wonderfully bright thanks to the large windows and has direct access to the rear garden. The well-maintained garden is ideally positioned facing southeast, allowing you to enjoy the sun for most of the day. The garden also features a rear entrance and a detached brick storage shed, making it both practical and enjoyable.\n\nThe first floor offers two bedrooms, a laundry room, and a bathroom equipped with a shower, bathtub, and second toilet.\n\nThe second floor provides two additional bedrooms, which can also be used as a home office, guest room, or hobby space. This flexibility allows the home to adapt easily to your changing lifestyle and needs.\n\nBuilt in 1962, the property has an energy label C. Thanks to floor insulation, double glazing, and a Remeha central heating boiler installed in 2023, the home offers a comfortable and energy-efficient living environment.\n\nThe location is particularly attractive. Schools, shops, sports facilities, and public transport are all within easy reach. The vibrant city centre of Haarlem can be reached within minutes, while major roads to Amsterdam, Schiphol Airport, and the coast are easily accessible as well.\n\nIn short: a spacious corner house with plenty of natural light, a sunny garden, open views, and an excellent location in Haarlem.\n\nGood to know:\n- Spacious corner house with approximately 106 m² of living space\n- Situated on 170 m² of freehold land\n- Kitchen renovated in 2022\n- Open views at the front\n- Bright living room with large windows\n- Sunny rear garden with rear access\n- large front garden offering additional outdoor space and privacy\n- 4 bedrooms\n- Energy label C\n- Equipped with floor insulation and double glazing\n- Remeha central heating boiler (owned), installed in 2023\n- Haarlem city centre within short distance\n- Conveniently located near shops, schools, public transport, Amsterdam, Schiphol Airport and the coast",
+    "eigenSiteTekst": "",
+    "flyertekst": "",
+    "a4Tekst": ""
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": null,
+     "appartementVveBijdrage": 0,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": null,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": false,
+     "vveVergadering": false,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": false,
+     "vveOnderhoudsverwachting": false,
+     "vveOpstalverzekering": false,
+     "vveKvkInschrijving": false,
+     "onderVoorbehoudVanaf": "2026-08-11 00:00:00",
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 550000,
+     "huurprijs": null,
+     "status": "VERKOCHT_ONDER_VOORBEHOUD"
+    }
+   },
+   "id": 10034966,
+   "object": {
+    "type": {
+     "objecttype": "WOONHUIS"
+    }
+   }
+  },
+  {
+   "algemeen": {
+    "energieKenmerken": [],
+    "onderhoudswaarderingBinnenMemo": "",
+    "onderhoudswaarderingBuiten": "GOED",
+    "onderhoudswaarderingBuitenMemo": "",
+    "onderhoudswaarderingBinnen": "GOED",
+    "woonhuissoort": "EENGEZINSWONING",
+    "woonhuistype": "TUSSENWONING",
+    "appartementsoort": null,
+    "isolatievormen": [
+     "DUBBEL_GLAS"
+    ],
+    "dakmaterialen": [
+     "PANNEN"
+    ],
+    "voorzieningenWonen": [],
+    "appartementkenmerk": null,
+    "verwarmingsoorten": [
+     "CV_KETEL"
+    ],
+    "cvKetelBouwjaar": "2014",
+    "cvKetelBrandstof": null,
+    "cvKetelEigendom": "EIGENDOM",
+    "cvCombiketel": true,
+    "warmwatersoorten": [
+     "CV_KETEL"
+    ],
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "100000",
+    "appartementOpenPortiek": null,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": null,
+    "totaleWoonkameroppervlakte": 0,
+    "totaleKadestraleOppervlakte": 159,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "Woonruimte",
+    "bestemmingHuidig": "Woonruimte",
+    "bouwgrondBouwrijp": null,
+    "bijzonderheden": [],
+    "bouwperiode": null,
+    "cvKetelType": "Nefit",
+    "bouwgrondoppervlakte": 0,
+    "bouwjaartoelichting": "",
+    "gebruiksoppervlakteOverig": 0,
+    "appartementWoonlaag": null,
+    "energieklasse": "C",
+    "energiedatum": "2036-06-12",
+    "energieindex": null,
+    "aantalKamers": "5",
+    "liggingen": [
+     "AAN_RUSTIGE_WEG",
+     "IN_WOONWIJK"
+    ],
+    "bouwvorm": "BESTAANDE_BOUW",
+    "inAanbouw": false,
+    "bouwjaar": "1959",
+    "epc": null,
+    "woonoppervlakte": 126,
+    "inhoud": 435
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2026-06-10 19:51:50",
+     "volgnummer": 1,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/280446565.jpg?portalid=18143&check=api_sha256%3Affded21994aebe897a25cb9c5593a134d394336eda7452fdc46dfd21c1f8db68"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-06-10 19:51:50",
+     "volgnummer": 3,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/280446499.jpg?portalid=18143&check=api_sha256%3A052055670b9ab791e36ff640edd8625bef0342927eb9d1ca39bed9418afc4679"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-06-10 19:51:50",
+     "volgnummer": 4,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/280446523.jpg?portalid=18143&check=api_sha256%3A970a79b39a5c0da0dcf1a345f0565f198935181e60ab3b531ef36f8dccdb9438"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-06-10 19:51:50",
+     "volgnummer": 2,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/280446505.jpg?portalid=18143&check=api_sha256%3A417329ed2f8e3a8604bbce278660651fb91e57c560b248cc4c0789ab8f9cf863"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-18 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-19 19:04:19",
+   "relaties": {
+    "medeaanmelders": [
+     {
+      "nvmNummer": "82501"
+     }
+    ]
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "d987b8b5-2a13-48aa-a692-3bed06b842fe",
+     "wijzigingsdatum": "2026-08-19 19:02:43",
+     "mengvormtoelichting": "",
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": 2023,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100200",
+     "invoerdatum": "2026-03-17",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "TOILET",
+        "GANG"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [],
+       "keukentypes": [],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "BEGANE_GROND_OF_FLAT",
+      "etageomschrijving": "Begane grond",
+      "aantalSlaapkamers": 0,
+      "etageligging": null,
+      "aantalKamers": 1
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "OVERLOOP",
+        "WASRUIMTE"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "2e Verdieping",
+      "aantalSlaapkamers": 1,
+      "etageligging": null,
+      "aantalKamers": 1
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "BALKON",
+        "OVERLOOP"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "1e Verdieping",
+      "aantalSlaapkamers": 3,
+      "etageligging": "ZUIDOOST",
+      "aantalKamers": 3
+     }
+    ],
+    "buitenruimte": {
+     "garagecapiciteit": "",
+     "parkeerfaciliteiten": [
+      "OPENBAAR_PARKEREN"
+     ],
+     "parkeertoelichting": "",
+     "schuurBergingVoorzieningen": null,
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": 3,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": null,
+     "daktoelichting": "",
+     "hoofdtuintype": "ACHTERTUIN",
+     "hoofdtuinAchterom": true,
+     "hoofdtuinlengte": 1285,
+     "hoofdtuinbreedte": 637,
+     "schuurBergingSoort": "VRIJSTAAND_STEEN",
+     "aantalSchurenBergingen": 1,
+     "hoofdtuinoppervlakte": 82,
+     "garagevoorzieningen": null,
+     "garagesoorten": [
+      "GEEN_GARAGE"
+     ],
+     "garagelengte": null,
+     "garagebreedte": null,
+     "tuinTotaleOppervlakte": null,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": null,
+     "hoofdtuinlocatie": "ZUIDOOST",
+     "tuinkwaliteit": "VERZORGD",
+     "oppervlakteExterneBergruimte": 4,
+     "tuintypes": [
+      "ACHTERTUIN",
+      "VOORTUIN"
+     ],
+     "daktype": "ZADELDAK"
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Amstelveen",
+       "sectie": "M",
+       "aandeel": "",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "1610",
+       "wijzigingsdatum": "2026-06-10 19:48:04",
+       "oppervlakte": 159,
+       "invoerdatum": "2026-06-10"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "6",
+     "toevoeging": null
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "Maluslaan",
+    "straat2": "",
+    "postcode": "1185 LA",
+    "plaats": "AMSTELVEEN"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "**English below**\n\nWelkom in deze ruime en karaktervolle gezinswoning in de geliefde Populierenbuurt van Amstelveen. Een fijne plek waar je rustig woont in een groene en kindvriendelijke omgeving, terwijl alle dagelijkse voorzieningen binnen handbereik liggen.\n\nMet een woonoppervlakte van circa 124 m², verdeeld over drie woonlagen, biedt deze woning volop ruimte voor een gezin, thuiswerkers of iedereen die graag nét wat meer leefruimte heeft. De woning staat op eigen grond en beschikt over een verzorgde voortuin, een zonnige achtertuin op het zuidoosten met achterom en een vrijstaande stenen berging.\n\nBij binnenkomst kom je in de hal met meterkast en modern toilet. De keuken is in 2014 vernieuwd en voorzien van diverse inbouwapparatuur. Vanuit de keuken loop je direct de achtertuin in. De ruime woonkamer vormt het hart van de woning. Dankzij de grote schuifpuien valt hier veel natuurlijk licht naar binnen en ontstaat een fijne verbinding tussen binnen en buiten. De sfeervolle gashaard maakt het plaatje compleet.\n\nOp de eerste verdieping bevinden zich drie slaapkamers. De slaapkamer aan de voorzijde beschikt over een eigen balkon. Daarnaast zijn er maar liefst twee badkamers aanwezig, ideaal voor gezinnen of gasten. Eén badkamer is voorzien van een inloopdouche en wastafel, terwijl de tweede badkamer beschikt over een ligbad met douche, toilet en wastafel.\n\nDe tweede verdieping verrast met een royale vierde slaapkamer. Een heerlijke plek als slaapkamer, werkruimte of hobbykamer. Op de royale overloop bevinden zich bovendien de aansluitingen voor de wasmachine en droger.\n\nDe woning is bouwkundig gekeurd en biedt een solide basis. Tegelijkertijd is er volop ruimte om de woning verder naar eigen smaak te moderniseren en in te richten.\n\nDe ligging is uitstekend. De woning bevindt zich aan de rand van het centrum van Amstelveen op ca. 15 minuten loopafstand naar het Stadshart, in de groene en populaire Populierenbuurt. Scholen, speeltuinen, winkels, supermarkten en een huisarts bevinden zich op korte afstand. Het Amsterdamse bos en de Poel liggen om de hoek. Ook het openbaar vervoer is uitstekend geregeld en parkeren kan gratis voor de deur. Via de uitvalswegen ben je bovendien snel in Amsterdam en de rest van de Randstad.\n\nEen ruime gezinswoning met karakter, een fijne tuin, vier slaapkamers en volop mogelijkheden op een uitstekende locatie. Een woning die je gezien moet hebben.\n\nGoed om te weten:\n- woonoppervlakte ca. 124 m²\n- perceeloppervlakte 159 m² eigen grond\n- bouwjaar 1959\n- bouwkundige keuring aanwezig (rapport ter inzage)\n- vier slaapkamers verdeeld over drie woonlagen\n- keuken vernieuwd in 2014\n- toilet vernieuwd in 2014\n- twee badkamers aanwezig\n- woonkamer met gashaard\n- achtertuin op het oosten met achterom\n- slaapkamer met balkon op de eerste verdieping\n- HR-combiketel (Nefit, 2014)\n- vrijstaande stenen berging\n- gratis parkeren direct voor de deur\n\n**English**\n\nWelcome to this spacious and characterful family home in one of Amstelveen's most sought-after residential neighbourhoods, the Populierenbuurt.\n\nBuilt in 1959, this well-proportioned terraced house offers 124 m² of living space across three floors, set on a 159 m² freehold plot with a lovely east-facing back garden, front garden, and a detached stone storage unit. The house is brimming with potential and ready to be finished to your own taste.\n\nLayout:\nGround floor: Entrance hall with meter cupboard | guest toilet | modern kitchen (2014) with direct garden access | spacious living room with gas fireplace and sliding doors to the garden\n\nFirst floor: Landing | bedroom 1 with balcony | bedroom 2 with built-in wardrobe | bathroom 1 with walk-in shower and washbasin | bedroom 3 | bathroom 2 with bath/shower, wall-hung toilet, washbasin and designer radiator\n\nSecond floor: Landing with utility connections (washing machine/dryer) | spacious bedroom with character timber ceiling, cork floor and exposed brick wall\n\nOutside: Established front garden | east-facing back garden with rear access (achterom) | freestanding stone storage shed\n\nLocation: The location is excellent. The home is situated on the edge of Amstelveen's city centre, approximately a 15-minute walk from the Stadshart, in the green and popular Populierenbuurt. Schools, playgrounds, shops, supermarkets, and a general practitioner are located a short distance away. The Amsterdamse Bos and De Poel are just around the corner. Public transport is also excellent, and parking is free right in front of the door. Furthermore, the arterial roads provide quick access to Amsterdam and the rest of the Randstad.\n\nIn short: A characteristic and generously sized family home in a prime Amstelveen location, with a solid structure and plenty of room to put your own stamp on it.\n\nHighlights:\n- structurally inspected home (report available)\n- 124 m² living area | 159 m² plot | freehold\n- 4 bedrooms spread over 3 floors\n- renovated kitchen (2014) with 5-burner gas hob, combi-oven, fridge, freezer, dishwasher and extractor\n- renovated toilet (2014)\n- two bathrooms on the first floor (both from 2000)\n- cosy living room with gas fireplace and access to the garden via sliding doors\n- dining area with full-width sliding doors to the east-facing garden\n- unique top-floor bedroom/retreat with warm timber ceiling, cork flooring and exposed brick wall\n- bedroom with balcony on the first floor\n- HR combi boiler (Nefit, 2014)\n- free on-street parking directly outside\n- detached stone storage shed",
+    "eigenSiteTekst": "",
+    "flyertekst": "",
+    "a4Tekst": ""
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": null,
+     "appartementVveBijdrage": 0,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": null,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": false,
+     "vveVergadering": false,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": false,
+     "vveOnderhoudsverwachting": false,
+     "vveOpstalverzekering": false,
+     "vveKvkInschrijving": false,
+     "onderVoorbehoudVanaf": null,
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 650000,
+     "huurprijs": null,
+     "status": "BESCHIKBAAR"
+    }
+   },
+   "id": 10072550,
+   "object": {
+    "type": {
+     "objecttype": "WOONHUIS"
+    }
+   }
+  },
+  {
+   "algemeen": {
+    "energieKenmerken": [],
+    "onderhoudswaarderingBinnenMemo": "",
+    "onderhoudswaarderingBuiten": "GOED",
+    "onderhoudswaarderingBuitenMemo": "",
+    "onderhoudswaarderingBinnen": "GOED_TOT_UITSTEKEND",
+    "woonhuissoort": "EENGEZINSWONING",
+    "woonhuistype": "TUSSENWONING",
+    "appartementsoort": null,
+    "isolatievormen": null,
+    "dakmaterialen": [
+     "PANNEN"
+    ],
+    "voorzieningenWonen": [
+     "MECHANISCHE_VENTILATIE",
+     "ROLLUIKEN"
+    ],
+    "appartementkenmerk": null,
+    "verwarmingsoorten": [
+     "CV_KETEL"
+    ],
+    "cvKetelBouwjaar": "2012",
+    "cvKetelBrandstof": "GAS",
+    "cvKetelEigendom": "EIGENDOM",
+    "cvCombiketel": false,
+    "warmwatersoorten": [
+     "CV_KETEL"
+    ],
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "101603",
+    "appartementOpenPortiek": null,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": null,
+    "totaleWoonkameroppervlakte": 0,
+    "totaleKadestraleOppervlakte": 207,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "Woonruimte",
+    "bestemmingHuidig": "Woonruimte",
+    "bouwgrondBouwrijp": null,
+    "bijzonderheden": [
+     "GEDEELTELIJK_GESTOFFEERD"
+    ],
+    "bouwperiode": null,
+    "cvKetelType": "Nefit Topline Compact HRC 30/CW5",
+    "bouwgrondoppervlakte": 0,
+    "bouwjaartoelichting": "",
+    "gebruiksoppervlakteOverig": 5,
+    "appartementWoonlaag": null,
+    "energieklasse": "B",
+    "energiedatum": "2036-04-23",
+    "energieindex": null,
+    "aantalKamers": "6",
+    "liggingen": [
+     "IN_CENTRUM",
+     "IN_WOONWIJK"
+    ],
+    "bouwvorm": "BESTAANDE_BOUW",
+    "inAanbouw": false,
+    "bouwjaar": "1938",
+    "epc": null,
+    "woonoppervlakte": 170,
+    "inhoud": 612
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2026-08-19 16:10:07",
+     "volgnummer": 1,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/288749241.jpg?portalid=18143&check=api_sha256%3Abda7de2d0bc49fec624a289a3a5e5dea60b15a17bdc84cfd8169ea7eb7a50e37"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-08-19 16:10:07",
+     "volgnummer": 4,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/288749415.jpg?portalid=18143&check=api_sha256%3A995a5428c90bb9a96f7463d21b7f0dddac6912d988f3094a679f50107b4dd7df"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-08-19 16:10:07",
+     "volgnummer": 5,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/274490336.jpg?portalid=18143&check=api_sha256%3A4a6add47b852e9fe1ffd8751bf2d1ab684eac3261a070388785337a6b8fe18e8"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-08-19 16:10:07",
+     "volgnummer": 8,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/288749235.jpg?portalid=18143&check=api_sha256%3A2deb7a22f5d55129fc69b118f22c409367b6c08ae0082b1a74c96d2f26fe2e64"
+    },
+    {
+     "vrijgave": true,
+     "soort": "PLATTEGROND",
+     "wijzigingstijdstip": "2026-08-19 16:10:07",
+     "volgnummer": 200,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/288752535.jpg?portalid=18143&check=api_sha256%3A4f2745e77d16cc75e82cac905d2dee0da1db42a7d47839cff440cc2eaec245c8"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-19 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-21 19:51:42",
+   "relaties": {
+    "medeaanmelders": []
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "e4fb8a25-30af-4143-b0f7-7e9bc95888e3",
+     "wijzigingsdatum": "2026-08-19 16:32:10",
+     "mengvormtoelichting": "",
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": 2023,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100203",
+     "invoerdatum": "2026-03-30",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "TOILET",
+        "HAL"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "2023",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [
+        "WOONKAMER"
+       ],
+       "keukentypes": [
+        "OPEN_KEUKEN"
+       ],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "BEGANE_GROND_OF_FLAT",
+      "etageomschrijving": "Begane grond",
+      "aantalSlaapkamers": null,
+      "etageligging": null,
+      "aantalKamers": 1
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "STOOKRUIMTE",
+        "BERGING",
+        "DAKKAPEL",
+        "OVERLOOP",
+        "WASRUIMTE"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [],
+       "keukentypes": [],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "Tweede verdieping",
+      "aantalSlaapkamers": 2,
+      "etageligging": null,
+      "aantalKamers": 2
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [],
+       "keukentypes": [],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "VLIERING",
+      "etageomschrijving": "",
+      "aantalSlaapkamers": null,
+      "etageligging": null,
+      "aantalKamers": null
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "OVERLOOP"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [
+       {
+        "lengte": null,
+        "breedte": null,
+        "voorzieningen": [
+         "TOILET",
+         "WASTAFELMEUBEL",
+         "INLOOPDOUCHE",
+         "VLOERVERWARMING"
+        ],
+        "oppervlakte": null
+       }
+      ],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "Eerste verdieping",
+      "aantalSlaapkamers": 3,
+      "etageligging": null,
+      "aantalKamers": 3
+     }
+    ],
+    "buitenruimte": {
+     "garagecapiciteit": "",
+     "parkeerfaciliteiten": [
+      "OPENBAAR_PARKEREN"
+     ],
+     "parkeertoelichting": "",
+     "schuurBergingVoorzieningen": null,
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": 0,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": null,
+     "daktoelichting": "",
+     "hoofdtuintype": "ACHTERTUIN",
+     "hoofdtuinAchterom": true,
+     "hoofdtuinlengte": 1522,
+     "hoofdtuinbreedte": 526,
+     "schuurBergingSoort": null,
+     "aantalSchurenBergingen": null,
+     "hoofdtuinoppervlakte": 80,
+     "garagevoorzieningen": null,
+     "garagesoorten": [
+      "GEEN_GARAGE"
+     ],
+     "garagelengte": null,
+     "garagebreedte": null,
+     "tuinTotaleOppervlakte": null,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": null,
+     "hoofdtuinlocatie": "NOORDOOST",
+     "tuinkwaliteit": "NORMAAL",
+     "oppervlakteExterneBergruimte": 0,
+     "tuintypes": [
+      "ACHTERTUIN",
+      "VOORTUIN"
+     ],
+     "daktype": "ZADELDAK"
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Velsen",
+       "sectie": "E",
+       "aandeel": "",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "1335",
+       "wijzigingsdatum": "2026-08-19 15:49:13",
+       "oppervlakte": 207,
+       "invoerdatum": "2026-08-19"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "8",
+     "toevoeging": null
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "Velserbroekstraat",
+    "straat2": "",
+    "postcode": "2071 ET",
+    "plaats": "SANTPOORT-NOORD"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "OPEN HUIS – ZATERDAG 29 AUGUSTUS VAN 11:00 TOT 12:30 UUR!\n\n\nJe bent van harte welkom om de woning zonder afspraak te komen bekijken.\n\nSfeervolle en luxe uitgebouwde jaren ’30-woning met circa 170 m² woonoppervlak, royale leefruimte en zonnige tuin\n\nAan één van de leukste straten van Santpoort-Noord staat deze prachtige jaren ’30-gezinswoning die in 2022/2023 vrijwel volledig is gerenoveerd en uitgebouwd. De woning combineert de charme van de jaren ’30 met het comfort en de luxe van nu. Dankzij de uitbouw van circa 5 meter aan de achterzijde met lichtstraat en de extra uitbouw op de verdieping is er een verrassend ruime woning ontstaan van circa 170 m² woonoppervlak.\n\nDe woning is modern en stijlvol afgewerkt, met behoud van karakteristieke details en een warme uitstraling. Een ideaal familiehuis waar je zó in kunt.\n\nDe ligging is daarnaast perfect: rustig wonen in een groene en kindvriendelijke omgeving, terwijl scholen, winkels, sportverenigingen, station Santpoort-Noord, duinen en strand allemaal op korte afstand liggen. Ook Haarlem en de uitvalswegen richting Amsterdam zijn snel bereikbaar.\n\nIndeling\n\nBegane grond\nVia de entree met vestibule kom je in de hal met toiletruimte en trapopgang. Aan de voorzijde bevindt zich de sfeervolle woonkamer met karakteristieke erker. Aan de achterzijde is de woning royaal uitgebouwd, waar de luxe open keuken en leefruimte samenkomen. Dankzij de lichtstraat en openslaande deuren naar de tuin geniet deze verdieping van veel natuurlijk licht en een fijne verbinding tussen binnen en buiten.\n\nDe luxe open keuken vormt echt het hart van het huis en biedt volop ruimte om uitgebreid te koken en gezellig samen te zijn.\n\nEerste verdieping\nOp de eerste verdieping bevinden zich drie ruime slaapkamers en een moderne badkamer voorzien van een inloopdouche, wastafelmeubel en toilet. Door de uitbouw voelen de kamers extra ruim en licht aan.\n\nTweede verdieping\nDe tweede verdieping beschikt aan zowel de voor- als achterzijde over een grote dakkapel, waardoor hier verrassend veel ruimte is ontstaan. Momenteel bestaat deze verdieping uit een royale slaapkamer en een ruime voorzolder met wasmachineopstelling. De indeling biedt de mogelijkheid om hier twee slaapkamers te realiseren. Daarnaast is er een ruime vliering aanwezig.\n\nBuitenruimte\nDe zonnige achtertuin met overkapping biedt volop privacy. Een heerlijke plek om in de zomer buiten te zitten en te genieten met vrienden en familie.\n\nGoed om te weten:\n\n- Woonoppervlak circa 170 m²\n- Energielabel B\n- Diepe achtertuin op het noordoosten met overkapping\n- In 2022/2023 vrijwel volledig gerenoveerd\n- Achterzijde circa 5 meter uitgebouwd en voorzien van een lichtstraat\n- Eerste verdieping circa één meter uitgebouwd\n- Grote dakkapellen aan voor- en achterzijde\n- Luxe en moderne afwerking\n- Fijne gezinswoning op toplocatie in Santpoort-Noord\n- Oplevering januari 2027\n\nEen instapklare jaren ’30-woning met ruimte, sfeer en luxe op een fantastische locatie!",
+    "eigenSiteTekst": "OPEN HUIS – ZATERDAG 29 AUGUSTUS VAN 11:00 TOT 12:30 UUR!<br />\n<br />\n<br />\nJe bent van harte welkom om de woning zonder afspraak te komen bekijken.<br />\n<br />\nSfeervolle en luxe uitgebouwde jaren ’30-woning met circa 170 m² woonoppervlak, royale leefruimte en zonnige tuin<br />\n<br />\nAan één van de leukste straten van Santpoort-Noord staat deze prachtige jaren ’30-gezinswoning die in 2022/2023 vrijwel volledig is gerenoveerd en uitgebouwd. De woning combineert de charme van de jaren ’30 met het comfort en de luxe van nu. Dankzij de uitbouw van circa 5 meter aan de achterzijde met lichtstraat en de extra uitbouw op de verdieping is er een verrassend ruime woning ontstaan van circa 170 m² woonoppervlak.<br />\n<br />\nDe woning is modern en stijlvol afgewerkt, met behoud van karakteristieke details en een warme uitstraling. Een ideaal familiehuis waar je zó in kunt.<br />\n<br />\nDe ligging is daarnaast perfect: rustig wonen in een groene en kindvriendelijke omgeving, terwijl scholen, winkels, sportverenigingen, station Santpoort-Noord, duinen en strand allemaal op korte afstand liggen. Ook Haarlem en de uitvalswegen richting Amsterdam zijn snel bereikbaar.<br />\n<br />\nIndeling<br />\n<br />\nBegane grond<br />\nVia de entree met vestibule kom je in de hal met toiletruimte en trapopgang. Aan de voorzijde bevindt zich de sfeervolle woonkamer met karakteristieke erker. Aan de achterzijde is de woning royaal uitgebouwd, waar de luxe open keuken en leefruimte samenkomen. Dankzij de lichtstraat en openslaande deuren naar de tuin geniet deze verdieping van veel natuurlijk licht en een fijne verbinding tussen binnen en buiten.<br />\n<br />\nDe luxe open keuken vormt echt het hart van het huis en biedt volop ruimte om uitgebreid te koken en gezellig samen te zijn.<br />\n<br />\nEerste verdieping<br />\nOp de eerste verdieping bevinden zich drie ruime slaapkamers en een moderne badkamer voorzien van een inloopdouche, wastafelmeubel en toilet. Door de uitbouw voelen de kamers extra ruim en licht aan.<br />\n<br />\nTweede verdieping<br />\nDe tweede verdieping beschikt aan zowel de voor- als achterzijde over een grote dakkapel, waardoor hier verrassend veel ruimte is ontstaan. Momenteel bestaat deze verdieping uit een royale slaapkamer en een ruime voorzolder met wasmachineopstelling. De indeling biedt de mogelijkheid om hier twee slaapkamers te realiseren. Daarnaast is er een ruime vliering aanwezig.<br />\n<br />\nBuitenruimte<br />\nDe zonnige achtertuin met overkapping biedt volop privacy. Een heerlijke plek om in de zomer buiten te zitten en te genieten met vrienden en familie.<br />\n<br />\nGoed om te weten:<br />\n<br />\n- Woonoppervlak circa 170 m²<br />\n- Energielabel B<br />\n- Diepe achtertuin op het noordoosten met overkapping<br />\n- In 2022/2023 vrijwel volledig gerenoveerd<br />\n- Achterzijde circa 5 meter uitgebouwd en voorzien van een lichtstraat<br />\n- Eerste verdieping circa één meter uitgebouwd<br />\n- Grote dakkapellen aan voor- en achterzijde<br />\n- Luxe en moderne afwerking<br />\n- Fijne gezinswoning op toplocatie in Santpoort-Noord<br />\n- Oplevering januari 2027<br />\n<br />\nEen instapklare jaren ’30-woning met ruimte, sfeer en luxe op een fantastische locatie!",
+    "flyertekst": "OPEN HUIS – ZATERDAG 29 AUGUSTUS VAN 11:00 TOT 12:30 UUR!<br />\n<br />\n<br />\n<br />\n<br />\n<br />\nJe bent van harte welkom om de woning zonder afspraak te komen bekijken.<br />\n<br />\n<br />\n<br />\nSfeervolle en luxe uitgebouwde jaren ’30-woning met circa 170 m² woonoppervlak, royale leefruimte en zonnige tuin<br />\n<br />\n<br />\n<br />\nAan één van de leukste straten van Santpoort-Noord staat deze prachtige jaren ’30-gezinswoning die in 2022/2023 vrijwel volledig is gerenoveerd en uitgebouwd. De woning combineert de charme van de jaren ’30 met het comfort en de luxe van nu. Dankzij de uitbouw van circa 5 meter aan de achterzijde met lichtstraat en de extra uitbouw op de verdieping is er een verrassend ruime woning ontstaan van circa 170 m² woonoppervlak.<br />\n<br />\n<br />\n<br />\nDe woning is modern en stijlvol afgewerkt, met behoud van karakteristieke details en een warme uitstraling. Een ideaal familiehuis waar je zó in kunt.<br />\n<br />\n<br />\n<br />\nDe ligging is daarnaast perfect: rustig wonen in een groene en kindvriendelijke omgeving, terwijl scholen, winkels, sportverenigingen, station Santpoort-Noord, duinen en strand allemaal op korte afstand liggen. Ook Haarlem en de uitvalswegen richting Amsterdam zijn snel bereikbaar.<br />\n<br />\n<br />\n<br />\nIndeling<br />\n<br />\n<br />\n<br />\nBegane grond<br />\n<br />\nVia de entree met vestibule kom je in de hal met toiletruimte en trapopgang. Aan de voorzijde bevindt zich de sfeervolle woonkamer met karakteristieke erker. Aan de achterzijde is de woning royaal uitgebouwd, waar de luxe open keuken en leefruimte samenkomen. Dankzij de lichtstraat en openslaande deuren naar de tuin geniet deze verdieping van veel natuurlijk licht en een fijne verbinding tussen binnen en buiten.<br />\n<br />\n<br />\n<br />\nDe luxe open keuken vormt echt het hart van het huis en biedt volop ruimte om uitgebreid te koken en gezellig samen te zijn.<br />\n<br />\n<br />\n<br />\nEerste verdieping<br />\n<br />\nOp de eerste verdieping bevinden zich drie ruime slaapkamers en een moderne badkamer voorzien van een inloopdouche, wastafelmeubel en toilet. Door de uitbouw voelen de kamers extra ruim en licht aan.<br />\n<br />\n<br />\n<br />\nTweede verdieping<br />\n<br />\nDe tweede verdieping beschikt aan zowel de voor- als achterzijde over een grote dakkapel, waardoor hier verrassend veel ruimte is ontstaan. Momenteel bestaat deze verdieping uit een royale slaapkamer en een ruime voorzolder met wasmachineopstelling. De indeling biedt de mogelijkheid om hier twee slaapkamers te realiseren. Daarnaast is er een ruime vliering aanwezig.<br />\n<br />\n<br />\n<br />\nBuitenruimte<br />\n<br />\nDe zonnige achtertuin met overkapping biedt volop privacy. Een heerlijke plek om in de zomer buiten te zitten en te genieten met vrienden en familie.<br />\n<br />\n<br />\n<br />\nGoed om te weten:<br />\n<br />\n<br />\n<br />\n- Woonoppervlak circa 170 m²<br />\n<br />\n- Energielabel B<br />\n<br />\n- Diepe achtertuin op het noordoosten met overkapping<br />\n<br />\n- In 2022/2023 vrijwel volledig gerenoveerd<br />\n<br />\n- Achterzijde circa 5 meter uitgebouwd en voorzien van een lichtstraat<br />\n<br />\n- Eerste verdieping circa één meter uitgebouwd<br />\n<br />\n- Grote dakkapellen aan voor- en achterzijde<br />\n<br />\n- Luxe en moderne afwerking<br />\n<br />\n- Fijne gezinswoning op toplocatie in Santpoort-Noord<br />\n<br />\n- Oplevering januari 2027<br />\n<br />\n<br />\n<br />\nEen instapklare jaren ’30-woning met ruimte, sfeer en luxe op een fantastische locatie!",
+    "a4Tekst": "OPEN HUIS – ZATERDAG 29 AUGUSTUS VAN 11:00 TOT 12:30 UUR!<br />\n<br />\n<br />\nJe bent van harte welkom om de woning zonder afspraak te komen bekijken.<br />\n<br />\nSfeervolle en luxe uitgebouwde jaren ’30-woning met circa 170 m² woonoppervlak, royale leefruimte en zonnige tuin<br />\n<br />\nAan één van de leukste straten van Santpoort-Noord staat deze prachtige jaren ’30-gezinswoning die in 2022/2023 vrijwel volledig is gerenoveerd en uitgebouwd. De woning combineert de charme van de jaren ’30 met het comfort en de luxe van nu. Dankzij de uitbouw van circa 5 meter aan de achterzijde met lichtstraat en de extra uitbouw op de verdieping is er een verrassend ruime woning ontstaan van circa 170 m² woonoppervlak.<br />\n<br />\nDe woning is modern en stijlvol afgewerkt, met behoud van karakteristieke details en een warme uitstraling. Een ideaal familiehuis waar je zó in kunt.<br />\n<br />\nDe ligging is daarnaast perfect: rustig wonen in een groene en kindvriendelijke omgeving, terwijl scholen, winkels, sportverenigingen, station Santpoort-Noord, duinen en strand allemaal op korte afstand liggen. Ook Haarlem en de uitvalswegen richting Amsterdam zijn snel bereikbaar.<br />\n<br />\nIndeling<br />\n<br />\nBegane grond<br />\nVia de entree met vestibule kom je in de hal met toiletruimte en trapopgang. Aan de voorzijde bevindt zich de sfeervolle woonkamer met karakteristieke erker. Aan de achterzijde is de woning royaal uitgebouwd, waar de luxe open keuken en leefruimte samenkomen. Dankzij de lichtstraat en openslaande deuren naar de tuin geniet deze verdieping van veel natuurlijk licht en een fijne verbinding tussen binnen en buiten.<br />\n<br />\nDe luxe open keuken vormt echt het hart van het huis en biedt volop ruimte om uitgebreid te koken en gezellig samen te zijn.<br />\n<br />\nEerste verdieping<br />\nOp de eerste verdieping bevinden zich drie ruime slaapkamers en een moderne badkamer voorzien van een inloopdouche, wastafelmeubel en toilet. Door de uitbouw voelen de kamers extra ruim en licht aan.<br />\n<br />\nTweede verdieping<br />\nDe tweede verdieping beschikt aan zowel de voor- als achterzijde over een grote dakkapel, waardoor hier verrassend veel ruimte is ontstaan. Momenteel bestaat deze verdieping uit een royale slaapkamer en een ruime voorzolder met wasmachineopstelling. De indeling biedt de mogelijkheid om hier twee slaapkamers te realiseren. Daarnaast is er een ruime vliering aanwezig.<br />\n<br />\nBuitenruimte<br />\nDe zonnige achtertuin met overkapping biedt volop privacy. Een heerlijke plek om in de zomer buiten te zitten en te genieten met vrienden en familie.<br />\n<br />\nGoed om te weten:<br />\n<br />\n- Woonoppervlak circa 170 m²<br />\n- Energielabel B<br />\n- Diepe achtertuin op het noordoosten met overkapping<br />\n- In 2022/2023 vrijwel volledig gerenoveerd<br />\n- Achterzijde circa 5 meter uitgebouwd en voorzien van een lichtstraat<br />\n- Eerste verdieping circa één meter uitgebouwd<br />\n- Grote dakkapellen aan voor- en achterzijde<br />\n- Luxe en moderne afwerking<br />\n- Fijne gezinswoning op toplocatie in Santpoort-Noord<br />\n- Oplevering januari 2027<br />\n<br />\nEen instapklare jaren ’30-woning met ruimte, sfeer en luxe op een fantastische locatie!"
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": "VRAAGPRIJS",
+     "appartementVveBijdrage": 0,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": null,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": false,
+     "vveVergadering": false,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": false,
+     "vveOnderhoudsverwachting": false,
+     "vveOpstalverzekering": false,
+     "vveKvkInschrijving": false,
+     "onderVoorbehoudVanaf": null,
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 975000,
+     "huurprijs": null,
+     "status": "BESCHIKBAAR"
+    }
+   },
+   "id": 10118508,
+   "object": {
+    "type": {
+     "objecttype": "WOONHUIS"
+    }
+   }
+  },
+  {
+   "algemeen": {
+    "energieKenmerken": [],
+    "onderhoudswaarderingBinnenMemo": "",
+    "onderhoudswaarderingBuiten": "REDELIJK",
+    "onderhoudswaarderingBuitenMemo": "",
+    "onderhoudswaarderingBinnen": "REDELIJK",
+    "woonhuissoort": "EENGEZINSWONING",
+    "woonhuistype": "TWEE_ONDER_EEN_KAPWONING",
+    "appartementsoort": null,
+    "isolatievormen": [
+     "MUURISOLATIE"
+    ],
+    "dakmaterialen": [
+     "PANNEN"
+    ],
+    "voorzieningenWonen": [],
+    "appartementkenmerk": null,
+    "verwarmingsoorten": [
+     "CV_KETEL"
+    ],
+    "cvKetelBouwjaar": "",
+    "cvKetelBrandstof": "GAS",
+    "cvKetelEigendom": "EIGENDOM",
+    "cvCombiketel": true,
+    "warmwatersoorten": [
+     "CV_KETEL"
+    ],
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "100000",
+    "appartementOpenPortiek": null,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": null,
+    "totaleWoonkameroppervlakte": 34,
+    "totaleKadestraleOppervlakte": 270,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "Woonruimte",
+    "bestemmingHuidig": "Woonruimte",
+    "bouwgrondBouwrijp": null,
+    "bijzonderheden": [
+     "KLUSWONING"
+    ],
+    "bouwperiode": null,
+    "cvKetelType": "",
+    "bouwgrondoppervlakte": 0,
+    "bouwjaartoelichting": "",
+    "gebruiksoppervlakteOverig": 7,
+    "appartementWoonlaag": null,
+    "energieklasse": "D",
+    "energiedatum": "2030-06-29",
+    "energieindex": null,
+    "aantalKamers": "5",
+    "liggingen": [
+     "AAN_WATER",
+     "AAN_RUSTIGE_WEG",
+     "IN_WOONWIJK",
+     "VRIJ_UITZICHT",
+     "OPEN_LIGGING",
+     "AAN_VAARWATER"
+    ],
+    "bouwvorm": "BESTAANDE_BOUW",
+    "inAanbouw": false,
+    "bouwjaar": "1960",
+    "epc": null,
+    "woonoppervlakte": 133,
+    "inhoud": 498
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2026-05-07 13:17:56",
+     "volgnummer": 1,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/275092526.jpg?portalid=18143&check=api_sha256%3A99e1b51e3bdd711a15d167dc3163b4b2f7748e29ec254330196c6637bc654c5a"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-05-07 13:17:56",
+     "volgnummer": 3,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/274656556.jpg?portalid=18143&check=api_sha256%3A0da0167756fd1c36c8478b4457bebdd94c0d5f7f95b1d67bcd4d491a92dd883d"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-05-07 13:17:56",
+     "volgnummer": 4,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/275092532.jpg?portalid=18143&check=api_sha256%3A35738b8bcf791d51f35d97c85ead7943dac90e5f00db3f52ecf861502fc0f00b"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-05-07 13:17:56",
+     "volgnummer": 6,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/275097082.jpg?portalid=18143&check=api_sha256%3A0cf483b8facc29c81b3405ee0d3a8cf8e8eb63caf0f2e7f0af8f12f8a298687b"
+    },
+    {
+     "vrijgave": true,
+     "soort": "DOCUMENT",
+     "wijzigingstijdstip": "2026-05-07 20:40:42",
+     "volgnummer": 1000,
+     "omschrijving": null,
+     "titel": "",
+     "mimetype": "application/pdf",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/275411830.pdf?portalid=18143&check=api_sha256%3A428cad686af8191a28b379422d0862ec84ef09978e26e3e20015e8518a3bed6e"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-18 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-18 14:52:14",
+   "relaties": {
+    "medeaanmelders": []
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "4de5fda0-c9ee-47e4-8605-48baf85c7bd8",
+     "wijzigingsdatum": "2026-08-11 19:53:53",
+     "mengvormtoelichting": "",
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": 2023,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100207",
+     "invoerdatum": "2026-04-10",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "TOILET",
+        "HAL",
+        "SERRE"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": 306,
+       "keukenbreedte": 302,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 9,
+       "woonkamertypes": [
+        "WOONKAMER"
+       ],
+       "keukentypes": [
+        "DICHTE_KEUKEN"
+       ],
+       "woonkamerlengte": 844,
+       "woonkamerbreedte": 400,
+       "woonkameroppervlakte": 34
+      },
+      "badkamers": [],
+      "etagesoort": "BEGANE_GROND_OF_FLAT",
+      "etageomschrijving": "Begane grond",
+      "aantalSlaapkamers": 0,
+      "etageligging": null,
+      "aantalKamers": 1
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "BALKON"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [
+       {
+        "lengte": 174,
+        "breedte": 194,
+        "voorzieningen": [],
+        "oppervlakte": 3
+       }
+      ],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "1e Verdieping",
+      "aantalSlaapkamers": 3,
+      "etageligging": "ZUIDOOST",
+      "aantalKamers": 3
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "BERGING",
+        "OVERLOOP"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [],
+       "keukentypes": [],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "2e Verdieping",
+      "aantalSlaapkamers": 1,
+      "etageligging": null,
+      "aantalKamers": 1
+     }
+    ],
+    "buitenruimte": {
+     "garagecapiciteit": "",
+     "parkeerfaciliteiten": [
+      "OPENBAAR_PARKEREN",
+      "OP_EIGEN_TERREIN"
+     ],
+     "parkeertoelichting": "",
+     "schuurBergingVoorzieningen": [
+      "VOORZIEN_VAN_ELEKTRA"
+     ],
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": 23,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": null,
+     "daktoelichting": "",
+     "hoofdtuintype": "ACHTERTUIN",
+     "hoofdtuinAchterom": true,
+     "hoofdtuinlengte": 1300,
+     "hoofdtuinbreedte": 635,
+     "schuurBergingSoort": "VRIJSTAAND_STEEN",
+     "aantalSchurenBergingen": 1,
+     "hoofdtuinoppervlakte": 83,
+     "garagevoorzieningen": null,
+     "garagesoorten": [
+      "GEEN_GARAGE"
+     ],
+     "garagelengte": null,
+     "garagebreedte": null,
+     "tuinTotaleOppervlakte": null,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": null,
+     "hoofdtuinlocatie": "ZUIDOOST",
+     "tuinkwaliteit": "NORMAAL",
+     "oppervlakteExterneBergruimte": 24,
+     "tuintypes": [
+      "ACHTERTUIN",
+      "VOORTUIN",
+      "ZIJTUIN"
+     ],
+     "daktype": "TENTDAK"
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Haarlem",
+       "sectie": "U",
+       "aandeel": "",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "1702",
+       "wijzigingsdatum": "2026-05-05 18:18:06",
+       "oppervlakte": 270,
+       "invoerdatum": "2026-05-05"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "5",
+     "toevoeging": null
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "Kerklaan",
+    "straat2": "",
+    "postcode": "2063 JJ",
+    "plaats": "SPAARNDAM GEM. HAARLEM"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "Wonen op één van de mooiste plekjes van Spaarndam, met uitzicht waar je nooit op uitgekeken raakt.\n\nAan de geliefde Kerklaan staat deze verrassend ruime 2-onder-1-kapwoning met eigen oprit, diepe tuin, vrijstaande berging én een werkelijk unieke ligging aan het water. \n\nEen woning waar je direct ziet: hier zit ontzettend veel potentie in!\n\nMet circa 133 m² woonoppervlakte, vier slaapkamers (meer kamers mogelijk), een royale woonkamer en een perceel van 270 m² biedt deze woning alle ruimte om jouw droomhuis te realiseren. De woning dient volledig gemoderniseerd te worden, maar juist dát maakt dit een unieke kans voor kopers die op zoek zijn naar een plek met karakter, ruimte en een uitzicht dat simpelweg niet te vervangen is.\n\nDe ligging is werkelijk bijzonder. Vanuit de woning kijk je uit over het water van de Boezem en het groen rondom Spaarndam. Hier woon je rustig, vrij en landelijk, terwijl Haarlem, Amsterdam en uitvalswegen verrassend dichtbij zijn. Een plek waar je iedere dag het gevoel hebt even weg te zijn van de drukte.\n\nVoor gezinnen met kinderen is het goed om te weten dat even verderop in de straat basisschool \"De Spaarne school\" is gelegen. De kinderen kunnen dus lekker lopend naar school!\n\nHet buiten leven: de zonnige tuin om de woning biedt volop privacy en mogelijkheden voor meerdere terrassen of een heerlijke gezinstuin. Daarnaast is er een vrijstaande stenen berging én parkeergelegenheid op eigen terrein. Extra bijzonder is dat je met een auto langs de woning naar achteren kunt rijden, ideaal voor het stallen van bijvoorbeeld een camper, boot, aanhanger of ander voertuig op eigen terrein.\n\nOver Spaarndam: Spaarndam is geliefd vanwege haar dorpse sfeer, historische karakter en prachtige ligging aan het water. Hier woon je in een gezellige en hechte omgeving met jachthaven, wandelroutes, fietsroutes, natuur en gezellige horeca letterlijk om de hoek. Een ideale combinatie van rust, ruimte en centrale bereikbaarheid.\n\nGoed om te weten:\n- 270 m2 perceeloppervlakte\n- woonoppervlakte 133 m2 conform NEN-meting\n- kelder met stahoogte (geschikt als wijnkelder)\n- energielabel D, gevels zijn geïsoleerd\n- parkeren op eigen terrein mogelijk\n- unieke locatie aan het water\n- mogelijkheid tot uitbouw begane grond\n- mogelijkheid tot plaatsen van dakkapellen \n\nBen jij op zoek naar een woning die je volledig naar eigen smaak kunt moderniseren op een locatie die zelden beschikbaar komt? Dan is Kerklaan 5 absoluut een bezichtiging waard.",
+    "eigenSiteTekst": "",
+    "flyertekst": "",
+    "a4Tekst": ""
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": null,
+     "appartementVveBijdrage": 0,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": null,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": false,
+     "vveVergadering": false,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": false,
+     "vveOnderhoudsverwachting": false,
+     "vveOpstalverzekering": false,
+     "vveKvkInschrijving": false,
+     "onderVoorbehoudVanaf": "2026-07-09 00:00:00",
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 800000,
+     "huurprijs": null,
+     "status": "VERKOCHT_ONDER_VOORBEHOUD"
+    }
+   },
+   "id": 10154198,
+   "object": {
+    "type": {
+     "objecttype": "WOONHUIS"
+    }
+   }
+  },
+  {
+   "algemeen": {
+    "energieKenmerken": [],
+    "onderhoudswaarderingBinnenMemo": "",
+    "onderhoudswaarderingBuiten": "GOED",
+    "onderhoudswaarderingBuitenMemo": "",
+    "onderhoudswaarderingBinnen": "GOED",
+    "woonhuissoort": null,
+    "woonhuistype": null,
+    "appartementsoort": "BOVENWONING",
+    "isolatievormen": [
+     "DUBBEL_GLAS"
+    ],
+    "dakmaterialen": [
+     "PANNEN"
+    ],
+    "voorzieningenWonen": [],
+    "appartementkenmerk": "APPARTEMENT",
+    "verwarmingsoorten": [
+     "CV_KETEL"
+    ],
+    "cvKetelBouwjaar": "2016",
+    "cvKetelBrandstof": "GAS",
+    "cvKetelEigendom": "EIGENDOM",
+    "cvCombiketel": true,
+    "warmwatersoorten": [
+     "CV_KETEL"
+    ],
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "100000",
+    "appartementOpenPortiek": false,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": 2,
+    "totaleWoonkameroppervlakte": 0,
+    "totaleKadestraleOppervlakte": 0,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "Woonruimte",
+    "bestemmingHuidig": "Woonruimte",
+    "bouwgrondBouwrijp": null,
+    "bijzonderheden": [],
+    "bouwperiode": null,
+    "cvKetelType": "Remeha Tzerra",
+    "bouwgrondoppervlakte": 0,
+    "bouwjaartoelichting": "",
+    "gebruiksoppervlakteOverig": 0,
+    "appartementWoonlaag": 1,
+    "energieklasse": "C",
+    "energiedatum": "2036-06-23",
+    "energieindex": null,
+    "aantalKamers": "4",
+    "liggingen": [
+     "AAN_RUSTIGE_WEG",
+     "IN_WOONWIJK",
+     "VRIJ_UITZICHT"
+    ],
+    "bouwvorm": "BESTAANDE_BOUW",
+    "inAanbouw": false,
+    "bouwjaar": "1935",
+    "epc": null,
+    "woonoppervlakte": 89,
+    "inhoud": 322
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2026-06-23 16:27:55",
+     "volgnummer": 1,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/png",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/282474177.png?portalid=18143&check=api_sha256%3A5c70ba8122a3c39a874b0b5f62a1d5e761eee06229131bfeb9a6e28c6acf3d8d"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-06-23 16:27:55",
+     "volgnummer": 3,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/282467915.jpg?portalid=18143&check=api_sha256%3Af38e97e5ff21c043e83ece00f05e09c982d5eb656063dbc5b568659c9b6a5489"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-06-23 16:27:55",
+     "volgnummer": 4,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/282467921.jpg?portalid=18143&check=api_sha256%3Ad6e7876d783b12d6e10bb27f176877f25121995f53419084d8ff0fda77ccec34"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-06-23 16:27:55",
+     "volgnummer": 5,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/282467927.jpg?portalid=18143&check=api_sha256%3Ac995beec1a409fb76eaccd642338fa3e3696584810b4180d345a60b426a37d6b"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-18 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-20 19:03:20",
+   "relaties": {
+    "medeaanmelders": [
+     {
+      "nvmNummer": "82501"
+     }
+    ]
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "8635cb9c-1569-4bec-bd57-9bcf10c5af70",
+     "wijzigingsdatum": "2026-08-20 12:05:32",
+     "mengvormtoelichting": "",
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": 2023,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100222",
+     "invoerdatum": "2026-06-23",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "OVERLOOP"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [
+       {
+        "lengte": 300,
+        "breedte": 194,
+        "voorzieningen": [
+         "LIGBAD",
+         "DOUCHE",
+         "WASTAFEL"
+        ],
+        "oppervlakte": 6
+       }
+      ],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "2e Verdieping",
+      "aantalSlaapkamers": 3,
+      "etageligging": null,
+      "aantalKamers": 3
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "TOILET",
+        "OVERLOOP"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [
+        "WOONKAMER"
+       ],
+       "keukentypes": [
+        "OPEN_KEUKEN",
+        "INBOUWAPPARATUUR"
+       ],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "BEGANE_GROND_OF_FLAT",
+      "etageomschrijving": "1e Verdieping",
+      "aantalSlaapkamers": 0,
+      "etageligging": null,
+      "aantalKamers": 1
+     }
+    ],
+    "buitenruimte": {
+     "garagecapiciteit": "",
+     "parkeerfaciliteiten": [
+      "OPENBAAR_PARKEREN",
+      "PARKEERVERGUNNINGEN"
+     ],
+     "parkeertoelichting": "",
+     "schuurBergingVoorzieningen": null,
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": 5,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": null,
+     "daktoelichting": "",
+     "hoofdtuintype": null,
+     "hoofdtuinAchterom": false,
+     "hoofdtuinlengte": null,
+     "hoofdtuinbreedte": null,
+     "schuurBergingSoort": null,
+     "aantalSchurenBergingen": null,
+     "hoofdtuinoppervlakte": null,
+     "garagevoorzieningen": null,
+     "garagesoorten": [
+      "GEEN_GARAGE"
+     ],
+     "garagelengte": null,
+     "garagebreedte": null,
+     "tuinTotaleOppervlakte": null,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": null,
+     "hoofdtuinlocatie": null,
+     "tuinkwaliteit": null,
+     "oppervlakteExterneBergruimte": 0,
+     "tuintypes": [
+      "GEEN_TUIN"
+     ],
+     "daktype": "ZADELDAK"
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": "VAST",
+       "erfpachtduur": null,
+       "indexnummer": "3",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Haarlem",
+       "sectie": "P",
+       "aandeel": "1/5",
+       "omvang": "APPARTEMENTSRECHT_OF_COMPLEX",
+       "perceel": "1903",
+       "wijzigingsdatum": "2026-06-23 16:11:53",
+       "oppervlakte": null,
+       "invoerdatum": "2026-04-13"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "120",
+     "toevoeging": null
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "Van Zeggelenstraat",
+    "straat2": "",
+    "postcode": "2032 WL",
+    "plaats": "HAARLEM"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "**English below**\n\nOp zoek naar een ruime bovenwoning met veel licht op een rustige maar centrale plek in Haarlem? Dan is deze woning aan de Van Zeggelenstraat precies wat je zoekt.\n\nDeze charmante bovenwoning uit 1935 beschikt over circa 89 m² woonoppervlakte, verdeeld over twee woonlagen, met maar liefst drie slaapkamers. Dankzij de grote raampartijen en het vrije uitzicht voelt de woning heerlijk licht en ruim aan.\n\nDe woonkamer is ruim opgezet en biedt voldoende plek voor een comfortabele zithoek en een gezellige eethoek. De open keuken sluit hier mooi op aan en vormt het hart van de woning. Vanuit de woning heb je toegang tot een balkon, een fijne plek om even buiten te zitten.\n\nOp de verdieping bevinden zich de slaapkamers, ideaal voor een gezin, thuiswerkplek of logeerkamer. \n\nOver de buurt: de Amsterdamse Buurt is één van de meest geliefde wijken van Haarlem en dat is niet voor niets. Hier woon je in een sfeervolle, karakteristieke omgeving met mooie jaren ’30 bebouwing, brede straten en een fijne, dorpse sfeer midden in de stad. De wijk staat bekend om haar levendigheid en diversiteit. Op loopafstand vind je gezellige buurtwinkels, supermarkten en leuke koffietentjes. Voor de dagelijkse boodschappen én een goede kop koffie hoef je de wijk dus niet uit. Tegelijkertijd zit je binnen enkele minuten in het bruisende centrum van Haarlem, met haar uitgebreide aanbod aan restaurants, winkels en cultuur. Wat deze buurt extra aantrekkelijk maakt, is de uitstekende bereikbaarheid. Met zowel treinstation Haarlem als Haarlem-Spaarnwoude als diverse uitvalswegen richting Amsterdam, Schiphol en de kust in de buurt, is dit een ideale plek voor forenzen. Ook het strand en de duinen zijn verrassend dichtbij.\n\nIndeling\n\nBegane grond: meterkast en trap naar 1e verdieping.....\n\nEerste verdieping: overloop met toegang tot toilet met fontein, zeer royale woonkamer met 3 grote ramen aan de voorzijde, aan de achterzijde is de open keuken met inbouw apparatuur gesitueerd. Vanuit de woonkamer zijn er openslaande deuren naar het balkon. Vanuit de keuken is er nog een aparte loopdeur.\n\nTweede verdieping: overloop met toegang tot 3 slaapkamers (1 slaapkamer is thans in gebruik als wasruimte) en de keurige badkamer. Vanaf de overloop is de royale bergvliering te bereiken.\n\n\nGoed om te weten:\n- woonopp. conform NEN-meting 89 m2\n- funderingsrisico: niet hoog (A, B, C)\n- kosten voor gas en electra thans € 57,-- per maand \n- energielabel C\n- servicekosten € 125,-- per maand\n- actieve VvE\n- balkon over de volle breedte\n- 2/3 slaapkamers\n- oplevering kan eventueel snel\n\n**English**\n\nLooking for a spacious and bright maisonette in a quiet yet central location in Haarlem? Then this property on Van Zeggelenstraat is exactly what you are looking for.\n\nThis charming upper-floor apartment, built in 1935, offers approximately 89 m² of living space spread over two levels, featuring no less than three bedrooms. Thanks to the large windows and open views, the home feels wonderfully light and spacious throughout.\n\nThe living room is generously sized and offers ample space for both a comfortable seating area and a cozy dining space. The open-plan kitchen connects seamlessly and truly forms the heart of the home. From the living area, you have access to a balcony, a lovely spot to enjoy some fresh air.\n\nUpstairs, you will find the bedrooms, ideal for a family, a home office, or a guest room.\n\nAbout the neighborhood: the Amsterdamse Buurt is one of Haarlem’s most popular neighborhoods, and for good reason. It offers a charming and characterful setting with beautiful 1930s architecture, wide streets, and a pleasant, village-like atmosphere right in the city. The area is lively and diverse, with local shops, supermarkets, and cozy cafés all within walking distance. For both daily groceries and a good cup of coffee, you won’t need to leave the neighborhood. At the same time, Haarlem’s vibrant city center — with its wide range of restaurants, shops, and cultural venues — is just minutes away. The location is also highly convenient for commuters, with both Haarlem and Haarlem-Spaarnwoude train stations nearby, as well as easy access to major roads towards Amsterdam, Schiphol, and the coast. The beach and dunes are also within easy reach.\n\nLayout\n\nGround floor: entrance with meter cupboard and staircase to the first floor.\n\nFirst floor: landing with access to a separate toilet with washbasin. Very spacious living room with three large windows at the front, providing plenty of natural light. At the rear, you’ll find the open kitchen with built-in appliances. The living room features French doors leading to the balcony, and the kitchen also has a separate access door.\n\nSecond floor: landing with access to three bedrooms (one currently used as a laundry room) and a neat bathroom. From the landing, you can access a spacious attic storage area.\n\nGood to know:\n- living area approx. 89 m² (measured according to NEN standards)\n- foundation risk: low (A, B, C)\n- current gas and electricity costs: approx. €57 per month\n- energy label C\n- service charges: €125 per month\n- active homeowners’ association (VvE)\n- balcony across the full width of the property\n- 2–3 bedrooms\n- quick completion possible",
+    "eigenSiteTekst": "",
+    "flyertekst": "",
+    "a4Tekst": ""
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": null,
+     "appartementVveBijdrage": null,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": 125,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": true,
+     "vveVergadering": true,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": true,
+     "vveOnderhoudsverwachting": true,
+     "vveOpstalverzekering": true,
+     "vveKvkInschrijving": true,
+     "onderVoorbehoudVanaf": null,
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 450000,
+     "huurprijs": null,
+     "status": "ONDER_BOD"
+    }
+   },
+   "id": 10405171,
+   "object": {
+    "type": {
+     "objecttype": "APPARTEMENT"
+    }
+   }
+  },
+  {
+   "algemeen": {
+    "energieKenmerken": [],
+    "onderhoudswaarderingBinnenMemo": "",
+    "onderhoudswaarderingBuiten": "GOED",
+    "onderhoudswaarderingBuitenMemo": "",
+    "onderhoudswaarderingBinnen": "GOED",
+    "woonhuissoort": "EENGEZINSWONING",
+    "woonhuistype": "TWEE_ONDER_EEN_KAPWONING",
+    "appartementsoort": null,
+    "isolatievormen": [
+     "DAKISOLATIE",
+     "VLOERISOLATIE"
+    ],
+    "dakmaterialen": null,
+    "voorzieningenWonen": [
+     "MECHANISCHE_VENTILATIE"
+    ],
+    "appartementkenmerk": null,
+    "verwarmingsoorten": [
+     "WARMTEPOMP"
+    ],
+    "cvKetelBouwjaar": "",
+    "cvKetelBrandstof": null,
+    "cvKetelEigendom": null,
+    "cvCombiketel": false,
+    "warmwatersoorten": null,
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "100000",
+    "appartementOpenPortiek": null,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": null,
+    "totaleWoonkameroppervlakte": 0,
+    "totaleKadestraleOppervlakte": 256,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "Woonruimte",
+    "bestemmingHuidig": "Woonruimte",
+    "bouwgrondBouwrijp": null,
+    "bijzonderheden": [],
+    "bouwperiode": null,
+    "cvKetelType": "",
+    "bouwgrondoppervlakte": 0,
+    "bouwjaartoelichting": "",
+    "gebruiksoppervlakteOverig": 9,
+    "appartementWoonlaag": null,
+    "energieklasse": "A",
+    "energiedatum": "2036-07-21",
+    "energieindex": null,
+    "aantalKamers": "5",
+    "liggingen": [
+     "AAN_RUSTIGE_WEG",
+     "IN_WOONWIJK",
+     "VRIJ_UITZICHT",
+     "LANDELIJK_GELEGEN"
+    ],
+    "bouwvorm": "BESTAANDE_BOUW",
+    "inAanbouw": false,
+    "bouwjaar": "1973",
+    "epc": null,
+    "woonoppervlakte": 168,
+    "inhoud": 604
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2026-08-10 19:25:55",
+     "volgnummer": 1,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/287669985.jpg?portalid=18143&check=api_sha256%3Af248a5ee96b3b87cb486f0e6e9d5ea9e9c5a7199fd8c3fef3a42666409ab3bee"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-08-10 19:25:55",
+     "volgnummer": 2,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/287670071.jpg?portalid=18143&check=api_sha256%3A2d98fc4b51b72acd181c7df1d07ace161eed2f957d9d10ac18aeca65aedecefe"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-08-10 19:25:55",
+     "volgnummer": 4,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/287669991.jpg?portalid=18143&check=api_sha256%3A58e7754aea393578e43ffb4829f177bc978c090c6d6d930cc32757c5b33ad7c5"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-08-10 19:25:55",
+     "volgnummer": 3,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/287670121.jpg?portalid=18143&check=api_sha256%3Aadaa43c63410f832b12c34d6b1f633d6d0825359057dd64968c99262c5adaef0"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-18 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-22 15:00:26",
+   "relaties": {
+    "medeaanmelders": []
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "bdf0a187-387f-485f-a1fa-d615e53ec456",
+     "wijzigingsdatum": "2026-08-22 14:58:39",
+     "mengvormtoelichting": "",
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": 2023,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100224",
+     "invoerdatum": "2026-07-01",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "OVERLOOP"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [
+       {
+        "lengte": 243,
+        "breedte": 183,
+        "voorzieningen": [
+         "LIGBAD",
+         "TOILET",
+         "DOUCHE"
+        ],
+        "oppervlakte": 4
+       }
+      ],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "1e Verdieping",
+      "aantalSlaapkamers": 3,
+      "etageligging": null,
+      "aantalKamers": 3
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "BERGING",
+        "OVERLOOP"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [],
+       "keukentypes": [],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "2e Verdieping",
+      "aantalSlaapkamers": 1,
+      "etageligging": null,
+      "aantalKamers": 1
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "BIJKEUKEN",
+        "TOILET",
+        "GANG"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [
+        "WOONKAMER",
+        "SERRE"
+       ],
+       "keukentypes": [
+        "WOONKEUKEN",
+        "INBOUWAPPARATUUR"
+       ],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "BEGANE_GROND_OF_FLAT",
+      "etageomschrijving": "Begane grond",
+      "aantalSlaapkamers": 0,
+      "etageligging": null,
+      "aantalKamers": 1
+     }
+    ],
+    "buitenruimte": {
+     "garagecapiciteit": "",
+     "parkeerfaciliteiten": [
+      "OPENBAAR_PARKEREN"
+     ],
+     "parkeertoelichting": "",
+     "schuurBergingVoorzieningen": null,
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": 0,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": null,
+     "daktoelichting": "",
+     "hoofdtuintype": "ACHTERTUIN",
+     "hoofdtuinAchterom": true,
+     "hoofdtuinlengte": 800,
+     "hoofdtuinbreedte": 700,
+     "schuurBergingSoort": "VRIJSTAAND_HOUT",
+     "aantalSchurenBergingen": 2,
+     "hoofdtuinoppervlakte": 56,
+     "garagevoorzieningen": null,
+     "garagesoorten": [
+      "GEEN_GARAGE"
+     ],
+     "garagelengte": null,
+     "garagebreedte": null,
+     "tuinTotaleOppervlakte": null,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": null,
+     "hoofdtuinlocatie": "WEST",
+     "tuinkwaliteit": "VERZORGD",
+     "oppervlakteExterneBergruimte": 11,
+     "tuintypes": [
+      "ACHTERTUIN",
+      "VOORTUIN",
+      "ZIJTUIN"
+     ],
+     "daktype": null
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Haarlemmerliede en Spaarnwoude",
+       "sectie": "L",
+       "aandeel": "",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "2072",
+       "wijzigingsdatum": "2026-08-10 19:43:43",
+       "oppervlakte": 256,
+       "invoerdatum": "2026-08-10"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "7",
+     "toevoeging": null
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "Kees 't Hoenstraat",
+    "straat2": "",
+    "postcode": "2064 XJ",
+    "plaats": "SPAARNDAM"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "Ben je een natuurliefhebber, zoek je rust en groen, maar wil je niet afgelegen wonen? Dan is Kees ’t Hoenstraat 7 zo’n plek die je vooral zelf moet komen ervaren. Hier woon je niet alleen dichtbij de natuur, hier maakt de natuur onderdeel uit van je dagelijks leven.\n\nEen huis voor wie graag buiten leeft, wakker wordt met groen om zich heen en vanuit huis zó de natuur in wil lopen. \n\nAan de groene rand van Spaarndam ligt deze verrassend ruime 2-onder-1-kapwoning (168 m2) met 4 slaapkamers op een heerlijke plek waar rust, ruimte en natuur samenkomen. De woning ligt landelijk en rustig, met vrij uitzicht en recreatiegebied Spaarnwoude in de directe omgeving.\n\nWat deze plek zo bijzonder maakt, ervaar je eigenlijk al zodra je aankomt. Het vele volwassen groen rondom de woning zorgt voor een beschutte, natuurlijke sfeer. Geen strak aangelegde stadstuin, maar een tuin waarin bomen, planten en verschillende groene hoekjes samen een bijna bosachtig geheel vormen. Een plek waar vogels zich thuis voelen, waar kinderen heerlijk kunnen ontdekken en waar je zelf na een drukke dag volledig tot rust komt.\n\nDe tuin is dan ook veel meer dan alleen buitenruimte. Er is volop plek om te loungen, een hangmat op te hangen of samen rond de kampvuurplek te zitten. Daarnaast is er een klein moestuintje, zijn er compostbakken en is er maar liefst 1.600 liter wateropslag. Ook zijn er onlangs diverse eetbare planten aangeplant.\n\nBinnen en buiten lopen op de begane grond prachtig in elkaar over. De ruime woonkamer staat dankzij de grote glazen puien volop in verbinding met het groen en de aangebouwde serre vormt misschien wel één van de fijnste plekken van het huis. Hier zit je beschut en comfortabel, terwijl de natuur letterlijk om je heen aanwezig is. Juist op warme zomerdagen zorgt het vele groen voor een aangenaam en schaduwrijk buitenleven. In de donkere wintermaanden, wanneer een ieder al zijn lampen aan moet doen, geniet je hier nog van natuurlijk licht. \n\nEn dan de omgeving. Vanuit huis ben je binnen enkele minuten tussen de weilanden, het water en de uitgestrekte natuur van Spaarnwoude. Wandelen, hardlopen, fietsen, varen of gewoon even naar buiten: hier hoef je de auto niet voor te pakken. Tegelijkertijd woon je in het gezellige Spaarndam, met winkels, restaurants, scholen, sportverenigingen en een jachthaven binnen handbereik. Ook Haarlem en Amsterdam zijn uitstekend bereikbaar.\n\nGoed om te weten:\n- energielabel A\n- 2 houten bergingen in de tuin\n- praktische bijkeuken aan de voorzijde van de woning\n- verwarming en warm water middels Warmtepomp (2025)\n- mogelijkheid om op de 2e verdieping 2 slaapkamers te realiseren (thans 1 grote ruimte)\n- aangebouwde serre (2019)\n- voormalig balkon is bij de woning betrokken (2019)\n- begane grond voorzien van vloerverwarming\n- platte daken grotendeels vernieuwd in 2020\n- gevels gereinigd en opnieuw gevoegd in 2019 (soft straal methode)\n- centraal gelegen tussen Haarlem en Amsterdam",
+    "eigenSiteTekst": "",
+    "flyertekst": "",
+    "a4Tekst": ""
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": null,
+     "appartementVveBijdrage": 0,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": null,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": false,
+     "vveVergadering": false,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": false,
+     "vveOnderhoudsverwachting": false,
+     "vveOpstalverzekering": false,
+     "vveKvkInschrijving": false,
+     "onderVoorbehoudVanaf": null,
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 800000,
+     "huurprijs": null,
+     "status": "ONDER_BOD"
+    }
+   },
+   "id": 10430251,
+   "object": {
+    "type": {
+     "objecttype": "WOONHUIS"
+    }
+   }
+  },
+  {
+   "algemeen": {
+    "energieKenmerken": [],
+    "onderhoudswaarderingBinnenMemo": "",
+    "onderhoudswaarderingBuiten": "GOED",
+    "onderhoudswaarderingBuitenMemo": "",
+    "onderhoudswaarderingBinnen": "GOED",
+    "woonhuissoort": null,
+    "woonhuistype": null,
+    "appartementsoort": "GALERIJFLAT",
+    "isolatievormen": [
+     "VOLLEDIG_GEISOLEERD"
+    ],
+    "dakmaterialen": null,
+    "voorzieningenWonen": [
+     "MECHANISCHE_VENTILATIE",
+     "GLASVEZEL_KABEL"
+    ],
+    "appartementkenmerk": "APPARTEMENT",
+    "verwarmingsoorten": [
+     "CV_KETEL",
+     "WARMTE_TERUGWININSTALLATIE"
+    ],
+    "cvKetelBouwjaar": "2019",
+    "cvKetelBrandstof": "GAS",
+    "cvKetelEigendom": "EIGENDOM",
+    "cvCombiketel": true,
+    "warmwatersoorten": [
+     "CV_KETEL"
+    ],
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "100000",
+    "appartementOpenPortiek": false,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": 1,
+    "totaleWoonkameroppervlakte": 0,
+    "totaleKadestraleOppervlakte": 0,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "Woonruimte",
+    "bestemmingHuidig": "Woonruimte",
+    "bouwgrondBouwrijp": null,
+    "bijzonderheden": [
+     "TOEGANKELIJK_VOOR_OUDEREN",
+     "TOEGANKELIJK_VOOR_MINDER_VALIDEN"
+    ],
+    "bouwperiode": null,
+    "cvKetelType": "Remeha",
+    "bouwgrondoppervlakte": 0,
+    "bouwjaartoelichting": "",
+    "gebruiksoppervlakteOverig": 0,
+    "appartementWoonlaag": 1,
+    "energieklasse": "A",
+    "energiedatum": "2028-10-30",
+    "energieindex": null,
+    "aantalKamers": "3",
+    "liggingen": [
+     "IN_WOONWIJK"
+    ],
+    "bouwvorm": "BESTAANDE_BOUW",
+    "inAanbouw": false,
+    "bouwjaar": "2005",
+    "epc": null,
+    "woonoppervlakte": 74,
+    "inhoud": 221
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2026-07-23 18:46:09",
+     "volgnummer": 2,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/286068831.jpg?portalid=18143&check=api_sha256%3A636ca19fac6a97379a3662c4610f5fed55f9c1ae0c90df1b06dbd5fced3a31d7"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-07-23 18:46:09",
+     "volgnummer": 4,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/png",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/286068191.png?portalid=18143&check=api_sha256%3Ade272c8a22facde9df80b7c2c54ecd78a96eeb3846517e0a1bb6fa511b277340"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-07-23 18:46:09",
+     "volgnummer": 5,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/286065705.jpg?portalid=18143&check=api_sha256%3Af30fc83f6babd538373994af058257bf3ae0676d59d3c76de97720fb01383861"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-07-23 18:46:09",
+     "volgnummer": 6,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/286065697.jpg?portalid=18143&check=api_sha256%3A55ed48b1d7002f7ffa5550096f4e39142f2aa316dd4f3017eaf9288dee566a86"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-18 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-21 15:16:51",
+   "relaties": {
+    "medeaanmelders": []
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "a14ff87c-a8ea-40d6-a2e0-2ffe3d7a36c3",
+     "wijzigingsdatum": "2026-07-30 22:22:20",
+     "mengvormtoelichting": "",
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": 2023,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100225",
+     "invoerdatum": "2026-07-07",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "TOILET",
+        "HAL",
+        "BERGING",
+        "BALKON",
+        "WASRUIMTE"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "2022",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [
+        "WOONKAMER"
+       ],
+       "keukentypes": [
+        "OPEN_KEUKEN",
+        "INBOUWAPPARATUUR"
+       ],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [
+       {
+        "lengte": 271,
+        "breedte": 251,
+        "voorzieningen": [
+         "LIGBAD",
+         "DOUCHE",
+         "WASTAFELMEUBEL"
+        ],
+        "oppervlakte": 7
+       }
+      ],
+      "etagesoort": "BEGANE_GROND_OF_FLAT",
+      "etageomschrijving": "Begane grond",
+      "aantalSlaapkamers": 2,
+      "etageligging": "WEST",
+      "aantalKamers": 3
+     }
+    ],
+    "buitenruimte": {
+     "garagecapiciteit": "",
+     "parkeerfaciliteiten": [
+      "OPENBAAR_PARKEREN",
+      "PARKEERGARAGE"
+     ],
+     "parkeertoelichting": "",
+     "schuurBergingVoorzieningen": [
+      "VOORZIEN_VAN_ELEKTRA"
+     ],
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": 8,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": null,
+     "daktoelichting": "",
+     "hoofdtuintype": null,
+     "hoofdtuinAchterom": false,
+     "hoofdtuinlengte": null,
+     "hoofdtuinbreedte": null,
+     "schuurBergingSoort": "BOX",
+     "aantalSchurenBergingen": 1,
+     "hoofdtuinoppervlakte": null,
+     "garagevoorzieningen": null,
+     "garagesoorten": [
+      "PARKEERKELDER"
+     ],
+     "garagelengte": null,
+     "garagebreedte": null,
+     "tuinTotaleOppervlakte": null,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": null,
+     "hoofdtuinlocatie": null,
+     "tuinkwaliteit": null,
+     "oppervlakteExterneBergruimte": 5,
+     "tuintypes": [
+      "GEEN_TUIN"
+     ],
+     "daktype": "PLAT_DAK"
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "2",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Schoten",
+       "sectie": "A",
+       "aandeel": "75/6488",
+       "omvang": "APPARTEMENTSRECHT_OF_COMPLEX",
+       "perceel": "2569",
+       "wijzigingsdatum": "2026-07-23 18:51:51",
+       "oppervlakte": null,
+       "invoerdatum": "2026-07-23"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "9",
+     "toevoeging": null
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "Dokter De Liefdestraat",
+    "straat2": "",
+    "postcode": "2025 DZ",
+    "plaats": "HAARLEM"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "BIEDEN VANAF: € 415.000,-- K.K.\n\nZoek je een goed onderhouden, gelijkvloerse en comfortabele woning op een locatie waar alles dichtbij is? Welkom aan de Dokter de Liefdestraat 9!\n\nDit lichte 3-kamerappartement van circa 74 m² is zo'n woning. Gelegen op de begane grond van een goed onderhouden appartementencomplex, met een zonnig balkon, een eigen PARKEERPLAATS en een BERGING in de afgesloten parkeerkelder. Een appartement waar je comfortabel woont en waar je direct merkt dat er de afgelopen jaren veel aandacht is besteed aan onderhoud en afwerking.\n\nDe keuken en badkamer zijn in 2022 vernieuwd, de woonkamer en hal zijn strak gestuukt en de nette vloer zorgt voor een rustige uitstraling. Hierdoor voelt de woning modern en verzorgd aan en kun je zonder grote werkzaamheden verhuizen.\n\nWat deze locatie zo prettig maakt, is het gemak. Winkelcentrum Marsmanplein ligt letterlijk om de hoek voor de dagelijkse boodschappen, terwijl ook het Spaarne Gasthuis, openbaar vervoer, kinderopvang en diverse zorgvoorzieningen op loopafstand liggen. Daarnaast ben je met de fiets binnen ongeveer een kwartier in de historische binnenstad van Haarlem en liggen strand, duinen en recreatiegebieden verrassend dichtbij.\n\nIndeling:\n\nVia de verzorgde centrale entree met videofoon, lift en toegang tot de gezamenlijke binnentuin bereik je het appartement.\n\nBinnen zorgt de ruime hal voor een prettige eerste indruk en geeft toegang tot alle vertrekken. De hoofdslaapkamer beschikt over een vaste kast en een deur naar de galerij. De tweede slaapkamer is ideaal als logeerkamer, werkkamer of hobbyruimte.\n\nDe badkamer is modern uitgevoerd met een inloopdouche, (diep) ligbad en een stijlvol wastafelmeubel. Daarnaast is er een separaat toilet en een praktische berging met de cv-ketel, WTW-installatie en aansluitingen voor de was apparatuur.\n\nDe woonkamer vormt het hart van de woning. Dankzij de brede raampartijen is dit een heerlijke leefruimte. De schuifpui verbindt binnen met buiten en geeft toegang tot het zonnige balkon, waar je al vroeg in het seizoen kunt genieten van de zon.\n\nDe open keuken sluit mooi aan op de woonkamer en is uitgevoerd in een moderne hoekopstelling met veel werk- en bergruimte. Uiteraard is deze voorzien van alle benodigde inbouwapparatuur, waaronder een 5-pits gaskookplaat, oven, vaatwasser en koel-/vriescombinatie.\n\nGoed om te weten:\n- bouwjaar 2005\n- energielabel A\n -woonoppervlakte circa 74 m²\n- eigen parkeerplaats en privéberging\n- zonnig balkon van circa 8 m²\n -keuken en badkamer vernieuwd in 2022\n- actieve en gezonde VvE\n- servicekosten € 196,- per maand\n- cv-ketel uit 2019\n- warmte-terugwinsysteem (WTW)\n- twee liften aanwezig\n- oplevering in overleg, kan snel\n\n**English**\n\nASKING PRICE FROM: € 415.000,-- k.k.\n\nAre you looking for a well-maintained, comfortable ground-floor apartment in a convenient location with everything within easy reach? Welcome to Dokter de Liefdestraat 9!\n\nThis bright two-bedroom apartment (approximately 74 m² / 797 sq ft) offers exactly that. Situated on the ground floor of a well-maintained apartment complex, it features a sunny balcony, a private parking space, and a private storage room in the secure underground parking garage. This is a home where comfort comes naturally, and where the care and attention given to maintenance and finishes over the past few years are immediately evident.\n\nThe kitchen and bathroom were completely renovated in 2022, while the living room and hallway have smooth plastered walls and ceilings. Combined with the attractive flooring throughout, the apartment has a modern, well-kept appearance, allowing you to move in without the need for major renovations.\n\nOne of the greatest advantages of this location is its convenience. Marsmanplein Shopping Centre is literally around the corner for your daily groceries. The Spaarne Gasthuis hospital, public transport, childcare facilities, and various healthcare services are all within walking distance. Haarlem's historic city centre can be reached by bicycle in approximately 15 minutes, while the beach, dunes, and several recreational areas are also surprisingly close by.\n\nLayout:\n\nThe apartment is accessed through a well-maintained communal entrance with a video intercom system, lift, and access to the shared courtyard garden.\n\nInside, the spacious entrance hall creates an inviting first impression and provides access to all rooms. The main bedroom features a built-in wardrobe and a door leading to the gallery. The second bedroom is ideal as a guest room, home office, or hobby room.\n\nThe modern bathroom is fitted with a walk-in shower, a deep bathtub, and a stylish vanity unit. There is also a separate toilet and a practical utility/storage room housing the central heating boiler, the heat recovery ventilation system (HRV), and connections for a washing machine and dryer.\n\nThe living room is the heart of the home. Large windows flood the space with natural light, creating a bright and welcoming atmosphere. Sliding doors open onto the sunny balcony, where you can enjoy the sunshine from early in the season.\n\nThe open-plan kitchen blends seamlessly with the living area and is arranged in a modern corner layout with ample worktop and storage space. It comes fully equipped with integrated appliances, including a five-burner gas hob, oven, dishwasher, and fridge-freezer combination.\n\nKey Features:\n- Built in 2005\n- Energy label A\n- 32.Living area approximately 74 m² \n- Private parking space and private storage room\n- Sunny balcony of approximately 8 m² (86 sq ft)\n- Kitchen and bathroom renovated in 2022\n- Active and financially healthy Homeowners' Association (VvE)\n- Service charges: €196 per month\n- Central heating boiler installed in 2019\n- Heat Recovery Ventilation (HRV) system\n- Two lifts in the building\n- Completion by mutual agreement; available at short notice",
+    "eigenSiteTekst": "",
+    "flyertekst": "",
+    "a4Tekst": ""
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": "VRAAGPRIJS",
+     "appartementVveBijdrage": null,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": 196,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": true,
+     "vveVergadering": true,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": true,
+     "vveOnderhoudsverwachting": true,
+     "vveOpstalverzekering": true,
+     "vveKvkInschrijving": true,
+     "onderVoorbehoudVanaf": null,
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 415000,
+     "huurprijs": null,
+     "status": "BESCHIKBAAR"
+    }
+   },
+   "id": 10447963,
+   "object": {
+    "type": {
+     "objecttype": "APPARTEMENT"
+    }
+   }
+  },
+  {
+   "algemeen": {
+    "energieKenmerken": [],
+    "onderhoudswaarderingBinnenMemo": "",
+    "onderhoudswaarderingBuiten": "GOED_TOT_UITSTEKEND",
+    "onderhoudswaarderingBuitenMemo": "",
+    "onderhoudswaarderingBinnen": "GOED_TOT_UITSTEKEND",
+    "woonhuissoort": "EENGEZINSWONING",
+    "woonhuistype": "HOEKWONING",
+    "appartementsoort": null,
+    "isolatievormen": [
+     "VOLLEDIG_GEISOLEERD"
+    ],
+    "dakmaterialen": [
+     "PANNEN"
+    ],
+    "voorzieningenWonen": [],
+    "appartementkenmerk": null,
+    "verwarmingsoorten": [
+     "CV_KETEL"
+    ],
+    "cvKetelBouwjaar": "2022",
+    "cvKetelBrandstof": "GAS",
+    "cvKetelEigendom": "EIGENDOM",
+    "cvCombiketel": true,
+    "warmwatersoorten": [
+     "CV_KETEL"
+    ],
+    "woonhuiskenmerk": null,
+    "gekoppeldeMakelaar": "100000",
+    "appartementOpenPortiek": null,
+    "bestemmingRecreatiewoning": false,
+    "appartementWoonlagenAantal": null,
+    "totaleWoonkameroppervlakte": 0,
+    "totaleKadestraleOppervlakte": 114,
+    "bestemmingPermanenteBewoning": true,
+    "gebruikHuidig": "Woonruimte",
+    "bestemmingHuidig": "Woonruimte",
+    "bouwgrondBouwrijp": null,
+    "bijzonderheden": [],
+    "bouwperiode": null,
+    "cvKetelType": "Remeha Avanta",
+    "bouwgrondoppervlakte": 0,
+    "bouwjaartoelichting": "",
+    "gebruiksoppervlakteOverig": 0,
+    "appartementWoonlaag": null,
+    "energieklasse": "C",
+    "energiedatum": "2030-11-29",
+    "energieindex": null,
+    "aantalKamers": "8",
+    "liggingen": [],
+    "bouwvorm": "BESTAANDE_BOUW",
+    "inAanbouw": false,
+    "bouwjaar": "1890",
+    "epc": null,
+    "woonoppervlakte": 157,
+    "inhoud": 551
+   },
+   "media": [
+    {
+     "vrijgave": true,
+     "soort": "HOOFDFOTO",
+     "wijzigingstijdstip": "2026-08-19 17:25:14",
+     "volgnummer": 2,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/288343785.jpg?portalid=18143&check=api_sha256%3A40093f96c87c7ceb2beffc979c28ef0f298ee1e6234c09f2929e0ed03ffb7eb8"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-08-19 17:25:14",
+     "volgnummer": 4,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/288343539.jpg?portalid=18143&check=api_sha256%3A1eb98033e7e0991093b5c1a0c8e4410407eab820f646f7dc28f08c4a077a49ec"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-08-19 17:25:14",
+     "volgnummer": 5,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/288343575.jpg?portalid=18143&check=api_sha256%3Aa254be12c71d043971833d93e6aed4ef3806aef805e59ffd52745a359e9f4617"
+    },
+    {
+     "vrijgave": true,
+     "soort": "FOTO",
+     "wijzigingstijdstip": "2026-08-19 17:25:14",
+     "volgnummer": 6,
+     "omschrijving": null,
+     "titel": null,
+     "mimetype": "image/jpeg",
+     "link": "https://images.realworks.nl/servlets/images/media.objectmedia/288343703.jpg?portalid=18143&check=api_sha256%3Afd77f04255b15cd7bd0c979eb5d029463036b1bdb77af9122e5f1bd6d0e71c93"
+    }
+   ],
+   "marketing": {
+    "publicatiedatum": "2026-08-19 06:00:00",
+    "website": {
+     "openhuisdagen": []
+    }
+   },
+   "tijdstipLaatsteWijziging": "2026-08-21 10:04:54",
+   "relaties": {
+    "medeaanmelders": [
+     {
+      "nvmNummer": "82501"
+     }
+    ]
+   },
+   "vertrouwelijk": false,
+   "diversen": {
+    "diversen": {
+     "tiaraObjectGuid": "3564c3fc-2f07-477f-96e5-edb9826aa982",
+     "wijzigingsdatum": "2026-08-19 19:10:41",
+     "mengvormtoelichting": "",
+     "combinatieobjecttype": null,
+     "bogSituatie": null,
+     "mengvormKoopprijsafwijking": null,
+     "combinatieobjectoppervlakte": null,
+     "vragenlijstVersie": 2023,
+     "mengvorm": null,
+     "bogType": null,
+     "bogStatus": null,
+     "objectcode": "SM100227",
+     "invoerdatum": "2026-07-23",
+     "afdelingscode": "937109",
+     "bedrijfscode": "936532"
+    }
+   },
+   "detail": {
+    "etages": [
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "TOILET",
+        "HAL"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": [
+        "WOONKAMER"
+       ],
+       "keukentypes": [
+        "WOONKEUKEN",
+        "INBOUWAPPARATUUR"
+       ],
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [],
+      "etagesoort": "BEGANE_GROND_OF_FLAT",
+      "etageomschrijving": "Begane grond",
+      "aantalSlaapkamers": 0,
+      "etageligging": null,
+      "aantalKamers": 2
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "TOILET",
+        "OVERLOOP"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [
+       {
+        "lengte": 314,
+        "breedte": 203,
+        "voorzieningen": [
+         "LIGBAD",
+         "WASTAFELMEUBEL",
+         "INLOOPDOUCHE"
+        ],
+        "oppervlakte": 6
+       }
+      ],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "1e verdieping",
+      "aantalSlaapkamers": 4,
+      "etageligging": null,
+      "aantalKamers": 4
+     },
+     {
+      "etagegegevens": {
+       "overigeRuimtes": [
+        "OVERLOOP"
+       ],
+       "vasteTrap": false,
+       "keukenlengte": null,
+       "keukenbreedte": null,
+       "kamerMogelijk": false,
+       "trapInKamer": false,
+       "keukenjaar": "0",
+       "keukenoppervlakte": 0,
+       "woonkamertypes": null,
+       "keukentypes": null,
+       "woonkamerlengte": null,
+       "woonkamerbreedte": null,
+       "woonkameroppervlakte": 0
+      },
+      "badkamers": [
+       {
+        "lengte": 256,
+        "breedte": 175,
+        "voorzieningen": [
+         "TOILET",
+         "DOUCHE",
+         "WASTAFEL"
+        ],
+        "oppervlakte": 4
+       }
+      ],
+      "etagesoort": "VERDIEPING",
+      "etageomschrijving": "2e verdieping",
+      "aantalSlaapkamers": 2,
+      "etageligging": null,
+      "aantalKamers": 2
+     }
+    ],
+    "buitenruimte": {
+     "garagecapiciteit": "",
+     "parkeerfaciliteiten": [
+      "PARKEERVERGUNNINGEN"
+     ],
+     "parkeertoelichting": "",
+     "schuurBergingVoorzieningen": null,
+     "schuurBergingIsolatievormen": null,
+     "oppervlakteGebouwgebondenBuitenruimte": 0,
+     "parkeercapaciteit": null,
+     "garageoppervlakte": null,
+     "daktoelichting": "",
+     "hoofdtuintype": "ACHTERTUIN",
+     "hoofdtuinAchterom": true,
+     "hoofdtuinlengte": 1000,
+     "hoofdtuinbreedte": 562,
+     "schuurBergingSoort": null,
+     "aantalSchurenBergingen": null,
+     "hoofdtuinoppervlakte": 56,
+     "garagevoorzieningen": null,
+     "garagesoorten": [
+      "GEEN_GARAGE"
+     ],
+     "garagelengte": null,
+     "garagebreedte": null,
+     "tuinTotaleOppervlakte": null,
+     "garageisolatievorm": null,
+     "totaalAantalGarages": null,
+     "hoofdtuinlocatie": "OOST",
+     "tuinkwaliteit": "VERZORGD",
+     "oppervlakteExterneBergruimte": 0,
+     "tuintypes": [
+      "ACHTERTUIN"
+     ],
+     "daktype": "ZADELDAK"
+    },
+    "overigOnroerendGoed": {
+     "isolatie": null,
+     "capaciteit": 0,
+     "toelichting": null,
+     "voorziening": null,
+     "lengte": 0,
+     "breedte": 0,
+     "oppervlakte": 0,
+     "type": "EMPTY"
+    },
+    "kadaster": [
+     {
+      "kadastergegevens": {
+       "afkoopoptie": null,
+       "afgekochtTot": null,
+       "erfpachtPerJaar": null,
+       "gemeentecode": "",
+       "erfpachtprijsvorm": null,
+       "erfpachtduur": null,
+       "indexnummer": "",
+       "eigendomssoort": "VOLLE_EIGENDOM",
+       "eeuwigAfgekocht": false,
+       "erfpachtgever": null,
+       "einddatum": null,
+       "gemeente": "Haarlem",
+       "sectie": "H",
+       "aandeel": "",
+       "omvang": "GEHEEL_PERCEEL",
+       "perceel": "3498",
+       "wijzigingsdatum": "2026-08-17 19:03:42",
+       "oppervlakte": 114,
+       "invoerdatum": "2026-08-17"
+      }
+     }
+    ]
+   },
+   "actief": true,
+   "adres": {
+    "huisnummer": {
+     "hoofdnummer": "57",
+     "toevoeging": null
+    },
+    "land": "Nederland",
+    "provincie": "NOORD_HOLLAND",
+    "straat": "Brouwersstraat",
+    "straat2": "",
+    "postcode": "2013 WG",
+    "plaats": "HAARLEM"
+   },
+   "teksten": {
+    "aanbiedingstekstEngels": "",
+    "aanbiedingstekst": "**English below**\n\nLuxe gerenoveerd XL gezinshuis: instapklaar, hoogwaardig en royaal van formaat.\n\nIn het hart van de geliefde Leidsebuurt, op enkele minuten loopafstand van het historische centrum van Haarlem, staat dit bijzondere eindhuis uit circa 1890. In 2022 is de woning grondig en met veel oog voor detail gerenoveerd en uitgebouwd. Het resultaat is een strak modern interieur met visgraatparket van eiken, paneeldeuren, strakke stucwanden en hoogwaardige afwerkingen, alles in een karakteristieke oudere schil.\n\nMet circa 157 m² woonoppervlak, 6 slaapkamers, 2 luxe badkamers, een spectaculaire open woonkeuken met eiland, een veelzijdige studeer-/fitnessruimte op de begane grond én een zonnige achtertuin met achterom is dit een uitzonderlijke kans voor het gezin dat geen concessies wil doen.\n\nIndeling:\n\nBegane grond: Entree/hal met meterkast, separate toiletruimte, schitterende open woon-/eetkeuken met visgraatparket, keukeneiland en schuifpui over de volle breedte naar de tuin, plus een flexibele ruimte achter een stalen deur met glas, nu in gebruik als fitnessruimte en even goed geschikt als thuiskantoor of speelkamer, met dakraam en inbouwkasten.\n\n1e etage: Overloop, separaat toilet, twee slaapkamers aan de voorzijde, één slaapkamer in het midden, luxe badkamer met vrijstaand ligbad, dubbele inloop-regendouche en dubbel wastafelmeubel, en één royale slaapkamer.\n\n2e etage: Overloop, twee slaapkamers (waarvan één met Frans balkon), tweede luxe badkamer met douche, wastafelmeubel en zwevend toilet.\n\nBuitenleven: zonnige achtertuin (ca. 10m x 5m) met zowel zon als schaduw, een tuinhuis en een afgesloten achterom die toegang biedt tot de woning en twee buurwoningen.\n\nLigging: de Brouwersstraat ligt in het hart van de Leidsebuurt, één van Haarlems populairste en meest kindvriendelijke buurten, op een steenworp van het centrum. Op loopafstand van het Leidseplein, Brouwersplein en diverse basisscholen. Winkelcentrum Plaza West (Albert Heijn, Aldi, Action, Etos, Gall & Gall, fitness en meer) is dichtbij. Het station van Haarlem, het openbaar vervoer en Nationaal Park Kennemerduinen liggen op circa 5 minuten fietsen, en met de auto zijn de uitvalswegen naar Amsterdam, Den Haag en Schiphol snel bereikbaar.\n\nHighlights:\n- Funderingsrisico onderzoek uitgevoerd: LAAG RISICO\n- 157 m² woonoppervlak | perceeloppervlak circa 114 m² | eigen grond\n- volledig gerenoveerd en uitgebouwd in 2022, geïsoleerd, alle installaties vernieuwd\n- luxe designkeuken met centraal eiland, Bora inductiekookplaat, twee ovens/magnetrons, vaatwasser, koelkast, vriezer en kokendwaterkraan\n- prachtig visgraatparket van eiken door de gehele begane grond\n- gedeeltelijke vloerverwarming en laagtemperatuur convectoren\n- 6 slaapkamers verdeeld over twee verdiepingen\n- 2 luxe badkamers met marmerlook-afwerking, vrijstaand ligbad, regendouche en dubbel wastafelmeubel\n- 3 toiletten\n- multifunctionele ruimte op de begane grond achter een stalen taatsdeur met glas, met veel licht dankzij een dakraam, ideaal als thuiskantoor, fitnessruimte of speelkamer\n- zonnige achtertuin (ca. 10m diep x 5m breed) met achterom\n- eindwoning met extra zijlicht in de leefruimte\n- rustige, kindvriendelijke straat in het hart van de Leidsebuurt\n\n**English**\n\nLuxuriously renovated XL family home: turn-key, high-end, and bursting with space.\n\nTucked away in Haarlem's beloved Leidsebuurt, just minutes on foot from the historic city centre, this exceptional end-of-terrace home from circa 1890 was thoroughly and lovingly renovated and extended in 2022. The result is a strikingly modern interior with herringbone oak parquet, panel doors, sleek plastered walls and high-quality finishes throughout, all within a characterful period shell.\n\nWith circa 157 m² of living space, 6 bedrooms, 2 luxury bathrooms, a spectacular open-plan kitchen with island, a versatile ground-floor study/gym and a sunny back garden with rear access, this is a rare find for families who refuse to compromise.\n\nHighlights:\n- Foundation risk assessment completed – LOW RISK\n- 157 m² living area | circa 114 m² plot | freehold\n- Completely renovated and extended in 2022, insulated, all installations renewed\n- Striking designer kitchen with central island, Bora induction hob, two ovens/microwaves, dishwasher, fridge, freezer and boiling-water tap\n- Beautiful herringbone oak parquet throughout the ground floor\n- Partial underfloor heating and low-temperature convectors\n- 6 bedrooms across two upper floors\n- 2 luxury bathrooms with marble-look finish, freestanding bath, rain shower and double vanity\n3 toilets\n- Flexible ground-floor room behind a steel-and-glass door, filled with light from a skylight, ideal as a home office, gym or playroom\n- Sunny back garden (approx. 10m deep x 5m wide) with rear access (achterom)\n- End-of-terrace position bringing extra side light into the living space\n- Quiet, child-friendly street in the heart of the Leidsebuurt\n\nLayout:\n\nGround floor: Entrance hall with meter cupboard, guest toilet, breathtaking open-plan kitchen-living room with herringbone parquet, kitchen island and full-width sliding doors to the garden, plus a flexible room behind a steel-and-glass door currently used as a home gym, equally suited as a study or playroom, with a skylight and built-in storage.\n\nFirst floor: Landing, separate toilet, two bedrooms at the front, one bedroom in the middle, luxury bathroom with freestanding bath, double walk-in rain shower and double vanity, and one generous bedroom.\n\nSecond floor: Landing, two bedrooms (one with a French balcony), second luxury bathroom with shower, vanity and wall-hung toilet.\n\nOutside: Sunny back garden (approx. 10m x 5m) offering both sun and shade, with a storage shed and enclosed rear access (achterom) serving the home and two neighbouring properties.\n\nLocation:\nBrouwersstraat sits in the heart of the Leidsebuurt, one of Haarlem's most popular and child-friendly neighbourhoods, moments from the city centre. Steps from the Leidseplein, Brouwersplein and several primary schools. Winkelcentrum Plaza West (Albert Heijn, Aldi, Action, Etos, Gall & Gall, fitness and more) is within easy walking distance. Haarlem's main train station, public transport and the dunes of Nationaal Park Kennemerduinen are around 5 minutes by bike, and the routes towards Amsterdam, The Hague and Schiphol are quickly reached by car.\n\nIn short: A rare opportunity to acquire a fully renovated, move-in-ready XL family home in one of Haarlem's most desirable streets, combining period character with contemporary luxury at the highest level, right around the corner from the city and the dunes.",
+    "eigenSiteTekst": "",
+    "flyertekst": "",
+    "a4Tekst": ""
+   },
+   "financieel": {
+    "overdracht": {
+     "koopprijsvoorvoegsel": null,
+     "appartementVveBijdrage": 0,
+     "aanmeldingsreden": "IN_VERKOOP_GENOMEN",
+     "koopconditie": "KOSTEN_KOPER",
+     "koopspecificatie": null,
+     "huurconditie": null,
+     "servicekosten": null,
+     "aanvaarding": "IN_OVERLEG",
+     "aanvaardingsdatum": null,
+     "huurspecificaties": [],
+     "vveReservefonds": false,
+     "vveVergadering": false,
+     "huurprijsvoorvoegsel": null,
+     "vvePeriodiekeBijdrage": false,
+     "vveOnderhoudsverwachting": false,
+     "vveOpstalverzekering": false,
+     "vveKvkInschrijving": false,
+     "onderVoorbehoudVanaf": null,
+     "huurbeschikbaarheid": "EMPTY",
+     "huurwaarborgsom": null,
+     "koopprijs": 1000000,
+     "huurprijs": null,
+     "status": "BESCHIKBAAR"
+    }
+   },
+   "id": 10496727,
+   "object": {
+    "type": {
+     "objecttype": "WOONHUIS"
+    }
+   }
+  }
+ ],
+ "paginering": {
+  "totaalAantal": 10
+ }
+}

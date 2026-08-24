@@ -11,6 +11,7 @@
     "check:tekst": "tsx scripts/check-aanbiedingstekst.ts",
     "check:reviews": "tsx scripts/check-reviews.ts",
     "check:funda": "tsx scripts/check-funda-reviews.ts",
+    "check:realworks": "tsx scripts/check-realworks.ts",
     "check:form": "tsx scripts/check-form.ts",
     "migrate:forms": "tsx --env-file=.env scripts/migrate-forms.ts",
     "seed:sanity": "tsx --env-file=.env scripts/seed.ts",

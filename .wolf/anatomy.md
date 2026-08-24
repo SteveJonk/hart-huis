@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-21T13:07:17.828Z
-> Files: 265 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-24T10:01:16.637Z
+> Files: 279 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -10,7 +10,7 @@
 - `AGENTS.md` — OpenWolf (~68 tok)
 - `CLAUDE.md` — OpenWolf (~57 tok)
 - `docker-compose.yml` — Docker Compose services (~84 tok)
-- `README.md` — Project documentation (~118 tok)
+- `README.md` — Project documentation (~168 tok)
 
 ## .claude/
 
@@ -29,6 +29,10 @@
 ## .cursor/rules/
 
 - `openwolf.mdc` (~87 tok)
+
+## .github/workflows/
+
+- `deploy-sanity-studio.yml` — CI: Deploy Sanity Studio (~743 tok)
 
 ## .opencode/command/
 
@@ -110,26 +114,27 @@
 - `Dockerfile` — Docker container definition (~173 tok)
 - `eslint.config.mjs` — ESLint flat configuration (~124 tok)
 - `form-migration-backup-1787299038628.json` (~647 tok)
-- `next-env.d.ts` — / <reference types="next" /> (~71 tok)
+- `next-env.d.ts` — / <reference types="next" /> (~72 tok)
 - `next.config.ts` — Next.js configuration (~148 tok)
 - `package-lock.json` — npm lock file (~197103 tok)
-- `package.json` — Node.js package manifest (~587 tok)
+- `package.json` — Node.js package manifest (~626 tok)
 - `postcss.config.mjs` — Declares config (~26 tok)
 - `tailwind.config.ts` — Tailwind CSS configuration (~946 tok)
 - `tsconfig.json` — TypeScript configuration (~192 tok)
-- `tsconfig.tsbuildinfo` (~47667 tok)
-- `vercel.json` — Dagelijkse cron die de Funda-review-scraper aanroept (04:00 UTC). (~46 tok)
+- `tsconfig.tsbuildinfo` (~46348 tok)
+- `vercel.json` (~70 tok)
 
 ## app/example-designs/
 
 - `!aanbod.html` — Actueel aanbod — Hart &amp; Huis Makelaardij Haarlem (~245118 tok)
 - `!beoordelingen.html` — Beoordelingen — Hart &amp; Huis Makelaardij Haarlem (~106755 tok)
 - `!contact.html` — Contact — Hart &amp; Huis Makelaardij Haarlem (~115609 tok)
+- `!lp-zoekopdracht.html` — Gratis zoekopdracht — Hart &amp; Huis Makelaardij Haarlem (~118122 tok)
 - `!nvm.html` — NVM-makelaar in Haarlem — Hart &amp; Huis Makelaardij (~169771 tok)
 - `!over-ons.html` — Over ons — Dorien Hollemans, Hart &amp; Huis Makelaardij Haarlem (~205364 tok)
 - `!waardebepaling.html` — Gratis waardebepaling van je woning — Hart &amp; Huis Makelaardij Haarlem (~130825 tok)
 - `.DS_Store` (~1639 tok)
-- `hart-en-huis-lp-zoekopdracht.html` — Gratis zoekopdracht — Hart &amp; Huis Makelaardij Haarlem (~118122 tok)
+- `example-realworks.json` (~141406 tok)
 
 ## app/public/
 
@@ -140,13 +145,15 @@
 
 - `.DS_Store` (~1640 tok)
 - `check-aanbiedingstekst.ts` — assert-based check of the Realworks text parser (`npm run check:tekst`). (~359 tok)
-- `check-form.ts` — Smallest thing that fails if de vorm/rij-indeling van CMS-formulieren breekt, veldnamen dubbel raken, of FORM_QUERY (de allow-list) en de renderer uit elkaar lopen — die laatste wordt met groq-js tegen fixtures gecontroleerd. (~2406 tok)
-  - fn `names` L23-180 (~1690 tok)
-  - fn `checkAllowList` L181-214 (~380 tok)
+- `check-form.ts` — Smallest thing that fails if the CMS-driven form layout breaks. (~2778 tok)
+  - fn `names` L24-211 (~1985 tok)
+  - fn `checkAllowList` L212-248 (~439 tok)
 - `check-funda-reviews.ts` — Smallest thing that fails if de Funda-parser breekt. Draait tegen een fixture. (~2840 tok)
   - fn `fixture` L32-171 (~1834 tok)
   - fn `run` L172-188 (~120 tok)
   - fn `checkPagination` L189-238 (~609 tok)
+- `check-realworks.ts` — Kleinste ding dat faalt als de Realworks-mapping breekt. (~1163 tok)
+  - fn `waarde` L68-85 (~298 tok)
 - `check-reviews.ts` — Smallest thing that fails if de afgeleide review-cijfers breken. (~1194 tok)
 - `form-migration.ts` — Pure half of `migrate-forms.ts`: turning a plugin `contactForm` into a (~1072 tok)
   - fn `isDraft` L22-22 (~18 tok)
@@ -156,15 +163,16 @@
   - fn `repoint` L88-103 (~154 tok)
 - `migrate-forms.ts` — Eenmalig: zet `contactForm`-documenten (verwijderde plugin) om naar het `form`-type, op hun plek zodat `_id` en verwijzingen heel blijven. `--dry-run` laat zien wat er zou veranderen. (~1438 tok)
   - fn `main` L32-139 (~1106 tok)
-- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~641 tok)
-  - fn `parseTargets` L46-57 (~106 tok)
-  - fn `main` L58-74 (~119 tok)
+- `seed.ts` — Seed Sanity content. Runs every target, or only the ones you name. (~666 tok)
+  - fn `parseTargets` L48-59 (~106 tok)
+  - fn `main` L60-76 (~119 tok)
 
 ## app/scripts/fixtures/
 
 - `funda-widget-aankoop-p1.html` — Funda (~9945 tok)
 - `funda-widget-verkoop-p1.html` — Funda (~10415 tok)
 - `funda-widget-verkoop-p9.html` — Funda (~8196 tok)
+- `realworks-objecten.json` (~43522 tok)
 
 ## app/scripts/seed/
 
@@ -193,8 +201,6 @@
 - `nvm.ts` — Seeds de NVM-FAQ's en de /nvm-pagina. (~1185 tok)
   - fn `buildNvmContent` L21-129 (~990 tok)
   - fn `seedNvm` L130-140 (~74 tok)
-- `objectpagina.ts` — Zet het bezichtigingsformulier + het `objectSettings`-document neer (de knop op de prijskaart). Raakt de woningen zelf niet aan. (~300 tok)
-  - fn `seedObjectpagina` L9-27 (~220 tok)
 - `objecten.ts` — Seeds 6 mock `woning` documents (houses for sale) in the Realworks text format; reuses photos already in the Sanity library, deterministic `_id` per slug. (~8403 tok)
   - fn `euro` L277-277 (~20 tok)
   - fn `datum` L278-280 (~36 tok)
@@ -203,17 +209,18 @@
   - fn `kenmerkGroepen` L297-364 (~533 tok)
   - fn `photoAssets` L365-380 (~168 tok)
   - fn `seedObjecten` L381-425 (~418 tok)
+- `objectpagina.ts` — Zet het bezichtigingsformulier + het `objectSettings`-document neer (de knop op de prijskaart). Raakt de woningen zelf niet aan. (~286 tok)
 - `over-ons.ts` — Seeds the /over-ons page. (~958 tok)
   - fn `buildOverOnsContent` L16-106 (~816 tok)
   - fn `seedOverOns` L107-111 (~41 tok)
-- `shared.ts` — Shared Sanity write helpers for the per-page seed scripts in this folder. (~1906 tok)
+- `shared.ts` — Shared Sanity write helpers for the per-page seed scripts in this folder. (~1926 tok)
   - fn `key` L44-50 (~48 tok)
   - fn `externalLink` L51-54 (~34 tok)
   - fn `cta` L55-58 (~38 tok)
   - fn `uploadImage` L59-93 (~250 tok)
   - fn `upsertFaq` L94-126 (~276 tok)
   - fn `upsertPage` L127-159 (~302 tok)
-  - fn `upsertForm` L160-217 (~530 tok)
+  - fn `upsertForm` L160-218 (~551 tok)
 - `taxatie.ts` — Seeds the taxatie FAQs and the /taxatie page. (~1424 tok)
   - fn `buildTaxatieContent` L22-155 (~1198 tok)
   - fn `seedTaxatie` L156-166 (~82 tok)
@@ -234,59 +241,68 @@
 ## app/src/app/
 
 - `globals.css` — Styles: 4 rules, 1 media queries, 1 layers (~140 tok)
-- `layout.tsx` — display (~756 tok)
-  - fn `asNavLinks` L26-31 (~58 tok)
-  - fn `RootLayout` L32-78 (~449 tok)
+- `layout.tsx` — display (~221 tok)
 - `manifest.json` (~125 tok)
-- `not-found.tsx` — NotFound (~239 tok)
-- `page.tsx` — options (~215 tok)
-- `robots.ts` — Exports robots (~74 tok)
-- `sitemap.ts` — Exports sitemap (~158 tok)
+- `not-found.tsx` — NotFound (~277 tok)
+- `page.tsx` — options (~256 tok)
+- `robots.ts` — Exports robots (~81 tok)
+- `sitemap.ts` — BASE_URL: sitemap (~250 tok)
 
 ## app/src/app/[slug]/
 
-- `page.tsx` — options (~283 tok)
+- `page.tsx` — options (~325 tok)
 
 ## app/src/app/aanbod/[slug]/
 
-- `page.tsx` — Precies wat WONING_QUERY teruggeeft — afgeleid, niet nagetypt. (~1266 tok)
-  - fn `getWoning` L30-33 (~27 tok)
-  - fn `toCard` L34-54 (~159 tok)
-  - fn `generateMetadata` L55-68 (~91 tok)
-  - fn `ObjectPage` L69-134 (~612 tok)
+- `page.tsx` — Precies wat WONING_QUERY teruggeeft — afgeleid, niet nagetypt. (~1680 tok)
+  - fn `getWoning` L36-39 (~27 tok)
+  - fn `toCard` L40-60 (~159 tok)
+  - fn `generateMetadata` L61-81 (~159 tok)
+  - fn `viewingCta` L82-108 (~248 tok)
+  - fn `ObjectPage` L109-178 (~659 tok)
+
+## app/src/app/api/import-realworks/
+
+- `route.ts` — Haalt de actieve objecten op bij Realworks en zet ze als `woning`-documenten (~2729 tok)
+  - class `FeedError` L36-37 (~10 tok)
+  - fn `fetchFeed` L38-74 (~348 tok)
+  - fn `existingAssets` L75-87 (~142 tok)
+  - fn `uploadFromUrl` L88-100 (~134 tok)
+  - fn `importObjects` L101-204 (~1013 tok)
+  - fn `handle` L205-277 (~664 tok)
+  - fn `GET` L278-281 (~22 tok)
+  - fn `POST` L282-285 (~22 tok)
+  - fn `OPTIONS` L286-289 (~38 tok)
 
 ## app/src/app/api/scrape-funda-reviews/
 
-- `route.ts` — Haalt beide Funda-tabbladen op en zet ze als reviews in Sanity. Auth via cron-bearer of studio-secret; dryRun/debug. (~2571 tok)
-  - fn `equalSecret` L63-74 (~150 tok)
-  - fn `isAuthorized` L75-90 (~173 tok)
-  - fn `corsHeaders` L91-109 (~169 tok)
-  - fn `fetchPage` L110-115 (~71 tok)
-  - fn `toDocument` L116-140 (~212 tok)
-  - fn `upsertReviews` L141-190 (~489 tok)
-  - fn `handle` L191-273 (~707 tok)
-  - fn `GET` L274-277 (~22 tok)
-  - fn `POST` L278-281 (~22 tok)
-  - fn `OPTIONS` L282-285 (~38 tok)
+- `route.ts` — Haalt de beoordelingen van Funda op en zet ze als `review`-documenten in (~2080 tok)
+  - fn `fetchPage` L63-68 (~71 tok)
+  - fn `toDocument` L69-93 (~212 tok)
+  - fn `upsertReviews` L94-143 (~489 tok)
+  - fn `handle` L144-226 (~707 tok)
+  - fn `GET` L227-230 (~22 tok)
+  - fn `POST` L231-234 (~22 tok)
+  - fn `OPTIONS` L235-238 (~38 tok)
 
 ## app/src/app/api/submit-form/
 
-- `route.ts` — Bigger uploads are rejected rather than silently dropped from the mail. (~2115 tok)
+- `route.ts` — Bigger uploads are rejected rather than silently dropped from the mail. (~2521 tok)
   - fn `verifyRecaptcha` L11-28 (~163 tok)
-  - fn `fail` L29-32 (~35 tok)
-  - fn `escapeHtml` L33-41 (~69 tok)
-  - fn `sendViaMailjet` L42-85 (~374 tok)
-  - fn `POST` L86-215 (~1362 tok)
+  - fn `fail` L29-33 (~59 tok)
+  - fn `splitEmails` L34-40 (~42 tok)
+  - fn `escapeHtml` L41-49 (~69 tok)
+  - fn `sendViaMailjet` L50-93 (~381 tok)
+  - fn `POST` L94-256 (~1694 tok)
 
 ## app/src/components/
 
-- `PageBuilder.tsx` — Reviews zonder quote of naam zijn onbruikbaar op een kaart en vallen af. (~7997 tok)
+- `PageBuilder.tsx` — Reviews zonder quote of naam zijn onbruikbaar op een kaart en vallen af. (~7527 tok)
   - fn `toCta` L70-75 (~49 tok)
   - fn `toLabeledLink` L76-84 (~99 tok)
-  - fn `toReviews` L85-96 (~145 tok)
-  - fn `toFormDefinition` L97-137 (~398 tok)
-  - fn `renderBlock` L138-912 (~6306 tok)
-  - fn `PageBuilder` L913-918 (~60 tok)
+  - fn `toReviews` L85-91 (~84 tok)
+  - fn `renderBlock` L92-866 (~6306 tok)
+  - fn `PageBuilder` L867-872 (~60 tok)
 
 ## app/src/components/blocks/
 
@@ -386,32 +402,35 @@
 
 ## app/src/components/form/
 
-- `fields.tsx` — Rendert één veld voor alle negen veldtypes, in twee varianten (`stacked` = contactpagina, `compact` = kaart); bevat ook `linkify`. Gedeeld door FormRenderer (en dus door beide formulierblokken). (~1658 tok)
+- `fields.tsx` — `stacked` is the contact page's roomy form, `compact` the hero card's. (~1710 tok)
   - fn `selectCaret` L37-47 (~121 tok)
   - fn `linkify` L48-69 (~152 tok)
-  - fn `FormField` L70-173 (~932 tok)
-- `FormRenderer.tsx` — Client. Rendert elk `form`-document, simpel of in stappen: voortgangsbalk, validatie per stap (`noValidate` + `reportValidity`), reCAPTCHA, verzenden naar /api/submit-form, bevestiging. (~2932 tok)
-  - fn `IconArrowRight` L57-64 (~66 tok)
-  - fn `SuccessPanel` L65-106 (~424 tok)
-  - fn `FormRenderer` L107-302 (~1879 tok)
+  - fn `FormField` L70-177 (~983 tok)
+- `FormRenderer.tsx` — Public half of the reCAPTCHA settings — the secret stays server-side. (~3096 tok)
+  - fn `IconArrowRight` L62-69 (~66 tok)
+  - fn `SuccessPanel` L70-111 (~424 tok)
+  - fn `FormRenderer` L112-319 (~1984 tok)
 
 ## app/src/components/layout/
 
+- `PageWrapper.tsx` — options (~596 tok)
+  - fn `asNavLinks` L11-21 (~80 tok)
+  - fn `PageWrapper` L22-66 (~378 tok)
 - `SiteFooter.tsx` — FooterLinkList (~1948 tok)
   - fn `FooterLinkList` L12-51 (~300 tok)
   - fn `SiteFooter` L52-194 (~1501 tok)
-- `SiteHeader.tsx` — isActivePath (~1489 tok)
+- `SiteHeader.tsx` — isActivePath (~1570 tok)
   - fn `isActivePath` L11-15 (~53 tok)
   - fn `DesktopNav` L16-57 (~350 tok)
-  - fn `Burger` L58-107 (~336 tok)
-  - fn `SiteHeader` L108-171 (~654 tok)
+  - fn `Burger` L58-108 (~342 tok)
+  - fn `SiteHeader` L109-179 (~728 tok)
 - `WhatsAppButton.tsx` — WhatsAppButton (~460 tok)
 
 ## app/src/components/object/
 
 - `ObjectContactDialog.tsx` — Client. De knop op de prijskaart + de native `<dialog>` die hij opent, met daarin een FormRenderer. Geeft het adres van de woning mee als context voor de verborgen velden. (~1159 tok)
-  - fn `IconClose` L20-26 (~90 tok)
-  - fn `ObjectContactDialog` L36-122 (~950 tok)
+  - fn `IconClose` L20-35 (~166 tok)
+  - fn `ObjectContactDialog` L36-129 (~823 tok)
 - `ObjectDescription.tsx` — Client. Omschrijving clamped behind a fade with a "lees de volledige omschrijving" toggle; renders parsed Realworks text. (~813 tok)
   - fn `Inline` L12-28 (~121 tok)
   - fn `ObjectDescription` L29-91 (~616 tok)
@@ -426,10 +445,10 @@
   - fn `Spec` L29-41 (~118 tok)
   - fn `ObjectHeader` L42-124 (~713 tok)
 - `ObjectSidebar.tsx` — Sticky price card (status pill, CTAs, feiten, brochure/delen) + makelaar card. De bovenste knop opent ObjectContactDialog zodra er een formulier gekozen is, anders is het een gewone link. (~1862 tok)
-  - fn `IconDownload` L48-59 (~84 tok)
-  - fn `IconShare` L61-70 (~133 tok)
-  - fn `Feit` L72-79 (~112 tok)
-  - fn `ObjectSidebar` L82-203 (~1100 tok)
+  - fn `IconDownload` L48-60 (~84 tok)
+  - fn `IconShare` L61-71 (~133 tok)
+  - fn `Feit` L72-81 (~112 tok)
+  - fn `ObjectSidebar` L82-204 (~1079 tok)
 - `ShareButton.tsx` — Client. navigator.share with a clipboard fallback. (~254 tok)
 - `SimilarObjects.tsx` — "Vergelijkbare woningen" band on sand, reusing `ListingCard`. (~417 tok)
 
@@ -476,9 +495,11 @@
 - `chrome.ts` — Scroll threshold (px) before the topbar gets the stuck state. (~62 tok)
 - `cn.ts` — Exports cn (~37 tok)
 - `contact-content.ts` — Icons shared by the contact cards and the form aside. (~1930 tok)
-- `form-fields.ts` — Veldvorm van CMS-formulieren (incl. het verborgen veldtype + `fillTokens()` voor `{{adres}}`-achtige waarden) en `toFormDefinition()` (GROQ-resultaat → renderervorm), `toSteps()` (modus → één vorm) + `toFieldRows()` (rij-indeling: expliciete `width`, met de narrow-type-heuristiek als fallback voor niet-gemigreerde documenten). Geen React. (~862 tok)
-  - fn `toSteps` L63-85 (~244 tok)
-  - fn `toFieldRows` L86-104 (~161 tok)
+- `form-fields.ts` — Veldvorm van CMS-formulieren (incl. het verborgen veldtype + `fillTokens()` voor `{{adres}}`-achtige waarden) en `toFormDefinition()` (GROQ-resultaat → renderervorm), `toSteps()` (modus → één vorm) + `toFieldRows()` (rij-indeling: expliciete `width`, met de narrow-type-heuristiek als fallback voor niet-gemigreerde documenten). Geen React. (~1535 tok)
+  - fn `toSteps` L67-81 (~128 tok)
+  - fn `fillTokens` L82-100 (~248 tok)
+  - fn `toFieldRows` L101-125 (~243 tok)
+  - fn `toFormDefinition` L126-166 (~400 tok)
 - `format.ts` — `euro()`, `longDate()`, `shortDate()` for object data. (~228 tok)
 - `funda-reviews.ts` — Pure parser voor de Funda-beoordelingenwidget: HTML -> reviews, paginering, stabiele sleutels. Geen fetch, geen Sanity. (~4510 tok)
   - fn `buildWidgetUrl` L72-93 (~168 tok)
@@ -504,10 +525,20 @@
 - `home-content.ts` — Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more (~1046 tok)
 - `links.ts` — Resolve a Sanity link/cta object to a usable href. (~258 tok)
 - `nvm-content.ts` — Exports NVM_HERO, NVM_FACTS, NVM_BENEFITS_IMAGE, NVM_BENEFITS_INTRO + 11 more (~2965 tok)
-- `object-content.ts` — Status labels/tones, back link, makelaar card, CTA copy for the object page. (~518 tok)
-  - fn `statusOf` L12-53 (~407 tok)
+- `object-content.ts` — The three feed statuses, with the label and pill tone the site shows for each. (~1224 tok)
+  - fn `statusOf` L13-127 (~1097 tok)
 - `over-ons-content.ts` — Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more (~1949 tok)
 - `phone.ts` — Exports parsePhoneNumber (~28 tok)
+- `realworks.ts` — Vertaalt een object uit de Realworks-feed (`/wonen/v3/objecten`) naar een (~3552 tok)
+  - fn `label` L95-102 (~104 tok)
+  - fn `sentence` L103-111 (~109 tok)
+  - fn `plaatsnaam` L112-118 (~71 tok)
+  - fn `slugify` L119-138 (~156 tok)
+  - fn `euro` L139-139 (~21 tok)
+  - fn `datum` L140-143 (~52 tok)
+  - fn `rij` L144-167 (~246 tok)
+  - fn `mediaFilename` L168-172 (~40 tok)
+  - fn `toWoning` L173-348 (~1858 tok)
 - `reviews.ts` — Aggregates die PAGE_QUERY over alle reviews afleidt. Alles kan ontbreken. (~1780 tok)
   - fn `subjectGrades` L63-83 (~210 tok)
   - fn `truncateQuote` L84-109 (~268 tok)
@@ -519,7 +550,11 @@
   - fn `reviewCountNoun` L157-165 (~93 tok)
   - fn `getReviewScrollStep` L166-169 (~30 tok)
   - fn `getReviewProgressWidth` L170-179 (~69 tok)
-- `site.ts` — Exports SITE, NavLink, FooterLinkGroup, DEFAULT_FOOTER_LOGOS, REGIONS (~257 tok)
+- `route-auth.ts` — Toegang tot de import-routes (Funda-reviews, Realworks-objecten). (~585 tok)
+  - fn `equalSecret` L14-20 (~83 tok)
+  - fn `isAuthorized` L21-36 (~175 tok)
+  - fn `corsHeaders` L37-55 (~171 tok)
+- `site.ts` — Zonder slash aan het eind — sitemap, robots en absolute links plakken er zelf een pad achter. (~298 tok)
 - `taxatie-content.ts` — Weglaten laat de knop weg — de vergelijkingskaart zonder aanbod. (~3148 tok)
 - `verkoop-content.ts` — Plain answer text. Optional `link` is inserted before `afterLink`. (~2201 tok)
 - `waardebepaling-content.ts` — Copy + form field defs for /waardebepaling, incl. the wizard's `contactForm` field list (`WAARDEBEPALING_FORM_FIELDS`). (~3053 tok)
@@ -531,20 +566,21 @@
 - `image.ts` — Exports SanityImage, urlFor, imageSrc, toImage (~293 tok)
 - `metadata.ts` — Map a page document's `seo` object onto Next metadata. Unset fields fall back to the root layout. (~511 tok)
   - fn `pageMetadata` L23-57 (~353 tok)
-- `queries.ts` — Resolve internal page references on link/cta objects. (~1986 tok)
-- `sanity.types.ts` — --------------------------------------------------------------------------------- (~23061 tok)
-- `schema.json` (~53615 tok)
+- `queries.ts` — Resolve internal page references on link/cta objects. (~2290 tok)
+- `sanity.types.ts` — --------------------------------------------------------------------------------- (~24122 tok)
+- `schema.json` (~54419 tok)
 - `write-client.ts` — Sanity-client met schrijftoken voor server-side routes. Los van client.ts, dat tokenloos blijft. (~268 tok)
 
 ## docs/
 
-- `formulieren.md` — Formulieren (~1777 tok)
-- `funda-review-scraper.md` — Hoe de scraper werkt, welke env-variabelen hij nodig heeft en wat er nog niet geverifieerd is. (~1621 tok)
+- `formulieren.md` — Formulieren (~2024 tok)
+- `funda-review-scraper.md` — Funda-review-scraper (~1819 tok)
+- `realworks-import.md` — Realworks-objecten-import (~1266 tok)
 
 ## studio-hart-huis/
 
 - `.gitignore` — Git ignore rules (~118 tok)
-- `environment.d.ts` — Declareert de SANITY_STUDIO_* env-variabelen; de studio heeft geen @types/node. (~161 tok)
+- `environment.d.ts` — De studio wordt door Vite gebouwd, dat `process.env.SANITY_STUDIO_*` (~206 tok)
 - `eslint.config.mjs` — ESLint flat configuration (~21 tok)
 - `package-lock.json` — npm lock file (~173788 tok)
 - `package.json` — Node.js package manifest (~291 tok)
@@ -552,9 +588,9 @@
 - `README.md` — Project documentation (~131 tok)
 - `sanity.cli.ts` — Typegen draait vanuit de studio — de CLI heeft een studio-project-root (~249 tok)
 - `sanity.config.ts` (~121 tok)
-- `structure.ts` — Exports structure (~671 tok)
+- `structure.ts` — Exports structure (~866 tok)
 - `tsconfig.json` — TypeScript configuration (~120 tok)
-- `tsconfig.tsbuildinfo` (~33583 tok)
+- `tsconfig.tsbuildinfo` (~45144 tok)
 
 ## studio-hart-huis/.sanity/runtime/
 
@@ -565,14 +601,14 @@
 
 - `faqType.ts` — Exports faqType (~238 tok)
 - `footerType.ts` — Exports footerType (~1398 tok)
-- `formGeneralSettingsType.ts` — Mail and spam settings shared by every `form`. Sending goes through (~1001 tok)
-- `formType.ts` — Multi-step forms keep their fields under `steps`, simple ones under `fields`. (~1572 tok)
-  - fn `isSteps` L5-178 (~1514 tok)
-- `index.ts` — Exports schemaTypes (~1058 tok)
-- `objectSettingsType.ts` — Singleton "Objectpagina": knoptekst, het formulier achter de knop, de venstertekst en de terugvallink. Eén document voor alle objecten, want de import schrijft de woningen. (~525 tok)
+- `formGeneralSettingsType.ts` — Mail and spam settings shared by every `form`. Sending goes through (~1030 tok)
+- `formType.ts` — Multi-step forms keep their fields under `steps`, simple ones under `fields`. (~2241 tok)
+  - fn `isSteps` L5-247 (~2183 tok)
+- `index.ts` — Exports schemaTypes (~1080 tok)
 - `navigationType.ts` — Exports navigationType (~470 tok)
+- `objectSettingsType.ts` — Singleton "Objectpagina": knoptekst, het formulier achter de knop, de venstertekst en de terugvallink. Eén document voor alle objecten, want de import schrijft de woningen. (~525 tok)
 - `pageBuilderType.ts` — Exports pageBuilderType (~554 tok)
-- `pageType.ts` — Exports pageType (~213 tok)
+- `pageType.ts` — Exports pageType (~285 tok)
 - `reviewType.ts` — Cijfers komen straks uit de scraper; daarom optioneel. (~697 tok)
   - fn `scoreField` L5-79 (~652 tok)
 - `woningType.ts` — The "Object" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional. (~2608 tok)
@@ -623,7 +659,7 @@
 ## studio-hart-huis/schemaTypes/objects/
 
 - `ctaType.ts` — Exports ctaType (~94 tok)
-- `formFieldType.ts` — Hide a field unless the surrounding field is one of these input types. (~1020 tok)
+- `formFieldType.ts` — Hide a field unless the surrounding field is one of these input types. (~1314 tok)
 - `linkFields.ts` — Shared internal/external link fields for `link` and `cta` objects. (~407 tok)
 - `linkType.ts` — Exports linkType (~54 tok)
 - `seoType.ts` — Exports seoType (~231 tok)
@@ -634,9 +670,13 @@
 
 ## studio-hart-huis/tools/
 
-- `FundaReviewsTool.tsx` — Paneel onder Tools in de linkerkolom dat de scraper-route aanroept, met een testknop die niets wegschrijft. (~1568 tok)
-  - fn `describe` L84-101 (~215 tok)
-  - fn `FundaReviews` L102-165 (~632 tok)
+- `FundaReviewsTool.tsx` — Knop in de studio die de scraper-route op de site aanroept. De route doet het (~1164 tok)
+  - fn `describe` L34-51 (~215 tok)
+  - fn `FundaReviews` L52-115 (~632 tok)
+- `panelStyles.ts` — Sanity's eigen card-variabelen, zodat het paneel meekleurt met het thema dat (~426 tok)
+- `RealworksTool.tsx` — Knop in de studio die de Realworks-import op de site aanroept. De route doet (~1125 tok)
+  - fn `describe` L29-42 (~169 tok)
+  - fn `RealworksObjecten` L43-108 (~716 tok)
 
 ## template/
 

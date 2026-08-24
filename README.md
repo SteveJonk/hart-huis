@@ -16,3 +16,6 @@ Content is managed in Sanity Studio and rendered by the Next.js app.
 - [Funda-review-scraper](docs/funda-review-scraper.md) — haalt de beoordelingen
   van Funda op en zet ze in Sanity, dagelijks via de Vercel-cron of met de knop
   in de studio.
+- [Realworks-objecten-import](docs/realworks-import.md) — haalt het actieve
+  aanbod op bij Realworks en zet het als objecten in Sanity, dagelijks via de
+  Vercel-cron of met de knop in de studio.

@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-21
+> Last updated: 2026-08-24
 
 ---
 
@@ -135,6 +135,15 @@
 - `check:form` dekt nu ook verborgen velden (rij-indeling, tokens, allow-list)
 - **nog te seeden:** `npm run seed:objectpagina`
 
+**Realworks-objecten-import (24-08-2026)**
+- `GET /api/import-realworks` haalt `https://api.realworks.nl/wonen/v3/objecten?actief=true` op (header uit `REALWORKS_AUTH_HEADER`) en schrijft `woning`-documenten weg — bijwerken op `realworksId`, `createOrReplace`, dus de feed is de waarheid
+- Mapping staat puur in `app/src/lib/realworks.ts`; `npm run check:realworks` draait hem tegen een echte opgeslagen feed (`scripts/fixtures/realworks-objecten.json`, 10 objecten)
+- Foto's worden op bestandsnaam hergebruikt uit de Sanity-bibliotheek en anders zes tegelijk geladen; plattegronden blijven eruit, een PDF in de media wordt de brochure
+- Knop **Tools → Realworks-objecten** in de studio (met "Eerst testen"), cron in `vercel.json` op `30 4 * * *`
+- `isAuthorized`/`corsHeaders` zijn uit de Funda-route getrokken naar `src/lib/route-auth.ts`; de studioknoppen delen `FUNDA_SCRAPER_SECRET`, de studio-URL staat in `SANITY_STUDIO_REALWORKS_URL`
+- Uitleg: `docs/realworks-import.md`
+- **nog niet gedraaid tegen productie:** de eerste echte import (11 objecten, ~490 foto's) moet nog. Daarna de zes mock-objecten uit `seed:objecten` weggooien
+
 ## 🚀 Next phase
 
 **Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026, waardebepaling 20-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`, `npm run seed:waardebepaling`). Wat resteert is afmaken en aanscherpen. **Alle designs uit `app/example-designs/` zijn nu geïmplementeerd** (nvm en zoekopdracht toegevoegd 21-08-2026). Wat resteert is seeden en aanscherpen: `npm run seed:nvm && npm run seed:nav`, `npm run seed:zoekopdracht`, en `npm run seed:waardebepaling` opnieuw vanwege bug-018.
@@ -166,6 +175,8 @@
 ## ⚠️ External blockers (don't block coding)
 
 - _<env vars, secrets, external accounts, manual steps>_
+- **Realworks whitelist't op IP.** Vanaf deze machine werkt de feed (24-08-2026, 11 objecten). Het IP van Vercel — en later van Coolify — moet er nog op, anders komt er een 401/403 of een leeg antwoord terug.
+- Op Vercel zetten: `REALWORKS_AUTH_HEADER` (mét het `rwauth `-voorvoegsel), naast de al genoemde `SANITY_API_WRITE_TOKEN`, `CRON_SECRET`, `FUNDA_SCRAPER_SECRET`, `STUDIO_ORIGIN`. In de studio: `SANITY_STUDIO_REALWORKS_URL`.
 
 ---
 
@@ -176,6 +187,7 @@ cd app
 npm run check:funda      # parser van de Funda-scraper tegen de fixture
 npm run check:reviews    # afgeleide review-cijfers
 npm run check:tekst      # Realworks-aanbiedingstekst
+npm run check:realworks  # mapping van de Realworks-feed naar `woning`
 npm run check:form       # rij-indeling, verborgen velden en de allow-list van CMS-formulieren
 npm run seed:sanity      # alle pagina's seeden (vereist SANITY_API_WRITE_TOKEN)
 npm run seed:objectpagina # bezichtigingsformulier + de knop op de objectpagina
@@ -183,6 +195,10 @@ npm run seed:objectpagina # bezichtigingsformulier + de knop op de objectpagina
 # de scraper uitproberen zonder iets op te slaan
 curl -H "x-scraper-secret: $FUNDA_SCRAPER_SECRET" \
   'https://<site>/api/scrape-funda-reviews?dryRun=1'
+
+# de objecten-import uitproberen zonder iets op te slaan
+curl -H "x-scraper-secret: $FUNDA_SCRAPER_SECRET" \
+  'https://<site>/api/import-realworks?dryRun=1'
 ```
 
 ---

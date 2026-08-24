@@ -4,6 +4,10 @@
     {
       "path": "/api/scrape-funda-reviews",
       "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/import-realworks",
+      "schedule": "30 4 * * *"
     }
   ]
 }

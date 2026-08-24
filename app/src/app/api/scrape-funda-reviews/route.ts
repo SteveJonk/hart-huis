@@ -12,8 +12,8 @@
  *   GET /api/scrape-funda-reviews?dryRun=1          → wat er gevonden is
  *   GET /api/scrape-funda-reviews?debug=1&maxPages=1 → de ruwe tekst per pagina
  */
-import { createHash, timingSafeEqual } from 'node:crypto';
 import { NextResponse } from 'next/server';
+import { corsHeaders, isAuthorized } from '@/lib/route-auth';
 import {
   DEFAULT_MAKELAAR_ID,
   FUNDA_REVIEW_TYPES,
@@ -59,53 +59,6 @@ type ReviewDocument = {
   date?: string;
   grade?: number;
 } & Partial<Record<SubscoreField, number>>;
-
-function equalSecret(received: string, expected: string): boolean {
-  // hashen zodat timingSafeEqual geen gelijke lengtes nodig heeft
-  const a = createHash('sha256').update(received).digest();
-  const b = createHash('sha256').update(expected).digest();
-  return timingSafeEqual(a, b);
-}
-
-/**
- * De cron gebruikt Vercels eigen CRON_SECRET, de studioknop een aparte
- * FUNDA_SCRAPER_SECRET. Die twee zijn met opzet gescheiden: de studio-bundle
- * staat publiek op sanity.studio, dus zijn secret mag nooit hetzelfde zijn.
- */
-function isAuthorized(request: Request): boolean {
-  const cronSecret = process.env.CRON_SECRET;
-  const scraperSecret = process.env.FUNDA_SCRAPER_SECRET;
-
-  if (!cronSecret && !scraperSecret) return false;
-
-  const bearer = request.headers.get('authorization')?.replace(/^Bearer\s+/i, '');
-  if (bearer && cronSecret && equalSecret(bearer, cronSecret)) return true;
-
-  const header = request.headers.get('x-scraper-secret');
-  if (header && scraperSecret && equalSecret(header, scraperSecret)) return true;
-
-  return false;
-}
-
-/** De studio draait op een andere origin, dus de knop heeft CORS nodig. */
-function corsHeaders(request: Request): Record<string, string> {
-  const origin = request.headers.get('origin') ?? '';
-  const allowed = (process.env.STUDIO_ORIGIN ?? '')
-    .split(',')
-    .map((value) => value.trim())
-    .filter(Boolean);
-
-  const permitted =
-    allowed.includes(origin) || /^https:\/\/[a-z0-9-]+\.sanity\.studio$/.test(origin);
-
-  if (!permitted) return {};
-  return {
-    'Access-Control-Allow-Origin': origin,
-    'Access-Control-Allow-Headers': 'content-type, x-scraper-secret',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    Vary: 'Origin',
-  };
-}
 
 async function fetchPage(url: string): Promise<string> {
   const response = await fetch(url, { headers: REQUEST_HEADERS, cache: 'no-store' });
