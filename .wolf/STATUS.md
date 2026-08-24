@@ -139,6 +139,7 @@
 - `GET /api/import-realworks` haalt `https://api.realworks.nl/wonen/v3/objecten?actief=true` op (header uit `REALWORKS_AUTH_HEADER`) en schrijft `woning`-documenten weg — bijwerken op `realworksId`, `createOrReplace`, dus de feed is de waarheid
 - Mapping staat puur in `app/src/lib/realworks.ts`; `npm run check:realworks` draait hem tegen een echte opgeslagen feed (`scripts/fixtures/realworks-objecten.json`, 10 objecten)
 - Foto's worden op bestandsnaam hergebruikt uit de Sanity-bibliotheek en anders zes tegelijk geladen; plattegronden blijven eruit, een PDF in de media wordt de brochure
+- **24-08-2026:** de media-links geven standaard een thumbnail van 150×100 — er gaat nu `width=2000&height=2000` achter (`FOTO_KADER`), en dat kader zit in de bestandsnaam (`287669985-w2000.jpg`). Wie al geïmporteerd had, moet de import één keer opnieuw draaien; de oude thumbnails blijven als ongebruikte assets in de Media-bibliotheek achter
 - Knop **Tools → Realworks-objecten** in de studio (met "Eerst testen"), cron in `vercel.json` op `30 4 * * *`
 - `isAuthorized`/`corsHeaders` zijn uit de Funda-route getrokken naar `src/lib/route-auth.ts`; de studioknoppen delen `FUNDA_SCRAPER_SECRET`, de studio-URL staat in `SANITY_STUDIO_REALWORKS_URL`
 - Uitleg: `docs/realworks-import.md`

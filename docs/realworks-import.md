@@ -47,9 +47,21 @@ Een paar keuzes die niet uit de veldnamen te raden zijn:
 - **foto's** — alleen `HOOFDFOTO` en `FOTO`, hoofdfoto voorop. Plattegronden
   blijven eruit: de objectpagina heeft er geen plek voor. Een `application/pdf`
   in de media wordt de brochure.
-- **assets** — foto's worden herkend aan de bestandsnaam uit de link
-  (`287669985.jpg`). Staat die al in de Sanity-bibliotheek, dan wordt hij
-  hergebruikt en niet opnieuw geladen. Alleen de eerste run is dus traag.
+- **formaat** — de media-link geeft standaard een **thumbnail van 150×100**.
+  Groter kan met `width` én `height` samen; één van de twee alleen doet niets
+  (`width=1600` in z'n eentje levert 225×150). De foto wordt binnen dat kader
+  geschaald met behoud van verhouding en nooit verder opgeblazen dan het
+  origineel — in de praktijk 3000×2000. De import vraagt `width=2000&height=2000`
+  (`FOTO_KADER` in `realworks.ts`); Sanity maakt daar zelf de kleinere varianten
+  van. De handtekening in `check=api_sha256:…` blijft gewoon geldig, die dekt de
+  extra parameters niet af.
+- **assets** — foto's worden herkend aan de bestandsnaam uit de link plus het
+  kader (`287669985-w2000.jpg`). Staat die al in de Sanity-bibliotheek, dan
+  wordt hij hergebruikt en niet opnieuw geladen. Alleen de eerste run is dus
+  traag. Verander je `FOTO_KADER`, dan verandert de naam mee en laadt de
+  volgende import alles opnieuw in het nieuwe formaat — de oude bestanden
+  blijven als ongebruikte assets in de Media-bibliotheek achter en kun je daar
+  weggooien.
 - **plaatsnaam** — de feed schrijft in kapitalen (`SPAARNDAM`); de import maakt
   er "Spaarndam" van.
 
@@ -74,10 +86,10 @@ een half uur na de Funda-scraper.
 > in de foutmelding.
 
 > Op het Hobby-plan is een functie na 60 seconden afgekapt. De route zet
-> `maxDuration = 300`. De eerste run laadt honderden foto's en haalt dat
-> mogelijk niet; hij is dan gewoon opnieuw te draaien — per object wordt direct
-> weggeschreven en al geladen foto's worden hergebruikt. Met `?limit=n` doe je
-> het in porties.
+> `maxDuration = 300`. De eerste run laadt honderden foto's van elk bijna een
+> megabyte en haalt dat vrijwel zeker niet; hij is dan gewoon opnieuw te
+> draaien — per object wordt direct weggeschreven en al geladen foto's worden
+> hergebruikt. Met `?limit=n` doe je het in porties.
 
 ### Studio
 

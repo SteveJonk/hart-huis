@@ -35,7 +35,10 @@ export type RealworksObject = {
     postcode?: string | null;
     plaats?: string | null;
   } | null;
-  teksten?: { aanbiedingstekst?: string | null; aanbiedingstekstEngels?: string | null } | null;
+  teksten?: {
+    aanbiedingstekst?: string | null;
+    aanbiedingstekstEngels?: string | null;
+  } | null;
   financieel?: {
     overdracht?: {
       status?: string | null;
@@ -104,7 +107,9 @@ export function sentence(values: string[] | null | undefined): string | undefine
   const labels = (values ?? []).map(label).filter(Boolean) as string[];
   if (labels.length === 0) return undefined;
   return labels
-    .map((text, index) => (index === 0 ? text : text.charAt(0).toLowerCase() + text.slice(1)))
+    .map((text, index) =>
+      index === 0 ? text : text.charAt(0).toLowerCase() + text.slice(1),
+    )
     .join(', ');
 }
 
@@ -113,7 +118,10 @@ function plaatsnaam(value: string | null | undefined): string | undefined {
   if (!value) return undefined;
   return value
     .toLowerCase()
-    .replace(/(^|[\s'-])([a-z])/g, (_, prefix: string, char: string) => prefix + char.toUpperCase());
+    .replace(
+      /(^|[\s'-])([a-z])/g,
+      (_, prefix: string, char: string) => prefix + char.toUpperCase(),
+    );
 }
 
 export function slugify(value: string): string {
@@ -138,7 +146,11 @@ const ENERGIELABELS = ['A+++', 'A++', 'A+', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
 const euro = (value: number) => `€ ${value.toLocaleString('nl-NL')},-`;
 const datum = (iso: string) =>
-  new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+  new Date(iso).toLocaleDateString('nl-NL', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 
 /** Eén rij; valt weg zodra de feed niets levert. */
 function rij(naam: string, waarde: string | number | string[] | undefined | null) {
@@ -164,10 +176,33 @@ export type MappedWoning = {
   fields: Record<string, unknown>;
 };
 
-/** Bestandsnaam uit de media-link, zonder de query met de handtekening. */
-export function mediaFilename(link: string): string {
+/**
+ * Realworks levert standaard een **thumbnail van 150×100**. Groter kan met
+ * `width` én `height` samen — één van de twee alleen doet niets (`width=1600`
+ * in z'n eentje geeft 225×150). De afbeelding wordt binnen dat kader geschaald
+ * met behoud van verhouding, en nooit verder opgeblazen dan het origineel
+ * (in de praktijk 3000×2000). 2000 px is ruim genoeg voor de site; Sanity
+ * maakt daar zelf de kleinere varianten van.
+ */
+export const FOTO_KADER = 1200;
+
+export function fotoUrl(link: string): string {
+  return `${link}${link.includes('?') ? '&' : '?'}width=${FOTO_KADER}&height=${FOTO_KADER}`;
+}
+
+/**
+ * Bestandsnaam uit de media-link, zonder de query met de handtekening. Het
+ * kader zit in de naam: verandert `FOTO_KADER`, dan is het een ander bestand en
+ * laadt de import hem opnieuw in plaats van de oude maat te hergebruiken.
+ */
+export function mediaFilename(link: string, kader?: number): string {
   const path = link.split('?')[0];
-  return path.slice(path.lastIndexOf('/') + 1);
+  const naam = path.slice(path.lastIndexOf('/') + 1);
+  if (!kader) return naam;
+  const punt = naam.lastIndexOf('.');
+  return punt < 0
+    ? `${naam}-w${kader}`
+    : `${naam.slice(0, punt)}-w${kader}${naam.slice(punt)}`;
 }
 
 export function toWoning(object: RealworksObject): MappedWoning {
@@ -177,7 +212,10 @@ export function toWoning(object: RealworksObject): MappedWoning {
   const etages = object.detail?.etages ?? [];
 
   const straat = object.adres?.straat?.trim() ?? '';
-  const nummer = [object.adres?.huisnummer?.hoofdnummer, object.adres?.huisnummer?.toevoeging]
+  const nummer = [
+    object.adres?.huisnummer?.hoofdnummer,
+    object.adres?.huisnummer?.toevoeging,
+  ]
     .filter(Boolean)
     .join('');
   const adres = [straat, nummer].filter(Boolean).join(' ') || `Object ${object.id}`;
@@ -188,11 +226,16 @@ export function toWoning(object: RealworksObject): MappedWoning {
   const aangebodenSinds = publicatie ? publicatie.slice(0, 10) : undefined;
 
   const soortWoning =
-    [label(algemeen.woonhuissoort), label(algemeen.woonhuistype)].filter(Boolean).join(', ') ||
+    [label(algemeen.woonhuissoort), label(algemeen.woonhuistype)]
+      .filter(Boolean)
+      .join(', ') ||
     label(algemeen.appartementsoort) ||
     label(object.object?.type?.objecttype);
 
-  const slaapkamers = etages.reduce((total, etage) => total + (etage.aantalSlaapkamers ?? 0), 0);
+  const slaapkamers = etages.reduce(
+    (total, etage) => total + (etage.aantalSlaapkamers ?? 0),
+    0,
+  );
   const badkamerLijst = etages.flatMap((etage) => etage.badkamers ?? []);
   const badkamervoorzieningen = [
     ...new Set(badkamerLijst.flatMap((badkamer) => badkamer.voorzieningen ?? [])),
@@ -217,7 +260,10 @@ export function toWoning(object: RealworksObject): MappedWoning {
     [
       'Overdracht',
       [
-        rij('Vraagprijs', prijs ? `${euro(prijs)} ${prijsConditie ?? ''}`.trim() : undefined),
+        rij(
+          'Vraagprijs',
+          prijs ? `${euro(prijs)} ${prijsConditie ?? ''}`.trim() : undefined,
+        ),
         rij('Aangeboden sinds', aangebodenSinds ? datum(aangebodenSinds) : undefined),
         rij('Status', label(overdracht.status)),
         rij('Aanvaarding', label(overdracht.aanvaarding)),
@@ -234,18 +280,27 @@ export function toWoning(object: RealworksObject): MappedWoning {
     [
       'Oppervlakten en inhoud',
       [
-        rij('Wonen', algemeen.woonoppervlakte ? `${algemeen.woonoppervlakte} m²` : undefined),
+        rij(
+          'Wonen',
+          algemeen.woonoppervlakte ? `${algemeen.woonoppervlakte} m²` : undefined,
+        ),
         rij(
           'Gebouwgebonden buitenruimte',
-          algemeen.gebruiksoppervlakteOverig ? `${algemeen.gebruiksoppervlakteOverig} m²` : undefined,
+          algemeen.gebruiksoppervlakteOverig
+            ? `${algemeen.gebruiksoppervlakteOverig} m²`
+            : undefined,
         ),
         rij(
           'Externe bergruimte',
-          buiten.oppervlakteExterneBergruimte ? `${buiten.oppervlakteExterneBergruimte} m²` : undefined,
+          buiten.oppervlakteExterneBergruimte
+            ? `${buiten.oppervlakteExterneBergruimte} m²`
+            : undefined,
         ),
         rij(
           'Perceel',
-          algemeen.totaleKadestraleOppervlakte ? `${algemeen.totaleKadestraleOppervlakte} m²` : undefined,
+          algemeen.totaleKadestraleOppervlakte
+            ? `${algemeen.totaleKadestraleOppervlakte} m²`
+            : undefined,
         ),
         rij('Inhoud', algemeen.inhoud ? `${algemeen.inhoud} m³` : undefined),
       ],
@@ -283,7 +338,10 @@ export function toWoning(object: RealworksObject): MappedWoning {
   const kenmerkGroepen = groepen
     .map(([titel, rijen]) => ({
       _type: 'kenmerkGroep' as const,
-      _key: createHash('sha1').update(`${object.id}-${titel}`).digest('hex').slice(0, 12),
+      _key: createHash('sha1')
+        .update(`${object.id}-${titel}`)
+        .digest('hex')
+        .slice(0, 12),
       titel,
       rijen: rijen.filter((row) => row !== null),
     }))
@@ -291,11 +349,14 @@ export function toWoning(object: RealworksObject): MappedWoning {
 
   // Hoofdfoto eerst, daarna op volgnummer. Plattegronden blijven buiten de
   // galerij; de site heeft er geen plek voor.
-  const media = (object.media ?? []).filter((item) => item.vrijgave !== false && item.link);
+  const media = (object.media ?? []).filter(
+    (item) => item.vrijgave !== false && item.link,
+  );
   const fotos = media
     .filter(
       (item) =>
-        item.mimetype?.startsWith('image/') && (item.soort === 'HOOFDFOTO' || item.soort === 'FOTO'),
+        item.mimetype?.startsWith('image/') &&
+        (item.soort === 'HOOFDFOTO' || item.soort === 'FOTO'),
     )
     .sort(
       (a, b) =>
@@ -303,8 +364,8 @@ export function toWoning(object: RealworksObject): MappedWoning {
         (a.volgnummer ?? 0) - (b.volgnummer ?? 0),
     )
     .map((item, index) => ({
-      url: item.link as string,
-      filename: mediaFilename(item.link as string),
+      url: fotoUrl(item.link as string),
+      filename: mediaFilename(item.link as string, FOTO_KADER),
       alt: `${adres} in ${plaats} — foto ${index + 1}`,
     }));
 
@@ -315,7 +376,10 @@ export function toWoning(object: RealworksObject): MappedWoning {
     slug,
     fotos,
     brochure: document
-      ? { url: document.link as string, filename: mediaFilename(document.link as string) }
+      ? {
+          url: document.link as string,
+          filename: mediaFilename(document.link as string),
+        }
       : undefined,
     fields: {
       realworksId: object.id,
@@ -326,7 +390,10 @@ export function toWoning(object: RealworksObject): MappedWoning {
       status: STATUS[overdracht.status ?? ''] ?? 'beschikbaar',
       prijs,
       // Het schema kent alleen k.k. en v.o.n.; iets anders laten we leeg.
-      prijsConditie: prijsConditie === 'k.k.' || prijsConditie === 'v.o.n.' ? prijsConditie : undefined,
+      prijsConditie:
+        prijsConditie === 'k.k.' || prijsConditie === 'v.o.n.'
+          ? prijsConditie
+          : undefined,
       aangebodenSinds,
       aanvaarding: label(overdracht.aanvaarding),
       soortWoning,

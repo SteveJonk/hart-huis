@@ -14,6 +14,7 @@
     "check:realworks": "tsx scripts/check-realworks.ts",
     "check:form": "tsx scripts/check-form.ts",
     "migrate:forms": "tsx --env-file=.env scripts/migrate-forms.ts",
+    "wipe:objecten": "tsx --env-file=.env scripts/wipe-objecten.ts",
     "seed:sanity": "tsx --env-file=.env scripts/seed.ts",
     "seed:home": "tsx --env-file=.env scripts/seed.ts home",
     "seed:verkoop": "tsx --env-file=.env scripts/seed.ts verkoop",

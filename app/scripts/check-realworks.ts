@@ -78,7 +78,11 @@ assert.deepEqual(waarde('Buitenruimte en parkeren', 'Ligging tuin'), ['West']);
 assert.deepEqual(waarde('Oppervlakten en inhoud', 'Externe bergruimte'), ['11 m²']);
 
 // Hoofdfoto voorop, plattegronden en de brochure niet in de galerij.
-assert.equal(huis.fotos[0].filename, '287669985.jpg');
+assert.equal(huis.fotos[0].filename, '287669985-w2000.jpg');
 assert.ok(huis.fotos.every((foto) => foto.filename.endsWith('.jpg')));
+
+// Zonder width én height geeft Realworks een thumbnail van 150x100.
+assert.ok(huis.fotos[0].url.includes('width=2000&height=2000'));
+assert.ok(huis.fotos[0].url.includes('check=api_sha256'), 'de handtekening moet intact blijven');
 
 console.log(`✓ ${feed.resultaten.length} objecten gemapt zonder verrassingen`);
