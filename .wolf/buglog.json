@@ -419,6 +419,25 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-25T00:00:00Z"
+    },
+    {
+      "id": "bug-023",
+      "timestamp": "2026-08-25T00:00:00Z",
+      "error_message": "npm run check:realworks faalt: AssertionError actual '287669985-w1200.jpg', expected '287669985-w2000.jpg'.",
+      "file": "app/scripts/check-realworks.ts",
+      "root_cause": "In commit 56b2fc6 ('realworks image sizes') is FOTO_KADER op 1200 gezet, maar de JSDoc erboven, docs/realworks-import.md en de asserts in het checkscript bleven op 2000 staan. Het script was dus al rood vóór deze sessie.",
+      "fix": "1200 is de bedoelde waarde (bevestigd door de gebruiker). JSDoc, docs/realworks-import.md en de twee asserts in check-realworks.ts naar 1200 getrokken; check:realworks is weer groen.",
+      "tags": [
+        "realworks",
+        "test",
+        "FOTO_KADER",
+        "docs"
+      ],
+      "related_bugs": [
+        "bug-022"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-25T00:00:00Z"
     }
   ]
 }

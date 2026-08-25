@@ -181,7 +181,7 @@ export type MappedWoning = {
  * `width` én `height` samen — één van de twee alleen doet niets (`width=1600`
  * in z'n eentje geeft 225×150). De afbeelding wordt binnen dat kader geschaald
  * met behoud van verhouding, en nooit verder opgeblazen dan het origineel
- * (in de praktijk 3000×2000). 2000 px is ruim genoeg voor de site; Sanity
+ * (in de praktijk 3000×2000). 1200 px is ruim genoeg voor de site; Sanity
  * maakt daar zelf de kleinere varianten van.
  */
 export const FOTO_KADER = 1200;
