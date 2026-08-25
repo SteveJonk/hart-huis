@@ -412,3 +412,72 @@ export function toWoning(object: RealworksObject): MappedWoning {
     },
   };
 }
+
+/** Foto zoals hij in Sanity staat, met de bestandsnaam van de asset erbij. */
+export type BestaandeFoto = Record<string, unknown> & { bestandsnaam?: string | null };
+
+export type BestaandeWoning = {
+  _id: string;
+  realworksId: number | null;
+  fotos?: BestaandeFoto[] | null;
+  brochure?: Record<string, unknown> | null;
+};
+
+/** De projectie hierboven zet `bestandsnaam` erbij; die hoort niet in het document. */
+export function zonderBestandsnaam(foto: BestaandeFoto) {
+  const rest = { ...foto };
+  delete rest.bestandsnaam;
+  return rest;
+}
+
+/**
+ * Wat er voor één object aan media gedaan moet worden. `behouden` staat al in
+ * Sanity en blijft ongemoeid; `laden` moet nog opgehaald worden en komt erachter.
+ */
+export type MediaPlan = {
+  object: MappedWoning;
+  bestaandDoc?: BestaandeWoning;
+  behouden: BestaandeFoto[];
+  laden: MappedWoning['fotos'];
+  brochureLaden: boolean;
+};
+
+/**
+ * Bepaalt per object welke foto's er nog bij moeten. Staan er al foto's op het
+ * document, dan blijven die staan; alleen als de feed er méér heeft dan het
+ * document worden de ontbrekende (op bestandsnaam) toegevoegd. Zo blijven
+ * volgorde en alt-teksten uit de studio intact en groeit de galerij toch mee
+ * met Realworks.
+ */
+export function planMedia(object: MappedWoning, bestaandDoc?: BestaandeWoning): MediaPlan {
+  const behouden = Array.isArray(bestaandDoc?.fotos) ? bestaandDoc.fotos : [];
+  const brochureLaden = Boolean(object.brochure) && !bestaandDoc?.brochure;
+
+  if (behouden.length === 0) {
+    return { object, bestaandDoc, behouden, laden: object.fotos, brochureLaden };
+  }
+
+  if (object.fotos.length <= behouden.length) {
+    return { object, bestaandDoc, behouden, laden: [], brochureLaden };
+  }
+
+  const aanwezig = new Set(
+    behouden.map((foto) => foto.bestandsnaam).filter((naam): naam is string => Boolean(naam)),
+  );
+  return {
+    object,
+    bestaandDoc,
+    behouden,
+    laden: object.fotos.filter((foto) => !aanwezig.has(foto.filename)),
+    brochureLaden,
+  };
+}
+
+/** `_key` die niet botst met de sleutels die al op het document staan. */
+export function vrijeKey(basis: string, gebruikt: Set<string>) {
+  let key = basis;
+  let n = 2;
+  while (gebruikt.has(key)) key = `${basis}-${n++}`;
+  gebruikt.add(key);
+  return key;
+}

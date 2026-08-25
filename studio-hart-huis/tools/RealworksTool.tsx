@@ -24,6 +24,7 @@ type Summary = {
   nieuw?: number
   fotosGeladen?: number
   fotosBehouden?: number
+  fotosToegevoegd?: number
   warnings?: string[]
 }
 
@@ -35,7 +36,8 @@ function describe(summary: Summary): string {
       `${summary.verwerkt ?? 0} gemapt.`
     : `${summary.gevonden ?? 0} objecten opgehaald: ${summary.geschreven ?? 0} weggeschreven ` +
       `(waarvan ${summary.nieuw ?? 0} nieuw), ${summary.fotosGeladen ?? 0} foto's geladen, ` +
-      `${summary.fotosBehouden ?? 0} bestaande foto's behouden.`
+      `${summary.fotosBehouden ?? 0} bestaande foto's behouden, ` +
+      `${summary.fotosToegevoegd ?? 0} aangevuld.`
 
   const warnings = summary.warnings?.length ? `\n\nLet op:\n- ${summary.warnings.join('\n- ')}` : ''
 

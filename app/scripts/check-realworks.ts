@@ -14,7 +14,17 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { label, sentence, slugify, toWoning, type RealworksObject } from '../src/lib/realworks';
+import {
+  label,
+  planMedia,
+  sentence,
+  slugify,
+  toWoning,
+  vrijeKey,
+  type BestaandeWoning,
+  type MappedWoning,
+  type RealworksObject,
+} from '../src/lib/realworks';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const feed = JSON.parse(
@@ -84,5 +94,57 @@ assert.ok(huis.fotos.every((foto) => foto.filename.endsWith('.jpg')));
 // Zonder width én height geeft Realworks een thumbnail van 150x100.
 assert.ok(huis.fotos[0].url.includes('width=2000&height=2000'));
 assert.ok(huis.fotos[0].url.includes('check=api_sha256'), 'de handtekening moet intact blijven');
+
+// planMedia: wat er al in Sanity staat blijft staan, en alleen als de feed
+// méér foto's heeft worden de ontbrekende aangevuld.
+const metFotos = (aantal: number) =>
+  ({
+    realworksId: 1,
+    slug: 's',
+    fotos: Array.from({ length: aantal }, (_, i) => ({
+      url: `u${i + 1}`,
+      filename: `f${i + 1}.jpg`,
+      alt: `foto ${i + 1}`,
+    })),
+    fields: { adres: 'Teststraat 1' },
+  }) as unknown as MappedWoning;
+
+const inSanity = (namen: string[]) =>
+  ({
+    _id: 'woning-test',
+    realworksId: 1,
+    fotos: namen.map((naam, i) => ({
+      _key: `1-${i}`,
+      _type: 'image',
+      bestandsnaam: naam,
+      asset: { _type: 'reference', _ref: `image-${i}` },
+    })),
+  }) as BestaandeWoning;
+
+// Nieuw object: alles laden.
+assert.deepEqual(planMedia(metFotos(3)).laden.map((foto) => foto.filename), [
+  'f1.jpg',
+  'f2.jpg',
+  'f3.jpg',
+]);
+
+// Evenveel foto's als in Sanity: niets laden, alles behouden.
+const gelijk = planMedia(metFotos(3), inSanity(['f1.jpg', 'f2.jpg', 'f3.jpg']));
+assert.equal(gelijk.laden.length, 0);
+assert.equal(gelijk.behouden.length, 3);
+
+// Feed heeft er meer: alleen de ontbrekende erbij, de rest blijft staan.
+const meer = planMedia(metFotos(5), inSanity(['f1.jpg', 'f2.jpg', 'f3.jpg']));
+assert.deepEqual(meer.laden.map((foto) => foto.filename), ['f4.jpg', 'f5.jpg']);
+assert.equal(meer.behouden.length, 3);
+
+// Een document zonder foto's wordt gewoon gevuld.
+assert.equal(planMedia(metFotos(2), inSanity([])).laden.length, 2);
+
+// Nieuwe foto's krijgen een _key die niet botst met wat er al staat.
+const gebruikt = new Set(['1-0', '1-1']);
+assert.equal(vrijeKey('1-0', gebruikt), '1-0-2');
+assert.equal(vrijeKey('1-0', gebruikt), '1-0-3');
+assert.equal(vrijeKey('1-2', gebruikt), '1-2');
 
 console.log(`✓ ${feed.resultaten.length} objecten gemapt zonder verrassingen`);

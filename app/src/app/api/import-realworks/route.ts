@@ -3,7 +3,8 @@
  * in Sanity. De feed is de waarheid voor de tekstvelden: een object dat er al
  * staat wordt overschreven (op `realworksId`), niet gedupliceerd. Uitzondering
  * zijn de media: foto's en brochure die al op het document staan blijven staan
- * en worden niet opnieuw gedownload.
+ * en worden niet opnieuw gedownload. Heeft de feed méér foto's dan het
+ * document, dan worden de ontbrekende erachter aangevuld.
  *
  * Aanroepen:
  *   - dagelijks door de Vercel-cron uit `vercel.json` (`Authorization: Bearer $CRON_SECRET`)
@@ -15,8 +16,12 @@
  */
 import { NextResponse } from 'next/server';
 import {
+  planMedia,
   REALWORKS_URL,
   toWoning,
+  vrijeKey,
+  zonderBestandsnaam,
+  type BestaandeWoning,
   type MappedWoning,
   type RealworksObject,
 } from '@/lib/realworks';
@@ -100,21 +105,20 @@ async function uploadFromUrl(
   return asset._id;
 }
 
-type BestaandeWoning = {
-  _id: string;
-  realworksId: number | null;
-  fotos?: Array<Record<string, unknown>> | null;
-  brochure?: Record<string, unknown> | null;
-};
-
 async function importObjects(objects: MappedWoning[]) {
   const client = getWriteClient();
 
   // Bestaande objecten: op realworksId, zodat een hernoemd adres hetzelfde
-  // document bijwerkt in plaats van er een tweede naast te zetten. De foto's en
-  // de brochure komen mee: die hoeven niet opnieuw geladen te worden.
+  // document bijwerkt in plaats van er een tweede naast te zetten. De media
+  // komen mee — inclusief de bestandsnaam van elke foto, want daarmee bepalen
+  // we welke foto's uit de feed nog ontbreken.
   const bestaand = await client.fetch<BestaandeWoning[]>(
-    `*[_type == "woning"]{_id, realworksId, fotos, brochure}`,
+    `*[_type == "woning"]{
+      _id,
+      realworksId,
+      brochure,
+      "fotos": fotos[]{..., "bestandsnaam": asset->originalFilename}
+    }`,
   );
   const bestaandByRealworksId = new Map(
     bestaand
@@ -122,93 +126,81 @@ async function importObjects(objects: MappedWoning[]) {
       .map((doc) => [doc.realworksId as number, doc]),
   );
 
-  // Wat het bestaande document al heeft blijft staan; alleen wat ontbreekt
-  // wordt geladen. Scheelt op elke run tientallen downloads per object en laat
-  // handmatige wijzigingen in de studio (volgorde, alt-teksten) met rust.
-  const heeftFotos = (object: MappedWoning) => {
-    const doc = bestaandByRealworksId.get(object.realworksId);
-    return Array.isArray(doc?.fotos) && doc.fotos.length > 0;
-  };
-  const heeftBrochure = (object: MappedWoning) =>
-    Boolean(bestaandByRealworksId.get(object.realworksId)?.brochure);
+  const plannen = objects.map((object) =>
+    planMedia(object, bestaandByRealworksId.get(object.realworksId)),
+  );
 
   const images = await existingAssets(
     client,
     'sanity.imageAsset',
-    [
-      ...new Set(
-        objects
-          .filter((object) => !heeftFotos(object))
-          .flatMap((object) => object.fotos.map((foto) => foto.filename)),
-      ),
-    ],
+    [...new Set(plannen.flatMap((plan) => plan.laden.map((foto) => foto.filename)))],
   );
   const files = await existingAssets(
     client,
     'sanity.fileAsset',
-    objects
-      .filter((object) => object.brochure && !heeftBrochure(object))
-      .map((object) => object.brochure!.filename),
+    plannen
+      .filter((plan) => plan.brochureLaden)
+      .map((plan) => plan.object.brochure!.filename),
   );
 
   let geschreven = 0;
   let nieuw = 0;
   let fotosGeladen = 0;
   let fotosBehouden = 0;
+  let fotosToegevoegd = 0;
   const warnings: string[] = [];
 
-  for (const object of objects) {
-    const bestaandDoc = bestaandByRealworksId.get(object.realworksId);
-
-    let fotos;
-    if (heeftFotos(object)) {
-      // Het document heeft al foto's: laten staan, niets downloaden.
-      fotos = bestaandDoc?.fotos as Array<Record<string, unknown>>;
-      fotosBehouden += fotos.length;
-    } else {
-      // Zes tegelijk: een object heeft er zomaar vijftig, en één voor één
-      // duurt dat langer dan de functie mag draaien.
-      const resolved: Array<string | null> = [];
-      for (let start = 0; start < object.fotos.length; start += UPLOAD_BATCH) {
-        const batch = object.fotos.slice(start, start + UPLOAD_BATCH);
-        resolved.push(
-          ...(await Promise.all(
-            batch.map(async (foto) => {
-              const known = images.get(foto.filename);
-              if (known) return known;
-              try {
-                const assetId = await uploadFromUrl(client, 'image', foto.url, foto.filename);
-                images.set(foto.filename, assetId);
-                fotosGeladen += 1;
-                return assetId;
-              } catch (error) {
-                warnings.push(
-                  `Foto ${foto.filename} van ${object.fields.adres} overgeslagen: ${
-                    error instanceof Error ? error.message : String(error)
-                  }`,
-                );
-                return null;
-              }
-            }),
-          )),
-        );
-      }
-
-      fotos = object.fotos
-        .map((foto, index) => ({ foto, index, assetId: resolved[index] }))
-        .filter((entry) => entry.assetId)
-        .map(({ foto, index, assetId }) => ({
-          _type: 'image',
-          _key: `${object.realworksId}-${index}`,
-          asset: { _type: 'reference', _ref: assetId as string },
-          alt: foto.alt,
-        }));
+  for (const { object, bestaandDoc, behouden, laden, brochureLaden } of plannen) {
+    // Zes tegelijk: een object heeft er zomaar vijftig, en één voor één
+    // duurt dat langer dan de functie mag draaien.
+    const resolved: Array<string | null> = [];
+    for (let start = 0; start < laden.length; start += UPLOAD_BATCH) {
+      const batch = laden.slice(start, start + UPLOAD_BATCH);
+      resolved.push(
+        ...(await Promise.all(
+          batch.map(async (foto) => {
+            const known = images.get(foto.filename);
+            if (known) return known;
+            try {
+              const assetId = await uploadFromUrl(client, 'image', foto.url, foto.filename);
+              images.set(foto.filename, assetId);
+              fotosGeladen += 1;
+              return assetId;
+            } catch (error) {
+              warnings.push(
+                `Foto ${foto.filename} van ${object.fields.adres} overgeslagen: ${
+                  error instanceof Error ? error.message : String(error)
+                }`,
+              );
+              return null;
+            }
+          }),
+        )),
+      );
     }
 
-    let brochure: Record<string, unknown> | undefined;
-    if (heeftBrochure(object)) {
-      brochure = bestaandDoc?.brochure ?? undefined;
-    } else if (object.brochure) {
+    const gebruikteKeys = new Set(
+      behouden
+        .map((foto) => foto._key)
+        .filter((key): key is string => typeof key === 'string'),
+    );
+    const nieuweFotos = laden
+      .map((foto, index) => ({ foto, index, assetId: resolved[index] }))
+      .filter((entry) => entry.assetId)
+      .map(({ foto, index, assetId }) => ({
+        _type: 'image',
+        _key: vrijeKey(`${object.realworksId}-${index}`, gebruikteKeys),
+        asset: { _type: 'reference', _ref: assetId as string },
+        alt: foto.alt,
+      }));
+
+    // Wat er al stond voorop, in de volgorde van de studio; nieuwe foto's erachter.
+    const fotos = [...behouden.map(zonderBestandsnaam), ...nieuweFotos];
+    fotosBehouden += behouden.length;
+    if (behouden.length > 0) fotosToegevoegd += nieuweFotos.length;
+
+    let brochure: Record<string, unknown> | undefined = bestaandDoc?.brochure ?? undefined;
+    if (brochureLaden && object.brochure) {
       let assetId = files.get(object.brochure.filename);
       if (!assetId) {
         try {
@@ -234,13 +226,13 @@ async function importObjects(objects: MappedWoning[]) {
       _id: bestaandDoc?._id ?? `woning-${object.slug}`,
       _type: 'woning',
       ...object.fields,
-      ...(Array.isArray(fotos) && fotos.length > 0 ? { fotos } : {}),
+      ...(fotos.length > 0 ? { fotos } : {}),
       ...(brochure ? { brochure } : {}),
     });
     geschreven += 1;
   }
 
-  return { geschreven, nieuw, fotosGeladen, fotosBehouden, warnings };
+  return { geschreven, nieuw, fotosGeladen, fotosBehouden, fotosToegevoegd, warnings };
 }
 
 async function handle(request: Request) {

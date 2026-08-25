@@ -404,3 +404,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 04:21 | Realworks-import: bestaande foto's/brochure niet meer overschreven of opnieuw gedownload | app/src/app/api/import-realworks/route.ts, studio-hart-huis/tools/RealworksTool.tsx | tsc + lint schoon | ~25k |
+| 04:30 | planMedia: feed met meer foto's vult bestaande galerij aan | app/src/lib/realworks.ts, app/src/app/api/import-realworks/route.ts, app/scripts/check-realworks.ts | asserts groen; check:realworks faalt op bestaande w2000/w1200-mismatch | ~30k |
