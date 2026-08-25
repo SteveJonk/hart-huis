@@ -181,7 +181,7 @@ export type MappedWoning = {
  * `width` én `height` samen — één van de twee alleen doet niets (`width=1600`
  * in z'n eentje geeft 225×150). De afbeelding wordt binnen dat kader geschaald
  * met behoud van verhouding, en nooit verder opgeblazen dan het origineel
- * (in de praktijk 3000×2000). 2000 px is ruim genoeg voor de site; Sanity
+ * (in de praktijk 3000×2000). 1200 px is ruim genoeg voor de site; Sanity
  * maakt daar zelf de kleinere varianten van.
  */
 export const FOTO_KADER = 1200;
@@ -412,3 +412,98 @@ export function toWoning(object: RealworksObject): MappedWoning {
     },
   };
 }
+
+/** Foto zoals hij in Sanity staat, met de bestandsnaam van de asset erbij. */
+export type BestaandeFoto = Record<string, unknown> & { bestandsnaam?: string | null };
+
+export type BestaandeWoning = {
+  _id: string;
+  realworksId: number | null;
+  fotos?: BestaandeFoto[] | null;
+  brochure?: Record<string, unknown> | null;
+};
+
+/** De projectie hierboven zet `bestandsnaam` erbij; die hoort niet in het document. */
+export function zonderBestandsnaam(foto: BestaandeFoto) {
+  const rest = { ...foto };
+  delete rest.bestandsnaam;
+  return rest;
+}
+
+/**
+ * Wat er voor één object aan media gedaan moet worden. `behouden` staat al in
+ * Sanity en blijft ongemoeid; `laden` moet nog opgehaald worden en komt erachter.
+ */
+export type MediaPlan = {
+  object: MappedWoning;
+  bestaandDoc?: BestaandeWoning;
+  behouden: BestaandeFoto[];
+  laden: MappedWoning['fotos'];
+  brochureLaden: boolean;
+};
+
+/**
+ * Bepaalt per object welke foto's er nog bij moeten. Staan er al foto's op het
+ * document, dan blijven die staan; alleen als de feed er méér heeft dan het
+ * document worden de ontbrekende (op bestandsnaam) toegevoegd. Zo blijven
+ * volgorde en alt-teksten uit de studio intact en groeit de galerij toch mee
+ * met Realworks.
+ */
+export function planMedia(object: MappedWoning, bestaandDoc?: BestaandeWoning): MediaPlan {
+  const behouden = Array.isArray(bestaandDoc?.fotos) ? bestaandDoc.fotos : [];
+  const brochureLaden = Boolean(object.brochure) && !bestaandDoc?.brochure;
+
+  if (behouden.length === 0) {
+    return { object, bestaandDoc, behouden, laden: object.fotos, brochureLaden };
+  }
+
+  if (object.fotos.length <= behouden.length) {
+    return { object, bestaandDoc, behouden, laden: [], brochureLaden };
+  }
+
+  const aanwezig = new Set(
+    behouden.map((foto) => foto.bestandsnaam).filter((naam): naam is string => Boolean(naam)),
+  );
+  return {
+    object,
+    bestaandDoc,
+    behouden,
+    laden: object.fotos.filter((foto) => !aanwezig.has(foto.filename)),
+    brochureLaden,
+  };
+}
+
+/** `_key` die niet botst met de sleutels die al op het document staan. */
+export function vrijeKey(basis: string, gebruikt: Set<string>) {
+  let key = basis;
+  let n = 2;
+  while (gebruikt.has(key)) key = `${basis}-${n++}`;
+  gebruikt.add(key);
+  return key;
+}
+
+/**
+ * Objecten die uit de feed verdwijnen blijven anders eeuwig op de site staan.
+ * Verkochte objecten mogen blijven — die zijn het portfolio. Een object dat
+ * niet verkocht is en al twee maanden niet meer is bijgewerkt (lees: al twee
+ * maanden niet meer in de feed zat) is van de markt gehaald en gaat offline.
+ */
+export const BLIJFT_ONLINE = ['verkocht', 'voorbehoud'] as const;
+
+export const MAX_STILSTAND_MAANDEN = 2;
+
+/** Alles wat ouder is dan deze datum is te lang blijven staan. */
+export function verouderingsGrens(nu: Date = new Date()): string {
+  const grens = new Date(nu);
+  grens.setMonth(grens.getMonth() - MAX_STILSTAND_MAANDEN);
+  return grens.toISOString();
+}
+
+/**
+ * De objecten die offline moeten. Concepten blijven buiten beschouwing, want
+ * die staan al niet op de site. Wordt getest in `scripts/check-realworks.ts`.
+ */
+export const VEROUDERD_QUERY = `*[_type == "woning"
+    && !(_id in path("drafts.**"))
+    && !(status in $blijftOnline)
+    && dateTime(_updatedAt) < dateTime($grens)]`;

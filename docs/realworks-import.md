@@ -1,8 +1,9 @@
 # Realworks-objecten-import
 
 Haalt het actieve aanbod op bij Realworks en zet het als `woning`-documenten in
-Sanity. De feed is de waarheid: een object dat er al staat wordt volledig
-overschreven, niet gedupliceerd.
+Sanity. De feed is de waarheid voor de tekstvelden: een object dat er al staat
+wordt overschreven, niet gedupliceerd. De media zijn de uitzondering — zie
+"Foto's en brochure" hieronder.
 
 ## Hoe het werkt
 
@@ -51,17 +52,63 @@ Een paar keuzes die niet uit de veldnamen te raden zijn:
   Groter kan met `width` én `height` samen; één van de twee alleen doet niets
   (`width=1600` in z'n eentje levert 225×150). De foto wordt binnen dat kader
   geschaald met behoud van verhouding en nooit verder opgeblazen dan het
-  origineel — in de praktijk 3000×2000. De import vraagt `width=2000&height=2000`
+  origineel — in de praktijk 3000×2000. De import vraagt `width=1200&height=1200`
   (`FOTO_KADER` in `realworks.ts`); Sanity maakt daar zelf de kleinere varianten
   van. De handtekening in `check=api_sha256:…` blijft gewoon geldig, die dekt de
   extra parameters niet af.
 - **assets** — foto's worden herkend aan de bestandsnaam uit de link plus het
-  kader (`287669985-w2000.jpg`). Staat die al in de Sanity-bibliotheek, dan
-  wordt hij hergebruikt en niet opnieuw geladen. Alleen de eerste run is dus
-  traag. Verander je `FOTO_KADER`, dan verandert de naam mee en laadt de
-  volgende import alles opnieuw in het nieuwe formaat — de oude bestanden
-  blijven als ongebruikte assets in de Media-bibliotheek achter en kun je daar
-  weggooien.
+  kader (`287669985-w1200.jpg`). Staat die al in de Sanity-bibliotheek, dan
+  wordt hij hergebruikt en niet opnieuw geladen.
+### Foto's en brochure
+
+Anders dan de tekstvelden worden de media **niet** elke run opnieuw gezet:
+
+- Staan er al foto's op het document, dan blijven die staan zoals ze zijn —
+  inclusief de volgorde en de alt-teksten die de redactie in de studio heeft
+  aangepast. Er wordt voor dat object niets gedownload.
+- Heeft de feed **méér** foto's dan het document, dan worden alleen de
+  ontbrekende (herkend aan de bestandsnaam) achteraan toegevoegd. Zo groeit de
+  galerij mee als Realworks er foto's bij zet.
+- Een document zonder foto's wordt gewoon gevuld — dat is het geval bij een
+  nieuw object en bij de allereerste run.
+- De brochure werkt hetzelfde: staat er al een, dan blijft die staan.
+
+Twee gevolgen om te weten. Verwijdert de redactie een foto uit een object en
+heeft de feed er daardoor meer dan het document, dan komt die foto er bij de
+volgende run weer bij; verwijder in dat geval liever de hele galerij (dan wordt
+hij opnieuw uit de feed gevuld) of accepteer het. En vervangt Realworks een
+foto zonder het aantal te wijzigen, dan ziet de import dat niet — leeg de
+galerij van dat object in de studio om hem opnieuw te laten vullen.
+
+De samenvatting van een run noemt daarom drie getallen: hoeveel foto's er zijn
+geladen, hoeveel er behouden zijn, en hoeveel er aangevuld zijn.
+
+### Oud aanbod gaat offline
+
+De feed bevat alleen het actieve aanbod (`actief=true`). Een object dat eruit
+verdwijnt wordt dus niet meer bijgewerkt, maar bleef tot nu toe eeuwig op de
+site staan. Aan het eind van elke volledige run gaat daarom offline wat aan
+beide voorwaarden voldoet:
+
+- de status is **niet** `verkocht` of `voorbehoud` (verkocht onder voorbehoud) —
+  verkochte objecten zijn het portfolio en blijven staan;
+- `_updatedAt` ligt meer dan **twee maanden** terug. Elke run raakt ieder object
+  uit de feed aan, dus een oude `_updatedAt` betekent: dit object zat al die
+  tijd niet meer in de feed.
+
+Offline halen is in Sanity hetzelfde als "Unpublish" in de studio: het
+gepubliceerde document wordt verwijderd, de inhoud blijft als **concept**
+bestaan. De redactie kan het dus nakijken of terugzetten, en niets gaat
+verloren. De drempel staat in `MAX_STILSTAND_MAANDEN` en de statuslijst in
+`BLIJFT_ONLINE`, beide in `src/lib/realworks.ts`.
+
+Twee dingen om te weten:
+
+- Met `?dryRun=1` krijg je te zien wát er offline zou gaan, zonder dat het
+  gebeurt.
+- Met `?limit=` wordt er niets offline gehaald: er is dan maar een deel van de
+  feed bijgewerkt, dus `_updatedAt` zegt niets meer.
+
 - **plaatsnaam** — de feed schrijft in kapitalen (`SPAARNDAM`); de import maakt
   er "Spaarndam" van.
 
