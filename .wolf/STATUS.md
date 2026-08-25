@@ -2,13 +2,21 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-24
+> Last updated: 2026-08-25
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+**Realworks-import: media niet meer overschrijven (25-08-2026)**
+- De import deed per object een `createOrReplace` met een vers opgebouwde `fotos`-array: alles wat de redactie aan de galerij veranderde (volgorde, alt-teksten) was elke run weg.
+- Nu geldt: staan er al foto's op het document, dan blijven die staan en wordt er niets gedownload; heeft de feed er **méér**, dan worden de ontbrekende (op bestandsnaam) achteraan aangevuld met een niet-botsende `_key`. Brochure werkt hetzelfde. De overige velden komen nog volledig uit de feed.
+- De mediaplanning (`planMedia`, `vrijeKey`, `zonderBestandsnaam`) staat in `src/lib/realworks.ts` — route-bestanden mogen alleen route-exports hebben — en wordt getest door `npm run check:realworks`.
+- Samenvatting en de studio-knop noemen nu ook `fotosBehouden` en `fotosToegevoegd`.
+- `check:realworks` was al rood sinds 56b2fc6 (`FOTO_KADER` 1200 tegenover docs/asserts op 2000); 1200 blijft, de rest is gelijkgetrokken. Zie bug-023.
+- **Twee gevolgen om te weten:** verwijdert de redactie één foto, dan komt die bij de volgende run terug (feed heeft er dan meer); en vervangt Realworks een foto zonder het aantal te wijzigen, dan ziet de import dat niet — galerij leegmaken in de studio laat hem opnieuw vullen.
 
 **Sanity TypeGen (17-08-2026)**
 - Config staat als `typegen`-sleutel in `studio-hart-huis/sanity.cli.ts`; `schema.json` én `sanity.types.ts` staan nu in `app/src/sanity/`. `npm run typegen` werkt vanuit de app én de studio (de app delegeert). Draaien moet vanuit de studio: de CLI eist een studio-project-root.
