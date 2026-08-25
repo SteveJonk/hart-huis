@@ -11,15 +11,19 @@
  *     > app/scripts/fixtures/realworks-objecten.json
  */
 import assert from 'node:assert/strict';
+import { evaluate, parse } from 'groq-js';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  BLIJFT_ONLINE,
   label,
   planMedia,
   sentence,
   slugify,
   toWoning,
+  VEROUDERD_QUERY,
+  verouderingsGrens,
   vrijeKey,
   type BestaandeWoning,
   type MappedWoning,
@@ -147,4 +151,62 @@ assert.equal(vrijeKey('1-0', gebruikt), '1-0-2');
 assert.equal(vrijeKey('1-0', gebruikt), '1-0-3');
 assert.equal(vrijeKey('1-2', gebruikt), '1-2');
 
-console.log(`✓ ${feed.resultaten.length} objecten gemapt zonder verrassingen`);
+// De opruimgrens ligt twee maanden terug, en verkochte objecten blijven staan.
+assert.equal(verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')), '2026-06-25T10:00:00.000Z');
+assert.equal(verouderingsGrens(new Date('2026-01-15T10:00:00.000Z')), '2025-11-15T10:00:00.000Z');
+assert.deepEqual([...BLIJFT_ONLINE].sort(), ['verkocht', 'voorbehoud']);
+
+// Elke status uit de mapping is er één die de opruimquery kent; komt er een
+// nieuwe bij, dan moet BLIJFT_ONLINE opnieuw langs.
+const statussen = new Set(feed.resultaten.map((object) => toWoning(object).fields.status));
+assert.ok(
+  [...statussen].every((status) =>
+    ['beschikbaar', 'voorbehoud', 'verkocht'].includes(status as string),
+  ),
+  `onbekende status in de feed: ${[...statussen].join(', ')}`,
+);
+
+// VEROUDERD_QUERY haalt precies de objecten op die offline moeten.
+async function checkVerouderdQuery() {
+  const woning = (id: string, status: string, updatedAt: string) => ({
+    _id: id,
+    _type: 'woning',
+    status,
+    adres: id,
+    _updatedAt: updatedAt,
+  });
+  const dataset = [
+    woning('te-koop-vers', 'beschikbaar', '2026-08-20T10:00:00Z'),
+    woning('te-koop-oud', 'beschikbaar', '2026-05-01T10:00:00Z'),
+    woning('verkocht-oud', 'verkocht', '2026-01-01T10:00:00Z'),
+    woning('voorbehoud-oud', 'voorbehoud', '2026-01-01T10:00:00Z'),
+    { ...woning('concept-oud', 'beschikbaar', '2026-01-01T10:00:00Z'), _id: 'drafts.te-koop-oud' },
+    { _id: 'pagina', _type: 'page', _updatedAt: '2026-01-01T10:00:00Z' },
+  ];
+
+  const gevonden = await (
+    await evaluate(parse(VEROUDERD_QUERY), {
+      dataset,
+      params: {
+        blijftOnline: [...BLIJFT_ONLINE],
+        grens: verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')),
+      },
+    })
+  ).get();
+
+  assert.deepEqual(
+    (gevonden as Array<{ _id: string }>).map((document) => document._id),
+    ['te-koop-oud'],
+    'alleen een niet-verkocht object dat twee maanden stilstaat gaat offline',
+  );
+}
+
+// tsx compileert deze scripts naar CJS, dus geen top-level await.
+checkVerouderdQuery()
+  .then(() =>
+    console.log(`✓ ${feed.resultaten.length} objecten gemapt zonder verrassingen`),
+  )
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

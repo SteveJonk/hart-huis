@@ -481,3 +481,29 @@ export function vrijeKey(basis: string, gebruikt: Set<string>) {
   gebruikt.add(key);
   return key;
 }
+
+/**
+ * Objecten die uit de feed verdwijnen blijven anders eeuwig op de site staan.
+ * Verkochte objecten mogen blijven — die zijn het portfolio. Een object dat
+ * niet verkocht is en al twee maanden niet meer is bijgewerkt (lees: al twee
+ * maanden niet meer in de feed zat) is van de markt gehaald en gaat offline.
+ */
+export const BLIJFT_ONLINE = ['verkocht', 'voorbehoud'] as const;
+
+export const MAX_STILSTAND_MAANDEN = 2;
+
+/** Alles wat ouder is dan deze datum is te lang blijven staan. */
+export function verouderingsGrens(nu: Date = new Date()): string {
+  const grens = new Date(nu);
+  grens.setMonth(grens.getMonth() - MAX_STILSTAND_MAANDEN);
+  return grens.toISOString();
+}
+
+/**
+ * De objecten die offline moeten. Concepten blijven buiten beschouwing, want
+ * die staan al niet op de site. Wordt getest in `scripts/check-realworks.ts`.
+ */
+export const VEROUDERD_QUERY = `*[_type == "woning"
+    && !(_id in path("drafts.**"))
+    && !(status in $blijftOnline)
+    && dateTime(_updatedAt) < dateTime($grens)]`;

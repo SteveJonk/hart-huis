@@ -6,6 +6,10 @@
  * en worden niet opnieuw gedownload. Heeft de feed méér foto's dan het
  * document, dan worden de ontbrekende erachter aangevuld.
  *
+ * Aan het eind gaan objecten die niet verkocht zijn en al twee maanden niet
+ * meer in de feed zaten offline (het gepubliceerde document wordt verwijderd,
+ * het concept blijft staan).
+ *
  * Aanroepen:
  *   - dagelijks door de Vercel-cron uit `vercel.json` (`Authorization: Bearer $CRON_SECRET`)
  *   - met de knop "Realworks-objecten" in de Sanity Studio (`x-scraper-secret`)
@@ -16,9 +20,12 @@
  */
 import { NextResponse } from 'next/server';
 import {
+  BLIJFT_ONLINE,
   planMedia,
   REALWORKS_URL,
   toWoning,
+  VEROUDERD_QUERY,
+  verouderingsGrens,
   vrijeKey,
   zonderBestandsnaam,
   type BestaandeWoning,
@@ -235,6 +242,59 @@ async function importObjects(objects: MappedWoning[]) {
   return { geschreven, nieuw, fotosGeladen, fotosBehouden, fotosToegevoegd, warnings };
 }
 
+type VerouderdObject = Record<string, unknown> & {
+  _id: string;
+  adres?: string;
+  _updatedAt?: string;
+};
+
+/**
+ * Objecten die niet verkocht zijn en al twee maanden niet meer zijn bijgewerkt.
+ * Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt`
+ * betekent: dit object zat er al die tijd niet meer in.
+ */
+function verouderdeObjecten(client: ReturnType<typeof getWriteClient>) {
+  return client.fetch<VerouderdObject[]>(VEROUDERD_QUERY, {
+    blijftOnline: [...BLIJFT_ONLINE],
+    grens: verouderingsGrens(),
+  });
+}
+
+/**
+ * Depubliceren doet Sanity door het gepubliceerde document weg te gooien; de
+ * inhoud blijft als concept bestaan, zodat de redactie hem terug kan zetten of
+ * kan nakijken. Precies wat "Unpublish" in de studio doet.
+ */
+async function depubliceer(
+  client: ReturnType<typeof getWriteClient>,
+  documenten: VerouderdObject[],
+) {
+  if (documenten.length === 0) return;
+
+  const tx = client.transaction();
+  for (const document of documenten) {
+    const concept: Record<string, unknown> = { ...document, _id: `drafts.${document._id}` };
+    delete concept._rev;
+    delete concept._createdAt;
+    delete concept._updatedAt;
+    tx.createIfNotExists(concept as Parameters<typeof tx.createIfNotExists>[0]);
+    tx.delete(document._id);
+  }
+  await tx.commit({ visibility: 'async' });
+}
+
+async function ruimOp() {
+  const client = getWriteClient();
+  const verouderd = await verouderdeObjecten(client);
+  await depubliceer(client, verouderd);
+  return {
+    gedepubliceerd: verouderd.length,
+    gedepubliceerdeObjecten: verouderd.map(
+      (document) => (document.adres as string) ?? document._id,
+    ),
+  };
+}
+
 async function handle(request: Request) {
   const cors = corsHeaders(request);
 
@@ -280,6 +340,22 @@ async function handle(request: Request) {
     };
 
     if (dryRun) {
+      // Laten zien wát er offline zou gaan, zonder het te doen. Kan alleen als
+      // er een schrijftoken is; zonder token blijft de rest van de testrun wel
+      // werken.
+      let teDepubliceren: string[] | undefined;
+      try {
+        teDepubliceren = (await verouderdeObjecten(getWriteClient())).map(
+          (document) => (document.adres as string) ?? document._id,
+        );
+      } catch (error) {
+        warnings.push(
+          `Kon niet nakijken welke objecten offline zouden gaan: ${
+            error instanceof Error ? error.message : String(error)
+          }`,
+        );
+      }
+
       return NextResponse.json(
         {
           ...summary,
@@ -288,14 +364,29 @@ async function handle(request: Request) {
             fotos: object.fotos.length,
             brochure: Boolean(object.brochure),
           })),
+          ...(teDepubliceren
+            ? { gedepubliceerd: teDepubliceren.length, gedepubliceerdeObjecten: teDepubliceren }
+            : {}),
         },
         { headers: cors },
       );
     }
 
     const written = await importObjects(objecten);
+
+    // Alleen na een volledige run: bij ?limit= is maar een deel van de feed
+    // aangeraakt, en dan zegt `_updatedAt` niets over wat er nog te koop staat.
+    const opgeruimd = limit
+      ? { gedepubliceerd: 0, gedepubliceerdeObjecten: [] as string[] }
+      : await ruimOp();
+    if (limit) {
+      warnings.push(
+        'Met ?limit= is er niets offline gehaald: er is maar een deel van de feed bijgewerkt.',
+      );
+    }
+
     return NextResponse.json(
-      { ...summary, ...written, warnings: [...warnings, ...written.warnings] },
+      { ...summary, ...written, ...opgeruimd, warnings: [...warnings, ...written.warnings] },
       { headers: cors },
     );
   } catch (error) {

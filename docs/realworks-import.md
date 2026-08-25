@@ -80,8 +80,34 @@ hij opnieuw uit de feed gevuld) of accepteer het. En vervangt Realworks een
 foto zonder het aantal te wijzigen, dan ziet de import dat niet — leeg de
 galerij van dat object in de studio om hem opnieuw te laten vullen.
 
-De samenvatting van een run noemt daarom vier getallen: hoeveel foto's er zijn
+De samenvatting van een run noemt daarom drie getallen: hoeveel foto's er zijn
 geladen, hoeveel er behouden zijn, en hoeveel er aangevuld zijn.
+
+### Oud aanbod gaat offline
+
+De feed bevat alleen het actieve aanbod (`actief=true`). Een object dat eruit
+verdwijnt wordt dus niet meer bijgewerkt, maar bleef tot nu toe eeuwig op de
+site staan. Aan het eind van elke volledige run gaat daarom offline wat aan
+beide voorwaarden voldoet:
+
+- de status is **niet** `verkocht` of `voorbehoud` (verkocht onder voorbehoud) —
+  verkochte objecten zijn het portfolio en blijven staan;
+- `_updatedAt` ligt meer dan **twee maanden** terug. Elke run raakt ieder object
+  uit de feed aan, dus een oude `_updatedAt` betekent: dit object zat al die
+  tijd niet meer in de feed.
+
+Offline halen is in Sanity hetzelfde als "Unpublish" in de studio: het
+gepubliceerde document wordt verwijderd, de inhoud blijft als **concept**
+bestaan. De redactie kan het dus nakijken of terugzetten, en niets gaat
+verloren. De drempel staat in `MAX_STILSTAND_MAANDEN` en de statuslijst in
+`BLIJFT_ONLINE`, beide in `src/lib/realworks.ts`.
+
+Twee dingen om te weten:
+
+- Met `?dryRun=1` krijg je te zien wát er offline zou gaan, zonder dat het
+  gebeurt.
+- Met `?limit=` wordt er niets offline gehaald: er is dan maar een deel van de
+  feed bijgewerkt, dus `_updatedAt` zegt niets meer.
 
 - **plaatsnaam** — de feed schrijft in kapitalen (`SPAARNDAM`); de import maakt
   er "Spaarndam" van.

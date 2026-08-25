@@ -25,6 +25,8 @@ type Summary = {
   fotosGeladen?: number
   fotosBehouden?: number
   fotosToegevoegd?: number
+  gedepubliceerd?: number
+  gedepubliceerdeObjecten?: string[]
   warnings?: string[]
 }
 
@@ -39,9 +41,14 @@ function describe(summary: Summary): string {
       `${summary.fotosBehouden ?? 0} bestaande foto's behouden, ` +
       `${summary.fotosToegevoegd ?? 0} aangevuld.`
 
+  const offline = summary.gedepubliceerd
+    ? `\n\n${summary.dryRun ? 'Zou offline gaan' : 'Offline gehaald'} (niet verkocht, ` +
+      `twee maanden niet meer in de feed):\n- ${(summary.gedepubliceerdeObjecten ?? []).join('\n- ')}`
+    : ''
+
   const warnings = summary.warnings?.length ? `\n\nLet op:\n- ${summary.warnings.join('\n- ')}` : ''
 
-  return `${head}${warnings}`
+  return `${head}${offline}${warnings}`
 }
 
 export function RealworksObjecten() {

@@ -406,3 +406,4 @@
 | 04:21 | Realworks-import: bestaande foto's/brochure niet meer overschreven of opnieuw gedownload | app/src/app/api/import-realworks/route.ts, studio-hart-huis/tools/RealworksTool.tsx | tsc + lint schoon | ~25k |
 | 04:30 | planMedia: feed met meer foto's vult bestaande galerij aan | app/src/lib/realworks.ts, app/src/app/api/import-realworks/route.ts, app/scripts/check-realworks.ts | asserts groen; check:realworks faalt op bestaande w2000/w1200-mismatch | ~30k |
 | 05:07 | FOTO_KADER-mismatch: docs/JSDoc/test op 1200 getrokken | app/src/lib/realworks.ts, app/scripts/check-realworks.ts, docs/realworks-import.md | check:realworks groen (10 objecten) | ~8k |
+| 05:20 | Opruimen: verouderde, niet-verkochte objecten worden gedepubliceerd | app/src/lib/realworks.ts, app/src/app/api/import-realworks/route.ts, app/scripts/check-realworks.ts, studio-hart-huis/tools/RealworksTool.tsx, docs/realworks-import.md | check:realworks groen (incl. groq-js-test) | ~40k |

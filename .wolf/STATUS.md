@@ -16,6 +16,7 @@
 - De mediaplanning (`planMedia`, `vrijeKey`, `zonderBestandsnaam`) staat in `src/lib/realworks.ts` — route-bestanden mogen alleen route-exports hebben — en wordt getest door `npm run check:realworks`.
 - Samenvatting en de studio-knop noemen nu ook `fotosBehouden` en `fotosToegevoegd`.
 - `check:realworks` was al rood sinds 56b2fc6 (`FOTO_KADER` 1200 tegenover docs/asserts op 2000); 1200 blijft, de rest is gelijkgetrokken. Zie bug-023.
+- **Oud aanbod gaat offline (25-08-2026):** aan het eind van elke volledige run worden objecten die *niet* `verkocht`/`voorbehoud` zijn én langer dan twee maanden niet meer zijn bijgewerkt gedepubliceerd (gepubliceerd document weg, concept blijft — net als "Unpublish" in de studio). Drempel: `MAX_STILSTAND_MAANDEN` + `BLIJFT_ONLINE` in `src/lib/realworks.ts`; query `VEROUDERD_QUERY` wordt met groq-js getest in `check:realworks`. `?dryRun=1` toont wat er offline zou gaan; bij `?limit=` gebeurt er niets.
 - **Twee gevolgen om te weten:** verwijdert de redactie één foto, dan komt die bij de volgende run terug (feed heeft er dan meer); en vervangt Realworks een foto zonder het aantal te wijzigen, dan ziet de import dat niet — galerij leegmaken in de studio laat hem opnieuw vullen.
 
 **Sanity TypeGen (17-08-2026)**
