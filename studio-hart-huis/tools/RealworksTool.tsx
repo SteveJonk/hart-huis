@@ -23,6 +23,7 @@ type Summary = {
   geschreven?: number
   nieuw?: number
   fotosGeladen?: number
+  fotosBehouden?: number
   warnings?: string[]
 }
 
@@ -33,7 +34,8 @@ function describe(summary: Summary): string {
     ? `Testrun — er is niets opgeslagen. ${summary.gevonden ?? 0} objecten in de feed, ` +
       `${summary.verwerkt ?? 0} gemapt.`
     : `${summary.gevonden ?? 0} objecten opgehaald: ${summary.geschreven ?? 0} weggeschreven ` +
-      `(waarvan ${summary.nieuw ?? 0} nieuw), ${summary.fotosGeladen ?? 0} foto's geladen.`
+      `(waarvan ${summary.nieuw ?? 0} nieuw), ${summary.fotosGeladen ?? 0} foto's geladen, ` +
+      `${summary.fotosBehouden ?? 0} bestaande foto's behouden.`
 
   const warnings = summary.warnings?.length ? `\n\nLet op:\n- ${summary.warnings.join('\n- ')}` : ''
 

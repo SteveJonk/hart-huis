@@ -401,6 +401,24 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-21T21:20:00Z"
+    },
+    {
+      "id": "bug-022",
+      "timestamp": "2026-08-25T00:00:00Z",
+      "error_message": "Bij elke Realworks-import worden alle velden van een bestaand object overschreven, inclusief de foto's — handmatige wijzigingen in de studio gingen verloren en de galerij werd elke run opnieuw opgebouwd.",
+      "file": "app/src/app/api/import-realworks/route.ts",
+      "root_cause": "importObjects deed voor ieder object een client.createOrReplace met een vers opgebouwde `fotos`/`brochure`. Binaries werden weliswaar hergebruikt via existingAssets (op originalFilename), maar de veldwaarden zelf werden altijd vervangen, en zodra Realworks een bestandsnaam of het kader (FOTO_KADER) wijzigde werd alles opnieuw gedownload.",
+      "fix": "De bestaande documenten worden nu opgehaald inclusief `fotos` en `brochure`. Heeft een document al foto's (of een brochure), dan gaan die ongewijzigd mee in de createOrReplace en wordt er voor dat object niets gedownload; alleen nieuwe objecten en objecten zonder media laden hun media. Nieuwe teller `fotosBehouden` in de samenvatting en in RealworksTool.",
+      "tags": [
+        "realworks",
+        "import",
+        "sanity",
+        "images",
+        "createOrReplace"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-25T00:00:00Z"
     }
   ]
 }
