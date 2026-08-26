@@ -119,7 +119,7 @@ export function ReviewCard({
       data-review-card
       className={cn(
         'flex h-full w-full flex-col rounded bg-white px-[34px] pt-9 pb-[30px]',
-        'transition-[transform,box-shadow] duration-500 ease-brand hover:-translate-y-1.5 hover:shadow-card',
+        'transition-[transform,translate,scale,rotate,box-shadow] duration-500 ease-brand hover:-translate-y-1.5 hover:shadow-card',
         'max-sm:px-[26px] max-sm:pt-[30px] max-sm:pb-[26px]',
       )}
     >

@@ -51,7 +51,7 @@ export function IconCards({
             <Reveal
               key={item.title}
               delay={(index % 3 || undefined) as 1 | 2 | undefined}
-              className="rounded-[4px] bg-white px-8 pt-9 pb-8 transition-[transform,box-shadow] duration-[450ms] ease-brand hover:-translate-y-1.5 hover:shadow-[0_30px_58px_-34px_rgba(36,31,28,0.4)]"
+              className="rounded-[4px] bg-white px-8 pt-9 pb-8 transition-[transform,translate,scale,rotate,box-shadow] duration-[450ms] ease-brand hover:-translate-y-1.5 hover:shadow-[0_30px_58px_-34px_rgba(36,31,28,0.4)]"
             >
               <span className="mb-[22px] grid size-[52px] place-items-center rounded-full bg-sand text-burgundy">
                 <BlockIcon icon={item.icon} size={21} />

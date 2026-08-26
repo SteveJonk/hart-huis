@@ -90,7 +90,7 @@ export function Steps({
                 key={step.number}
                 className={cn(
                   'absolute inset-0 scale-105 opacity-0 ease-brand',
-                  'transition-[opacity,transform] duration-[750ms]',
+                  'transition-[opacity,transform,translate,scale,rotate] duration-[750ms]',
                   '[transition-duration:750ms,1400ms]',
                   index === active && 'scale-100 opacity-100',
                 )}

@@ -15,7 +15,7 @@ type ButtonProps = {
 
 const baseClass = cn(
   'inline-flex items-center gap-2.5 whitespace-nowrap rounded-pill border',
-  'text-btn font-semibold transition-[background,transform,border-color,color] duration-300 ease-brand',
+  'text-btn font-semibold transition-[background,transform,translate,scale,rotate,border-color,color] duration-300 ease-brand',
   'hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-burgundy',
 );
 

@@ -398,3 +398,25 @@
 | 12:55 | Import-route + gedeelde auth/CORS uit de Funda-route getrokken | app/src/app/api/import-realworks/route.ts, app/src/lib/route-auth.ts, app/src/app/api/scrape-funda-reviews/route.ts | dryRun lokaal 200, 11 objecten uit de live feed | ~6k |
 | 13:05 | Studioknop "Realworks-objecten" + gedeelde panelstijlen, cron 04:30, docs | studio-hart-huis/tools/{RealworksTool.tsx,panelStyles.ts}, structure.ts, app/vercel.json, docs/realworks-import.md | tsc + eslint schoon | ~5k |
 | 13:35 | Foto's kwamen als 150x100 binnen; `width`+`height` samen in de media-URL opgelost, kader in de bestandsnaam zodat een herimport de thumbnails vervangt | app/src/lib/realworks.ts, app/scripts/check-realworks.ts, docs/realworks-import.md | live geverifieerd: 2000x1333, ~820 kB | ~4k |
+| 13:55 | Wipe-script voor objecten + hun assets (droogloop standaard, --yes verwijdert) | app/scripts/wipe-objecten.ts, app/package.json, docs/realworks-import.md | droogloop tegen productie: 11 objecten, 489 bestanden | ~3k |
+
+## Session: 2026-08-25 08:05
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-25 10:54
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-26 10:40
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-26 10:42
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 10:48 | fix: hover-transities animeren niet (Tailwind v4 translate-property) | app/src/components/**/*.tsx (15) | opgelost, geverifieerd in browser | ~12k |

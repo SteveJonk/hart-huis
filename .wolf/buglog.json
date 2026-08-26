@@ -401,6 +401,26 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-21T21:20:00Z"
+    },
+    {
+      "id": "bug-022",
+      "timestamp": "2026-08-26T10:48:06.973337",
+      "error_message": "Hover-effecten springen van de ene naar de andere staat i.p.v. animeren, bv. transition-[transform,box-shadow] duration-500 hover:-translate-y-1.5 hover:shadow-card",
+      "file": "app/src/components/**/*.tsx (15 plekken)",
+      "root_cause": "Tailwind v4 zet translate/scale/rotate op de losse CSS-properties `translate`, `scale`, `rotate` — niet meer op `transform`. Een arbitrary transition-lijst met alleen `transform` dekt die dus niet, dus geen transitie -> harde sprong.",
+      "fix": "In elke `transition-[...]` het woord `transform` vervangen door `transform,translate,scale,rotate` (exact wat de ingebouwde `transition-transform` in v4 doet). Geverifieerd via computed style op de dev-server.",
+      "tags": [
+        "tailwind",
+        "tailwind-v4",
+        "transition",
+        "hover",
+        "transform",
+        "translate",
+        "css"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-26T10:48:06.973337"
     }
   ]
 }

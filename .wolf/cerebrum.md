@@ -13,6 +13,8 @@
 
 ## Key Learnings
 
+- **Tailwind v4: `transform` is niet meer de property voor translate/scale/rotate.** `translate-y-*` schrijft naar de CSS-property `translate`, `scale-*` naar `scale`, `rotate-*` naar `rotate`. In een arbitrary transitie-lijst dus altijd `transition-[transform,translate,scale,rotate,...]` schrijven (of gewoon `transition-transform`, dat dekt in v4 alle vier). Alleen `transform` = geen animatie, harde sprong. (2026-08-26)
+
 - Verborgen velden in een `form`-document zijn het koppelvlak tussen een pagina en een CMS-formulier: veldtype `hidden` + een `defaultValue` met `{{token}}`. De renderer krijgt een `context`-prop en `fillTokens()` (in `form-fields.ts`) vult die in; een onbekend token wordt leeg in plaats van dat `{{…}}` in de mail belandt. `toFieldRows()` slaat verborgen velden over, anders breken ze de paring van twee half-brede velden om zich heen. De server hoeft niets te weten: FORM_QUERY levert ze mee in de allow-list en `/api/submit-form` behandelt ze als tekst.
 
 - **Project:** hart-huis

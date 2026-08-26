@@ -34,7 +34,7 @@ export function ContactWays({ items = DEFAULTS.items }: ContactWaysProps = {}) {
                 href={item.href}
                 className={[
                   'flex h-full flex-col rounded bg-white px-7 pt-8 pb-[30px]',
-                  'transition-[transform,box-shadow] duration-[450ms] ease-brand',
+                  'transition-[transform,translate,scale,rotate,box-shadow] duration-[450ms] ease-brand',
                   'hover:-translate-y-1.5 hover:shadow-[0_30px_58px_-34px_rgba(36,31,28,0.42)]',
                   'max-sm:px-6 max-sm:py-[26px]',
                 ].join(' ')}
