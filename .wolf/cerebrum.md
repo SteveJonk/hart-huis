@@ -15,6 +15,10 @@
 
 - **Tailwind v4: `transform` is niet meer de property voor translate/scale/rotate.** `translate-y-*` schrijft naar de CSS-property `translate`, `scale-*` naar `scale`, `rotate-*` naar `rotate`. In een arbitrary transitie-lijst dus altijd `transition-[transform,translate,scale,rotate,...]` schrijven (of gewoon `transition-transform`, dat dekt in v4 alle vier). Alleen `transform` = geen animatie, harde sprong. (2026-08-26)
 
+- **Formulieren kunnen doorsturen in plaats van bevestigen.** Op het `form`-document: `redirectAfterSubmit` (boolean) + `redirectLink` (type `link`, dus dezelfde intern/extern-keuze als elke cta). De resolutie zit in `toRedirect()` in `src/lib/form-fields.ts` — schakelaar uit óf link die nergens naartoe wijst = geen redirect (de bevestiging blijft), anders `{href, internal}`; `internal` betekent alleen "begint met /" en gaat via `router.push`, de rest via `window.location.assign`. De `FormRenderer` doet dat pas ná een geslaagde POST en blijft op status `sending` staan zodat de knop uit blijft tijdens het navigeren. (2026-08-26)
+
+- **Een veld dat alleen in bepaalde omstandigheden verplicht is, mag geen `rule.required()` krijgen** wanneer het ook `hidden` kan zijn — Sanity blokkeert dan publiceren zonder zichtbare uitleg. Het patroon in `formType.ts` is `rule.custom((value, context) => …)` dat naar `context.document` kijkt (zie `fields`/`steps`, en nu ook `successTitle`/`successBody` tegenover `redirectAfterSubmit`).
+
 - Verborgen velden in een `form`-document zijn het koppelvlak tussen een pagina en een CMS-formulier: veldtype `hidden` + een `defaultValue` met `{{token}}`. De renderer krijgt een `context`-prop en `fillTokens()` (in `form-fields.ts`) vult die in; een onbekend token wordt leeg in plaats van dat `{{…}}` in de mail belandt. `toFieldRows()` slaat verborgen velden over, anders breken ze de paring van twee half-brede velden om zich heen. De server hoeft niets te weten: FORM_QUERY levert ze mee in de allow-list en `/api/submit-form` behandelt ze als tekst.
 
 - **Project:** hart-huis
@@ -89,6 +93,8 @@
 
 
 ## Do-Not-Repeat
+
+- **2026-08-26 — Verander je een gedeelde GROQ-projectie (zoals `formProjection`), draai dan meteen `npm run typegen`.** De gegenereerde `sanity.types.ts` koppelt resultaattypes aan de *letterlijke* querytekst; zodra die tekst wijzigt valt `client.fetch(QUERY)` terug op `any` en komt `tsc --noEmit` met foutmeldingen op een pagina die je niet hebt aangeraakt (hier: drie `implicitly has an 'any' type` in `app/src/app/aanbod/[slug]/page.tsx`, omdat `WONING_QUERY` diezelfde projectie gebruikt). Niet die pagina gaan repareren — typegen draaien.
 
 - [2026-08-21] Draai **niet** `npx openwolf scan` als de CLI niet lokaal geïnstalleerd is: npx haalt 2.4.1 op, en die versie schrijft `anatomy.md` opnieuw zonder de functie-regels (251 `- fn`-regels weg) en overschrijft de met de hand geschreven beschrijvingen met de eerste regel van de JSDoc. Bij twijfel: `git checkout .wolf/anatomy.md` en de nieuwe bestanden met de hand toevoegen — dat mag volgens het protocol.
 

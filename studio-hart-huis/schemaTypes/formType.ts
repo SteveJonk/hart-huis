@@ -146,18 +146,55 @@ export const formType = defineType({
       hidden: ({document}) => !isSteps(document),
     }),
     defineField({
+      name: 'redirectAfterSubmit',
+      title: 'Doorsturen na versturen',
+      type: 'boolean',
+      initialValue: false,
+      group: 'labels',
+      description:
+        'Aan: de invuller gaat na een geslaagde inzending naar een andere pagina (bijvoorbeeld een bedankpagina) in plaats van de bevestiging hieronder te zien.',
+    }),
+    defineField({
+      name: 'redirectLink',
+      title: 'Doorstuurpagina',
+      type: 'link',
+      group: 'labels',
+      hidden: ({document}) => !document?.redirectAfterSubmit,
+      description: 'Een pagina op deze site of een externe URL.',
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          if (!context.document?.redirectAfterSubmit) return true
+          const link = value as {linkType?: string; href?: string; internalLink?: unknown} | undefined
+          if (!link?.linkType) return 'Kies een pagina of vul een URL in.'
+          // The link object validates its own halves; this only catches an
+          // empty object, which those rules never see.
+          return true
+        }),
+    }),
+    defineField({
       name: 'successTitle',
       type: 'string',
       description: 'Shown instead of the form after a successful submission.',
       group: 'labels',
-      validation: (rule) => rule.required(),
+      hidden: ({document}) => Boolean(document?.redirectAfterSubmit),
+      // Not required while redirecting: the confirmation is never rendered,
+      // and a hidden required field would block publishing with no visible
+      // explanation.
+      validation: (rule) =>
+        rule.custom((value, context) =>
+          context.document?.redirectAfterSubmit || value ? true : 'Vul een bevestigingstitel in.',
+        ),
     }),
     defineField({
       name: 'successBody',
       type: 'text',
       rows: 3,
       group: 'labels',
-      validation: (rule) => rule.required(),
+      hidden: ({document}) => Boolean(document?.redirectAfterSubmit),
+      validation: (rule) =>
+        rule.custom((value, context) =>
+          context.document?.redirectAfterSubmit || value ? true : 'Vul een bevestigingstekst in.',
+        ),
     }),
     defineField({
       name: 'mailRecipients',

@@ -26,6 +26,7 @@
     "seed:objectpagina": "tsx --env-file=.env scripts/seed.ts objectpagina",
     "seed:aanbod": "tsx --env-file=.env scripts/seed.ts aanbod",
     "seed:beoordelingen": "tsx --env-file=.env scripts/seed.ts beoordelingen",
+    "seed:bedankt": "tsx --env-file=.env scripts/seed.ts bedankt",
     "seed:nvm": "tsx --env-file=.env scripts/seed.ts nvm",
     "seed:waardebepaling": "tsx --env-file=.env scripts/seed.ts waardebepaling",
     "seed:zoekopdracht": "tsx --env-file=.env scripts/seed.ts zoekopdracht",

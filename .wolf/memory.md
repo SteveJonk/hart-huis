@@ -429,3 +429,9 @@
 | 04:30 | planMedia: feed met meer foto's vult bestaande galerij aan | app/src/lib/realworks.ts, app/src/app/api/import-realworks/route.ts, app/scripts/check-realworks.ts | asserts groen; check:realworks faalt op bestaande w2000/w1200-mismatch | ~30k |
 | 05:07 | FOTO_KADER-mismatch: docs/JSDoc/test op 1200 getrokken | app/src/lib/realworks.ts, app/scripts/check-realworks.ts, docs/realworks-import.md | check:realworks groen (10 objecten) | ~8k |
 | 05:20 | Opruimen: verouderde, niet-verkochte objecten worden gedepubliceerd | app/src/lib/realworks.ts, app/src/app/api/import-realworks/route.ts, app/scripts/check-realworks.ts, studio-hart-huis/tools/RealworksTool.tsx, docs/realworks-import.md | check:realworks groen (incl. groq-js-test) | ~40k |
+
+## Session: 2026-08-26 20:23
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 21:10 | Doorsturen na formulierinzending (Sanity-schakelaar + link) en seed voor /bedankt | studio-hart-huis/schemaTypes/formType.ts, app/src/sanity/queries.ts, app/src/lib/form-fields.ts, app/src/lib/links.ts, app/src/components/form/FormRenderer.tsx, app/scripts/seed/bedankt.ts, app/src/lib/bedankt-content.ts, app/scripts/check-form.ts, docs/formulieren.md | tsc + lint + check:form groen, typegen opnieuw gedraaid | ~55k |

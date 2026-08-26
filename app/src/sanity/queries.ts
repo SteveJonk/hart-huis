@@ -40,7 +40,9 @@ const formProjection = /* groq */ `{
   nextButtonText,
   backButtonText,
   successTitle,
-  successBody
+  successBody,
+  redirectAfterSubmit,
+  redirectLink${linkExpansion}
 }`;
 
 /**
