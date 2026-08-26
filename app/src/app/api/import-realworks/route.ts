@@ -4,7 +4,8 @@
  * staat wordt overschreven (op `realworksId`), niet gedupliceerd. Uitzondering
  * zijn de media: foto's en brochure die al op het document staan blijven staan
  * en worden niet opnieuw gedownload. Heeft de feed méér foto's dan het
- * document, dan worden de ontbrekende erachter aangevuld.
+ * document, dan worden de ontbrekende erachter aangevuld. Ook het redactionele
+ * `makelaar`-veld blijft staan — dat zit niet in de feed.
  *
  * Aan het eind gaan objecten die niet verkocht zijn en al twee maanden niet
  * meer in de feed zaten offline (het gepubliceerde document wordt verwijderd,
@@ -124,6 +125,7 @@ async function importObjects(objects: MappedWoning[]) {
       _id,
       realworksId,
       brochure,
+      makelaar,
       "fotos": fotos[]{..., "bestandsnaam": asset->originalFilename}
     }`,
   );
@@ -228,13 +230,15 @@ async function importObjects(objects: MappedWoning[]) {
 
     // De feed is de waarheid voor de tekstvelden: het hele document gaat
     // eroverheen. De media zijn de uitzondering — die worden hierboven
-    // hergebruikt zodat ze niet elke run opnieuw binnenkomen.
+    // hergebruikt zodat ze niet elke run opnieuw binnenkomen — en de
+    // makelaarskaart, die de redactie zelf vult en die niet in de feed zit.
     await client.createOrReplace({
       _id: bestaandDoc?._id ?? `woning-${object.slug}`,
       _type: 'woning',
       ...object.fields,
       ...(fotos.length > 0 ? { fotos } : {}),
       ...(brochure ? { brochure } : {}),
+      ...(bestaandDoc?.makelaar ? { makelaar: bestaandDoc.makelaar } : {}),
     });
     geschreven += 1;
   }

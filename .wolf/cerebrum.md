@@ -2,7 +2,7 @@
 
 > OpenWolf's learning memory. Updated automatically as the AI learns from interactions.
 > Do not edit manually unless correcting an error.
-> Last updated: 2026-08-12
+> Last updated: 2026-08-26
 
 ## User Preferences
 
@@ -98,6 +98,8 @@
 
 ## Do-Not-Repeat
 
+- **2026-08-26 — "Deze constante wordt nergens meer gebruikt" mag je pas zeggen ná een grep over de héle `src`.** Ik noemde `OBJECT_BACK_LINK` dood omdat hij niet in `page.tsx` of `ObjectSidebar.tsx` stond, terwijl `ObjectGallery.tsx` er de zichtbare "Terug naar het aanbod"-link mee rendert — opruimen zonder die check had een link van de pagina gehaald. De eerdere grep zocht op twee ándere constantennamen; hergebruik zo'n resultaat niet als bewijs voor een derde.
+
 - **2026-08-26 — Verander je een gedeelde GROQ-projectie (zoals `formProjection`), draai dan meteen `npm run typegen`.** De gegenereerde `sanity.types.ts` koppelt resultaattypes aan de *letterlijke* querytekst; zodra die tekst wijzigt valt `client.fetch(QUERY)` terug op `any` en komt `tsc --noEmit` met foutmeldingen op een pagina die je niet hebt aangeraakt (hier: drie `implicitly has an 'any' type` in `app/src/app/aanbod/[slug]/page.tsx`, omdat `WONING_QUERY` diezelfde projectie gebruikt). Niet die pagina gaan repareren — typegen draaien.
 
 - [2026-08-21] Draai **niet** `npx openwolf scan` als de CLI niet lokaal geïnstalleerd is: npx haalt 2.4.1 op, en die versie schrijft `anatomy.md` opnieuw zonder de functie-regels (251 `- fn`-regels weg) en overschrijft de met de hand geschreven beschrijvingen met de eerste regel van de JSDoc. Bij twijfel: `git checkout .wolf/anatomy.md` en de nieuwe bestanden met de hand toevoegen — dat mag volgens het protocol.
@@ -145,6 +147,14 @@
 - [2026-08-21] Een prop op een block-component betekent niet dat de CMS hem ooit vult. `FormHero.titleAfter` bestond, maar het `formHero`-schema had het veld niet en `PageBuilder` gaf het niet door — de kop op /waardebepaling miste stilzwijgend zijn staartje. Bij het overnemen van een design: loop de props van het hergebruikte block na tegen het schema én tegen de `case` in PageBuilder, niet alleen tegen de component. Zie bug-018.
 
 ## Decision Log
+
+- [2026-08-26] **Een bestaand blok-objecttype is herbruikbaar als gewoon veld op een document.** `objectSettings.ctaBand` is `type: 'ctaBand'` — hetzelfde type dat in `pageBuilderType.ts` als blok staat. Geen tweede schema, en `toImage`/`toLabeledHref` in de objectpagina doen precies wat `PageBuilder` met dat blok doet. Bedenk bij "deze copy moet naar het CMS" dus eerst of er al een objecttype voor die vorm bestaat. Let op: het staat dan **niet** in `PAGE_QUERY`, dus de projectie moet je in je eigen query zelf uitschrijven (met `linkExpansion` op de cta's) — een `...` in zo'n projectie breekt de link-expansie, zie Do-Not-Repeat 17-08-2026.
+- [2026-08-26] **De grens tussen `objectSettings` en een veld op `woning` is: verschilt het per huis?** De makelaarskaart wel (veld op `woning`), de kop boven "Vergelijkbare woningen" en de CTA-band onderaan niet (singleton). Copy die op elke objectpagina hetzelfde is in het woning-document zetten betekent dat de redactie het bij élk nieuw huis uit de Realworks-feed opnieuw moet doen.
+
+- [2026-08-26] **De makelaarskaart is een veld op `woning`, de bezichtigingsknop blijft het `objectSettings`-singleton.** Beide constanten stonden in `object-content.ts`, maar de afweging valt verschillend uit: de knop moet bij élk nieuw huis uit de feed meteen werken (dus singleton, zie 21-08-2026), terwijl de makelaar per woning kan verschillen en leeg laten geen kapotte pagina oplevert — `toMakelaar()` valt per veld terug op `OBJECT_MAKELAAR`. De gebruiker koos expliciet "laat OBJECT_VIEWING_CTA voor wat het is". De constante blijft dus staan als vangnet, niet als dode code.
+- [2026-08-26] **Een redactioneel veld op `woning` toevoegen betekent altijd óók de import aanpassen.** `/api/import-realworks` doet `createOrReplace`, dus alles wat niet uit de feed komt is na één run weg. Het patroon: veld meenemen in de `bestaand`-projectie, in `BestaandeWoning` typen, en met een conditionele spread teruggeven aan `createOrReplace` — precies zoals `fotos`/`brochure` het al doen. Vergeet dat en de feature werkt lokaal perfect en verdwijnt de volgende ochtend.
+- [2026-08-26] **Een telefoonnummer wordt in Sanity als weergavetekst opgeslagen, niet als `tel:`-link.** `parsePhoneNumber()` (`src/lib/phone.ts`) leidt de href af, zoals `SiteFooter` al deed. Twee velden voor één nummer betekent dat een redacteur er één kan vergeten.
+
 
 - [2026-08-26] De woning-knoop in de JSON-LD krijgt **twee types tegelijk**: `["SingleFamilyResidence", "Product"]` (of `Apartment`/`Residence`). Een `Residence` beschrijft het huis (oppervlak, kamers, bouwjaar) maar kent geen `offers`; zonder vraagprijs en beschikbaarheid mist een objectpagina de helft van zijn betekenis. Schema.org staat meerdere types op één knoop toe, dus dat is hier de weg — niet een losse `Product`-knoop naast de woning, want dan beweer je twee dingen waar er één is. Dezelfde redenering maakt een pagina met vragen `["WebPage", "FAQPage"]` in plaats van twee knopen voor dezelfde URL.
 - [2026-08-26] `aggregateRating` op de organisatie komt uit dezelfde `reviewStats`-projectie als /beoordelingen (`REVIEW_STATS_QUERY`), zodat de cijfers in de structured data niet kunnen afwijken van wat de bezoeker ziet. Geen cijfers of geen reviews → geen rating in de graaf, in plaats van een 0.

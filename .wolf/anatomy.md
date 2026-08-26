@@ -451,13 +451,13 @@
   - fn `labelClass` L21-28 (~78 tok)
   - fn `Spec` L29-41 (~118 tok)
   - fn `ObjectHeader` L42-124 (~713 tok)
-- `ObjectSidebar.tsx` — Sticky price card (status pill, CTAs, feiten, brochure/delen) + makelaar card. De bovenste knop opent ObjectContactDialog zodra er een formulier gekozen is, anders is het een gewone link. (~1862 tok)
+- `ObjectSidebar.tsx` — Sticky price card (status pill, CTAs, feiten, brochure/delen) + makelaar card. De bovenste knop opent ObjectContactDialog zodra er een formulier gekozen is, anders is het een gewone link; de makelaarskaart komt binnen als prop (uit het `makelaar`-veld op de woning). (~1862 tok)
   - fn `IconDownload` L48-60 (~84 tok)
   - fn `IconShare` L61-71 (~133 tok)
   - fn `Feit` L72-81 (~112 tok)
   - fn `ObjectSidebar` L82-204 (~1079 tok)
 - `ShareButton.tsx` — Client. navigator.share with a clipboard fallback. (~254 tok)
-- `SimilarObjects.tsx` — "Vergelijkbare woningen" band on sand, reusing `ListingCard`. (~417 tok)
+- `SimilarObjects.tsx` — "Vergelijkbare woningen" band on sand, reusing `ListingCard`. Kop en knop komen als optionele props uit `objectSettings`, met `OBJECT_SIMILAR` als default. (~417 tok)
 
 ## app/src/components/ui/
 
@@ -552,7 +552,7 @@
   - fn `objectPageJsonLd` L425-460 (~350 tok)
 - `links.ts` — Resolve a Sanity link/cta object to a usable href. (~258 tok)
 - `nvm-content.ts` — Exports NVM_HERO, NVM_FACTS, NVM_BENEFITS_IMAGE, NVM_BENEFITS_INTRO + 11 more (~2965 tok)
-- `object-content.ts` — The three feed statuses, with the label and pill tone the site shows for each. (~1224 tok)
+- `object-content.ts` — Statussen (label + pill-tone) en de terugvalwaarden van de objectpagina (makelaar, vergelijkbare woningen, CTA-band, bezichtigingsformulier), plus `toMakelaar()` / `toKantoorTelefoon()` die per veld op die constanten terugvallen. (~1224 tok)
   - fn `statusOf` L13-127 (~1097 tok)
 - `over-ons-content.ts` — Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more (~1949 tok)
 - `phone.ts` — Exports parsePhoneNumber (~28 tok)
@@ -634,12 +634,12 @@
   - fn `isSteps` L5-247 (~2183 tok)
 - `index.ts` — Exports schemaTypes (~1080 tok)
 - `navigationType.ts` — Exports navigationType (~470 tok)
-- `objectSettingsType.ts` — Singleton "Objectpagina": knoptekst, het formulier achter de knop, de venstertekst en de terugvallink. Eén document voor alle objecten, want de import schrijft de woningen. (~525 tok)
+- `objectSettingsType.ts` — Singleton "Objectpagina", twee tabbladen: de bezichtigingsknop (knoptekst, formulier, venstertekst, terugvallink) en wat onderaan elke objectpagina staat (`vergelijkbaar` + een `ctaBand`). Eén document voor alle objecten, want de import schrijft de woningen. (~525 tok)
 - `pageBuilderType.ts` — Exports pageBuilderType (~554 tok)
 - `pageType.ts` — Exports pageType (~285 tok)
 - `reviewType.ts` — Cijfers komen straks uit de scraper; daarom optioneel. (~697 tok)
   - fn `scoreField` L5-79 (~652 tok)
-- `woningType.ts` — The "Object" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional. (~2608 tok)
+- `woningType.ts` — The "Object" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional. Plus het redactionele `makelaar`-object (eigen tabblad) dat de import laat staan. (~2608 tok)
 
 ## studio-hart-huis/schemaTypes/blocks/
 

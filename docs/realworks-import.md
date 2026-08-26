@@ -2,8 +2,8 @@
 
 Haalt het actieve aanbod op bij Realworks en zet het als `woning`-documenten in
 Sanity. De feed is de waarheid voor de tekstvelden: een object dat er al staat
-wordt overschreven, niet gedupliceerd. De media zijn de uitzondering — zie
-"Foto's en brochure" hieronder.
+wordt overschreven, niet gedupliceerd. De media en de makelaarskaart zijn de
+uitzondering — zie "Foto's en brochure" en "Makelaar" hieronder.
 
 ## Hoe het werkt
 
@@ -82,6 +82,16 @@ galerij van dat object in de studio om hem opnieuw te laten vullen.
 
 De samenvatting van een run noemt daarom drie getallen: hoeveel foto's er zijn
 geladen, hoeveel er behouden zijn, en hoeveel er aangevuld zijn.
+
+### Makelaar
+
+Het veld `makelaar` op een object (tabblad "Makelaar" in de studio) vult de
+kaart onder de prijskaart op de objectpagina: naam, initialen, functie, tekst en
+telefoonnummer. Realworks levert het niet, dus de redactie zet het zelf — en de
+import laat het daarom staan, net als de media. Blijft een veld leeg, dan valt
+de kaart voor dat veld terug op `OBJECT_MAKELAAR` in
+`src/lib/object-content.ts`; objecten waar niets is ingevuld zien er dus uit
+zoals altijd.
 
 ### Oud aanbod gaat offline
 

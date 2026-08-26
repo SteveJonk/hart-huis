@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Wrap } from '@/components/ui/Wrap';
 import { cn } from '@/lib/cn';
-import { OBJECT_BACK_LINK } from '@/lib/object-content';
 
 export type GalleryPhoto = {
   src: string;
@@ -96,14 +95,14 @@ export function ObjectGallery({ photos }: ObjectGalleryProps) {
     <section className='relative pt-24 max-md:pt-[88px] max-sm:pt-20' data-solid-header>
       <Wrap>
         <Link
-          href={OBJECT_BACK_LINK.href}
+          href='/aanbod'
           className={cn(
             'mb-5 inline-flex items-center gap-[9px] text-[0.85rem] font-semibold text-ink-70',
             'transition-colors duration-[250ms] ease-brand hover:text-ink max-sm:mb-3.5',
           )}
         >
           <IconBack />
-          {OBJECT_BACK_LINK.label}
+          Terug naar het aanbod
         </Link>
 
         <div

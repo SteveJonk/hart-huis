@@ -441,3 +441,15 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 20:40 | JSON-LD uit Sanity: organisatie/site in PageWrapper, WebPage+FAQPage+kruimelpad op CMS-pagina's, RealEstateListing+Residence+Offer op objectpagina's | app/src/lib/json-ld.ts, app/src/components/JsonLd.tsx, app/src/components/layout/PageWrapper.tsx, app/src/app/page.tsx, app/src/app/[slug]/page.tsx, app/src/app/aanbod/[slug]/page.tsx, app/src/sanity/{queries,metadata}.ts, app/scripts/check-jsonld.ts | check:jsonld groen, tsc + lint schoon | ~55k |
+
+## Session: 2026-08-26 20:51
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 21:20 | Makelaarskaart naar Sanity: veld `makelaar` op `woning` (naam/initialen/functie/tekst/telefoon) met de OBJECT_MAKELAAR-waarden als initialValue | studio-hart-huis/schemaTypes/woningType.ts | schema + typegen groen | ~3k |
+| 21:25 | `toMakelaar()` met per-veld terugval op OBJECT_MAKELAAR; `phoneHref` afgeleid met parsePhoneNumber; ObjectSidebar krijgt de kaart als prop | app/src/lib/object-content.ts, components/object/ObjectSidebar.tsx, app/aanbod/[slug]/page.tsx, sanity/queries.ts | tsc + eslint schoon | ~4k |
+| 21:32 | Import laat het veld staan (bestaand-projectie + createOrReplace), doc bijgewerkt | app/src/app/api/import-realworks/route.ts, src/lib/realworks.ts, docs/realworks-import.md | check:realworks/form/jsonld groen | ~2k |
+| 22:05 | `objectSettings` kreeg groepen + `vergelijkbaar` (eyebrow/title/cta) en `ctaBand` (hergebruik van het bestaande ctaBand-objecttype) | studio-hart-huis/schemaTypes/objectSettingsType.ts | typegen groen | ~3k |
+| 22:12 | WONING_QUERY: instellingen uitgebreid + `"telefoon": *[_id=="footer"][0].contactInfo.phone`; page.tsx bouwt similarHeader()/ctaBand() met per-veld terugval | app/src/sanity/queries.ts, app/aanbod/[slug]/page.tsx, components/object/{SimilarObjects,ObjectSidebar}.tsx | tsc + eslint schoon | ~5k |
+| 22:20 | OBJECT_BACK_LINK verwijderd — bleek nog wél gerenderd in ObjectGallery, dus daar geïnlined i.p.v. weggegooid | app/src/lib/object-content.ts, components/object/ObjectGallery.tsx | link werkt onveranderd | ~1k |
+| 22:26 | seed:objectpagina schrijft de twee nieuwe velden mee (incl. upload van spaarne.jpg) | app/scripts/seed/objectpagina.ts | nog te draaien tegen de dataset | ~1k |

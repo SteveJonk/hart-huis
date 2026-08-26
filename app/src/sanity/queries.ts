@@ -204,17 +204,35 @@ export const WONING_QUERY = defineQuery(`
     aanbiedingsTekstEngels,
     fotos,
     "brochureUrl": brochure.asset->url,
+    makelaar,
     seo,
     "vergelijkbaar": *[_type == "woning" && _id != ^._id]
       | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]${woningCard},
-    // De knop op de prijskaart: label, venstertekst en het formulier erin. Eén
+    // Het kantoornummer op de prijskaart staat in het footerdocument; site.ts
+    // is daar alleen nog terugval voor.
+    "telefoon": *[_id == "footer"][0].contactInfo.phone,
+    // Alles wat op elke objectpagina hetzelfde is: de knop op de prijskaart
+    // (label, venstertekst, formulier) en de twee secties eronder. Eén
     // singleton voor alle objecten — de import schrijft de woningen zelf.
     "instellingen": *[_id == "objectSettings"][0]{
       ctaLabel,
       dialogTitle,
       dialogLead,
       fallbackHref,
-      form->${formProjection}
+      form->${formProjection},
+      vergelijkbaar{
+        eyebrow,
+        title,
+        cta${linkExpansion}
+      },
+      ctaBand{
+        image,
+        eyebrow,
+        title,
+        body,
+        primaryCta${linkExpansion},
+        secondaryCta${linkExpansion}
+      }
     },
     "recaptcha": *[_type == "formGeneralSettings"][0]{
       recaptchaEnabled,

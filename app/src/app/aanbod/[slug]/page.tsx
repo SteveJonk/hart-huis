@@ -22,7 +22,15 @@ import type { WONING_QUERY_RESULT } from '@/sanity/sanity.types';
 import { toFormDefinition } from '@/lib/form-fields';
 import { euro } from '@/lib/format';
 import { objectPageJsonLd } from '@/lib/json-ld';
-import { OBJECT_CTA, OBJECT_VIEWING_CTA, statusOf } from '@/lib/object-content';
+import { toLabeledHref } from '@/lib/links';
+import {
+  OBJECT_CTA,
+  OBJECT_SIMILAR,
+  OBJECT_VIEWING_CTA,
+  statusOf,
+  toKantoorTelefoon,
+  toMakelaar,
+} from '@/lib/object-content';
 import { SITE } from '@/lib/site';
 
 const options = { next: { revalidate: 30 } };
@@ -108,6 +116,34 @@ function viewingCta(woning: Woning) {
   };
 }
 
+/**
+ * De kop boven "Vergelijkbare woningen" en de CTA-band onderaan komen uit
+ * `objectSettings`. Per veld terugvallen, zodat één leeg veld in de studio niet
+ * de hele sectie op de code-defaults zet.
+ */
+function similarHeader(woning: Woning) {
+  const kop = woning.instellingen?.vergelijkbaar;
+
+  return {
+    eyebrow: kop?.eyebrow || OBJECT_SIMILAR.eyebrow,
+    title: kop?.title || OBJECT_SIMILAR.title,
+    cta: toLabeledHref(kop?.cta) ?? OBJECT_SIMILAR.cta,
+  };
+}
+
+function ctaBand(woning: Woning) {
+  const band = woning.instellingen?.ctaBand;
+
+  return {
+    image: toImage(band?.image, 2400, 1200) ?? OBJECT_CTA.image,
+    eyebrow: band?.eyebrow || OBJECT_CTA.eyebrow,
+    title: band?.title || OBJECT_CTA.title,
+    body: band?.body || OBJECT_CTA.body,
+    primaryCta: toLabeledHref(band?.primaryCta) ?? OBJECT_CTA.primaryCta,
+    secondaryCta: toLabeledHref(band?.secondaryCta) ?? OBJECT_CTA.secondaryCta,
+  };
+}
+
 export default async function ObjectPage({ params }: ObjectPageProps) {
   const { slug } = await params;
   const woning = await getWoning(slug);
@@ -172,13 +208,18 @@ export default async function ObjectPage({ params }: ObjectPageProps) {
               woonoppervlak={woning.woonoppervlak}
               perceel={woning.perceel}
               brochureUrl={woning.brochureUrl}
+              makelaar={toMakelaar(woning.makelaar)}
+              telefoon={toKantoorTelefoon(woning.telefoon)}
             />
           </Wrap>
         </section>
 
-        <SimilarObjects items={(woning.vergelijkbaar ?? []).map(toCard)} />
+        <SimilarObjects
+          items={(woning.vergelijkbaar ?? []).map(toCard)}
+          {...similarHeader(woning)}
+        />
 
-        <CtaBand {...OBJECT_CTA} />
+        <CtaBand {...ctaBand(woning)} />
       </main>
     </PageWrapper>
   );
