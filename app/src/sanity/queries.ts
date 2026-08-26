@@ -268,6 +268,13 @@ export const FORM_SETTINGS_QUERY = defineQuery(`
   }
 `);
 
+/**
+ * De cijfers die de organisatie-knoop in de JSON-LD nodig heeft. Dezelfde
+ * projectie als de reviewblokken gebruiken, zodat de `aggregateRating` niet
+ * kan afwijken van wat er op /beoordelingen staat.
+ */
+export const REVIEW_STATS_QUERY = defineQuery(`${reviewStats}`);
+
 /** Slugs for the sitemap: every `page` (except `home`, which is `/`) and every `woning`. */
 export const SITEMAP_QUERY = defineQuery(`{
   "pages": *[_type == "page" && slug.current != "home"]{

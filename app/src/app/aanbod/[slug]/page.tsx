@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { JsonLd } from '@/components/JsonLd';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import type { ListingItem } from '@/components/blocks/Listings';
 import { PageWrapper } from '@/components/layout/PageWrapper';
@@ -20,6 +21,7 @@ import { WONING_QUERY } from '@/sanity/queries';
 import type { WONING_QUERY_RESULT } from '@/sanity/sanity.types';
 import { toFormDefinition } from '@/lib/form-fields';
 import { euro } from '@/lib/format';
+import { objectPageJsonLd } from '@/lib/json-ld';
 import { OBJECT_CTA, OBJECT_VIEWING_CTA, statusOf } from '@/lib/object-content';
 import { SITE } from '@/lib/site';
 
@@ -128,6 +130,12 @@ export default async function ObjectPage({ params }: ObjectPageProps) {
 
   return (
     <PageWrapper>
+      <JsonLd
+        data={objectPageJsonLd({
+          ...woning,
+          imageUrls: photos.map((photo) => photo.src),
+        })}
+      />
       <main>
         <ObjectGallery photos={photos} />
 

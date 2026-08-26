@@ -13,6 +13,7 @@
     "check:funda": "tsx scripts/check-funda-reviews.ts",
     "check:realworks": "tsx scripts/check-realworks.ts",
     "check:form": "tsx scripts/check-form.ts",
+    "check:jsonld": "tsx scripts/check-jsonld.ts",
     "migrate:forms": "tsx --env-file=.env scripts/migrate-forms.ts",
     "wipe:objecten": "tsx --env-file=.env scripts/wipe-objecten.ts",
     "seed:sanity": "tsx --env-file=.env scripts/seed.ts",

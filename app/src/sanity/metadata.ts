@@ -19,6 +19,12 @@ type Options = {
   isHome?: boolean;
 };
 
+/** De og:image van een `seo`-object, op het formaat dat social previews willen. */
+export function seoImageUrl(seo: SanitySeo | null | undefined): string | null {
+  if (!seo?.ogImage) return null;
+  return urlFor(seo.ogImage)?.width(1200).height(630).fit('crop').url() ?? null;
+}
+
 /** Map a page document's `seo` object onto Next metadata. Unset fields fall back to the root layout. */
 export function pageMetadata(page: SanityPage, options?: Options): Metadata {
   if (!page) {
@@ -28,9 +34,7 @@ export function pageMetadata(page: SanityPage, options?: Options): Metadata {
   const seo = page.seo ?? {};
   const title = seo.title || page.title || null;
   const description = seo.description || null;
-  const image = seo.ogImage
-    ? urlFor(seo.ogImage)?.width(1200).height(630).fit('crop').url()
-    : null;
+  const image = seoImageUrl(seo);
 
   const pageTitle = `${title} - ${SITE.name}`;
   const homeTitle = `${SITE.name} - ${description}`;

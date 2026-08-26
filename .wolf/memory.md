@@ -435,3 +435,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 21:10 | Doorsturen na formulierinzending (Sanity-schakelaar + link) en seed voor /bedankt | studio-hart-huis/schemaTypes/formType.ts, app/src/sanity/queries.ts, app/src/lib/form-fields.ts, app/src/lib/links.ts, app/src/components/form/FormRenderer.tsx, app/scripts/seed/bedankt.ts, app/src/lib/bedankt-content.ts, app/scripts/check-form.ts, docs/formulieren.md | tsc + lint + check:form groen, typegen opnieuw gedraaid | ~55k |
+
+## Session: 2026-08-26 20:26
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 20:40 | JSON-LD uit Sanity: organisatie/site in PageWrapper, WebPage+FAQPage+kruimelpad op CMS-pagina's, RealEstateListing+Residence+Offer op objectpagina's | app/src/lib/json-ld.ts, app/src/components/JsonLd.tsx, app/src/components/layout/PageWrapper.tsx, app/src/app/page.tsx, app/src/app/[slug]/page.tsx, app/src/app/aanbod/[slug]/page.tsx, app/src/sanity/{queries,metadata}.ts, app/scripts/check-jsonld.ts | check:jsonld groen, tsc + lint schoon | ~55k |

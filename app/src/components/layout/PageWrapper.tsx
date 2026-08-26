@@ -1,10 +1,16 @@
+import { JsonLd } from '@/components/JsonLd';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
+import { siteJsonLd } from '@/lib/json-ld';
 import { toLabeledHref, type SanityLabeledLink } from '@/lib/links';
 import { type FooterLinkGroup, type NavLink } from '@/lib/site';
 import { client } from '@/sanity/client';
-import { FOOTER_QUERY, NAVIGATION_QUERY } from '@/sanity/queries';
+import {
+  FOOTER_QUERY,
+  NAVIGATION_QUERY,
+  REVIEW_STATS_QUERY,
+} from '@/sanity/queries';
 
 const options = { next: { revalidate: 30 } };
 
@@ -23,9 +29,10 @@ export async function PageWrapper({
   minimal = false,
   children,
 }: PageWrapperProps) {
-  const [navigation, footer] = await Promise.all([
+  const [navigation, footer, stats] = await Promise.all([
     client.fetch(NAVIGATION_QUERY, {}, options),
     client.fetch(FOOTER_QUERY, {}, options),
+    client.fetch(REVIEW_STATS_QUERY, {}, options),
   ]);
 
   const navLeft = asNavLinks(navigation?.navLeft);
@@ -41,8 +48,21 @@ export async function PageWrapper({
         : [],
   );
 
+  // De organisatie en de site staan op elke pagina; adres, telefoon, logo en
+  // socials komen uit dezelfde documenten als de footer die eronder staat.
+  const site = siteJsonLd({
+    address: footer?.contactInfo?.address,
+    phone: footer?.contactInfo?.phone,
+    email: footer?.contactInfo?.email,
+    description: footer?.paragraph,
+    logoUrl: navigation?.logo?.url ?? footer?.logo?.url,
+    sameAs: (footer?.socialLinks ?? []).map((link) => link.url),
+    stats,
+  });
+
   return (
     <>
+      <JsonLd data={site} />
       <SiteHeader
         navLeft={navLeft}
         navRight={navRight}
