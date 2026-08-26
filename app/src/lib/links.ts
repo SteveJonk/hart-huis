@@ -27,3 +27,11 @@ export function toLabeledHref(
   if (!link?.label || !href) return undefined;
   return { label: link.label, href };
 }
+
+/**
+ * Whether an href stays inside the Next router. Anything else — a full URL,
+ * `mailto:`, `tel:` — has to leave through the browser.
+ */
+export function isInternalHref(href: string): boolean {
+  return href.startsWith('/');
+}

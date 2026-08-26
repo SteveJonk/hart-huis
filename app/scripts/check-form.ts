@@ -10,11 +10,20 @@
  *      reference over to the new id;
  *   5. FORM_QUERY, which is the server's allow-list, resolves to exactly the
  *      fields the renderer shows. If those two disagree the form silently
- *      stops accepting submissions.
+ *      stops accepting submissions;
+ *   6. a form only redirects when the switch is on *and* the link resolves —
+ *      otherwise the visitor is left on a form that has already been sent.
  */
 import assert from 'node:assert/strict'
 import {evaluate, parse} from 'groq-js'
-import {fillTokens, toFieldRows, toSteps, type FormFieldDefinition} from '../src/lib/form-fields'
+import {
+  fillTokens,
+  toFieldRows,
+  toFormDefinition,
+  toRedirect,
+  toSteps,
+  type FormFieldDefinition,
+} from '../src/lib/form-fields'
 import {CONTACT_FORM_DEFINITION, CONTACT_FORM_FIELDS} from '../src/lib/contact-content'
 import {OBJECT_FORM} from '../src/lib/object-content'
 import {WAARDEBEPALING_FORM} from '../src/lib/waardebepaling-content'
@@ -237,6 +246,47 @@ async function checkAllowList() {
     )
   }
 }
+
+// 6. Redirect after submission.
+assert.equal(toRedirect(false, {linkType: 'internal', internalLink: {slug: 'bedankt'}}), undefined)
+assert.equal(toRedirect(true, undefined), undefined, 'switch on, nothing picked yet: no redirect')
+assert.equal(toRedirect(true, {linkType: 'internal'}), undefined, 'no page selected: no redirect')
+assert.equal(toRedirect(true, {linkType: 'external', href: '  '}), undefined, 'blank URL')
+
+assert.deepEqual(toRedirect(true, {linkType: 'internal', internalLink: {slug: 'bedankt'}}), {
+  href: '/bedankt',
+  internal: true,
+})
+// The home page is '/', not '/home' — same rule the rest of the site uses.
+assert.deepEqual(toRedirect(true, {linkType: 'internal', internalLink: {slug: 'home'}}), {
+  href: '/',
+  internal: true,
+})
+// Anything the Next router cannot handle leaves through the browser.
+assert.deepEqual(toRedirect(true, {linkType: 'external', href: 'https://funda.nl'}), {
+  href: 'https://funda.nl',
+  internal: false,
+})
+assert.deepEqual(toRedirect(true, {linkType: 'external', href: '/bedankt'}), {
+  href: '/bedankt',
+  internal: true,
+})
+
+// toFormDefinition carries it through, so the renderer never sees the raw link.
+assert.deepEqual(
+  toFormDefinition({
+    _id: 'a',
+    mode: 'simple',
+    fields: [text('naam')],
+    redirectAfterSubmit: true,
+    redirectLink: {linkType: 'internal', internalLink: {slug: 'bedankt'}},
+  })?.redirect,
+  {href: '/bedankt', internal: true},
+)
+assert.equal(
+  toFormDefinition({_id: 'a', mode: 'simple', fields: [text('naam')]})?.redirect,
+  undefined,
+)
 
 // tsx compiles these scripts to CJS, so no top-level await here.
 checkAllowList()

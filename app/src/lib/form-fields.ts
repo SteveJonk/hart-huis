@@ -2,6 +2,7 @@
  * Shape and layout rules for CMS-authored forms. No React in here, so the
  * grouping logic can be checked by `npm run check:form`.
  */
+import { isInternalHref, resolveHref, type SanityLink } from './links';
 
 export type FormFieldType =
   | 'text'
@@ -57,7 +58,35 @@ export type FormDefinition = {
   submitButtonText?: string;
   successTitle?: string;
   successBody?: string;
+  /**
+   * Where to send the visitor after a successful submission, instead of
+   * showing the confirmation. Resolved from the document's
+   * `redirectAfterSubmit` + `redirectLink` by `toFormDefinition`.
+   */
+  redirect?: FormRedirect;
 };
+
+/** A resolved redirect target. `internal` ones go through the Next router. */
+export type FormRedirect = {
+  href: string;
+  internal: boolean;
+};
+
+/**
+ * The redirect a form document asks for, or undefined when it should show its
+ * confirmation instead. A link that resolves to nothing (the switch is on but
+ * no page was picked yet) falls back to the confirmation rather than stranding
+ * the visitor on a submitted form.
+ */
+export function toRedirect(
+  redirectAfterSubmit: boolean | null | undefined,
+  link: SanityLink | null | undefined,
+): FormRedirect | undefined {
+  if (!redirectAfterSubmit) return undefined;
+  const href = resolveHref(link)?.trim();
+  if (!href) return undefined;
+  return { href, internal: isInternalHref(href) };
+}
 
 /**
  * The one shape the renderer works with. A simple form becomes a single step,
@@ -137,6 +166,8 @@ export function toFormDefinition(value: unknown): FormDefinition | undefined {
         backButtonText?: string | null;
         successTitle?: string | null;
         successBody?: string | null;
+        redirectAfterSubmit?: boolean | null;
+        redirectLink?: SanityLink | null;
       }
     | undefined
     | null;
@@ -158,6 +189,7 @@ export function toFormDefinition(value: unknown): FormDefinition | undefined {
     backButtonText: form.backButtonText ?? undefined,
     successTitle: form.successTitle ?? undefined,
     successBody: form.successBody ?? undefined,
+    redirect: toRedirect(form.redirectAfterSubmit, form.redirectLink),
   };
 
   // A form with nothing fillable would render an empty card.
