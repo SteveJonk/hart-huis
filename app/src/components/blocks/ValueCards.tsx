@@ -82,7 +82,7 @@ export function ValueCards({
               <div
                 className={[
                   'h-full rounded bg-white px-[34px] pt-[38px] pb-[34px]',
-                  'transition-[transform,box-shadow] duration-[450ms] ease-brand',
+                  'transition-[transform,translate,scale,rotate,box-shadow] duration-[450ms] ease-brand',
                   'hover:-translate-y-1.5 hover:shadow-[0_30px_58px_-34px_rgba(36,31,28,0.4)]',
                   'max-sm:px-[26px] max-sm:pt-[30px] max-sm:pb-7',
                 ].join(' ')}

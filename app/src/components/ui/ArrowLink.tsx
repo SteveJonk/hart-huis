@@ -11,13 +11,13 @@ export const arrowLinkClass = cn(
 export const arrowLinkCircClass = {
   md: cn(
     'grid size-9 place-items-center rounded-full border border-current',
-    'transition-[background,color,transform] duration-300 ease-brand',
+    'transition-[background,color,transform,translate,scale,rotate] duration-300 ease-brand',
     'group-hover:translate-x-1 group-hover:bg-ink group-hover:text-cream',
     'max-md:size-[38px]',
   ),
   sm: cn(
     'grid size-[34px] place-items-center rounded-full border border-current',
-    'transition-[background,color,transform] duration-300 ease-brand',
+    'transition-[background,color,transform,translate,scale,rotate] duration-300 ease-brand',
     'group-hover:translate-x-1 group-hover:bg-ink group-hover:text-cream',
     'max-md:size-[38px]',
   ),

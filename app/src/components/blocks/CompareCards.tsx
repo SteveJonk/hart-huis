@@ -69,7 +69,7 @@ export function CompareCards({
               <div
                 className={cn(
                   'relative overflow-hidden rounded px-[38px] pt-10 pb-9',
-                  'transition-[transform,box-shadow] duration-[450ms] ease-brand',
+                  'transition-[transform,translate,scale,rotate,box-shadow] duration-[450ms] ease-brand',
                   'hover:-translate-y-[5px] hover:shadow-[0_30px_58px_-34px_rgba(36,31,28,0.4)]',
                   'max-sm:px-[26px] max-sm:pt-8 max-sm:pb-[30px]',
                   card.dark ? 'bg-ink text-cream' : 'bg-white',

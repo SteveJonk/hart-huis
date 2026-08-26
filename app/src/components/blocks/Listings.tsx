@@ -160,7 +160,7 @@ export function ListingCard({ listing }: { listing: ListingItem }) {
       delay={listing.delay}
       className={cn(
         'group block overflow-hidden rounded bg-white',
-        'transition-[transform,box-shadow] duration-500 ease-brand hover:shadow-listing',
+        'transition-[transform,translate,scale,rotate,box-shadow] duration-500 ease-brand hover:shadow-listing',
       )}
     >
       <div className='relative aspect-[4/3] overflow-hidden'>

@@ -29,7 +29,7 @@ export function CrossLinks({ items = DEFAULTS.items }: CrossLinksProps = {}) {
                 href={link.href}
                 className={[
                   'group flex items-center justify-between gap-[26px] rounded bg-white px-10 py-[38px]',
-                  'transition-[transform,box-shadow] duration-[450ms] ease-brand',
+                  'transition-[transform,translate,scale,rotate,box-shadow] duration-[450ms] ease-brand',
                   'hover:-translate-y-[5px] hover:shadow-[0_26px_54px_-32px_rgba(36,31,28,0.42)]',
                   'max-sm:gap-5 max-sm:px-[26px] max-sm:py-7',
                   'max-xs:flex-col max-xs:items-start max-xs:gap-[18px]',

@@ -34,7 +34,7 @@ type Control = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 const BUTTON_BASE = cn(
   'inline-flex items-center justify-center gap-2.5 rounded-pill border border-transparent',
   'bg-sage text-btn font-semibold text-moss',
-  'transition-[background,transform] duration-300 ease-brand hover:-translate-y-0.5 hover:bg-sage-hover',
+  'transition-[background,transform,translate,scale,rotate] duration-300 ease-brand hover:-translate-y-0.5 hover:bg-sage-hover',
   'focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-burgundy',
   'disabled:pointer-events-none disabled:opacity-60',
 );

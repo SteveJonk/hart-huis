@@ -26,7 +26,7 @@ export function RevealLink({ href, children, className, delay }: RevealLinkProps
       ref={ref}
       href={href}
       className={cn(
-        'transition-[opacity,transform] duration-[850ms] ease-brand',
+        'transition-[opacity,transform,translate,scale,rotate] duration-[850ms] ease-brand',
         'motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none',
         visible ? 'translate-y-0 opacity-100' : 'translate-y-[26px] opacity-0',
         delay && delayClass[delay],
