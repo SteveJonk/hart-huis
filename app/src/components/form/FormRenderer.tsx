@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -102,7 +103,9 @@ function SuccessPanel({
 
 /**
  * Renders any Sanity `form` — one page of fields or several steps — and posts
- * the whole thing to /api/submit-form in one request.
+ * the whole thing to /api/submit-form in one request. A form with a redirect
+ * sends the visitor to that page afterwards instead of showing its
+ * confirmation panel.
  *
  * Every step stays mounted (hidden steps keep their values in the FormData),
  * which is why the form carries `noValidate`: the browser would otherwise
@@ -118,6 +121,7 @@ export function FormRenderer({
   variant = 'compact',
   context,
 }: FormRendererProps) {
+  const router = useRouter();
   const [step, setStep] = useState(0);
   const [status, setStatus] = useState<'idle' | 'sending' | 'done'>('idle');
   const [error, setError] = useState<string | null>(null);
@@ -185,6 +189,13 @@ export function FormRenderer({
       const result = (await response.json()) as { success?: boolean; message?: string };
       if (!response.ok || !result.success) {
         throw new Error(result.message || 'Versturen is niet gelukt.');
+      }
+      if (form.redirect) {
+        // Stay on 'sending' so the button keeps its disabled state until the
+        // new page takes over — a second submit would mail the same answers.
+        if (form.redirect.internal) router.push(form.redirect.href);
+        else window.location.assign(form.redirect.href);
+        return;
       }
       setStatus('done');
     } catch (submitError) {

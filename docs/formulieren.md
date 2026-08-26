@@ -30,12 +30,40 @@ genegeerd, dus je kunt terug zonder je werk kwijt te zijn.
    - **Help text** en de tekst van een checkbox mogen `[label](/pad)` bevatten;
      dat wordt een echte link.
 5. Zet onder **Buttons & confirmation** de knopteksten en de bevestiging die na
-   het versturen in de plaats van het formulier komt.
+   het versturen in de plaats van het formulier komt. Wil je liever
+   doorsturen naar een aparte pagina, zie **Doorsturen na versturen**
+   hieronder.
 6. Hang het formulier ergens op. Twee blokken hebben een `form`-referentie:
    **Contact form section** (/contact) en **Form hero** (landingspagina's).
 
 Velden toevoegen, herordenen of over een extra stap verdelen kan volledig in de
 Studio; daar is geen codewijziging voor nodig.
+
+## Doorsturen na versturen
+
+Standaard blijft de bezoeker staan waar hij is en komt de bevestiging
+(**Success title** / **Success body**) in de plaats van het formulier.
+
+Zet je op het tabblad **Buttons & confirmation** de schakelaar **Doorsturen na
+versturen** aan, dan verschijnt daaronder **Doorstuurpagina**: dezelfde
+link-keuze als overal op de site — een pagina op deze site (*Internal page*) of
+een externe URL. De bevestigingsvelden verdwijnen dan uit beeld en zijn ook niet
+meer verplicht: ze worden immers nooit getoond.
+
+Het doorsturen gebeurt pas ná een geslaagde inzending. Mislukt het versturen,
+dan blijft de bezoeker met zijn ingevulde antwoorden op het formulier staan en
+verschijnt de foutmelding. Een interne pagina gaat via de Next-router (geen
+volledige herlaadbeurt); alles wat daar niet in past — een volledige URL,
+`mailto:` of `tel:` — gaat via de browser.
+
+Staat de schakelaar aan maar is er nog geen pagina gekozen, dan valt het
+formulier terug op de bevestiging. Een bezoeker blijft zo nooit op een
+verstuurd formulier hangen. `check:form` bewaakt die regel.
+
+De bijbehorende bedankpagina zit als seed in de repo:
+`npm run seed:bedankt` maakt `/bedankt` aan (pageHero, numberedSteps,
+iconCards, crossLinks, ctaBand — allemaal bestaande blocks, en `noIndex` aan).
+Koppelen doe je daarna in de studio.
 
 ## Hoe het verstuurd wordt
 
@@ -103,9 +131,9 @@ is dan immers al gelukt.
 
 | Bestand | Rol |
 | --- | --- |
-| `app/src/lib/form-fields.ts` | veldvorm, `toSteps()` (modus → één vorm) en `toFieldRows()` (rij-indeling). Geen React, dus testbaar |
+| `app/src/lib/form-fields.ts` | veldvorm, `toSteps()` (modus → één vorm), `toFieldRows()` (rij-indeling) en `toRedirect()` (doorsturen). Geen React, dus testbaar |
 | `app/src/components/form/fields.tsx` | rendert één veld, alle negen types, in twee varianten |
-| `app/src/components/form/FormRenderer.tsx` | stappen, voortgang, validatie, reCAPTCHA, verzenden, bevestiging |
+| `app/src/components/form/FormRenderer.tsx` | stappen, voortgang, validatie, reCAPTCHA, verzenden, bevestiging of doorsturen |
 | `app/src/components/blocks/ContactForm.tsx` | /contact: kop, notitie en de zijkaart rondom de renderer |
 | `app/src/components/blocks/FormHero.tsx` | landingspagina: foto, kop, USP's en scorekaart rondom de renderer |
 

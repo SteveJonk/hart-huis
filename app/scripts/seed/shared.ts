@@ -124,7 +124,19 @@ export async function upsertFaq(faq: FaqItem) {
   return created._id
 }
 
-export async function upsertPage(slug: string, title: string, content: unknown[]) {
+/** The `seo` fields a seed can set. Left alone when the seed passes nothing. */
+export type PageSeo = {
+  title?: string
+  description?: string
+  noIndex?: boolean
+}
+
+export async function upsertPage(
+  slug: string,
+  title: string,
+  content: unknown[],
+  seo?: PageSeo,
+) {
   const existingId = await client.fetch<string | null>(
     `*[_type == "page" && slug.current == $slug][0]._id`,
     {slug},
@@ -135,6 +147,9 @@ export async function upsertPage(slug: string, title: string, content: unknown[]
     title,
     slug: {_type: 'slug' as const, current: slug},
     content,
+    // Only written when the seed asks for it, so the SEO an editor filled in
+    // on a page the seed does not care about survives a re-seed.
+    ...(seo ? {seo: {_type: 'seo' as const, ...seo}} : {}),
   }
 
   if (existingId) {

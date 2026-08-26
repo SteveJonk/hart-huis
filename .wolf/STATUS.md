@@ -163,6 +163,14 @@
 - Uitleg: `docs/realworks-import.md`
 - **nog niet gedraaid tegen productie:** de eerste echte import (11 objecten, ~490 foto's) moet nog. Daarna de zes mock-objecten uit `seed:objecten` weggooien
 
+**Doorsturen na formulierinzending + /bedankt (26-08-2026)**
+- `form` heeft op het tabblad **Buttons & confirmation** een schakelaar **Doorsturen na versturen** en, zodra die aanstaat, een **Doorstuurpagina** van het type `link` (interne pagina of externe URL). Success title/body zijn dan verborgen én niet meer verplicht.
+- `formProjection` in `PAGE_QUERY`/`WONING_QUERY` levert de velden mee; `toRedirect()` in `src/lib/form-fields.ts` maakt er `{href, internal}` van en `toFormDefinition` hangt dat als `redirect` aan de `FormDefinition`. De `FormRenderer` stuurt pas ná een geslaagde POST door — intern via de Next-router, extern via `window.location.assign` — en blijft ondertussen op `sending` staan zodat er niet twee keer verstuurd kan worden.
+- Schakelaar aan maar nog geen pagina gekozen = geen redirect, gewoon de bevestiging. `check:form` (regel 6) bewaakt dat.
+- `npm run seed:bedankt` maakt `/bedankt` aan met **alleen bestaande blocks**: pageHero, numberedSteps, iconCards, crossLinks, ctaBand. Copy staat in `src/lib/bedankt-content.ts`, foto's zijn hergebruikt (`/images/contact/kantoor.jpg`, `/images/cta-office.jpg`). Niet aan de navigatie gekoppeld, `seed:nav` hoeft niet.
+- `upsertPage()` kan nu een vierde argument `seo` meekrijgen; /bedankt staat daarmee op `noIndex`.
+- **nog te seeden:** `npm run seed:bedankt`, daarna in de studio per formulier de schakelaar aanzetten en /bedankt kiezen.
+
 ## 🚀 Next phase
 
 **Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026, waardebepaling 20-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`, `npm run seed:waardebepaling`). Wat resteert is afmaken en aanscherpen. **Alle designs uit `app/example-designs/` zijn nu geïmplementeerd** (nvm en zoekopdracht toegevoegd 21-08-2026). Wat resteert is seeden en aanscherpen: `npm run seed:nvm && npm run seed:nav`, `npm run seed:zoekopdracht`, en `npm run seed:waardebepaling` opnieuw vanwege bug-018.
@@ -210,6 +218,7 @@ npm run check:realworks  # mapping van de Realworks-feed naar `woning`
 npm run check:form       # rij-indeling, verborgen velden en de allow-list van CMS-formulieren
 npm run seed:sanity      # alle pagina's seeden (vereist SANITY_API_WRITE_TOKEN)
 npm run seed:objectpagina # bezichtigingsformulier + de knop op de objectpagina
+npm run seed:bedankt     # /bedankt — landingsplek voor "Doorsturen na versturen"
 
 # de scraper uitproberen zonder iets op te slaan
 curl -H "x-scraper-secret: $FUNDA_SCRAPER_SECRET" \

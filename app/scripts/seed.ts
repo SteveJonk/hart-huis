@@ -12,6 +12,7 @@
  */
 import {seedAanbod} from './seed/aanbod'
 import {seedAankoop} from './seed/aankoop'
+import {seedBedankt} from './seed/bedankt'
 import {seedBeoordelingen} from './seed/beoordelingen'
 import {seedContact} from './seed/contact'
 import {seedHome} from './seed/home'
@@ -37,6 +38,7 @@ const TARGETS = {
   objectpagina: seedObjectpagina,
   aanbod: seedAanbod,
   beoordelingen: seedBeoordelingen,
+  bedankt: seedBedankt,
   nvm: seedNvm,
   waardebepaling: seedWaardebepaling,
   zoekopdracht: seedZoekopdracht,
