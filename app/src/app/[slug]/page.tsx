@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
+import { JsonLd } from '@/components/JsonLd';
 import { PageBuilder } from '@/components/PageBuilder';
 import { PageWrapper } from '@/components/layout/PageWrapper';
 import { client } from '@/sanity/client';
-import { pageMetadata } from '@/sanity/metadata';
+import { pageJsonLd, pageFaqs } from '@/lib/json-ld';
+import { pageMetadata, seoImageUrl } from '@/sanity/metadata';
 import { PAGE_QUERY } from '@/sanity/queries';
 
 const options = { next: { revalidate: 30 } };
@@ -39,6 +41,16 @@ export default async function SanityPage({ params }: PageProps) {
 
   return (
     <PageWrapper minimal={Boolean(page.isLandingPage)}>
+      <JsonLd
+        data={pageJsonLd({
+          path: `/${slug}`,
+          title: page.seo?.title || page.title,
+          description: page.seo?.description,
+          imageUrl: seoImageUrl(page.seo),
+          faqs: pageFaqs(page.content),
+          trail: [{ name: page.title, path: `/${slug}` }],
+        })}
+      />
       <main>
         <PageBuilder content={page.content} />
       </main>

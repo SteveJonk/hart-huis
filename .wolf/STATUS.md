@@ -2,13 +2,22 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-25
+> Last updated: 2026-08-26
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+**JSON-LD uit Sanity (26-08-2026)**
+- `src/lib/json-ld.ts` bouwt per pagina één schema.org-graaf met `@id`-verwijzingen; `src/components/JsonLd.tsx` zet hem in de pagina (escapet `<`, zodat een adres het script niet kan afbreken).
+- `PageWrapper` rendert de twee knopen die op élke pagina staan: `RealEstateAgent` (#organisatie) en `WebSite` (#website). Adres, telefoon, e-mail, omschrijving, logo en socials komen uit het footer- en navigatiedocument dat de wrapper toch al ophaalt; `site.ts` is alleen nog terugval. De `aggregateRating` komt uit de nieuwe `REVIEW_STATS_QUERY` — dezelfde projectie als /beoordelingen.
+- Home en `[slug]` voegen een `WebPage` toe (titel/omschrijving/og:image uit `seo`). Staat er een `faqs`-blok op de pagina, dan is diezelfde knoop óók een `FAQPage` met de vragen erin; `[slug]` krijgt bovendien een kruimelpad Home › pagina.
+- De objectpagina levert een `RealEstateListing` (met `datePosted`), een kruimelpad Home › Aanbod › adres en de woning zelf: `[SingleFamilyResidence|Apartment|Residence, Product]` met adres, foto's, oppervlak, kamers, slaapkamers, bouwjaar, perceel/inhoud/energielabel als `additionalProperty`, en een `Offer` met prijs, `k.k.`/`v.o.n.`, `validFrom` en beschikbaarheid uit de status. Geen prijs = geen `Offer`.
+- Lege velden vallen weg (`prune`), dus een half ingevuld document geeft geen `"telephone": null`.
+- `npm run check:jsonld` (nieuw, `scripts/check-jsonld.ts`) controleert alle vormen zonder Sanity of browser, inclusief `REVIEW_STATS_QUERY` via groq-js.
+- **Nog te doen:** de output een keer door de Rich Results Test halen zodra de site staat, en `woning.seo` (zie open punt 7) — de beschrijving valt nu terug op de aanbiedingstekst omdat dat veld nog niet bestaat.
 
 **Realworks-import: media niet meer overschrijven (25-08-2026)**
 - De import deed per object een `createOrReplace` met een vers opgebouwde `fotos`-array: alles wat de redactie aan de galerij veranderde (volgorde, alt-teksten) was elke run weg.

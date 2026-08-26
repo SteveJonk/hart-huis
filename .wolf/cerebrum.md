@@ -87,6 +87,10 @@
 - **Realworks-media geeft standaard een thumbnail van 150×100.** Groter krijg je alleen met `width` **én** `height` samen in de query — `width=1600` in z'n eentje levert 225×150, en `resize`/`size`/`formaat`/`maxwidth` doen niets. Binnen dat kader wordt geschaald met behoud van verhouding, tot maximaal het origineel (3000×2000). De `check=api_sha256:…`-handtekening dekt die parameters niet af en blijft dus geldig. De import vraagt 2000×2000 (`FOTO_KADER`).
 - **Realworks whitelist op IP.** De feed antwoordt vanaf een niet-gewhiteliste server met 401/403 óf met een leeg `resultaten`. Beide gevallen benoemt `/api/import-realworks` expliciet in de foutmelding; een lege lijst is dus geen "geen aanbod".
 
+- **Structured data (JSON-LD) hangt aan één graaf met `@id`-verwijzingen** (`src/lib/json-ld.ts`). `#organisatie` en `#website` staan op élke pagina — `PageWrapper` rendert ze, want daar zijn navigatie en footer (adres, telefoon, socials, logo) toch al opgehaald. Elke route voegt daar zijn eigen `WebPage`/`RealEstateListing` aan toe. Wil je een veld toevoegen: de bouwers zijn puur, dus de test hoort in `scripts/check-jsonld.ts` (`npm run check:jsonld`), niet in een browser.
+- **`prune` in `json-ld.ts` gooit lege velden weg maar mag `{"@id": …}` nooit opruimen** — dát is de verwijzing waarmee de knopen aan elkaar hangen. De regel is daarom "een object met alleen een `@type` is leeg", niet "een object met alleen `@type`/`@id`".
+- **`tsx` compileert de `scripts/check-*.ts` naar CJS, dus geen top-level `await`.** Zet asynchroon werk (groq-js `evaluate`) in een functie en sluit af met `.then(...).catch(...)` + `process.exit(1)`, zoals `check-form.ts` doet.
+
 
 ## Do-Not-Repeat
 
@@ -135,6 +139,9 @@
 - [2026-08-21] Een prop op een block-component betekent niet dat de CMS hem ooit vult. `FormHero.titleAfter` bestond, maar het `formHero`-schema had het veld niet en `PageBuilder` gaf het niet door — de kop op /waardebepaling miste stilzwijgend zijn staartje. Bij het overnemen van een design: loop de props van het hergebruikte block na tegen het schema én tegen de `case` in PageBuilder, niet alleen tegen de component. Zie bug-018.
 
 ## Decision Log
+
+- [2026-08-26] De woning-knoop in de JSON-LD krijgt **twee types tegelijk**: `["SingleFamilyResidence", "Product"]` (of `Apartment`/`Residence`). Een `Residence` beschrijft het huis (oppervlak, kamers, bouwjaar) maar kent geen `offers`; zonder vraagprijs en beschikbaarheid mist een objectpagina de helft van zijn betekenis. Schema.org staat meerdere types op één knoop toe, dus dat is hier de weg — niet een losse `Product`-knoop naast de woning, want dan beweer je twee dingen waar er één is. Dezelfde redenering maakt een pagina met vragen `["WebPage", "FAQPage"]` in plaats van twee knopen voor dezelfde URL.
+- [2026-08-26] `aggregateRating` op de organisatie komt uit dezelfde `reviewStats`-projectie als /beoordelingen (`REVIEW_STATS_QUERY`), zodat de cijfers in de structured data niet kunnen afwijken van wat de bezoeker ziet. Geen cijfers of geen reviews → geen rating in de graaf, in plaats van een 0.
 
 - [2026-08-21] De bezichtigingsknop op de objectpagina wordt aangestuurd door één singleton `objectSettings` (knoptekst, formulierreferentie, venstertekst, terugvallink) en **niet** door een veld per `woning`. De Realworks-import schrijft de woningen, dus alles wat daar per object ingesteld wordt, moet bij elk nieuw huis opnieuw. Zonder gekozen formulier blijft de knop een gewone link (`fallbackHref`, standaard /contact), zodat de pagina nooit een knop toont die niets doet.
 - [2026-08-21] Het venster is een native `<dialog>` met `showModal()`: Escape, de top layer en de focus-trap komen dan van de browser in plaats van uit eigen code. De FormRenderer wordt pas gemount als het venster open is — een gesloten venster houdt zo geen half ingevuld formulier vast en heropenen begint weer bij stap één. Let op: Tailwind's preflight nult de marge van álle elementen, dus een `<dialog>` heeft expliciet `m-auto` nodig om nog gecentreerd te staan.

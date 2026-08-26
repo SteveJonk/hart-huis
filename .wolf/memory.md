@@ -429,3 +429,9 @@
 | 04:30 | planMedia: feed met meer foto's vult bestaande galerij aan | app/src/lib/realworks.ts, app/src/app/api/import-realworks/route.ts, app/scripts/check-realworks.ts | asserts groen; check:realworks faalt op bestaande w2000/w1200-mismatch | ~30k |
 | 05:07 | FOTO_KADER-mismatch: docs/JSDoc/test op 1200 getrokken | app/src/lib/realworks.ts, app/scripts/check-realworks.ts, docs/realworks-import.md | check:realworks groen (10 objecten) | ~8k |
 | 05:20 | Opruimen: verouderde, niet-verkochte objecten worden gedepubliceerd | app/src/lib/realworks.ts, app/src/app/api/import-realworks/route.ts, app/scripts/check-realworks.ts, studio-hart-huis/tools/RealworksTool.tsx, docs/realworks-import.md | check:realworks groen (incl. groq-js-test) | ~40k |
+
+## Session: 2026-08-26 20:26
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 20:40 | JSON-LD uit Sanity: organisatie/site in PageWrapper, WebPage+FAQPage+kruimelpad op CMS-pagina's, RealEstateListing+Residence+Offer op objectpagina's | app/src/lib/json-ld.ts, app/src/components/JsonLd.tsx, app/src/components/layout/PageWrapper.tsx, app/src/app/page.tsx, app/src/app/[slug]/page.tsx, app/src/app/aanbod/[slug]/page.tsx, app/src/sanity/{queries,metadata}.ts, app/scripts/check-jsonld.ts | check:jsonld groen, tsc + lint schoon | ~55k |
