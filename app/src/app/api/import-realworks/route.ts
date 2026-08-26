@@ -1,7 +1,14 @@
 /**
  * Haalt de actieve objecten op bij Realworks en zet ze als `woning`-documenten
- * in Sanity. De feed is de waarheid: een object dat er al staat wordt volledig
- * overschreven (op `realworksId`), niet gedupliceerd.
+ * in Sanity. De feed is de waarheid voor de tekstvelden: een object dat er al
+ * staat wordt overschreven (op `realworksId`), niet gedupliceerd. Uitzondering
+ * zijn de media: foto's en brochure die al op het document staan blijven staan
+ * en worden niet opnieuw gedownload. Heeft de feed méér foto's dan het
+ * document, dan worden de ontbrekende erachter aangevuld.
+ *
+ * Aan het eind gaan objecten die niet verkocht zijn en al twee maanden niet
+ * meer in de feed zaten offline (het gepubliceerde document wordt verwijderd,
+ * het concept blijft staan).
  *
  * Aanroepen:
  *   - dagelijks door de Vercel-cron uit `vercel.json` (`Authorization: Bearer $CRON_SECRET`)
@@ -13,8 +20,15 @@
  */
 import { NextResponse } from 'next/server';
 import {
+  BLIJFT_ONLINE,
+  planMedia,
   REALWORKS_URL,
   toWoning,
+  VEROUDERD_QUERY,
+  verouderingsGrens,
+  vrijeKey,
+  zonderBestandsnaam,
+  type BestaandeWoning,
   type MappedWoning,
   type RealworksObject,
 } from '@/lib/realworks';
@@ -102,38 +116,53 @@ async function importObjects(objects: MappedWoning[]) {
   const client = getWriteClient();
 
   // Bestaande objecten: op realworksId, zodat een hernoemd adres hetzelfde
-  // document bijwerkt in plaats van er een tweede naast te zetten.
-  const bestaand = await client.fetch<Array<{ _id: string; realworksId: number | null }>>(
-    `*[_type == "woning"]{_id, realworksId}`,
+  // document bijwerkt in plaats van er een tweede naast te zetten. De media
+  // komen mee — inclusief de bestandsnaam van elke foto, want daarmee bepalen
+  // we welke foto's uit de feed nog ontbreken.
+  const bestaand = await client.fetch<BestaandeWoning[]>(
+    `*[_type == "woning"]{
+      _id,
+      realworksId,
+      brochure,
+      "fotos": fotos[]{..., "bestandsnaam": asset->originalFilename}
+    }`,
   );
-  const idByRealworksId = new Map(
+  const bestaandByRealworksId = new Map(
     bestaand
       .filter((doc) => typeof doc.realworksId === 'number')
-      .map((doc) => [doc.realworksId as number, doc._id]),
+      .map((doc) => [doc.realworksId as number, doc]),
+  );
+
+  const plannen = objects.map((object) =>
+    planMedia(object, bestaandByRealworksId.get(object.realworksId)),
   );
 
   const images = await existingAssets(
     client,
     'sanity.imageAsset',
-    [...new Set(objects.flatMap((object) => object.fotos.map((foto) => foto.filename)))],
+    [...new Set(plannen.flatMap((plan) => plan.laden.map((foto) => foto.filename)))],
   );
   const files = await existingAssets(
     client,
     'sanity.fileAsset',
-    objects.flatMap((object) => (object.brochure ? [object.brochure.filename] : [])),
+    plannen
+      .filter((plan) => plan.brochureLaden)
+      .map((plan) => plan.object.brochure!.filename),
   );
 
   let geschreven = 0;
   let nieuw = 0;
   let fotosGeladen = 0;
+  let fotosBehouden = 0;
+  let fotosToegevoegd = 0;
   const warnings: string[] = [];
 
-  for (const object of objects) {
+  for (const { object, bestaandDoc, behouden, laden, brochureLaden } of plannen) {
     // Zes tegelijk: een object heeft er zomaar vijftig, en één voor één
     // duurt dat langer dan de functie mag draaien.
     const resolved: Array<string | null> = [];
-    for (let start = 0; start < object.fotos.length; start += UPLOAD_BATCH) {
-      const batch = object.fotos.slice(start, start + UPLOAD_BATCH);
+    for (let start = 0; start < laden.length; start += UPLOAD_BATCH) {
+      const batch = laden.slice(start, start + UPLOAD_BATCH);
       resolved.push(
         ...(await Promise.all(
           batch.map(async (foto) => {
@@ -157,18 +186,28 @@ async function importObjects(objects: MappedWoning[]) {
       );
     }
 
-    const fotos = object.fotos
+    const gebruikteKeys = new Set(
+      behouden
+        .map((foto) => foto._key)
+        .filter((key): key is string => typeof key === 'string'),
+    );
+    const nieuweFotos = laden
       .map((foto, index) => ({ foto, index, assetId: resolved[index] }))
       .filter((entry) => entry.assetId)
       .map(({ foto, index, assetId }) => ({
         _type: 'image',
-        _key: `${object.realworksId}-${index}`,
+        _key: vrijeKey(`${object.realworksId}-${index}`, gebruikteKeys),
         asset: { _type: 'reference', _ref: assetId as string },
         alt: foto.alt,
       }));
 
-    let brochure;
-    if (object.brochure) {
+    // Wat er al stond voorop, in de volgorde van de studio; nieuwe foto's erachter.
+    const fotos = [...behouden.map(zonderBestandsnaam), ...nieuweFotos];
+    fotosBehouden += behouden.length;
+    if (behouden.length > 0) fotosToegevoegd += nieuweFotos.length;
+
+    let brochure: Record<string, unknown> | undefined = bestaandDoc?.brochure ?? undefined;
+    if (brochureLaden && object.brochure) {
       let assetId = files.get(object.brochure.filename);
       if (!assetId) {
         try {
@@ -185,12 +224,13 @@ async function importObjects(objects: MappedWoning[]) {
       if (assetId) brochure = { _type: 'file', asset: { _type: 'reference', _ref: assetId } };
     }
 
-    const bestaandId = idByRealworksId.get(object.realworksId);
-    if (!bestaandId) nieuw += 1;
+    if (!bestaandDoc) nieuw += 1;
 
-    // De feed is de waarheid: het hele document gaat eroverheen.
+    // De feed is de waarheid voor de tekstvelden: het hele document gaat
+    // eroverheen. De media zijn de uitzondering — die worden hierboven
+    // hergebruikt zodat ze niet elke run opnieuw binnenkomen.
     await client.createOrReplace({
-      _id: bestaandId ?? `woning-${object.slug}`,
+      _id: bestaandDoc?._id ?? `woning-${object.slug}`,
       _type: 'woning',
       ...object.fields,
       ...(fotos.length > 0 ? { fotos } : {}),
@@ -199,7 +239,60 @@ async function importObjects(objects: MappedWoning[]) {
     geschreven += 1;
   }
 
-  return { geschreven, nieuw, fotosGeladen, warnings };
+  return { geschreven, nieuw, fotosGeladen, fotosBehouden, fotosToegevoegd, warnings };
+}
+
+type VerouderdObject = Record<string, unknown> & {
+  _id: string;
+  adres?: string;
+  _updatedAt?: string;
+};
+
+/**
+ * Objecten die niet verkocht zijn en al twee maanden niet meer zijn bijgewerkt.
+ * Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt`
+ * betekent: dit object zat er al die tijd niet meer in.
+ */
+function verouderdeObjecten(client: ReturnType<typeof getWriteClient>) {
+  return client.fetch<VerouderdObject[]>(VEROUDERD_QUERY, {
+    blijftOnline: [...BLIJFT_ONLINE],
+    grens: verouderingsGrens(),
+  });
+}
+
+/**
+ * Depubliceren doet Sanity door het gepubliceerde document weg te gooien; de
+ * inhoud blijft als concept bestaan, zodat de redactie hem terug kan zetten of
+ * kan nakijken. Precies wat "Unpublish" in de studio doet.
+ */
+async function depubliceer(
+  client: ReturnType<typeof getWriteClient>,
+  documenten: VerouderdObject[],
+) {
+  if (documenten.length === 0) return;
+
+  const tx = client.transaction();
+  for (const document of documenten) {
+    const concept: Record<string, unknown> = { ...document, _id: `drafts.${document._id}` };
+    delete concept._rev;
+    delete concept._createdAt;
+    delete concept._updatedAt;
+    tx.createIfNotExists(concept as Parameters<typeof tx.createIfNotExists>[0]);
+    tx.delete(document._id);
+  }
+  await tx.commit({ visibility: 'async' });
+}
+
+async function ruimOp() {
+  const client = getWriteClient();
+  const verouderd = await verouderdeObjecten(client);
+  await depubliceer(client, verouderd);
+  return {
+    gedepubliceerd: verouderd.length,
+    gedepubliceerdeObjecten: verouderd.map(
+      (document) => (document.adres as string) ?? document._id,
+    ),
+  };
 }
 
 async function handle(request: Request) {
@@ -247,6 +340,22 @@ async function handle(request: Request) {
     };
 
     if (dryRun) {
+      // Laten zien wát er offline zou gaan, zonder het te doen. Kan alleen als
+      // er een schrijftoken is; zonder token blijft de rest van de testrun wel
+      // werken.
+      let teDepubliceren: string[] | undefined;
+      try {
+        teDepubliceren = (await verouderdeObjecten(getWriteClient())).map(
+          (document) => (document.adres as string) ?? document._id,
+        );
+      } catch (error) {
+        warnings.push(
+          `Kon niet nakijken welke objecten offline zouden gaan: ${
+            error instanceof Error ? error.message : String(error)
+          }`,
+        );
+      }
+
       return NextResponse.json(
         {
           ...summary,
@@ -255,14 +364,29 @@ async function handle(request: Request) {
             fotos: object.fotos.length,
             brochure: Boolean(object.brochure),
           })),
+          ...(teDepubliceren
+            ? { gedepubliceerd: teDepubliceren.length, gedepubliceerdeObjecten: teDepubliceren }
+            : {}),
         },
         { headers: cors },
       );
     }
 
     const written = await importObjects(objecten);
+
+    // Alleen na een volledige run: bij ?limit= is maar een deel van de feed
+    // aangeraakt, en dan zegt `_updatedAt` niets over wat er nog te koop staat.
+    const opgeruimd = limit
+      ? { gedepubliceerd: 0, gedepubliceerdeObjecten: [] as string[] }
+      : await ruimOp();
+    if (limit) {
+      warnings.push(
+        'Met ?limit= is er niets offline gehaald: er is maar een deel van de feed bijgewerkt.',
+      );
+    }
+
     return NextResponse.json(
-      { ...summary, ...written, warnings: [...warnings, ...written.warnings] },
+      { ...summary, ...written, ...opgeruimd, warnings: [...warnings, ...written.warnings] },
       { headers: cors },
     );
   } catch (error) {

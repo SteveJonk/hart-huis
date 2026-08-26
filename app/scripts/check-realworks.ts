@@ -11,10 +11,24 @@
  *     > app/scripts/fixtures/realworks-objecten.json
  */
 import assert from 'node:assert/strict';
+import { evaluate, parse } from 'groq-js';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { label, sentence, slugify, toWoning, type RealworksObject } from '../src/lib/realworks';
+import {
+  BLIJFT_ONLINE,
+  label,
+  planMedia,
+  sentence,
+  slugify,
+  toWoning,
+  VEROUDERD_QUERY,
+  verouderingsGrens,
+  vrijeKey,
+  type BestaandeWoning,
+  type MappedWoning,
+  type RealworksObject,
+} from '../src/lib/realworks';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const feed = JSON.parse(
@@ -78,11 +92,121 @@ assert.deepEqual(waarde('Buitenruimte en parkeren', 'Ligging tuin'), ['West']);
 assert.deepEqual(waarde('Oppervlakten en inhoud', 'Externe bergruimte'), ['11 m²']);
 
 // Hoofdfoto voorop, plattegronden en de brochure niet in de galerij.
-assert.equal(huis.fotos[0].filename, '287669985-w2000.jpg');
+assert.equal(huis.fotos[0].filename, '287669985-w1200.jpg');
 assert.ok(huis.fotos.every((foto) => foto.filename.endsWith('.jpg')));
 
 // Zonder width én height geeft Realworks een thumbnail van 150x100.
-assert.ok(huis.fotos[0].url.includes('width=2000&height=2000'));
+assert.ok(huis.fotos[0].url.includes('width=1200&height=1200'));
 assert.ok(huis.fotos[0].url.includes('check=api_sha256'), 'de handtekening moet intact blijven');
 
-console.log(`✓ ${feed.resultaten.length} objecten gemapt zonder verrassingen`);
+// planMedia: wat er al in Sanity staat blijft staan, en alleen als de feed
+// méér foto's heeft worden de ontbrekende aangevuld.
+const metFotos = (aantal: number) =>
+  ({
+    realworksId: 1,
+    slug: 's',
+    fotos: Array.from({ length: aantal }, (_, i) => ({
+      url: `u${i + 1}`,
+      filename: `f${i + 1}.jpg`,
+      alt: `foto ${i + 1}`,
+    })),
+    fields: { adres: 'Teststraat 1' },
+  }) as unknown as MappedWoning;
+
+const inSanity = (namen: string[]) =>
+  ({
+    _id: 'woning-test',
+    realworksId: 1,
+    fotos: namen.map((naam, i) => ({
+      _key: `1-${i}`,
+      _type: 'image',
+      bestandsnaam: naam,
+      asset: { _type: 'reference', _ref: `image-${i}` },
+    })),
+  }) as BestaandeWoning;
+
+// Nieuw object: alles laden.
+assert.deepEqual(planMedia(metFotos(3)).laden.map((foto) => foto.filename), [
+  'f1.jpg',
+  'f2.jpg',
+  'f3.jpg',
+]);
+
+// Evenveel foto's als in Sanity: niets laden, alles behouden.
+const gelijk = planMedia(metFotos(3), inSanity(['f1.jpg', 'f2.jpg', 'f3.jpg']));
+assert.equal(gelijk.laden.length, 0);
+assert.equal(gelijk.behouden.length, 3);
+
+// Feed heeft er meer: alleen de ontbrekende erbij, de rest blijft staan.
+const meer = planMedia(metFotos(5), inSanity(['f1.jpg', 'f2.jpg', 'f3.jpg']));
+assert.deepEqual(meer.laden.map((foto) => foto.filename), ['f4.jpg', 'f5.jpg']);
+assert.equal(meer.behouden.length, 3);
+
+// Een document zonder foto's wordt gewoon gevuld.
+assert.equal(planMedia(metFotos(2), inSanity([])).laden.length, 2);
+
+// Nieuwe foto's krijgen een _key die niet botst met wat er al staat.
+const gebruikt = new Set(['1-0', '1-1']);
+assert.equal(vrijeKey('1-0', gebruikt), '1-0-2');
+assert.equal(vrijeKey('1-0', gebruikt), '1-0-3');
+assert.equal(vrijeKey('1-2', gebruikt), '1-2');
+
+// De opruimgrens ligt twee maanden terug, en verkochte objecten blijven staan.
+assert.equal(verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')), '2026-06-25T10:00:00.000Z');
+assert.equal(verouderingsGrens(new Date('2026-01-15T10:00:00.000Z')), '2025-11-15T10:00:00.000Z');
+assert.deepEqual([...BLIJFT_ONLINE].sort(), ['verkocht', 'voorbehoud']);
+
+// Elke status uit de mapping is er één die de opruimquery kent; komt er een
+// nieuwe bij, dan moet BLIJFT_ONLINE opnieuw langs.
+const statussen = new Set(feed.resultaten.map((object) => toWoning(object).fields.status));
+assert.ok(
+  [...statussen].every((status) =>
+    ['beschikbaar', 'voorbehoud', 'verkocht'].includes(status as string),
+  ),
+  `onbekende status in de feed: ${[...statussen].join(', ')}`,
+);
+
+// VEROUDERD_QUERY haalt precies de objecten op die offline moeten.
+async function checkVerouderdQuery() {
+  const woning = (id: string, status: string, updatedAt: string) => ({
+    _id: id,
+    _type: 'woning',
+    status,
+    adres: id,
+    _updatedAt: updatedAt,
+  });
+  const dataset = [
+    woning('te-koop-vers', 'beschikbaar', '2026-08-20T10:00:00Z'),
+    woning('te-koop-oud', 'beschikbaar', '2026-05-01T10:00:00Z'),
+    woning('verkocht-oud', 'verkocht', '2026-01-01T10:00:00Z'),
+    woning('voorbehoud-oud', 'voorbehoud', '2026-01-01T10:00:00Z'),
+    { ...woning('concept-oud', 'beschikbaar', '2026-01-01T10:00:00Z'), _id: 'drafts.te-koop-oud' },
+    { _id: 'pagina', _type: 'page', _updatedAt: '2026-01-01T10:00:00Z' },
+  ];
+
+  const gevonden = await (
+    await evaluate(parse(VEROUDERD_QUERY), {
+      dataset,
+      params: {
+        blijftOnline: [...BLIJFT_ONLINE],
+        grens: verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')),
+      },
+    })
+  ).get();
+
+  assert.deepEqual(
+    (gevonden as Array<{ _id: string }>).map((document) => document._id),
+    ['te-koop-oud'],
+    'alleen een niet-verkocht object dat twee maanden stilstaat gaat offline',
+  );
+}
+
+// tsx compileert deze scripts naar CJS, dus geen top-level await.
+checkVerouderdQuery()
+  .then(() =>
+    console.log(`✓ ${feed.resultaten.length} objecten gemapt zonder verrassingen`),
+  )
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
