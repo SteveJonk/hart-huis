@@ -6,7 +6,6 @@ import { cn } from '@/lib/cn';
 import type { FormDefinition } from '@/lib/form-fields';
 import { euro, shortDate } from '@/lib/format';
 import { statusOf, type ObjectMakelaar } from '@/lib/object-content';
-import { SITE } from '@/lib/site';
 
 type ObjectSidebarProps = {
   adres: string;
@@ -20,6 +19,8 @@ type ObjectSidebarProps = {
   brochureUrl?: string | null;
   /** De kaart onder de prijskaart — uit het `makelaar`-veld op de woning. */
   makelaar: ObjectMakelaar;
+  /** Het kantoornummer op de tweede knop — uit het footerdocument. */
+  telefoon: { label: string; href: string };
   /** De knop bovenaan: label, en het formulier dat erachter opent. */
   cta: {
     label: string;
@@ -92,6 +93,7 @@ export function ObjectSidebar({
   perceel,
   brochureUrl,
   makelaar,
+  telefoon,
   cta,
 }: ObjectSidebarProps) {
   const { label, tone } = statusOf(status);
@@ -146,8 +148,8 @@ export function ObjectSidebar({
             {cta.label}
           </Button>
         )}
-        <Button href={SITE.phoneHref} variant='ink' className='w-full justify-center'>
-          {SITE.phone}
+        <Button href={telefoon.href} variant='ink' className='w-full justify-center'>
+          {telefoon.label}
         </Button>
 
         {feiten.length > 0 ? (

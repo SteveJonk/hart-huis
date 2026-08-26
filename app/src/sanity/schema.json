@@ -5493,6 +5493,45 @@
           "type": "string"
         },
         "optional": false
+      },
+      "vergelijkbaar": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "object",
+          "attributes": {
+            "eyebrow": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
+              },
+              "optional": true
+            },
+            "title": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
+              },
+              "optional": true
+            },
+            "cta": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "cta"
+              },
+              "optional": true
+            }
+          }
+        },
+        "optional": true
+      },
+      "ctaBand": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "ctaBand"
+        },
+        "optional": true
       }
     }
   },

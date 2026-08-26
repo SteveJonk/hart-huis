@@ -15,12 +15,6 @@ export function statusOf(status: string | null | undefined) {
   return OBJECT_STATUS[(status ?? 'beschikbaar') as WoningStatus] ?? OBJECT_STATUS.beschikbaar;
 }
 
-/** Overview page — not built yet, so this is the one place to change the target. */
-export const OBJECT_BACK_LINK = {
-  label: 'Terug naar het aanbod',
-  href: '/aanbod',
-} as const;
-
 /**
  * Fallback voor de knop op de prijskaart, zolang het `objectSettings`-document
  * nog niet bestaat. Staat er wél een formulier in dat document, dan opent de
@@ -77,12 +71,18 @@ export function toMakelaar(makelaar: WoningMakelaar): ObjectMakelaar {
   };
 }
 
+/**
+ * Terugval voor de kop boven "Vergelijkbare woningen"; de redactie beheert hem
+ * op `objectSettings`. Zie `SimilarObjects`, dat deze waarden als defaults
+ * gebruikt.
+ */
 export const OBJECT_SIMILAR = {
   eyebrow: 'Misschien ook iets',
   title: 'Vergelijkbare woningen',
-  cta: { label: 'Bekijk het hele aanbod', href: OBJECT_BACK_LINK.href },
+  cta: { label: 'Bekijk het hele aanbod', href: '/aanbod' },
 } as const;
 
+/** Terugval voor de CTA-band onderaan; ook die staat op `objectSettings`. */
 export const OBJECT_CTA = {
   image: {
     src: '/images/over-ons/spaarne.jpg',
@@ -94,6 +94,16 @@ export const OBJECT_CTA = {
   primaryCta: { label: 'Gratis zoekopdracht aanmaken', href: '#' },
   secondaryCta: { label: `Bel ${SITE.phone}`, href: SITE.phoneHref },
 } as const;
+
+/**
+ * Het kantoornummer op de prijskaart. Staat in het footerdocument; `SITE` is
+ * daar sinds de JSON-LD-commit alleen nog terugval voor. De `tel:`-link wordt
+ * afgeleid, net als in `SiteFooter`.
+ */
+export function toKantoorTelefoon(phone: string | null | undefined) {
+  const nummer = phone || SITE.phone;
+  return { label: nummer, href: `tel:${parsePhoneNumber(nummer)}` };
+}
 
 export const OBJECT_FORM_ID = 'bezichtiging';
 

@@ -36,13 +36,28 @@
       "count": 1,
       "tokens": 28,
       "first_read": "2026-08-26T20:57:33.048Z"
+    },
+    "/home/user/hart-huis/app/src/components/PageBuilder.tsx": {
+      "count": 1,
+      "tokens": 7527,
+      "first_read": "2026-08-26T21:08:00.402Z"
+    },
+    "/home/user/hart-huis/studio-hart-huis/schemaTypes/objects/linkFields.ts": {
+      "count": 1,
+      "tokens": 407,
+      "first_read": "2026-08-26T21:08:12.273Z"
+    },
+    "/home/user/hart-huis/app/scripts/seed/objectpagina.ts": {
+      "count": 1,
+      "tokens": 286,
+      "first_read": "2026-08-26T21:08:16.921Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 7,
+  "anatomy_hits": 10,
   "anatomy_misses": 0,
   "repeated_reads_warned": 1,
   "cerebrum_warnings": 0,
-  "stop_count": 0
+  "stop_count": 1
 }

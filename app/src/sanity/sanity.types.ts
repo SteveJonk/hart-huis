@@ -927,6 +927,12 @@ export type ObjectSettings = {
   dialogTitle?: string;
   dialogLead?: string;
   fallbackHref: string;
+  vergelijkbaar?: {
+    eyebrow?: string;
+    title?: string;
+    cta?: Cta;
+  };
+  ctaBand?: CtaBand;
 };
 
 export type Form = {
@@ -2945,7 +2951,7 @@ export type PAGE_QUERY_RESULT = {
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: WONING_QUERY
-// Query: *[_type == "woning" && slug.current == $slug][0]{    _id,    adres,    "slug": slug.current,    postcode,    plaats,    status,    prijs,    prijsConditie,    aangebodenSinds,    aanvaarding,    soortWoning,    bouwjaar,    woonoppervlak,    perceel,    inhoud,    kamers,    slaapkamers,    energielabel,    kenmerkGroepen[]{      titel,      rijen[]{label, waarde}    },    aanbiedingsTekst,    aanbiedingsTekstEngels,    fotos,    "brochureUrl": brochure.asset->url,    makelaar,    seo,    "vergelijkbaar": *[_type == "woning" && _id != ^._id]      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]},    // De knop op de prijskaart: label, venstertekst en het formulier erin. Eén    // singleton voor alle objecten — de import schrijft de woningen zelf.    "instellingen": *[_id == "objectSettings"][0]{      ctaLabel,      dialogTitle,      dialogLead,      fallbackHref,      form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    "slug": slug.current  }}}    },    "recaptcha": *[_type == "formGeneralSettings"][0]{      recaptchaEnabled,      recaptchaSiteKey    }  }
+// Query: *[_type == "woning" && slug.current == $slug][0]{    _id,    adres,    "slug": slug.current,    postcode,    plaats,    status,    prijs,    prijsConditie,    aangebodenSinds,    aanvaarding,    soortWoning,    bouwjaar,    woonoppervlak,    perceel,    inhoud,    kamers,    slaapkamers,    energielabel,    kenmerkGroepen[]{      titel,      rijen[]{label, waarde}    },    aanbiedingsTekst,    aanbiedingsTekstEngels,    fotos,    "brochureUrl": brochure.asset->url,    makelaar,    seo,    "vergelijkbaar": *[_type == "woning" && _id != ^._id]      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]},    // Het kantoornummer op de prijskaart staat in het footerdocument; site.ts    // is daar alleen nog terugval voor.    "telefoon": *[_id == "footer"][0].contactInfo.phone,    // Alles wat op elke objectpagina hetzelfde is: de knop op de prijskaart    // (label, venstertekst, formulier) en de twee secties eronder. Eén    // singleton voor alle objecten — de import schrijft de woningen zelf.    "instellingen": *[_id == "objectSettings"][0]{      ctaLabel,      dialogTitle,      dialogLead,      fallbackHref,      form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    "slug": slug.current  }}},      vergelijkbaar{        eyebrow,        title,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      ctaBand{        image,        eyebrow,        title,        body,        primaryCta{  ...,  internalLink->{    "slug": slug.current  }},        secondaryCta{  ...,  internalLink->{    "slug": slug.current  }}      }    },    "recaptcha": *[_type == "formGeneralSettings"][0]{      recaptchaEnabled,      recaptchaSiteKey    }  }
 export type WONING_QUERY_RESULT = {
   _id: string;
   adres: string;
@@ -3012,6 +3018,7 @@ export type WONING_QUERY_RESULT = {
       _key: string;
     } | null;
   }>;
+  telefoon: null | string;
   instellingen:
     | {
         ctaLabel: null;
@@ -3019,6 +3026,8 @@ export type WONING_QUERY_RESULT = {
         dialogLead: null;
         fallbackHref: null;
         form: null;
+        vergelijkbaar: null;
+        ctaBand: null;
       }
     | {
         ctaLabel: string;
@@ -3051,6 +3060,50 @@ export type WONING_QUERY_RESULT = {
           redirectAfterSubmit: boolean | null;
           redirectLink: {
             _type: "link";
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+        } | null;
+        vergelijkbaar: {
+          eyebrow: string | null;
+          title: string | null;
+          cta: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+        } | null;
+        ctaBand: {
+          image: {
+            asset?: SanityImageAssetReference;
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt: string;
+            _type: "image";
+          };
+          eyebrow: string;
+          title: string;
+          body: string;
+          primaryCta: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+          secondaryCta: {
+            _type: "cta";
+            label: string;
             linkType: "external" | "internal";
             internalLink: {
               slug: string;
@@ -3250,7 +3303,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '\n  *[_type == "page" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    seo,\n    isLandingPage,\n    content[]{\n      ...,\n      primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      nvm{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      items[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      cards[]{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      person{\n        ...,\n        links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      aside{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // A simple form keeps its fields at the root, a multi-step one spreads\n      // them over steps; the container the mode does not use comes back null.\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n},\n      regions[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      places[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // Geen "..." in de takken hieronder: die spreidt het ruwe document\n      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de\n      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.\n      _type == "hero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "reviews" => {\n        "reviews": *[_type == "review"] | order(date desc)[0...8]{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n},\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "beoordelingenHero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n},\n        ...{\n  "cijfer10": count(*[_type == "review" && grade >= 9.5]),\n  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),\n  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),\n  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),\n  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])\n}\n      },\n      _type == "uitgelichteReview" => {\n        review->{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "reviewGrid" => {\n        "items": *[_type == "review"] | order(date desc){\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "objectGrid" => {\n        ctaCard{..., cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}},\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "listings" => {\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "contactFormSection" => {\n        "recaptcha": *[_type == "formGeneralSettings"][0]{\n          recaptchaEnabled,\n          recaptchaSiteKey\n        }\n      },\n      _type == "faqs" => {\n        faqs[]->{\n          ...,\n          link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        }\n      }\n    }\n  }\n': PAGE_QUERY_RESULT;
-    '\n  *[_type == "woning" && slug.current == $slug][0]{\n    _id,\n    adres,\n    "slug": slug.current,\n    postcode,\n    plaats,\n    status,\n    prijs,\n    prijsConditie,\n    aangebodenSinds,\n    aanvaarding,\n    soortWoning,\n    bouwjaar,\n    woonoppervlak,\n    perceel,\n    inhoud,\n    kamers,\n    slaapkamers,\n    energielabel,\n    kenmerkGroepen[]{\n      titel,\n      rijen[]{label, waarde}\n    },\n    aanbiedingsTekst,\n    aanbiedingsTekstEngels,\n    fotos,\n    "brochureUrl": brochure.asset->url,\n    makelaar,\n    seo,\n    "vergelijkbaar": *[_type == "woning" && _id != ^._id]\n      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n},\n    // De knop op de prijskaart: label, venstertekst en het formulier erin. E\xE9n\n    // singleton voor alle objecten \u2014 de import schrijft de woningen zelf.\n    "instellingen": *[_id == "objectSettings"][0]{\n      ctaLabel,\n      dialogTitle,\n      dialogLead,\n      fallbackHref,\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n}\n    },\n    "recaptcha": *[_type == "formGeneralSettings"][0]{\n      recaptchaEnabled,\n      recaptchaSiteKey\n    }\n  }\n': WONING_QUERY_RESULT;
+    '\n  *[_type == "woning" && slug.current == $slug][0]{\n    _id,\n    adres,\n    "slug": slug.current,\n    postcode,\n    plaats,\n    status,\n    prijs,\n    prijsConditie,\n    aangebodenSinds,\n    aanvaarding,\n    soortWoning,\n    bouwjaar,\n    woonoppervlak,\n    perceel,\n    inhoud,\n    kamers,\n    slaapkamers,\n    energielabel,\n    kenmerkGroepen[]{\n      titel,\n      rijen[]{label, waarde}\n    },\n    aanbiedingsTekst,\n    aanbiedingsTekstEngels,\n    fotos,\n    "brochureUrl": brochure.asset->url,\n    makelaar,\n    seo,\n    "vergelijkbaar": *[_type == "woning" && _id != ^._id]\n      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n},\n    // Het kantoornummer op de prijskaart staat in het footerdocument; site.ts\n    // is daar alleen nog terugval voor.\n    "telefoon": *[_id == "footer"][0].contactInfo.phone,\n    // Alles wat op elke objectpagina hetzelfde is: de knop op de prijskaart\n    // (label, venstertekst, formulier) en de twee secties eronder. E\xE9n\n    // singleton voor alle objecten \u2014 de import schrijft de woningen zelf.\n    "instellingen": *[_id == "objectSettings"][0]{\n      ctaLabel,\n      dialogTitle,\n      dialogLead,\n      fallbackHref,\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n},\n      vergelijkbaar{\n        eyebrow,\n        title,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      ctaBand{\n        image,\n        eyebrow,\n        title,\n        body,\n        primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      }\n    },\n    "recaptcha": *[_type == "formGeneralSettings"][0]{\n      recaptchaEnabled,\n      recaptchaSiteKey\n    }\n  }\n': WONING_QUERY_RESULT;
     '\n  *[_id == $formId && _type == "form"][0]{\n    _id,\n    title,\n    mailRecipients,\n    mailSubject,\n    mailMessage,\n    sendCopyToSubmitter,\n    copySubject,\n    copyMessage,\n    "fields": select(\n      mode == "steps" => steps[].fields[]{label, name, type, isRequired},\n      fields[]{label, name, type, isRequired}\n    )\n  }\n': FORM_QUERY_RESULT;
     '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    fromEmail,\n    fromName,\n    mailjetApiKey,\n    mailjetApiSecret,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey\n  }\n': FORM_SETTINGS_QUERY_RESULT;
     '{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}': REVIEW_STATS_QUERY_RESULT;

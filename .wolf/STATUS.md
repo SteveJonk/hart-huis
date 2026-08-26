@@ -17,6 +17,13 @@
 - **De Realworks-import bewaart het veld** (`bestaand`-projectie + de `createOrReplace` in `/api/import-realworks`), net als foto's en brochure — zonder dat was het na één import-run weg. `docs/realworks-import.md` heeft er een kopje "Makelaar" bij.
 - `OBJECT_VIEWING_CTA` is bewust **niet** verhuisd: die staat al in het `objectSettings`-singleton en de gebruiker wilde dat zo houden (zie Decision Log 21-08-2026).
 
+**Rest van de objectpagina-copy naar Sanity (26-08-2026)**
+- `objectSettings` heeft nu twee tabbladen: **Bezichtigingsknop** (was er al) en **Onderaan de pagina** met `vergelijkbaar` (bovenkopje, kop, knop) en `ctaBand` — dat laatste hergebruikt het bestaande `ctaBand`-objecttype, dus dezelfde velden als het blok op een gewone pagina.
+- `WONING_QUERY` haalt beide op; `similarHeader()` en `ctaBand()` in `aanbod/[slug]/page.tsx` vallen per veld terug op `OBJECT_SIMILAR` / `OBJECT_CTA`. `SimilarObjects` kreeg optionele props met die constanten als defaults, net als elk blok-component.
+- Het kantoornummer op de prijskaart komt uit het footerdocument (`"telefoon": *[_id == "footer"][0].contactInfo.phone`), met `SITE.phone` als terugval en de `tel:`-link afgeleid. `SITE` is daarmee ook hier alleen nog vangnet.
+- `OBJECT_BACK_LINK` is weg — de "Terug naar het aanbod"-link staat nu gewoon in `ObjectGallery`. /aanbod bestaat, dus de indirectie ("de ene plek om het doel te wijzigen") had geen doel meer.
+- **Nog te doen:** `npm run seed:objectpagina` draaien — het document bestaat nog niet, dus tot dan rendert de pagina op de code-defaults. Let bij het nalopen op de primaire knop van de CTA-band: die staat op `#` (zie open punt hieronder).
+
 **JSON-LD uit Sanity (26-08-2026)**
 - `src/lib/json-ld.ts` bouwt per pagina één schema.org-graaf met `@id`-verwijzingen; `src/components/JsonLd.tsx` zet hem in de pagina (escapet `<`, zodat een adres het script niet kan afbreken).
 - `PageWrapper` rendert de twee knopen die op élke pagina staan: `RealEstateAgent` (#organisatie) en `WebSite` (#website). Adres, telefoon, e-mail, omschrijving, logo en socials komen uit het footer- en navigatiedocument dat de wrapper toch al ophaalt; `site.ts` is alleen nog terugval. De `aggregateRating` komt uit de nieuwe `REVIEW_STATS_QUERY` — dezelfde projectie als /beoordelingen.
@@ -195,7 +202,7 @@
 6. `SITE.fundaScore` / `SITE.reviewCount` zijn nu alleen nog fallback; de factBar op /verkoop gebruikt `SITE.fundaScore` nog hardcoded.
 7. **`woning` heeft geen `seo`-veld** terwijl `WONING_QUERY` het wél selecteert (`seo: null` in de gegenereerde types) — objectpagina's krijgen dus nooit CMS-SEO. Keuze: veld toevoegen aan het schema zoals `page` dat heeft, of de dode selectie uit de query halen. Zie bug-013.
 8. `npm run typegen` faalt op de default node (v17) van deze machine; draai hem met `export PATH="$HOME/.nvm/versions/node/v22.18.0/bin:$PATH"` ervoor.
-9. Het bezichtigingsformulier staat nog niet in Sanity: `npm run seed:objectpagina`. Daarna beheert de redactie het formulier én de knop zelf (Forms + Objectpagina in de studio).
+9. Het bezichtigingsformulier staat nog niet in Sanity: `npm run seed:objectpagina`. Daarna beheert de redactie het formulier, de knop, de kop boven "Vergelijkbare woningen" én de CTA-band zelf (Forms + Objectpagina in de studio). De primaire knop van die CTA-band staat op `#` (was al zo in `OBJECT_CTA`) — na het seeden in de studio naar de zoekopdracht-LP wijzen, of hem hier alvast goedzetten.
 10. Na elke schemawijziging `npm run typegen` draaien en `app/src/sanity/{schema.json,sanity.types.ts}` meecommitten — beide staan in git en zijn nu de bron van de types.
 
 ## 📁 Active architecture

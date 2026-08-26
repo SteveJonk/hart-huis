@@ -457,7 +457,7 @@
   - fn `Feit` L72-81 (~112 tok)
   - fn `ObjectSidebar` L82-204 (~1079 tok)
 - `ShareButton.tsx` — Client. navigator.share with a clipboard fallback. (~254 tok)
-- `SimilarObjects.tsx` — "Vergelijkbare woningen" band on sand, reusing `ListingCard`. (~417 tok)
+- `SimilarObjects.tsx` — "Vergelijkbare woningen" band on sand, reusing `ListingCard`. Kop en knop komen als optionele props uit `objectSettings`, met `OBJECT_SIMILAR` als default. (~417 tok)
 
 ## app/src/components/ui/
 
@@ -552,7 +552,7 @@
   - fn `objectPageJsonLd` L425-460 (~350 tok)
 - `links.ts` — Resolve a Sanity link/cta object to a usable href. (~258 tok)
 - `nvm-content.ts` — Exports NVM_HERO, NVM_FACTS, NVM_BENEFITS_IMAGE, NVM_BENEFITS_INTRO + 11 more (~2965 tok)
-- `object-content.ts` — Statussen (label + pill-tone), de terugvalwaarden van de objectpagina en `toMakelaar()`, dat het `makelaar`-veld van een woning per veld op `OBJECT_MAKELAAR` laat terugvallen. (~1224 tok)
+- `object-content.ts` — Statussen (label + pill-tone) en de terugvalwaarden van de objectpagina (makelaar, vergelijkbare woningen, CTA-band, bezichtigingsformulier), plus `toMakelaar()` / `toKantoorTelefoon()` die per veld op die constanten terugvallen. (~1224 tok)
   - fn `statusOf` L13-127 (~1097 tok)
 - `over-ons-content.ts` — Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more (~1949 tok)
 - `phone.ts` — Exports parsePhoneNumber (~28 tok)
@@ -634,7 +634,7 @@
   - fn `isSteps` L5-247 (~2183 tok)
 - `index.ts` — Exports schemaTypes (~1080 tok)
 - `navigationType.ts` — Exports navigationType (~470 tok)
-- `objectSettingsType.ts` — Singleton "Objectpagina": knoptekst, het formulier achter de knop, de venstertekst en de terugvallink. Eén document voor alle objecten, want de import schrijft de woningen. (~525 tok)
+- `objectSettingsType.ts` — Singleton "Objectpagina", twee tabbladen: de bezichtigingsknop (knoptekst, formulier, venstertekst, terugvallink) en wat onderaan elke objectpagina staat (`vergelijkbaar` + een `ctaBand`). Eén document voor alle objecten, want de import schrijft de woningen. (~525 tok)
 - `pageBuilderType.ts` — Exports pageBuilderType (~554 tok)
 - `pageType.ts` — Exports pageType (~285 tok)
 - `reviewType.ts` — Cijfers komen straks uit de scraper; daarom optioneel. (~697 tok)
