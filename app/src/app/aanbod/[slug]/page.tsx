@@ -22,7 +22,12 @@ import type { WONING_QUERY_RESULT } from '@/sanity/sanity.types';
 import { toFormDefinition } from '@/lib/form-fields';
 import { euro } from '@/lib/format';
 import { objectPageJsonLd } from '@/lib/json-ld';
-import { OBJECT_CTA, OBJECT_VIEWING_CTA, statusOf } from '@/lib/object-content';
+import {
+  OBJECT_CTA,
+  OBJECT_VIEWING_CTA,
+  statusOf,
+  toMakelaar,
+} from '@/lib/object-content';
 import { SITE } from '@/lib/site';
 
 const options = { next: { revalidate: 30 } };
@@ -172,6 +177,7 @@ export default async function ObjectPage({ params }: ObjectPageProps) {
               woonoppervlak={woning.woonoppervlak}
               perceel={woning.perceel}
               brochureUrl={woning.brochureUrl}
+              makelaar={toMakelaar(woning.makelaar)}
             />
           </Wrap>
         </section>

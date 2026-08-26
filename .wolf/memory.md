@@ -441,3 +441,11 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 20:40 | JSON-LD uit Sanity: organisatie/site in PageWrapper, WebPage+FAQPage+kruimelpad op CMS-pagina's, RealEstateListing+Residence+Offer op objectpagina's | app/src/lib/json-ld.ts, app/src/components/JsonLd.tsx, app/src/components/layout/PageWrapper.tsx, app/src/app/page.tsx, app/src/app/[slug]/page.tsx, app/src/app/aanbod/[slug]/page.tsx, app/src/sanity/{queries,metadata}.ts, app/scripts/check-jsonld.ts | check:jsonld groen, tsc + lint schoon | ~55k |
+
+## Session: 2026-08-26 20:51
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 21:20 | Makelaarskaart naar Sanity: veld `makelaar` op `woning` (naam/initialen/functie/tekst/telefoon) met de OBJECT_MAKELAAR-waarden als initialValue | studio-hart-huis/schemaTypes/woningType.ts | schema + typegen groen | ~3k |
+| 21:25 | `toMakelaar()` met per-veld terugval op OBJECT_MAKELAAR; `phoneHref` afgeleid met parsePhoneNumber; ObjectSidebar krijgt de kaart als prop | app/src/lib/object-content.ts, components/object/ObjectSidebar.tsx, app/aanbod/[slug]/page.tsx, sanity/queries.ts | tsc + eslint schoon | ~4k |
+| 21:32 | Import laat het veld staan (bestaand-projectie + createOrReplace), doc bijgewerkt | app/src/app/api/import-realworks/route.ts, src/lib/realworks.ts, docs/realworks-import.md | check:realworks/form/jsonld groen | ~2k |

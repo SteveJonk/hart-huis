@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/cn';
 import type { FormDefinition } from '@/lib/form-fields';
 import { euro, shortDate } from '@/lib/format';
-import { OBJECT_MAKELAAR, statusOf } from '@/lib/object-content';
+import { statusOf, type ObjectMakelaar } from '@/lib/object-content';
 import { SITE } from '@/lib/site';
 
 type ObjectSidebarProps = {
@@ -18,6 +18,8 @@ type ObjectSidebarProps = {
   woonoppervlak?: number | null;
   perceel?: number | null;
   brochureUrl?: string | null;
+  /** De kaart onder de prijskaart — uit het `makelaar`-veld op de woning. */
+  makelaar: ObjectMakelaar;
   /** De knop bovenaan: label, en het formulier dat erachter opent. */
   cta: {
     label: string;
@@ -89,6 +91,7 @@ export function ObjectSidebar({
   woonoppervlak,
   perceel,
   brochureUrl,
+  makelaar,
   cta,
 }: ObjectSidebarProps) {
   const { label, tone } = statusOf(status);
@@ -177,25 +180,25 @@ export function ObjectSidebar({
       <div className={card}>
         <div className='mb-[18px] flex items-center gap-3.5'>
           <span className='grid h-[52px] w-[52px] shrink-0 place-items-center rounded-full bg-sand font-display text-[1rem] font-medium'>
-            {OBJECT_MAKELAAR.initials}
+            {makelaar.initials}
           </span>
           <span>
-            <b className='block text-[0.98rem] font-semibold'>{OBJECT_MAKELAAR.name}</b>
+            <b className='block text-[0.98rem] font-semibold'>{makelaar.name}</b>
             <span className='text-[0.81rem] leading-[1.4] text-ink-45'>
-              {OBJECT_MAKELAAR.role}
+              {makelaar.role}
             </span>
           </span>
         </div>
         <p className='mb-[18px] text-[0.89rem] leading-[1.65] text-ink-70'>
-          {OBJECT_MAKELAAR.body}
+          {makelaar.body}
         </p>
         <Button
-          href={OBJECT_MAKELAAR.phoneHref}
+          href={makelaar.phoneHref}
           variant='ink'
           size='sm'
           className='w-full justify-center'
         >
-          {OBJECT_MAKELAAR.phone}
+          {makelaar.phone}
         </Button>
       </div>
     </aside>

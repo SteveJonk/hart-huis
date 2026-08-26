@@ -204,6 +204,7 @@ export const WONING_QUERY = defineQuery(`
     aanbiedingsTekstEngels,
     fotos,
     "brochureUrl": brochure.asset->url,
+    makelaar,
     seo,
     "vergelijkbaar": *[_type == "woning" && _id != ^._id]
       | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]${woningCard},

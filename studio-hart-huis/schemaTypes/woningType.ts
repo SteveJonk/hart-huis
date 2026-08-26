@@ -12,6 +12,10 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
  *   can map whatever the feed carries (liggingen, isolatievormen, verwarming,
  *   tuin, parkeren…) without a schema change every time Realworks adds an enum;
  * - almost nothing is required — the feed returns null for most fields.
+ *
+ * Uitzondering op "de feed is de waarheid": `makelaar` (en de media) komen niet
+ * uit Realworks en worden door de import bewaard, zodat de redactie ze per
+ * woning kan zetten zonder dat de volgende run ze wist.
  */
 export const woningType = defineType({
   name: 'woning',
@@ -23,6 +27,7 @@ export const woningType = defineType({
     {name: 'kenmerken', title: 'Kenmerken'},
     {name: 'tekst', title: 'Aanbiedingstekst'},
     {name: 'media', title: "Foto's"},
+    {name: 'makelaar', title: 'Makelaar'},
   ],
   fields: [
     defineField({
@@ -276,6 +281,54 @@ export const woningType = defineType({
       type: 'file',
       options: {accept: 'application/pdf'},
       group: 'media',
+    }),
+
+    // ---- makelaarskaart in de zijkolom ----
+    defineField({
+      name: 'makelaar',
+      title: 'Makelaar',
+      type: 'object',
+      group: 'makelaar',
+      description:
+        'De kaart onder de prijskaart. Van de redactie: de Realworks-import laat dit staan. Leeg gelaten velden vallen terug op de standaardmakelaar in de code.',
+      options: {collapsible: true, collapsed: false},
+      fields: [
+        defineField({
+          name: 'naam',
+          title: 'Naam',
+          type: 'string',
+          initialValue: 'Dorien Hollemans',
+        }),
+        defineField({
+          name: 'initialen',
+          title: 'Initialen',
+          type: 'string',
+          description: 'De twee letters in de cirkel, bijv. "DH"',
+          initialValue: 'DH',
+          validation: (rule) => rule.max(3),
+        }),
+        defineField({
+          name: 'functie',
+          title: 'Functie',
+          type: 'string',
+          initialValue: 'NVM Register Makelaar & Taxateur',
+        }),
+        defineField({
+          name: 'tekst',
+          title: 'Tekst',
+          type: 'text',
+          rows: 3,
+          initialValue:
+            "Vragen over deze woning? Bel of app gerust, ook 's avonds. Ik ken het huis van binnen en van buiten.",
+        }),
+        defineField({
+          name: 'telefoon',
+          title: 'Telefoonnummer',
+          type: 'string',
+          description: 'Zoals het op de knop komt te staan — de link erachter wordt afgeleid.',
+          initialValue: '06 - 476 87 321',
+        }),
+      ],
     }),
   ],
   orderings: [
