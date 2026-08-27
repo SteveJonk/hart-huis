@@ -1,4 +1,36 @@
 {
-  "suggestions": [],
-  "generated_at": null
+  "generated_at": "2026-08-26T16:07:36.250Z",
+  "achievements": [
+    "Unified all forms into a single Sanity `form` type (simple/steps mode), removed @multidots/sanity-plugin-contact-form and nodemailer, moved to Mailjet-only sending, with an in-place migration script",
+    "Abstracted three new landing pages from example-designs into generic reusable blocks: /waardebepaling (6 new blocks/schemas), /nvm (reused 8/9 existing blocks), /zoekopdracht (byte-identical CSS to waardebepaling, only copy differs)",
+    "Renamed the 6 waardebepaling-only blocks to generic names (FormHero, IconCards, NumberedSteps, PersonQuote, QuoteStrip, CenteredCta) so nvm/zoekopdracht could reuse them",
+    "Added per-form mail config (recipients/subject/confirmation) and reCAPTCHA to FormRenderer",
+    "Built the object-page bezichtiging (viewing request) dialog: new `objectSettings` singleton, hidden form-field token type ({{adres}}, {{url}}), shared toFormDefinition helper",
+    "Realworks import hardened: incremental media fill instead of full overwrite (bug-022), fixed 150x100 thumbnail bug via width+height query params, added stale-listing depublish/cleanup, studio tool + cron at 04:30",
+    "Landing-page chrome toggle: `isLandingPage` flag on `page` schema + new PageWrapper component for minimal-nav pages",
+    "CI: GitHub Action deploys Sanity Studio on push to main, scoped to studio-hart-huis/**, with pinned hostname via repo variable",
+    "Fixed Tailwind v4 hover-transition bug (bug-025): 15 components had `transition-transform` silently not animating on translate"
+  ],
+  "improvements": [
+    "woning schema has no `seo` field but WONING_QUERY selects it anyway (always resolves null) — bug-013, either add the field or delete the dead query selection",
+    "Broker card on the object page is hardcoded in app/src/lib/object-content.ts — move into the woning schema or a shared makelaar document once a second agent exists",
+    "aanbiedingsTekstEngels is stored and seeded but never rendered anywhere — either wire up a language toggle on the object page or stop seeding it",
+    "SITE.fundaScore is hardcoded and still used directly by the /verkoop factBar instead of the real aggregate once reviews exist",
+    "typegen requires manually exporting PATH to node v22 on this machine — worth adding an .nvmrc or engines field to stop the recurring friction"
+  ],
+  "next_tasks": [
+    "Run seed:objectpagina, seed:nvm + seed:nav, seed:zoekopdracht, and re-run seed:waardebepaling (bug-018 fix) — these designs are implemented but not yet seeded",
+    "Run ?dryRun=1 for the Realworks import against the deployed site and check the summary before enabling the real cron",
+    "Delete the 4 mock reviews from seed:home before going live — they have no scores but still count in reviewStats",
+    "Set the required env vars on Vercel/Studio: SANITY_API_WRITE_TOKEN, CRON_SECRET, FUNDA_SCRAPER_SECRET, STUDIO_ORIGIN, SANITY_STUDIO_SCRAPER_URL/SECRET",
+    "Decide woning.seo: add the schema field or remove the dead selection from WONING_QUERY (bug-013)",
+    "Verify reviewGrid's '9+' pagination and aanbod-grid's '6+ objects' CTA-card placement once real data crosses those thresholds"
+  ],
+  "risks": [
+    "Vercel Hobby plan caps functions at 60s; the Funda scraper currently fits (~20s for 14 pages) but will break silently as review volume grows — no alerting on timeout",
+    "pnpm.overrides pins @sanity/sdk-react to 2.19.0 to dodge a JSX-parse crash in 2.20.0 during `sanity deploy` — this is a workaround for an upstream bug, needs to be un-pinned once fixed",
+    "WONING_QUERY silently returns seo: null for every object page (bug-013) — CMS-authored SEO for listings has never worked and nothing currently flags this",
+    "Realworks import previously overwrote existing photos/brochures on every run (fixed 2026-08-25, bug-022) — worth double-checking the fix under a feed that changes FOTO_KADER or filenames again",
+    "Hardcoded fallbacks (makelaar card, SITE.fundaScore) will silently diverge from real CMS/review data the longer they're left in place"
+  ]
 }
