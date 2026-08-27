@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",
+    "@sentry/nextjs": "^10.71.0",
     "@tailwindcss/typography": "^0.5.20",
     "next": "16.2.12",
     "next-sanity": "^13.2.1",
