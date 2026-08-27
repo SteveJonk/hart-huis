@@ -4,21 +4,13 @@
  * bullets, and it usually carries the English version behind an `**English**`
  * heading even though `aanbiedingstekstEngels` exists separately.
  *
- * `parseAanbiedingstekst` turns that into blocks and drops the English half;
+ * `parseAanbiedingstekst` turns that into blocks;
  * `splitBold` handles the inline `**vet**` markers at render time.
  */
 export type TekstBlock =
-  | { type: 'paragraph'; text: string }
-  | { type: 'list'; items: string[] };
-
-/** "**English**" — everything from here on is a translation of what came before. */
-const ENGLISH_HEADING = /^english$/i;
-/** "**English below**", "**Scroll down for English**" — a pointer, not content. */
-const ENGLISH_POINTER = /^(english below|scroll down for english)\b/i;
+  { type: 'paragraph'; text: string } | { type: 'list'; items: string[] };
 
 const BULLET = /^[-–•]\s+/;
-
-const stripMarkers = (line: string) => line.replace(/\*/g, '').trim();
 
 export function parseAanbiedingstekst(raw: string | null | undefined): TekstBlock[] {
   if (!raw) return [];
@@ -32,11 +24,6 @@ export function parseAanbiedingstekst(raw: string | null | undefined): TekstBloc
   const blocks: TekstBlock[] = [];
 
   for (const line of lines) {
-    const bare = stripMarkers(line);
-
-    if (ENGLISH_HEADING.test(bare)) break;
-    if (ENGLISH_POINTER.test(bare)) continue;
-
     if (BULLET.test(line)) {
       const item = line.replace(BULLET, '').trim();
       const last = blocks[blocks.length - 1];
