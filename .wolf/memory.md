@@ -460,4 +460,5 @@
 |------|--------|---------|---------|--------|
 | 07:10 | Fix 'Review heeft meerdere samengestelde beoordelingen': één pad naar de knoop met de aggregateRating (about weg van WebPage, seller weg van Offer, objectpagina's about -> woning) | app/src/lib/json-ld.ts, app/scripts/check-jsonld.ts | check:jsonld groen incl. nieuwe invariant; tsc + lint schoon | ~35k |
 | 07:15 | buglog.json gerepareerd (ongeldig JSON, twee entries aan elkaar geplakt, dubbel bug-022) + bug-025 gelogd | .wolf/buglog.json | parset weer; 25 entries, geen dubbele ids | ~5k |
+| 07:40 | Onderzocht: "json-ld staat er twee keer in". Gereproduceerd met een tijdelijke route op next dev — 2 blokken geven 4 grep-hits maar 2 echte script-elementen; de tweede kopie is de RSC-flight-payload. Geen bug, geen codewijziging. | (geen) | bevinding vastgelegd in cerebrum | ~25k |
 

@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 416847,
-    "total_reads": 360,
+    "total_tokens_estimated": 454599,
+    "total_reads": 381,
     "total_writes": 0,
-    "total_sessions": 69,
-    "anatomy_hits": 243,
-    "anatomy_misses": 111,
-    "repeated_reads_blocked": 79,
-    "estimated_savings_vs_bare_cli": 385273,
-    "real_input_tokens": 27630,
-    "real_output_tokens": 2361215,
-    "real_cache_read_tokens": 722131744,
-    "real_cache_creation_tokens": 10777183,
-    "real_api_calls": 4148
+    "total_sessions": 70,
+    "anatomy_hits": 263,
+    "anatomy_misses": 112,
+    "repeated_reads_blocked": 81,
+    "estimated_savings_vs_bare_cli": 394731,
+    "real_input_tokens": 28286,
+    "real_output_tokens": 2552194,
+    "real_cache_read_tokens": 774795122,
+    "real_cache_creation_tokens": 12123837,
+    "real_api_calls": 4476
   },
   "sessions": [
     {
@@ -3159,6 +3159,180 @@
         "cache_read_input_tokens": 5801120,
         "cache_creation_input_tokens": 132885,
         "api_calls": 56
+      }
+    },
+    {
+      "id": "session-2026-08-26-2051",
+      "agent": "claude",
+      "started": "2026-08-26T20:51:32.648Z",
+      "ended": "2026-08-27T07:13:06.412Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/lib/object-content.ts",
+          "tokens_estimated": 1224,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/woningType.ts",
+          "tokens_estimated": 2608,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/aanbod/[slug]/page.tsx",
+          "tokens_estimated": 1680,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/objectSettingsType.ts",
+          "tokens_estimated": 525,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/components/object/ObjectSidebar.tsx",
+          "tokens_estimated": 1862,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 2729,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/lib/phone.ts",
+          "tokens_estimated": 28,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/components/PageBuilder.tsx",
+          "tokens_estimated": 7527,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/objects/linkFields.ts",
+          "tokens_estimated": 407,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/scripts/seed/objectpagina.ts",
+          "tokens_estimated": 286,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 18876,
+        "output_tokens_estimated": 0,
+        "reads_count": 10,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 10
+      },
+      "real_usage": {
+        "input_tokens": 312,
+        "output_tokens": 90089,
+        "cache_read_input_tokens": 24502058,
+        "cache_creation_input_tokens": 422992,
+        "api_calls": 156
+      }
+    },
+    {
+      "id": "session-2026-08-26-2051",
+      "agent": "claude",
+      "started": "2026-08-26T20:51:32.648Z",
+      "ended": "2026-08-27T07:36:00.918Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/lib/object-content.ts",
+          "tokens_estimated": 1224,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/woningType.ts",
+          "tokens_estimated": 2608,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/aanbod/[slug]/page.tsx",
+          "tokens_estimated": 1680,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/objectSettingsType.ts",
+          "tokens_estimated": 525,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/components/object/ObjectSidebar.tsx",
+          "tokens_estimated": 1862,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 2729,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/lib/phone.ts",
+          "tokens_estimated": 28,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/components/PageBuilder.tsx",
+          "tokens_estimated": 7527,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/objects/linkFields.ts",
+          "tokens_estimated": 407,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/scripts/seed/objectpagina.ts",
+          "tokens_estimated": 286,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/claude-0/-home-user-hart-huis/31a66fab-1a2a-54e6-ae38-422cf4cecc28/scratchpad/dev.log",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 18876,
+        "output_tokens_estimated": 0,
+        "reads_count": 11,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 10
+      },
+      "real_usage": {
+        "input_tokens": 344,
+        "output_tokens": 100890,
+        "cache_read_input_tokens": 28161320,
+        "cache_creation_input_tokens": 923662,
+        "api_calls": 172
       }
     }
   ],
