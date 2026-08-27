@@ -251,7 +251,13 @@ export function webPageJsonLd(input: PageInput): JsonLdNode {
     description: input.description,
     inLanguage: 'nl-NL',
     isPartOf: WEBSITE_REF,
-    about: ORGANIZATION_REF,
+    // Bewust géén `about` naar de organisatie. Het kantoor hangt al aan de
+    // pagina via `isPartOf` -> WebSite -> `publisher`, en een tweede pad
+    // erheen betekent dat een validator die knoop twee keer invult — inclusief
+    // de `aggregateRating` die eraan hangt. Dat is precies wat Google
+    // "meerdere samengestelde beoordelingen" noemt. Eén pad naar een knoop met
+    // een rating, altijd. Een objectpagina zet hier via `extra` de woning neer,
+    // want dáár gaat die pagina over.
     primaryImageOfPage: input.imageUrl ? { '@type': 'ImageObject', url: input.imageUrl } : undefined,
     breadcrumb: input.trail?.length ? { '@id': `${url}#kruimelpad` } : undefined,
     mainEntity: questions.length ? questions : undefined,
@@ -399,6 +405,13 @@ export function residenceJsonLd(woning: WoningInput): JsonLdNode {
  * Geen prijs, geen aanbod: "Prijs op aanvraag" als `price: 0` wegschrijven is
  * onwaar. De prijsconditie (k.k. / v.o.n.) staat in `description`, want die
  * verandert wat er betaald wordt maar heeft geen eigen veld.
+ *
+ * Bewust **geen `seller`** naar de organisatie. Een validator vervangt zo'n
+ * `@id`-verwijzing door de knoop zelf, en die draagt de `aggregateRating` van
+ * het kantoor — die belandt dan binnen de woning (een `Product`), waar hij niet
+ * over gaat. Google noemt dat "meerdere samengestelde beoordelingen" en laat de
+ * objectpagina vallen. Wie de makelaar is staat al in de organisatieknoop van
+ * dezelfde pagina. `check:jsonld` test op deze regel.
  */
 export function offerJsonLd(woning: WoningInput): JsonLdNode | undefined {
   if (typeof woning.prijs !== 'number') return undefined;
@@ -414,7 +427,6 @@ export function offerJsonLd(woning: WoningInput): JsonLdNode | undefined {
     availability: availability(woning.status),
     validFrom: woning.aangebodenSinds ?? undefined,
     description: woning.prijsConditie ?? undefined,
-    seller: ORGANIZATION_REF,
   };
 }
 
@@ -440,6 +452,7 @@ export function objectPageJsonLd(woning: WoningInput): JsonLdNode | null {
       ],
       extra: {
         datePosted: woning.aangebodenSinds ?? undefined,
+        about: { '@id': `${url}#woning` },
         mainEntity: { '@id': `${url}#woning` },
       },
     }),
