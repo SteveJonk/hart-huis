@@ -453,3 +453,11 @@
 | 22:12 | WONING_QUERY: instellingen uitgebreid + `"telefoon": *[_id=="footer"][0].contactInfo.phone`; page.tsx bouwt similarHeader()/ctaBand() met per-veld terugval | app/src/sanity/queries.ts, app/aanbod/[slug]/page.tsx, components/object/{SimilarObjects,ObjectSidebar}.tsx | tsc + eslint schoon | ~5k |
 | 22:20 | OBJECT_BACK_LINK verwijderd — bleek nog wél gerenderd in ObjectGallery, dus daar geïnlined i.p.v. weggegooid | app/src/lib/object-content.ts, components/object/ObjectGallery.tsx | link werkt onveranderd | ~1k |
 | 22:26 | seed:objectpagina schrijft de twee nieuwe velden mee (incl. upload van spaarne.jpg) | app/scripts/seed/objectpagina.ts | nog te draaien tegen de dataset | ~1k |
+
+## Session: 2026-08-27 07:00
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 07:10 | Fix 'Review heeft meerdere samengestelde beoordelingen': één pad naar de knoop met de aggregateRating (about weg van WebPage, seller weg van Offer, objectpagina's about -> woning) | app/src/lib/json-ld.ts, app/scripts/check-jsonld.ts | check:jsonld groen incl. nieuwe invariant; tsc + lint schoon | ~35k |
+| 07:15 | buglog.json gerepareerd (ongeldig JSON, twee entries aan elkaar geplakt, dubbel bug-022) + bug-025 gelogd | .wolf/buglog.json | parset weer; 25 entries, geen dubbele ids | ~5k |
+

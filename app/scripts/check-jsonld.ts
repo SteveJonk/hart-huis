@@ -21,6 +21,7 @@ import {
   breadcrumbJsonLd,
   jsonLdGraph,
   objectPageJsonLd,
+  offerJsonLd,
   organizationJsonLd,
   pageFaqs,
   pageJsonLd,
@@ -242,7 +243,6 @@ assert.deepEqual(huis.offers, {
   availability: 'https://schema.org/LimitedAvailability',
   validFrom: '2026-08-01',
   description: 'k.k.',
-  seller: {'@id': `${SITE.baseUrl}/#organisatie`},
 })
 
 // "Prijs op aanvraag" is geen aanbod: een 0 wegschrijven zou onwaar zijn.
@@ -258,7 +258,102 @@ for (const [key, value] of Object.entries(kaalHuis)) {
 assert.equal(kaalHuis.description, undefined)
 assert.equal(kaalHuis.image, undefined)
 
-// 5. De query levert de vorm die aggregateRating leest.
+// 5. Eén pad naar een knoop met een rating (bug-025).
+//
+// Een validator vervangt elke `{"@id": …}`-verwijzing door de knoop zelf. Is de
+// organisatie — die de `aggregateRating` draagt — vanuit één knoop langs twéé
+// paden bereikbaar, dan staat die rating er na dat invullen twee keer in en
+// meldt Google "Review heeft meerdere samengestelde beoordelingen". Een woning
+// is bovendien een `Product`: elke rating die daarbinnen belandt gaat over het
+// kantoor en niet over het huis, en laat Google de hele objectpagina vallen.
+//
+// Deze controle bootst dat invullen na op de graven zoals ze samen op één
+// pagina staan: die van `PageWrapper` plus die van de route.
+function flatten(nodes: JsonLdNode[]) {
+  const byId = new Map(nodes.map((item) => [item['@id'] as string, item]))
+
+  const inline = (value: unknown, seen: Set<string>): unknown => {
+    if (Array.isArray(value)) return value.map((item) => inline(item, seen))
+    if (value && typeof value === 'object') {
+      const entries = Object.entries(value as JsonLdNode)
+      const [first] = entries
+      if (entries.length === 1 && first[0] === '@id') {
+        const id = first[1] as string
+        if (byId.has(id) && !seen.has(id)) return inline(byId.get(id), new Set([...seen, id]))
+      }
+      return Object.fromEntries(entries.map(([key, item]) => [key, inline(item, seen)]))
+    }
+    return value
+  }
+
+  return nodes.map((item) => inline(item, new Set()) as JsonLdNode)
+}
+
+function countKey(value: unknown, key: string): number {
+  if (Array.isArray(value)) return value.reduce((total, item) => total + countKey(item, key), 0)
+  if (value && typeof value === 'object') {
+    return Object.entries(value as JsonLdNode).reduce(
+      (total, [name, item]) => total + (name === key ? 1 : 0) + countKey(item, key),
+      0,
+    )
+  }
+  return 0
+}
+
+const siteGraaf = siteJsonLd({
+  address: ['Vergierdeweg 288', '2026 ZK Haarlem'],
+  stats: {totaalReviews: 84, gemiddeldCijfer: 9.7},
+})
+
+/** De knopen van één pagina zoals de bezoeker ze krijgt: site + route. */
+function paginaKnopen(pagina: JsonLdNode | null): JsonLdNode[] {
+  return [
+    ...((siteGraaf?.['@graph'] ?? []) as JsonLdNode[]),
+    ...((pagina?.['@graph'] ?? []) as JsonLdNode[]),
+  ]
+}
+
+for (const [naam, pagina] of [
+  ['objectpagina', objectPageJsonLd(woning)],
+  ['CMS-pagina', pageJsonLd({path: '/verkoop', title: 'Verkoop', trail: [{name: 'Verkoop', path: '/verkoop'}]})],
+  ['home', pageJsonLd({path: '/', title: 'Home'})],
+] as const) {
+  for (const knoop of flatten(paginaKnopen(pagina))) {
+    const types = ([] as string[]).concat(knoop['@type'] as string | string[]).join('+')
+    assert.ok(
+      countKey(knoop, 'aggregateRating') <= 1,
+      `${naam}: ${types} bereikt meer dan één aggregateRating`,
+    )
+    // Een woning of een aanbod mag er helemáál geen dragen: die rating gaat
+    // over het kantoor, niet over het huis.
+    if (types.includes('Product') || types.includes('Offer')) {
+      assert.equal(
+        countKey(knoop, 'aggregateRating'),
+        0,
+        `${naam}: ${types} draagt een rating die over het kantoor gaat`,
+      )
+    }
+  }
+}
+
+// De twee verwijzingen die dit veroorzaakten, expliciet:
+assert.equal(
+  offerJsonLd(woning)!.seller,
+  undefined,
+  'een Offer krijgt geen seller — dat trekt de rating van het kantoor de woning in',
+)
+assert.deepEqual(
+  node(objectPageJsonLd(woning), 'RealEstateListing').about,
+  {'@id': `${objectUrl}#woning`},
+  'een objectpagina gaat over de woning, niet over het kantoor',
+)
+assert.equal(
+  node(pageJsonLd({path: '/verkoop', title: 'Verkoop'}), 'WebPage').about,
+  undefined,
+  'een gewone pagina bereikt het kantoor alleen via isPartOf -> publisher',
+)
+
+// 6. De query levert de vorm die aggregateRating leest.
 async function checkStatsQuery() {
   const dataset = [
     {_id: 'a', _type: 'review', grade: 9.5, type: 'Verkoop'},

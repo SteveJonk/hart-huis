@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-26
+> Last updated: 2026-08-27
 
 ---
 
@@ -23,6 +23,12 @@
 - Het kantoornummer op de prijskaart komt uit het footerdocument (`"telefoon": *[_id == "footer"][0].contactInfo.phone`), met `SITE.phone` als terugval en de `tel:`-link afgeleid. `SITE` is daarmee ook hier alleen nog vangnet.
 - `OBJECT_BACK_LINK` is weg — de "Terug naar het aanbod"-link staat nu gewoon in `ObjectGallery`. /aanbod bestaat, dus de indirectie ("de ene plek om het doel te wijzigen") had geen doel meer.
 - **Nog te doen:** `npm run seed:objectpagina` draaien — het document bestaat nog niet, dus tot dan rendert de pagina op de code-defaults. Let bij het nalopen op de primaire knop van de CTA-band: die staat op `#` (zie open punt hieronder).
+
+**JSON-LD: dubbele aggregateRating opgelost (27-08-2026)**
+- Google's Rich Results Test gaf "Review heeft meerdere samengestelde beoordelingen". Oorzaak: een validator vult elke `{"@id": …}` in met de knoop zelf, en de organisatie (die de rating draagt) was vanuit één knoop langs twee paden bereikbaar — `WebPage.about` én `WebPage.isPartOf` -> `WebSite.publisher`. Op objectpagina's kwam `Offer.seller` er als derde pad bij, waardoor de rating van het kantoor bínnen de woning (een `Product`) belandde.
+- Nu: `about` staat niet meer standaard op de WebPage (het kantoor hangt eraan via `isPartOf` -> `publisher`), de `Offer` heeft geen `seller` meer, en een objectpagina zet `about` op de woning — waar die pagina ook echt over gaat.
+- `check:jsonld` bootst het invullen van verwijzingen na en eist per knoop hoogstens één `aggregateRating`, en nul binnen een `Product` of `Offer`. Zie bug-025.
+- **Let op — nog een open vraag:** Google beschouwt reviews die een bedrijf over zichzelf publiceert als "self-serving" en toont daar geen reviewfragment voor. Onze cijfers komen van Funda (derde partij), maar dat kan Google niet zien. De `aggregateRating` op de organisatie is dus mogelijk sowieso niet bruikbaar; hem helemaal weglaten is één regel in `organizationJsonLd`.
 
 **JSON-LD uit Sanity (26-08-2026)**
 - `src/lib/json-ld.ts` bouwt per pagina één schema.org-graaf met `@id`-verwijzingen; `src/components/JsonLd.tsx` zet hem in de pagina (escapet `<`, zodat een adres het script niet kan afbreken).
