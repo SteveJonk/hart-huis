@@ -421,6 +421,8 @@ export type BestaandeWoning = {
   realworksId: number | null;
   fotos?: BestaandeFoto[] | null;
   brochure?: Record<string, unknown> | null;
+  /** Redactioneel, niet uit de feed — blijft staan bij een import. */
+  makelaar?: Record<string, unknown> | null;
 };
 
 /** De projectie hierboven zet `bestandsnaam` erbij; die hoort niet in het document. */

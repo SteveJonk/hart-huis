@@ -8,10 +8,19 @@ import { OBJECT_SIMILAR } from '@/lib/object-content';
 
 type SimilarObjectsProps = {
   items: ListingItem[];
+  /** Uit `objectSettings`; leeg = de waarden uit `OBJECT_SIMILAR`. */
+  eyebrow?: string;
+  title?: string;
+  cta?: { label: string; href: string };
 };
 
 /** "Vergelijkbare woningen" — the home page's listing card on a sand band. */
-export function SimilarObjects({ items }: SimilarObjectsProps) {
+export function SimilarObjects({
+  items,
+  eyebrow = OBJECT_SIMILAR.eyebrow,
+  title = OBJECT_SIMILAR.title,
+  cta = OBJECT_SIMILAR.cta,
+}: SimilarObjectsProps) {
   if (items.length === 0) return null;
 
   return (
@@ -24,11 +33,11 @@ export function SimilarObjects({ items }: SimilarObjectsProps) {
           )}
         >
           <div>
-            <Eyebrow>{OBJECT_SIMILAR.eyebrow}</Eyebrow>
-            <h2 className='text-[clamp(1.9rem,3.4vw,2.7rem)]'>{OBJECT_SIMILAR.title}</h2>
+            <Eyebrow>{eyebrow}</Eyebrow>
+            <h2 className='text-[clamp(1.9rem,3.4vw,2.7rem)]'>{title}</h2>
           </div>
-          <Button href={OBJECT_SIMILAR.cta.href} variant='ink'>
-            {OBJECT_SIMILAR.cta.label}
+          <Button href={cta.href} variant='ink'>
+            {cta.label}
           </Button>
         </Reveal>
 
