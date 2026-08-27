@@ -28,6 +28,7 @@ import {CONTACT_FORM_DEFINITION, CONTACT_FORM_FIELDS} from '../src/lib/contact-c
 import {OBJECT_FORM} from '../src/lib/object-content'
 import {WAARDEBEPALING_FORM} from '../src/lib/waardebepaling-content'
 import {FORM_QUERY} from '../src/sanity/queries'
+import {renderFormMail} from '../src/lib/form-mail'
 import {repoint, toFormDoc, type SanityDocument} from './form-migration'
 
 function names(rows: FormFieldDefinition[][]) {
@@ -286,6 +287,41 @@ assert.deepEqual(
 assert.equal(
   toFormDefinition({_id: 'a', mode: 'simple', fields: [text('naam')]})?.redirect,
   undefined,
+)
+
+// 7. De mail: antwoorden worden ge-escapet en een kleur uit de Studio belandt
+//    ongeciteerd in een style="", dus alleen een hexcode mag door.
+const {html: mail, text: plain} = renderFormMail({
+  title: 'Nieuw bericht',
+  intro: 'regel1\nregel2',
+  answers: [{label: 'Naam', value: '<script>alert(1)</script>'}],
+  branding: {
+    logoUrl: 'https://cdn.example/logo.png',
+    primaryColor: '#ff0000',
+    textColor: 'red" onload="x',
+  },
+})
+assert.ok(!mail.includes('<script>'), 'antwoorden moeten ge-escapet worden')
+assert.ok(mail.includes('&lt;script&gt;'))
+assert.ok(mail.includes('regel1<br>regel2'), 'nieuwe regels worden <br>')
+assert.ok(mail.includes('background:#ff0000'), 'primaire kleur wordt gebruikt')
+assert.ok(!mail.includes('onload='), 'een niet-hex kleur wordt geweigerd')
+assert.ok(mail.includes('src="https://cdn.example/logo.png"'))
+// Zonder logo blijft de mail heel, alleen zonder <img>.
+assert.ok(!renderFormMail({title: 't', intro: '', answers: [], branding: {}}).html.includes('<img'))
+
+// 8. Het tekstdeel bevat dezelfde antwoorden, zonder opmaak en zonder escapen.
+assert.ok(plain.includes('Naam: <script>alert(1)</script>'), 'plat = ongewijzigde waarde')
+assert.ok(!plain.includes('<td'), 'geen HTML in het tekstdeel')
+assert.ok(!plain.includes('&lt;'), 'geen escapes in het tekstdeel')
+assert.ok(plain.startsWith('Nieuw bericht\n=============\n\nregel1\nregel2'))
+// Een meerregelig antwoord komt ingesprongen onder zijn label.
+assert.ok(
+  renderFormMail({
+    title: 't',
+    intro: '',
+    answers: [{label: 'Bericht', value: 'een\ntwee'}],
+  }).text.includes('Bericht:\n  een\n  twee'),
 )
 
 // tsx compiles these scripts to CJS, so no top-level await here.

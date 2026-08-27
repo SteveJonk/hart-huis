@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { client } from '@/sanity/client';
 import { FORM_QUERY, FORM_SETTINGS_QUERY } from '@/sanity/queries';
+import { imageSrc } from '@/sanity/image';
+import { renderFormMail } from '@/lib/form-mail';
 
 export const runtime = 'nodejs';
 
@@ -38,14 +40,6 @@ function splitEmails(value?: string | null) {
     .filter(Boolean);
 }
 
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
 /** Sends via Mailjet's HTTP API (v3.1). Throws on a non-2xx response. */
 async function sendViaMailjet(
   { apiKey, apiSecret }: { apiKey: string; apiSecret: string },
@@ -56,6 +50,7 @@ async function sendViaMailjet(
     replyTo?: string;
     subject: string;
     html: string;
+    text: string;
     attachments: { filename: string; content: Buffer }[];
   },
 ) {
@@ -75,6 +70,7 @@ async function sendViaMailjet(
           ...(message.replyTo ? { ReplyTo: { Email: message.replyTo } } : {}),
           Subject: message.subject,
           HTMLPart: message.html,
+          TextPart: message.text,
           Attachments: message.attachments.map((attachment) => ({
             ContentType: 'application/octet-stream',
             Filename: attachment.filename,
@@ -192,29 +188,28 @@ export async function POST(request: Request) {
     );
   }
 
-  const rows = answers
-    .map(
-      ({ label, value }) => `
-        <tr>
-          <td style="padding:8px;border:1px solid #ccc;"><strong>${escapeHtml(label)}</strong></td>
-          <td style="padding:8px;border:1px solid #ccc;">${escapeHtml(value).replace(/\n/g, '<br>')}</td>
-        </tr>`,
-    )
-    .join('');
-
-  const withAnswers = (intro: string) =>
-    `<p>${escapeHtml(intro).replace(/\n/g, '<br>')}</p>
-        <table style="border-collapse:collapse;width:100%;margin-top:16px;">${rows}</table>`;
+  // Logo en kleuren staan in Form settings, zodat het sjabloon zelf generiek is.
+  const branding = {
+    logoUrl: imageSrc(settings?.mailLogo, 300),
+    logoAlt: fromName,
+    primaryColor: settings?.primaryColor,
+    textColor: settings?.textColor,
+    footer: `Verstuurd via het formulier "${form.title ?? 'website'}" op ${fromName}.`,
+  };
 
   const subject =
     form.mailSubject ||
     settings?.confirmationSubject ||
     `Nieuw bericht via ${form.title ?? 'de website'}`;
-  const html = withAnswers(
-    form.mailMessage ||
+  const mail = renderFormMail({
+    title: subject,
+    intro:
+      form.mailMessage ||
       settings?.confirmationMessage ||
       'Er is een nieuw bericht binnengekomen via de website.',
-  );
+    answers,
+    branding,
+  });
   const replyTo = submitterEmail || answers.find(({ label }) => /mail/i.test(label))?.value;
 
   const credentials = { apiKey: mailjetApiKey, apiSecret: mailjetApiSecret };
@@ -226,7 +221,8 @@ export async function POST(request: Request) {
       to: recipients,
       replyTo,
       subject,
-      html,
+      html: mail.html,
+      text: mail.text,
       attachments,
     });
   } catch (error) {
@@ -243,7 +239,12 @@ export async function POST(request: Request) {
         fromName,
         to: [submitterEmail],
         subject: form.copySubject || subject,
-        html: withAnswers(form.copyMessage || ''),
+        ...renderFormMail({
+          title: form.copySubject || subject,
+          intro: form.copyMessage || '',
+          answers,
+          branding,
+        }),
         attachments: [],
       });
     } catch (error) {
