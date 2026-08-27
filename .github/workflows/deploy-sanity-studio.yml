@@ -29,7 +29,7 @@ jobs:
     env:
       SANITY_STUDIO_SCRAPER_URL: ${{ vars.SANITY_STUDIO_SCRAPER_URL }}
       SANITY_STUDIO_SCRAPER_SECRET: ${{ secrets.SANITY_STUDIO_SCRAPER_SECRET }}
-      SANITY_STUDIO_REALWORKS_URL: = ${{ vars.SANITY_STUDIO_REALWORKS_URL }}
+      SANITY_STUDIO_REALWORKS_URL: ${{ vars.SANITY_STUDIO_REALWORKS_URL }}
 
     steps:
       - name: Checkout
@@ -45,13 +45,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Zonder deze twee bouwt de studio gewoon door en zegt de Funda-tool
+      # Zonder deze drie bouwt de studio gewoon door en zegt de Funda-tool
       # daarna "Nog niet ingesteld" — een stille fout die je pas in de
       # gedeployde studio ziet. Liever hier hard falen.
       - name: Check studio env vars
         run: |
           missing=0
-          for var in SANITY_STUDIO_SCRAPER_URL SANITY_STUDIO_SCRAPER_SECRET; do
+          for var in SANITY_STUDIO_SCRAPER_URL SANITY_STUDIO_SCRAPER_SECRET SANITY_STUDIO_REALWORKS_URL; do
             if [ -z "${!var}" ]; then
               echo "::error::$var is leeg. Zet hem bij Settings > Secrets and variables > Actions."
               missing=1
@@ -73,4 +73,3 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
           STUDIO_HOSTNAME: ${{ vars.SANITY_STUDIO_HOSTNAME }}
-          SANITY_STUDIO_REALWORKS_URL: ${{ vars.SANITY_STUDIO_REALWORKS_URL }}

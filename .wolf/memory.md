@@ -396,3 +396,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 11:30 | multistep-form tooltip bij stap 2 opgelost (preventDefault in goNext) | FormRenderer.tsx | fixed, browser-geverifieerd | ~12k |
+
+## Session: 2026-08-27 09:58
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 10:02 | deploy-workflow gefixt: stale studio-lockfile (npm ci) + `= ` typo in SANITY_STUDIO_REALWORKS_URL | .github/workflows/deploy-sanity-studio.yml, studio-hart-huis/package-lock.json | opgelost, bug-028 + bug-029 gelogd | ~25k |
