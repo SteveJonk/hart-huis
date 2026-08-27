@@ -105,6 +105,33 @@ omgeving van de app, die voorgaat:
 | Mailjet API Secret | `MAILJET_API_SECRET` | ja |
 | reCAPTCHA Secret Key | `RECAPTCHA_SECRET_KEY` | alleen als reCAPTCHA aan staat |
 
+#### Opmaak van de mail
+
+De mail is een opgemaakt sjabloon (`app/src/lib/form-mail.ts`): een gekleurde
+balk, het logo, de kop met introtekst en daaronder de antwoorden als
+label/waarde-rijen. Drie velden onder **Form settings** bepalen het uiterlijk —
+verder staat er niets merkgebondens in het sjabloon:
+
+| Veld | Wat het doet |
+| --- | --- |
+| **Logo in de mail** (`mailLogo`) | staat bovenaan elke formuliermail; leeg = geen logo |
+| **Primaire kleur** | de balk bovenaan en de streep boven de antwoorden |
+| **Tekstkleur** | de tekst; de lijnen en de grijstinten worden hiervan afgeleid |
+
+`renderFormMail()` levert allebei de delen van de mail: `html` en `text`. Dat
+tekstdeel (`TextPart` bij Mailjet) heeft dezelfde inhoud — kop, intro,
+`label: waarde` per antwoord, voettekst — voor clients die geen HTML tonen, en
+omdat spamfilters een mail zonder tekstdeel zwaarder wegen.
+
+Beide kleuren zijn hexcodes (`#rrggbb`); iets anders wordt genegeerd en valt
+terug op de standaardkleur — de waarde belandt in een `style=""`, dus een vrije
+string is daar niet veilig. `check:form` bewaakt dat, plus dat antwoorden
+ge-escapet worden.
+
+Het veld heet met opzet `mailLogo` en niet `logo`: `navigation` en `footer`
+hebben al een `logo`, en de queries die die singletons op `_id` ophalen krijgen
+er anders een extra tak bij in de gegenereerde types.
+
 De afzender moet een door Mailjet **gevalideerde** afzender zijn, anders weigert
 Mailjet de mail. Een dataset is leesbaar voor iedereen die het project-id kent,
 dus zet de sleutels in productie in de omgeving en niet in de Studio.

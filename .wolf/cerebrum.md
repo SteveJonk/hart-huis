@@ -13,6 +13,9 @@
 
 ## Key Learnings
 
+- **Een nieuw veld op een singleton mag geen naam lenen die al elders bestaat.** `NAVIGATION_QUERY`/`FOOTER_QUERY` filteren op `_id`, dus typegen weet het documenttype niet en projecteert `logo{...}` over élk documenttype met een veld `logo`. Een `logo` op `formGeneralSettings` gaf daardoor een extra union-tak en een typefout in `PageWrapper.tsx`. Vandaar `mailLogo`. (2026-08-27)
+- **De formuliermail heeft een eigen sjabloon:** `app/src/lib/form-mail.ts` (`renderFormMail`). Los van de route omdat een route-bestand alleen route-exports mag hebben en `check:form` het zo kan controleren. Kleuren komen uit Form settings en worden op `#rrggbb` gevalideerd — ze belanden ongeciteerd in een `style=""`. (2026-08-27)
+
 - **Tailwind v4: `transform` is niet meer de property voor translate/scale/rotate.** `translate-y-*` schrijft naar de CSS-property `translate`, `scale-*` naar `scale`, `rotate-*` naar `rotate`. In een arbitrary transitie-lijst dus altijd `transition-[transform,translate,scale,rotate,...]` schrijven (of gewoon `transition-transform`, dat dekt in v4 alle vier). Alleen `transform` = geen animatie, harde sprong. (2026-08-26)
 
 - **Formulieren kunnen doorsturen in plaats van bevestigen.** Op het `form`-document: `redirectAfterSubmit` (boolean) + `redirectLink` (type `link`, dus dezelfde intern/extern-keuze als elke cta). De resolutie zit in `toRedirect()` in `src/lib/form-fields.ts` — schakelaar uit óf link die nergens naartoe wijst = geen redirect (de bevestiging blijft), anders `{href, internal}`; `internal` betekent alleen "begint met /" en gaat via `router.push`, de rest via `window.location.assign`. De `FormRenderer` doet dat pas ná een geslaagde POST en blijft op status `sending` staan zodat de knop uit blijft tijdens het navigeren. (2026-08-26)

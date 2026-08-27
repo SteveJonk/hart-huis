@@ -373,3 +373,15 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 | ---- | ------ | ------- | ------- | ------- |
+
+## Session: 2026-08-27 10:22
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-27 10:25
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 10:29 | formuliermail opgemaakt + logo/kleuren in Form settings | studio-hart-huis/schemaTypes/formGeneralSettingsType.ts, app/src/lib/form-mail.ts, app/src/app/api/submit-form/route.ts, app/src/sanity/queries.ts, app/scripts/check-form.ts, docs/formulieren.md | typegen + tsc + check:form groen | ~35k |
+| 10:36 | plaintext-deel (TextPart) toegevoegd aan de formuliermail | app/src/lib/form-mail.ts, app/src/app/api/submit-form/route.ts, app/scripts/check-form.ts, docs/formulieren.md | check:form + tsc groen | ~12k |

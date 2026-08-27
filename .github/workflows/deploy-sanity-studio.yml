@@ -29,6 +29,7 @@ jobs:
     env:
       SANITY_STUDIO_SCRAPER_URL: ${{ vars.SANITY_STUDIO_SCRAPER_URL }}
       SANITY_STUDIO_SCRAPER_SECRET: ${{ secrets.SANITY_STUDIO_SCRAPER_SECRET }}
+      SANITY_STUDIO_REALWORKS_URL: = ${{ vars.SANITY_STUDIO_REALWORKS_URL }}
 
     steps:
       - name: Checkout

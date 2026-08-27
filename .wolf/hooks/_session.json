@@ -1,63 +1,12 @@
 {
-  "session_id": "session-2026-08-26-2051",
-  "started": "2026-08-26T20:51:32.648Z",
-  "files_read": {
-    "/home/user/hart-huis/app/src/lib/object-content.ts": {
-      "count": 1,
-      "tokens": 1224,
-      "first_read": "2026-08-26T20:51:41.050Z"
-    },
-    "/home/user/hart-huis/studio-hart-huis/schemaTypes/woningType.ts": {
-      "count": 1,
-      "tokens": 2608,
-      "first_read": "2026-08-26T20:51:48.358Z"
-    },
-    "/home/user/hart-huis/app/src/app/aanbod/[slug]/page.tsx": {
-      "count": 1,
-      "tokens": 1680,
-      "first_read": "2026-08-26T20:51:51.627Z"
-    },
-    "/home/user/hart-huis/studio-hart-huis/schemaTypes/objectSettingsType.ts": {
-      "count": 1,
-      "tokens": 525,
-      "first_read": "2026-08-26T20:51:54.688Z"
-    },
-    "/home/user/hart-huis/app/src/components/object/ObjectSidebar.tsx": {
-      "count": 1,
-      "tokens": 1862,
-      "first_read": "2026-08-26T20:52:05.891Z"
-    },
-    "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts": {
-      "count": 2,
-      "tokens": 2729,
-      "first_read": "2026-08-26T20:52:10.215Z"
-    },
-    "/home/user/hart-huis/app/src/lib/phone.ts": {
-      "count": 1,
-      "tokens": 28,
-      "first_read": "2026-08-26T20:57:33.048Z"
-    },
-    "/home/user/hart-huis/app/src/components/PageBuilder.tsx": {
-      "count": 1,
-      "tokens": 7527,
-      "first_read": "2026-08-26T21:08:00.402Z"
-    },
-    "/home/user/hart-huis/studio-hart-huis/schemaTypes/objects/linkFields.ts": {
-      "count": 1,
-      "tokens": 407,
-      "first_read": "2026-08-26T21:08:12.273Z"
-    },
-    "/home/user/hart-huis/app/scripts/seed/objectpagina.ts": {
-      "count": 1,
-      "tokens": 286,
-      "first_read": "2026-08-26T21:08:16.921Z"
-    }
-  },
+  "session_id": "session-2026-08-27-1025",
+  "started": "2026-08-27T08:25:07.738Z",
+  "files_read": {},
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 10,
+  "anatomy_hits": 0,
   "anatomy_misses": 0,
-  "repeated_reads_warned": 1,
+  "repeated_reads_warned": 0,
   "cerebrum_warnings": 0,
-  "stop_count": 1
+  "stop_count": 2
 }

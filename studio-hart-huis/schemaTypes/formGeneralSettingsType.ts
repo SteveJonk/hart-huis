@@ -50,6 +50,31 @@ export const formGeneralSettingsType = defineType({
       description: 'Fallback only — prefer MAILJET_API_SECRET in the app environment.',
     }),
     defineField({
+      // Niet 'logo': dat veld bestaat ook op navigation/footer, en de queries
+      // die die singletons op _id ophalen krijgen er dan een extra tak bij.
+      name: 'mailLogo',
+      title: 'Logo in de mail',
+      type: 'image',
+      description:
+        'Staat bovenaan elke formuliermail. Laat leeg om alleen de afzendernaam te tonen.',
+    }),
+    defineField({
+      name: 'primaryColor',
+      title: 'Primaire kleur',
+      type: 'string',
+      description: 'Hexcode, bv. #5f7057. Gebruikt voor de balk en de accenten in de mail.',
+      initialValue: '#5f7057',
+      validation: (rule) => rule.regex(/^#[0-9a-fA-F]{6}$/, {name: 'hexkleur'}),
+    }),
+    defineField({
+      name: 'textColor',
+      title: 'Tekstkleur',
+      type: 'string',
+      description: 'Hexcode, bv. #241f1c. De kleur van de tekst in de mail.',
+      initialValue: '#241f1c',
+      validation: (rule) => rule.regex(/^#[0-9a-fA-F]{6}$/, {name: 'hexkleur'}),
+    }),
+    defineField({
       name: 'confirmationSubject',
       title: 'Email Subject',
       type: 'string',

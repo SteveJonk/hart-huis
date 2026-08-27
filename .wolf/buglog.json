@@ -477,6 +477,24 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-27T07:10:00Z"
+    },
+    {
+      "id": "bug-026",
+      "timestamp": "2026-08-27T10:29:35.860680",
+      "error_message": "Sanity TypeGen gaf een nieuwe union-tak in NAVIGATION_QUERY_RESULT/FOOTER_QUERY_RESULT ({alt: null, url}), waardoor PageWrapper.tsx TS2322 gaf op logo.alt",
+      "file": "studio-hart-huis/schemaTypes/formGeneralSettingsType.ts",
+      "root_cause": "Een nieuw image-veld 'logo' op formGeneralSettings. NAVIGATION_QUERY/FOOTER_QUERY halen hun singleton op _id op, dus typegen kan het documenttype niet smal maken en projecteert 'logo{alt, url}' over elk documenttype dat een veld 'logo' heeft — inclusief het nieuwe.",
+      "fix": "Veld hernoemd naar 'mailLogo' (met commentaar waarom), query en route mee. Regel: geef een nieuw veld op een singleton geen naam die al op navigation/footer bestaat.",
+      "tags": [
+        "sanity",
+        "typegen",
+        "types",
+        "formGeneralSettings",
+        "mail"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-27T10:29:35.860680"
     }
   ]
 }
