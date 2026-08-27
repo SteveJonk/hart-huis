@@ -1,5 +1,6 @@
 import { Inter_Tight, Schibsted_Grotesk } from 'next/font/google';
 import './globals.css';
+import { TrackingScriptsHead } from '@/components/TrackingScripts';
 
 const display = Schibsted_Grotesk({
   variable: '--font-schibsted',
@@ -20,14 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="nl"
-      data-scroll-behavior="smooth"
+      lang='nl'
+      data-scroll-behavior='smooth'
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
       <head>
-        <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+        <meta name='apple-mobile-web-app-title' content='Hart en Huis' />
+        <TrackingScriptsHead />
       </head>
-      <body className="min-h-full">{children}</body>
+      <body className='min-h-full'>{children}</body>
     </html>
   );
 }
