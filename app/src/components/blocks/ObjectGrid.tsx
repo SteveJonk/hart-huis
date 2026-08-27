@@ -9,7 +9,6 @@ import {
 import { Button } from '@/components/ui/Button';
 import { Wrap } from '@/components/ui/Wrap';
 import {
-  AANBOD_CTA_AFTER,
   AANBOD_EMPTY,
   AANBOD_GRID_CTA,
   AANBOD_LABELS,
@@ -37,6 +36,13 @@ export type ObjectGridProps = {
   emptyBody?: string;
 };
 
+type GridCTAProps = {
+  showMobile: boolean;
+  title?: string;
+  body?: string;
+  cta?: { label: string; href: string };
+};
+
 const selectClass = cn(
   'w-full appearance-none rounded-pill border border-ink/18 bg-white',
   'py-[13px] pr-10 pl-[18px] text-[0.84rem] font-medium text-ink',
@@ -45,6 +51,36 @@ const selectClass = cn(
   'bg-[linear-gradient(45deg,transparent_50%,#5f544e_50%),linear-gradient(135deg,#5f544e_50%,transparent_50%)]',
   'bg-[length:6px_6px,6px_6px] bg-[position:calc(100%-20px)_21px,calc(100%-14px)_21px] bg-no-repeat',
   'max-sm:py-3 max-sm:pr-9 max-sm:pl-[15px] max-sm:text-[0.8rem]',
+);
+
+const GridCTA = ({ showMobile, title, body, cta }: GridCTAProps) => (
+  <div
+    key='cta'
+    className={cn(
+      'relative flex min-h-[280px] flex-col justify-center overflow-hidden rounded bg-ink px-8 py-9 text-cream',
+      'before:absolute before:-bottom-[130px] before:-left-[70px] before:h-[230px] before:w-[230px]',
+      'before:rounded-full before:bg-cream/5 before:content-[""]',
+      'after:pointer-events-none after:absolute after:-top-[120px] after:-right-[90px]',
+      'after:h-[300px] after:w-[300px] after:rounded-full after:border after:border-cream/14 after:content-[""]',
+      showMobile
+        ? 'sm:hidden max-sm:min-h-0 max-sm:px-[26px] max-sm:py-[30px] max-sm:mt-8'
+        : 'max-sm:hidden',
+    )}
+  >
+    <h3 className='relative z-[2] mb-[11px] text-[1.5rem] text-white'>
+      {title ?? AANBOD_GRID_CTA.title}
+    </h3>
+    <p className='relative z-[2] mb-[22px] text-[0.92rem] leading-[1.65] text-taupe'>
+      {body ?? AANBOD_GRID_CTA.body}
+    </p>
+    <Button
+      href={(cta ?? AANBOD_GRID_CTA.cta).href}
+      size='sm'
+      className='relative z-[2] self-start max-sm:w-full max-sm:justify-center'
+    >
+      {(cta ?? AANBOD_GRID_CTA.cta).label}
+    </Button>
+  </div>
 );
 
 /** Filter bar + listing grid, filtered and sorted in the browser over all objects. */
@@ -99,38 +135,20 @@ export function ObjectGrid({
 
   const gridCta =
     shown.length > 0 ? (
-      <div
+      <GridCTA
         key='cta'
-        className={cn(
-          'relative flex min-h-[280px] flex-col justify-center overflow-hidden rounded bg-ink px-8 py-9 text-cream',
-          'before:absolute before:-bottom-[130px] before:-left-[70px] before:h-[230px] before:w-[230px]',
-          'before:rounded-full before:bg-cream/5 before:content-[""]',
-          'after:pointer-events-none after:absolute after:-top-[120px] after:-right-[90px]',
-          'after:h-[300px] after:w-[300px] after:rounded-full after:border after:border-cream/14 after:content-[""]',
-          'max-sm:min-h-0 max-sm:px-[26px] max-sm:py-[30px]',
-        )}
-      >
-        <h3 className='relative z-[2] mb-[11px] text-[1.5rem] text-white'>
-          {ctaCard?.title ?? AANBOD_GRID_CTA.title}
-        </h3>
-        <p className='relative z-[2] mb-[22px] text-[0.92rem] leading-[1.65] text-taupe'>
-          {ctaCard?.body ?? AANBOD_GRID_CTA.body}
-        </p>
-        <Button
-          href={(ctaCard?.cta ?? AANBOD_GRID_CTA.cta).href}
-          size='sm'
-          className='relative z-[2] self-start max-sm:w-full max-sm:justify-center'
-        >
-          {(ctaCard?.cta ?? AANBOD_GRID_CTA.cta).label}
-        </Button>
-      </div>
+        showMobile={false}
+        title={ctaCard?.title}
+        body={ctaCard?.body}
+        cta={ctaCard?.cta}
+      />
     ) : null;
 
   const cards = page.map((item) => (
     <ListingCard key={item.slug} listing={toListing(item)} />
   ));
   if (gridCta) {
-    cards.splice(Math.min(AANBOD_CTA_AFTER, cards.length), 0, gridCta);
+    cards.splice(cards.length, 0, gridCta);
   }
 
   return (
@@ -259,6 +277,12 @@ export function ObjectGrid({
               </Button>
             </div>
           ) : null}
+          <GridCTA
+            showMobile={true}
+            title={ctaCard?.title}
+            body={ctaCard?.body}
+            cta={ctaCard?.cta}
+          />
         </Wrap>
       </section>
     </>

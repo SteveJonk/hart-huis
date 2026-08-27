@@ -70,7 +70,7 @@ export function ObjectContactDialog({
         type='button'
         onClick={show}
         className={cn(
-          'inline-flex items-center justify-center gap-2.5 rounded-pill border border-transparent',
+          'inline-flex items-center justify-center gap-2.5 rounded-pill border border-transparent cursor-pointer',
           'bg-sage px-[30px] py-4 text-btn font-semibold text-moss',
           'transition-[background,transform,translate,scale,rotate] duration-300 ease-brand hover:-translate-y-0.5 hover:bg-sage-hover',
           'focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-burgundy',

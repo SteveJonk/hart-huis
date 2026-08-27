@@ -5,7 +5,12 @@ import { useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { cn } from '@/lib/cn';
-import { fillTokens, toFieldRows, toSteps, type FormDefinition } from '@/lib/form-fields';
+import {
+  fillTokens,
+  toFieldRows,
+  toSteps,
+  type FormDefinition,
+} from '@/lib/form-fields';
 import { FormField, type FormFieldVariant } from './fields';
 
 /** Public half of the reCAPTCHA settings — the secret stays server-side. */
@@ -37,7 +42,7 @@ const BUTTON_BASE = cn(
   'bg-sage text-btn font-semibold text-moss',
   'transition-[background,transform,translate,scale,rotate] duration-300 ease-brand hover:-translate-y-0.5 hover:bg-sage-hover',
   'focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-burgundy',
-  'disabled:pointer-events-none disabled:opacity-60',
+  'disabled:pointer-events-none disabled:opacity-60 cursor-pointer',
 );
 
 /**
@@ -95,7 +100,9 @@ function SuccessPanel({
       </div>
       {title ? <h3 className='mb-2.5 text-[1.6rem]'>{title}</h3> : null}
       {body ? (
-        <p className='mx-auto max-w-[34ch] text-[0.95rem] leading-[1.7] text-ink-70'>{body}</p>
+        <p className='mx-auto max-w-[34ch] text-[0.95rem] leading-[1.7] text-ink-70'>
+          {body}
+        </p>
       ) : null}
     </div>
   );
@@ -211,7 +218,13 @@ export function FormRenderer({
   }
 
   if (status === 'done') {
-    return <SuccessPanel variant={variant} title={form.successTitle} body={form.successBody} />;
+    return (
+      <SuccessPanel
+        variant={variant}
+        title={form.successTitle}
+        body={form.successBody}
+      />
+    );
   }
 
   return (
@@ -250,7 +263,9 @@ export function FormRenderer({
             }}
             hidden={index !== step}
           >
-            {formStep.title ? <h3 className='mb-4 text-[1.15rem]'>{formStep.title}</h3> : null}
+            {formStep.title ? (
+              <h3 className='mb-4 text-[1.15rem]'>{formStep.title}</h3>
+            ) : null}
 
             {formStep.fields
               .filter((field) => field.type === 'hidden')
@@ -283,7 +298,12 @@ export function FormRenderer({
                   ))}
                 </div>
               ) : (
-                <FormField key={key} field={row[0]} variant={variant} idPrefix={form.id} />
+                <FormField
+                  key={key}
+                  field={row[0]}
+                  variant={variant}
+                  idPrefix={form.id}
+                />
               );
             })}
           </div>
@@ -302,8 +322,14 @@ export function FormRenderer({
         ) : null}
 
         {isLastStep ? (
-          <button type='submit' disabled={status === 'sending'} className={styles.button}>
-            {status === 'sending' ? 'Bezig met versturen…' : (form.submitButtonText ?? 'Verstuur')}
+          <button
+            type='submit'
+            disabled={status === 'sending'}
+            className={styles.button}
+          >
+            {status === 'sending'
+              ? 'Bezig met versturen…'
+              : (form.submitButtonText ?? 'Verstuur')}
           </button>
         ) : (
           <button type='button' onClick={goNext} className={styles.button}>

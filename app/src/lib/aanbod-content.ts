@@ -69,5 +69,4 @@ export const AANBOD_CTA = {
 } as const;
 
 /** How many listings are shown before "toon meer", and where the CTA card sits. */
-export const AANBOD_PAGE_SIZE = 9;
-export const AANBOD_CTA_AFTER = 6;
+export const AANBOD_PAGE_SIZE = 8;
