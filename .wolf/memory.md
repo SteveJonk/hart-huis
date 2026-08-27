@@ -390,3 +390,9 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+
+## Session: 2026-08-27 11:26
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 11:30 | multistep-form tooltip bij stap 2 opgelost (preventDefault in goNext) | FormRenderer.tsx | fixed, browser-geverifieerd | ~12k |

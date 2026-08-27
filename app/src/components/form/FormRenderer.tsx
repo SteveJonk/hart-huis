@@ -1,7 +1,13 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useRef, useState, type FormEvent, type ReactNode } from 'react';
+import {
+  useRef,
+  useState,
+  type FormEvent,
+  type MouseEvent,
+  type ReactNode,
+} from 'react';
 import { flushSync } from 'react-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { cn } from '@/lib/cn';
@@ -160,7 +166,12 @@ export function FormRenderer({
     return false;
   }
 
-  function goNext() {
+  function goNext(event: MouseEvent<HTMLButtonElement>) {
+    // The very same button becomes the submit button on the last step. Its
+    // activation behaviour is read after this handler runs, so without this the
+    // step that setStep() just revealed is submitted by the same click — and
+    // the visitor lands on step 2 staring at a native "vul dit veld in" bubble.
+    event.preventDefault();
     if (reportStep(step)) setStep((current) => Math.min(current + 1, total - 1));
   }
 

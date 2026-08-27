@@ -101,6 +101,7 @@
 
 ## Do-Not-Repeat
 
+- **2026-08-27 — Een knop die binnen dezelfde klik van `type='button'` naar `type='submit'` wisselt, verstuurt het formulier alsnog.** De browser bepaalt de activation behavior pás ná de React-onClick, dus `setStep()` naar de laatste stap maakt de Verder-knop submit en diezelfde klik triggert `onSubmit`. Zichtbaar als een spontane native validatie-tooltip op de nieuwe stap. Altijd `event.preventDefault()` in zo'n handler. Zie bug-027.
 - **2026-08-26 — "Deze constante wordt nergens meer gebruikt" mag je pas zeggen ná een grep over de héle `src`.** Ik noemde `OBJECT_BACK_LINK` dood omdat hij niet in `page.tsx` of `ObjectSidebar.tsx` stond, terwijl `ObjectGallery.tsx` er de zichtbare "Terug naar het aanbod"-link mee rendert — opruimen zonder die check had een link van de pagina gehaald. De eerdere grep zocht op twee ándere constantennamen; hergebruik zo'n resultaat niet als bewijs voor een derde.
 
 - **2026-08-26 — Verander je een gedeelde GROQ-projectie (zoals `formProjection`), draai dan meteen `npm run typegen`.** De gegenereerde `sanity.types.ts` koppelt resultaattypes aan de *letterlijke* querytekst; zodra die tekst wijzigt valt `client.fetch(QUERY)` terug op `any` en komt `tsc --noEmit` met foutmeldingen op een pagina die je niet hebt aangeraakt (hier: drie `implicitly has an 'any' type` in `app/src/app/aanbod/[slug]/page.tsx`, omdat `WONING_QUERY` diezelfde projectie gebruikt). Niet die pagina gaan repareren — typegen draaien.

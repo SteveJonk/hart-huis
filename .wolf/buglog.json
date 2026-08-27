@@ -495,6 +495,24 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-27T10:29:35.860680"
+    },
+    {
+      "id": "bug-027",
+      "timestamp": "2026-08-27T11:30:29.193704",
+      "error_message": "Bij stap 2 van het meerstapsformulier verschijnt direct de native 'vul dit veld in' tooltip",
+      "file": "app/src/components/form/FormRenderer.tsx",
+      "root_cause": "Dezelfde <button> wisselt van type='button' (Verder) naar type='submit' op de laatste stap. De activation behavior van een klik wordt pas na de React-handler bepaald, dus setStep() in onClick maakt de knop submit en diezelfde klik verstuurt het formulier. onSubmit vindt stap 2 ongeldig en roept reportValidity() aan.",
+      "fix": "event.preventDefault() in goNext(), zodat de klik nooit als submit doorgaat.",
+      "tags": [
+        "form",
+        "multistep",
+        "validation",
+        "react",
+        "submit"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-27T11:30:29.193704"
     }
   ]
 }
