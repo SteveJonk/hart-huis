@@ -19,3 +19,6 @@ Content is managed in Sanity Studio and rendered by the Next.js app.
 - [Realworks-objecten-import](docs/realworks-import.md) — haalt het actieve
   aanbod op bij Realworks en zet het als objecten in Sanity, dagelijks via de
   Vercel-cron of met de knop in de studio.
+- [Mediabeheer](docs/mediabeheer.md) — het Media-paneel in de studio: overzicht
+  van alle uploads, zoeken, detailgegevens, uploaden en verwijderen van
+  bestanden die nergens gebruikt worden.
