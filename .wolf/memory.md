@@ -417,3 +417,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 11:32 | Mediabeheer-paneel in de studio gebouwd (overzicht, zoeken, detail, uploaden, verwijderen) | studio-hart-huis/tools/{MediaTool.tsx,mediaData.ts,mediaStyles.ts}, structure.ts, docs/mediabeheer.md, README.md | tsc + eslint + prettier schoon, `sanity build` groen, beide GROQ-queries met groq-js tegen een testdataset gedraaid | ~60k |
+| 11:52 | Mediabeheer: laden in twee trappen (lijst eerst, gebruikstelling erna) + raster van 60 per keer | studio-hart-huis/tools/{MediaTool.tsx,mediaData.ts}, docs/mediabeheer.md | `count(*[references(^._id)]) > 0` per bestand vervangen door één USAGE_QUERY met `defined(…[0])` die alleen ids teruggeeft; tsc/eslint/prettier schoon, `sanity build` groen, USAGE_QUERY met groq-js geverifieerd | ~35k |

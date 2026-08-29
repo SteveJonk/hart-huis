@@ -14,9 +14,8 @@ export const ASSET_TYPES = ['sanity.imageAsset', 'sanity.fileAsset'] as const
  * bij honderden bestanden ophalen is zonde van de bandbreedte. De rest komt bij
  * het openen van één bestand via ASSET_QUERY.
  *
- * `inGebruik` is bewust een ja/nee en geen aantal: `references()` telt een
- * concept en zijn gepubliceerde versie als twee documenten, dus een getal hier
- * zou niet kloppen met de lijst in het detailpaneel (die ontdubbelt).
+ * Deze query kijkt bewust niet naar verwijzingen: dat is het dure deel en het
+ * gebeurt apart in USAGE_QUERY, zodat het raster er meteen staat.
  */
 export const ASSETS_QUERY = `*[_type in $types] | order(_createdAt desc) {
   _id,
@@ -32,9 +31,21 @@ export const ASSETS_QUERY = `*[_type in $types] | order(_createdAt desc) {
   mimeType,
   extension,
   "breedte": metadata.dimensions.width,
-  "hoogte": metadata.dimensions.height,
-  "inGebruik": count(*[references(^._id)]) > 0
+  "hoogte": metadata.dimensions.height
 }`
+
+/**
+ * De ids van de bestanden waar minstens één document naar verwijst — meer heeft
+ * het overzicht niet nodig, want het toont een ja/nee-label en geen aantal.
+ * (Een aantal zou ook niet kloppen: `references()` telt een concept en zijn
+ * gepubliceerde versie als twee documenten. Het detailpaneel ontdubbelt dat.)
+ *
+ * Twee dingen maken dit lichter dan een `count()` per bestand in ASSETS_QUERY:
+ * `defined(…[0])` hoeft maar tot de eerste treffer te zoeken in plaats van alle
+ * verwijzingen te tellen, en het antwoord is een lijstje ids in plaats van een
+ * veld op elk bestand. Het draait bovendien náást de lijst, niet ervoor.
+ */
+export const USAGE_QUERY = `*[_type in $types && defined(*[references(^._id)][0])]._id`
 
 /** Eén bestand met alles erop en eraan, plus waar het gebruikt wordt. */
 export const ASSET_QUERY = `{
@@ -61,7 +72,6 @@ export type MediaAsset = {
   extension?: string | null
   breedte?: number | null
   hoogte?: number | null
-  inGebruik: boolean
 }
 
 /** Het volledige assetdocument; welke velden erop staan verschilt per upload. */
@@ -165,10 +175,19 @@ export function matchesSearch(asset: MediaAsset, search: string): boolean {
 
 export type MediaFilter = 'alle' | 'afbeeldingen' | 'bestanden' | 'ongebruikt'
 
-export function matchesFilter(asset: MediaAsset, filter: MediaFilter): boolean {
+/**
+ * `inGebruik` is `null` zolang USAGE_QUERY nog loopt. Het filter "ongebruikt"
+ * staat dan uit in de UI, dus dat geval komt in de praktijk niet voor; hier
+ * telt het als "weet ik nog niet" en dus niet als ongebruikt.
+ */
+export function matchesFilter(
+  asset: MediaAsset,
+  filter: MediaFilter,
+  inGebruik: boolean | null,
+): boolean {
   if (filter === 'afbeeldingen') return isImage(asset)
   if (filter === 'bestanden') return !isImage(asset)
-  if (filter === 'ongebruikt') return !asset.inGebruik
+  if (filter === 'ongebruikt') return inGebruik === false
   return true
 }
 

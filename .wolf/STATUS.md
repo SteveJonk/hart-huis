@@ -17,7 +17,7 @@
 - **Verwijderen kan alleen bij nul verwijzingen**, met een bevestigingsstap. Concepten tellen mee als gebruik; het detailpaneel klapt een concept en zijn gepubliceerde versie samen tot één regel met een link (`IntentLink`) naar het document.
 - Uploaden via knop of slepen, meerdere tegelijk; afbeeldingen worden een `image`-asset, de rest (pdf) een `file`-asset.
 - Documentatie: `docs/mediabeheer.md`, met een verwijzing in de README.
-- **Let op bij veel assets:** het overzicht doet per bestand een `count(*[references(^._id)])`. Precies, maar werk voor de server — bij duizenden assets wordt de eerste laadtijd merkbaar en is een tweetrapsaanpak de volgende stap.
+- **Laden gaat in twee trappen.** `ASSETS_QUERY` levert de lijst en het raster staat er meteen; `USAGE_QUERY` (`*[_type in $types && defined(*[references(^._id)][0])]._id`) zoekt daarnáást uit welke bestanden gebruikt worden en vult de labels aan. `defined(…[0])` stopt bij de eerste treffer in plaats van alles te tellen, en levert een lijstje ids in plaats van een veld op elk bestand. Zolang trap 2 loopt: geen labels en het filter "ongebruikt" staat uit; mislukt hij, dan werkt de rest gewoon (het detailpaneel doet zijn eigen, gezaghebbende controle). Het raster rendert 60 kaartjes per keer met een "toon meer".
 
 **`richText`-blok + /privacyverklaring (29-08-2026)**
 - Nieuw blok `richText` (`studio-hart-huis/schemaTypes/blocks/richTextType.ts`): Portable Text met H2/H3/citaat, opsommingen, vet/cursief en een linkannotatie die het bestaande `link`-object hergebruikt. Het enige blok in dit project met Portable Text — elk ander tekstblok bewaart prose als `text` en kan geen kop, lijst of link binnen een alinea aan.
