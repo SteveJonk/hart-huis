@@ -10,6 +10,15 @@
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
 
+**Mediabeheer in de studio (29-08-2026)**
+- Nieuw paneel **Media** in de linkerkolom (`structure.ts`, tussen Reviews en Forms): overzicht van álle uploads, zoeken en filteren, detailkolom per bestand, uploaden en verwijderen. Sanity's eigen assetbrowser opent alleen vanuit een veld op een document, dus hiervóór was de bibliotheek als geheel onzichtbaar.
+- Drie bestanden: `tools/MediaTool.tsx` (de UI), `tools/mediaData.ts` (de twee GROQ-queries, types en opmaakhulpjes) en `tools/mediaStyles.ts` (inline stijlen naast het bestaande `panelStyles.ts`). Geen plugin, geen nieuwe dependency.
+- Zoeken en filteren (alles / afbeeldingen / bestanden / ongebruikt) gebeuren in de browser op de al opgehaalde lijst — geen ronde naar Sanity per toetsaanslag.
+- **Verwijderen kan alleen bij nul verwijzingen**, met een bevestigingsstap. Concepten tellen mee als gebruik; het detailpaneel klapt een concept en zijn gepubliceerde versie samen tot één regel met een link (`IntentLink`) naar het document.
+- Uploaden via knop of slepen, meerdere tegelijk; afbeeldingen worden een `image`-asset, de rest (pdf) een `file`-asset.
+- Documentatie: `docs/mediabeheer.md`, met een verwijzing in de README.
+- **Laden gaat in twee trappen.** `ASSETS_QUERY` levert de lijst en het raster staat er meteen; `USAGE_QUERY` (`*[_type in $types && defined(*[references(^._id)][0])]._id`) zoekt daarnáást uit welke bestanden gebruikt worden en vult de labels aan. `defined(…[0])` stopt bij de eerste treffer in plaats van alles te tellen, en levert een lijstje ids in plaats van een veld op elk bestand. Zolang trap 2 loopt: geen labels en het filter "ongebruikt" staat uit; mislukt hij, dan werkt de rest gewoon (het detailpaneel doet zijn eigen, gezaghebbende controle). Het raster rendert 60 kaartjes per keer met een "toon meer".
+
 **`richText`-blok + /privacyverklaring (29-08-2026)**
 - Nieuw blok `richText` (`studio-hart-huis/schemaTypes/blocks/richTextType.ts`): Portable Text met H2/H3/citaat, opsommingen, vet/cursief en een linkannotatie die het bestaande `link`-object hergebruikt. Het enige blok in dit project met Portable Text — elk ander tekstblok bewaart prose als `text` en kan geen kop, lijst of link binnen een alinea aan.
 - `PAGE_QUERY` klapt de annotaties uit: `_type == "richText" => { body[]{..., markDefs[]${linkExpansion}} }`. `RichText.tsx` levert eigen Tailwind-componenten aan `<PortableText>` (geen `prose`), en zet interne links op next/link, externe op `target="_blank"`, mailto/tel in hetzelfde venster.

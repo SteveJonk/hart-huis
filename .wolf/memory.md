@@ -411,3 +411,10 @@
 | 10:40 | `richText`-blok gebouwd (Portable Text) + /privacyverklaring | studio-hart-huis/schemaTypes/blocks/richTextType.ts, index.ts, pageBuilderType.ts, app/src/components/blocks/RichText.tsx, PageBuilder.tsx, src/sanity/queries.ts, src/lib/{rich-text,privacy-content}.ts, scripts/seed/privacy.ts, scripts/check-rich-text.ts | tsc + eslint schoon, `npm run check:richtext` groen, typegen gedraaid | ~120k |
 | 10:45 | Footer: `legalLinks` naast de copyrightregel (was platte tekst "Algemene voorwaarden · Privacy") | footerType.ts, FOOTER_QUERY, SiteFooter.tsx, PageWrapper.tsx, scripts/seed/navigation.ts | Privacylink is nu een echte link; seed:nav schrijft hem | ~15k |
 | 10:50 | Gecontroleerd: `check:jsonld` en `check:tekst` waren op HEAD al rood | scripts/check-jsonld.ts, scripts/check-aanbiedingstekst.ts | Niet door deze wijziging veroorzaakt — staat als open punt in STATUS.md | ~5k |
+
+## Session: 2026-08-29 11:25
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 11:32 | Mediabeheer-paneel in de studio gebouwd (overzicht, zoeken, detail, uploaden, verwijderen) | studio-hart-huis/tools/{MediaTool.tsx,mediaData.ts,mediaStyles.ts}, structure.ts, docs/mediabeheer.md, README.md | tsc + eslint + prettier schoon, `sanity build` groen, beide GROQ-queries met groq-js tegen een testdataset gedraaid | ~60k |
+| 11:52 | Mediabeheer: laden in twee trappen (lijst eerst, gebruikstelling erna) + raster van 60 per keer | studio-hart-huis/tools/{MediaTool.tsx,mediaData.ts}, docs/mediabeheer.md | `count(*[references(^._id)]) > 0` per bestand vervangen door één USAGE_QUERY met `defined(…[0])` die alleen ids teruggeeft; tsc/eslint/prettier schoon, `sanity build` groen, USAGE_QUERY met groq-js geverifieerd | ~35k |

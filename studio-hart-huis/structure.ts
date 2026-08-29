@@ -1,11 +1,13 @@
 import {BlockElementIcon} from '@sanity/icons/BlockElement'
 import {CogIcon} from '@sanity/icons/Cog'
 import {EnvelopeIcon} from '@sanity/icons/Envelope'
+import {ImagesIcon} from '@sanity/icons/Images'
 import {MenuIcon} from '@sanity/icons/Menu'
 import {RefreshIcon} from '@sanity/icons/Refresh'
 import {WrenchIcon} from '@sanity/icons/Wrench'
 import type {StructureResolver} from 'sanity/structure'
 import {FundaReviews} from './tools/FundaReviewsTool'
+import {MediaBeheer} from './tools/MediaTool'
 import {RealworksObjecten} from './tools/RealworksTool'
 
 const SINGLETONS = ['navigation', 'footer', 'formGeneralSettings', 'objectSettings']
@@ -40,6 +42,15 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
       S.documentTypeListItem('faq').title('FAQs'),
       S.documentTypeListItem('review').title('Reviews'),
+      S.divider(),
+      // Geen documenttype maar een eigen paneel: Sanity's assetbrowser opent
+      // alleen vanuit een veld op een document, dus zonder dit is de
+      // mediabibliotheek als geheel onzichtbaar. Zie `tools/MediaTool.tsx`.
+      S.listItem()
+        .title('Media')
+        .id('media')
+        .icon(ImagesIcon)
+        .child(S.component(MediaBeheer).title('Media').id('media')),
       S.divider(),
       S.documentTypeListItem('form').title('Forms').icon(EnvelopeIcon),
       S.listItem()

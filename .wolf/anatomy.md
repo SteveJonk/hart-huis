@@ -631,6 +631,7 @@
 - `formulieren.md` — Formulieren (~2024 tok)
 - `funda-review-scraper.md` — Funda-review-scraper (~1819 tok)
 - `realworks-import.md` — Realworks-objecten-import (~2059 tok)
+- `mediabeheer.md` — Mediabeheer in de studio (~1000 tok)
 
 ## studio-hart-huis/
 
@@ -729,6 +730,12 @@
 - `FundaReviewsTool.tsx` — Knop in de studio die de scraper-route op de site aanroept. De route doet het (~1164 tok)
   - fn `describe` L34-51 (~215 tok)
   - fn `FundaReviews` L52-115 (~632 tok)
+- `MediaTool.tsx` — Mediabeheer in de studio: alle uploads op één plek, doorzoekbaar, met per bestand de gegevens, de documenten die het gebruiken, uploaden en verwijderen (~3400 tok)
+  - fn `MediaBeheer` L48-247 (~2000 tok)
+  - fn `MediaKaart` L248-280 (~300 tok)
+  - fn `MediaDetail` L281-456 (~1500 tok)
+- `mediaData.ts` — Queries, types en formatteerhulpjes voor het Media-paneel (~1400 tok)
+- `mediaStyles.ts` — Inline stijlen voor het Media-paneel, aanvullend op panelStyles.ts (~1200 tok)
 - `panelStyles.ts` — Sanity's eigen card-variabelen, zodat het paneel meekleurt met het thema dat (~426 tok)
 - `RealworksTool.tsx` — Knop in de studio die de Realworks-import op de site aanroept. De route doet (~1266 tok)
   - fn `describe` L33-53 (~276 tok)
