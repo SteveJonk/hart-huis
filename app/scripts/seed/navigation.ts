@@ -4,6 +4,7 @@
  * Menu items point at pages by slug, so run this after seeding a new page —
  * until then the link falls back to a plain path.
  */
+import { PRIVACY_SLUG } from './privacy';
 import { client, key } from './shared';
 
 function navLinkExternal(label: string, href: string) {
@@ -67,6 +68,7 @@ async function upsertFooter() {
   const overOnsLink = await pageLink('Over ons', 'over-ons');
   const contactLink = await pageLink('Contact', 'contact');
   const beoordelingenLink = await pageLink('Beoordelingen', 'beoordelingen');
+  const privacyLink = await pageLink('Privacyverklaring', PRIVACY_SLUG);
 
   const doc = {
     _id: 'footer',
@@ -84,7 +86,10 @@ async function upsertFooter() {
       },
     ],
     socialLinks: [],
-    copyright: '© 2026 Hart & Huis Makelaardij — Algemene voorwaarden · Privacy',
+    copyright: '© 2026 Hart & Huis Makelaardij',
+    // De juridische pagina's staan naast de copyrightregel, als échte links.
+    // Algemene voorwaarden komt erbij zodra die pagina bestaat.
+    legalLinks: [privacyLink],
   };
 
   await client.createOrReplace(doc);
