@@ -402,3 +402,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 10:02 | deploy-workflow gefixt: stale studio-lockfile (npm ci) + `= ` typo in SANITY_STUDIO_REALWORKS_URL | .github/workflows/deploy-sanity-studio.yml, studio-hart-huis/package-lock.json | opgelost, bug-028 + bug-029 gelogd | ~25k |
+
+## Session: 2026-08-29 09:52
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 10:05 | Blokken doorgenomen voor een privacyverklaring (lange lopende tekst) | studio-hart-huis/schemaTypes/blocks/*, pageBuilderType.ts, faqType.ts | Advies: geen bestaand blok past (alle prose is `text`/array van `text`, mediaText+intro eisen een foto); nieuw `richText`-blok (Portable Text) + bestaande pageOpener en ctaBand. `faqs` afgeraden: json-ld maakt er een FAQPage van. Nog niets geïmplementeerd. | ~25k |
