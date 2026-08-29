@@ -188,6 +188,13 @@ export const footerType = defineType({
       title: 'Copyright text',
       type: 'string',
     }),
+    defineField({
+      name: 'legalLinks',
+      title: 'Legal links',
+      type: 'array',
+      description: 'Naast de copyrightregel, bijv. Privacyverklaring en Algemene voorwaarden.',
+      of: [defineArrayMember({type: 'cta'})],
+    }),
   ],
   preview: {
     prepare() {

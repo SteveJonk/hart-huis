@@ -167,6 +167,14 @@ export const PAGE_QUERY = defineQuery(`
           ...,
           link${linkExpansion}
         }
+      },
+      // Portable Text: de links van een tekst staan als annotatie in markDefs,
+      // dus die moeten dezelfde intern/extern-behandeling krijgen als een cta.
+      _type == "richText" => {
+        body[]{
+          ...,
+          markDefs[]${linkExpansion}
+        }
       }
     }
   }
@@ -332,6 +340,7 @@ export const FOOTER_QUERY = defineQuery(`
     },
     socialLinks[]{ platform, url },
     certificationLogos[]{ alt, url, asset },
-    copyright
+    copyright,
+    legalLinks[]${linkExpansion}
   }
 `);

@@ -2,7 +2,7 @@
 
 > OpenWolf's learning memory. Updated automatically as the AI learns from interactions.
 > Do not edit manually unless correcting an error.
-> Last updated: 2026-08-26
+> Last updated: 2026-08-29
 
 ## User Preferences
 
@@ -59,6 +59,9 @@
 - **Extract draait met `--enforce-required-fields`.** Zonder die vlag is élk veld nullable in de gegenereerde types, ook `adres`/`slug`/`plaats` die in het schema `required()` zijn — dan loopt de objectpagina vol met onterechte null-fouten. Let op: `required()` is in Sanity validatie op waarschuwingsniveau, geen harde constraint; de write-client (import/seed) kan er alsnog omheen. De vlag is dus iets optimistischer dan de data.
 - **Queryresultaten heten `PAGE_QUERY_RESULT`, niet `PageQueryResult`** — typegen leidt de naam af van de const. Belangrijker: de gegenereerde file bevat een `declare module "@sanity/client"`-augmentatie, dus **`client.fetch(QUERY)` typt zichzelf**; een expliciete generic of een nagetypte hand-vorm is niet meer nodig en loopt alleen maar uit de pas. Afgeleide vormen haal je uit het resultaat (`type Woning = NonNullable<WONING_QUERY_RESULT>`, `Woning['vergelijkbaar'][number]`).
 - **`PAGE_QUERY_RESULT['content']` is een `_type`-discriminated union**, dus de switch in `PageBuilder.tsx` narrowt vanzelf en de `default`-tak is `never`. Een blok toevoegen aan schema + PAGE_QUERY maar niet aan de switch is daardoor een build-fout, geen stille `console.warn` meer.
+- **Portable Text zit alleen in het `richText`-blok.** Elk ander tekstblok bewaart prose als `text` of een array van `text` en kan dus geen kop, opsomming of link binnen een alinea aan; `richText` is er voor documentpagina's (privacy, voorwaarden, disclaimer). Drie dingen horen erbij: de linkannotatie moet in PAGE_QUERY uitgeklapt worden (`_type == "richText" => { body[]{..., markDefs[]${linkExpansion}} }`), het component levert eigen Tailwind-componenten aan `<PortableText>` (geen `prose` — `@tailwindcss/typography` staat wel in package.json maar is nooit als plugin aangezet), en `@portabletext/react` + `@portabletext/types` stonden al in de lockfile via next-sanity, dus alleen de root-`dependencies` erbij. (2026-08-29)
+- **Lange tekst schrijf je in de repo niet als Portable Text.** `src/lib/rich-text.ts` heeft een schrijfvorm (`{style}` / `{list}` met `[label](href)` en `**vet**`) plus `toPortableText()`; de seed zet dat om. Reviewen van een privacyverklaring in een diff blijft zo leesbaar. Na de eerste `seed:privacy` is de studio de baas: een tweede run overschrijft redactiewerk. (2026-08-29)
+
 - **De structurele helper-types blijven bestaan naast de gegenereerde.** `SanityLink`/`SanityLabeledLink` (links.ts), `ReviewItem`/`ReviewStats` (reviews.ts) en de props van de blokcomponenten zijn bewust losjes: componenten worden zowel met CMS-data als met de statische defaults uit `src/lib/*-content.ts` gevoed. De gegenereerde vormen zijn eraan toewijsbaar, dus vervang ze niet door queryresultaat-types — dan kunnen de defaults er niet meer in.
 
 - **De Funda-scraper gebruikt de beoordelingenwidget, niet de gewone pagina's.** `https://www.funda.nl/beoordelingenwidget/live/{makelaarId}/1/{type}/p{page}/` — `type` in kleine letters, het segment na het id is een vaste `1`, het paginanummer staat achteraan als `pN`, en de slash op het eind hoort erbij (zonder slash: 301). funda.nl zelf werpt een Akamai bot-challenge op, deze widget geeft gewoon HTML. De parser staat puur (zonder fetch of Sanity) in `app/src/lib/funda-reviews.ts` zodat `npm run check:funda` hem tegen opgeslagen pagina's kan draaien.
@@ -102,6 +105,8 @@
 ## Do-Not-Repeat
 
 - **2026-08-27 — Een knop die binnen dezelfde klik van `type='button'` naar `type='submit'` wisselt, verstuurt het formulier alsnog.** De browser bepaalt de activation behavior pás ná de React-onClick, dus `setStep()` naar de laatste stap maakt de Verder-knop submit en diezelfde klik triggert `onSubmit`. Zichtbaar als een spontane native validatie-tooltip op de nieuwe stap. Altijd `event.preventDefault()` in zo'n handler. Zie bug-027.
+- **2026-08-29 — Een blokveld leeglaten geeft de copy van een ándere pagina.** De blokcomponenten vullen ontbrekende props met `DEFAULTS` uit een `*-content.ts`; `PageOpener` valt zo terug op /over-ons. Een `pageOpener` zonder `motto` op de privacypagina toont dus het motto van Over ons. Vul bij een nieuwe pagina élk optioneel veld dat het component onvoorwaardelijk rendert, of controleer eerst wat de default is.
+
 - **2026-08-26 — "Deze constante wordt nergens meer gebruikt" mag je pas zeggen ná een grep over de héle `src`.** Ik noemde `OBJECT_BACK_LINK` dood omdat hij niet in `page.tsx` of `ObjectSidebar.tsx` stond, terwijl `ObjectGallery.tsx` er de zichtbare "Terug naar het aanbod"-link mee rendert — opruimen zonder die check had een link van de pagina gehaald. De eerdere grep zocht op twee ándere constantennamen; hergebruik zo'n resultaat niet als bewijs voor een derde.
 
 - **2026-08-26 — Verander je een gedeelde GROQ-projectie (zoals `formProjection`), draai dan meteen `npm run typegen`.** De gegenereerde `sanity.types.ts` koppelt resultaattypes aan de *letterlijke* querytekst; zodra die tekst wijzigt valt `client.fetch(QUERY)` terug op `any` en komt `tsc --noEmit` met foutmeldingen op een pagina die je niet hebt aangeraakt (hier: drie `implicitly has an 'any' type` in `app/src/app/aanbod/[slug]/page.tsx`, omdat `WONING_QUERY` diezelfde projectie gebruikt). Niet die pagina gaan repareren — typegen draaien.

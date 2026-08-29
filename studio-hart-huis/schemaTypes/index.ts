@@ -32,6 +32,7 @@ import {quoteBandType} from './blocks/quoteBandType'
 import {regionBlockType} from './blocks/regionBlockType'
 import {routeBlockType} from './blocks/routeBlockType'
 import {reviewsType} from './blocks/reviewsType'
+import {richTextType} from './blocks/richTextType'
 import {servicesType} from './blocks/servicesType'
 import {splitHeroType} from './blocks/splitHeroType'
 import {stepsType} from './blocks/stepsType'
@@ -111,4 +112,5 @@ export const schemaTypes = [
   personQuoteType,
   quoteStripType,
   centeredCtaType,
+  richTextType,
 ]

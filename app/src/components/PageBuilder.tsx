@@ -23,6 +23,7 @@ import { QuoteBand } from '@/components/blocks/QuoteBand';
 import { RegionBlock } from '@/components/blocks/RegionBlock';
 import { RouteBlock } from '@/components/blocks/RouteBlock';
 import { ReviewGrid } from '@/components/blocks/ReviewGrid';
+import { RichText } from '@/components/blocks/RichText';
 import { Reviews } from '@/components/blocks/Reviews';
 import { Services } from '@/components/blocks/Services';
 import { SplitHero } from '@/components/blocks/SplitHero';
@@ -39,6 +40,7 @@ import { PersonQuote } from '@/components/blocks/PersonQuote';
 import { QuoteStrip } from '@/components/blocks/QuoteStrip';
 import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import type { BlockIconName } from '@/components/ui/BlockIcon';
+import type { PortableTextBlock } from '@portabletext/types';
 import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
 import type { PAGE_QUERY_RESULT } from '@/sanity/sanity.types';
 import { toFormDefinition } from '@/lib/form-fields';
@@ -850,6 +852,16 @@ function renderBlock(block: PageBlock) {
           body={block.body}
           primaryCta={toCta(block.primaryCta)}
           secondaryCta={toCta(block.secondaryCta)}
+        />
+      );
+    }
+    case 'richText': {
+      return (
+        <RichText
+          key={block._key}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          body={block.body as PortableTextBlock[] | undefined}
         />
       );
     }

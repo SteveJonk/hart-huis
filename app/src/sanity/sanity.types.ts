@@ -90,6 +90,30 @@ export type TimelineItemsObjectImage = {
   _type: "image";
 };
 
+export type RichText = {
+  _type: "richText";
+  eyebrow?: string;
+  title?: string;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h2" | "h3" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<
+      {
+        _key: string;
+      } & Link
+    >;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
 export type CenteredCta = {
   _type: "centeredCta";
   eyebrow: string;
@@ -853,6 +877,9 @@ export type PageBuilder = Array<
   | ({
       _key: string;
     } & CenteredCta)
+  | ({
+      _key: string;
+    } & RichText)
 >;
 
 export type FormField = {
@@ -1069,6 +1096,11 @@ export type Footer = {
     _key: string;
   }>;
   copyright?: string;
+  legalLinks?: Array<
+    {
+      _key: string;
+    } & Cta
+  >;
 };
 
 export type Navigation = {
@@ -1329,6 +1361,7 @@ export type AllSanitySchemaTypes =
   | ObjectImage
   | ItemsObjectImage
   | TimelineItemsObjectImage
+  | RichText
   | CenteredCta
   | QuoteStrip
   | PersonQuote
@@ -1402,7 +1435,7 @@ export type AllSanitySchemaTypes =
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{    _id,    title,    slug,    seo,    isLandingPage,    content[]{      ...,      primaryCta{  ...,  internalLink->{    "slug": slug.current  }},      secondaryCta{  ...,  internalLink->{    "slug": slug.current  }},      link{  ...,  internalLink->{    "slug": slug.current  }},      cta{  ...,  internalLink->{    "slug": slug.current  }},      nvm{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      items[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }},        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      cards[]{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      person{        ...,        links[]{  ...,  internalLink->{    "slug": slug.current  }}      },      aside{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      // A simple form keeps its fields at the root, a multi-step one spreads      // them over steps; the container the mode does not use comes back null.      form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    "slug": slug.current  }}},      regions[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      places[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      // Geen "..." in de takken hieronder: die spreidt het ruwe document      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.      _type == "hero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "reviews" => {        "reviews": *[_type == "review"] | order(date desc)[0...8]{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance},        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "beoordelingenHero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)},        ...{  "cijfer10": count(*[_type == "review" && grade >= 9.5]),  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])}      },      _type == "uitgelichteReview" => {        review->{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "reviewGrid" => {        "items": *[_type == "review"] | order(date desc){  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "objectGrid" => {        ctaCard{..., cta{  ...,  internalLink->{    "slug": slug.current  }}},        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "listings" => {        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "contactFormSection" => {        "recaptcha": *[_type == "formGeneralSettings"][0]{          recaptchaEnabled,          recaptchaSiteKey        }      },      _type == "faqs" => {        faqs[]->{          ...,          link{  ...,  internalLink->{    "slug": slug.current  }}        }      }    }  }
+// Query: *[_type == "page" && slug.current == $slug][0]{    _id,    title,    slug,    seo,    isLandingPage,    content[]{      ...,      primaryCta{  ...,  internalLink->{    "slug": slug.current  }},      secondaryCta{  ...,  internalLink->{    "slug": slug.current  }},      link{  ...,  internalLink->{    "slug": slug.current  }},      cta{  ...,  internalLink->{    "slug": slug.current  }},      nvm{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      items[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }},        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      cards[]{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      person{        ...,        links[]{  ...,  internalLink->{    "slug": slug.current  }}      },      aside{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      // A simple form keeps its fields at the root, a multi-step one spreads      // them over steps; the container the mode does not use comes back null.      form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    "slug": slug.current  }}},      regions[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      places[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      // Geen "..." in de takken hieronder: die spreidt het ruwe document      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.      _type == "hero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "reviews" => {        "reviews": *[_type == "review"] | order(date desc)[0...8]{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance},        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "beoordelingenHero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)},        ...{  "cijfer10": count(*[_type == "review" && grade >= 9.5]),  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])}      },      _type == "uitgelichteReview" => {        review->{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "reviewGrid" => {        "items": *[_type == "review"] | order(date desc){  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "objectGrid" => {        ctaCard{..., cta{  ...,  internalLink->{    "slug": slug.current  }}},        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "listings" => {        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "contactFormSection" => {        "recaptcha": *[_type == "formGeneralSettings"][0]{          recaptchaEnabled,          recaptchaSiteKey        }      },      _type == "faqs" => {        faqs[]->{          ...,          link{  ...,  internalLink->{    "slug": slug.current  }}        }      },      // Portable Text: de links van een tekst staan als annotatie in markDefs,      // dus die moeten dezelfde intern/extern-behandeling krijgen als een cta.      _type == "richText" => {        body[]{          ...,          markDefs[]{  ...,  internalLink->{    "slug": slug.current  }}        }      }    }  }
 export type PAGE_QUERY_RESULT = {
   _id: string;
   title: string;
@@ -2622,6 +2655,46 @@ export type PAGE_QUERY_RESULT = {
       }
     | {
         _key: string;
+        _type: "richText";
+        eyebrow?: string;
+        title?: string;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h2" | "h3" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs: Array<{
+            _key: string;
+            _type: "link";
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          }> | null;
+          level?: number;
+          _type: "block";
+          _key: string;
+        }>;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
         _type: "routeBlock";
         eyebrow: string;
         title: string;
@@ -3253,7 +3326,7 @@ export type NAVIGATION_QUERY_RESULT =
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: FOOTER_QUERY
-// Query: *[_id == "footer"][0]{    logo{ alt, "url": asset->url },    paragraph,    whatsapp,    contactInfo{      address,      phone,      email    },    linkGroups[]{      title,      links[]{  ...,  internalLink->{    "slug": slug.current  }}    },    socialLinks[]{ platform, url },    certificationLogos[]{ alt, url, asset },    copyright  }
+// Query: *[_id == "footer"][0]{    logo{ alt, "url": asset->url },    paragraph,    whatsapp,    contactInfo{      address,      phone,      email    },    linkGroups[]{      title,      links[]{  ...,  internalLink->{    "slug": slug.current  }}    },    socialLinks[]{ platform, url },    certificationLogos[]{ alt, url, asset },    copyright,    legalLinks[]{  ...,  internalLink->{    "slug": slug.current  }}  }
 export type FOOTER_QUERY_RESULT =
   | {
       logo: null;
@@ -3264,6 +3337,7 @@ export type FOOTER_QUERY_RESULT =
       socialLinks: null;
       certificationLogos: null;
       copyright: null;
+      legalLinks: null;
     }
   | {
       logo: {
@@ -3277,6 +3351,7 @@ export type FOOTER_QUERY_RESULT =
       socialLinks: null;
       certificationLogos: null;
       copyright: null;
+      legalLinks: null;
     }
   | {
       logo: {
@@ -3313,6 +3388,16 @@ export type FOOTER_QUERY_RESULT =
         asset: SanityImageAssetReference | null;
       }> | null;
       copyright: string | null;
+      legalLinks: Array<{
+        _key: string;
+        _type: "cta";
+        label: string;
+        linkType: "external" | "internal";
+        internalLink: {
+          slug: string;
+        } | null;
+        href?: string;
+      }> | null;
     }
   | null;
 
@@ -3320,13 +3405,13 @@ export type FOOTER_QUERY_RESULT =
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n  *[_type == "page" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    seo,\n    isLandingPage,\n    content[]{\n      ...,\n      primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      nvm{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      items[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      cards[]{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      person{\n        ...,\n        links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      aside{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // A simple form keeps its fields at the root, a multi-step one spreads\n      // them over steps; the container the mode does not use comes back null.\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n},\n      regions[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      places[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // Geen "..." in de takken hieronder: die spreidt het ruwe document\n      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de\n      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.\n      _type == "hero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "reviews" => {\n        "reviews": *[_type == "review"] | order(date desc)[0...8]{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n},\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "beoordelingenHero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n},\n        ...{\n  "cijfer10": count(*[_type == "review" && grade >= 9.5]),\n  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),\n  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),\n  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),\n  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])\n}\n      },\n      _type == "uitgelichteReview" => {\n        review->{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "reviewGrid" => {\n        "items": *[_type == "review"] | order(date desc){\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "objectGrid" => {\n        ctaCard{..., cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}},\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "listings" => {\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "contactFormSection" => {\n        "recaptcha": *[_type == "formGeneralSettings"][0]{\n          recaptchaEnabled,\n          recaptchaSiteKey\n        }\n      },\n      _type == "faqs" => {\n        faqs[]->{\n          ...,\n          link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        }\n      }\n    }\n  }\n': PAGE_QUERY_RESULT;
+    '\n  *[_type == "page" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    seo,\n    isLandingPage,\n    content[]{\n      ...,\n      primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      nvm{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      items[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      cards[]{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      person{\n        ...,\n        links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      aside{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // A simple form keeps its fields at the root, a multi-step one spreads\n      // them over steps; the container the mode does not use comes back null.\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n},\n      regions[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      places[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // Geen "..." in de takken hieronder: die spreidt het ruwe document\n      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de\n      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.\n      _type == "hero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "reviews" => {\n        "reviews": *[_type == "review"] | order(date desc)[0...8]{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n},\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "beoordelingenHero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n},\n        ...{\n  "cijfer10": count(*[_type == "review" && grade >= 9.5]),\n  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),\n  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),\n  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),\n  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])\n}\n      },\n      _type == "uitgelichteReview" => {\n        review->{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "reviewGrid" => {\n        "items": *[_type == "review"] | order(date desc){\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "objectGrid" => {\n        ctaCard{..., cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}},\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "listings" => {\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "contactFormSection" => {\n        "recaptcha": *[_type == "formGeneralSettings"][0]{\n          recaptchaEnabled,\n          recaptchaSiteKey\n        }\n      },\n      _type == "faqs" => {\n        faqs[]->{\n          ...,\n          link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        }\n      },\n      // Portable Text: de links van een tekst staan als annotatie in markDefs,\n      // dus die moeten dezelfde intern/extern-behandeling krijgen als een cta.\n      _type == "richText" => {\n        body[]{\n          ...,\n          markDefs[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        }\n      }\n    }\n  }\n': PAGE_QUERY_RESULT;
     '\n  *[_type == "woning" && slug.current == $slug][0]{\n    _id,\n    adres,\n    "slug": slug.current,\n    postcode,\n    plaats,\n    status,\n    prijs,\n    prijsConditie,\n    aangebodenSinds,\n    aanvaarding,\n    soortWoning,\n    bouwjaar,\n    woonoppervlak,\n    perceel,\n    inhoud,\n    kamers,\n    slaapkamers,\n    energielabel,\n    kenmerkGroepen[]{\n      titel,\n      rijen[]{label, waarde}\n    },\n    aanbiedingsTekst,\n    aanbiedingsTekstEngels,\n    fotos,\n    "brochureUrl": brochure.asset->url,\n    makelaar,\n    seo,\n    "vergelijkbaar": *[_type == "woning" && _id != ^._id]\n      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n},\n    // Het kantoornummer op de prijskaart staat in het footerdocument; site.ts\n    // is daar alleen nog terugval voor.\n    "telefoon": *[_id == "footer"][0].contactInfo.phone,\n    // Alles wat op elke objectpagina hetzelfde is: de knop op de prijskaart\n    // (label, venstertekst, formulier) en de twee secties eronder. E\xE9n\n    // singleton voor alle objecten \u2014 de import schrijft de woningen zelf.\n    "instellingen": *[_id == "objectSettings"][0]{\n      ctaLabel,\n      dialogTitle,\n      dialogLead,\n      fallbackHref,\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n},\n      vergelijkbaar{\n        eyebrow,\n        title,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      ctaBand{\n        image,\n        eyebrow,\n        title,\n        body,\n        primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      }\n    },\n    "recaptcha": *[_type == "formGeneralSettings"][0]{\n      recaptchaEnabled,\n      recaptchaSiteKey\n    }\n  }\n': WONING_QUERY_RESULT;
     '\n  *[_id == $formId && _type == "form"][0]{\n    _id,\n    title,\n    mailRecipients,\n    mailSubject,\n    mailMessage,\n    sendCopyToSubmitter,\n    copySubject,\n    copyMessage,\n    "fields": select(\n      mode == "steps" => steps[].fields[]{label, name, type, isRequired},\n      fields[]{label, name, type, isRequired}\n    )\n  }\n': FORM_QUERY_RESULT;
     '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    fromEmail,\n    fromName,\n    mailLogo,\n    primaryColor,\n    textColor,\n    mailjetApiKey,\n    mailjetApiSecret,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey\n  }\n': FORM_SETTINGS_QUERY_RESULT;
     '{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}': REVIEW_STATS_QUERY_RESULT;
     '{\n  "pages": *[_type == "page" && slug.current != "home"]{\n    "slug": slug.current,\n    _updatedAt\n  },\n  "objecten": *[_type == "woning"]{\n    "slug": slug.current,\n    _updatedAt\n  }\n}': SITEMAP_QUERY_RESULT;
     '\n  *[_id == "navigation"][0]{\n    logo{ alt, "url": asset->url },\n    navLeft[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n    navRight[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n  }\n': NAVIGATION_QUERY_RESULT;
-    '\n  *[_id == "footer"][0]{\n    logo{ alt, "url": asset->url },\n    paragraph,\n    whatsapp,\n    contactInfo{\n      address,\n      phone,\n      email\n    },\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n    },\n    socialLinks[]{ platform, url },\n    certificationLogos[]{ alt, url, asset },\n    copyright\n  }\n': FOOTER_QUERY_RESULT;
+    '\n  *[_id == "footer"][0]{\n    logo{ alt, "url": asset->url },\n    paragraph,\n    whatsapp,\n    contactInfo{\n      address,\n      phone,\n      email\n    },\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n    },\n    socialLinks[]{ platform, url },\n    certificationLogos[]{ alt, url, asset },\n    copyright,\n    legalLinks[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n  }\n': FOOTER_QUERY_RESULT;
   }
 }

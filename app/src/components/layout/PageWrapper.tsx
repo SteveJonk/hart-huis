@@ -76,6 +76,7 @@ export async function PageWrapper({
         contactInfo={footer?.contactInfo}
         linkGroups={linkGroups}
         copyright={footer?.copyright}
+        legalLinks={asNavLinks(footer?.legalLinks)}
         certificationLogos={footer?.certificationLogos}
         socialLinks={footer?.socialLinks}
       />

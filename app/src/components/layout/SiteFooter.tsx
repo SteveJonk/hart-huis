@@ -45,6 +45,8 @@ type SiteFooterProps = {
   } | null;
   linkGroups?: FooterLinkGroup[] | null;
   copyright?: string | null;
+  /** Juridische pagina's naast de copyrightregel (privacy, voorwaarden). */
+  legalLinks?: NavLink[] | null;
   certificationLogos?: CertificationLogo[] | null;
   socialLinks?: { platform?: SocialPlatform | null; url?: string | null }[] | null;
 };
@@ -54,6 +56,7 @@ export function SiteFooter({
   contactInfo,
   linkGroups = [],
   copyright,
+  legalLinks,
   certificationLogos,
   socialLinks,
   logo,
@@ -154,9 +157,17 @@ export function SiteFooter({
             'text-[0.78rem] text-stone max-sm:gap-[18px] max-sm:text-[0.74rem]',
           )}
         >
-          <span>
-            {copyright ||
-              '© 2026 Hart & Huis Makelaardij — Algemene voorwaarden · Privacy'}
+          <span className='flex flex-wrap items-center gap-x-2 gap-y-1'>
+            <span>{copyright || `© ${new Date().getFullYear()} ${SITE.name}`}</span>
+            {legalLinks?.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className='underline-offset-4 transition-opacity duration-200 hover:underline hover:opacity-100'
+              >
+                {link.label}
+              </Link>
+            ))}
           </span>
           {logos && (
             <div className='flex flex-wrap items-center gap-5'>

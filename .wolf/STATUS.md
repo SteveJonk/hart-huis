@@ -2,13 +2,22 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-27
+> Last updated: 2026-08-29
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+**`richText`-blok + /privacyverklaring (29-08-2026)**
+- Nieuw blok `richText` (`studio-hart-huis/schemaTypes/blocks/richTextType.ts`): Portable Text met H2/H3/citaat, opsommingen, vet/cursief en een linkannotatie die het bestaande `link`-object hergebruikt. Het enige blok in dit project met Portable Text — elk ander tekstblok bewaart prose als `text` en kan geen kop, lijst of link binnen een alinea aan.
+- `PAGE_QUERY` klapt de annotaties uit: `_type == "richText" => { body[]{..., markDefs[]${linkExpansion}} }`. `RichText.tsx` levert eigen Tailwind-componenten aan `<PortableText>` (geen `prose`), en zet interne links op next/link, externe op `target="_blank"`, mailto/tel in hetzelfde venster.
+- `@portabletext/react` + `@portabletext/types` als directe dependency; ze stonden al in de lockfile via next-sanity, dus alleen twee regels in `package.json`/`package-lock.json`.
+- `src/lib/rich-text.ts` is de schrijfvorm voor lange tekst in de repo (`{style}`/`{list}` met `[label](href)` en `**vet**`) plus `toPortableText()`; getest door `npm run check:richtext`.
+- `src/lib/privacy-content.ts` bevat een volledige concept-privacyverklaring (AVG) met de verwerkers die echt in deze codebase zitten. **Nog invullen: het KvK-nummer** — het staat letterlijk als `[KvK-nummer invullen]` in de tekst. Laat de tekst juridisch nalopen vóór publicatie.
+- Footer: nieuw veld `legalLinks` (array van cta) naast de copyrightregel; die regel was platte tekst met "Algemene voorwaarden · Privacy" erin, nu echte links. `seed:nav` schrijft de privacylink mee.
+- **Nog te doen:** `npm run seed:privacy && npm run seed:nav` draaien (in die volgorde — de footerlink zoekt de pagina op slug).
 
 **Makelaarskaart naar Sanity (26-08-2026)** — open punt 3 hieronder is hiermee weg
 - `woning` heeft een veld `makelaar` (objecttype, eigen tabblad "Makelaar"): `naam`, `initialen`, `functie`, `tekst`, `telefoon`. De waarden die in `OBJECT_MAKELAAR` stonden zijn de `initialValue`s.
@@ -209,6 +218,7 @@
 7. **`woning` heeft geen `seo`-veld** terwijl `WONING_QUERY` het wél selecteert (`seo: null` in de gegenereerde types) — objectpagina's krijgen dus nooit CMS-SEO. Keuze: veld toevoegen aan het schema zoals `page` dat heeft, of de dode selectie uit de query halen. Zie bug-013.
 8. `npm run typegen` faalt op de default node (v17) van deze machine; draai hem met `export PATH="$HOME/.nvm/versions/node/v22.18.0/bin:$PATH"` ervoor.
 9. Het bezichtigingsformulier staat nog niet in Sanity: `npm run seed:objectpagina`. Daarna beheert de redactie het formulier, de knop, de kop boven "Vergelijkbare woningen" én de CTA-band zelf (Forms + Objectpagina in de studio). De primaire knop van die CTA-band staat op `#` (was al zo in `OBJECT_CTA`) — na het seeden in de studio naar de zoekopdracht-LP wijzen, of hem hier alvast goedzetten.
+11. `npm run check:jsonld` en `npm run check:tekst` zijn rood — al op HEAD, los van het richText-werk. `check:tekst`/`check:jsonld` verwachten een aanbiedingstekst zonder het Engelse deel ("Mooi huis ruime tuin, garage" tegenover "… English Nice house"); de parser of de assertie loopt uit de pas.
 10. Na elke schemawijziging `npm run typegen` draaien en `app/src/sanity/{schema.json,sanity.types.ts}` meecommitten — beide staan in git en zijn nu de bron van de types.
 
 ## 📁 Active architecture

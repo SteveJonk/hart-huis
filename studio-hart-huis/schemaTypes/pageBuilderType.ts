@@ -44,5 +44,6 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'personQuote'}),
     defineArrayMember({type: 'quoteStrip'}),
     defineArrayMember({type: 'centeredCta'}),
+    defineArrayMember({type: 'richText'}),
   ],
 })
