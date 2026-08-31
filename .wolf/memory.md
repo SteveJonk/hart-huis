@@ -418,3 +418,15 @@
 |------|--------|---------|---------|--------|
 | 11:32 | Mediabeheer-paneel in de studio gebouwd (overzicht, zoeken, detail, uploaden, verwijderen) | studio-hart-huis/tools/{MediaTool.tsx,mediaData.ts,mediaStyles.ts}, structure.ts, docs/mediabeheer.md, README.md | tsc + eslint + prettier schoon, `sanity build` groen, beide GROQ-queries met groq-js tegen een testdataset gedraaid | ~60k |
 | 11:52 | Mediabeheer: laden in twee trappen (lijst eerst, gebruikstelling erna) + raster van 60 per keer | studio-hart-huis/tools/{MediaTool.tsx,mediaData.ts}, docs/mediabeheer.md | `count(*[references(^._id)]) > 0` per bestand vervangen door één USAGE_QUERY met `defined(…[0])` die alleen ids teruggeeft; tsc/eslint/prettier schoon, `sanity build` groen, USAGE_QUERY met groq-js geverifieerd | ~35k |
+
+## Session: 2026-08-31 15:57
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-31 15:58
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 16:40 | Tabelblok toegevoegd aan richText (schema + toPortableText + renderer) | studio-hart-huis/schemaTypes/blocks/richTextType.ts, app/src/lib/rich-text.ts, app/src/components/blocks/RichText.tsx | typegen + tsc + lint schoon | ~35k |
+| 16:45 | PRIVACY_BODY vervangen door de NVM-modelprivacyverklaring (16 secties, 22 tabellen) | app/src/lib/privacy-content.ts | check:richtext groen; nog niet geseed | ~25k |

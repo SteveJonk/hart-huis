@@ -58,6 +58,53 @@ export const richTextType = defineType({
             ],
           },
         }),
+        // Een juridische tekst staat vol met tabellen (gegeven / ontvanger /
+        // bewaartermijn). De eerste rij is de kop; de renderer scrollt hem
+        // horizontaal zodat drie kolommen ook op een telefoon leesbaar zijn.
+        defineArrayMember({
+          name: 'table',
+          title: 'Tabel',
+          type: 'object',
+          icon: DocumentTextIcon,
+          fields: [
+            defineField({
+              name: 'rows',
+              title: 'Rijen',
+              type: 'array',
+              description: 'De eerste rij is de koprij.',
+              of: [
+                defineArrayMember({
+                  name: 'tableRow',
+                  title: 'Rij',
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'cells',
+                      title: 'Cellen',
+                      type: 'array',
+                      of: [defineArrayMember({type: 'text', rows: 2})],
+                      validation: (rule) => rule.min(1).required(),
+                    }),
+                  ],
+                  preview: {
+                    select: {cells: 'cells'},
+                    prepare({cells}) {
+                      return {title: (cells as string[] | undefined)?.join(' · ') || 'Lege rij'}
+                    },
+                  },
+                }),
+              ],
+              validation: (rule) => rule.min(1).required(),
+            }),
+          ],
+          preview: {
+            select: {rows: 'rows'},
+            prepare({rows}) {
+              const count = Array.isArray(rows) ? rows.length : 0
+              return {title: 'Tabel', subtitle: `${count} rij${count === 1 ? '' : 'en'}`}
+            },
+          },
+        }),
       ],
       validation: (rule) => rule.min(1).required(),
     }),

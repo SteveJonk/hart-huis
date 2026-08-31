@@ -214,6 +214,7 @@
 **Goal:** Alle designs uit `app/example-designs/` zijn geïmplementeerd (aankoop toegevoegd 18-08-2026, waardebepaling 20-08-2026; nog te seeden: `npm run seed:aankoop && npm run seed:nav`, `npm run seed:waardebepaling`). Wat resteert is afmaken en aanscherpen. **Alle designs uit `app/example-designs/` zijn nu geïmplementeerd** (nvm en zoekopdracht toegevoegd 21-08-2026). Wat resteert is seeden en aanscherpen: `npm run seed:nvm && npm run seed:nav`, `npm run seed:zoekopdracht`, en `npm run seed:waardebepaling` opnieuw vanwege bug-018.
 
 ### Open punten
+0. **De privacyverklaring is nog niet geseed.** `PRIVACY_BODY` bevat nu de NVM-modeltekst (16 secties, 22 tabellen). Draai `npm run seed:privacy && npm run seed:nav`, en deploy de studio — `richText` heeft er een `table`-blok bij. Controleer vóór publicatie het adres bij "Verwerkingsverantwoordelijke" (aangeleverde tekst zegt Spaarndam, `SITE.address` zegt Haarlem) en de u/je-vorm tussen `PRIVACY_OPENER` (je) en de body (u).
 1. **De scraper is lokaal tegen de echte Funda gedraaid (17-08-2026) en klopt: 42 verkoop + 12 aankoop = 54, zonder waarschuwingen** — precies wat de widget zelf noemt. De fixtures zijn nu echte pagina's. Wat resteert vóór de eerste échte run:
    a. `?dryRun=1` draaien op de gedeployde site en de uitkomst nalopen
    b. daarna de 4 mock-reviews uit `seed:home` weggooien — die hebben geen cijfers maar tellen wel mee in `reviewStats`

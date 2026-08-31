@@ -14,7 +14,9 @@
 
 export type RichNode =
   | { style: 'h2' | 'h3' | 'normal' | 'blockquote'; text: string }
-  | { list: 'bullet' | 'number'; items: string[] };
+  | { list: 'bullet' | 'number'; items: string[] }
+  /** Eerste rij is de koprij. Cellen zijn platte tekst — geen links of vet. */
+  | { table: string[][] };
 
 type Span = {
   _type: 'span';
@@ -28,6 +30,12 @@ type MarkDef = {
   _key: string;
   linkType: 'external';
   href: string;
+};
+
+export type PortableTextTable = {
+  _type: 'table';
+  _key: string;
+  rows: { _type: 'tableRow'; _key: string; cells: string[] }[];
 };
 
 export type PortableTextParagraph = {
@@ -100,11 +108,25 @@ function toSpans(text: string, key: (seed: string) => string) {
 export function toPortableText(
   nodes: readonly RichNode[],
   key: (seed: string) => string,
-): PortableTextParagraph[] {
+): (PortableTextParagraph | PortableTextTable)[] {
   let counter = 0;
   const uniqueKey = (seed: string) => key(`${counter++}:${seed}`);
 
-  return nodes.flatMap<PortableTextParagraph>((node) => {
+  return nodes.flatMap<PortableTextParagraph | PortableTextTable>((node) => {
+    if ('table' in node) {
+      return [
+        {
+          _type: 'table' as const,
+          _key: uniqueKey(node.table[0]?.join('|') ?? 'table'),
+          rows: node.table.map((cells) => ({
+            _type: 'tableRow' as const,
+            _key: uniqueKey(cells.join('|')),
+            cells,
+          })),
+        },
+      ];
+    }
+
     if ('list' in node) {
       return node.items.map((item) => ({
         _type: 'block' as const,

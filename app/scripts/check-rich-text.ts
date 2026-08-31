@@ -15,18 +15,27 @@
 import assert from 'node:assert/strict'
 import {createHash} from 'node:crypto'
 import {PRIVACY_BODY} from '../src/lib/privacy-content'
-import {toPortableText, type RichNode} from '../src/lib/rich-text'
+import {
+  toPortableText,
+  type PortableTextParagraph,
+  type RichNode,
+} from '../src/lib/rich-text'
 
 const key = (seed: string) => createHash('sha1').update(seed).digest('hex').slice(0, 12)
 
+/** De meeste controles hieronder gaan over alinea's; tabellen filteren we eruit. */
+const alineas = (nodes: RichNode[], keyFn = key) =>
+  toPortableText(nodes, keyFn).filter(
+    (block): block is PortableTextParagraph => block._type === 'block',
+  )
+
 // 1. Stijlen en lijsten.
-const basis = toPortableText(
+const basis = alineas(
   [
     {style: 'h2', text: 'Kop'},
     {style: 'normal', text: 'Alinea'},
     {list: 'bullet', items: ['Een', 'Twee']},
   ],
-  key,
 )
 
 assert.equal(basis.length, 4)
@@ -42,10 +51,9 @@ assert.deepEqual(
 )
 
 // 2. Links.
-const [metLink] = toPortableText(
-  [{style: 'normal', text: 'Mail ons op [info@example.nl](mailto:info@example.nl) of bel.'}],
-  key,
-)
+const [metLink] = alineas([
+  {style: 'normal', text: 'Mail ons op [info@example.nl](mailto:info@example.nl) of bel.'},
+])
 
 assert.equal(metLink.markDefs.length, 1)
 assert.equal(metLink.markDefs[0].href, 'mailto:info@example.nl')
@@ -60,10 +68,9 @@ assert.deepEqual(
 )
 
 // 3. Vet, ook binnen een link.
-const [metVet] = toPortableText(
-  [{style: 'normal', text: 'Dit is **belangrijk** en [**dit ook**](/contact).'}],
-  key,
-)
+const [metVet] = alineas([
+  {style: 'normal', text: 'Dit is **belangrijk** en [**dit ook**](/contact).'},
+])
 
 assert.deepEqual(
   metVet.children.map((span) => [span.text, span.marks.includes('strong')]),
@@ -80,23 +87,40 @@ assert.ok(metVet.children[3].marks.includes(metVet.markDefs[0]._key))
 
 // 4. Unieke sleutels over een echte, lange tekst.
 const privacy = toPortableText(PRIVACY_BODY, (seed) => key(`privacy:${seed}`))
-const keys = privacy.flatMap((block) => [
-  block._key,
-  ...block.children.map((span) => span._key),
-  ...block.markDefs.map((mark) => mark._key),
-])
+const keys = privacy.flatMap((block) =>
+  block._type === 'table'
+    ? [block._key, ...block.rows.map((row) => row._key)]
+    : [
+        block._key,
+        ...block.children.map((span) => span._key),
+        ...block.markDefs.map((mark) => mark._key),
+      ],
+)
 
 assert.equal(new Set(keys).size, keys.length, 'dubbele _key in de omgezette tekst')
 assert.ok(privacy.length > 30, 'de privacytekst lijkt leeg te zijn gelopen')
 
-// Herhaalde regels mogen geen botsende sleutels geven.
-const herhaald = toPortableText(
+// 5. Een tabel wordt één blok met een rij per regel; de eerste rij is de kop.
+const tabel = toPortableText([{table: [['Kop A', 'Kop B'], ['a', 'b']]}], key)[0]
+assert.equal(tabel._type, 'table')
+assert.ok(tabel._type === 'table')
+assert.deepEqual(
+  tabel.rows.map((row) => row.cells),
   [
-    {style: 'normal', text: 'Zelfde regel.'},
-    {style: 'normal', text: 'Zelfde regel.'},
+    ['Kop A', 'Kop B'],
+    ['a', 'b'],
   ],
-  key,
 )
+assert.ok(
+  privacy.some((block) => block._type === 'table'),
+  'de privacytekst hoort tabellen te bevatten',
+)
+
+// Herhaalde regels mogen geen botsende sleutels geven.
+const herhaald = alineas([
+  {style: 'normal', text: 'Zelfde regel.'},
+  {style: 'normal', text: 'Zelfde regel.'},
+])
 assert.notEqual(herhaald[0]._key, herhaald[1]._key)
 
 // Een lege body blijft leeg — het component rendert dan niets.

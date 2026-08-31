@@ -37,7 +37,48 @@ export function RichText({ eyebrow, title, body }: RichTextProps = {}) {
   );
 }
 
+type TableValue = { rows?: { _key: string; cells?: string[] }[] };
+
 const components: PortableTextComponents = {
+  types: {
+    // Eerste rij is de koprij. Drie kolommen passen niet op een telefoon, dus
+    // de tabel scrollt in zijn eigen container — de pagina zelf niet.
+    table: ({ value }: { value: TableValue }) => {
+      const rows = value?.rows?.filter((row) => Array.isArray(row.cells)) ?? [];
+      if (rows.length === 0) return null;
+      const [head, ...body] = rows;
+
+      return (
+        <div className='mb-[26px] overflow-x-auto'>
+          <table className='w-full min-w-[36rem] border-collapse text-[0.95rem] leading-[1.6] text-ink-70'>
+            <thead>
+              <tr>
+                {head.cells?.map((cell, index) => (
+                  <th
+                    key={index}
+                    className='border-b border-sand px-3 py-2 text-left align-top font-semibold text-ink'
+                  >
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {body.map((row) => (
+                <tr key={row._key} className='border-b border-sand/60 last:border-0'>
+                  {row.cells?.map((cell, index) => (
+                    <td key={index} className='px-3 py-2 align-top whitespace-pre-line'>
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    },
+  },
   block: {
     normal: ({ children }) => (
       <p className='mb-[18px] leading-[1.75] text-ink-70'>{children}</p>

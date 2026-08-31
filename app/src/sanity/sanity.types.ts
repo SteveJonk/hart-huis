@@ -94,24 +94,35 @@ export type RichText = {
   _type: "richText";
   eyebrow?: string;
   title?: string;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h2" | "h3" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<
-      {
+  body: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "normal" | "h2" | "h3" | "blockquote";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<
+          {
+            _key: string;
+          } & Link
+        >;
+        level?: number;
+        _type: "block";
         _key: string;
-      } & Link
-    >;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
+      }
+    | {
+        rows: Array<{
+          cells: Array<string>;
+          _type: "tableRow";
+          _key: string;
+        }>;
+        _type: "table";
+        _key: string;
+      }
+  >;
 };
 
 export type CenteredCta = {
@@ -2658,28 +2669,40 @@ export type PAGE_QUERY_RESULT = {
         _type: "richText";
         eyebrow?: string;
         title?: string;
-        body: Array<{
-          children?: Array<{
-            marks?: Array<string>;
-            text?: string;
-            _type: "span";
-            _key: string;
-          }>;
-          style?: "blockquote" | "h2" | "h3" | "normal";
-          listItem?: "bullet" | "number";
-          markDefs: Array<{
-            _key: string;
-            _type: "link";
-            linkType: "external" | "internal";
-            internalLink: {
-              slug: string;
-            } | null;
-            href?: string;
-          }> | null;
-          level?: number;
-          _type: "block";
-          _key: string;
-        }>;
+        body: Array<
+          | {
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "blockquote" | "h2" | "h3" | "normal";
+              listItem?: "bullet" | "number";
+              markDefs: Array<{
+                _key: string;
+                _type: "link";
+                linkType: "external" | "internal";
+                internalLink: {
+                  slug: string;
+                } | null;
+                href?: string;
+              }> | null;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }
+          | {
+              rows: Array<{
+                cells: Array<string>;
+                _type: "tableRow";
+                _key: string;
+              }>;
+              _type: "table";
+              _key: string;
+              markDefs: null;
+            }
+        >;
         primaryCta: null;
         secondaryCta: null;
         link: null;
