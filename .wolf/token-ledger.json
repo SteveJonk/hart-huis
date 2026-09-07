@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 2862481,
-    "total_reads": 500,
+    "total_tokens_estimated": 2899521,
+    "total_reads": 544,
     "total_writes": 0,
-    "total_sessions": 86,
-    "anatomy_hits": 335,
-    "anatomy_misses": 159,
-    "repeated_reads_blocked": 102,
-    "estimated_savings_vs_bare_cli": 447521,
-    "real_input_tokens": 29891,
-    "real_output_tokens": 2994236,
-    "real_cache_read_tokens": 875993290,
-    "real_cache_creation_tokens": 13556339,
-    "real_api_calls": 5280
+    "total_sessions": 88,
+    "anatomy_hits": 365,
+    "anatomy_misses": 173,
+    "repeated_reads_blocked": 110,
+    "estimated_savings_vs_bare_cli": 475445,
+    "real_input_tokens": 30383,
+    "real_output_tokens": 3134478,
+    "real_cache_read_tokens": 920349700,
+    "real_cache_creation_tokens": 14489703,
+    "real_api_calls": 5527
   },
   "sessions": [
     {
@@ -4575,6 +4575,318 @@
         "cache_read_input_tokens": 20699165,
         "cache_creation_input_tokens": 356453,
         "api_calls": 117
+      }
+    },
+    {
+      "id": "session-2026-09-07-2117",
+      "agent": "claude",
+      "started": "2026-09-07T21:17:49.524Z",
+      "ended": "2026-09-07T21:43:26.904Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/vercel.json",
+          "tokens_estimated": 70,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/lib/route-auth.ts",
+          "tokens_estimated": 585,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 4014,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/scrape-funda-reviews/route.ts",
+          "tokens_estimated": 2080,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/FundaReviewsTool.tsx",
+          "tokens_estimated": 1164,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/RealworksTool.tsx",
+          "tokens_estimated": 1266,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/structure.ts",
+          "tokens_estimated": 866,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/MediaTool.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/mediaData.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/panelStyles.ts",
+          "tokens_estimated": 426,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/reviewType.ts",
+          "tokens_estimated": 697,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/docs/realworks-import.md",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/lib/realworks.ts",
+          "tokens_estimated": 4868,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/docs/realworks-import.md",
+          "tokens_estimated": 2059,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/mediaStyles.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/package/dist/definers/functions/scheduled.d.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/package/dist/definers/functions/base-event.d.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/package/dist/types/functions/index.d.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/package/dist/types/functions/event.d.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/Dockerfile",
+          "tokens_estimated": 173,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/docker-compose.yml",
+          "tokens_estimated": 84,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/README.md",
+          "tokens_estimated": 168,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 18520,
+        "output_tokens_estimated": 0,
+        "reads_count": 22,
+        "writes_count": 0,
+        "repeated_reads_blocked": 4,
+        "anatomy_lookups": 15
+      },
+      "real_usage": {
+        "input_tokens": 241,
+        "output_tokens": 67704,
+        "cache_read_input_tokens": 21658461,
+        "cache_creation_input_tokens": 358409,
+        "api_calls": 121
+      }
+    },
+    {
+      "id": "session-2026-09-07-2117",
+      "agent": "claude",
+      "started": "2026-09-07T21:17:49.524Z",
+      "ended": "2026-09-07T21:59:07.991Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/vercel.json",
+          "tokens_estimated": 70,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/lib/route-auth.ts",
+          "tokens_estimated": 585,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 4014,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/scrape-funda-reviews/route.ts",
+          "tokens_estimated": 2080,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/FundaReviewsTool.tsx",
+          "tokens_estimated": 1164,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/RealworksTool.tsx",
+          "tokens_estimated": 1266,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/structure.ts",
+          "tokens_estimated": 866,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/MediaTool.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/mediaData.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/panelStyles.ts",
+          "tokens_estimated": 426,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/schemaTypes/reviewType.ts",
+          "tokens_estimated": 697,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/docs/realworks-import.md",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/src/lib/realworks.ts",
+          "tokens_estimated": 4868,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/docs/realworks-import.md",
+          "tokens_estimated": 2059,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/studio-hart-huis/tools/mediaStyles.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/package/dist/definers/functions/scheduled.d.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/package/dist/definers/functions/base-event.d.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/package/dist/types/functions/index.d.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/package/dist/types/functions/event.d.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/app/Dockerfile",
+          "tokens_estimated": 173,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/docker-compose.yml",
+          "tokens_estimated": 84,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/hart-huis/README.md",
+          "tokens_estimated": 168,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 18520,
+        "output_tokens_estimated": 0,
+        "reads_count": 22,
+        "writes_count": 0,
+        "repeated_reads_blocked": 4,
+        "anatomy_lookups": 15
+      },
+      "real_usage": {
+        "input_tokens": 251,
+        "output_tokens": 72538,
+        "cache_read_input_tokens": 22697949,
+        "cache_creation_input_tokens": 574955,
+        "api_calls": 126
       }
     }
   ],
