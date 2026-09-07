@@ -13,7 +13,8 @@
  *   GET /api/scrape-funda-reviews?debug=1&maxPages=1 → de ruwe tekst per pagina
  */
 import { NextResponse } from 'next/server';
-import { corsHeaders, isAuthorized } from '@/lib/route-auth';
+import { recordCronRun } from '@/lib/cron-log';
+import { authSource, corsHeaders, isAuthorized } from '@/lib/route-auth';
 import {
   DEFAULT_MAKELAAR_ID,
   FUNDA_REVIEW_TYPES,
@@ -160,6 +161,9 @@ async function handle(request: Request) {
     ? [requestedType as FundaReviewType]
     : FUNDA_REVIEW_TYPES;
 
+  const startedAt = new Date();
+  const trigger = authSource(request) ?? 'onbekend';
+
   try {
     if (debug) {
       // ruwe tekst terug, zodat de regexes te controleren zijn als er 0 uitkomt
@@ -206,6 +210,16 @@ async function handle(request: Request) {
     };
 
     if (dryRun) {
+      await recordCronRun({
+        task: 'funda-reviews',
+        trigger,
+        ok: true,
+        dryRun: true,
+        startedAt: startedAt.toISOString(),
+        durationMs: Date.now() - startedAt.getTime(),
+        message: `Testrun: ${scraped.length} beoordelingen gevonden op ${pagesFetched} pagina's.`,
+        warnings,
+      });
       return NextResponse.json({ ...summary, reviews: scraped }, { headers: cors });
     }
 
@@ -213,10 +227,36 @@ async function handle(request: Request) {
       scraped.length > 0
         ? await upsertReviews(scraped)
         : { created: 0, updated: 0, unchanged: 0 };
+
+    await recordCronRun({
+      task: 'funda-reviews',
+      trigger,
+      ok: true,
+      dryRun: false,
+      startedAt: startedAt.toISOString(),
+      durationMs: Date.now() - startedAt.getTime(),
+      message:
+        `${scraped.length} beoordelingen opgehaald: ${written.created} nieuw, ` +
+        `${written.updated} bijgewerkt, ${written.unchanged} ongewijzigd.`,
+      warnings,
+    });
     return NextResponse.json({ ...summary, ...written }, { headers: cors });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     console.error('[scrape-funda-reviews]', message);
+    if (!debug) {
+      await recordCronRun({
+        task: 'funda-reviews',
+        trigger,
+        ok: false,
+        dryRun,
+        startedAt: startedAt.toISOString(),
+        durationMs: Date.now() - startedAt.getTime(),
+        message: 'Mislukt.',
+        warnings: [],
+        error: message,
+      });
+    }
     return NextResponse.json(
       { ok: false, error: message },
       { status: 500, headers: cors },

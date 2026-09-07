@@ -24,7 +24,8 @@ de route dat erbij als waarschuwing — er is dan een pagina gemist.
 | Route | `app/src/app/api/import-realworks/route.ts` |
 | Toegang (cron + studioknop) | `app/src/lib/route-auth.ts` — gedeeld met de Funda-scraper |
 | Knop in de studio | `studio-hart-huis/tools/RealworksTool.tsx`, ingehangen in `structure.ts` |
-| Cron | `app/vercel.json` |
+| Planner (Coolify/Vercel) | zie [Geplande taken](geplande-taken.md) |
+| Logboek van de runs | `app/src/lib/cron-log.ts` → **Logs** in de studio |
 | Test | `app/scripts/check-realworks.ts` (`npm run check:realworks`) |
 
 ### Van feed naar document

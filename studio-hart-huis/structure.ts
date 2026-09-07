@@ -1,16 +1,21 @@
 import {BlockElementIcon} from '@sanity/icons/BlockElement'
 import {CogIcon} from '@sanity/icons/Cog'
 import {EnvelopeIcon} from '@sanity/icons/Envelope'
+import {ClockIcon} from '@sanity/icons/Clock'
 import {ImagesIcon} from '@sanity/icons/Images'
 import {MenuIcon} from '@sanity/icons/Menu'
 import {RefreshIcon} from '@sanity/icons/Refresh'
 import {WrenchIcon} from '@sanity/icons/Wrench'
 import type {StructureResolver} from 'sanity/structure'
 import {FundaReviews} from './tools/FundaReviewsTool'
+import {Logs} from './tools/LogsTool'
 import {MediaBeheer} from './tools/MediaTool'
 import {RealworksObjecten} from './tools/RealworksTool'
 
 const SINGLETONS = ['navigation', 'footer', 'formGeneralSettings', 'objectSettings']
+// Geen documenttype in de gewone lijst: `cronLog` wordt alleen door de routes
+// zelf geschreven en heeft zijn eigen leespaneel — zie de "Logs"-ingang hieronder.
+const VERBORGEN_TYPES = ['cronLog']
 
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -89,10 +94,17 @@ export const structure: StructureResolver = (S) =>
                 ),
             ]),
         ),
+      S.listItem()
+        .title('Logs')
+        .id('logs')
+        .icon(ClockIcon)
+        .child(S.component(Logs).title('Logs').id('logs')),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() &&
-          !['page', 'woning', 'faq', 'review', 'form', ...SINGLETONS].includes(item.getId()!),
+          !['page', 'woning', 'faq', 'review', 'form', ...SINGLETONS, ...VERBORGEN_TYPES].includes(
+            item.getId()!,
+          ),
       ),
     ])

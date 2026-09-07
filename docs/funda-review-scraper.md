@@ -27,7 +27,8 @@ een venster van paginanummers).
 | Route | `app/src/app/api/scrape-funda-reviews/route.ts` |
 | Schrijfclient | `app/src/sanity/write-client.ts` |
 | Knop in de studio | `studio-hart-huis/tools/FundaReviewsTool.tsx`, ingehangen in `structure.ts` |
-| Cron | `app/vercel.json` |
+| Planner (Coolify/Vercel) | zie [Geplande taken](geplande-taken.md) |
+| Logboek van de runs | `app/src/lib/cron-log.ts` → **Logs** in de studio |
 | Test | `app/scripts/check-funda-reviews.ts` (`npm run check:funda`) |
 
 Elke review krijgt een `_id` van `funda-review-<hash>`, waarbij de hash over

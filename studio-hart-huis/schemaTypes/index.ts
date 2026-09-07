@@ -39,6 +39,7 @@ import {stepsType} from './blocks/stepsType'
 import {storyType} from './blocks/storyType'
 import {timelineType} from './blocks/timelineType'
 import {valueCardsType} from './blocks/valueCardsType'
+import {cronLogType} from './cronLogType'
 import {faqType} from './faqType'
 import {footerType} from './footerType'
 import {formGeneralSettingsType} from './formGeneralSettingsType'
@@ -65,6 +66,7 @@ export const schemaTypes = [
   formGeneralSettingsType,
   formType,
   objectSettingsType,
+  cronLogType,
   // Shared objects
   seoType,
   linkType,

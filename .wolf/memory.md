@@ -450,3 +450,13 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+
+## Session: 2026-09-07 21:17
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 21:40 | Bestaande crons nagelopen: routes + vercel.json + studioknoppen bestonden al | app/vercel.json, api/* | geen werk nodig aan de crons zelf | ~12k |
+| 21:55 | Sanity Scheduled Functions uitgezocht op verzoek gebruiker (npm tarball, geen docs-toegang) | — | alpha, "not available publicly yet", org-blueprint nodig → afgevallen | ~9k |
+| 22:10 | `cron.mjs` geschreven: planner-aanroeper zonder curl (node fetch), 6 gevallen tegen stubserver getest | app/cron.mjs, app/Dockerfile | alle 6 goed, ook HTTP 200 + ok:false → exit 1 | ~7k |
+| 22:20 | Logboek per run + Logs-paneel in de studio | src/lib/cron-log.ts, cronLogType.ts, tools/Logs* , structure.ts | GROQ-queries met groq-js geverifieerd (200 bewaard, 50 opgeruimd) | ~8k |
+| 22:30 | Documentatie + OpenWolf-bijwerking | docs/geplande-taken.md, README, STATUS, cerebrum | tsc + eslint + 5 check-scripts groen; check:tekst/jsonld al rood op HEAD | ~5k |

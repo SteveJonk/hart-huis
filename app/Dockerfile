@@ -21,5 +21,8 @@ ENV NODE_ENV=production
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+# Zit niet in de standalone-bundel, maar de geplande taken roepen hem aan:
+#   docker exec <container> node cron.mjs reviews
+COPY --from=builder /app/cron.mjs ./cron.mjs
 EXPOSE 3000
 CMD ["node", "server.js"]
