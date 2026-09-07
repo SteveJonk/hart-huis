@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 2788045,
-    "total_reads": 405,
+    "total_tokens_estimated": 2788564,
+    "total_reads": 411,
     "total_writes": 0,
     "total_sessions": 85,
-    "anatomy_hits": 274,
-    "anatomy_misses": 125,
-    "repeated_reads_blocked": 80,
-    "estimated_savings_vs_bare_cli": 391473,
-    "real_input_tokens": 28588,
-    "real_output_tokens": 2613377,
-    "real_cache_read_tokens": 778694592,
-    "real_cache_creation_tokens": 11977244,
-    "real_api_calls": 4627
+    "anatomy_hits": 277,
+    "anatomy_misses": 128,
+    "repeated_reads_blocked": 83,
+    "estimated_savings_vs_bare_cli": 392073,
+    "real_input_tokens": 28900,
+    "real_output_tokens": 2712057,
+    "real_cache_read_tokens": 798335740,
+    "real_cache_creation_tokens": 12278715,
+    "real_api_calls": 4783
   },
   "sessions": [
     {
@@ -3765,6 +3765,114 @@
         "cache_read_input_tokens": 6239046,
         "cache_creation_input_tokens": 99533,
         "api_calls": 50
+      }
+    },
+    {
+      "id": "session-2026-09-07-1538",
+      "agent": "claude",
+      "started": "2026-09-07T13:38:57.149Z",
+      "ended": "2026-09-07T13:54:06.971Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/.github/workflows/build-app-image.yml",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/Dockerfile",
+          "tokens_estimated": 173,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 173,
+        "output_tokens_estimated": 0,
+        "reads_count": 2,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 102,
+        "output_tokens": 31942,
+        "cache_read_input_tokens": 6391370,
+        "cache_creation_input_tokens": 99922,
+        "api_calls": 51
+      }
+    },
+    {
+      "id": "session-2026-09-07-1538",
+      "agent": "claude",
+      "started": "2026-09-07T13:38:57.149Z",
+      "ended": "2026-09-07T13:55:09.951Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/.github/workflows/build-app-image.yml",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/Dockerfile",
+          "tokens_estimated": 173,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 173,
+        "output_tokens_estimated": 0,
+        "reads_count": 2,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 104,
+        "output_tokens": 32748,
+        "cache_read_input_tokens": 6546727,
+        "cache_creation_input_tokens": 100083,
+        "api_calls": 52
+      }
+    },
+    {
+      "id": "session-2026-09-07-1538",
+      "agent": "claude",
+      "started": "2026-09-07T13:38:57.149Z",
+      "ended": "2026-09-07T13:56:04.579Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/.github/workflows/build-app-image.yml",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/Dockerfile",
+          "tokens_estimated": 173,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 173,
+        "output_tokens_estimated": 0,
+        "reads_count": 2,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 106,
+        "output_tokens": 33990,
+        "cache_read_input_tokens": 6703051,
+        "cache_creation_input_tokens": 101466,
+        "api_calls": 53
       }
     }
   ],
