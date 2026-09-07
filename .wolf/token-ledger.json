@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 613950,
-    "total_reads": 362,
+    "total_tokens_estimated": 1599613,
+    "total_reads": 373,
     "total_writes": 0,
     "total_sessions": 83,
-    "anatomy_hits": 244,
-    "anatomy_misses": 112,
+    "anatomy_hits": 250,
+    "anatomy_misses": 117,
     "repeated_reads_blocked": 79,
-    "estimated_savings_vs_bare_cli": 385473,
-    "real_input_tokens": 27674,
-    "real_output_tokens": 2371645,
-    "real_cache_read_tokens": 724544024,
-    "real_cache_creation_tokens": 10856476,
-    "real_api_calls": 4170
+    "estimated_savings_vs_bare_cli": 386673,
+    "real_input_tokens": 27954,
+    "real_output_tokens": 2434374,
+    "real_cache_read_tokens": 740426668,
+    "real_cache_creation_tokens": 11268274,
+    "real_api_calls": 4310
   },
   "sessions": [
     {
@@ -3195,6 +3195,192 @@
         "cache_read_input_tokens": 2412280,
         "cache_creation_input_tokens": 79293,
         "api_calls": 22
+      }
+    },
+    {
+      "id": "session-2026-09-07-1402",
+      "agent": "claude",
+      "started": "2026-09-07T12:02:46.579Z",
+      "ended": "2026-09-07T12:32:02.311Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Downloads/deployment-cbwccaz7wpxbfx0zzn9aqdgk-2026-09-07-12-00-20.txt",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/package-lock.json",
+          "tokens_estimated": 197103,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 197103,
+        "output_tokens_estimated": 0,
+        "reads_count": 2,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 48,
+        "output_tokens": 11492,
+        "cache_read_input_tokens": 2662446,
+        "cache_creation_input_tokens": 81219,
+        "api_calls": 24
+      }
+    },
+    {
+      "id": "session-2026-09-07-1402",
+      "agent": "claude",
+      "started": "2026-09-07T12:02:46.579Z",
+      "ended": "2026-09-07T12:34:17.604Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Downloads/deployment-cbwccaz7wpxbfx0zzn9aqdgk-2026-09-07-12-00-20.txt",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/package-lock.json",
+          "tokens_estimated": 197103,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 197103,
+        "output_tokens_estimated": 0,
+        "reads_count": 2,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 50,
+        "output_tokens": 11880,
+        "cache_read_input_tokens": 2789966,
+        "cache_creation_input_tokens": 81288,
+        "api_calls": 25
+      }
+    },
+    {
+      "id": "session-2026-09-07-1402",
+      "agent": "claude",
+      "started": "2026-09-07T12:02:46.579Z",
+      "ended": "2026-09-07T12:35:41.960Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Downloads/deployment-cbwccaz7wpxbfx0zzn9aqdgk-2026-09-07-12-00-20.txt",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/package-lock.json",
+          "tokens_estimated": 197103,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 197103,
+        "output_tokens_estimated": 0,
+        "reads_count": 2,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 56,
+        "output_tokens": 12306,
+        "cache_read_input_tokens": 3174195,
+        "cache_creation_input_tokens": 81897,
+        "api_calls": 28
+      }
+    },
+    {
+      "id": "session-2026-09-07-1402",
+      "agent": "claude",
+      "started": "2026-09-07T12:02:46.579Z",
+      "ended": "2026-09-07T12:35:54.454Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Downloads/deployment-cbwccaz7wpxbfx0zzn9aqdgk-2026-09-07-12-00-20.txt",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/package-lock.json",
+          "tokens_estimated": 197103,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 197103,
+        "output_tokens_estimated": 0,
+        "reads_count": 2,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 58,
+        "output_tokens": 12392,
+        "cache_read_input_tokens": 3302878,
+        "cache_creation_input_tokens": 81944,
+        "api_calls": 29
+      }
+    },
+    {
+      "id": "session-2026-09-07-1402",
+      "agent": "claude",
+      "started": "2026-09-07T12:02:46.579Z",
+      "ended": "2026-09-07T12:52:23.287Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Downloads/deployment-cbwccaz7wpxbfx0zzn9aqdgk-2026-09-07-12-00-20.txt",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/package-lock.json",
+          "tokens_estimated": 197103,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/next.config.ts",
+          "tokens_estimated": 148,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 197251,
+        "output_tokens_estimated": 0,
+        "reads_count": 3,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 2
+      },
+      "real_usage": {
+        "input_tokens": 68,
+        "output_tokens": 14659,
+        "cache_read_input_tokens": 3953159,
+        "cache_creation_input_tokens": 85450,
+        "api_calls": 34
       }
     }
   ],
