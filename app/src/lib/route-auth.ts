@@ -19,18 +19,24 @@ function equalSecret(received: string, expected: string): boolean {
 }
 
 export function isAuthorized(request: Request): boolean {
+  return authSource(request) !== undefined;
+}
+
+/**
+ * Welke van de twee sleutels het verzoek doorliet — voor in de logboekregel.
+ * `undefined` betekent hetzelfde als `isAuthorized(request) === false`.
+ */
+export function authSource(request: Request): 'cron' | 'studio' | undefined {
   const cronSecret = process.env.CRON_SECRET;
   const studioSecret = process.env.FUNDA_SCRAPER_SECRET;
 
-  if (!cronSecret && !studioSecret) return false;
-
   const bearer = request.headers.get('authorization')?.replace(/^Bearer\s+/i, '');
-  if (bearer && cronSecret && equalSecret(bearer, cronSecret)) return true;
+  if (bearer && cronSecret && equalSecret(bearer, cronSecret)) return 'cron';
 
   const header = request.headers.get('x-scraper-secret');
-  if (header && studioSecret && equalSecret(header, studioSecret)) return true;
+  if (header && studioSecret && equalSecret(header, studioSecret)) return 'studio';
 
-  return false;
+  return undefined;
 }
 
 /** De studio draait op een andere origin, dus de knoppen hebben CORS nodig. */

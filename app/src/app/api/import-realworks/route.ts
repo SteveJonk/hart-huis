@@ -20,6 +20,7 @@
  *   GET /api/import-realworks?limit=1   (eerste object, handig bij een trage eerste run)
  */
 import { NextResponse } from 'next/server';
+import { recordCronRun } from '@/lib/cron-log';
 import {
   BLIJFT_ONLINE,
   planMedia,
@@ -33,7 +34,7 @@ import {
   type MappedWoning,
   type RealworksObject,
 } from '@/lib/realworks';
-import { corsHeaders, isAuthorized } from '@/lib/route-auth';
+import { authSource, corsHeaders, isAuthorized } from '@/lib/route-auth';
 import { getWriteClient } from '@/sanity/write-client';
 
 export const runtime = 'nodejs';
@@ -310,21 +311,28 @@ async function handle(request: Request) {
   const dryRun = searchParams.get('dryRun') === '1';
   const limit = Number(searchParams.get('limit')) || undefined;
 
+  const startedAt = new Date();
+  const trigger = authSource(request) ?? 'onbekend';
+  const gelogd = (fields: Omit<Parameters<typeof recordCronRun>[0], 'task' | 'trigger' | 'dryRun' | 'startedAt' | 'durationMs'>) =>
+    recordCronRun({
+      task: 'import-realworks',
+      trigger,
+      dryRun,
+      startedAt: startedAt.toISOString(),
+      durationMs: Date.now() - startedAt.getTime(),
+      ...fields,
+    });
+
   try {
     const feed = await fetchFeed();
     const resultaten = feed.resultaten ?? [];
     const totaal = feed.paginering?.totaalAantal;
 
     if (resultaten.length === 0) {
-      return NextResponse.json(
-        {
-          ok: false,
-          gevonden: 0,
-          error:
-            'Realworks gaf 0 objecten terug. Dat kan kloppen (geen actief aanbod), maar meestal komt het doordat het IP-adres van deze server niet op de whitelist staat of doordat de token bij een ander portaal hoort — dan is het antwoord leeg in plaats van een foutmelding.',
-        },
-        { headers: cors },
-      );
+      const error =
+        'Realworks gaf 0 objecten terug. Dat kan kloppen (geen actief aanbod), maar meestal komt het doordat het IP-adres van deze server niet op de whitelist staat of doordat de token bij een ander portaal hoort — dan is het antwoord leeg in plaats van een foutmelding.';
+      await gelogd({ ok: false, message: 'Geen objecten.', warnings: [], error });
+      return NextResponse.json({ ok: false, gevonden: 0, error }, { headers: cors });
     }
 
     const warnings: string[] = [];
@@ -360,6 +368,11 @@ async function handle(request: Request) {
         );
       }
 
+      await gelogd({
+        ok: true,
+        message: `Testrun: ${resultaten.length} objecten in de feed, ${objecten.length} gemapt.`,
+        warnings,
+      });
       return NextResponse.json(
         {
           ...summary,
@@ -389,6 +402,13 @@ async function handle(request: Request) {
       );
     }
 
+    await gelogd({
+      ok: true,
+      message:
+        `${resultaten.length} objecten opgehaald: ${written.geschreven} weggeschreven ` +
+        `(${written.nieuw} nieuw), ${opgeruimd.gedepubliceerd} offline gehaald.`,
+      warnings: [...warnings, ...written.warnings],
+    });
     return NextResponse.json(
       { ...summary, ...written, ...opgeruimd, warnings: [...warnings, ...written.warnings] },
       { headers: cors },
@@ -396,6 +416,7 @@ async function handle(request: Request) {
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     console.error('[import-realworks]', message);
+    await gelogd({ ok: false, message: 'Mislukt.', warnings: [], error: message });
     return NextResponse.json(
       { ok: false, error: message },
       { status: error instanceof FeedError ? 502 : 500, headers: cors },

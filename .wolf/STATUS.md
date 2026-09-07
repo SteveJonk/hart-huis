@@ -2,13 +2,22 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-29
+> Last updated: 2026-09-07
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+**Geplande taken losgekoppeld van Vercel + Logs-paneel (07-09-2026)**
+- **De crons bestonden al** (`app/vercel.json`, 04:00 en 04:30 UTC) — wat ontbrak was een manier om ze buiten Vercel te draaien, en om te zien wát er gedraaid heeft.
+- **`app/cron.mjs`** is de aanroeper voor een planner: `node cron.mjs reviews|realworks [--dry-run]`. Geen dependencies, want `node:22-alpine` heeft géén curl — node's eigen `fetch` doet het werk. Gaat standaard naar `http://127.0.0.1:3000` (binnen de container, dus geen CORS en geen rondje internet), stuurt `Authorization: Bearer $CRON_SECRET`, print de JSON in het takenlogboek en eindigt met exitcode 1 als de run mislukt — inclusief het geval HTTP 200 mét `ok: false` (lege Realworks-feed), dat curl/wget stilzwijgend zou goedkeuren. Zes gevallen handmatig tegen een stubserver getest.
+- **Dockerfile**: `cron.mjs` wordt apart gekopieerd naar de runner-stage; de Next standalone-bundel neemt hem niet vanzelf mee.
+- **Logs in de studio.** Elke run (planner én de knoppen onder Tools) schrijft een `cronLog`-document: taak, wie hem startte, geslaagd/mislukt, testrun, duur, samenvatting, waarschuwingen, foutmelding. Nieuw paneel **Logs** in de linkerkolom leest ze, met filter per taak en "toon meer". Per taak blijven de laatste 200 bewaard; de route ruimt de rest zelf op.
+- Bestanden: `app/src/lib/cron-log.ts`, `studio-hart-huis/schemaTypes/cronLogType.ts`, `studio-hart-huis/tools/{LogsTool.tsx,logsData.ts,logsStyles.ts}`. `isAuthorized()` is gesplitst in `authSource()` (cron/studio/onbekend) zodat het logboek weet wie er aanklopte.
+- **Sanity Scheduled Functions zijn bekeken en afgevallen** — wel echt (`defineScheduledFunction`, `type: 'sanity.function.cron'`), maar de typedefinities van `@sanity/blueprints` 0.24.0 zeggen er zelf bij: *"@alpha … not available publicly yet"*, plus een blueprint op organisatieniveau nodig. Zodra het GA is: een handler van drie regels die de route aanroept. Zie `docs/geplande-taken.md`.
+- **Nog te doen:** `CRON_SECRET` zetten op de server, de twee taken in Coolify aanmaken (`0 4 * * *` en `30 4 * * *`), en de `crons`-sleutel uit `vercel.json` halen zodra Vercel eruit gaat — anders draait alles dubbel. Na het deployen van de studio staat **Logs** in de linkerkolom.
 
 **Mediabeheer in de studio (29-08-2026)**
 - Nieuw paneel **Media** in de linkerkolom (`structure.ts`, tussen Reviews en Forms): overzicht van álle uploads, zoeken en filteren, detailkolom per bestand, uploaden en verwijderen. Sanity's eigen assetbrowser opent alleen vanuit een veld op een document, dus hiervóór was de bibliotheek als geheel onzichtbaar.
@@ -218,8 +227,8 @@
 1. **De scraper is lokaal tegen de echte Funda gedraaid (17-08-2026) en klopt: 42 verkoop + 12 aankoop = 54, zonder waarschuwingen** — precies wat de widget zelf noemt. De fixtures zijn nu echte pagina's. Wat resteert vóór de eerste échte run:
    a. `?dryRun=1` draaien op de gedeployde site en de uitkomst nalopen
    b. daarna de 4 mock-reviews uit `seed:home` weggooien — die hebben geen cijfers maar tellen wel mee in `reviewStats`
-   c. env zetten: `SANITY_API_WRITE_TOKEN`, `CRON_SECRET`, `FUNDA_SCRAPER_SECRET`, `STUDIO_ORIGIN` op Vercel; `SANITY_STUDIO_SCRAPER_URL` + `SANITY_STUDIO_SCRAPER_SECRET` in de studio
-   d. op Hobby is een functie na 60s afgekapt — 14 pagina's × 1,2s wachttijd is ~20s, dus dat past, maar houd het in de gaten als het aantal reviews groeit
+   c. env zetten: `SANITY_API_WRITE_TOKEN`, `CRON_SECRET`, `FUNDA_SCRAPER_SECRET`, `STUDIO_ORIGIN` op de server; `SANITY_STUDIO_SCRAPER_URL` + `SANITY_STUDIO_SCRAPER_SECRET` in de studio. Op Coolify: de twee Scheduled Tasks (`node cron.mjs reviews` / `realworks`) — zie `docs/geplande-taken.md`
+   d. op Vercel Hobby is een functie na 60s afgekapt — 14 pagina's × 1,2s wachttijd is ~20s, dus dat past. Op Coolify geldt die grens niet; `cron.mjs` breekt zelf pas na 15 minuten af
 2. Met 4 reviews is de "toon meer" van `reviewGrid` (>9) nog niet met echte data uitgeprobeerd.
 3. ~~De makelaarskaart op de objectpagina is nog hardcoded~~ — **opgelost 26-08-2026**: veld `makelaar` op `woning`. Een gedeeld makelaar-document (referentie in plaats van vijf losse velden) is pas de moeite zodra er echt meerdere makelaars zijn.
 4. `aanbiedingsTekstEngels` wordt opgeslagen en geseed maar nergens gerenderd — er is nog geen taalwissel op de objectpagina.
