@@ -11,13 +11,18 @@
       "count": 1,
       "tokens": 173,
       "first_read": "2026-09-07T13:39:07.294Z"
+    },
+    "/Users/stevejonk/Documents/Prive Projecten/nextjs-sanity-template/README.md": {
+      "count": 1,
+      "tokens": 168,
+      "first_read": "2026-09-07T14:08:03.255Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 1,
+  "anatomy_hits": 2,
   "anatomy_misses": 1,
   "repeated_reads_warned": 1,
   "cerebrum_warnings": 0,
-  "stop_count": 7
+  "stop_count": 8
 }
