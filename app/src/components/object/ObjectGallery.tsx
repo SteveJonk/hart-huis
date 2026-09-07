@@ -183,7 +183,7 @@ export function ObjectGallery({ photos }: ObjectGalleryProps) {
                 className={cn(
                   roundButton,
                   'top-1/2 left-6 h-[52px] w-[52px] -translate-y-1/2',
-                  'max-sm:left-2.5 max-sm:h-11 max-sm:w-11',
+                  'max-sm:left-2.5 max-sm:h-11 max-sm:w-11 max-sm:z-10',
                 )}
               >
                 <svg width='18' height='18' viewBox='0 0 24 24' fill='none' aria-hidden>
@@ -202,7 +202,7 @@ export function ObjectGallery({ photos }: ObjectGalleryProps) {
                 className={cn(
                   roundButton,
                   'top-1/2 right-6 h-[52px] w-[52px] -translate-y-1/2',
-                  'max-sm:right-2.5 max-sm:h-11 max-sm:w-11',
+                  'max-sm:right-2.5 max-sm:h-11 max-sm:w-11 max-sm:z-10',
                 )}
               >
                 <svg width='18' height='18' viewBox='0 0 24 24' fill='none' aria-hidden>
