@@ -37,6 +37,28 @@ function IconPhotos() {
   );
 }
 
+function Spinner() {
+  return (
+    <div
+      role='status'
+      aria-live='polite'
+      className='pointer-events-none absolute inset-0 grid place-items-center animate-fade-in-delayed'
+    >
+      <span className='sr-only'>Foto wordt geladen</span>
+      <svg width='40' height='40' viewBox='0 0 40 40' fill='none' aria-hidden className='animate-spin'>
+        <circle cx='20' cy='20' r='16' stroke='currentColor' strokeWidth='3' className='text-white/20' />
+        <path
+          d='M36 20a16 16 0 0 0-16-16'
+          stroke='currentColor'
+          strokeWidth='3'
+          strokeLinecap='round'
+          className='text-white/85'
+        />
+      </svg>
+    </div>
+  );
+}
+
 const roundButton = cn(
   'absolute grid place-items-center rounded-full bg-white/12 text-white',
   'transition duration-[250ms] ease-brand hover:bg-white/24',
@@ -46,8 +68,14 @@ const roundButton = cn(
 /** The three-photo header grid, with a lightbox over the full set. */
 export function ObjectGallery({ photos }: ObjectGalleryProps) {
   const [current, setCurrent] = useState<number | null>(null);
+  /** Sources that have finished loading, so a revisit shows no spinner. */
+  const [loaded, setLoaded] = useState<ReadonlySet<string>>(() => new Set());
   const closeRef = useRef<HTMLButtonElement>(null);
   const lastFocused = useRef<HTMLElement | null>(null);
+
+  const markLoaded = useCallback((src: string) => {
+    setLoaded((done) => (done.has(src) ? done : new Set(done).add(src)));
+  }, []);
 
   const open = (index: number) => {
     lastFocused.current = document.activeElement as HTMLElement | null;
@@ -90,6 +118,13 @@ export function ObjectGallery({ photos }: ObjectGalleryProps) {
   if (photos.length === 0) return null;
 
   const active = current === null ? null : photos[current];
+  const isLoading = active !== null && !loaded.has(active.src);
+  const neighbours =
+    current === null
+      ? []
+      : [...new Set([current + 1, current - 1].map((i) => (i + photos.length) % photos.length))]
+          .filter((i) => i !== current)
+          .map((i) => photos[i]);
 
   return (
     <section className='relative pt-24 max-md:pt-[88px] max-sm:pt-20' data-solid-header>
@@ -219,12 +254,34 @@ export function ObjectGallery({ photos }: ObjectGalleryProps) {
 
           <div className='relative h-[min(80vh,760px)] w-[min(92vw,1200px)] max-sm:h-[64vh] max-sm:w-[94vw]'>
             <Image
+              key={active.src}
               src={active.src}
               alt={active.alt}
               fill
               sizes='92vw'
-              className='object-contain'
+              onLoad={() => markLoaded(active.src)}
+              onError={() => markLoaded(active.src)}
+              className={cn(
+                'object-contain transition-opacity duration-300 ease-brand',
+                isLoading ? 'opacity-0' : 'opacity-100',
+              )}
             />
+            {isLoading ? <Spinner /> : null}
+
+            {/* Loads the neighbours in the same spot, so stepping on is instant. */}
+            {neighbours.map((photo) => (
+              <Image
+                key={photo.src}
+                src={photo.src}
+                alt=''
+                aria-hidden
+                fill
+                sizes='92vw'
+                onLoad={() => markLoaded(photo.src)}
+                onError={() => markLoaded(photo.src)}
+                className='pointer-events-none object-contain opacity-0'
+              />
+            ))}
           </div>
 
           <div className='absolute bottom-[26px] left-1/2 -translate-x-1/2 text-[0.82rem] tracking-[0.1em] text-white/75'>
