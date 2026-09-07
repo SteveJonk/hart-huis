@@ -16,13 +16,23 @@
       "count": 1,
       "tokens": 148,
       "first_read": "2026-09-07T12:52:15.151Z"
+    },
+    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/Dockerfile": {
+      "count": 1,
+      "tokens": 173,
+      "first_read": "2026-09-07T13:08:42.638Z"
+    },
+    "/Users/stevejonk/Documents/Prive Projecten/hart-huis/.github/workflows/deploy-sanity-studio.yml": {
+      "count": 1,
+      "tokens": 743,
+      "first_read": "2026-09-07T13:09:30.249Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 2,
+  "anatomy_hits": 4,
   "anatomy_misses": 1,
   "repeated_reads_warned": 0,
   "cerebrum_warnings": 0,
-  "stop_count": 6
+  "stop_count": 8
 }
