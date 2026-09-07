@@ -113,6 +113,11 @@
 - **`tsx` compileert de `scripts/check-*.ts` naar CJS, dus geen top-level `await`.** Zet asynchroon werk (groq-js `evaluate`) in een functie en sluit af met `.then(...).catch(...)` + `process.exit(1)`, zoals `check-form.ts` doet.
 
 
+### Laadindicator in de foto-lightbox (2026-09-07)
+- `ObjectGallery` houdt een `Set` van al geladen `src`'en bij (`onLoad`/`onError` van next/image). De spinner verschijnt alleen als de actieve foto er nog niet in staat, dus na terugbladeren nooit meer.
+- De spinner fade't met **vertraging** in (`animate-fade-in-delayed`, 0.25s delay in `tailwind.config.ts`). Zonder die vertraging flitst hij bij een foto uit de cache — `onLoad` komt daar pas na de eerste render.
+- De twee buurfoto's worden in dezelfde wrapper met `opacity-0` gerenderd. Dat warmt precies dezelfde `/_next/image`-URL op als het echte `sizes` (een los `new Image()` zou de onbewerkte bron halen).
+
 ## Do-Not-Repeat
 
 - **2026-08-27 — Een knop die binnen dezelfde klik van `type='button'` naar `type='submit'` wisselt, verstuurt het formulier alsnog.** De browser bepaalt de activation behavior pás ná de React-onClick, dus `setStep()` naar de laatste stap maakt de Verder-knop submit en diezelfde klik triggert `onSubmit`. Zichtbaar als een spontane native validatie-tooltip op de nieuwe stap. Altijd `event.preventDefault()` in zo'n handler. Zie bug-027.

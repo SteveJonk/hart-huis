@@ -460,3 +460,9 @@
 | 22:10 | `cron.mjs` geschreven: planner-aanroeper zonder curl (node fetch), 6 gevallen tegen stubserver getest | app/cron.mjs, app/Dockerfile | alle 6 goed, ook HTTP 200 + ok:false → exit 1 | ~7k |
 | 22:20 | Logboek per run + Logs-paneel in de studio | src/lib/cron-log.ts, cronLogType.ts, tools/Logs* , structure.ts | GROQ-queries met groq-js geverifieerd (200 bewaard, 50 opgeruimd) | ~8k |
 | 22:30 | Documentatie + OpenWolf-bijwerking | docs/geplande-taken.md, README, STATUS, cerebrum | tsc + eslint + 5 check-scripts groen; check:tekst/jsonld al rood op HEAD | ~5k |
+
+## Session: 2026-09-07 22:07
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 23:05 | Laadindicator in de foto-lightbox op de objectpagina: spinner met vertraagde fade, neighbours vooraf geladen | app/src/components/object/ObjectGallery.tsx, app/tailwind.config.ts | tsc + eslint groen; `animate-fade-in-delayed` gegenereerd (tailwind cli) | ~12k |

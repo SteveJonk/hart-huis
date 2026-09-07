@@ -104,11 +104,18 @@ const config = {
           from: { opacity: "0", transform: "scale(0.7) rotate(-16deg)" },
           to: { opacity: "1", transform: "none" },
         },
+        fadeIn: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
       },
       animation: {
         "hero-cycle": "heroCycle 22.5s infinite",
         cue: "cue 2.4s infinite",
         "spin-in": "spinIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both",
+        // Delayed on purpose: an image that comes straight from cache is there
+        // before the spinner appears, so it never flashes.
+        "fade-in-delayed": "fadeIn 0.2s ease-out 0.25s both",
       },
     },
   },
