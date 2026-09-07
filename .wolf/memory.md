@@ -430,3 +430,13 @@
 |------|--------|---------|---------|--------|
 | 16:40 | Tabelblok toegevoegd aan richText (schema + toPortableText + renderer) | studio-hart-huis/schemaTypes/blocks/richTextType.ts, app/src/lib/rich-text.ts, app/src/components/blocks/RichText.tsx | typegen + tsc + lint schoon | ~35k |
 | 16:45 | PRIVACY_BODY vervangen door de NVM-modelprivacyverklaring (16 secties, 22 tabellen) | app/src/lib/privacy-content.ts | check:richtext groen; nog niet geseed | ~25k |
+
+## Session: 2026-09-07 14:00
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-09-07 14:02
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
