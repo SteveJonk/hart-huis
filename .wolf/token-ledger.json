@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 1995031,
-    "total_reads": 381,
+    "total_tokens_estimated": 2193198,
+    "total_reads": 386,
     "total_writes": 0,
     "total_sessions": 83,
-    "anatomy_hits": 256,
-    "anatomy_misses": 119,
+    "anatomy_hits": 260,
+    "anatomy_misses": 120,
     "repeated_reads_blocked": 79,
-    "estimated_savings_vs_bare_cli": 387873,
-    "real_input_tokens": 28108,
-    "real_output_tokens": 2474863,
-    "real_cache_read_tokens": 749567902,
-    "real_cache_creation_tokens": 11450086,
-    "real_api_calls": 4387
+    "estimated_savings_vs_bare_cli": 388673,
+    "real_input_tokens": 28196,
+    "real_output_tokens": 2499747,
+    "real_cache_read_tokens": 754913983,
+    "real_cache_creation_tokens": 11546728,
+    "real_api_calls": 4431
   },
   "sessions": [
     {
@@ -3477,6 +3477,60 @@
         "cache_read_input_tokens": 5055562,
         "cache_creation_input_tokens": 95559,
         "api_calls": 42
+      }
+    },
+    {
+      "id": "session-2026-09-07-1402",
+      "agent": "claude",
+      "started": "2026-09-07T12:02:46.579Z",
+      "ended": "2026-09-07T13:21:48.375Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Downloads/deployment-cbwccaz7wpxbfx0zzn9aqdgk-2026-09-07-12-00-20.txt",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/package-lock.json",
+          "tokens_estimated": 197103,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/next.config.ts",
+          "tokens_estimated": 148,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/app/Dockerfile",
+          "tokens_estimated": 173,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/hart-huis/.github/workflows/deploy-sanity-studio.yml",
+          "tokens_estimated": 743,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 198167,
+        "output_tokens_estimated": 0,
+        "reads_count": 5,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 4
+      },
+      "real_usage": {
+        "input_tokens": 88,
+        "output_tokens": 24884,
+        "cache_read_input_tokens": 5346081,
+        "cache_creation_input_tokens": 96642,
+        "api_calls": 44
       }
     }
   ],
