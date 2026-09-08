@@ -466,3 +466,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 23:05 | Laadindicator in de foto-lightbox op de objectpagina: spinner met vertraagde fade, neighbours vooraf geladen | app/src/components/object/ObjectGallery.tsx, app/tailwind.config.ts | tsc + eslint groen; `animate-fade-in-delayed` gegenereerd (tailwind cli) | ~12k |
+
+## Session: 2026-09-08 18:37
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 18:45 | Sentry-testpagina toegevoegd (/sentry-example-page + /api/sentry-example-api), noindex + robots-disallow; `NEXT_PUBLIC_SENTRY_FORCE_ENABLED` als lokaal ontsnappingsluik in de drie init-bestanden | app/src/app/sentry-example-page/{page.tsx,SentryTests.tsx}, app/src/app/api/sentry-example-api/route.ts, app/src/app/robots.ts, app/{sentry.server.config.ts,sentry.edge.config.ts}, app/src/instrumentation-client.ts | tsc + eslint groen; dev-server: pagina 200, API 500 met SentryExampleAPIError; build compileert en zet beide routes in het manifest (prerender faalt hier alleen op Sanity-egress) | ~35k |
