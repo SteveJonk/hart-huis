@@ -263,7 +263,7 @@
 - `manifest.json` (~125 tok)
 - `not-found.tsx` — NotFound (~277 tok)
 - `page.tsx` — options (~256 tok)
-- `robots.ts` — Exports robots (~81 tok)
+- `robots.ts` — Exports robots; disallow op /api/ en /sentry-example-page (~85 tok)
 - `sitemap.ts` — BASE_URL: sitemap (~250 tok)
 
 ## app/src/app/[slug]/
@@ -278,6 +278,15 @@
   - fn `generateMetadata` L61-81 (~159 tok)
   - fn `viewingCta` L82-108 (~248 tok)
   - fn `ObjectPage` L109-178 (~659 tok)
+
+## app/src/app/sentry-example-page/
+
+- `page.tsx` — Handmatige Sentry-controle op /sentry-example-page; noindex, staat niet in nav of sitemap (~300 tok)
+- `SentryTests.tsx` — Client: statuspaneel (omgeving, verstuurt-ja/nee, bereikbaarheid) + drie knoppen (browserfout, serverfout via /api/sentry-example-api, handmatige captureException+flush) met een log (~1400 tok)
+
+## app/src/app/api/sentry-example-api/
+
+- `route.ts` — Gooit met opzet een SentryExampleAPIError; `dynamic = 'force-dynamic'` want anders draait hij tijdens de build (~150 tok)
 
 ## app/src/app/api/import-realworks/
 
