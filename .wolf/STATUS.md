@@ -2,21 +2,13 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-09-08
+> Last updated: 2026-09-07
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
-
-**Sentry-testpagina (08-09-2026)**
-- **`/sentry-example-page`** — het equivalent van de pagina die de Sentry-wizard aanmaakt, maar in de huisstijl en in het Nederlands. Statuspaneel bovenaan (omgeving, verstuurt-hij-wel, is Sentry bereikbaar via `diagnoseSdkConnectivity()` — dat laatste betrapt een adblocker) plus drie knoppen: een fout in de browser, een fout op de server (`/api/sentry-example-api`, die met opzet gooit → `onRequestError`), en een handmatige `captureException` + `flush(5000)`. Die derde is de enige die zelf terugkoppelt of het event écht aankwam, mét event id.
-- **De koppeling zelf was al compleet** (drie init-bestanden, `instrumentation.ts`, `global-error.tsx`, `withSentryConfig` met tunnel op `/monitoring`); alleen de voorbeeldpagina ontbrak.
-- **Belangrijk: `enabled: NODE_ENV === 'production'`.** Lokaal ging er dus niets naar Sentry. Toegevoegd: `|| NEXT_PUBLIC_SENTRY_FORCE_ENABLED === '1'` in alle drie de init-bestanden, zodat je met één regel in `.env` lokaal kunt testen. De pagina waarschuwt zelf als versturen uitstaat.
-- Niet vindbaar: `robots: { index: false }` op de pagina, `/sentry-example-page` in de disallow van `robots.ts`, en niet in de sitemap of de navigatie.
-- Bestanden: `app/src/app/sentry-example-page/{page.tsx,SentryTests.tsx}`, `app/src/app/api/sentry-example-api/route.ts`. **Weghalen mag** zodra Sentry bevestigd werkt — die twee mappen plus de regel in `robots.ts`.
-- **Nog te doen:** deployen en de drie knoppen aanklikken; de events horen in `stef-43 / javascript-nextjs` te verschijnen. Let op de tunnel: browserverkeer gaat via `/monitoring`, dus die route moet op de server bereikbaar zijn.
 
 **Geplande taken losgekoppeld van Vercel + Logs-paneel (07-09-2026)**
 - **De crons bestonden al** (`app/vercel.json`, 04:00 en 04:30 UTC) — wat ontbrak was een manier om ze buiten Vercel te draaien, en om te zien wát er gedraaid heeft.

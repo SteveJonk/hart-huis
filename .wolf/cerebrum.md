@@ -15,10 +15,6 @@
 
 ## Key Learnings
 
-- **Sentry stuurt alleen in productie.** De drie `Sentry.init()`-bestanden (`sentry.server.config.ts`, `sentry.edge.config.ts`, `src/instrumentation-client.ts`) staan op `enabled: NODE_ENV === 'production'`, sinds 2026-09-08 met `|| NEXT_PUBLIC_SENTRY_FORCE_ENABLED === '1'` als ontsnappingsluik. In `npm run dev` gaat er dus standaard níets naar Sentry — een "Sentry ontvangt niets"-melding is lokaal geen bug. `/sentry-example-page` toont deze status zelf. (2026-09-08)
-- **Een route handler die met opzet gooit heeft `export const dynamic = 'force-dynamic'` nodig.** Next 16 evalueert een GET zonder dynamische API's tijdens de build; zonder die regel breekt `/api/sentry-example-api` de build in plaats van een 500 te geven. (2026-09-08)
-- **`react-hooks/set-state-in-effect` is hier een eslint *error*, geen warning.** Een `setState()` synchroon in een effect-body faalt de lint; zet de beginwaarde in `useState(() => …)` en laat alleen callbacks (promise `.then`, subscriptions) state zetten. (2026-09-08)
-- **De build hier draait alleen mét `NEXT_PUBLIC_SANITY_PROJECT_ID`,** en prerendert in deze sandbox alsnog niet omdat `*.api.sanity.io` buiten de egress-allowlist valt. "Compiled successfully" + "Collecting page data" gehaald is in dit vak het groene licht. (2026-09-08)
 - **Een nieuw veld op een singleton mag geen naam lenen die al elders bestaat.** `NAVIGATION_QUERY`/`FOOTER_QUERY` filteren op `_id`, dus typegen weet het documenttype niet en projecteert `logo{...}` over élk documenttype met een veld `logo`. Een `logo` op `formGeneralSettings` gaf daardoor een extra union-tak en een typefout in `PageWrapper.tsx`. Vandaar `mailLogo`. (2026-08-27)
 - **De formuliermail heeft een eigen sjabloon:** `app/src/lib/form-mail.ts` (`renderFormMail`). Los van de route omdat een route-bestand alleen route-exports mag hebben en `check:form` het zo kan controleren. Kleuren komen uit Form settings en worden op `#rrggbb` gevalideerd — ze belanden ongeciteerd in een `style=""`. (2026-08-27)
 
