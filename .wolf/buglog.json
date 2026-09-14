@@ -555,6 +555,23 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-27"
+    },
+    {
+      "id": "bug-030",
+      "timestamp": "2026-09-14T15:20:00+02:00",
+      "error_message": "preview_start 'hart-huis': next dev exits with \"Error: Cannot find module 'node:events'\"",
+      "file": ".claude/launch.json",
+      "root_cause": "launch.json ran plain `npm run dev`, which picks up the machine's outdated default node instead of nvm's v22 (same root cause as the typegen failure in cerebrum 2026-08-21)",
+      "fix": "runtimeExecutable sh -c with PATH=\"$HOME/.nvm/versions/node/v22.18.0/bin:$PATH\" npm run dev",
+      "tags": [
+        "node-version",
+        "dev-server",
+        "launch.json",
+        "nvm"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T15:20:00+02:00"
     }
   ]
 }

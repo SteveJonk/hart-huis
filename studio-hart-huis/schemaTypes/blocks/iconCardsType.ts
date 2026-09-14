@@ -44,6 +44,12 @@ export const iconCardsType = defineType({
             }),
             defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
             defineField({name: 'body', type: 'text', rows: 3, validation: (rule) => rule.required()}),
+            defineField({
+              name: 'cta',
+              title: 'Link',
+              type: 'cta',
+              description: 'Optional link at the bottom of the card',
+            }),
           ],
           preview: {select: {title: 'title', subtitle: 'icon'}},
         }),

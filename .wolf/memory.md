@@ -466,3 +466,40 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 23:05 | Laadindicator in de foto-lightbox op de objectpagina: spinner met vertraagde fade, neighbours vooraf geladen | app/src/components/object/ObjectGallery.tsx, app/tailwind.config.ts | tsc + eslint groen; `animate-fade-in-delayed` gegenereerd (tailwind cli) | ~12k |
+
+## Session: 2026-09-09 13:58
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-09-09 13:59
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-09-09 14:26
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-09-09 14:38
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-09-09 14:39
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-09-09 14:39
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 14:44 | Sentry uit hart-huis naar nextjs-sanity-template gekopieerd, volledig env-gestuurd (NEXT_PUBLIC_SENTRY_DSN als aan/uit-schakelaar) | ../nextjs-sanity-template/{app/sentry.*,app/src/instrumentation*,app/src/app/global-error.tsx,app/next.config.ts,app/Dockerfile,app/.env.example,README.md,.github/workflows/build-app-image.yml} | build groen met en zonder DSN, tsc + eslint schoon | ~35k |
+
+## Session: 2026-09-10 10:32
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 15:19 | /haarlem stadspagina: design naar example-designs/!stad-haarlem.html, content + seed:haarlem, pageHero/factBar/iconCards/regionBlock/mediaText optioneel uitgebreid, typegen | app/src/lib/haarlem-content.ts, app/scripts/seed/haarlem.ts, blocks + schemaTypes | tsc app+studio, eslint groen; nog niet geseed | ~70k |

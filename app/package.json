@@ -33,6 +33,7 @@
     "seed:nvm": "tsx --env-file=.env scripts/seed.ts nvm",
     "seed:waardebepaling": "tsx --env-file=.env scripts/seed.ts waardebepaling",
     "seed:zoekopdracht": "tsx --env-file=.env scripts/seed.ts zoekopdracht",
+    "seed:haarlem": "tsx --env-file=.env scripts/seed.ts haarlem",
     "seed:nav": "tsx --env-file=.env scripts/seed.ts nav"
   },
   "dependencies": {

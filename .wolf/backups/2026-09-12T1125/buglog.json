@@ -1,0 +1,560 @@
+{
+  "version": 1,
+  "bugs": [
+    {
+      "id": "bug-001",
+      "timestamp": "2026-08-13T09:40:00Z",
+      "error_message": "After adding generateMetadata to the home route, <title> and <meta name=\"description\"> disappeared from / and /verkoop — the root layout defaults stopped rendering.",
+      "file": "app/src/sanity/metadata.ts",
+      "root_cause": "pageMetadata() returned `{ title: undefined, description: undefined }` when the Sanity `seo` object was empty. Next 16 merges metadata by key presence, so an explicitly-undefined key overrides the parent segment instead of inheriting from it.",
+      "fix": "Build the Metadata object with conditional spreads so unset fields are absent: `...(title ? { title } : {})`, and only emit `openGraph` when at least one of title/description/ogImage exists.",
+      "tags": [
+        "nextjs",
+        "metadata",
+        "seo",
+        "sanity",
+        "generateMetadata",
+        "inheritance"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-13T09:40:00Z"
+    },
+    {
+      "id": "bug-002",
+      "timestamp": "2026-08-13T14:10:00Z",
+      "error_message": "Bulk-regex om initials/place/source uit REVIEWS te strippen sloopte ook `place` in LISTINGS in hetzelfde bestand.",
+      "file": "app/src/lib/home-content.ts",
+      "root_cause": "home-content.ts bevat meerdere exports met overlappende veldnamen; een bestandsbrede regex op `place:` raakt LISTINGS net zo hard als REVIEWS.",
+      "fix": "place-regels in LISTINGS teruggezet en met `git diff` geverifieerd dat alleen de Review-velden weg zijn. Bij bulk-edits in *-content.ts: eerst scopen op het juiste array-blok, of gewoon per-veld Edit gebruiken.",
+      "tags": [
+        "regex",
+        "bulk-edit",
+        "home-content",
+        "reviews",
+        "listings"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-13T14:10:00Z"
+    },
+    {
+      "id": "bug-003",
+      "timestamp": "2026-08-15T20:47:00Z",
+      "error_message": "check:funda faalde: quote begon met 'Deze klant beveelt deze makelaar aan.' in plaats van met de tekst van de reviewer",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "De aanbevelingsregel van Funda werd herkend met /\\baanbevel/i, maar de formulering kan ook 'beveelt ... aan' zijn — dan matcht dat patroon niet en blijft de boilerplate in de reviewtekst staan.",
+      "fix": "Patroon verbreed naar /aanbevel|beveelt/i. Daarnaast knipt parseQuote nu op de losse getalregel (het totaalcijfer) en gooit hooguit een korte eerste regel weg, in plaats van op de laatste 'aanbevelen' in het blok te zoeken — reviewers schrijven dat woord zelf ook en dan verdween de halve beoordeling.",
+      "tags": [
+        "funda",
+        "scraper",
+        "parser",
+        "regex",
+        "reviews"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-15T20:47:00Z"
+    },
+    {
+      "id": "bug-004",
+      "timestamp": "2026-08-17T15:40:00Z",
+      "error_message": "De scraper zou elk Aankoop-deelcijfer 'Onderhandeling en resultaat' meteen weer weggooien",
+      "file": "app/src/app/api/scrape-funda-reviews/route.ts",
+      "root_cause": "Bij de hernoeming naar serviceAndGuidance kreeg de patch een harde .unset(['negotiationAndResult']) mee om het oude veld op te ruimen. Toen negotiationAndResult terugkwam als echt Aankoop-veld, wiste die unset het veld dat .set() er net in had gezet.",
+      "fix": "De unset is nu afgeleid: alle SUBSCORES-velden die deze review niet heeft worden gewist. Ruimt de cijfers van het andere tabblad op en laat staan wat wel gescrapet is. Zonder dit bleef een oude waarde ook hangen en noemde elke run dezelfde review 'gewijzigd'.",
+      "tags": [
+        "funda",
+        "scraper",
+        "sanity",
+        "patch",
+        "reviews",
+        "deelcijfers"
+      ],
+      "related_bugs": [
+        "bug-003"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T15:40:00Z"
+    },
+    {
+      "id": "bug-005",
+      "timestamp": "2026-08-17T16:20:00Z",
+      "error_message": "Gebruiker: 'Only pagination does not work' — de scraper haalde altijd pagina 1 op",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "buildWidgetUrl zette het paginanummer in het segment ná het makelaar-id en het type met een hoofdletter. De echte widget-URL is /beoordelingenwidget/live/{id}/1/{type in kleine letters}/p{page}/ — dat segment is een vaste 1 en het paginanummer staat achteraan als pN. Zonder afsluitende slash antwoordt Funda bovendien met een 301.",
+      "fix": "URL-opbouw gecorrigeerd. Ook detectLastPage weggehaald: de paginering toont maar een venster van nummers, dus daar het einde uit afleiden is fragiel. De lus stopt nu op 'Er zijn geen beoordelingen om te tonen' (isEmptyPage), en waarschuwt als een pagina 0 reviews geeft zonder die zin — dan ligt het aan de parser.",
+      "tags": [
+        "funda",
+        "scraper",
+        "paginering",
+        "url"
+      ],
+      "related_bugs": [
+        "bug-006"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T16:20:00Z"
+    },
+    {
+      "id": "bug-006",
+      "timestamp": "2026-08-17T16:35:00Z",
+      "error_message": "Live run gaf 48 verkoopreviews terwijl de widget er 42 noemt; sommige zonder cijfer, één met adres '9' en cijfer 1",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "Vanaf pagina 3 staan er reacties van de makelaar onder een beoordeling ('Reactie van Hart & Huis Makelaardij'). Zo'n reactie heeft zijn eigen 'Geschreven op', dus de parser maakte er een review van — met het laatste deelcijfer van de review erboven als 'adres'. Die nepreviews hebben geen cijfers en zouden het gemiddelde en de telling op /beoordelingen vervuilen.",
+      "fix": "isReply(): staat er vlak vóór de datum een regel die met 'Reactie van' begint, dan is het blok een reactie en wordt het overgeslagen. Fixture verkoop p9 (met twee reacties) toegevoegd aan check:funda.",
+      "tags": [
+        "funda",
+        "scraper",
+        "parser",
+        "reviews",
+        "reactie"
+      ],
+      "related_bugs": [
+        "bug-005",
+        "bug-007"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T16:35:00Z"
+    },
+    {
+      "id": "bug-007",
+      "timestamp": "2026-08-17T16:50:00Z",
+      "error_message": "41 unieke reviews uit 42 geparsede: één verkoopreview viel weg bij het ontdubbelen",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "reviewKey hashte type + naam + adres + datum. Twee bewoners van Surinamestraat 24 schreven op 1 juni 2025 allebei een beoordeling, allebei anoniem als 'Een funda gebruiker' — zelfde sleutel, dus zelfde Sanity-_id, dus één van de twee verdween.",
+      "fix": "Het cijfer (10 vs 9) zit nu in de hash. Bewust geen stuk reviewtekst: dan zou elke verbetering in de parser alle sleutels omgooien en alles opnieuw aanmaken. Botsen er ooit tóch twee, dan zet de lus dat als waarschuwing in het antwoord in plaats van er stilletjes één te laten vallen.",
+      "tags": [
+        "funda",
+        "scraper",
+        "dedup",
+        "hash",
+        "sanity"
+      ],
+      "related_bugs": [
+        "bug-006"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T16:50:00Z"
+    },
+    {
+      "id": "bug-008",
+      "timestamp": "2026-08-17T16:15:00Z",
+      "error_message": "Reviewtekst bevatte letterlijk 'idee&#235;n' in plaats van 'ideeën'",
+      "file": "app/src/lib/funda-reviews.ts",
+      "root_cause": "stripTags decodeerde alleen een handvol benoemde entiteiten (&nbsp; &amp; &quot; &#39; &lt; &gt;). Funda codeert accenten als nummer, dus die kwamen als ruwe entiteit in Sanity terecht.",
+      "fix": "Eén decodeerstap voor decimale, hexadecimale en benoemde entiteiten, in één doorgang zodat een gedecodeerde & niet nog eens gelezen wordt. Onbekende namen blijven staan in plaats van te verdwijnen.",
+      "tags": [
+        "funda",
+        "scraper",
+        "html",
+        "entities"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T16:15:00Z"
+    },
+    {
+      "id": "bug-009",
+      "timestamp": "2026-08-17T00:00:00Z",
+      "error_message": "Het contactformulier op /contact rendert niet: 'Er is nog geen formulier gekoppeld aan dit blok.'",
+      "file": "app/src/sanity/queries.ts",
+      "root_cause": "In PAGE_QUERY stonden de generieke veld-projecties (form->, aside{}, primaryCta{} ...) BOVEN de `_type == \"x\" => { ... }` takken. Zo'n tak spreidt het hele document opnieuw uit met `...`, en in GROQ wint de laatste sleutel. De `...` van `_type == \"contactFormSection\"` overschreef daardoor `form->{...}` met de ruwe reference {_ref,_type}; PageBuilder's guard `form?._id && form.fields?.length` faalde en toonde de lege staat. Zelfde clobbering trof aside.cta hier en primaryCta/secondaryCta in het hero-blok.",
+      "fix": "Alle generieke veld-projecties naar het einde van de content[]-projectie verplaatst (na alle conditionele takken), met een comment erbij waarom die volgorde ertoe doet. Geverifieerd met groq-js op een mini-dataset en live op /contact (form velden naam/telefoon/email/onderwerp/bericht/akkoord renderen).",
+      "tags": [
+        "groq",
+        "sanity",
+        "page-builder",
+        "contact-form",
+        "conditional-spread",
+        "projection-order"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T00:00:00Z"
+    },
+    {
+      "id": "bug-010",
+      "timestamp": "2026-08-17T20:40:00Z",
+      "error_message": "reviewGrid op /beoordelingen kreeg items: null nadat de gedeelde projecties onder de conditionele takken waren gezet.",
+      "file": "app/src/sanity/queries.ts",
+      "root_cause": "De generieke `items[]{...}` staat op elk blok en projecteert het ruwe `items`-veld; reviewGrid heeft dat veld niet en zet zelf `\"items\": *[_type == \"review\"]`. Onderaan gezet won de generieke sleutel.",
+      "fix": "De `...` uit alle `_type == \"x\" => { ... }`-takken gehaald, zodat er niets meer geclobberd wordt, en de gedeelde projecties weer bovenaan gezet. Getest met groq-js op hero/reviews/listings/reviewGrid/objectGrid/faqs.",
+      "tags": [
+        "groq",
+        "sanity",
+        "page-builder",
+        "projection-order",
+        "review-grid"
+      ],
+      "related_bugs": [
+        "bug-009"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T20:40:00Z"
+    },
+    {
+      "id": "bug-011",
+      "timestamp": "2026-08-17T21:00:00Z",
+      "error_message": "Home gaf een 500 na het importeren van toListing uit ObjectGrid in PageBuilder.",
+      "file": "app/src/components/blocks/Listings.tsx",
+      "root_cause": "ObjectGrid.tsx is een 'use client'-module; elke export daaruit is een client reference, dus een server component (PageBuilder) kan de functie niet aanroepen.",
+      "fix": "toListing + de twee icoontjes verhuisd naar Listings.tsx (geen 'use client'), met een geexporteerd type WoningCardInput. ObjectGrid importeert het daar nu vandaan.",
+      "tags": [
+        "next",
+        "rsc",
+        "use-client",
+        "page-builder",
+        "listings"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T21:00:00Z"
+    },
+    {
+      "id": "bug-012",
+      "timestamp": "2026-08-17T21:30:00Z",
+      "error_message": "Gebruiker: 'je kunt op mobiel heel ver uitzoomen, de paginabreedte is de volledige breedte van alle reviews samen' — na het tonen van 8 i.p.v. ~4 reviews op de home.",
+      "file": "app/src/components/blocks/Reviews.tsx",
+      "root_cause": "De reviews-carousel-track (`flex overflow-x-auto`) lekte zijn interne scrollbreedte door naar `document.documentElement.scrollWidth` zodra er genoeg kaarten waren (bevestigd: 7 kaarten bleef 375px, 8 kaarten liep op naar 2455px op een 375px-viewport). `contain: layout` ontbrak op de track, dus de browser liet de children buiten hun overflow:auto-doos meetellen voor de lay-out van voorouderelementen — een pre-existing CSS-fragiliteit die met de eerdere ~4 curated reviews nooit een drempel raakte. Vandaag's wijziging (top 8 tonen i.p.v. handmatige selectie) triggerde het.",
+      "fix": "`[contain:layout]` toegevoegd aan de track-div in Reviews.tsx. Geverifieerd: 8 kaarten blijven binnen 375px op mobiel en binnen 1280px op desktop, carousel scrollt nog, 'Lees meer'-dialog opent nog.",
+      "tags": [
+        "css",
+        "overflow",
+        "mobile",
+        "carousel",
+        "contain",
+        "reviews"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T21:30:00Z"
+    },
+    {
+      "id": "bug-013",
+      "timestamp": "2026-08-17T21:05:00Z",
+      "error_message": "WONING_QUERY selecteert `seo`, maar het gegenereerde type is `seo: null` — de objectpagina krijgt nooit CMS-SEO.",
+      "file": "studio-hart-huis/schemaTypes/woningType.ts",
+      "root_cause": "Het `woning`-schema heeft helemaal geen `seo`-veld. De query vroeg het toch op en `src/app/aanbod/[slug]/page.tsx` typte het met de hand als `SanitySeo | null`, dus niets wees erop dat het altijd leeg was. pageMetadata() valt stil terug op de defaults.",
+      "fix": "Nog niet opgelost — gevonden doordat Sanity TypeGen het veld als `null` typeerde. Keuze aan de redactie: `seo` toevoegen aan het woning-schema (zoals `page` dat heeft), of de dode selectie uit WONING_QUERY halen.",
+      "tags": [
+        "sanity",
+        "typegen",
+        "seo",
+        "metadata",
+        "woning",
+        "latent"
+      ],
+      "related_bugs": [
+        "bug-001"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T21:05:00Z"
+    },
+    {
+      "id": "bug-014",
+      "timestamp": "2026-08-17T21:05:00Z",
+      "error_message": "TS2339: Property 'badgeValue' does not exist on type '{ _type: \"hero\"; ... }'",
+      "file": "app/src/components/PageBuilder.tsx",
+      "root_cause": "PageBuilder las `block.badgeValue` als redactionele fallback voor het herocijfer, maar het hero-schema kent alleen `badgeLabel` — `badgeValue` bestaat in geen schema en in geen seed. Onder het oude `[key: string]: unknown`-blocktype viel dat niet op: de cast maakte er stilzwijgend `undefined` van.",
+      "fix": "De dode fallback verwijderd; `reviewScore(block)` zonder tweede argument. Gedrag blijft gelijk — Hero vult zelf SITE.fundaScore in als het afgeleide cijfer leeg is.",
+      "tags": [
+        "sanity",
+        "typegen",
+        "pagebuilder",
+        "hero",
+        "dead-code"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-17T21:05:00Z"
+    },
+    {
+      "id": "bug-015",
+      "timestamp": "2026-08-18T00:00:00Z",
+      "error_message": "TS2345: Argument of type 'CertificationLogo' is not assignable to parameter of type 'SanityImage | null | undefined' — imageSrc() call on footer cert logos.",
+      "file": "app/src/components/layout/SiteFooter.tsx",
+      "root_cause": "certificationLogos map called `imageSrc(logo, 160)` with the whole array-member object (which also carries `alt` and `url` link fields), instead of `logo.asset` — the actual Sanity image reference. Went unnoticed because SanityImage's structural type still overlapped enough to type-check under the old (non-nullable) field types.",
+      "fix": "Changed to `imageSrc(logo.asset, 160)` and made `asset`/`url` nullable in the local `CertificationLogo` type to match the generated query types.",
+      "tags": [
+        "sanity",
+        "typegen",
+        "footer",
+        "image"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-18T00:00:00Z"
+    },
+    {
+      "id": "bug-016",
+      "timestamp": "2026-08-21T08:15:00Z",
+      "error_message": "sanity deploy: Error deploying studio schemas and manifests: Error: Worker error: Failed to parse source for import analysis because the content contains invalid JS syntax. If you are using JSX, make sure to name the file with the .jsx or .tsx extension.",
+      "file": "studio-hart-huis/package.json",
+      "root_cause": "pnpm-lock.yaml had drifted (uncommitted, from an earlier `pnpm install`) so the transitive dep `@sanity/sdk-react` resolved to 2.20.0 instead of the previously-locked 2.19.0. That release ships un-transpiled JSX (`<ComlinkTokenRefreshProvider>...`) inside `dist/index.js` — a packaging bug, since `.js` files aren't parsed with a JSX loader. `sanity build` doesn't hit it (browser bundle), but `sanity manifest extract` (run by `sanity deploy` for schema/manifest sync, and standalone via `npx sanity manifest extract`) SSR-bundles the full dependency tree with `noExternal: true` and trips on it.",
+      "fix": "Pinned the version with `\"pnpm\": { \"overrides\": { \"@sanity/sdk-react\": \"2.19.0\" } }` in studio-hart-huis/package.json, then `rm -rf node_modules && pnpm install`. Verified with `npx sanity manifest extract` (now succeeds) and `npx sanity build`/`npx sanity deploy --dry-run -y`. To debug a similar CLI worker error with no useful stack trace, rerun with `DEBUG=sanity:*` — it prints the underlying vite error object including `loc`/`frame` before the CLI strips it down to a bare message.",
+      "tags": [
+        "sanity",
+        "deploy",
+        "pnpm",
+        "lockfile",
+        "sdk-react",
+        "vite",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T08:15:00Z"
+    },
+    {
+      "id": "bug-017",
+      "timestamp": "2026-08-21T13:00:00Z",
+      "error_message": "De linkerhelft van de topbar (Verkoop/Aankoop/Taxatie) is leeg op de gedeployde site.",
+      "file": "app/scripts/seed/navigation.ts",
+      "root_cause": "seedNavigation() berekende verkoopLink/aankoopLink/taxatieLink wel, maar zette ze niet in het navigation-document. Omdat de seed createOrReplace gebruikt, wiste elke `seed:nav` het navLeft-veld volledig.",
+      "fix": "navLeft: [verkoopLink, aankoopLink, taxatieLink, nvmLink] toegevoegd aan het navigation-document. Draai `npm run seed:nav` om het te herstellen.",
+      "tags": [
+        "seed",
+        "navigation",
+        "sanity",
+        "createOrReplace"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T13:00:00Z"
+    },
+    {
+      "id": "bug-018",
+      "timestamp": "2026-08-21T14:10:00Z",
+      "error_message": "De kop op /waardebepaling eindigt op 'Wat is jouw huis vandaag' — het staartje ' waard?' ontbreekt.",
+      "file": "studio-hart-huis/schemaTypes/blocks/formHeroType.ts",
+      "root_cause": "FormHero heeft een `titleAfter`-prop, maar het formHero-schema had het veld niet en PageBuilder gaf het niet door. De prop was dus dood; WAARDEBEPALING_HERO.titleAfter werd nergens geseed.",
+      "fix": "Veld `titleAfter` toegevoegd aan formHeroType, doorgegeven in PageBuilder, en meegegeven in de seeds van waardebepaling en zoekopdracht. Draai `npm run seed:waardebepaling` om de bestaande pagina te herstellen.",
+      "tags": [
+        "formHero",
+        "sanity",
+        "schema",
+        "pagebuilder",
+        "dode-prop"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T14:10:00Z"
+    },
+    {
+      "id": "bug-019",
+      "timestamp": "2026-08-21T20:30:00Z",
+      "error_message": "De Deploy Sanity Studio action draait niet bij een push naar main of het mergen van een PR.",
+      "file": ".github/workflows/deploy-sanity-studio.yml",
+      "root_cause": "De workflow had een `paths: studio-hart-huis/**` filter. Elke commit op main sinds de workflow bestaat raakte alleen .github/, .wolf/ of app/ aan, dus GitHub sloeg de run terecht over. Het leek een kapotte trigger maar was het filter.",
+      "fix": "Het filter is bewust behouden — het is de gewenste zuinigheid, niet de bug. Wat ontbrak was een manier om de workflow te testen: de workflow draait nu ook als `.github/workflows/deploy-sanity-studio.yml` zelf verandert, en `workflow_dispatch` blijft voor handmatig draaien. `concurrency` toegevoegd zodat een nieuwe push een lopende deploy annuleert. LET OP bij toekomstig debuggen: 'de action draait niet' na een merge die alleen app/ of .wolf/ raakt is correct gedrag, geen storing.",
+      "tags": [
+        "github-actions",
+        "ci",
+        "sanity",
+        "deploy",
+        "paths-filter",
+        "trigger",
+        "not-a-bug"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T20:45:00Z"
+    },
+    {
+      "id": "bug-020",
+      "timestamp": "2026-08-21T20:30:00Z",
+      "error_message": "Error: Nonexistent flag: --no-bust-cache (sanity deploy, exit code 2)",
+      "file": ".github/workflows/deploy-sanity-studio.yml",
+      "root_cause": "`--no-bust-cache` bestaat niet in deze versie van de Sanity CLI; het vlaggetje was verzonnen bij het schrijven van de workflow en nooit tegen `sanity deploy --help` gecontroleerd.",
+      "fix": "Vlag verwijderd en vervangen door `--yes` (unattended), want zonder `studioHost` in sanity.cli.ts kan `sanity deploy` interactief om een hostname vragen en dan hangt de CI-run.",
+      "tags": [
+        "github-actions",
+        "sanity-cli",
+        "deploy",
+        "cli-flags"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T20:30:00Z"
+    },
+    {
+      "id": "bug-021",
+      "timestamp": "2026-08-21T21:20:00Z",
+      "error_message": "In de gedeployde studio meldt de Funda-tool: \"Nog niet ingesteld. Zet SANITY_STUDIO_SCRAPER_URL en SANITY_STUDIO_SCRAPER_SECRET in studio-hart-huis/.env en start de studio opnieuw.\"",
+      "file": ".github/workflows/deploy-sanity-studio.yml",
+      "root_cause": "Vite vervangt `process.env.SANITY_STUDIO_*` bij het BOUWEN door de letterlijke waarde. De workflow bouwde zonder die variabelen — `studio-hart-huis/.env` staat in .gitignore en bestaat dus niet op de runner — dus beide werden `undefined` ingebakken en de tool viel terug op zijn lege-staat. De deploy zelf slaagde, dus er was geen enkel signaal dat er iets mis was.",
+      "fix": "De twee variabelen op job-niveau in de workflow gezet (`vars.SANITY_STUDIO_SCRAPER_URL` + `secrets.SANITY_STUDIO_SCRAPER_SECRET`), zodat zowel `sanity build` als de herbouw binnen `sanity deploy` ze meekrijgt. Plus een guard-stap die de run afbreekt met ::error:: als er een leeg is, zodat dezelfde stille fout niet nog eens ongemerkt gedeployd wordt. docs/funda-review-scraper.md uitgebreid met een 'Studio — gedeployd' sectie.",
+      "tags": [
+        "github-actions",
+        "ci",
+        "sanity",
+        "deploy",
+        "env-vars",
+        "vite",
+        "build-time",
+        "silent-failure"
+      ],
+      "related_bugs": [
+        "bug-019",
+        "bug-020"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-21T21:20:00Z"
+    },
+    {
+      "id": "bug-024",
+      "timestamp": "2026-08-26T10:48:06.973337",
+      "error_message": "Hover-effecten springen van de ene naar de andere staat i.p.v. animeren, bv. transition-[transform,box-shadow] duration-500 hover:-translate-y-1.5 hover:shadow-card",
+      "file": "app/src/components/**/*.tsx (15 plekken)",
+      "root_cause": "Tailwind v4 zet translate/scale/rotate op de losse CSS-properties `translate`, `scale`, `rotate` — niet meer op `transform`. Een arbitrary transition-lijst met alleen `transform` dekt die dus niet, dus geen transitie -> harde sprong.",
+      "fix": "In elke `transition-[...]` het woord `transform` vervangen door `transform,translate,scale,rotate` (exact wat de ingebouwde `transition-transform` in v4 doet). Geverifieerd via computed style op de dev-server.",
+      "tags": [
+        "tailwind",
+        "tailwind-v4",
+        "transition",
+        "hover",
+        "transform",
+        "translate",
+        "css"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-26T10:48:06.973337"
+    },
+    {
+      "id": "bug-022",
+      "timestamp": "2026-08-25T00:00:00Z",
+      "error_message": "Bij elke Realworks-import worden alle velden van een bestaand object overschreven, inclusief de foto's — handmatige wijzigingen in de studio gingen verloren en de galerij werd elke run opnieuw opgebouwd.",
+      "file": "app/src/app/api/import-realworks/route.ts",
+      "root_cause": "importObjects deed voor ieder object een client.createOrReplace met een vers opgebouwde `fotos`/`brochure`. Binaries werden weliswaar hergebruikt via existingAssets (op originalFilename), maar de veldwaarden zelf werden altijd vervangen, en zodra Realworks een bestandsnaam of het kader (FOTO_KADER) wijzigde werd alles opnieuw gedownload.",
+      "fix": "De bestaande documenten worden nu opgehaald inclusief `fotos` en `brochure`. Heeft een document al foto's (of een brochure), dan gaan die ongewijzigd mee in de createOrReplace en wordt er voor dat object niets gedownload; alleen nieuwe objecten en objecten zonder media laden hun media. Nieuwe teller `fotosBehouden` in de samenvatting en in RealworksTool.",
+      "tags": [
+        "realworks",
+        "import",
+        "sanity",
+        "images",
+        "createOrReplace"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-25T00:00:00Z"
+    },
+    {
+      "id": "bug-023",
+      "timestamp": "2026-08-25T00:00:00Z",
+      "error_message": "npm run check:realworks faalt: AssertionError actual '287669985-w1200.jpg', expected '287669985-w2000.jpg'.",
+      "file": "app/scripts/check-realworks.ts",
+      "root_cause": "In commit 56b2fc6 ('realworks image sizes') is FOTO_KADER op 1200 gezet, maar de JSDoc erboven, docs/realworks-import.md en de asserts in het checkscript bleven op 2000 staan. Het script was dus al rood vóór deze sessie.",
+      "fix": "1200 is de bedoelde waarde (bevestigd door de gebruiker). JSDoc, docs/realworks-import.md en de twee asserts in check-realworks.ts naar 1200 getrokken; check:realworks is weer groen.",
+      "tags": [
+        "realworks",
+        "test",
+        "FOTO_KADER",
+        "docs"
+      ],
+      "related_bugs": [
+        "bug-022"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-25T00:00:00Z"
+    },
+    {
+      "id": "bug-025",
+      "timestamp": "2026-08-27T07:10:00Z",
+      "error_message": "Google Rich Results Test op de gedeployde site: 'Review heeft meerdere samengestelde beoordelingen' op het aggregateRating-veld.",
+      "file": "app/src/lib/json-ld.ts",
+      "root_cause": "Een validator vervangt elke {\"@id\": …}-verwijzing door de knoop zelf. De organisatieknoop draagt de aggregateRating en was vanuit één knoop langs twee paden bereikbaar: WebPage.about -> organisatie én WebPage.isPartOf -> WebSite.publisher -> organisatie. Na dat invullen staat dezelfde rating er twee keer in. Op objectpagina's kwam er een derde pad bij, Offer.seller -> organisatie, waardoor de rating van het kantoor bínnen de woning belandde — en die woning is een Product, dus Google las het als een beoordeling van het huis.",
+      "fix": "Eén pad naar een knoop met een rating. `about: ORGANIZATION_REF` van de standaard-WebPage gehaald (het kantoor hangt er al aan via isPartOf -> publisher), `seller` van de Offer gehaald, en de objectpagina zet `about` op de woning in plaats van op het kantoor. check:jsonld bootst het invullen van verwijzingen na en eist per knoop hoogstens één aggregateRating, en nul binnen een Product of Offer.",
+      "tags": [
+        "json-ld",
+        "structured-data",
+        "seo",
+        "schema.org",
+        "aggregateRating",
+        "google-rich-results"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-27T07:10:00Z"
+    },
+    {
+      "id": "bug-026",
+      "timestamp": "2026-08-27T10:29:35.860680",
+      "error_message": "Sanity TypeGen gaf een nieuwe union-tak in NAVIGATION_QUERY_RESULT/FOOTER_QUERY_RESULT ({alt: null, url}), waardoor PageWrapper.tsx TS2322 gaf op logo.alt",
+      "file": "studio-hart-huis/schemaTypes/formGeneralSettingsType.ts",
+      "root_cause": "Een nieuw image-veld 'logo' op formGeneralSettings. NAVIGATION_QUERY/FOOTER_QUERY halen hun singleton op _id op, dus typegen kan het documenttype niet smal maken en projecteert 'logo{alt, url}' over elk documenttype dat een veld 'logo' heeft — inclusief het nieuwe.",
+      "fix": "Veld hernoemd naar 'mailLogo' (met commentaar waarom), query en route mee. Regel: geef een nieuw veld op een singleton geen naam die al op navigation/footer bestaat.",
+      "tags": [
+        "sanity",
+        "typegen",
+        "types",
+        "formGeneralSettings",
+        "mail"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-27T10:29:35.860680"
+    },
+    {
+      "id": "bug-027",
+      "timestamp": "2026-08-27T11:30:29.193704",
+      "error_message": "Bij stap 2 van het meerstapsformulier verschijnt direct de native 'vul dit veld in' tooltip",
+      "file": "app/src/components/form/FormRenderer.tsx",
+      "root_cause": "Dezelfde <button> wisselt van type='button' (Verder) naar type='submit' op de laatste stap. De activation behavior van een klik wordt pas na de React-handler bepaald, dus setStep() in onClick maakt de knop submit en diezelfde klik verstuurt het formulier. onSubmit vindt stap 2 ongeldig en roept reportValidity() aan.",
+      "fix": "event.preventDefault() in goNext(), zodat de klik nooit als submit doorgaat.",
+      "tags": [
+        "form",
+        "multistep",
+        "validation",
+        "react",
+        "submit"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-27T11:30:29.193704"
+    },
+    {
+      "id": "bug-028",
+      "timestamp": "2026-08-27",
+      "error_message": "GitHub Action 'Deploy Sanity Studio' faalt bij 'npm ci': \"Invalid: lock file's @inquirer/... does not satisfy ...\" / \"Missing: @vitejs/plugin-react@6.1.0 from lock file\"",
+      "file": "studio-hart-huis/package-lock.json",
+      "root_cause": "package.json van de studio is gebumpt naar sanity/@sanity/vision ^6.11.0, maar package-lock.json stond nog op ^6.10.0 (sanity 6.10.1). npm ci installeert strikt uit de lock en weigert zodra die niet meer bij package.json past. Lokaal viel het niet op omdat `npm install` de lock stilzwijgend bijwerkt; die was alleen niet meegecommit.",
+      "fix": "npm install --package-lock-only in studio-hart-huis gedraaid en de bijgewerkte package-lock.json gecommit. Vuistregel: package.json en package-lock.json altijd samen committen.",
+      "tags": [
+        "ci",
+        "github-actions",
+        "npm",
+        "npm-ci",
+        "lockfile",
+        "sanity",
+        "studio",
+        "deploy"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-08-27"
+    },
+    {
+      "id": "bug-029",
+      "timestamp": "2026-08-27",
+      "error_message": "SANITY_STUDIO_REALWORKS_URL komt niet goed door in de gedeployde studio, terwijl de variable wel in GitHub staat",
+      "file": ".github/workflows/deploy-sanity-studio.yml",
+      "root_cause": "Typefout in de workflow: `SANITY_STUDIO_REALWORKS_URL: = ${{ vars.SANITY_STUDIO_REALWORKS_URL }}`. In YAML is alles na de dubbele punt de waarde, dus de losse `=` werd onderdeel van de string: de studio kreeg '= https://...' en fetch faalt daarop. De env-check verifieerde deze variable bovendien niet, dus het bleef stil.",
+      "fix": "De losse `=` weggehaald, SANITY_STUDIO_REALWORKS_URL toegevoegd aan de 'Check studio env vars'-loop, en de dubbele definitie op de deploy-stap verwijderd (job-level env geldt al voor alle stappen).",
+      "tags": [
+        "github-actions",
+        "yaml",
+        "env",
+        "realworks",
+        "studio",
+        "vite"
+      ],
+      "related_bugs": [
+        "bug-028"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-27"
+    }
+  ]
+}

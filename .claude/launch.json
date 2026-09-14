@@ -3,10 +3,10 @@
   "configurations": [
     {
       "name": "hart-huis",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "sh",
       "runtimeArgs": [
-        "run",
-        "dev"
+        "-c",
+        "PATH=\"$HOME/.nvm/versions/node/v22.18.0/bin:$PATH\" npm run dev"
       ],
       "cwd": "app",
       "port": 3000,

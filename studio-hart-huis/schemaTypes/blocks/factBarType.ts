@@ -22,6 +22,11 @@ export const factBarType = defineType({
       ],
       validation: (rule) => rule.min(1).max(4).required(),
     }),
+    defineField({
+      name: 'note',
+      type: 'string',
+      description: 'Small print under the bar, e.g. the source of the figures',
+    }),
   ],
   preview: {
     select: {fact0: 'facts.0.value', fact1: 'facts.1.value'},

@@ -2,13 +2,22 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-09-07
+> Last updated: 2026-09-14
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+**Stadspagina /haarlem (14-09-2026)**
+- Design: `app/example-designs/!stad-haarlem.html` — stijlblok identiek aan `!aankoop.html` op de `stad*`-secties na.
+- **Geen nieuwe blocks.** stadhero → `pageHero`, markt → `factBar`, stadintro → `mediaText`, staddiensten → `iconCards`, wijken → `regionBlock` (zonder links), stadquote → `quoteBand`, faq → `faqs`, omliggend → `regionBlock`, ctaband → `ctaBand`.
+- Kleine optionele uitbreidingen: `pageHero.titleAfter` (gemarkeerd woord midden in de kop); `factBar.note` + vierkoloms variant (2×2 op tablet); `iconCards`-kaart kreeg een optionele `cta`; `regionBlock`-plaats zonder link = gewone tekst (link niet meer verplicht); `mediaText` zonder cta toont nu echt geen knop — PageBuilder geeft `null` door, vroeger viel een lege cta terug op de Over-ons-knop.
+- Copy `src/lib/haarlem-content.ts`, seed `scripts/seed/haarlem.ts` (`npm run seed:haarlem`), beelden `public/images/haarlem/` met unieke bestandsnamen (zie open punt 12). Quote-foto hergebruikt `/images/over-ons/spaarne.jpg`, CTA `/images/aankoop/cta.jpg`.
+- Bewuste afwijkingen van het design: geen "Werkgebied" in het kruimelpad (die pagina bestaat niet), dienstenkaarten zonder zandkleurige sectie, de lokale quote is de lichte `quoteBand` met foto in plaats van de donkere gecentreerde band, wijken in 5 kolommen in plaats van 4. Omliggende plaatsen linken naar `#` tot er stadspagina's zijn.
+- typegen gedraaid (nam ook het `cronLog`-type mee dat nog ontbrak); tsc app + studio en eslint groen. /aankoop, /over-ons en /waardebepaling nagelopen op regressie.
+- **Nog te doen:** studio deployen (nieuwe velden), dan `npm run seed:haarlem`. Niet aan de navigatie gekoppeld. Marktcijfers en de quote van "Sanne & Joost" komen letterlijk uit het design — laten controleren. Een volgende stad = kopie van `haarlem-content.ts` + `seed/haarlem.ts`.
 
 **Geplande taken losgekoppeld van Vercel + Logs-paneel (07-09-2026)**
 - **De crons bestonden al** (`app/vercel.json`, 04:00 en 04:30 UTC) — wat ontbrak was een manier om ze buiten Vercel te draaien, en om te zien wát er gedraaid heeft.
@@ -238,6 +247,8 @@
 8. `npm run typegen` faalt op de default node (v17) van deze machine; draai hem met `export PATH="$HOME/.nvm/versions/node/v22.18.0/bin:$PATH"` ervoor.
 9. Het bezichtigingsformulier staat nog niet in Sanity: `npm run seed:objectpagina`. Daarna beheert de redactie het formulier, de knop, de kop boven "Vergelijkbare woningen" én de CTA-band zelf (Forms + Objectpagina in de studio). De primaire knop van die CTA-band staat op `#` (was al zo in `OBJECT_CTA`) — na het seeden in de studio naar de zoekopdracht-LP wijzen, of hem hier alvast goedzetten.
 11. `npm run check:jsonld` en `npm run check:tekst` zijn rood — al op HEAD, los van het richText-werk. `check:tekst`/`check:jsonld` verwachten een aanbiedingstekst zonder het Engelse deel ("Mooi huis ruime tuin, garage" tegenover "… English Nice house"); de parser of de assertie loopt uit de pas.
+12. **`uploadImage()` hergebruikt assets alleen op bestandsnaam**, maar `pagehero.jpg` (4×), `step-1..5.jpg` (3×), `quote.jpg` (taxatie wijkt af), `kantoor.jpg` (3×) en `hero.jpg` (2×) zijn per map verschillende foto's. Wie het eerst geseed is, levert de foto voor de rest — /taxatie, /nvm enz. tonen in Sanity dan waarschijnlijk de hero van een andere pagina. Gevonden 14-09-2026, nog niet opgelost.
+13. **Dubbele merknaam in de paginatitel** (gezien 14-09-2026 op /aankoop, /over-ons, /waardebepaling): "Aankoopmakelaar Haarlem — Hart & Huis Makelaardij - Hart & Huis Makelaardij". De site plakt de merknaam er zelf achter, en `seo.title` in de studio bevat hem óók. Oplossing is redactioneel: merknaam uit die `seo.title`-velden halen. `seed:haarlem` schrijft daarom alleen "Makelaar in Haarlem".
 10. Na elke schemawijziging `npm run typegen` draaien en `app/src/sanity/{schema.json,sanity.types.ts}` meecommitten — beide staan in git en zijn nu de bron van de types.
 
 ## 📁 Active architecture

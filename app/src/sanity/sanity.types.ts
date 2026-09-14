@@ -202,6 +202,7 @@ export type IconCards = {
       | "mail";
     title: string;
     body: string;
+    cta?: Cta;
     _key: string;
   }>;
 };
@@ -525,7 +526,7 @@ export type RegionBlock = {
   lead: string;
   places: Array<{
     label: string;
-    link: Link;
+    link?: Link;
     _key: string;
   }>;
 };
@@ -623,6 +624,7 @@ export type FactBar = {
     label: string;
     _key: string;
   }>;
+  note?: string;
 };
 
 export type PageHero = {
@@ -639,6 +641,7 @@ export type PageHero = {
   eyebrow: string;
   title: string;
   titleHighlight?: string;
+  titleAfter?: string;
   lead: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
@@ -952,6 +955,23 @@ export type Seo = {
     _type: "image";
   };
   noIndex?: boolean;
+};
+
+export type CronLog = {
+  _id: string;
+  _type: "cronLog";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  task?: "funda-reviews" | "import-realworks";
+  trigger?: "cron" | "studio" | "onbekend";
+  ok?: boolean;
+  dryRun?: boolean;
+  startedAt?: string;
+  durationMs?: number;
+  message?: string;
+  warnings?: Array<string>;
+  error?: string;
 };
 
 export type ObjectSettings = {
@@ -1422,6 +1442,7 @@ export type AllSanitySchemaTypes =
   | Cta
   | Link
   | Seo
+  | CronLog
   | ObjectSettings
   | Form
   | FormGeneralSettings
@@ -1903,6 +1924,7 @@ export type PAGE_QUERY_RESULT = {
           label: string;
           _key: string;
         }>;
+        note?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2134,9 +2156,17 @@ export type PAGE_QUERY_RESULT = {
             | "shield";
           title: string;
           body: string;
+          cta: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
           _key: string;
           link: null;
-          cta: null;
         }>;
         primaryCta: null;
         secondaryCta: null;
@@ -2375,6 +2405,7 @@ export type PAGE_QUERY_RESULT = {
         eyebrow: string;
         title: string;
         titleHighlight?: string;
+        titleAfter?: string;
         lead: string;
         primaryCta: {
           _type: "cta";
@@ -2572,7 +2603,7 @@ export type PAGE_QUERY_RESULT = {
               slug: string;
             } | null;
             href?: string;
-          };
+          } | null;
           _key: string;
         }>;
         primaryCta: null;

@@ -138,6 +138,7 @@ export type IconCardItem = {
   icon: BlockIconName;
   title: string;
   body: string;
+  cta?: { label: string; href: string };
 };
 
 export const WAARDEBEPALING_KRIJGT_INTRO = {

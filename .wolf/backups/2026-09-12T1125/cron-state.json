@@ -1,0 +1,57 @@
+{
+  "last_heartbeat": "2026-08-26T16:07:23.446Z",
+  "engine_status": "stopped",
+  "execution_log": [
+    {
+      "task_id": "anatomy-rescan",
+      "status": "success",
+      "timestamp": "2026-08-04T22:00:00.288Z",
+      "duration_ms": 253
+    },
+    {
+      "task_id": "anatomy-rescan",
+      "status": "success",
+      "timestamp": "2026-08-05T10:00:00.260Z",
+      "duration_ms": 173
+    },
+    {
+      "task_id": "anatomy-rescan",
+      "status": "success",
+      "timestamp": "2026-08-06T10:00:00.260Z",
+      "duration_ms": 198
+    },
+    {
+      "task_id": "memory-consolidation",
+      "status": "success",
+      "timestamp": "2026-08-26T16:04:41.496Z",
+      "duration_ms": 2
+    },
+    {
+      "task_id": "token-audit",
+      "status": "success",
+      "timestamp": "2026-08-26T16:04:45.558Z",
+      "duration_ms": 4
+    },
+    {
+      "task_id": "cerebrum-reflection",
+      "status": "failed",
+      "timestamp": "2026-08-26T16:06:48.951Z",
+      "duration_ms": 122498,
+      "error": "claude -p failed: spawnSync claude ETIMEDOUT"
+    },
+    {
+      "task_id": "project-suggestions",
+      "status": "success",
+      "timestamp": "2026-08-26T16:07:36.251Z",
+      "duration_ms": 47292
+    },
+    {
+      "task_id": "anatomy-rescan",
+      "status": "success",
+      "timestamp": "2026-08-26T16:07:36.442Z",
+      "duration_ms": 187
+    }
+  ],
+  "dead_letter_queue": [],
+  "upcoming": []
+}

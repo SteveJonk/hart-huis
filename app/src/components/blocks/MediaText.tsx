@@ -19,7 +19,8 @@ export type MediaTextProps = {
   eyebrow?: string;
   title?: string;
   paragraphs?: string[];
-  cta?: MediaTextCta;
+  /** `null` = bewust geen knop; alleen `undefined` valt terug op de default. */
+  cta?: MediaTextCta | null;
   image?: MediaTextImage;
 };
 

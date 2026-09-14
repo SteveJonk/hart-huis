@@ -39,15 +39,21 @@ export const pageHeroType = defineType({
       title: 'Title highlight',
       type: 'string',
     }),
+    defineField({
+      name: 'titleAfter',
+      title: 'Title after highlight',
+      type: 'string',
+      description: 'Optional text after the highlighted phrase (e.g. " en elke buurt eromheen")',
+    }),
     defineField({name: 'lead', type: 'text', rows: 3, validation: (rule) => rule.required()}),
     defineField({name: 'primaryCta', title: 'Primary CTA', type: 'cta'}),
     defineField({name: 'secondaryCta', title: 'Secondary CTA', type: 'cta'}),
   ],
   preview: {
-    select: {title: 'title', titleHighlight: 'titleHighlight', media: 'image'},
-    prepare({title, titleHighlight, media}) {
+    select: {title: 'title', titleHighlight: 'titleHighlight', titleAfter: 'titleAfter', media: 'image'},
+    prepare({title, titleHighlight, titleAfter, media}) {
       return {
-        title: [title, titleHighlight].filter(Boolean).join(' '),
+        title: [title, titleHighlight, titleAfter].filter(Boolean).join(' '),
         subtitle: 'Page hero',
         media,
       }

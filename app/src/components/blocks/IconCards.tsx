@@ -1,3 +1,4 @@
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { BlockIcon } from "@/components/ui/BlockIcon";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
@@ -51,13 +52,18 @@ export function IconCards({
             <Reveal
               key={item.title}
               delay={(index % 3 || undefined) as 1 | 2 | undefined}
-              className="rounded-[4px] bg-white px-8 pt-9 pb-8 transition-[transform,translate,scale,rotate,box-shadow] duration-[450ms] ease-brand hover:-translate-y-1.5 hover:shadow-[0_30px_58px_-34px_rgba(36,31,28,0.4)]"
+              className="flex flex-col rounded-[4px] bg-white px-8 pt-9 pb-8 transition-[transform,translate,scale,rotate,box-shadow] duration-[450ms] ease-brand hover:-translate-y-1.5 hover:shadow-[0_30px_58px_-34px_rgba(36,31,28,0.4)]"
             >
               <span className="mb-[22px] grid size-[52px] place-items-center rounded-full bg-sand text-burgundy">
                 <BlockIcon icon={item.icon} size={21} />
               </span>
               <h3 className="mb-2.5 text-[1.32rem]">{item.title}</h3>
-              <p className="text-[0.94rem] leading-[1.7] text-ink-70">{item.body}</p>
+              <p className="flex-1 text-[0.94rem] leading-[1.7] text-ink-70">{item.body}</p>
+              {item.cta ? (
+                <ArrowLink href={item.cta.href} className="mt-[18px] self-start text-burgundy">
+                  {item.cta.label}
+                </ArrowLink>
+              ) : null}
             </Reveal>
           ))}
         </div>

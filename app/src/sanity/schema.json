@@ -1151,6 +1151,14 @@
                     "type": "string"
                   },
                   "optional": false
+                },
+                "cta": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "inline",
+                    "name": "cta"
+                  },
+                  "optional": true
                 }
               },
               "rest": {
@@ -3208,7 +3216,7 @@
                     "type": "inline",
                     "name": "link"
                   },
-                  "optional": false
+                  "optional": true
                 }
               },
               "rest": {
@@ -3766,6 +3774,13 @@
             }
           },
           "optional": false
+        },
+        "note": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3859,6 +3874,13 @@
           "optional": false
         },
         "titleHighlight": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "titleAfter": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -5681,6 +5703,133 @@
           },
           "optional": true
         }
+      }
+    }
+  },
+  {
+    "name": "cronLog",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "cronLog"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "task": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "funda-reviews"
+            },
+            {
+              "type": "string",
+              "value": "import-realworks"
+            }
+          ]
+        },
+        "optional": true
+      },
+      "trigger": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "cron"
+            },
+            {
+              "type": "string",
+              "value": "studio"
+            },
+            {
+              "type": "string",
+              "value": "onbekend"
+            }
+          ]
+        },
+        "optional": true
+      },
+      "ok": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
+      "dryRun": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
+      "startedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "durationMs": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "number"
+        },
+        "optional": true
+      },
+      "message": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "warnings": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "string"
+          }
+        },
+        "optional": true
+      },
+      "error": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
       }
     }
   },

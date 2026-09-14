@@ -18,7 +18,12 @@ export const regionBlockType = defineType({
           type: 'object',
           fields: [
             defineField({name: 'label', type: 'string', validation: (rule) => rule.required()}),
-            defineField({name: 'link', type: 'link', title: 'Link', validation: (rule) => rule.required()}),
+            defineField({
+              name: 'link',
+              type: 'link',
+              title: 'Link',
+              description: 'Leave empty to show the place as plain text (e.g. neighbourhoods)',
+            }),
           ],
           preview: {select: {title: 'label'}},
         }),

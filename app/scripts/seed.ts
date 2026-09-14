@@ -15,6 +15,7 @@ import {seedAankoop} from './seed/aankoop'
 import {seedBedankt} from './seed/bedankt'
 import {seedBeoordelingen} from './seed/beoordelingen'
 import {seedContact} from './seed/contact'
+import {seedHaarlem} from './seed/haarlem'
 import {seedHome} from './seed/home'
 import {seedNavigation} from './seed/navigation'
 import {seedNvm} from './seed/nvm'
@@ -44,6 +45,7 @@ const TARGETS = {
   nvm: seedNvm,
   waardebepaling: seedWaardebepaling,
   zoekopdracht: seedZoekopdracht,
+  haarlem: seedHaarlem,
   nav: seedNavigation,
 } as const
 

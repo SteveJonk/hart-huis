@@ -6,7 +6,8 @@ import Link from 'next/link';
 
 export type RegionPlace = {
   label: string;
-  href: string;
+  /** Zonder link staat de plaats er als gewone tekst (bv. de wijken van een stad). */
+  href?: string;
 };
 
 export type RegionBlockProps = {
@@ -23,6 +24,19 @@ const DEFAULTS: Required<RegionBlockProps> = {
   places: VERKOOP_REGIONS.map((place) => ({ label: place, href: '#' })),
 };
 
+const chipClass = [
+  'flex items-center gap-2.5 rounded bg-white px-[18px] py-4 text-[0.93rem]',
+  "before:size-1.5 before:shrink-0 before:rounded-full before:bg-sand before:content-['']",
+  'max-sm:px-[15px] max-sm:py-3.5 max-sm:text-[0.88rem]',
+].join(' ');
+
+const linkClass = [
+  chipClass,
+  'transition duration-300 ease-brand',
+  'before:transition-[background] before:duration-300 before:ease-brand',
+  'hover:-translate-y-[3px] hover:bg-ink hover:text-cream hover:before:bg-sage',
+].join(' ');
+
 export function RegionBlock({
   eyebrow = DEFAULTS.eyebrow,
   title = DEFAULTS.title,
@@ -38,22 +52,17 @@ export function RegionBlock({
           <p className='leading-[1.7] text-ink-70'>{lead}</p>
         </Reveal>
         <Reveal className='grid grid-cols-5 gap-3 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2 max-sm:gap-2.5 max-xs:grid-cols-1'>
-          {places.map((place) => (
-            <Link
-              key={place.label}
-              href={place.href}
-              className={[
-                'flex items-center gap-2.5 rounded bg-white px-[18px] py-4 text-[0.93rem]',
-                'transition duration-300 ease-brand',
-                "before:size-1.5 before:shrink-0 before:rounded-full before:bg-sand before:content-['']",
-                'before:transition-[background] before:duration-300 before:ease-brand',
-                'hover:-translate-y-[3px] hover:bg-ink hover:text-cream hover:before:bg-sage',
-                'max-sm:px-[15px] max-sm:py-3.5 max-sm:text-[0.88rem]',
-              ].join(' ')}
-            >
-              {place.label}
-            </Link>
-          ))}
+          {places.map((place) =>
+            place.href ? (
+              <Link key={place.label} href={place.href} className={linkClass}>
+                {place.label}
+              </Link>
+            ) : (
+              <span key={place.label} className={chipClass}>
+                {place.label}
+              </span>
+            ),
+          )}
         </Reveal>
       </Wrap>
     </section>

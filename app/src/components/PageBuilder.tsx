@@ -315,6 +315,7 @@ function renderBlock(block: PageBlock) {
           eyebrow={block.eyebrow}
           title={block.title}
           titleHighlight={block.titleHighlight}
+          titleAfter={block.titleAfter}
           lead={block.lead}
           primaryCta={toCta(block.primaryCta)}
           secondaryCta={toCta(block.secondaryCta)}
@@ -326,6 +327,7 @@ function renderBlock(block: PageBlock) {
         <FactBar
           key={block._key}
           facts={block.facts as { value: string; label: string }[] | undefined}
+          note={block.note}
         />
       );
     }
@@ -419,11 +421,12 @@ function renderBlock(block: PageBlock) {
       );
     }
     case 'regionBlock': {
+      // Een plaats zonder link blijft staan als tekst (de wijken op een stadspagina).
       const places = (
         block.places as Array<{ label?: string; link?: SanityLink }> | undefined
       )
-        ?.map(toLabeledLink)
-        .filter((place): place is { label: string; href: string } => Boolean(place));
+        ?.filter((place): place is { label: string; link?: SanityLink } => Boolean(place?.label))
+        .map((place) => ({ label: place.label, href: resolveHref(place.link) }));
       return (
         <RegionBlock
           key={block._key}
@@ -573,7 +576,7 @@ function renderBlock(block: PageBlock) {
           eyebrow={block.eyebrow}
           title={block.title}
           paragraphs={block.paragraphs}
-          cta={toCta(block.cta)}
+          cta={toCta(block.cta) ?? null}
           image={toImage(block.image, 900, 720)}
         />
       );
@@ -790,11 +793,11 @@ function renderBlock(block: PageBlock) {
           eyebrow={block.eyebrow}
           title={block.title}
           lead={block.lead}
-          items={
+          items={(
             block.items as
-              | Array<{ icon: BlockIconName; title: string; body: string }>
+              | Array<{ icon: BlockIconName; title: string; body: string; cta?: SanityCta }>
               | undefined
-          }
+          )?.map((item) => ({ ...item, cta: toCta(item.cta) }))}
         />
       );
     }

@@ -21,6 +21,8 @@ export type PageHeroProps = {
   eyebrow?: string;
   title?: string;
   titleHighlight?: string;
+  /** Tekst na het gemarkeerde woord, als dat midden in de kop staat. */
+  titleAfter?: string;
   lead?: string;
   primaryCta?: PageHeroCta;
   secondaryCta?: PageHeroCta;
@@ -32,6 +34,7 @@ const DEFAULTS: Required<PageHeroProps> = {
   eyebrow: VERKOOP_HERO.eyebrow,
   title: VERKOOP_HERO.titleBefore,
   titleHighlight: VERKOOP_HERO.titleEm,
+  titleAfter: '',
   lead: VERKOOP_HERO.lead,
   primaryCta: VERKOOP_HERO.primary,
   secondaryCta: VERKOOP_HERO.secondary,
@@ -43,6 +46,7 @@ export function PageHero({
   eyebrow = DEFAULTS.eyebrow,
   title = DEFAULTS.title,
   titleHighlight = DEFAULTS.titleHighlight,
+  titleAfter = DEFAULTS.titleAfter,
   lead = DEFAULTS.lead,
   primaryCta = DEFAULTS.primaryCta,
   secondaryCta = DEFAULTS.secondaryCta,
@@ -102,6 +106,7 @@ export function PageHero({
           {titleHighlight ? (
             <em className='text-sand italic'>{titleHighlight}</em>
           ) : null}
+          {titleAfter}
         </h1>
         <p
           className={[

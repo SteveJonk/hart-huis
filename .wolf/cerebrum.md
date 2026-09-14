@@ -15,6 +15,8 @@
 
 ## Key Learnings
 
+- Turbopack (Next 16 `next build`) vervangt een *ongezette* `process.env.NEXT_PUBLIC_X` niet door een literal — het blijft een runtime-lookup. Gevolg: dead-code-elimination werkt niet, dus een `if (process.env.NEXT_PUBLIC_SENTRY_DSN) import('@sentry/nextjs')` levert nog steeds een async chunk op schijf op. Die wordt alleen nooit opgehaald. Wil je hem écht weg, dan moet het bestand zelf conditioneel zijn.
+
 - **Een nieuw veld op een singleton mag geen naam lenen die al elders bestaat.** `NAVIGATION_QUERY`/`FOOTER_QUERY` filteren op `_id`, dus typegen weet het documenttype niet en projecteert `logo{...}` over élk documenttype met een veld `logo`. Een `logo` op `formGeneralSettings` gaf daardoor een extra union-tak en een typefout in `PageWrapper.tsx`. Vandaar `mailLogo`. (2026-08-27)
 - **De formuliermail heeft een eigen sjabloon:** `app/src/lib/form-mail.ts` (`renderFormMail`). Los van de route omdat een route-bestand alleen route-exports mag hebben en `check:form` het zo kan controleren. Kleuren komen uit Form settings en worden op `#rrggbb` gevalideerd — ze belanden ongeciteerd in een `style=""`. (2026-08-27)
 
@@ -112,6 +114,11 @@
 - **De importroutes geven bij een lege Realworks-feed HTTP 200 mét `ok: false`.** Een planner die alleen naar de HTTP-status kijkt (`curl`, `wget`) noemt zo'n run geslaagd. `cron.mjs` kijkt daarom óók naar `body.ok` en `body.error`.
 - **`tsx` compileert de `scripts/check-*.ts` naar CJS, dus geen top-level `await`.** Zet asynchroon werk (groq-js `evaluate`) in een functie en sluit af met `.then(...).catch(...)` + `process.exit(1)`, zoals `check-form.ts` doet.
 
+
+- **`uploadImage()` in `scripts/seed/shared.ts` zoekt een bestaand asset alleen op `originalFilename`.** Twee verschillende foto's met dezelfde bestandsnaam in verschillende mappen (`verkoop/pagehero.jpg`, `taxatie/pagehero.jpg`) worden dus één asset: de eerste seed wint. Geef nieuwe beelden een paginaspecifieke naam (`haarlem-hero.jpg`), of los het in `uploadImage` op (hash van de inhoud). Controleer met `find public/images -type f | xargs -n1 basename | sort | uniq -d`. (2026-09-14)
+- **Stad-template (`!stad-haarlem.html`) = alleen bestaande blocks.** De CSS is die van `!aankoop.html` plus `stad*`-secties; zie STATUS 14-09-2026 voor de mapping. Een nieuwe stad is een kopie van `src/lib/haarlem-content.ts` + `scripts/seed/haarlem.ts`.
+- **`seo.title` zonder merknaam schrijven.** De site zet er zelf " - Hart & Huis Makelaardij" achter; een design-`<title>` als "Makelaar in Haarlem — Hart & Huis Makelaardij" overnemen geeft de merknaam twee keer (zo staat het nu op /aankoop e.a., zie STATUS open punt 13). (2026-09-14)
+- **Een optionele knop écht weglaten = `null` doorgeven, niet `undefined`.** Blokcomponenten vullen `undefined` met de DEFAULTS van een andere pagina (default parameters); `null` gaat erlangs. `mediaText` doet dat nu in PageBuilder (`toCta(block.cta) ?? null`). Dezelfde valkuil zit in elk blok met een DEFAULTS-cta. (2026-09-14)
 
 ### Laadindicator in de foto-lightbox (2026-09-07)
 - `ObjectGallery` houdt een `Set` van al geladen `src`'en bij (`onLoad`/`onError` van next/image). De spinner verschijnt alleen als de actieve foto er nog niet in staat, dus na terugbladeren nooit meer.
