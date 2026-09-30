@@ -509,3 +509,40 @@ export const VEROUDERD_QUERY = `*[_type == "woning"
     && !(_id in path("drafts.**"))
     && !(status in $blijftOnline)
     && dateTime(_updatedAt) < dateTime($grens)]`;
+
+/**
+ * Tweede stap: een concept van een object dat al zes maanden offline staat
+ * wordt definitief weggegooid, inclusief de foto's en brochure die nergens
+ * anders meer gebruikt worden. Alleen concepten met een `realworksId` (door de
+ * import aangemaakt) en zonder gepubliceerd broertje; handmatig aangemaakte
+ * woningen en verkochte objecten blijven altijd staan. Objecten die nu nog in
+ * de feed zitten (`$inFeed`) worden nooit aangeraakt.
+ */
+export const MAX_CONCEPT_MAANDEN = 6;
+
+/** Concepten die voor deze datum zijn bijgewerkt (lees: offline gezet) mogen weg. */
+export function verwijderingsGrens(nu: Date = new Date()): string {
+  const grens = new Date(nu);
+  grens.setMonth(grens.getMonth() - MAX_CONCEPT_MAANDEN);
+  return grens.toISOString();
+}
+
+export const VERWIJDERBAAR_QUERY = `*[_type == "woning"
+    && _id in path("drafts.**")
+    && defined(realworksId)
+    && !(realworksId in $inFeed)
+    && !(status in $blijftOnline)
+    && dateTime(_updatedAt) < dateTime($grens)
+    && !defined(*[_id == string::split(^._id, "drafts.")[1]][0]._id)]{
+  _id,
+  adres,
+  "assets": [...fotos[].asset._ref, brochure.asset._ref]
+}`;
+
+/**
+ * Van de assets van te verwijderen documenten: welke worden door niets anders
+ * meer gebruikt. Assets worden op bestandsnaam hergebruikt, dus dit mag nooit
+ * blind gebeuren.
+ */
+export const WEESASSETS_QUERY = `*[_id in $assetIds
+    && count(*[references(^._id) && !(_id in $docIds)]) == 0]._id`;

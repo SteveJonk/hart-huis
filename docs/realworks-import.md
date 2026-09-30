@@ -113,12 +113,43 @@ bestaan. De redactie kan het dus nakijken of terugzetten, en niets gaat
 verloren. De drempel staat in `MAX_STILSTAND_MAANDEN` en de statuslijst in
 `BLIJFT_ONLINE`, beide in `src/lib/realworks.ts`.
 
-Twee dingen om te weten:
+### Oude concepten en hun bestanden worden definitief weggegooid
 
-- Met `?dryRun=1` krijg je te zien wát er offline zou gaan, zonder dat het
-  gebeurt.
-- Met `?limit=` wordt er niets offline gehaald: er is dan maar een deel van de
-  feed bijgewerkt, dus `_updatedAt` zegt niets meer.
+Een concept dat hierna nog **zes maanden** blijft liggen (`MAX_CONCEPT_MAANDEN`
+in `src/lib/realworks.ts`) gaat met de volgende volledige run echt weg, dus
+ongeveer acht maanden nadat het object uit Realworks verdween. Het gaat alleen
+om concepten die:
+
+- een `realworksId` hebben (door de import aangemaakt — handmatig aangemaakte
+  woningen blijven altijd staan);
+- geen gepubliceerd broertje hebben en niet meer in de feed zitten;
+- niet `verkocht` of `voorbehoud` zijn.
+
+De klok loopt vanaf het moment dat het concept is aangemaakt, dus vanaf het
+offline halen; opent de redactie het concept en slaat hij het op, dan begint de
+termijn opnieuw.
+
+**Foto's en brochure gaan mee, maar alleen als niets anders ze gebruikt.** De
+import hergebruikt assets op bestandsnaam, dus een foto kan door meerdere
+documenten worden gedeeld. Per asset wordt nagekeken of er buiten de te
+verwijderen documenten nog een verwijzing naar bestaat; zo ja, dan blijft hij
+staan. De documenten worden eerst weggegooid, daarna de assets (Sanity weigert
+een asset zolang er nog naar verwezen wordt). Lukt een asset niet, dan komt er
+een waarschuwing in het antwoord en in de cron-log.
+
+Komt een object dat offline was weer terug in de feed, dan wordt het concept
+onder het gepubliceerde id teruggezet en het concept weggegooid, zodat het
+object ook weer online staat.
+
+Drie dingen om te weten:
+
+- Met `?dryRun=1` krijg je te zien wát er offline zou gaan, wat er definitief
+  zou verdwijnen (`verwijderd`, `verwijderdeObjecten`) en hoeveel bestanden
+  (`assetsVerwijderd`), zonder dat het gebeurt.
+- Met `?limit=` wordt er niets offline gehaald of verwijderd: er is dan maar een
+  deel van de feed bijgewerkt, dus `_updatedAt` zegt niets meer.
+- Weggooien kan niet ongedaan worden gemaakt. Draai na het uitrollen eerst een
+  `?dryRun=1` en loop de lijst na.
 
 - **plaatsnaam** — de feed schrijft in kapitalen (`SPAARNDAM`); de import maakt
   er "Spaarndam" van.
@@ -175,10 +206,9 @@ curl -X POST -H "x-scraper-secret: $FUNDA_SCRAPER_SECRET" \
 
 ## Wat de import (nog) niet doet
 
-- **Opruimen.** Een object dat uit de feed verdwijnt (verkocht en afgemeld)
-  blijft in Sanity staan. Dat is bewust: de site toont verkochte woningen. Wil
-  je ze wél laten verdwijnen, dan moet er een stap bij die de woningen zonder
-  feed-match op `verkocht` zet of weggooit.
+- **Verkochte objecten opruimen.** Die blijven bewust in Sanity staan (de site
+  toont verkochte woningen), ook als ze uit de feed verdwijnen. Alleen
+  niet-verkochte objecten worden offline gehaald en later weggegooid.
 - **Pagineren.** Er wordt één pagina opgehaald. Groeit het aanbod voorbij wat
   Realworks in één antwoord kwijt kan, dan waarschuwt de route erover.
 - **De zes mock-objecten uit `npm run seed:objecten`** hebben verzonnen

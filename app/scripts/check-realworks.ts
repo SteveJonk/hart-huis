@@ -23,7 +23,10 @@ import {
   slugify,
   toWoning,
   VEROUDERD_QUERY,
+  VERWIJDERBAAR_QUERY,
   verouderingsGrens,
+  verwijderingsGrens,
+  WEESASSETS_QUERY,
   vrijeKey,
   type BestaandeWoning,
   type MappedWoning,
@@ -201,8 +204,62 @@ async function checkVerouderdQuery() {
   );
 }
 
+// Concepten die zes maanden offline staan gaan definitief weg, met de assets
+// die niemand anders gebruikt.
+async function checkVerwijderbaarQuery() {
+  const nu = new Date('2026-09-30T10:00:00.000Z');
+  assert.equal(verwijderingsGrens(nu), '2026-03-30T10:00:00.000Z');
+
+  const concept = (id: string, extra: Record<string, unknown> = {}) => ({
+    _id: `drafts.${id}`,
+    _type: 'woning',
+    adres: id,
+    status: 'beschikbaar',
+    realworksId: 1,
+    _updatedAt: '2026-01-01T10:00:00Z',
+    fotos: [{ asset: { _ref: `img-${id}` } }, { asset: { _ref: 'img-gedeeld' } }],
+    ...extra,
+  });
+  const dataset = [
+    concept('oud'),
+    concept('vers', { _updatedAt: '2026-08-01T10:00:00Z' }),
+    concept('verkocht', { status: 'verkocht' }),
+    concept('handmatig', { realworksId: undefined }),
+    concept('in-feed', { realworksId: 99 }),
+    concept('heeft-publicatie'),
+    { _id: 'heeft-publicatie', _type: 'woning', _updatedAt: '2026-09-01T10:00:00Z' },
+    { _id: 'img-oud', _type: 'sanity.imageAsset' },
+    { _id: 'img-gedeeld', _type: 'sanity.imageAsset' },
+    { _id: 'img-heeft-publicatie', _type: 'sanity.imageAsset' },
+    // verwijst naar het gedeelde plaatje, dus dat moet blijven staan
+    { _id: 'andere-woning', _type: 'woning', fotos: [{ asset: { _ref: 'img-gedeeld' } }] },
+  ];
+
+  const gevonden = (await (
+    await evaluate(parse(VERWIJDERBAAR_QUERY), {
+      dataset,
+      params: { blijftOnline: [...BLIJFT_ONLINE], inFeed: [99], grens: verwijderingsGrens(nu) },
+    })
+  ).get()) as Array<{ _id: string; assets: string[] }>;
+
+  assert.deepEqual(
+    gevonden.map((document) => document._id),
+    ['drafts.oud'],
+    'alleen een oud concept uit de import, niet verkocht en niet meer in de feed',
+  );
+
+  const weesassets = await (
+    await evaluate(parse(WEESASSETS_QUERY), {
+      dataset,
+      params: { assetIds: gevonden[0].assets, docIds: gevonden.map((document) => document._id) },
+    })
+  ).get();
+  assert.deepEqual(weesassets, ['img-oud'], 'een asset dat nog ergens anders in gebruik is blijft staan');
+}
+
 // tsx compileert deze scripts naar CJS, dus geen top-level await.
 checkVerouderdQuery()
+  .then(checkVerwijderbaarQuery)
   .then(() =>
     console.log(`✓ ${feed.resultaten.length} objecten gemapt zonder verrassingen`),
   )
