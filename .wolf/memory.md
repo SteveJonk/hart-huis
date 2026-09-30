@@ -503,3 +503,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 15:19 | /haarlem stadspagina: design naar example-designs/!stad-haarlem.html, content + seed:haarlem, pageHero/factBar/iconCards/regionBlock/mediaText optioneel uitgebreid, typegen | app/src/lib/haarlem-content.ts, app/scripts/seed/haarlem.ts, blocks + schemaTypes | tsc app+studio, eslint groen; nog niet geseed | ~70k |
+
+## Session: 2026-09-30 21:58
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 22:08 | Realworks-import: concepten >6 mnd offline definitief verwijderen + weesassets opruimen; concept-terugkeer fix | app/src/lib/realworks.ts, app/src/app/api/import-realworks/route.ts, app/scripts/check-realworks.ts, docs/realworks-import.md | tsc/eslint/check:realworks groen | ~9000 |

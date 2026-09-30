@@ -7,9 +7,11 @@
  * document, dan worden de ontbrekende erachter aangevuld. Ook het redactionele
  * `makelaar`-veld blijft staan — dat zit niet in de feed.
  *
- * Aan het eind gaan objecten die niet verkocht zijn en al twee maanden niet
- * meer in de feed zaten offline (het gepubliceerde document wordt verwijderd,
- * het concept blijft staan).
+ * Aan het eind gaan objecten die niet verkocht zijn en al twee weken niet
+ * meer in de feed zaten offline (verkochte na een maand) (het gepubliceerde document wordt verwijderd,
+ * het concept blijft staan). Een concept dat daarna nog eens zes maanden
+ * blijft liggen wordt definitief weggegooid, samen met de foto's en brochure
+ * die geen enkel ander document meer gebruikt.
  *
  * Aanroepen:
  *   - dagelijks door de Vercel-cron uit `vercel.json` (`Authorization: Bearer $CRON_SECRET`)
@@ -22,12 +24,17 @@
 import { NextResponse } from 'next/server';
 import { recordCronRun } from '@/lib/cron-log';
 import {
-  BLIJFT_ONLINE,
   planMedia,
   REALWORKS_URL,
   toWoning,
+  VERWIJDERBAAR_QUERY,
+  beschermVerkocht,
   VEROUDERD_QUERY,
+  VERKOCHT_STATUSSEN,
   verouderingsGrens,
+  verouderingsGrensVerkocht,
+  verwijderingsGrens,
+  WEESASSETS_QUERY,
   vrijeKey,
   zonderBestandsnaam,
   type BestaandeWoning,
@@ -130,11 +137,16 @@ async function importObjects(objects: MappedWoning[]) {
       "fotos": fotos[]{..., "bestandsnaam": asset->originalFilename}
     }`,
   );
-  const bestaandByRealworksId = new Map(
-    bestaand
-      .filter((doc) => typeof doc.realworksId === 'number')
-      .map((doc) => [doc.realworksId as number, doc]),
-  );
+  // Een gepubliceerd document wint van een concept. Is er alleen een concept
+  // (het object was offline gehaald en staat weer in de feed), dan wordt het
+  // onder het gepubliceerde id teruggezet en het concept weggegooid.
+  const bestaandByRealworksId = new Map<number, BestaandeWoning>();
+  for (const doc of [...bestaand].sort(
+    (a, b) => Number(a._id.startsWith('drafts.')) - Number(b._id.startsWith('drafts.')),
+  )) {
+    if (typeof doc.realworksId !== 'number' || bestaandByRealworksId.has(doc.realworksId)) continue;
+    bestaandByRealworksId.set(doc.realworksId, doc);
+  }
 
   const plannen = objects.map((object) =>
     planMedia(object, bestaandByRealworksId.get(object.realworksId)),
@@ -233,14 +245,17 @@ async function importObjects(objects: MappedWoning[]) {
     // eroverheen. De media zijn de uitzondering — die worden hierboven
     // hergebruikt zodat ze niet elke run opnieuw binnenkomen — en de
     // makelaarskaart, die de redactie zelf vult en die niet in de feed zit.
-    await client.createOrReplace({
-      _id: bestaandDoc?._id ?? `woning-${object.slug}`,
+    const isConcept = Boolean(bestaandDoc?._id.startsWith('drafts.'));
+    const tx = client.transaction().createOrReplace({
+      _id: bestaandDoc ? bestaandDoc._id.replace(/^drafts\./, '') : `woning-${object.slug}`,
       _type: 'woning',
       ...object.fields,
       ...(fotos.length > 0 ? { fotos } : {}),
       ...(brochure ? { brochure } : {}),
       ...(bestaandDoc?.makelaar ? { makelaar: bestaandDoc.makelaar } : {}),
     });
+    if (isConcept && bestaandDoc) tx.delete(bestaandDoc._id);
+    await tx.commit();
     geschreven += 1;
   }
 
@@ -254,15 +269,25 @@ type VerouderdObject = Record<string, unknown> & {
 };
 
 /**
- * Objecten die niet verkocht zijn en al twee maanden niet meer zijn bijgewerkt.
- * Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt`
+ * Objecten die niet meer in de feed zitten: niet-verkocht na twee weken,
+ * verkocht na een maand. Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt`
  * betekent: dit object zat er al die tijd niet meer in.
  */
-function verouderdeObjecten(client: ReturnType<typeof getWriteClient>) {
-  return client.fetch<VerouderdObject[]>(VEROUDERD_QUERY, {
-    blijftOnline: [...BLIJFT_ONLINE],
+async function verouderdeObjecten(client: ReturnType<typeof getWriteClient>) {
+  const params = {
+    verkocht: [...VERKOCHT_STATUSSEN],
     grens: verouderingsGrens(),
-  });
+    grensVerkocht: verouderingsGrensVerkocht(),
+  };
+  const [kandidaten, aantalVerkochtOnline] = await Promise.all([
+    client.fetch<VerouderdObject[]>(VEROUDERD_QUERY, params),
+    client.fetch<number>(
+      `count(*[_type == "woning" && !(_id in path("drafts.**")) && status in $verkocht])`,
+      params,
+    ),
+  ]);
+  // Hooguit zoveel verkochte objecten offline dat er minstens drie overblijven.
+  return beschermVerkocht(kandidaten, aantalVerkochtOnline);
 }
 
 /**
@@ -288,15 +313,86 @@ async function depubliceer(
   await tx.commit({ visibility: 'async' });
 }
 
-async function ruimOp() {
+type TeVerwijderen = {
+  documenten: Array<{ _id: string; adres?: string }>;
+  assetIds: string[];
+};
+
+/**
+ * Concepten die lang genoeg offline staan, plus de assets die daarna door
+ * niets meer gebruikt worden. Wordt ook voor de testrun gebruikt.
+ */
+async function teVerwijderen(
+  client: ReturnType<typeof getWriteClient>,
+  inFeed: number[],
+): Promise<TeVerwijderen> {
+  const documenten = await client.fetch<
+    Array<{ _id: string; adres?: string; assets?: Array<string | null> }>
+  >(VERWIJDERBAAR_QUERY, {
+    inFeed,
+    grens: verwijderingsGrens(),
+  });
+  const kandidaten = [
+    ...new Set(documenten.flatMap((document) => document.assets ?? []).filter(Boolean)),
+  ] as string[];
+  const assetIds =
+    kandidaten.length === 0
+      ? []
+      : await client.fetch<string[]>(WEESASSETS_QUERY, {
+          assetIds: kandidaten,
+          docIds: documenten.map((document) => document._id),
+        });
+  return {
+    documenten: documenten.map(({ _id, adres }) => ({ _id, adres })),
+    assetIds,
+  };
+}
+
+/**
+ * Eerst de documenten (en wachten tot dat verwerkt is), daarna pas de assets:
+ * Sanity weigert een asset weg te gooien zolang er nog naar verwezen wordt.
+ */
+async function verwijderConcepten(
+  client: ReturnType<typeof getWriteClient>,
+  { documenten, assetIds }: TeVerwijderen,
+) {
+  const warnings: string[] = [];
+  if (documenten.length === 0) return { assetsVerwijderd: 0, warnings };
+
+  const docs = client.transaction();
+  for (const document of documenten) docs.delete(document._id);
+  await docs.commit({ visibility: 'sync' });
+
+  let assetsVerwijderd = 0;
+  for (const assetId of assetIds) {
+    try {
+      await client.delete(assetId);
+      assetsVerwijderd += 1;
+    } catch (error) {
+      warnings.push(
+        `Kon ${assetId} niet weggooien: ${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
+  }
+  return { assetsVerwijderd, warnings };
+}
+
+async function ruimOp(inFeed: number[]) {
   const client = getWriteClient();
   const verouderd = await verouderdeObjecten(client);
   await depubliceer(client, verouderd);
+
+  const weg = await teVerwijderen(client, inFeed);
+  const { assetsVerwijderd, warnings } = await verwijderConcepten(client, weg);
   return {
     gedepubliceerd: verouderd.length,
     gedepubliceerdeObjecten: verouderd.map(
       (document) => (document.adres as string) ?? document._id,
     ),
+    verwijderd: weg.documenten.length,
+    verwijderdeObjecten: weg.documenten.map((document) => document.adres ?? document._id),
+    assetsVerwijderd,
+    warnings,
   };
 }
 
@@ -356,9 +452,15 @@ async function handle(request: Request) {
       // er een schrijftoken is; zonder token blijft de rest van de testrun wel
       // werken.
       let teDepubliceren: string[] | undefined;
+      let teWissen: TeVerwijderen | undefined;
       try {
-        teDepubliceren = (await verouderdeObjecten(getWriteClient())).map(
+        const client = getWriteClient();
+        teDepubliceren = (await verouderdeObjecten(client)).map(
           (document) => (document.adres as string) ?? document._id,
+        );
+        teWissen = await teVerwijderen(
+          client,
+          resultaten.map((object) => toWoning(object).realworksId),
         );
       } catch (error) {
         warnings.push(
@@ -384,6 +486,13 @@ async function handle(request: Request) {
           ...(teDepubliceren
             ? { gedepubliceerd: teDepubliceren.length, gedepubliceerdeObjecten: teDepubliceren }
             : {}),
+          ...(teWissen
+            ? {
+                verwijderd: teWissen.documenten.length,
+                verwijderdeObjecten: teWissen.documenten.map((d) => d.adres ?? d._id),
+                assetsVerwijderd: teWissen.assetIds.length,
+              }
+            : {}),
         },
         { headers: cors },
       );
@@ -394,8 +503,16 @@ async function handle(request: Request) {
     // Alleen na een volledige run: bij ?limit= is maar een deel van de feed
     // aangeraakt, en dan zegt `_updatedAt` niets over wat er nog te koop staat.
     const opgeruimd = limit
-      ? { gedepubliceerd: 0, gedepubliceerdeObjecten: [] as string[] }
-      : await ruimOp();
+      ? {
+          gedepubliceerd: 0,
+          gedepubliceerdeObjecten: [] as string[],
+          verwijderd: 0,
+          verwijderdeObjecten: [] as string[],
+          assetsVerwijderd: 0,
+          warnings: [] as string[],
+        }
+      : await ruimOp(objecten.map((object) => object.realworksId));
+    const { warnings: opruimWarnings, ...opgeruimdZonderWarnings } = opgeruimd;
     if (limit) {
       warnings.push(
         'Met ?limit= is er niets offline gehaald: er is maar een deel van de feed bijgewerkt.',
@@ -406,11 +523,17 @@ async function handle(request: Request) {
       ok: true,
       message:
         `${resultaten.length} objecten opgehaald: ${written.geschreven} weggeschreven ` +
-        `(${written.nieuw} nieuw), ${opgeruimd.gedepubliceerd} offline gehaald.`,
-      warnings: [...warnings, ...written.warnings],
+        `(${written.nieuw} nieuw), ${opgeruimd.gedepubliceerd} offline gehaald, ` +
+        `${opgeruimd.verwijderd} definitief verwijderd (${opgeruimd.assetsVerwijderd} bestanden).`,
+      warnings: [...warnings, ...written.warnings, ...opruimWarnings],
     });
     return NextResponse.json(
-      { ...summary, ...written, ...opgeruimd, warnings: [...warnings, ...written.warnings] },
+      {
+        ...summary,
+        ...written,
+        ...opgeruimdZonderWarnings,
+        warnings: [...warnings, ...written.warnings, ...opruimWarnings],
+      },
       { headers: cors },
     );
   } catch (error) {

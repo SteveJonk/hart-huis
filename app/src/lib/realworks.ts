@@ -486,18 +486,28 @@ export function vrijeKey(basis: string, gebruikt: Set<string>) {
 
 /**
  * Objecten die uit de feed verdwijnen blijven anders eeuwig op de site staan.
- * Verkochte objecten mogen blijven — die zijn het portfolio. Een object dat
- * niet verkocht is en al twee maanden niet meer is bijgewerkt (lees: al twee
- * maanden niet meer in de feed zat) is van de markt gehaald en gaat offline.
+ * Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt`
+ * betekent: dit object zat al die tijd niet meer in de feed.
+ *
+ * - Niet verkocht: na twee weken weg uit de feed gaat het offline (van de markt).
+ * - Verkocht (of onder voorbehoud): het portfolio mag langer blijven, een maand.
  */
-export const BLIJFT_ONLINE = ['verkocht', 'voorbehoud'] as const;
+export const VERKOCHT_STATUSSEN = ['verkocht', 'voorbehoud'] as const;
 
-export const MAX_STILSTAND_MAANDEN = 2;
+export const MAX_STILSTAND_DAGEN = 14;
+export const MAX_STILSTAND_VERKOCHT_MAANDEN = 1;
 
-/** Alles wat ouder is dan deze datum is te lang blijven staan. */
+/** Niet-verkochte objecten die voor deze datum zijn bijgewerkt gaan offline. */
 export function verouderingsGrens(nu: Date = new Date()): string {
   const grens = new Date(nu);
-  grens.setMonth(grens.getMonth() - MAX_STILSTAND_MAANDEN);
+  grens.setDate(grens.getDate() - MAX_STILSTAND_DAGEN);
+  return grens.toISOString();
+}
+
+/** Hetzelfde voor verkochte objecten. */
+export function verouderingsGrensVerkocht(nu: Date = new Date()): string {
+  const grens = new Date(nu);
+  grens.setMonth(grens.getMonth() - MAX_STILSTAND_VERKOCHT_MAANDEN);
   return grens.toISOString();
 }
 
@@ -507,5 +517,70 @@ export function verouderingsGrens(nu: Date = new Date()): string {
  */
 export const VEROUDERD_QUERY = `*[_type == "woning"
     && !(_id in path("drafts.**"))
-    && !(status in $blijftOnline)
-    && dateTime(_updatedAt) < dateTime($grens)]`;
+    && (
+      (status in $verkocht && dateTime(_updatedAt) < dateTime($grensVerkocht))
+      || (!(status in $verkocht) && dateTime(_updatedAt) < dateTime($grens))
+    )]`;
+
+/**
+ * Er blijven minstens zoveel verkochte objecten online staan: een portfolio met
+ * één of twee woningen ziet er leger uit dan helemaal geen portfolio.
+ */
+export const MIN_VERKOCHT_ONLINE = 3;
+
+/**
+ * Haalt uit de kandidaten om offline te halen zoveel verkochte objecten weg
+ * (de nieuwste eerst) dat er na afloop minstens `MIN_VERKOCHT_ONLINE` online
+ * blijven. `aantalVerkochtOnline` is het aantal gepubliceerde verkochte
+ * objecten van vóór het opruimen. Niet-verkochte objecten blijven onaangeroerd.
+ */
+export function beschermVerkocht<T extends { status?: unknown; _updatedAt?: string }>(
+  kandidaten: T[],
+  aantalVerkochtOnline: number,
+  verkocht: readonly string[] = VERKOCHT_STATUSSEN,
+): T[] {
+  const isVerkocht = (document: T) => verkocht.includes(document.status as string);
+  const verkochtKandidaten = kandidaten
+    .filter(isVerkocht)
+    .sort((a, b) => (a._updatedAt ?? '').localeCompare(b._updatedAt ?? ''));
+  const mogenWeg = new Set(
+    verkochtKandidaten.slice(0, Math.max(0, aantalVerkochtOnline - MIN_VERKOCHT_ONLINE)),
+  );
+  return kandidaten.filter((document) => !isVerkocht(document) || mogenWeg.has(document));
+}
+
+/**
+ * Tweede stap: een concept van een object dat al zes maanden offline staat
+ * wordt definitief weggegooid, inclusief de foto's en brochure die nergens
+ * anders meer gebruikt worden. Alleen concepten met een `realworksId` (door de
+ * import aangemaakt) en zonder gepubliceerd broertje; handmatig aangemaakte
+ * woningen blijven altijd staan. Verkocht of niet maakt hier niet uit. Objecten die nu nog in
+ * de feed zitten (`$inFeed`) worden nooit aangeraakt.
+ */
+export const MAX_CONCEPT_MAANDEN = 6;
+
+/** Concepten die voor deze datum zijn bijgewerkt (lees: offline gezet) mogen weg. */
+export function verwijderingsGrens(nu: Date = new Date()): string {
+  const grens = new Date(nu);
+  grens.setMonth(grens.getMonth() - MAX_CONCEPT_MAANDEN);
+  return grens.toISOString();
+}
+
+export const VERWIJDERBAAR_QUERY = `*[_type == "woning"
+    && _id in path("drafts.**")
+    && defined(realworksId)
+    && !(realworksId in $inFeed)
+    && dateTime(_updatedAt) < dateTime($grens)
+    && !defined(*[_id == string::split(^._id, "drafts.")[1]][0]._id)]{
+  _id,
+  adres,
+  "assets": [...fotos[].asset._ref, brochure.asset._ref]
+}`;
+
+/**
+ * Van de assets van te verwijderen documenten: welke worden door niets anders
+ * meer gebruikt. Assets worden op bestandsnaam hergebruikt, dus dit mag nooit
+ * blind gebeuren.
+ */
+export const WEESASSETS_QUERY = `*[_id in $assetIds
+    && count(*[references(^._id) && !(_id in $docIds)]) == 0]._id`;

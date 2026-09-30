@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 2862481,
-    "total_reads": 500,
+    "total_tokens_estimated": 2886565,
+    "total_reads": 506,
     "total_writes": 0,
-    "total_sessions": 100,
-    "anatomy_hits": 335,
+    "total_sessions": 101,
+    "anatomy_hits": 341,
     "anatomy_misses": 159,
     "repeated_reads_blocked": 102,
-    "estimated_savings_vs_bare_cli": 447521,
-    "real_input_tokens": 29891,
-    "real_output_tokens": 2994236,
-    "real_cache_read_tokens": 875993290,
-    "real_cache_creation_tokens": 13556339,
-    "real_api_calls": 5280
+    "estimated_savings_vs_bare_cli": 448721,
+    "real_input_tokens": 30057,
+    "real_output_tokens": 3043390,
+    "real_cache_read_tokens": 882328814,
+    "real_cache_creation_tokens": 13871348,
+    "real_api_calls": 5355
   },
   "sessions": [
     {
@@ -4575,6 +4575,186 @@
         "cache_read_input_tokens": 20699165,
         "cache_creation_input_tokens": 356453,
         "api_calls": 117
+      }
+    },
+    {
+      "id": "session-2026-09-30-2158",
+      "agent": "claude",
+      "started": "2026-09-30T21:58:37.238Z",
+      "ended": "2026-09-30T22:00:12.312Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 4014,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 4014,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 8,
+        "output_tokens": 1227,
+        "cache_read_input_tokens": 267094,
+        "cache_creation_input_tokens": 42291,
+        "api_calls": 4
+      }
+    },
+    {
+      "id": "session-2026-09-30-2158",
+      "agent": "claude",
+      "started": "2026-09-30T21:58:37.238Z",
+      "ended": "2026-09-30T22:00:25.370Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 4014,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 4014,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 16,
+        "output_tokens": 1895,
+        "cache_read_input_tokens": 519929,
+        "cache_creation_input_tokens": 43747,
+        "api_calls": 7
+      }
+    },
+    {
+      "id": "session-2026-09-30-2158",
+      "agent": "claude",
+      "started": "2026-09-30T21:58:37.238Z",
+      "ended": "2026-09-30T22:03:42.700Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 4014,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 4014,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 18,
+        "output_tokens": 3005,
+        "cache_read_input_tokens": 605279,
+        "cache_creation_input_tokens": 43944,
+        "api_calls": 8
+      }
+    },
+    {
+      "id": "session-2026-09-30-2158",
+      "agent": "claude",
+      "started": "2026-09-30T21:58:37.238Z",
+      "ended": "2026-09-30T22:03:49.770Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 4014,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 4014,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 24,
+        "output_tokens": 3341,
+        "cache_read_input_tokens": 777546,
+        "cache_creation_input_tokens": 45458,
+        "api_calls": 10
+      }
+    },
+    {
+      "id": "session-2026-09-30-2158",
+      "agent": "claude",
+      "started": "2026-09-30T21:58:37.238Z",
+      "ended": "2026-09-30T22:08:23.972Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 4014,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 4014,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 44,
+        "output_tokens": 16363,
+        "cache_read_input_tokens": 1746708,
+        "cache_creation_input_tokens": 65318,
+        "api_calls": 20
+      }
+    },
+    {
+      "id": "session-2026-09-30-2158",
+      "agent": "claude",
+      "started": "2026-09-30T21:58:37.238Z",
+      "ended": "2026-09-30T22:12:03.017Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 4014,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 4014,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 56,
+        "output_tokens": 23323,
+        "cache_read_input_tokens": 2418968,
+        "cache_creation_input_tokens": 74251,
+        "api_calls": 26
       }
     }
   ],

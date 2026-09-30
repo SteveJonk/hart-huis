@@ -16,14 +16,19 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  BLIJFT_ONLINE,
   label,
   planMedia,
   sentence,
   slugify,
   toWoning,
+  beschermVerkocht,
   VEROUDERD_QUERY,
+  VERKOCHT_STATUSSEN,
+  VERWIJDERBAAR_QUERY,
   verouderingsGrens,
+  verouderingsGrensVerkocht,
+  verwijderingsGrens,
+  WEESASSETS_QUERY,
   vrijeKey,
   type BestaandeWoning,
   type MappedWoning,
@@ -151,13 +156,14 @@ assert.equal(vrijeKey('1-0', gebruikt), '1-0-2');
 assert.equal(vrijeKey('1-0', gebruikt), '1-0-3');
 assert.equal(vrijeKey('1-2', gebruikt), '1-2');
 
-// De opruimgrens ligt twee maanden terug, en verkochte objecten blijven staan.
-assert.equal(verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')), '2026-06-25T10:00:00.000Z');
-assert.equal(verouderingsGrens(new Date('2026-01-15T10:00:00.000Z')), '2025-11-15T10:00:00.000Z');
-assert.deepEqual([...BLIJFT_ONLINE].sort(), ['verkocht', 'voorbehoud']);
+// De opruimgrens ligt twee weken terug, voor verkochte objecten een maand.
+assert.equal(verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')), '2026-08-11T10:00:00.000Z');
+assert.equal(verouderingsGrens(new Date('2026-01-05T10:00:00.000Z')), '2025-12-22T10:00:00.000Z');
+assert.equal(verouderingsGrensVerkocht(new Date('2026-08-25T10:00:00.000Z')), '2026-07-25T10:00:00.000Z');
+assert.deepEqual([...VERKOCHT_STATUSSEN].sort(), ['verkocht', 'voorbehoud']);
 
 // Elke status uit de mapping is er één die de opruimquery kent; komt er een
-// nieuwe bij, dan moet BLIJFT_ONLINE opnieuw langs.
+// nieuwe bij, dan moet VERKOCHT_STATUSSEN opnieuw langs.
 const statussen = new Set(feed.resultaten.map((object) => toWoning(object).fields.status));
 assert.ok(
   [...statussen].every((status) =>
@@ -177,9 +183,10 @@ async function checkVerouderdQuery() {
   });
   const dataset = [
     woning('te-koop-vers', 'beschikbaar', '2026-08-20T10:00:00Z'),
-    woning('te-koop-oud', 'beschikbaar', '2026-05-01T10:00:00Z'),
-    woning('verkocht-oud', 'verkocht', '2026-01-01T10:00:00Z'),
-    woning('voorbehoud-oud', 'voorbehoud', '2026-01-01T10:00:00Z'),
+    woning('te-koop-oud', 'beschikbaar', '2026-08-01T10:00:00Z'),
+    woning('verkocht-vers', 'verkocht', '2026-08-01T10:00:00Z'),
+    woning('verkocht-oud', 'verkocht', '2026-06-01T10:00:00Z'),
+    woning('voorbehoud-oud', 'voorbehoud', '2026-06-01T10:00:00Z'),
     { ...woning('concept-oud', 'beschikbaar', '2026-01-01T10:00:00Z'), _id: 'drafts.te-koop-oud' },
     { _id: 'pagina', _type: 'page', _updatedAt: '2026-01-01T10:00:00Z' },
   ];
@@ -188,21 +195,100 @@ async function checkVerouderdQuery() {
     await evaluate(parse(VEROUDERD_QUERY), {
       dataset,
       params: {
-        blijftOnline: [...BLIJFT_ONLINE],
+        verkocht: [...VERKOCHT_STATUSSEN],
         grens: verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')),
+        grensVerkocht: verouderingsGrensVerkocht(new Date('2026-08-25T10:00:00.000Z')),
       },
     })
   ).get();
 
   assert.deepEqual(
     (gevonden as Array<{ _id: string }>).map((document) => document._id),
-    ['te-koop-oud'],
-    'alleen een niet-verkocht object dat twee maanden stilstaat gaat offline',
+    ['te-koop-oud', 'verkocht-oud', 'voorbehoud-oud'],
+    'niet-verkocht gaat na twee weken offline, verkocht na een maand',
   );
+}
+
+// Concepten die zes maanden offline staan gaan definitief weg, met de assets
+// die niemand anders gebruikt.
+async function checkVerwijderbaarQuery() {
+  const nu = new Date('2026-09-30T10:00:00.000Z');
+  assert.equal(verwijderingsGrens(nu), '2026-03-30T10:00:00.000Z');
+
+  const concept = (id: string, extra: Record<string, unknown> = {}) => ({
+    _id: `drafts.${id}`,
+    _type: 'woning',
+    adres: id,
+    status: 'beschikbaar',
+    realworksId: 1,
+    _updatedAt: '2026-01-01T10:00:00Z',
+    fotos: [{ asset: { _ref: `img-${id}` } }, { asset: { _ref: 'img-gedeeld' } }],
+    ...extra,
+  });
+  const dataset = [
+    concept('oud'),
+    concept('vers', { _updatedAt: '2026-08-01T10:00:00Z' }),
+    concept('verkocht', { status: 'verkocht' }),
+    concept('verkocht-vers', { status: 'verkocht', _updatedAt: '2026-08-01T10:00:00Z' }),
+    concept('handmatig', { realworksId: undefined }),
+    concept('in-feed', { realworksId: 99 }),
+    concept('heeft-publicatie'),
+    { _id: 'heeft-publicatie', _type: 'woning', _updatedAt: '2026-09-01T10:00:00Z' },
+    { _id: 'img-oud', _type: 'sanity.imageAsset' },
+    { _id: 'img-gedeeld', _type: 'sanity.imageAsset' },
+    { _id: 'img-heeft-publicatie', _type: 'sanity.imageAsset' },
+    // verwijst naar het gedeelde plaatje, dus dat moet blijven staan
+    { _id: 'andere-woning', _type: 'woning', fotos: [{ asset: { _ref: 'img-gedeeld' } }] },
+  ];
+
+  const gevonden = (await (
+    await evaluate(parse(VERWIJDERBAAR_QUERY), {
+      dataset,
+      params: { inFeed: [99], grens: verwijderingsGrens(nu) },
+    })
+  ).get()) as Array<{ _id: string; assets: string[] }>;
+
+  assert.deepEqual(
+    gevonden.map((document) => document._id),
+    ['drafts.oud', 'drafts.verkocht'],
+    'alleen een oud concept uit de import dat niet meer in de feed zit, verkocht of niet',
+  );
+
+  const weesassets = await (
+    await evaluate(parse(WEESASSETS_QUERY), {
+      dataset,
+      params: { assetIds: gevonden[0].assets, docIds: gevonden.map((document) => document._id) },
+    })
+  ).get();
+  assert.deepEqual(weesassets, ['img-oud'], 'een asset dat nog ergens anders in gebruik is blijft staan');
+}
+
+// Er blijven minstens drie verkochte objecten online; de oudste gaan eerst.
+function checkBeschermVerkocht() {
+  const v = (id: string, updatedAt: string) => ({ _id: id, status: 'verkocht', _updatedAt: updatedAt });
+  const k = { _id: 'te-koop', status: 'beschikbaar', _updatedAt: '2026-01-01T00:00:00Z' };
+  const ids = (lijst: Array<{ _id: string }>) => lijst.map((document) => document._id);
+
+  const drie = [v('a', '2026-01-01T00:00:00Z'), v('b', '2026-02-01T00:00:00Z'), v('c', '2026-03-01T00:00:00Z')];
+  assert.deepEqual(ids(beschermVerkocht([...drie, k], 3)), ['te-koop'], 'bij drie of minder blijft alles staan');
+  assert.deepEqual(ids(beschermVerkocht([], 2)), []);
+
+  const vijf = [...drie, v('d', '2026-04-01T00:00:00Z'), v('e', '2026-05-01T00:00:00Z')];
+  assert.deepEqual(
+    ids(beschermVerkocht([...vijf].reverse(), 5)).sort(),
+    ['a', 'b'],
+    'van vijf gepubliceerde gaan de twee oudste weg, de nieuwste drie blijven',
+  );
+  // 4 online, waarvan 2 kandidaat: er mag er maar één weg.
+  assert.deepEqual(ids(beschermVerkocht([drie[0], drie[1]], 4)), ['a']);
+  // Wat niet verkocht is, is nooit beschermd.
+  assert.deepEqual(ids(beschermVerkocht([k], 1)), ['te-koop']);
 }
 
 // tsx compileert deze scripts naar CJS, dus geen top-level await.
 checkVerouderdQuery()
+  .then(checkVerwijderbaarQuery)
+  .then(checkBeschermVerkocht)
   .then(() =>
     console.log(`✓ ${feed.resultaten.length} objecten gemapt zonder verrassingen`),
   )
