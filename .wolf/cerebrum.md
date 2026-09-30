@@ -233,3 +233,4 @@
 
 - [2026-09-30] Realworks-opruiming is tweetraps: niet-verkocht + 2 mnd niet in feed → depubliceren (concept blijft); concept met `realworksId` zonder publicatie na 6 mnd → definitief weg, plus assets waar niets anders meer naar verwijst (`WEESASSETS_QUERY`). Assets worden op bestandsnaam gedeeld, dus nooit blind verwijderen; eerst documenten (visibility sync), dan assets. Import schrijft altijd onder het gepubliceerde id (concept van teruggekeerd object wordt vervangen).
 - [2026-09-30] Opruimtermijnen Realworks: niet-verkocht offline na 14 dagen, verkocht/voorbehoud na 1 maand, daarna voor allebei 6 maanden concept → definitief weg. Constanten `MAX_STILSTAND_DAGEN`, `MAX_STILSTAND_VERKOCHT_MAANDEN`, `MAX_CONCEPT_MAANDEN`, `VERKOCHT_STATUSSEN` (was BLIJFT_ONLINE).
+- [2026-09-30] Minstens 3 verkochte objecten blijven online (`MIN_VERKOCHT_ONLINE`, `beschermVerkocht`): oudste gaan eerst offline, nieuwste blijven.

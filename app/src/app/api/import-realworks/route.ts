@@ -28,6 +28,7 @@ import {
   REALWORKS_URL,
   toWoning,
   VERWIJDERBAAR_QUERY,
+  beschermVerkocht,
   VEROUDERD_QUERY,
   VERKOCHT_STATUSSEN,
   verouderingsGrens,
@@ -272,12 +273,21 @@ type VerouderdObject = Record<string, unknown> & {
  * verkocht na een maand. Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt`
  * betekent: dit object zat er al die tijd niet meer in.
  */
-function verouderdeObjecten(client: ReturnType<typeof getWriteClient>) {
-  return client.fetch<VerouderdObject[]>(VEROUDERD_QUERY, {
+async function verouderdeObjecten(client: ReturnType<typeof getWriteClient>) {
+  const params = {
     verkocht: [...VERKOCHT_STATUSSEN],
     grens: verouderingsGrens(),
     grensVerkocht: verouderingsGrensVerkocht(),
-  });
+  };
+  const [kandidaten, aantalVerkochtOnline] = await Promise.all([
+    client.fetch<VerouderdObject[]>(VEROUDERD_QUERY, params),
+    client.fetch<number>(
+      `count(*[_type == "woning" && !(_id in path("drafts.**")) && status in $verkocht])`,
+      params,
+    ),
+  ]);
+  // Hooguit zoveel verkochte objecten offline dat er minstens drie overblijven.
+  return beschermVerkocht(kandidaten, aantalVerkochtOnline);
 }
 
 /**

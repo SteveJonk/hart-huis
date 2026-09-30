@@ -523,6 +523,33 @@ export const VEROUDERD_QUERY = `*[_type == "woning"
     )]`;
 
 /**
+ * Er blijven minstens zoveel verkochte objecten online staan: een portfolio met
+ * één of twee woningen ziet er leger uit dan helemaal geen portfolio.
+ */
+export const MIN_VERKOCHT_ONLINE = 3;
+
+/**
+ * Haalt uit de kandidaten om offline te halen zoveel verkochte objecten weg
+ * (de nieuwste eerst) dat er na afloop minstens `MIN_VERKOCHT_ONLINE` online
+ * blijven. `aantalVerkochtOnline` is het aantal gepubliceerde verkochte
+ * objecten van vóór het opruimen. Niet-verkochte objecten blijven onaangeroerd.
+ */
+export function beschermVerkocht<T extends { status?: unknown; _updatedAt?: string }>(
+  kandidaten: T[],
+  aantalVerkochtOnline: number,
+  verkocht: readonly string[] = VERKOCHT_STATUSSEN,
+): T[] {
+  const isVerkocht = (document: T) => verkocht.includes(document.status as string);
+  const verkochtKandidaten = kandidaten
+    .filter(isVerkocht)
+    .sort((a, b) => (a._updatedAt ?? '').localeCompare(b._updatedAt ?? ''));
+  const mogenWeg = new Set(
+    verkochtKandidaten.slice(0, Math.max(0, aantalVerkochtOnline - MIN_VERKOCHT_ONLINE)),
+  );
+  return kandidaten.filter((document) => !isVerkocht(document) || mogenWeg.has(document));
+}
+
+/**
  * Tweede stap: een concept van een object dat al zes maanden offline staat
  * wordt definitief weggegooid, inclusief de foto's en brochure die nergens
  * anders meer gebruikt worden. Alleen concepten met een `realworksId` (door de

@@ -106,6 +106,11 @@ site staan. Aan het eind van elke volledige run gaat daarom offline:
 Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt` betekent:
 dit object zat al die tijd niet meer in de feed.
 
+**Er blijven minstens drie verkochte objecten online** (`MIN_VERKOCHT_ONLINE`).
+Zouden er door het opruimen minder overblijven, dan blijven de nieuwste staan en
+gaan alleen de oudste offline. Omdat die drie gepubliceerd blijven, worden ze
+ook nooit definitief verwijderd. Niet-verkochte objecten vallen hier buiten.
+
 Offline halen is in Sanity hetzelfde als "Unpublish" in de studio: het
 gepubliceerde document wordt verwijderd, de inhoud blijft als **concept**
 bestaan. De redactie kan het dus nakijken of terugzetten, en niets gaat

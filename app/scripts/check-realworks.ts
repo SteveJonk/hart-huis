@@ -21,6 +21,7 @@ import {
   sentence,
   slugify,
   toWoning,
+  beschermVerkocht,
   VEROUDERD_QUERY,
   VERKOCHT_STATUSSEN,
   VERWIJDERBAAR_QUERY,
@@ -262,9 +263,32 @@ async function checkVerwijderbaarQuery() {
   assert.deepEqual(weesassets, ['img-oud'], 'een asset dat nog ergens anders in gebruik is blijft staan');
 }
 
+// Er blijven minstens drie verkochte objecten online; de oudste gaan eerst.
+function checkBeschermVerkocht() {
+  const v = (id: string, updatedAt: string) => ({ _id: id, status: 'verkocht', _updatedAt: updatedAt });
+  const k = { _id: 'te-koop', status: 'beschikbaar', _updatedAt: '2026-01-01T00:00:00Z' };
+  const ids = (lijst: Array<{ _id: string }>) => lijst.map((document) => document._id);
+
+  const drie = [v('a', '2026-01-01T00:00:00Z'), v('b', '2026-02-01T00:00:00Z'), v('c', '2026-03-01T00:00:00Z')];
+  assert.deepEqual(ids(beschermVerkocht([...drie, k], 3)), ['te-koop'], 'bij drie of minder blijft alles staan');
+  assert.deepEqual(ids(beschermVerkocht([], 2)), []);
+
+  const vijf = [...drie, v('d', '2026-04-01T00:00:00Z'), v('e', '2026-05-01T00:00:00Z')];
+  assert.deepEqual(
+    ids(beschermVerkocht([...vijf].reverse(), 5)).sort(),
+    ['a', 'b'],
+    'van vijf gepubliceerde gaan de twee oudste weg, de nieuwste drie blijven',
+  );
+  // 4 online, waarvan 2 kandidaat: er mag er maar één weg.
+  assert.deepEqual(ids(beschermVerkocht([drie[0], drie[1]], 4)), ['a']);
+  // Wat niet verkocht is, is nooit beschermd.
+  assert.deepEqual(ids(beschermVerkocht([k], 1)), ['te-koop']);
+}
+
 // tsx compileert deze scripts naar CJS, dus geen top-level await.
 checkVerouderdQuery()
   .then(checkVerwijderbaarQuery)
+  .then(checkBeschermVerkocht)
   .then(() =>
     console.log(`✓ ${feed.resultaten.length} objecten gemapt zonder verrassingen`),
   )
