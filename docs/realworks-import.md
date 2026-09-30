@@ -98,8 +98,7 @@ zoals altijd.
 
 De feed bevat alleen het actieve aanbod (`actief=true`). Een object dat eruit
 verdwijnt wordt dus niet meer bijgewerkt, maar bleef tot nu toe eeuwig op de
-site staan. Aan het eind van elke volledige run gaat daarom offline wat aan
-beide voorwaarden voldoet:
+site staan. Aan het eind van elke volledige run gaat daarom offline:
 
 - **niet verkocht:** twee weken niet meer in de feed;
 - **verkocht** (`verkocht` of `voorbehoud`): een maand niet meer in de feed.
