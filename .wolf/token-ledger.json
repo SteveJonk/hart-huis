@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
-    "total_tokens_estimated": 2878537,
-    "total_reads": 504,
+    "total_tokens_estimated": 2882551,
+    "total_reads": 505,
     "total_writes": 0,
     "total_sessions": 101,
-    "anatomy_hits": 339,
+    "anatomy_hits": 340,
     "anatomy_misses": 159,
     "repeated_reads_blocked": 102,
-    "estimated_savings_vs_bare_cli": 448321,
-    "real_input_tokens": 29957,
-    "real_output_tokens": 3003704,
-    "real_cache_read_tokens": 878163138,
-    "real_cache_creation_tokens": 13731779,
-    "real_api_calls": 5309
+    "estimated_savings_vs_bare_cli": 448521,
+    "real_input_tokens": 30001,
+    "real_output_tokens": 3020067,
+    "real_cache_read_tokens": 879909846,
+    "real_cache_creation_tokens": 13797097,
+    "real_api_calls": 5329
   },
   "sessions": [
     {
@@ -4695,6 +4695,36 @@
         "cache_read_input_tokens": 777546,
         "cache_creation_input_tokens": 45458,
         "api_calls": 10
+      }
+    },
+    {
+      "id": "session-2026-09-30-2158",
+      "agent": "claude",
+      "started": "2026-09-30T21:58:37.238Z",
+      "ended": "2026-09-30T22:08:23.972Z",
+      "reads": [
+        {
+          "file": "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts",
+          "tokens_estimated": 4014,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 4014,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 44,
+        "output_tokens": 16363,
+        "cache_read_input_tokens": 1746708,
+        "cache_creation_input_tokens": 65318,
+        "api_calls": 20
       }
     }
   ],

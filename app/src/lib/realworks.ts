@@ -486,18 +486,28 @@ export function vrijeKey(basis: string, gebruikt: Set<string>) {
 
 /**
  * Objecten die uit de feed verdwijnen blijven anders eeuwig op de site staan.
- * Verkochte objecten mogen blijven — die zijn het portfolio. Een object dat
- * niet verkocht is en al twee maanden niet meer is bijgewerkt (lees: al twee
- * maanden niet meer in de feed zat) is van de markt gehaald en gaat offline.
+ * Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt`
+ * betekent: dit object zat al die tijd niet meer in de feed.
+ *
+ * - Niet verkocht: na twee weken weg uit de feed gaat het offline (van de markt).
+ * - Verkocht (of onder voorbehoud): het portfolio mag langer blijven, een maand.
  */
-export const BLIJFT_ONLINE = ['verkocht', 'voorbehoud'] as const;
+export const VERKOCHT_STATUSSEN = ['verkocht', 'voorbehoud'] as const;
 
-export const MAX_STILSTAND_MAANDEN = 2;
+export const MAX_STILSTAND_DAGEN = 14;
+export const MAX_STILSTAND_VERKOCHT_MAANDEN = 1;
 
-/** Alles wat ouder is dan deze datum is te lang blijven staan. */
+/** Niet-verkochte objecten die voor deze datum zijn bijgewerkt gaan offline. */
 export function verouderingsGrens(nu: Date = new Date()): string {
   const grens = new Date(nu);
-  grens.setMonth(grens.getMonth() - MAX_STILSTAND_MAANDEN);
+  grens.setDate(grens.getDate() - MAX_STILSTAND_DAGEN);
+  return grens.toISOString();
+}
+
+/** Hetzelfde voor verkochte objecten. */
+export function verouderingsGrensVerkocht(nu: Date = new Date()): string {
+  const grens = new Date(nu);
+  grens.setMonth(grens.getMonth() - MAX_STILSTAND_VERKOCHT_MAANDEN);
   return grens.toISOString();
 }
 
@@ -507,15 +517,17 @@ export function verouderingsGrens(nu: Date = new Date()): string {
  */
 export const VEROUDERD_QUERY = `*[_type == "woning"
     && !(_id in path("drafts.**"))
-    && !(status in $blijftOnline)
-    && dateTime(_updatedAt) < dateTime($grens)]`;
+    && (
+      (status in $verkocht && dateTime(_updatedAt) < dateTime($grensVerkocht))
+      || (!(status in $verkocht) && dateTime(_updatedAt) < dateTime($grens))
+    )]`;
 
 /**
  * Tweede stap: een concept van een object dat al zes maanden offline staat
  * wordt definitief weggegooid, inclusief de foto's en brochure die nergens
  * anders meer gebruikt worden. Alleen concepten met een `realworksId` (door de
  * import aangemaakt) en zonder gepubliceerd broertje; handmatig aangemaakte
- * woningen en verkochte objecten blijven altijd staan. Objecten die nu nog in
+ * woningen blijven altijd staan. Verkocht of niet maakt hier niet uit. Objecten die nu nog in
  * de feed zitten (`$inFeed`) worden nooit aangeraakt.
  */
 export const MAX_CONCEPT_MAANDEN = 6;
@@ -531,7 +543,6 @@ export const VERWIJDERBAAR_QUERY = `*[_type == "woning"
     && _id in path("drafts.**")
     && defined(realworksId)
     && !(realworksId in $inFeed)
-    && !(status in $blijftOnline)
     && dateTime(_updatedAt) < dateTime($grens)
     && !defined(*[_id == string::split(^._id, "drafts.")[1]][0]._id)]{
   _id,

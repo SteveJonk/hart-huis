@@ -7,8 +7,8 @@
  * document, dan worden de ontbrekende erachter aangevuld. Ook het redactionele
  * `makelaar`-veld blijft staan — dat zit niet in de feed.
  *
- * Aan het eind gaan objecten die niet verkocht zijn en al twee maanden niet
- * meer in de feed zaten offline (het gepubliceerde document wordt verwijderd,
+ * Aan het eind gaan objecten die niet verkocht zijn en al twee weken niet
+ * meer in de feed zaten offline (verkochte na een maand) (het gepubliceerde document wordt verwijderd,
  * het concept blijft staan). Een concept dat daarna nog eens zes maanden
  * blijft liggen wordt definitief weggegooid, samen met de foto's en brochure
  * die geen enkel ander document meer gebruikt.
@@ -24,13 +24,14 @@
 import { NextResponse } from 'next/server';
 import { recordCronRun } from '@/lib/cron-log';
 import {
-  BLIJFT_ONLINE,
   planMedia,
   REALWORKS_URL,
   toWoning,
   VERWIJDERBAAR_QUERY,
   VEROUDERD_QUERY,
+  VERKOCHT_STATUSSEN,
   verouderingsGrens,
+  verouderingsGrensVerkocht,
   verwijderingsGrens,
   WEESASSETS_QUERY,
   vrijeKey,
@@ -267,14 +268,15 @@ type VerouderdObject = Record<string, unknown> & {
 };
 
 /**
- * Objecten die niet verkocht zijn en al twee maanden niet meer zijn bijgewerkt.
- * Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt`
+ * Objecten die niet meer in de feed zitten: niet-verkocht na twee weken,
+ * verkocht na een maand. Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt`
  * betekent: dit object zat er al die tijd niet meer in.
  */
 function verouderdeObjecten(client: ReturnType<typeof getWriteClient>) {
   return client.fetch<VerouderdObject[]>(VEROUDERD_QUERY, {
-    blijftOnline: [...BLIJFT_ONLINE],
+    verkocht: [...VERKOCHT_STATUSSEN],
     grens: verouderingsGrens(),
+    grensVerkocht: verouderingsGrensVerkocht(),
   });
 }
 
@@ -317,7 +319,6 @@ async function teVerwijderen(
   const documenten = await client.fetch<
     Array<{ _id: string; adres?: string; assets?: Array<string | null> }>
   >(VERWIJDERBAAR_QUERY, {
-    blijftOnline: [...BLIJFT_ONLINE],
     inFeed,
     grens: verwijderingsGrens(),
   });

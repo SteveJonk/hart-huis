@@ -101,29 +101,31 @@ verdwijnt wordt dus niet meer bijgewerkt, maar bleef tot nu toe eeuwig op de
 site staan. Aan het eind van elke volledige run gaat daarom offline wat aan
 beide voorwaarden voldoet:
 
-- de status is **niet** `verkocht` of `voorbehoud` (verkocht onder voorbehoud) —
-  verkochte objecten zijn het portfolio en blijven staan;
-- `_updatedAt` ligt meer dan **twee maanden** terug. Elke run raakt ieder object
-  uit de feed aan, dus een oude `_updatedAt` betekent: dit object zat al die
-  tijd niet meer in de feed.
+- **niet verkocht:** twee weken niet meer in de feed;
+- **verkocht** (`verkocht` of `voorbehoud`): een maand niet meer in de feed.
+
+Elke run raakt ieder object uit de feed aan, dus een oude `_updatedAt` betekent:
+dit object zat al die tijd niet meer in de feed.
 
 Offline halen is in Sanity hetzelfde als "Unpublish" in de studio: het
 gepubliceerde document wordt verwijderd, de inhoud blijft als **concept**
 bestaan. De redactie kan het dus nakijken of terugzetten, en niets gaat
-verloren. De drempel staat in `MAX_STILSTAND_MAANDEN` en de statuslijst in
-`BLIJFT_ONLINE`, beide in `src/lib/realworks.ts`.
+verloren. De drempels staan in `MAX_STILSTAND_DAGEN` en
+`MAX_STILSTAND_VERKOCHT_MAANDEN`, de statuslijst in `VERKOCHT_STATUSSEN`, alles
+in `src/lib/realworks.ts`.
 
 ### Oude concepten en hun bestanden worden definitief weggegooid
 
 Een concept dat hierna nog **zes maanden** blijft liggen (`MAX_CONCEPT_MAANDEN`
 in `src/lib/realworks.ts`) gaat met de volgende volledige run echt weg, dus
-ongeveer acht maanden nadat het object uit Realworks verdween. Het gaat alleen
-om concepten die:
+ongeveer zes en een halve maand (niet verkocht) of zeven maanden (verkocht)
+nadat het object uit Realworks verdween. Het gaat alleen om concepten die:
 
 - een `realworksId` hebben (door de import aangemaakt — handmatig aangemaakte
   woningen blijven altijd staan);
-- geen gepubliceerd broertje hebben en niet meer in de feed zitten;
-- niet `verkocht` of `voorbehoud` zijn.
+- geen gepubliceerd broertje hebben en niet meer in de feed zitten.
+
+Verkocht of niet maakt hier geen verschil.
 
 De klok loopt vanaf het moment dat het concept is aangemaakt, dus vanaf het
 offline halen; opent de redactie het concept en slaat hij het op, dan begint de
@@ -206,9 +208,6 @@ curl -X POST -H "x-scraper-secret: $FUNDA_SCRAPER_SECRET" \
 
 ## Wat de import (nog) niet doet
 
-- **Verkochte objecten opruimen.** Die blijven bewust in Sanity staan (de site
-  toont verkochte woningen), ook als ze uit de feed verdwijnen. Alleen
-  niet-verkochte objecten worden offline gehaald en later weggegooid.
 - **Pagineren.** Er wordt één pagina opgehaald. Groeit het aanbod voorbij wat
   Realworks in één antwoord kwijt kan, dan waarschuwt de route erover.
 - **De zes mock-objecten uit `npm run seed:objecten`** hebben verzonnen

@@ -16,15 +16,16 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  BLIJFT_ONLINE,
   label,
   planMedia,
   sentence,
   slugify,
   toWoning,
   VEROUDERD_QUERY,
+  VERKOCHT_STATUSSEN,
   VERWIJDERBAAR_QUERY,
   verouderingsGrens,
+  verouderingsGrensVerkocht,
   verwijderingsGrens,
   WEESASSETS_QUERY,
   vrijeKey,
@@ -154,13 +155,14 @@ assert.equal(vrijeKey('1-0', gebruikt), '1-0-2');
 assert.equal(vrijeKey('1-0', gebruikt), '1-0-3');
 assert.equal(vrijeKey('1-2', gebruikt), '1-2');
 
-// De opruimgrens ligt twee maanden terug, en verkochte objecten blijven staan.
-assert.equal(verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')), '2026-06-25T10:00:00.000Z');
-assert.equal(verouderingsGrens(new Date('2026-01-15T10:00:00.000Z')), '2025-11-15T10:00:00.000Z');
-assert.deepEqual([...BLIJFT_ONLINE].sort(), ['verkocht', 'voorbehoud']);
+// De opruimgrens ligt twee weken terug, voor verkochte objecten een maand.
+assert.equal(verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')), '2026-08-11T10:00:00.000Z');
+assert.equal(verouderingsGrens(new Date('2026-01-05T10:00:00.000Z')), '2025-12-22T10:00:00.000Z');
+assert.equal(verouderingsGrensVerkocht(new Date('2026-08-25T10:00:00.000Z')), '2026-07-25T10:00:00.000Z');
+assert.deepEqual([...VERKOCHT_STATUSSEN].sort(), ['verkocht', 'voorbehoud']);
 
 // Elke status uit de mapping is er één die de opruimquery kent; komt er een
-// nieuwe bij, dan moet BLIJFT_ONLINE opnieuw langs.
+// nieuwe bij, dan moet VERKOCHT_STATUSSEN opnieuw langs.
 const statussen = new Set(feed.resultaten.map((object) => toWoning(object).fields.status));
 assert.ok(
   [...statussen].every((status) =>
@@ -180,9 +182,10 @@ async function checkVerouderdQuery() {
   });
   const dataset = [
     woning('te-koop-vers', 'beschikbaar', '2026-08-20T10:00:00Z'),
-    woning('te-koop-oud', 'beschikbaar', '2026-05-01T10:00:00Z'),
-    woning('verkocht-oud', 'verkocht', '2026-01-01T10:00:00Z'),
-    woning('voorbehoud-oud', 'voorbehoud', '2026-01-01T10:00:00Z'),
+    woning('te-koop-oud', 'beschikbaar', '2026-08-01T10:00:00Z'),
+    woning('verkocht-vers', 'verkocht', '2026-08-01T10:00:00Z'),
+    woning('verkocht-oud', 'verkocht', '2026-06-01T10:00:00Z'),
+    woning('voorbehoud-oud', 'voorbehoud', '2026-06-01T10:00:00Z'),
     { ...woning('concept-oud', 'beschikbaar', '2026-01-01T10:00:00Z'), _id: 'drafts.te-koop-oud' },
     { _id: 'pagina', _type: 'page', _updatedAt: '2026-01-01T10:00:00Z' },
   ];
@@ -191,16 +194,17 @@ async function checkVerouderdQuery() {
     await evaluate(parse(VEROUDERD_QUERY), {
       dataset,
       params: {
-        blijftOnline: [...BLIJFT_ONLINE],
+        verkocht: [...VERKOCHT_STATUSSEN],
         grens: verouderingsGrens(new Date('2026-08-25T10:00:00.000Z')),
+        grensVerkocht: verouderingsGrensVerkocht(new Date('2026-08-25T10:00:00.000Z')),
       },
     })
   ).get();
 
   assert.deepEqual(
     (gevonden as Array<{ _id: string }>).map((document) => document._id),
-    ['te-koop-oud'],
-    'alleen een niet-verkocht object dat twee maanden stilstaat gaat offline',
+    ['te-koop-oud', 'verkocht-oud', 'voorbehoud-oud'],
+    'niet-verkocht gaat na twee weken offline, verkocht na een maand',
   );
 }
 
@@ -224,6 +228,7 @@ async function checkVerwijderbaarQuery() {
     concept('oud'),
     concept('vers', { _updatedAt: '2026-08-01T10:00:00Z' }),
     concept('verkocht', { status: 'verkocht' }),
+    concept('verkocht-vers', { status: 'verkocht', _updatedAt: '2026-08-01T10:00:00Z' }),
     concept('handmatig', { realworksId: undefined }),
     concept('in-feed', { realworksId: 99 }),
     concept('heeft-publicatie'),
@@ -238,14 +243,14 @@ async function checkVerwijderbaarQuery() {
   const gevonden = (await (
     await evaluate(parse(VERWIJDERBAAR_QUERY), {
       dataset,
-      params: { blijftOnline: [...BLIJFT_ONLINE], inFeed: [99], grens: verwijderingsGrens(nu) },
+      params: { inFeed: [99], grens: verwijderingsGrens(nu) },
     })
   ).get()) as Array<{ _id: string; assets: string[] }>;
 
   assert.deepEqual(
     gevonden.map((document) => document._id),
-    ['drafts.oud'],
-    'alleen een oud concept uit de import, niet verkocht en niet meer in de feed',
+    ['drafts.oud', 'drafts.verkocht'],
+    'alleen een oud concept uit de import dat niet meer in de feed zit, verkocht of niet',
   );
 
   const weesassets = await (
