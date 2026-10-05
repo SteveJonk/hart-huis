@@ -33,6 +33,7 @@ export const timelineType = defineType({
                   title: 'Alternative text',
                 }),
               ],
+              validation: (rule) => rule.assetRequired(),
             }),
           ],
           preview: {select: {title: 'title', subtitle: 'year', media: 'image'}},

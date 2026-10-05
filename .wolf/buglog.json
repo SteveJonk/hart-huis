@@ -572,6 +572,24 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-09-14T15:20:00+02:00"
+    },
+    {
+      "id": "bug-031",
+      "timestamp": "2026-10-05T20:30:00+02:00",
+      "error_message": "Error occurred prerendering page \"/\": Unable to resolve image URL from source ({\"_type\":\"image\",\"alt\":\"Sanne en Mick\"})",
+      "file": "app/src/sanity/image.ts",
+      "root_cause": "Sanity image object with only `alt` and no `asset` (photo removed or never uploaded in studio). imageSrc/urlFor only checked for a truthy object, so @sanity/image-url threw during prerender and killed the build.",
+      "fix": "Added hasImage() guard (asset/_ref/_id/url or string) in urlFor and imageSrc; such images now resolve to null. Not yet type-checked (npm ci interrupted).",
+      "tags": [
+        "sanity",
+        "image-url",
+        "prerender",
+        "build",
+        "alt-without-asset"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-05T20:30:00+02:00"
     }
   ]
 }

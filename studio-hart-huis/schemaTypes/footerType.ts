@@ -50,6 +50,7 @@ export const footerType = defineType({
           validation: (rule) => rule.required(),
         }),
       ],
+      validation: (rule) => rule.assetRequired(),
     }),
     defineField({
       name: 'paragraph',
@@ -180,6 +181,7 @@ export const footerType = defineType({
           preview: {
             select: {title: 'alt', media: 'asset'},
           },
+          validation: (rule) => rule.assetRequired(),
         }),
       ],
     }),

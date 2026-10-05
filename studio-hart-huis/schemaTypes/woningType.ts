@@ -272,6 +272,7 @@ export const woningType = defineType({
               title: 'Alternative text',
             }),
           ],
+          validation: (rule) => rule.assetRequired(),
         }),
       ],
     }),

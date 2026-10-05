@@ -18,7 +18,7 @@ export const uitgelichteReviewType = defineType({
       type: 'image',
       options: {hotspot: true},
       fields: [defineField({name: 'alt', type: 'string'})],
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     defineField({
       name: 'review',

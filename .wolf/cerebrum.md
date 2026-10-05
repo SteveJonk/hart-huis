@@ -131,6 +131,8 @@
 
 ## Do-Not-Repeat
 
+- [2026-10-05] Sanity-beeldvelden: `rule.required()` laat een beeldobject met alleen `alt` (zonder `asset`) door. Gebruik altijd `.assetRequired()` op nieuwe `type: 'image'`-velden; in de app vangt `hasImage()` in `app/src/sanity/image.ts` zulke objecten af (bug-031).
+
 - **2026-08-27 — Een knop die binnen dezelfde klik van `type='button'` naar `type='submit'` wisselt, verstuurt het formulier alsnog.** De browser bepaalt de activation behavior pás ná de React-onClick, dus `setStep()` naar de laatste stap maakt de Verder-knop submit en diezelfde klik triggert `onSubmit`. Zichtbaar als een spontane native validatie-tooltip op de nieuwe stap. Altijd `event.preventDefault()` in zo'n handler. Zie bug-027.
 - **2026-08-29 — Een blokveld leeglaten geeft de copy van een ándere pagina.** De blokcomponenten vullen ontbrekende props met `DEFAULTS` uit een `*-content.ts`; `PageOpener` valt zo terug op /over-ons. Een `pageOpener` zonder `motto` op de privacypagina toont dus het motto van Over ons. Vul bij een nieuwe pagina élk optioneel veld dat het component onvoorwaardelijk rendert, of controleer eerst wat de default is.
 

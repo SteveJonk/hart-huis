@@ -50,6 +50,7 @@ export const navigationType = defineType({
           validation: (rule) => rule.required(),
         }),
       ],
+      validation: (rule) => rule.assetRequired(),
     }),
     defineField({
       name: 'navLeft',

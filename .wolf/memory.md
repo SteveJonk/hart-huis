@@ -516,3 +516,10 @@
 |------|--------|---------|---------|--------|
 | 17:58 | Onderzoek pixelige Sanity-beelden: vaste breedtes te klein voor sizes op retina, dubbele compressie (Sanity q75 + next/image q75), FOTO_KADER=1200 | app/src/sanity/image.ts, app/src/components/PageBuilder.tsx, app/src/lib/realworks.ts | advies gegeven, niets gewijzigd | ~6000 |
 | 18:40 | Sanity-loader voor next/image (CmsImage-wrapper, 21 imports), FOTO_KADER 2000 + zonderKader in planMedia, bulk-verwijderen ongebruikte afbeeldingen in MediaTool | app/src/sanity/image-loader.ts, app/src/components/ui/Image.tsx, app/src/lib/realworks.ts, studio-hart-huis/tools/MediaTool.tsx | tsc/eslint/check:realworks/sanity build groen; srcset via renderToString gecontroleerd | ~40000 |
+
+## Session: 2026-10-05 18:51
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 20:30 | Build-fix: beeld met alleen alt (geen asset) liet prerender van / crashen; hasImage-guard in urlFor/imageSrc | app/src/sanity/image.ts | gecommit, tsc nog niet gedraaid (npm ci onderbroken) | ~3000 |
+| 20:45 | assetRequired() toegevoegd aan alle 27 beeldvelden in de studio-schema's | studio-hart-huis/schemaTypes/** | gecommit; studio niet gebouwd (geen node_modules) — studio opnieuw deployen | ~6000 |
