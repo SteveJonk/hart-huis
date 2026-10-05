@@ -19,7 +19,7 @@ export const quoteBandType = defineType({
           validation: (rule) => rule.required(),
         }),
       ],
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     defineField({name: 'eyebrow', type: 'string', validation: (rule) => rule.required()}),
     defineField({name: 'quote', type: 'text', rows: 4, validation: (rule) => rule.required()}),

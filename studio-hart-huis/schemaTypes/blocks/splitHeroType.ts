@@ -32,7 +32,7 @@ export const splitHeroType = defineType({
           validation: (rule) => rule.required(),
         }),
       ],
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
   ],
   preview: {

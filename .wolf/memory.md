@@ -522,3 +522,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 20:30 | Build-fix: beeld met alleen alt (geen asset) liet prerender van / crashen; hasImage-guard in urlFor/imageSrc | app/src/sanity/image.ts | gecommit, tsc nog niet gedraaid (npm ci onderbroken) | ~3000 |
+| 20:45 | assetRequired() toegevoegd aan alle 27 beeldvelden in de studio-schema's | studio-hart-huis/schemaTypes/** | gecommit; studio niet gebouwd (geen node_modules) — studio opnieuw deployen | ~6000 |

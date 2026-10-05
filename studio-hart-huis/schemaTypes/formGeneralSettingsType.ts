@@ -57,6 +57,7 @@ export const formGeneralSettingsType = defineType({
       type: 'image',
       description:
         'Staat bovenaan elke formuliermail. Laat leeg om alleen de afzendernaam te tonen.',
+      validation: (rule) => rule.assetRequired(),
     }),
     defineField({
       name: 'primaryColor',

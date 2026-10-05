@@ -45,7 +45,7 @@ export const routeBlockType = defineType({
           validation: (rule) => rule.required(),
         }),
       ],
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
   ],
   preview: {
