@@ -482,6 +482,8 @@
 
 ## app/src/components/ui/
 
+- `Image.tsx` — 'use client' wrapper om next/image; zet sanityLoader op Sanity-src's, lokale beelden blijven op /_next/image. Alle blocks importeren deze i.p.v. next/image (~200 tok)
+
 - `ArrowLink.tsx` — Standalone text link with circular arrow (renders as `<a>`). (~554 tok)
   - fn `ArrowLink` L34-57 (~154 tok)
   - fn `ArrowLinkLabel` L58-73 (~93 tok)
@@ -624,6 +626,7 @@
 
 - `client.ts` — Exports client (~61 tok)
 - `image.ts` — Exports SanityImage, urlFor, imageSrc, toImage (~293 tok)
+- `image-loader.ts` — next/image-loader voor cdn.sanity.io: per srcset-breedte w/h (verhouding behouden), q=85, auto=format; isSanityImage (geen SVG) (~350 tok)
 - `metadata.ts` — Map a page document's `seo` object onto Next metadata. Unset fields fall back to the root layout. (~511 tok)
   - fn `pageMetadata` L23-57 (~353 tok)
 - `queries.ts` — Resolve internal page references on link/cta objects. (~2290 tok)

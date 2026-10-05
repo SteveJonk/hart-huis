@@ -47,6 +47,24 @@ export const ASSETS_QUERY = `*[_type in $types] | order(_createdAt desc) {
  */
 export const USAGE_QUERY = `*[_type in $types && defined(*[references(^._id)][0])]._id`
 
+/**
+ * Afbeeldingen waar geen enkel document naar verwijst, concepten meegeteld.
+ * Wordt vlak vóór het opruimen opnieuw gevraagd in plaats van de lijst op het
+ * scherm te gebruiken: die kan inmiddels verouderd zijn. PDF's en andere
+ * bestanden blijven bewust buiten schot.
+ */
+export const UNUSED_IMAGES_QUERY = `*[_type == "sanity.imageAsset" && !defined(*[references(^._id)][0])]._id`
+
+/** Hoeveel verwijderingen er in één transactie gaan. */
+export const OPRUIM_BATCH = 50
+
+/** Knipt een lijst in stukken van `size`. */
+export function chunk<T>(items: T[], size: number): T[][] {
+  const groepen: T[][] = []
+  for (let i = 0; i < items.length; i += size) groepen.push(items.slice(i, i + size))
+  return groepen
+}
+
 /** Eén bestand met alles erop en eraan, plus waar het gebruikt wordt. */
 export const ASSET_QUERY = `{
   "asset": *[_id == $id][0],

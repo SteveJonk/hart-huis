@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import {
   label,
   planMedia,
+  zonderKader,
   sentence,
   slugify,
   toWoning,
@@ -97,11 +98,11 @@ assert.deepEqual(waarde('Buitenruimte en parkeren', 'Ligging tuin'), ['West']);
 assert.deepEqual(waarde('Oppervlakten en inhoud', 'Externe bergruimte'), ['11 m²']);
 
 // Hoofdfoto voorop, plattegronden en de brochure niet in de galerij.
-assert.equal(huis.fotos[0].filename, '287669985-w1200.jpg');
+assert.equal(huis.fotos[0].filename, '287669985-w2000.jpg');
 assert.ok(huis.fotos.every((foto) => foto.filename.endsWith('.jpg')));
 
 // Zonder width én height geeft Realworks een thumbnail van 150x100.
-assert.ok(huis.fotos[0].url.includes('width=1200&height=1200'));
+assert.ok(huis.fotos[0].url.includes('width=2000&height=2000'));
 assert.ok(huis.fotos[0].url.includes('check=api_sha256'), 'de handtekening moet intact blijven');
 
 // planMedia: wat er al in Sanity staat blijft staan, en alleen als de feed
@@ -146,6 +147,22 @@ assert.equal(gelijk.behouden.length, 3);
 const meer = planMedia(metFotos(5), inSanity(['f1.jpg', 'f2.jpg', 'f3.jpg']));
 assert.deepEqual(meer.laden.map((foto) => foto.filename), ['f4.jpg', 'f5.jpg']);
 assert.equal(meer.behouden.length, 3);
+
+// Foto's die nog met een ander kader zijn geladen tellen als aanwezig: na het
+// ophogen van FOTO_KADER komen ze er niet dubbel bij.
+const metKader = (aantal: number, kader: number) => {
+  const woning = metFotos(aantal);
+  woning.fotos = woning.fotos.map((foto, i) => ({ ...foto, filename: `f${i + 1}-w${kader}.jpg` }));
+  return woning;
+};
+const anderKader = planMedia(
+  metKader(4, 2000),
+  inSanity(['f1-w1200.jpg', 'f2-w1200.jpg', 'f3-w1200.jpg']),
+);
+assert.deepEqual(anderKader.laden.map((foto) => foto.filename), ['f4-w2000.jpg']);
+assert.equal(zonderKader('287669985-w1200.jpg'), '287669985.jpg');
+assert.equal(zonderKader('287669985-w1200'), '287669985');
+assert.equal(zonderKader('foto-wand.jpg'), 'foto-wand.jpg');
 
 // Een document zonder foto's wordt gewoon gevuld.
 assert.equal(planMedia(metFotos(2), inSanity([])).laden.length, 2);

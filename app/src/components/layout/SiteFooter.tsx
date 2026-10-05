@@ -4,7 +4,7 @@ import { Wrap } from '@/components/ui/Wrap';
 import { cn } from '@/lib/cn';
 import { SITE, type FooterLinkGroup, type NavLink } from '@/lib/site';
 import { imageSrc, type SanityImage } from '@/sanity/image';
-import Image from 'next/image';
+import Image from '@/components/ui/Image';
 import Link from 'next/link';
 import { FOOTER_QUERY_RESULT } from '@/sanity/sanity.types';
 import { parsePhoneNumber } from '@/lib/phone';

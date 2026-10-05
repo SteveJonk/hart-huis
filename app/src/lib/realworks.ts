@@ -181,10 +181,11 @@ export type MappedWoning = {
  * `width` én `height` samen — één van de twee alleen doet niets (`width=1600`
  * in z'n eentje geeft 225×150). De afbeelding wordt binnen dat kader geschaald
  * met behoud van verhouding, en nooit verder opgeblazen dan het origineel
- * (in de praktijk 3000×2000). 1200 px is ruim genoeg voor de site; Sanity
- * maakt daar zelf de kleinere varianten van.
+ * (in de praktijk 3000×2000). 2000 px is genoeg voor de galerij en de
+ * lightbox op een retinascherm; Sanity maakt daar zelf de kleinere varianten
+ * van. (Was 1200; dat werd op grote schermen zichtbaar opgeschaald.)
  */
-export const FOTO_KADER = 1200;
+export const FOTO_KADER = 2000;
 
 export function fotoUrl(link: string): string {
   return `${link}${link.includes('?') ? '&' : '?'}width=${FOTO_KADER}&height=${FOTO_KADER}`;
@@ -203,6 +204,15 @@ export function mediaFilename(link: string, kader?: number): string {
   return punt < 0
     ? `${naam}-w${kader}`
     : `${naam.slice(0, punt)}-w${kader}${naam.slice(punt)}`;
+}
+
+/**
+ * Bestandsnaam zonder het kader (`287669985-w1200.jpg` → `287669985.jpg`).
+ * Zo herkent `planMedia` een foto die al op het document staat ook als hij
+ * nog met een ander `FOTO_KADER` is geladen, en zet hij hem er niet dubbel bij.
+ */
+export function zonderKader(naam: string): string {
+  return naam.replace(/-w\d+(?=\.[^.]*$|$)/, '');
 }
 
 export function toWoning(object: RealworksObject): MappedWoning {
@@ -464,13 +474,16 @@ export function planMedia(object: MappedWoning, bestaandDoc?: BestaandeWoning): 
   }
 
   const aanwezig = new Set(
-    behouden.map((foto) => foto.bestandsnaam).filter((naam): naam is string => Boolean(naam)),
+    behouden
+      .map((foto) => foto.bestandsnaam)
+      .filter((naam): naam is string => Boolean(naam))
+      .map(zonderKader),
   );
   return {
     object,
     bestaandDoc,
     behouden,
-    laden: object.fotos.filter((foto) => !aanwezig.has(foto.filename)),
+    laden: object.fotos.filter((foto) => !aanwezig.has(zonderKader(foto.filename))),
     brochureLaden,
   };
 }

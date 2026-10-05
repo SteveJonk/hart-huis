@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/ui/Image';
 import { Reveal } from '@/components/ui/Reveal';
 import { Wrap } from '@/components/ui/Wrap';
 import { OVER_ONS_DUO } from '@/lib/over-ons-content';
