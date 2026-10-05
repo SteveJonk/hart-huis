@@ -125,6 +125,10 @@
 - De spinner fade't met **vertraging** in (`animate-fade-in-delayed`, 0.25s delay in `tailwind.config.ts`). Zonder die vertraging flitst hij bij een foto uit de cache — `onLoad` komt daar pas na de eerste render.
 - De twee buurfoto's worden in dezelfde wrapper met `opacity-0` gerenderd. Dat warmt precies dezelfde `/_next/image`-URL op als het echte `sizes` (een los `new Image()` zou de onbewerkte bron halen).
 
+- **Beelden: importeer `Image` uit `@/components/ui/Image`, niet uit `next/image`.** Die wrapper laat Sanity-beelden door de Sanity-CDN schalen (`sanityLoader` in `src/sanity/image-loader.ts`, q=85, auto=format). De breedte/hoogte die je aan `toImage()`/`imageSrc()` meegeeft is daardoor alleen nog de **verhouding** van de uitsnede, geen maximum meer. Lokale `public/`-beelden gaan nog gewoon via `/_next/image`. Reden: vóór 05-10-2026 kreeg next/image een vaste, te kleine Sanity-maat (bv. 800px voor 34vw) en comprimeerde die nóg eens → pixelig op retina. (2026-10-05)
+- **`FOTO_KADER` is nu 2000 (was 1200), en `planMedia` vergelijkt bestandsnamen zonder kader (`zonderKader()`).** Een hoger kader laadt bestaande galerijen dus níet opnieuw en zet er ook geen dubbele bij; alleen nieuwe objecten/foto's komen in de nieuwe maat. Galerij legen in de studio = opnieuw vullen. (2026-10-05)
+- **Media-paneel heeft "Ongebruikte afbeeldingen verwijderen".** Vraagt vlak vóór het verwijderen opnieuw `UNUSED_IMAGES_QUERY` op (alleen `sanity.imageAsset`, pdf's blijven), verwijdert in transacties van 50, en valt per groep terug op losse deletes als een transactie geweigerd wordt. (2026-10-05)
+
 ## Do-Not-Repeat
 
 - **2026-08-27 — Een knop die binnen dezelfde klik van `type='button'` naar `type='submit'` wisselt, verstuurt het formulier alsnog.** De browser bepaalt de activation behavior pás ná de React-onClick, dus `setStep()` naar de laatste stap maakt de Verder-knop submit en diezelfde klik triggert `onSubmit`. Zichtbaar als een spontane native validatie-tooltip op de nieuwe stap. Altijd `event.preventDefault()` in zo'n handler. Zie bug-027.
@@ -180,6 +184,9 @@
 
 - [2026-08-27] **JSON-LD: één pad naar een knoop die een `aggregateRating` draagt.** Een validator vervangt `{"@id": …}` door de knoop zelf, dus twee verwijzingen naar dezelfde organisatie = die rating twee keer in de graaf = Google's "Review heeft meerdere samengestelde beoordelingen". Concreet fout waren `WebPage.about` -> organisatie náást `WebPage.isPartOf` -> `WebSite.publisher` -> organisatie, en `Offer.seller` -> organisatie (die trok de rating van het kantoor een `Product` in). Denk bij het toevoegen van een verwijzing altijd: langs hoeveel paden is deze knoop nu bereikbaar? Zie bug-025.
 - [2026-08-27] **`.wolf/buglog.json` was ongeldig JSON** — een eerdere append plakte een entry aan de vorige vast (geen `},{`) en hergebruikte `bug-022`. Controleer na het bijwerken van de buglog altijd even dat het bestand nog parset (`python3 -c "import json;json.load(open('.wolf/buglog.json'))"`), anders kan de volgende sessie hem niet lezen.
+
+- **2026-10-05 — Geen globale `images.loaderFile` in next.config.** Met een custom loader zet Next `/_next/image` uit (`next-server.js`: `loader !== 'default'`), en dan breken de lokale beelden uit `public/`. Een `loader`-prop kan ook niet vanuit een server component (functie-prop), vandaar de client-wrapper `components/ui/Image.tsx`.
+- **2026-10-05 — `pkill -f "next dev"` in dezelfde Bash-aanroep killt je eigen shell** (het patroon staat in de eigen commandoregel; exit 144). Stop de dev-server via zijn PID of in een losse aanroep.
 
 ## Decision Log
 

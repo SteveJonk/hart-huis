@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/ui/Image';
 import { FormRenderer } from '@/components/form/FormRenderer';
 import { Wrap } from '@/components/ui/Wrap';
 import type { FormDefinition } from '@/lib/form-fields';

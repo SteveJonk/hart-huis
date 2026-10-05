@@ -53,12 +53,12 @@ Een paar keuzes die niet uit de veldnamen te raden zijn:
   Groter kan met `width` én `height` samen; één van de twee alleen doet niets
   (`width=1600` in z'n eentje levert 225×150). De foto wordt binnen dat kader
   geschaald met behoud van verhouding en nooit verder opgeblazen dan het
-  origineel — in de praktijk 3000×2000. De import vraagt `width=1200&height=1200`
+  origineel — in de praktijk 3000×2000. De import vraagt `width=2000&height=2000`
   (`FOTO_KADER` in `realworks.ts`); Sanity maakt daar zelf de kleinere varianten
   van. De handtekening in `check=api_sha256:…` blijft gewoon geldig, die dekt de
   extra parameters niet af.
 - **assets** — foto's worden herkend aan de bestandsnaam uit de link plus het
-  kader (`287669985-w1200.jpg`). Staat die al in de Sanity-bibliotheek, dan
+  kader (`287669985-w2000.jpg`). Staat die al in de Sanity-bibliotheek, dan
   wordt hij hergebruikt en niet opnieuw geladen.
 ### Foto's en brochure
 
@@ -80,6 +80,14 @@ volgende run weer bij; verwijder in dat geval liever de hele galerij (dan wordt
 hij opnieuw uit de feed gevuld) of accepteer het. En vervangt Realworks een
 foto zonder het aantal te wijzigen, dan ziet de import dat niet — leeg de
 galerij van dat object in de studio om hem opnieuw te laten vullen.
+
+Bij het vergelijken telt het kader in de naam niet mee: `-w1200` en `-w2000`
+zijn dezelfde foto. Een hoger `FOTO_KADER` laadt bestaande galerijen dus níet
+opnieuw (en zet er ook geen dubbele bij) — alleen nieuwe objecten en nieuw
+aangevulde foto's komen in de nieuwe maat. Wil je een bestaand object in de
+nieuwe maat, leeg dan de galerij in de studio; de volgende run vult hem
+opnieuw. De oude foto's zijn daarna ongebruikt en weg te gooien met
+"Ongebruikte afbeeldingen verwijderen" in het Media-paneel.
 
 De samenvatting van een run noemt daarom drie getallen: hoeveel foto's er zijn
 geladen, hoeveel er behouden zijn, en hoeveel er aangevuld zijn.

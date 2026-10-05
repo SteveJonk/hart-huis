@@ -7,7 +7,10 @@ import {
   ASSET_QUERY,
   ASSETS_QUERY,
   ASSET_TYPES,
+  OPRUIM_BATCH,
+  UNUSED_IMAGES_QUERY,
   USAGE_QUERY,
+  chunk,
   dedupeUsage,
   displayName,
   formatBytes,
@@ -36,6 +39,13 @@ import {
  * afbeeldingsveld op een document, dus er is geen manier om te zien wát er in
  * de dataset staat, laat staan om iets weg te gooien dat nergens meer hangt.
  *
+ * "Ongebruikte afbeeldingen verwijderen" gooit in één keer alle afbeeldingen
+ * weg waar niets naar verwijst. Het vraagt die lijst vlak vóór het verwijderen
+ * opnieuw op (niet de lijst op het scherm, die kan verouderd zijn) en verwijdert
+ * in transacties van `OPRUIM_BATCH`. Wordt een transactie geweigerd — omdat er
+ * intussen toch iets naar een afbeelding verwijst — dan gaat die groep één voor
+ * één, zodat de rest gewoon doorgaat. Bestanden (pdf) blijven staan.
+ *
  * Verwijderen kan alleen als geen enkel document naar het bestand verwijst —
  * dat is niet alleen onze regel, Sanity weigert het zelf ook. Concepten tellen
  * mee: een foto die alleen in een niet-gepubliceerd concept staat is in gebruik.
@@ -60,6 +70,11 @@ const PAGINA = 60
 
 type Status = {toon: 'ok' | 'fout'; tekst: string}
 
+type Opruimen =
+  | {stap: 'uit'}
+  | {stap: 'bevestig'}
+  | {stap: 'bezig'; klaar: number; totaal: number}
+
 export function MediaBeheer() {
   const client = useClient({apiVersion: API_VERSION})
 
@@ -76,6 +91,7 @@ export function MediaBeheer() {
   const [uploadt, setUploadt] = useState(false)
   const [sleept, setSleept] = useState(false)
   const [status, setStatus] = useState<Status | null>(null)
+  const [opruimen, setOpruimen] = useState<Opruimen>({stap: 'uit'})
   const invoer = useRef<HTMLInputElement>(null)
 
   const herlaad = useCallback(() => setVersie((v) => v + 1), [])
@@ -175,8 +191,67 @@ export function MediaBeheer() {
     [herlaad],
   )
 
+  const ruimOp = useCallback(async () => {
+    setStatus(null)
+    setGeopend(null)
+    setOpruimen({stap: 'bezig', klaar: 0, totaal: 0})
+
+    try {
+      const ids = await client.fetch<string[]>(UNUSED_IMAGES_QUERY)
+      let klaar = 0
+      const mislukt: string[] = []
+      setOpruimen({stap: 'bezig', klaar, totaal: ids.length})
+
+      for (const groep of chunk(ids, OPRUIM_BATCH)) {
+        const transactie = client.transaction()
+        for (const id of groep) transactie.delete(id)
+        try {
+          await transactie.commit({visibility: 'async'})
+          klaar += groep.length
+        } catch {
+          // Eén afbeelding die intussen ergens gebruikt wordt laat de hele
+          // transactie mislukken; doe deze groep dan los.
+          for (const id of groep) {
+            try {
+              await client.delete(id)
+              klaar += 1
+            } catch (error) {
+              mislukt.push(`${id}: ${error instanceof Error ? error.message : String(error)}`)
+            }
+          }
+        }
+        setOpruimen({stap: 'bezig', klaar, totaal: ids.length})
+      }
+
+      setStatus(
+        ids.length === 0
+          ? {toon: 'ok', tekst: 'Er waren geen ongebruikte afbeeldingen meer.'}
+          : mislukt.length
+            ? {
+                toon: 'fout',
+                tekst: `${klaar} van ${ids.length} ongebruikte afbeeldingen verwijderd.\n${mislukt.join('\n')}`,
+              }
+            : {
+                toon: 'ok',
+                tekst: `${klaar} ongebruikte afbeelding${klaar === 1 ? '' : 'en'} verwijderd.`,
+              },
+      )
+    } catch (error) {
+      setStatus({
+        toon: 'fout',
+        tekst: `Opruimen mislukt: ${error instanceof Error ? error.message : String(error)}`,
+      })
+    }
+
+    setOpruimen({stap: 'uit'})
+    herlaad()
+  }, [client, herlaad])
+
   const totaal = assets?.length ?? 0
   const ongebruikt = gebruikt ? (assets ?? []).filter((a) => !gebruikt.has(a._id)).length : null
+  const ongebruikteAfbeeldingen = gebruikt
+    ? (assets ?? []).filter((a) => a._type === 'sanity.imageAsset' && !gebruikt.has(a._id)).length
+    : null
 
   return (
     <div style={m.wrapper}>
@@ -257,6 +332,42 @@ export function MediaBeheer() {
               (ongebruikt === null ? ' — gebruik wordt geteld…' : ` — ${ongebruikt} ongebruikt`)}
         </span>
       </div>
+
+      {ongebruikteAfbeeldingen !== null && (ongebruikteAfbeeldingen > 0 || opruimen.stap !== 'uit') && (
+        <div style={{...styles.row, alignItems: 'center'}}>
+          {opruimen.stap === 'uit' && (
+            <button type="button" style={m.danger} onClick={() => setOpruimen({stap: 'bevestig'})}>
+              Ongebruikte afbeeldingen verwijderen ({ongebruikteAfbeeldingen})
+            </button>
+          )}
+          {opruimen.stap === 'bevestig' && (
+            <>
+              <span style={{...styles.intro, margin: 0}}>
+                {ongebruikteAfbeeldingen} afbeelding{ongebruikteAfbeeldingen === 1 ? '' : 'en'} waar
+                geen enkel document (ook geen concept) naar verwijst worden definitief verwijderd.
+                Dit kan niet ongedaan worden gemaakt. Pdf&apos;s en andere bestanden blijven staan.
+              </span>
+              <button type="button" style={m.danger} onClick={() => void ruimOp()}>
+                Ja, alles verwijderen
+              </button>
+              <button
+                type="button"
+                style={styles.secondary}
+                onClick={() => setOpruimen({stap: 'uit'})}
+              >
+                Annuleren
+              </button>
+            </>
+          )}
+          {opruimen.stap === 'bezig' && (
+            <span style={{...styles.intro, margin: 0}}>
+              {opruimen.totaal === 0
+                ? 'Ongebruikte afbeeldingen opzoeken…'
+                : `Bezig met verwijderen… ${opruimen.klaar} van ${opruimen.totaal}`}
+            </span>
+          )}
+        </div>
+      )}
 
       {laadfout && <div style={styles.notice}>Ophalen mislukt: {laadfout}</div>}
 
