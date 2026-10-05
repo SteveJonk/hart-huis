@@ -1,18 +1,12 @@
 {
-  "session_id": "session-2026-09-30-2158",
-  "started": "2026-09-30T21:58:37.238Z",
-  "files_read": {
-    "/home/user/hart-huis/app/src/app/api/import-realworks/route.ts": {
-      "count": 1,
-      "tokens": 4014,
-      "first_read": "2026-09-30T22:00:03.165Z"
-    }
-  },
+  "session_id": "session-2026-10-05-1755",
+  "started": "2026-10-05T17:55:59.353Z",
+  "files_read": {},
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 1,
+  "anatomy_hits": 0,
   "anatomy_misses": 0,
   "repeated_reads_warned": 0,
   "cerebrum_warnings": 0,
-  "stop_count": 6
+  "stop_count": 1
 }

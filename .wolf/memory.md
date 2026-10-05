@@ -509,3 +509,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 22:08 | Realworks-import: concepten >6 mnd offline definitief verwijderen + weesassets opruimen; concept-terugkeer fix | app/src/lib/realworks.ts, app/src/app/api/import-realworks/route.ts, app/scripts/check-realworks.ts, docs/realworks-import.md | tsc/eslint/check:realworks groen | ~9000 |
+
+## Session: 2026-10-05 17:55
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 17:58 | Onderzoek pixelige Sanity-beelden: vaste breedtes te klein voor sizes op retina, dubbele compressie (Sanity q75 + next/image q75), FOTO_KADER=1200 | app/src/sanity/image.ts, app/src/components/PageBuilder.tsx, app/src/lib/realworks.ts | advies gegeven, niets gewijzigd | ~6000 |
