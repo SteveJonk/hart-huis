@@ -4055,6 +4055,10 @@
                       {
                         "type": "string",
                         "value": "mail"
+                      },
+                      {
+                        "type": "string",
+                        "value": "globe"
                       }
                     ]
                   },
@@ -4289,6 +4293,13 @@
           "value": {
             "type": "inline",
             "name": "cta"
+          },
+          "optional": true
+        },
+        "note": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
           },
           "optional": true
         },

@@ -1,4 +1,5 @@
 import Image from '@/components/ui/Image';
+import { BlockIcon } from '@/components/ui/BlockIcon';
 import { Button } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Wrap } from '@/components/ui/Wrap';
@@ -26,6 +27,8 @@ export type PageHeroProps = {
   lead?: string;
   primaryCta?: PageHeroCta;
   secondaryCta?: PageHeroCta;
+  /** Optionele regel onder de knoppen, met een wereldbol ervoor. */
+  note?: string;
 };
 
 const DEFAULTS: Required<PageHeroProps> = {
@@ -38,6 +41,7 @@ const DEFAULTS: Required<PageHeroProps> = {
   lead: VERKOOP_HERO.lead,
   primaryCta: VERKOOP_HERO.primary,
   secondaryCta: VERKOOP_HERO.secondary,
+  note: '',
 };
 
 export function PageHero({
@@ -50,6 +54,7 @@ export function PageHero({
   lead = DEFAULTS.lead,
   primaryCta = DEFAULTS.primaryCta,
   secondaryCta = DEFAULTS.secondaryCta,
+  note = DEFAULTS.note,
 }: PageHeroProps = {}) {
   return (
     <header
@@ -132,6 +137,14 @@ export function PageHero({
             {secondaryCta.label}
           </Button>
         </div>
+        {note ? (
+          <p className='mt-[22px] inline-flex items-center gap-[9px] text-[0.86rem] text-white/85'>
+            <span className='shrink-0 opacity-80'>
+              <BlockIcon icon='globe' size={17} />
+            </span>
+            {note}
+          </p>
+        ) : null}
       </Wrap>
     </header>
   );

@@ -38,7 +38,7 @@ function DesktopNav({
             <Link
               href={link.href}
               className={cn(
-                'relative py-1.5 text-nav font-medium transition-colors duration-[400ms] ease-brand max-lg:text-[0.79rem]',
+                'relative whitespace-nowrap py-1.5 text-nav font-medium transition-colors duration-[400ms] ease-brand max-lg:text-[0.79rem]',
                 stuck ? 'text-ink' : 'text-white',
                 'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current',
                 'after:transition-transform after:duration-[350ms] after:ease-brand',

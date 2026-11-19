@@ -614,15 +614,18 @@
       "timestamp": "2026-11-19T13:20:00Z",
       "error_message": "502 Bad Gateway op Coolify-domein na redeploy; container 'Running', log: Next.js ready op http://<container-id>:80",
       "file": "app/Dockerfile",
-      "root_cause": "Docker zet HOSTNAME op de container-id; Next standalone server.js luistert dan alleen op dat adres, niet op 0.0.0.0, dus de proxy kan de container niet bereiken",
-      "fix": "ENV HOSTNAME=0.0.0.0 in de runner-stage",
+      "root_cause": "Coolify-proxy (Traefik) verloor rond 12:18 zijn verbinding met de Docker-socket ('Cannot connect to the Docker daemon at unix:///var/run/docker.sock') en zag dus geen containers meer -> 502 op alle domeinen van deze server. De HOSTNAME-binding was een dwaalspoor.",
+      "fix": "Proxy herstart via Coolify (Servers -> localhost -> Restart Proxy). ENV HOSTNAME=0.0.0.0 in app/Dockerfile staat er nog, kan geen kwaad.",
       "tags": [
         "coolify",
         "docker",
         "nextjs",
         "standalone",
         "502",
-        "hostname"
+        "hostname",
+        "traefik",
+        "docker-socket",
+        "proxy"
       ],
       "related_bugs": [],
       "occurrences": 1,

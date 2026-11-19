@@ -41,7 +41,13 @@ export function NumberedSteps({
           <p className="leading-[1.72] text-[#4d3d37]">{lead}</p>
         </Reveal>
 
-        <div className="grid grid-cols-3 gap-8 max-md:grid-cols-1">
+        <div
+          className={
+            items.length === 4
+              ? "grid grid-cols-4 gap-8 max-lg:grid-cols-2 max-sm:grid-cols-1"
+              : "grid grid-cols-3 gap-8 max-md:grid-cols-1"
+          }
+        >
           {items.map((item, index) => (
             <Reveal key={item.number} delay={index === 0 ? undefined : (index as 1 | 2)}>
               <span className="mb-3.5 block font-display text-[1.7rem] text-burgundy/70">

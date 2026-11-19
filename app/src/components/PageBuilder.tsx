@@ -331,6 +331,7 @@ function renderBlock(block: PageBlock) {
           lead={block.lead}
           primaryCta={toCta(block.primaryCta)}
           secondaryCta={toCta(block.secondaryCta)}
+          note={block.note}
         />
       );
     }

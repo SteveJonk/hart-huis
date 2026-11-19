@@ -140,7 +140,8 @@
 - **Media-paneel heeft "Ongebruikte afbeeldingen verwijderen".** Vraagt vlak vóór het verwijderen opnieuw `UNUSED_IMAGES_QUERY` op (alleen `sanity.imageAsset`, pdf's blijven), verwijdert in transacties van 50, en valt per groep terug op losse deletes als een transactie geweigerd wordt. (2026-10-05)
 
 ## Do-Not-Repeat
-- **2026-11-19 — Next standalone in Docker heeft `ENV HOSTNAME=0.0.0.0` nodig.** Docker zet HOSTNAME op de container-id; `server.js` bindt daar dan aan en de Coolify-proxy geeft 502 terwijl de container 'Running' is. Herkenbaar aan `Local: http://<container-id>:80` in de log. Zie bug-033.
+- **2026-11-19 — Draai `seed:nav` niet zomaar op production.** Hij doet `createOrReplace` op `navigation` en `footer`; de live footer heeft redactiewijzigingen (social links, copyright "… — ", legal-label "Privacy") die dan verdwijnen. Een nieuwe pagina in het menu zetten: gerichte `patch().insert()` als `addToMenus()` in `scripts/seed/expat.ts`, idempotent via `count(...[internalLink._ref == $pageId])`.
+- **2026-11-19 — 502 op Coolify terwijl de container 'Running' is: eerst de proxy-logs bekijken** (Servers -> localhost -> Proxy -> Logs). Daar stond `Cannot connect to the Docker daemon at unix:///var/run/docker.sock`; Traefik zag geen containers meer. Herstart van de proxy loste het op. Ik zocht eerst in de app (HOSTNAME-binding) — dat was een dwaalspoor. Zie bug-033.
 
 - [2026-11-19] **`client.patch().set(doc)` laat velden staan waarvan de nieuwe waarde `undefined` is.** Bij een seed die bestaande inhoud vervangt: lege optionele velden expliciet `unset()`-en, anders blijft oude inhoud (hier: buurt, cijfer, quote) hangen.
 

@@ -204,6 +204,7 @@
 - `contact.ts` — Seeds the /contact page, plus the `form` document it points at (a simple, (~1123 tok)
   - fn `buildContactContent` L20-120 (~886 tok)
   - fn `seedContact` L121-128 (~68 tok)
+- `expat.ts` — Seeds de expat-FAQs en /expat (aankoop-template, copy inline, alleen bestaande blocks) en zet "Expat services" via een gerichte patch in menu + footer. (~2600 tok)
 - `haarlem.ts` — Seeds de Haarlem-FAQs en /haarlem (stad-template: pageHero, factBar, mediaText, iconCards, regionBlock ×2, quoteBand, faqs, ctaBand — alleen bestaande blocks). (~1150 tok)
   - fn `buildHaarlemContent` L20-133 (~1000 tok)
   - fn `seedHaarlem` L135-144 (~90 tok)

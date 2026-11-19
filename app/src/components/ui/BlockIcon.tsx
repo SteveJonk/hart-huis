@@ -16,7 +16,8 @@ export type BlockIconName =
   | "heart"
   | "diploma"
   | "shield"
-  | "mail";
+  | "mail"
+  | "globe";
 
 type BlockIconProps = {
   icon: BlockIconName;
@@ -33,6 +34,17 @@ export function BlockIcon({ icon, size = 19 }: BlockIconProps) {
   };
 
   switch (icon) {
+    case "globe":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.4" />
+          <path
+            d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"
+            stroke="currentColor"
+            strokeWidth="1.4"
+          />
+        </svg>
+      );
     case "person":
       return (
         <svg {...common}>

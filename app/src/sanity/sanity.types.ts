@@ -665,7 +665,8 @@ export type Benefits = {
       | "clock"
       | "diploma"
       | "shield"
-      | "mail";
+      | "mail"
+      | "globe";
     title: string;
     body: string;
     _key: string;
@@ -702,6 +703,7 @@ export type PageHero = {
   lead: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
+  note?: string;
   anchorId?: string;
 };
 
@@ -1731,6 +1733,7 @@ export type PAGE_QUERY_RESULT = {
             | "diploma"
             | "doc"
             | "eye"
+            | "globe"
             | "house"
             | "mail"
             | "person"
@@ -2621,6 +2624,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
           href?: string;
         } | null;
+        note?: string;
         anchorId?: string;
         link: null;
         cta: null;
@@ -3533,6 +3537,7 @@ export type WERKGEBIED_QUERY_RESULT = {
             | "diploma"
             | "doc"
             | "eye"
+            | "globe"
             | "house"
             | "mail"
             | "person"
@@ -4423,6 +4428,7 @@ export type WERKGEBIED_QUERY_RESULT = {
           } | null;
           href?: string;
         } | null;
+        note?: string;
         anchorId?: string;
         link: null;
         cta: null;

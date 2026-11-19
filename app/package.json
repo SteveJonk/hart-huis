@@ -33,6 +33,7 @@
     "seed:nvm": "tsx --env-file=.env scripts/seed.ts nvm",
     "seed:waardebepaling": "tsx --env-file=.env scripts/seed.ts waardebepaling",
     "seed:zoekopdracht": "tsx --env-file=.env scripts/seed.ts zoekopdracht",
+    "seed:expat": "tsx --env-file=.env scripts/seed.ts expat",
     "seed:haarlem": "tsx --env-file=.env scripts/seed.ts haarlem",
     "seed:werkgebied": "tsx --env-file=.env scripts/seed.ts werkgebied",
     "seed:klantverhalen": "tsx --env-file=.env scripts/seed.ts klantverhalen",

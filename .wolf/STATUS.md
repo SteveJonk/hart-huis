@@ -2,13 +2,22 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-09-14
+> Last updated: 2026-11-19
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+**Expat-pagina /expat (19-11-2026)**
+- Design: `~/Downloads/hart-en-huis-expat.html` (niet in `example-designs/`), zelfde template als /aankoop. Geseed in production met `npm run seed:expat` (idempotent).
+- **Geen nieuwe blocks:** pageHero → factBar → benefits → numberedSteps ("Waar we mee helpen", 4 kaarten) → steps → quoteBand → faqs (5 nieuwe faq-docs) → crossLinks → ctaBand.
+- Kleine uitbreidingen: `pageHero.note` (regel met wereldbol onder de knoppen), icoon `globe` in BlockIcon + benefitsType, `numberedSteps` met 4 items = 4 kolommen (2 op tablet). Menulinks `whitespace-nowrap` in SiteHeader (5 items rechts liepen op 1024px over twee regels).
+- Copy staat inline in `scripts/seed/expat.ts` (geen `src/lib/expat-content.ts`: geen component valt erop terug). Beelden `public/images/expat/expat-*.jpg` (uniek benoemd i.v.m. open punt 12).
+- "Expat services" staat in het live menu (vooraan rechts) en footer (Diensten) via een gerichte patch in de seed — **niet** via `seed:nav`, want die vervangt footer/navigation en zou de social links en copyright van de redactie wissen. `navigation.ts` heeft de link ook, voor een verse dataset.
+- Afwijkingen van het design: "Waar we mee helpen" is de zandkleurige numberedSteps-band i.p.v. witte kaarten op crème; "Actueel aanbod" blijft in het desktopmenu staan (design had hem alleen mobiel). Knoppen "Plan een kennismaking"/"Stel je vraag" → /contact.
+- Open: studio deployen (nieuw veld `note`, icoon `globe`), anders ziet de studio ze als onbekend.
 
 **Stadspagina /haarlem (14-09-2026)**
 - Design: `app/example-designs/!stad-haarlem.html` — stijlblok identiek aan `!aankoop.html` op de `stad*`-secties na.

@@ -591,3 +591,5 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 13:20 | 502 op Coolify: Next bond aan container-hostname; ENV HOSTNAME=0.0.0.0 toegevoegd | app/Dockerfile | niet gepusht/geverifieerd | ~3k |
+| 2026-11-19 | Expat-pagina toegevoegd en geseed (/expat), pageHero.note, globe-icoon, numberedSteps 4-koloms, menulinks nowrap | app/scripts/seed/expat.ts, PageHero.tsx, NumberedSteps.tsx, BlockIcon.tsx, SiteHeader.tsx, studio pageHeroType/benefitsType | seeded production, tsc/eslint groen, nagelopen in browser | ~60k |
+| 13:40 | 502 echte oorzaak: Traefik kwijt Docker-socket; proxy herstart, site 200 | Coolify | opgelost | ~5k |

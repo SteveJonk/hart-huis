@@ -50,6 +50,7 @@ export const benefitsType = defineType({
                   {title: 'Diploma', value: 'diploma'},
                   {title: 'Shield', value: 'shield'},
                   {title: 'Mail', value: 'mail'},
+                  {title: 'Globe', value: 'globe'},
                 ],
                 layout: 'radio',
               },

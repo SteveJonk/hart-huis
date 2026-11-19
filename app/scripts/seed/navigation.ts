@@ -44,6 +44,7 @@ async function upsertNavigation() {
   const aankoopLink = await pageLink('Aankoop', 'aankoop');
   const taxatieLink = await pageLink('Taxatie', 'taxatie');
   const nvmLink = await pageLink('NVM', 'nvm');
+  const expatLink = await pageLink('Expat services', 'expat');
   const beoordelingenLink = await pageLink('Beoordelingen', 'beoordelingen');
   const overOnsLink = await pageLink('Over ons', 'over-ons');
   const contactLink = await pageLink('Contact', 'contact');
@@ -52,7 +53,7 @@ async function upsertNavigation() {
     _id: 'navigation',
     _type: 'navigation' as const,
     navLeft: [verkoopLink, aankoopLink, taxatieLink, nvmLink],
-    navRight: [aanbodLink, beoordelingenLink, overOnsLink, contactLink],
+    navRight: [expatLink, aanbodLink, beoordelingenLink, overOnsLink, contactLink],
   };
 
   await client.createOrReplace(doc);
@@ -65,6 +66,7 @@ async function upsertFooter() {
   const aankoopLink = await pageLink('Aankoop', 'aankoop');
   const taxatieLink = await pageLink('Taxatie', 'taxatie');
   const nvmLink = await pageLink('NVM', 'nvm');
+  const expatLink = await pageLink('Expat services', 'expat');
   const overOnsLink = await pageLink('Over ons', 'over-ons');
   const contactLink = await pageLink('Contact', 'contact');
   const beoordelingenLink = await pageLink('Beoordelingen', 'beoordelingen');
@@ -77,7 +79,7 @@ async function upsertFooter() {
       {
         _key: key('footer-diensten'),
         title: 'Diensten',
-        links: [verkoopLink, aankoopLink, taxatieLink, nvmLink],
+        links: [verkoopLink, aankoopLink, taxatieLink, nvmLink, expatLink],
       },
       {
         _key: key('footer-snel-naar'),

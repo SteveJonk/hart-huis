@@ -48,6 +48,11 @@ export const pageHeroType = defineType({
     defineField({name: 'lead', type: 'text', rows: 3, validation: (rule) => rule.required()}),
     defineField({name: 'primaryCta', title: 'Primary CTA', type: 'cta'}),
     defineField({name: 'secondaryCta', title: 'Secondary CTA', type: 'cta'}),
+    defineField({
+      name: 'note',
+      type: 'string',
+      description: 'Optionele regel onder de knoppen, met een wereldbol-icoon (bijv. "We help international buyers in English")',
+    }),
   ],
   preview: {
     select: {title: 'title', titleHighlight: 'titleHighlight', titleAfter: 'titleAfter', media: 'image'},
