@@ -1,56 +1,31 @@
 import {BlockquoteIcon} from '@sanity/icons/Blockquote'
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
+/**
+ * Slider met klantverhalen. De verhalen zelf zijn `klantverhaal`-documenten;
+ * dit blok kiest er (optioneel) een paar uit.
+ */
 export const storyType = defineType({
   name: 'story',
-  title: 'Story',
+  title: 'Klantverhalen (slider)',
   type: 'object',
   icon: BlockquoteIcon,
   fields: [
+    defineField({name: 'eyebrow', type: 'string', initialValue: 'Klanten vertellen'}),
     defineField({
-      name: 'image',
-      title: 'Primary image',
-      type: 'image',
-      options: {hotspot: true},
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          validation: (rule) => rule.required(),
-        }),
-      ],
-      validation: (rule) => rule.required().assetRequired(),
+      name: 'klantverhalen',
+      title: 'Klantverhalen',
+      type: 'array',
+      description: 'Optioneel. Leeg = alle klantverhalen, nieuwste eerst.',
+      of: [defineArrayMember({type: 'reference', to: [{type: 'klantverhaal'}]})],
     }),
-    defineField({
-      name: 'secondaryImage',
-      title: 'Secondary image',
-      type: 'image',
-      options: {hotspot: true},
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          validation: (rule) => rule.required(),
-        }),
-      ],
-      validation: (rule) => rule.required().assetRequired(),
-    }),
-    defineField({name: 'eyebrow', type: 'string', validation: (rule) => rule.required()}),
-    defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
-    defineField({name: 'quote', type: 'text', rows: 4, validation: (rule) => rule.required()}),
-    defineField({
-      name: 'attribution',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({name: 'cta', type: 'cta'}),
+    defineField({name: 'ctaLabel', title: 'Knoptekst', type: 'string', initialValue: 'Lees hun verhaal'}),
   ],
   preview: {
-    select: {title: 'title', media: 'image'},
-    prepare({title, media}) {
-      return {title: title || 'Story', subtitle: 'Story', media}
-    },
+    select: {eyebrow: 'eyebrow', count: 'klantverhalen.length'},
+    prepare: ({eyebrow, count}) => ({
+      title: eyebrow || 'Klantverhalen',
+      subtitle: count ? `Klantverhalen (slider) · ${count} gekozen` : 'Klantverhalen (slider) · alle',
+    }),
   },
 })

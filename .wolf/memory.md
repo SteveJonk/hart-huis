@@ -573,3 +573,8 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+| 2026-11-19 | Nieuw documenttype werkgebied (page builder) op /werkgebied/[slug], PAGE_QUERY-body naar fragment pageFields gedeeld met WERKGEBIED_QUERY, sitemap, seed:werkgebied (Haarlem + Spaarndam, Spaarndam zonder factBar/quote) — niet geseed | werkgebiedType.ts, structure.ts, queries.ts, werkgebied/[slug]/page.tsx, werkgebied-content.ts, seed/werkgebied.ts, shared.ts | tsc/eslint/typegen schoon | ~35k |
+| 2026-11-19 | seed:werkgebied gedraaid (production): /werkgebied/haarlem + /spaarndam renderen | Sanity | ok | ~5k |
+| 2026-11-19 | Interne link-reference accepteert werkgebied; linkExpansion geeft 'werkgebied/<slug>' terug zodat resolveHref ongewijzigd blijft | linkFields.ts, queries.ts | tsc+check:form ok, GROQ gecheckt | ~6k |
+| 2026-11-19 | Klantverhaal: documenttype + /klantverhaal/[slug] (design klantverhaal.html), story-blok → slider over klantverhalen (1 of 2 foto's), anchorId op elk page-builder-blok (withAnchorId + wrapper in PageBuilder), seed:klantverhalen (+ los seed:klantverhalen-home) — seeden geweigerd door auto-mode, wacht op gebruiker | klantverhaalType.ts, storyType.ts, anchorId.ts, Stories.tsx, klantverhaal/*, queries.ts, seed/klantverhalen.ts, seed/home.ts | tsc/eslint schoon | ~90k |
+| 2026-11-19 | seed:klantverhalen gedraaid (production); /klantverhaal/* + homeslider gecheckt desktop+mobiel | Sanity | ok | ~15k |

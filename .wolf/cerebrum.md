@@ -16,6 +16,13 @@
 
 ## Key Learnings
 
+- **Elk page-builder-blok krijgt `anchorId` centraal**: `schemaTypes/index.ts` mapt alle bloktypes door `withAnchorId()` (objects/anchorId.ts). Een nieuw blok hoort dus in die lijst, dan krijgt het het veld vanzelf. (2026-11-19)
+- **Seeds die bestaande live pagina's omzetten, splitsen van seeds die alleen nieuwe documenten maken.** Sanity is meteen live, code pas na deploy; de oude code op productie toont anders placeholder-copy. Voorbeeld: `seed:klantverhalen` vs `seed:klantverhalen-home`. (2026-11-19)
+
+- **Seeden/CMS-wijzigingen gaan direct naar production, code pas na commit + deploy.** Een link naar een nieuw documenttype die lokaal goed werkt, resolvet op de live site met de oude query verkeerd (werkgebied-link werd `/haarlem` i.p.v. `/werkgebied/haarlem`, 19-11-2026). Bij een melding "klopt niet" eerst vragen: live of localhost? (2026-11-19)
+
+- **`werkgebied` is een tweede page-builder-documenttype** (naast `page`), gerenderd door `src/app/werkgebied/[slug]/page.tsx`. De projectie zit in het fragment `pageFields` in `queries.ts`, gedeeld door `PAGE_QUERY` en `WERKGEBIED_QUERY` — een nieuwe blokprojectie dus daar toevoegen, niet in één query. `upsertPage()` heeft een `type`-argument. Interne links: `linkExpansion` geeft voor een werkgebied `"werkgebied/<slug>"` als slug terug, zodat `resolveHref()` niets van documenttypes hoeft te weten — een nieuw linkbaar type met een eigen pad-voorvoegsel gaat ook in die `select()`. (2026-11-19)
+
 - Turbopack (Next 16 `next build`) vervangt een *ongezette* `process.env.NEXT_PUBLIC_X` niet door een literal — het blijft een runtime-lookup. Gevolg: dead-code-elimination werkt niet, dus een `if (process.env.NEXT_PUBLIC_SENTRY_DSN) import('@sentry/nextjs')` levert nog steeds een async chunk op schijf op. Die wordt alleen nooit opgehaald. Wil je hem écht weg, dan moet het bestand zelf conditioneel zijn.
 
 - **Een nieuw veld op een singleton mag geen naam lenen die al elders bestaat.** `NAVIGATION_QUERY`/`FOOTER_QUERY` filteren op `_id`, dus typegen weet het documenttype niet en projecteert `logo{...}` over élk documenttype met een veld `logo`. Een `logo` op `formGeneralSettings` gaf daardoor een extra union-tak en een typefout in `PageWrapper.tsx`. Vandaar `mailLogo`. (2026-08-27)

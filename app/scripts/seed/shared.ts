@@ -136,14 +136,15 @@ export async function upsertPage(
   title: string,
   content: unknown[],
   seo?: PageSeo,
+  type: 'page' | 'werkgebied' = 'page',
 ) {
   const existingId = await client.fetch<string | null>(
-    `*[_type == "page" && slug.current == $slug][0]._id`,
-    {slug},
+    `*[_type == $type && slug.current == $slug][0]._id`,
+    {slug, type},
   )
 
   const doc = {
-    _type: 'page' as const,
+    _type: type,
     title,
     slug: {_type: 'slug' as const, current: slug},
     content,

@@ -6,7 +6,7 @@ import { SITE } from '@/lib/site';
 const BASE_URL = SITE.baseUrl;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { pages, objecten } = await client.fetch(SITEMAP_QUERY);
+  const { pages, objecten, werkgebieden, klantverhalen } = await client.fetch(SITEMAP_QUERY);
 
   return [
     {
@@ -20,6 +20,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(page._updatedAt),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+    })),
+    ...werkgebieden.map((werkgebied) => ({
+      url: `${BASE_URL}/werkgebied/${werkgebied.slug}`,
+      lastModified: new Date(werkgebied._updatedAt),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+    ...klantverhalen.map((verhaal) => ({
+      url: `${BASE_URL}/klantverhaal/${verhaal.slug}`,
+      lastModified: new Date(verhaal._updatedAt),
+      changeFrequency: 'yearly' as const,
+      priority: 0.6,
     })),
     ...objecten.map((woning) => ({
       url: `${BASE_URL}/aanbod/${woning.slug}`,

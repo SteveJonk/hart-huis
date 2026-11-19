@@ -65,7 +65,7 @@ export type SanityImageAssetReference = {
 };
 
 export type ObjectImage = {
-  asset?: SanityImageAssetReference;
+  asset: SanityImageAssetReference;
   media?: unknown; // Unable to locate the referenced type "object.image.media" in schema
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
@@ -74,7 +74,7 @@ export type ObjectImage = {
 };
 
 export type ItemsObjectImage = {
-  asset?: SanityImageAssetReference;
+  asset: SanityImageAssetReference;
   media?: unknown; // Unable to locate the referenced type "items.object.image.media" in schema
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
@@ -82,7 +82,7 @@ export type ItemsObjectImage = {
 };
 
 export type TimelineItemsObjectImage = {
-  asset?: SanityImageAssetReference;
+  asset: SanityImageAssetReference;
   media?: unknown; // Unable to locate the referenced type "timeline.items.object.image.media" in schema
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
@@ -91,7 +91,7 @@ export type TimelineItemsObjectImage = {
 };
 
 export type MembersObjectImage = {
-  asset?: SanityImageAssetReference;
+  asset: SanityImageAssetReference;
   media?: unknown; // Unable to locate the referenced type "members.object.image.media" in schema
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
@@ -132,6 +132,7 @@ export type RichText = {
         _key: string;
       }
   >;
+  anchorId?: string;
 };
 
 export type CenteredCta = {
@@ -141,6 +142,7 @@ export type CenteredCta = {
   body: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
+  anchorId?: string;
 };
 
 export type QuoteStrip = {
@@ -156,12 +158,13 @@ export type QuoteStrip = {
     meta: string;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type PersonQuote = {
   _type: "personQuote";
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -173,6 +176,7 @@ export type PersonQuote = {
   paragraphs: Array<string>;
   quote: string;
   name: string;
+  anchorId?: string;
 };
 
 export type NumberedSteps = {
@@ -186,6 +190,7 @@ export type NumberedSteps = {
     body: string;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type IconCards = {
@@ -214,6 +219,7 @@ export type IconCards = {
     cta?: Cta;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type FormReference = {
@@ -226,7 +232,7 @@ export type FormReference = {
 export type FormHero = {
   _type: "formHero";
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -247,6 +253,7 @@ export type FormHero = {
   formLead: string;
   form: FormReference;
   privacyNote: string;
+  anchorId?: string;
 };
 
 export type HighlightStrip = {
@@ -256,6 +263,7 @@ export type HighlightStrip = {
   title: string;
   body: string;
   cta?: Cta;
+  anchorId?: string;
 };
 
 export type Werkwijze = {
@@ -270,6 +278,7 @@ export type Werkwijze = {
     body?: string;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type ReviewGrid = {
@@ -277,6 +286,7 @@ export type ReviewGrid = {
   title?: string;
   more?: string;
   empty?: string;
+  anchorId?: string;
 };
 
 export type ReviewReference = {
@@ -290,7 +300,7 @@ export type UitgelichteReview = {
   _type: "uitgelichteReview";
   eyebrow?: string;
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -298,6 +308,7 @@ export type UitgelichteReview = {
     _type: "image";
   };
   review: ReviewReference;
+  anchorId?: string;
 };
 
 export type BeoordelingenHero = {
@@ -311,6 +322,7 @@ export type BeoordelingenHero = {
   secondaryCta?: Cta;
   scoreLabel?: string;
   scoreNote?: string;
+  anchorId?: string;
 };
 
 export type ObjectGrid = {
@@ -318,6 +330,7 @@ export type ObjectGrid = {
   ctaCard?: CtaCard;
   emptyTitle?: string;
   emptyBody?: string;
+  anchorId?: string;
 };
 
 export type AanbodHeader = {
@@ -328,6 +341,7 @@ export type AanbodHeader = {
   titleHighlight?: string;
   lead?: string;
   aside?: AanbodHeaderAside;
+  anchorId?: string;
 };
 
 export type RouteBlock = {
@@ -342,13 +356,14 @@ export type RouteBlock = {
   }>;
   cta?: Cta;
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt: string;
     _type: "image";
   };
+  anchorId?: string;
 };
 
 export type ContactFormSection = {
@@ -359,12 +374,13 @@ export type ContactFormSection = {
   form: FormReference;
   note?: string;
   aside?: Aside;
+  anchorId?: string;
 };
 
 export type PersonBlock = {
   _type: "personBlock";
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -375,6 +391,7 @@ export type PersonBlock = {
   title: string;
   body: string;
   person: Person;
+  anchorId?: string;
 };
 
 export type ContactWays = {
@@ -388,6 +405,7 @@ export type ContactWays = {
     link?: Link;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type SplitHero = {
@@ -400,13 +418,14 @@ export type SplitHero = {
   primaryCta?: Cta;
   secondaryCta?: Cta;
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt: string;
     _type: "image";
   };
+  anchorId?: string;
 };
 
 export type CompareCards = {
@@ -428,6 +447,7 @@ export type CompareCards = {
     dark?: boolean;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type Assurances = {
@@ -440,6 +460,7 @@ export type Assurances = {
     body: string;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type MediaText = {
@@ -449,13 +470,14 @@ export type MediaText = {
   paragraphs: Array<string>;
   cta?: Cta;
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt: string;
     _type: "image";
   };
+  anchorId?: string;
 };
 
 export type Team = {
@@ -470,6 +492,7 @@ export type Team = {
     image: MembersObjectImage;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type ValueCards = {
@@ -483,6 +506,7 @@ export type ValueCards = {
     body: string;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type Timeline = {
@@ -497,12 +521,13 @@ export type Timeline = {
     image?: TimelineItemsObjectImage;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type DuoPhotos = {
   _type: "duoPhotos";
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -512,7 +537,7 @@ export type DuoPhotos = {
   stampValue: string;
   stampLabel: string;
   secondaryImage: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -520,6 +545,7 @@ export type DuoPhotos = {
     _type: "image";
   };
   caption?: string;
+  anchorId?: string;
 };
 
 export type PageOpener = {
@@ -530,6 +556,7 @@ export type PageOpener = {
   lead: string;
   motto?: string;
   attribution?: string;
+  anchorId?: string;
 };
 
 export type CrossLinks = {
@@ -540,6 +567,7 @@ export type CrossLinks = {
     link: Link;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type RegionBlock = {
@@ -552,6 +580,7 @@ export type RegionBlock = {
     link?: Link;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type FaqReference = {
@@ -572,12 +601,13 @@ export type Faqs = {
       _key: string;
     } & FaqReference
   >;
+  anchorId?: string;
 };
 
 export type QuoteBand = {
   _type: "quoteBand";
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -589,6 +619,7 @@ export type QuoteBand = {
   initials: string;
   name: string;
   place: string;
+  anchorId?: string;
 };
 
 export type Steps = {
@@ -604,6 +635,7 @@ export type Steps = {
     image: ItemsObjectImage;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type Benefits = {
@@ -612,7 +644,7 @@ export type Benefits = {
   title: string;
   lead: string;
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -638,6 +670,7 @@ export type Benefits = {
     body: string;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type FactBar = {
@@ -648,12 +681,13 @@ export type FactBar = {
     _key: string;
   }>;
   note?: string;
+  anchorId?: string;
 };
 
 export type PageHero = {
   _type: "pageHero";
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -668,12 +702,13 @@ export type PageHero = {
   lead: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
+  anchorId?: string;
 };
 
 export type CtaBand = {
   _type: "ctaBand";
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -685,6 +720,7 @@ export type CtaBand = {
   body: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
+  anchorId?: string;
 };
 
 export type Listings = {
@@ -697,6 +733,7 @@ export type Listings = {
     link: Link;
     _key: string;
   }>;
+  anchorId?: string;
 };
 
 export type Reviews = {
@@ -707,31 +744,26 @@ export type Reviews = {
   intro: string;
   showGrades?: boolean;
   link?: Cta;
+  anchorId?: string;
+};
+
+export type KlantverhaalReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "klantverhaal";
 };
 
 export type Story = {
   _type: "story";
-  image: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: "image";
-  };
-  secondaryImage: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: "image";
-  };
-  eyebrow: string;
-  title: string;
-  quote: string;
-  attribution: string;
-  cta?: Cta;
+  eyebrow?: string;
+  klantverhalen?: Array<
+    {
+      _key: string;
+    } & KlantverhaalReference
+  >;
+  ctaLabel?: string;
+  anchorId?: string;
 };
 
 export type Services = {
@@ -747,12 +779,13 @@ export type Services = {
     _key: string;
   }>;
   nvm?: Nvm;
+  anchorId?: string;
 };
 
 export type Intro = {
   _type: "intro";
   image: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -771,12 +804,13 @@ export type Intro = {
     _key: string;
   }>;
   link?: Cta;
+  anchorId?: string;
 };
 
 export type Hero = {
   _type: "hero";
   slides: Array<{
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -791,6 +825,7 @@ export type Hero = {
   primaryCta: Cta;
   secondaryCta: Cta;
   badgeLabel: string;
+  anchorId?: string;
 };
 
 export type PageBuilder = Array<
@@ -954,18 +989,25 @@ export type PageReference = {
   [internalGroqTypeReferenceTo]?: "page";
 };
 
+export type WerkgebiedReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "werkgebied";
+};
+
 export type Cta = {
   _type: "cta";
   label: string;
   linkType: "internal" | "external";
-  internalLink?: PageReference;
+  internalLink?: PageReference | WerkgebiedReference | KlantverhaalReference;
   href?: string;
 };
 
 export type Link = {
   _type: "link";
   linkType: "internal" | "external";
-  internalLink?: PageReference;
+  internalLink?: PageReference | WerkgebiedReference | KlantverhaalReference;
   href?: string;
 };
 
@@ -974,7 +1016,7 @@ export type Seo = {
   title?: string;
   description?: string;
   ogImage?: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -1071,7 +1113,7 @@ export type FormGeneralSettings = {
   mailjetApiKey?: string;
   mailjetApiSecret?: string;
   mailLogo?: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -1109,7 +1151,7 @@ export type Footer = {
   _updatedAt: string;
   _rev: string;
   logo?: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -1129,7 +1171,8 @@ export type Footer = {
     links?: Array<{
       label: string;
       linkType: "internal" | "external";
-      internalLink?: PageReference;
+      internalLink?:
+        PageReference | WerkgebiedReference | KlantverhaalReference;
       href?: string;
       _type: "footerLink";
       _key: string;
@@ -1143,7 +1186,7 @@ export type Footer = {
     email?: string;
   };
   certificationLogos?: Array<{
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -1167,7 +1210,7 @@ export type Navigation = {
   _updatedAt: string;
   _rev: string;
   logo?: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -1177,7 +1220,7 @@ export type Navigation = {
   navLeft?: Array<{
     label: string;
     linkType: "internal" | "external";
-    internalLink?: PageReference;
+    internalLink?: PageReference | WerkgebiedReference | KlantverhaalReference;
     href?: string;
     _type: "navLink";
     _key: string;
@@ -1185,7 +1228,7 @@ export type Navigation = {
   navRight?: Array<{
     label: string;
     linkType: "internal" | "external";
-    internalLink?: PageReference;
+    internalLink?: PageReference | WerkgebiedReference | KlantverhaalReference;
     href?: string;
     _type: "navLink";
     _key: string;
@@ -1238,7 +1281,7 @@ export type Woning = {
   aanbiedingsTekst?: string;
   aanbiedingsTekstEngels?: string;
   fotos?: Array<{
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -1296,6 +1339,105 @@ export type Faq = {
   answer: string;
   link?: Cta;
   afterLink?: string;
+};
+
+export type Klantverhaal = {
+  _id: string;
+  _type: "klantverhaal";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  titleHighlight?: string;
+  shortTitle?: string;
+  slug: Slug;
+  intro: string;
+  mainImage: {
+    asset: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    caption?: string;
+    _type: "image";
+  };
+  secondaryImage?: {
+    asset: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "normal" | "h2";
+        listItem?: never;
+        markDefs?: Array<
+          {
+            _key: string;
+          } & Link
+        >;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        text: string;
+        _type: "pullQuote";
+        _key: string;
+      }
+    | {
+        asset: SanityImageAssetReference;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt: string;
+        _type: "image";
+        _key: string;
+      }
+    | {
+        items?: Array<{
+          value: string;
+          label: string;
+          _key: string;
+        }>;
+        _type: "resultaat";
+        _key: string;
+      }
+  >;
+  dienst: "Aankoop" | "Verkoop" | "Taxatie";
+  wie: string;
+  plaats: string;
+  buurt?: string;
+  feiten?: Array<{
+    label: string;
+    value: string;
+    _key: string;
+  }>;
+  grade?: number;
+  quote?: string;
+  makelaarQuote?: string;
+  date?: string;
+  seo?: Seo;
+};
+
+export type Werkgebied = {
+  _id: string;
+  _type: "werkgebied";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: Slug;
+  seo?: Seo;
+  content?: PageBuilder;
 };
 
 export type Page = {
@@ -1460,6 +1602,7 @@ export type AllSanitySchemaTypes =
   | CtaBand
   | Listings
   | Reviews
+  | KlantverhaalReference
   | Story
   | Services
   | Intro
@@ -1467,6 +1610,7 @@ export type AllSanitySchemaTypes =
   | PageBuilder
   | FormField
   | PageReference
+  | WerkgebiedReference
   | Cta
   | Link
   | Seo
@@ -1483,6 +1627,8 @@ export type AllSanitySchemaTypes =
   | Slug
   | Review
   | Faq
+  | Klantverhaal
+  | Werkgebied
   | Page
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -1495,7 +1641,7 @@ export type AllSanitySchemaTypes =
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{    _id,    title,    slug,    seo,    isLandingPage,    content[]{      ...,      primaryCta{  ...,  internalLink->{    "slug": slug.current  }},      secondaryCta{  ...,  internalLink->{    "slug": slug.current  }},      link{  ...,  internalLink->{    "slug": slug.current  }},      cta{  ...,  internalLink->{    "slug": slug.current  }},      nvm{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      items[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }},        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      cards[]{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      person{        ...,        links[]{  ...,  internalLink->{    "slug": slug.current  }}      },      aside{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      // A simple form keeps its fields at the root, a multi-step one spreads      // them over steps; the container the mode does not use comes back null.      form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    "slug": slug.current  }}},      regions[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      places[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }}      },      // Geen "..." in de takken hieronder: die spreidt het ruwe document      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.      _type == "hero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "reviews" => {        "reviews": *[_type == "review"] | order(date desc)[0...8]{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance},        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "beoordelingenHero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)},        ...{  "cijfer10": count(*[_type == "review" && grade >= 9.5]),  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])}      },      _type == "uitgelichteReview" => {        review->{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "reviewGrid" => {        "items": *[_type == "review"] | order(date desc){  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "objectGrid" => {        ctaCard{..., cta{  ...,  internalLink->{    "slug": slug.current  }}},        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "listings" => {        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "contactFormSection" => {        "recaptcha": *[_type == "formGeneralSettings"][0]{          recaptchaEnabled,          recaptchaSiteKey        }      },      _type == "faqs" => {        faqs[]->{          ...,          link{  ...,  internalLink->{    "slug": slug.current  }}        }      },      // Portable Text: de links van een tekst staan als annotatie in markDefs,      // dus die moeten dezelfde intern/extern-behandeling krijgen als een cta.      _type == "richText" => {        body[]{          ...,          markDefs[]{  ...,  internalLink->{    "slug": slug.current  }}        }      }    }  }
+// Query: *[_type == "page" && slug.current == $slug][0]{    _id,    title,    slug,    seo,    isLandingPage,    content[]{      ...,      primaryCta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},      secondaryCta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},      link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},      cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},      nvm{        ...,        cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      items[]{        ...,        link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},        cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      cards[]{        ...,        cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      person{        ...,        links[]{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      aside{        ...,        cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      // A simple form keeps its fields at the root, a multi-step one spreads      // them over steps; the container the mode does not use comes back null.      form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}},      regions[]{        ...,        link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      places[]{        ...,        link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      // Geen "..." in de takken hieronder: die spreidt het ruwe document      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.      _type == "hero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      // Gekozen klantverhalen, of anders allemaal (nieuwste eerst).      _type == "story" => {        "klantverhalen": select(          count(klantverhalen) > 0 => klantverhalen[]->{  _id,  title,  shortTitle,  "slug": slug.current,  intro,  quote,  wie,  plaats,  buurt,  dienst,  mainImage,  secondaryImage},          *[_type == "klantverhaal"] | order(date desc, _createdAt desc){  _id,  title,  shortTitle,  "slug": slug.current,  intro,  quote,  wie,  plaats,  buurt,  dienst,  mainImage,  secondaryImage}        )      },      _type == "reviews" => {        "reviews": *[_type == "review"] | order(date desc)[0...8]{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance},        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "beoordelingenHero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)},        ...{  "cijfer10": count(*[_type == "review" && grade >= 9.5]),  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])}      },      _type == "uitgelichteReview" => {        review->{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "reviewGrid" => {        "items": *[_type == "review"] | order(date desc){  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "objectGrid" => {        ctaCard{..., cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}},        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "listings" => {        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "contactFormSection" => {        "recaptcha": *[_type == "formGeneralSettings"][0]{          recaptchaEnabled,          recaptchaSiteKey        }      },      _type == "faqs" => {        faqs[]->{          ...,          link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}        }      },      // Portable Text: de links van een tekst staan als annotatie in markDefs,      // dus die moeten dezelfde intern/extern-behandeling krijgen als een cta.      _type == "richText" => {        body[]{          ...,          markDefs[]{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}        }      }    }  }
 export type PAGE_QUERY_RESULT = {
   _id: string;
   title: string;
@@ -1524,6 +1670,7 @@ export type PAGE_QUERY_RESULT = {
             href?: string;
           } | null;
         } | null;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1549,6 +1696,7 @@ export type PAGE_QUERY_RESULT = {
           link: null;
           cta: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1568,7 +1716,7 @@ export type PAGE_QUERY_RESULT = {
         title: string;
         lead: string;
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -1596,6 +1744,7 @@ export type PAGE_QUERY_RESULT = {
           link: null;
           cta: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1636,6 +1785,7 @@ export type PAGE_QUERY_RESULT = {
         } | null;
         scoreLabel?: string;
         scoreNote?: string;
+        anchorId?: string;
         link: null;
         cta: null;
         nvm: null;
@@ -1680,6 +1830,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
           href?: string;
         } | null;
+        anchorId?: string;
         link: null;
         cta: null;
         nvm: null;
@@ -1719,6 +1870,7 @@ export type PAGE_QUERY_RESULT = {
           dark?: boolean;
           _key: string;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1790,6 +1942,7 @@ export type PAGE_QUERY_RESULT = {
             href?: string;
           } | null;
         } | null;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1825,6 +1978,7 @@ export type PAGE_QUERY_RESULT = {
           _key: string;
           cta: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1854,6 +2008,7 @@ export type PAGE_QUERY_RESULT = {
           _key: string;
           cta: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1870,7 +2025,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "ctaBand";
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -1898,6 +2053,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
           href?: string;
         } | null;
+        anchorId?: string;
         link: null;
         cta: null;
         nvm: null;
@@ -1913,7 +2069,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "duoPhotos";
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -1923,7 +2079,7 @@ export type PAGE_QUERY_RESULT = {
         stampValue: string;
         stampLabel: string;
         secondaryImage: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -1931,6 +2087,7 @@ export type PAGE_QUERY_RESULT = {
           _type: "image";
         };
         caption?: string;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -1953,6 +2110,7 @@ export type PAGE_QUERY_RESULT = {
           _key: string;
         }>;
         note?: string;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2000,6 +2158,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
           afterLink?: string;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         cta: null;
@@ -2016,7 +2175,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "formHero";
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -2069,6 +2228,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
         };
         privacyNote: string;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2085,7 +2245,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "hero";
         slides: Array<{
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -2116,6 +2276,7 @@ export type PAGE_QUERY_RESULT = {
           href?: string;
         };
         badgeLabel: string;
+        anchorId?: string;
         link: null;
         cta: null;
         nvm: null;
@@ -2148,6 +2309,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
           href?: string;
         } | null;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2196,6 +2358,7 @@ export type PAGE_QUERY_RESULT = {
           _key: string;
           link: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2212,7 +2375,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "intro";
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -2239,6 +2402,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
           href?: string;
         } | null;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         cta: null;
@@ -2277,6 +2441,7 @@ export type PAGE_QUERY_RESULT = {
           };
           _key: string;
         }> | null;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2297,7 +2462,7 @@ export type PAGE_QUERY_RESULT = {
           kamers: number | null;
           aangebodenSinds: string | null;
           foto: {
-            asset?: SanityImageAssetReference;
+            asset: SanityImageAssetReference;
             media?: unknown;
             hotspot?: SanityImageHotspot;
             crop?: SanityImageCrop;
@@ -2323,13 +2488,14 @@ export type PAGE_QUERY_RESULT = {
           href?: string;
         } | null;
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           alt: string;
           _type: "image";
         };
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2356,6 +2522,7 @@ export type PAGE_QUERY_RESULT = {
           link: null;
           cta: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2386,6 +2553,7 @@ export type PAGE_QUERY_RESULT = {
         } | null;
         emptyTitle?: string;
         emptyBody?: string;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2408,7 +2576,7 @@ export type PAGE_QUERY_RESULT = {
           kamers: number | null;
           aangebodenSinds: string | null;
           foto: {
-            asset?: SanityImageAssetReference;
+            asset: SanityImageAssetReference;
             media?: unknown;
             hotspot?: SanityImageHotspot;
             crop?: SanityImageCrop;
@@ -2422,7 +2590,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "pageHero";
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -2453,6 +2621,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
           href?: string;
         } | null;
+        anchorId?: string;
         link: null;
         cta: null;
         nvm: null;
@@ -2473,6 +2642,7 @@ export type PAGE_QUERY_RESULT = {
         lead: string;
         motto?: string;
         attribution?: string;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2490,7 +2660,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "personBlock";
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -2511,6 +2681,7 @@ export type PAGE_QUERY_RESULT = {
             internalLink: null;
           }> | null;
         };
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2527,7 +2698,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "personQuote";
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -2539,6 +2710,7 @@ export type PAGE_QUERY_RESULT = {
         paragraphs: Array<string>;
         quote: string;
         name: string;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2556,7 +2728,7 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "quoteBand";
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -2568,6 +2740,7 @@ export type PAGE_QUERY_RESULT = {
         initials: string;
         name: string;
         place: string;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2605,6 +2778,7 @@ export type PAGE_QUERY_RESULT = {
           link: null;
           cta: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         cta: null;
@@ -2634,6 +2808,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
           _key: string;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2652,6 +2827,7 @@ export type PAGE_QUERY_RESULT = {
         title?: string;
         more?: string;
         empty?: string;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2694,6 +2870,7 @@ export type PAGE_QUERY_RESULT = {
           } | null;
           href?: string;
         } | null;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         cta: null;
@@ -2762,6 +2939,7 @@ export type PAGE_QUERY_RESULT = {
               markDefs: null;
             }
         >;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2796,13 +2974,14 @@ export type PAGE_QUERY_RESULT = {
           href?: string;
         } | null;
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           alt: string;
           _type: "image";
         };
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2850,6 +3029,7 @@ export type PAGE_QUERY_RESULT = {
             href?: string;
           } | null;
         } | null;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2888,13 +3068,14 @@ export type PAGE_QUERY_RESULT = {
           href?: string;
         } | null;
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           alt: string;
           _type: "image";
         };
+        anchorId?: string;
         link: null;
         cta: null;
         nvm: null;
@@ -2930,6 +3111,7 @@ export type PAGE_QUERY_RESULT = {
           link: null;
           cta: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -2944,38 +3126,42 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "story";
-        image: {
-          asset?: SanityImageAssetReference;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: "image";
-        };
-        secondaryImage: {
-          asset?: SanityImageAssetReference;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: "image";
-        };
-        eyebrow: string;
-        title: string;
-        quote: string;
-        attribution: string;
-        cta: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
+        eyebrow?: string;
+        klantverhalen: Array<{
+          _id: string;
+          title: string;
+          shortTitle: string | null;
+          slug: string;
+          intro: string;
+          quote: string | null;
+          wie: string;
+          plaats: string;
+          buurt: string | null;
+          dienst: "Aankoop" | "Taxatie" | "Verkoop";
+          mainImage: {
+            asset: SanityImageAssetReference;
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt: string;
+            caption?: string;
+            _type: "image";
+          };
+          secondaryImage: {
+            asset: SanityImageAssetReference;
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt: string;
+            _type: "image";
           } | null;
-          href?: string;
-        } | null;
+        }> | null;
+        ctaLabel?: string;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
+        cta: null;
         nvm: null;
         items: null;
         cards: null;
@@ -2998,6 +3184,7 @@ export type PAGE_QUERY_RESULT = {
           image: MembersObjectImage;
           _key: string;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -3026,6 +3213,7 @@ export type PAGE_QUERY_RESULT = {
           link: null;
           cta: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -3043,7 +3231,7 @@ export type PAGE_QUERY_RESULT = {
         _type: "uitgelichteReview";
         eyebrow?: string;
         image: {
-          asset?: SanityImageAssetReference;
+          asset: SanityImageAssetReference;
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
@@ -3063,6 +3251,7 @@ export type PAGE_QUERY_RESULT = {
           priceQuality: number | null;
           serviceAndGuidance: number | null;
         };
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -3090,6 +3279,7 @@ export type PAGE_QUERY_RESULT = {
           link: null;
           cta: null;
         }>;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -3125,6 +3315,1809 @@ export type PAGE_QUERY_RESULT = {
           link: null;
           cta: null;
         }> | null;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+  > | null;
+} | null;
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: KLANTVERHAAL_QUERY
+// Query: *[_type == "klantverhaal" && slug.current == $slug][0]{    _id,    title,    titleHighlight,    "slug": slug.current,    intro,    mainImage,    body[]{      ...,      markDefs[]{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}    },    dienst,    wie,    plaats,    buurt,    feiten,    grade,    makelaarQuote,    seo,    "meer": *[_type == "klantverhaal" && _id != ^._id] | order(date desc, _createdAt desc)[0...3]{  _id,  title,  shortTitle,  "slug": slug.current,  intro,  quote,  wie,  plaats,  buurt,  dienst,  mainImage,  secondaryImage}  }
+export type KLANTVERHAAL_QUERY_RESULT = {
+  _id: string;
+  title: string;
+  titleHighlight: string | null;
+  slug: string;
+  intro: string;
+  mainImage: {
+    asset: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    caption?: string;
+    _type: "image";
+  };
+  body: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "h2" | "normal";
+        listItem?: never;
+        markDefs: Array<{
+          _key: string;
+          _type: "link";
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        }> | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset: SanityImageAssetReference;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt: string;
+        _type: "image";
+        _key: string;
+        markDefs: null;
+      }
+    | {
+        text: string;
+        _type: "pullQuote";
+        _key: string;
+        markDefs: null;
+      }
+    | {
+        items?: Array<{
+          value: string;
+          label: string;
+          _key: string;
+        }>;
+        _type: "resultaat";
+        _key: string;
+        markDefs: null;
+      }
+  > | null;
+  dienst: "Aankoop" | "Taxatie" | "Verkoop";
+  wie: string;
+  plaats: string;
+  buurt: string | null;
+  feiten: Array<{
+    label: string;
+    value: string;
+    _key: string;
+  }> | null;
+  grade: number | null;
+  makelaarQuote: string | null;
+  seo: Seo | null;
+  meer: Array<{
+    _id: string;
+    title: string;
+    shortTitle: string | null;
+    slug: string;
+    intro: string;
+    quote: string | null;
+    wie: string;
+    plaats: string;
+    buurt: string | null;
+    dienst: "Aankoop" | "Taxatie" | "Verkoop";
+    mainImage: {
+      asset: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      caption?: string;
+      _type: "image";
+    };
+    secondaryImage: {
+      asset: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    } | null;
+  }>;
+} | null;
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: WERKGEBIED_QUERY
+// Query: *[_type == "werkgebied" && slug.current == $slug][0]{    _id,    title,    slug,    seo,    isLandingPage,    content[]{      ...,      primaryCta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},      secondaryCta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},      link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},      cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},      nvm{        ...,        cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      items[]{        ...,        link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},        cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      cards[]{        ...,        cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      person{        ...,        links[]{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      aside{        ...,        cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      // A simple form keeps its fields at the root, a multi-step one spreads      // them over steps; the container the mode does not use comes back null.      form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}},      regions[]{        ...,        link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      places[]{        ...,        link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      // Geen "..." in de takken hieronder: die spreidt het ruwe document      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.      _type == "hero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      // Gekozen klantverhalen, of anders allemaal (nieuwste eerst).      _type == "story" => {        "klantverhalen": select(          count(klantverhalen) > 0 => klantverhalen[]->{  _id,  title,  shortTitle,  "slug": slug.current,  intro,  quote,  wie,  plaats,  buurt,  dienst,  mainImage,  secondaryImage},          *[_type == "klantverhaal"] | order(date desc, _createdAt desc){  _id,  title,  shortTitle,  "slug": slug.current,  intro,  quote,  wie,  plaats,  buurt,  dienst,  mainImage,  secondaryImage}        )      },      _type == "reviews" => {        "reviews": *[_type == "review"] | order(date desc)[0...8]{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance},        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)}      },      _type == "beoordelingenHero" => {        ...{  "totaalReviews": count(*[_type == "review"]),  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)},        ...{  "cijfer10": count(*[_type == "review" && grade >= 9.5]),  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])}      },      _type == "uitgelichteReview" => {        review->{  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "reviewGrid" => {        "items": *[_type == "review"] | order(date desc){  quote,  name,  type,  date,  grade,  accessibilityAndCommunication,  expertise,  localMarketKnowledge,  negotiationAndResult,  priceQuality,  serviceAndGuidance}      },      _type == "objectGrid" => {        ctaCard{..., cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}},        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "listings" => {        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]}      },      _type == "contactFormSection" => {        "recaptcha": *[_type == "formGeneralSettings"][0]{          recaptchaEnabled,          recaptchaSiteKey        }      },      _type == "faqs" => {        faqs[]->{          ...,          link{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}        }      },      // Portable Text: de links van een tekst staan als annotatie in markDefs,      // dus die moeten dezelfde intern/extern-behandeling krijgen als een cta.      _type == "richText" => {        body[]{          ...,          markDefs[]{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}        }      }    }  }
+export type WERKGEBIED_QUERY_RESULT = {
+  _id: string;
+  title: string;
+  slug: Slug;
+  seo: Seo | null;
+  isLandingPage: null;
+  content: Array<
+    | {
+        _key: string;
+        _type: "aanbodHeader";
+        breadcrumbLabel?: string;
+        eyebrow?: string;
+        title: string;
+        titleHighlight?: string;
+        lead?: string;
+        aside: {
+          title?: string;
+          body?: string;
+          cta: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+        } | null;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "assurances";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        items: Array<{
+          title: string;
+          body: string;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "benefits";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        items: Array<{
+          icon:
+            | "camera"
+            | "chart"
+            | "clock"
+            | "diploma"
+            | "doc"
+            | "eye"
+            | "house"
+            | "mail"
+            | "person"
+            | "renovate"
+            | "scale"
+            | "search"
+            | "shield";
+          title: string;
+          body: string;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "beoordelingenHero";
+        breadcrumbLabel?: string;
+        eyebrow?: string;
+        title: string;
+        titleHighlight?: string;
+        lead?: string;
+        primaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        secondaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        scoreLabel?: string;
+        scoreNote?: string;
+        anchorId?: string;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+        totaalReviews: number;
+        totaalAankoop: number;
+        totaalVerkoop: number;
+        gemiddeldCijfer: number;
+        cijfer10: number;
+        cijfer9: number;
+        cijfer8: number;
+        cijfer7: number;
+        cijfer6: number;
+      }
+    | {
+        _key: string;
+        _type: "centeredCta";
+        eyebrow: string;
+        title: string;
+        body: string;
+        primaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        secondaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        anchorId?: string;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "compareCards";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        spaceTop?: boolean;
+        cards: Array<{
+          label: string;
+          title: string;
+          body: string;
+          items: Array<{
+            text: string;
+            included?: boolean;
+            _key: string;
+          }>;
+          cta: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+          dark?: boolean;
+          _key: string;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "contactFormSection";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        form: {
+          _id: string;
+          title: string;
+          showTitle: boolean | null;
+          mode: "simple" | "steps";
+          fields: Array<
+            {
+              _key: string;
+            } & FormField
+          > | null;
+          steps: Array<{
+            title: string | null;
+            fields: Array<
+              {
+                _key: string;
+              } & FormField
+            >;
+          }> | null;
+          submitButtonText: string;
+          nextButtonText: string | null;
+          backButtonText: string | null;
+          successTitle: string | null;
+          successBody: string | null;
+          redirectAfterSubmit: boolean | null;
+          redirectLink: {
+            _type: "link";
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+        };
+        note?: string;
+        aside: {
+          title: string;
+          body: string;
+          items?: Array<{
+            icon: "mail" | "phone" | "pin" | "whatsapp";
+            title: string;
+            subtitle?: string;
+            _key: string;
+          }>;
+          cta: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+        } | null;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        regions: null;
+        places: null;
+        recaptcha: {
+          recaptchaEnabled: boolean | null;
+          recaptchaSiteKey: string | null;
+        } | null;
+      }
+    | {
+        _key: string;
+        _type: "contactWays";
+        items: Array<{
+          icon: "mail" | "phone" | "pin" | "whatsapp";
+          title: string;
+          body: string;
+          value: string;
+          note?: string;
+          link: {
+            _type: "link";
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+          _key: string;
+          cta: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "crossLinks";
+        items: Array<{
+          title: string;
+          body: string;
+          link: {
+            _type: "link";
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          };
+          _key: string;
+          cta: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "ctaBand";
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        eyebrow: string;
+        title: string;
+        body: string;
+        primaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        secondaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        anchorId?: string;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "duoPhotos";
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        stampValue: string;
+        stampLabel: string;
+        secondaryImage: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        caption?: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "factBar";
+        facts: Array<{
+          value: string;
+          label: string;
+          _key: string;
+        }>;
+        note?: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "faqs";
+        eyebrow: string;
+        title: string;
+        intro: string;
+        link: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        faqs: Array<{
+          _id: string;
+          _type: "faq";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          title: string;
+          answer: string;
+          link: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+          afterLink?: string;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "formHero";
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        eyebrow: string;
+        title: string;
+        titleHighlight?: string;
+        titleAfter?: string;
+        lead: string;
+        usps: Array<string>;
+        score: string;
+        scoreLabel: string;
+        reviewCount: string;
+        reviewNote: string;
+        formTitle: string;
+        formLead: string;
+        form: {
+          _id: string;
+          title: string;
+          showTitle: boolean | null;
+          mode: "simple" | "steps";
+          fields: Array<
+            {
+              _key: string;
+            } & FormField
+          > | null;
+          steps: Array<{
+            title: string | null;
+            fields: Array<
+              {
+                _key: string;
+              } & FormField
+            >;
+          }> | null;
+          submitButtonText: string;
+          nextButtonText: string | null;
+          backButtonText: string | null;
+          successTitle: string | null;
+          successBody: string | null;
+          redirectAfterSubmit: boolean | null;
+          redirectLink: {
+            _type: "link";
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+        };
+        privacyNote: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "hero";
+        slides: Array<{
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+          _key: string;
+        }>;
+        eyebrow: string;
+        title: string;
+        titleHighlight?: string;
+        lead: string;
+        primaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        };
+        secondaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        };
+        badgeLabel: string;
+        anchorId?: string;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+        totaalReviews: number;
+        totaalAankoop: number;
+        totaalVerkoop: number;
+        gemiddeldCijfer: number;
+      }
+    | {
+        _key: string;
+        _type: "highlightStrip";
+        icon?:
+          "chart" | "clock" | "doc" | "eye" | "house" | "person" | "search";
+        badge?: string;
+        title: string;
+        body: string;
+        cta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "iconCards";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        items: Array<{
+          icon:
+            | "camera"
+            | "chart"
+            | "clock"
+            | "diploma"
+            | "doc"
+            | "eye"
+            | "heart"
+            | "house"
+            | "mail"
+            | "person"
+            | "renovate"
+            | "scale"
+            | "search"
+            | "shield";
+          title: string;
+          body: string;
+          cta: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+          _key: string;
+          link: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "intro";
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        stampValue: string;
+        stampLabel: string;
+        eyebrow: string;
+        title: string;
+        titleHighlight?: string;
+        leads: Array<string>;
+        facts?: Array<{
+          value: string;
+          label: string;
+          _key: string;
+        }>;
+        link: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "listings";
+        title: string;
+        cta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        regionsLabel?: string;
+        regions: Array<{
+          label: string;
+          link: {
+            _type: "link";
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          };
+          _key: string;
+        }> | null;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        places: null;
+        objecten: Array<{
+          adres: string;
+          slug: string;
+          plaats: string;
+          status: "beschikbaar" | "verkocht" | "voorbehoud";
+          prijs: number | null;
+          woonoppervlak: number | null;
+          kamers: number | null;
+          aangebodenSinds: string | null;
+          foto: {
+            asset: SanityImageAssetReference;
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+            _key: string;
+          } | null;
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "mediaText";
+        eyebrow: string;
+        title: string;
+        paragraphs: Array<string>;
+        cta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "numberedSteps";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        items: Array<{
+          number: string;
+          title: string;
+          body: string;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "objectGrid";
+        ctaCard: {
+          title?: string;
+          body?: string;
+          cta: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+        } | null;
+        emptyTitle?: string;
+        emptyBody?: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+        objecten: Array<{
+          adres: string;
+          slug: string;
+          plaats: string;
+          status: "beschikbaar" | "verkocht" | "voorbehoud";
+          prijs: number | null;
+          woonoppervlak: number | null;
+          kamers: number | null;
+          aangebodenSinds: string | null;
+          foto: {
+            asset: SanityImageAssetReference;
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+            _key: string;
+          } | null;
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "pageHero";
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        breadcrumbLabel?: string;
+        eyebrow: string;
+        title: string;
+        titleHighlight?: string;
+        titleAfter?: string;
+        lead: string;
+        primaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        secondaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        anchorId?: string;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "pageOpener";
+        eyebrow: string;
+        title: string;
+        titleHighlight?: string;
+        lead: string;
+        motto?: string;
+        attribution?: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "personBlock";
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        eyebrow: string;
+        title: string;
+        body: string;
+        person: {
+          initials: string;
+          name: string;
+          role: string;
+          links: Array<{
+            label: string;
+            link?: Link;
+            _key: string;
+            internalLink: null;
+          }> | null;
+        };
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "personQuote";
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        eyebrow: string;
+        title: string;
+        paragraphs: Array<string>;
+        quote: string;
+        name: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "quoteBand";
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        eyebrow: string;
+        quote: string;
+        initials: string;
+        name: string;
+        place: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "quoteStrip";
+        score: string;
+        scoreLabel: string;
+        title: string;
+        lead: string;
+        link: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        items: Array<{
+          quote: string;
+          score: string;
+          meta: string;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "regionBlock";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        places: Array<{
+          label: string;
+          link: {
+            _type: "link";
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+          _key: string;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+      }
+    | {
+        _key: string;
+        _type: "reviewGrid";
+        title?: string;
+        more?: string;
+        empty?: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: Array<{
+          quote: string;
+          name: string;
+          type: "Aankoop" | "Verkoop" | null;
+          date: string | null;
+          grade: number | null;
+          accessibilityAndCommunication: number | null;
+          expertise: number | null;
+          localMarketKnowledge: number | null;
+          negotiationAndResult: number | null;
+          priceQuality: number | null;
+          serviceAndGuidance: number | null;
+        }>;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "reviews";
+        score: string;
+        scoreLabel: string;
+        reviewCountLabel: string;
+        intro: string;
+        showGrades?: boolean;
+        link: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+        reviews: Array<{
+          quote: string;
+          name: string;
+          type: "Aankoop" | "Verkoop" | null;
+          date: string | null;
+          grade: number | null;
+          accessibilityAndCommunication: number | null;
+          expertise: number | null;
+          localMarketKnowledge: number | null;
+          negotiationAndResult: number | null;
+          priceQuality: number | null;
+          serviceAndGuidance: number | null;
+        }>;
+        totaalReviews: number;
+        totaalAankoop: number;
+        totaalVerkoop: number;
+        gemiddeldCijfer: number;
+      }
+    | {
+        _key: string;
+        _type: "richText";
+        eyebrow?: string;
+        title?: string;
+        body: Array<
+          | {
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "blockquote" | "h2" | "h3" | "normal";
+              listItem?: "bullet" | "number";
+              markDefs: Array<{
+                _key: string;
+                _type: "link";
+                linkType: "external" | "internal";
+                internalLink: {
+                  slug: string;
+                } | null;
+                href?: string;
+              }> | null;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }
+          | {
+              rows: Array<{
+                cells: Array<string>;
+                _type: "tableRow";
+                _key: string;
+              }>;
+              _type: "table";
+              _key: string;
+              markDefs: null;
+            }
+        >;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "routeBlock";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        columns: Array<{
+          title: string;
+          body: string;
+          _key: string;
+        }>;
+        cta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "services";
+        title: string;
+        lead: string;
+        items: Array<{
+          label: string;
+          title: string;
+          description: string;
+          image: ObjectImage;
+          link: {
+            _type: "link";
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          };
+          _key: string;
+          cta: null;
+        }>;
+        nvm: {
+          badge: string;
+          title: string;
+          body: string;
+          cta: {
+            _type: "cta";
+            label: string;
+            linkType: "external" | "internal";
+            internalLink: {
+              slug: string;
+            } | null;
+            href?: string;
+          } | null;
+        } | null;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "splitHero";
+        breadcrumbLabel: string;
+        eyebrow: string;
+        title: string;
+        titleHighlight?: string;
+        lead: string;
+        primaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        secondaryCta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+        };
+        anchorId?: string;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "steps";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        cta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        items: Array<{
+          number: string;
+          title: string;
+          body: string;
+          image: ItemsObjectImage;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "story";
+        eyebrow?: string;
+        klantverhalen: Array<{
+          _id: string;
+          title: string;
+          shortTitle: string | null;
+          slug: string;
+          intro: string;
+          quote: string | null;
+          wie: string;
+          plaats: string;
+          buurt: string | null;
+          dienst: "Aankoop" | "Taxatie" | "Verkoop";
+          mainImage: {
+            asset: SanityImageAssetReference;
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt: string;
+            caption?: string;
+            _type: "image";
+          };
+          secondaryImage: {
+            asset: SanityImageAssetReference;
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt: string;
+            _type: "image";
+          } | null;
+        }> | null;
+        ctaLabel?: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "team";
+        eyebrow: string;
+        title: string;
+        lead?: string;
+        members: Array<{
+          name: string;
+          role: string;
+          body: string;
+          image: MembersObjectImage;
+          _key: string;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "timeline";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        items: Array<{
+          year: string;
+          title: string;
+          body: string;
+          image?: TimelineItemsObjectImage;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "uitgelichteReview";
+        eyebrow?: string;
+        image: {
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        review: {
+          quote: string;
+          name: string;
+          type: "Aankoop" | "Verkoop" | null;
+          date: string | null;
+          grade: number | null;
+          accessibilityAndCommunication: number | null;
+          expertise: number | null;
+          localMarketKnowledge: number | null;
+          negotiationAndResult: number | null;
+          priceQuality: number | null;
+          serviceAndGuidance: number | null;
+        };
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "valueCards";
+        eyebrow: string;
+        title: string;
+        lead: string;
+        items: Array<{
+          icon: "heart" | "lines" | "rings";
+          title: string;
+          body: string;
+          _key: string;
+          link: null;
+          cta: null;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "werkwijze";
+        eyebrow?: string;
+        title: string;
+        lead?: string;
+        cta: {
+          _type: "cta";
+          label: string;
+          linkType: "external" | "internal";
+          internalLink: {
+            slug: string;
+          } | null;
+          href?: string;
+        } | null;
+        items: Array<{
+          number?: string;
+          title?: string;
+          body?: string;
+          _key: string;
+          link: null;
+          cta: null;
+        }> | null;
+        anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
         link: null;
@@ -3141,7 +5134,7 @@ export type PAGE_QUERY_RESULT = {
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: WONING_QUERY
-// Query: *[_type == "woning" && slug.current == $slug][0]{    _id,    adres,    "slug": slug.current,    postcode,    plaats,    status,    prijs,    prijsConditie,    aangebodenSinds,    aanvaarding,    soortWoning,    bouwjaar,    woonoppervlak,    perceel,    inhoud,    kamers,    slaapkamers,    energielabel,    kenmerkGroepen[]{      titel,      rijen[]{label, waarde}    },    aanbiedingsTekst,    aanbiedingsTekstEngels,    fotos,    "brochureUrl": brochure.asset->url,    makelaar,    seo,    "vergelijkbaar": *[_type == "woning" && _id != ^._id]      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]},    // Het kantoornummer op de prijskaart staat in het footerdocument; site.ts    // is daar alleen nog terugval voor.    "telefoon": *[_id == "footer"][0].contactInfo.phone,    // Alles wat op elke objectpagina hetzelfde is: de knop op de prijskaart    // (label, venstertekst, formulier) en de twee secties eronder. Eén    // singleton voor alle objecten — de import schrijft de woningen zelf.    "instellingen": *[_id == "objectSettings"][0]{      ctaLabel,      dialogTitle,      dialogLead,      fallbackHref,      form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    "slug": slug.current  }}},      vergelijkbaar{        eyebrow,        title,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      ctaBand{        image,        eyebrow,        title,        body,        primaryCta{  ...,  internalLink->{    "slug": slug.current  }},        secondaryCta{  ...,  internalLink->{    "slug": slug.current  }}      }    },    "recaptcha": *[_type == "formGeneralSettings"][0]{      recaptchaEnabled,      recaptchaSiteKey    }  }
+// Query: *[_type == "woning" && slug.current == $slug][0]{    _id,    adres,    "slug": slug.current,    postcode,    plaats,    status,    prijs,    prijsConditie,    aangebodenSinds,    aanvaarding,    soortWoning,    bouwjaar,    woonoppervlak,    perceel,    inhoud,    kamers,    slaapkamers,    energielabel,    kenmerkGroepen[]{      titel,      rijen[]{label, waarde}    },    aanbiedingsTekst,    aanbiedingsTekstEngels,    fotos,    "brochureUrl": brochure.asset->url,    makelaar,    seo,    "vergelijkbaar": *[_type == "woning" && _id != ^._id]      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{  adres,  "slug": slug.current,  plaats,  status,  prijs,  woonoppervlak,  kamers,  aangebodenSinds,  "foto": fotos[0]},    // Het kantoornummer op de prijskaart staat in het footerdocument; site.ts    // is daar alleen nog terugval voor.    "telefoon": *[_id == "footer"][0].contactInfo.phone,    // Alles wat op elke objectpagina hetzelfde is: de knop op de prijskaart    // (label, venstertekst, formulier) en de twee secties eronder. Eén    // singleton voor alle objecten — de import schrijft de woningen zelf.    "instellingen": *[_id == "objectSettings"][0]{      ctaLabel,      dialogTitle,      dialogLead,      fallbackHref,      form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}},      vergelijkbaar{        eyebrow,        title,        cta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      },      ctaBand{        image,        eyebrow,        title,        body,        primaryCta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},        secondaryCta{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}      }    },    "recaptcha": *[_type == "formGeneralSettings"][0]{      recaptchaEnabled,      recaptchaSiteKey    }  }
 export type WONING_QUERY_RESULT = {
   _id: string;
   adres: string;
@@ -3172,7 +5165,7 @@ export type WONING_QUERY_RESULT = {
   aanbiedingsTekst: string | null;
   aanbiedingsTekstEngels: string | null;
   fotos: Array<{
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -3199,7 +5192,7 @@ export type WONING_QUERY_RESULT = {
     kamers: number | null;
     aangebodenSinds: string | null;
     foto: {
-      asset?: SanityImageAssetReference;
+      asset: SanityImageAssetReference;
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
@@ -3272,7 +5265,7 @@ export type WONING_QUERY_RESULT = {
         } | null;
         ctaBand: {
           image: {
-            asset?: SanityImageAssetReference;
+            asset: SanityImageAssetReference;
             media?: unknown;
             hotspot?: SanityImageHotspot;
             crop?: SanityImageCrop;
@@ -3347,7 +5340,7 @@ export type FORM_SETTINGS_QUERY_RESULT = {
   fromEmail: string | null;
   fromName: string | null;
   mailLogo: {
-    asset?: SanityImageAssetReference;
+    asset: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -3375,7 +5368,7 @@ export type REVIEW_STATS_QUERY_RESULT = {
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: SITEMAP_QUERY
-// Query: {  "pages": *[_type == "page" && slug.current != "home"]{    "slug": slug.current,    _updatedAt  },  "objecten": *[_type == "woning"]{    "slug": slug.current,    _updatedAt  }}
+// Query: {  "pages": *[_type == "page" && slug.current != "home"]{    "slug": slug.current,    _updatedAt  },  "objecten": *[_type == "woning"]{    "slug": slug.current,    _updatedAt  },  "werkgebieden": *[_type == "werkgebied"]{    "slug": slug.current,    _updatedAt  },  "klantverhalen": *[_type == "klantverhaal"]{    "slug": slug.current,    _updatedAt  }}
 export type SITEMAP_QUERY_RESULT = {
   pages: Array<{
     slug: string;
@@ -3385,11 +5378,19 @@ export type SITEMAP_QUERY_RESULT = {
     slug: string;
     _updatedAt: string;
   }>;
+  werkgebieden: Array<{
+    slug: string;
+    _updatedAt: string;
+  }>;
+  klantverhalen: Array<{
+    slug: string;
+    _updatedAt: string;
+  }>;
 };
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: NAVIGATION_QUERY
-// Query: *[_id == "navigation"][0]{    logo{ alt, "url": asset->url },    navLeft[]{  ...,  internalLink->{    "slug": slug.current  }},    navRight[]{  ...,  internalLink->{    "slug": slug.current  }}  }
+// Query: *[_id == "navigation"][0]{    logo{ alt, "url": asset->url },    navLeft[]{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }},    navRight[]{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}  }
 export type NAVIGATION_QUERY_RESULT =
   | {
       logo: null;
@@ -3399,7 +5400,7 @@ export type NAVIGATION_QUERY_RESULT =
   | {
       logo: {
         alt: string;
-        url: string | null;
+        url: string;
       } | null;
       navLeft: null;
       navRight: null;
@@ -3407,7 +5408,7 @@ export type NAVIGATION_QUERY_RESULT =
   | {
       logo: {
         alt: string;
-        url: string | null;
+        url: string;
       } | null;
       navLeft: Array<{
         label: string;
@@ -3434,7 +5435,7 @@ export type NAVIGATION_QUERY_RESULT =
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: FOOTER_QUERY
-// Query: *[_id == "footer"][0]{    logo{ alt, "url": asset->url },    paragraph,    whatsapp,    contactInfo{      address,      phone,      email    },    linkGroups[]{      title,      links[]{  ...,  internalLink->{    "slug": slug.current  }}    },    socialLinks[]{ platform, url },    certificationLogos[]{ alt, url, asset },    copyright,    legalLinks[]{  ...,  internalLink->{    "slug": slug.current  }}  }
+// Query: *[_id == "footer"][0]{    logo{ alt, "url": asset->url },    paragraph,    whatsapp,    contactInfo{      address,      phone,      email    },    linkGroups[]{      title,      links[]{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}    },    socialLinks[]{ platform, url },    certificationLogos[]{ alt, url, asset },    copyright,    legalLinks[]{  ...,  internalLink->{    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al    // in de slug; resolveHref() plakt er alleen nog een "/" voor.    "slug": select(      _type == "werkgebied" => "werkgebied/" + slug.current,      _type == "klantverhaal" => "klantverhaal/" + slug.current,      slug.current    )  }}  }
 export type FOOTER_QUERY_RESULT =
   | {
       logo: null;
@@ -3450,7 +5451,7 @@ export type FOOTER_QUERY_RESULT =
   | {
       logo: {
         alt: string;
-        url: string | null;
+        url: string;
       } | null;
       paragraph: null;
       whatsapp: null;
@@ -3464,7 +5465,7 @@ export type FOOTER_QUERY_RESULT =
   | {
       logo: {
         alt: string;
-        url: string | null;
+        url: string;
       } | null;
       paragraph: string | null;
       whatsapp: string | null;
@@ -3493,7 +5494,7 @@ export type FOOTER_QUERY_RESULT =
       certificationLogos: Array<{
         alt: string;
         url: string | null;
-        asset: SanityImageAssetReference | null;
+        asset: SanityImageAssetReference;
       }> | null;
       copyright: string | null;
       legalLinks: Array<{
@@ -3513,13 +5514,15 @@ export type FOOTER_QUERY_RESULT =
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n  *[_type == "page" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    seo,\n    isLandingPage,\n    content[]{\n      ...,\n      primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      nvm{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      items[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      cards[]{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      person{\n        ...,\n        links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      aside{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // A simple form keeps its fields at the root, a multi-step one spreads\n      // them over steps; the container the mode does not use comes back null.\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n},\n      regions[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      places[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // Geen "..." in de takken hieronder: die spreidt het ruwe document\n      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de\n      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.\n      _type == "hero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "reviews" => {\n        "reviews": *[_type == "review"] | order(date desc)[0...8]{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n},\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "beoordelingenHero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n},\n        ...{\n  "cijfer10": count(*[_type == "review" && grade >= 9.5]),\n  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),\n  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),\n  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),\n  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])\n}\n      },\n      _type == "uitgelichteReview" => {\n        review->{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "reviewGrid" => {\n        "items": *[_type == "review"] | order(date desc){\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "objectGrid" => {\n        ctaCard{..., cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}},\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "listings" => {\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "contactFormSection" => {\n        "recaptcha": *[_type == "formGeneralSettings"][0]{\n          recaptchaEnabled,\n          recaptchaSiteKey\n        }\n      },\n      _type == "faqs" => {\n        faqs[]->{\n          ...,\n          link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        }\n      },\n      // Portable Text: de links van een tekst staan als annotatie in markDefs,\n      // dus die moeten dezelfde intern/extern-behandeling krijgen als een cta.\n      _type == "richText" => {\n        body[]{\n          ...,\n          markDefs[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        }\n      }\n    }\n  }\n': PAGE_QUERY_RESULT;
-    '\n  *[_type == "woning" && slug.current == $slug][0]{\n    _id,\n    adres,\n    "slug": slug.current,\n    postcode,\n    plaats,\n    status,\n    prijs,\n    prijsConditie,\n    aangebodenSinds,\n    aanvaarding,\n    soortWoning,\n    bouwjaar,\n    woonoppervlak,\n    perceel,\n    inhoud,\n    kamers,\n    slaapkamers,\n    energielabel,\n    kenmerkGroepen[]{\n      titel,\n      rijen[]{label, waarde}\n    },\n    aanbiedingsTekst,\n    aanbiedingsTekstEngels,\n    fotos,\n    "brochureUrl": brochure.asset->url,\n    makelaar,\n    seo,\n    "vergelijkbaar": *[_type == "woning" && _id != ^._id]\n      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n},\n    // Het kantoornummer op de prijskaart staat in het footerdocument; site.ts\n    // is daar alleen nog terugval voor.\n    "telefoon": *[_id == "footer"][0].contactInfo.phone,\n    // Alles wat op elke objectpagina hetzelfde is: de knop op de prijskaart\n    // (label, venstertekst, formulier) en de twee secties eronder. E\xE9n\n    // singleton voor alle objecten \u2014 de import schrijft de woningen zelf.\n    "instellingen": *[_id == "objectSettings"][0]{\n      ctaLabel,\n      dialogTitle,\n      dialogLead,\n      fallbackHref,\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n},\n      vergelijkbaar{\n        eyebrow,\n        title,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      ctaBand{\n        image,\n        eyebrow,\n        title,\n        body,\n        primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      }\n    },\n    "recaptcha": *[_type == "formGeneralSettings"][0]{\n      recaptchaEnabled,\n      recaptchaSiteKey\n    }\n  }\n': WONING_QUERY_RESULT;
+    '\n  *[_type == "page" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    seo,\n    isLandingPage,\n    content[]{\n      ...,\n      primaryCta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n      secondaryCta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n      link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n      cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n      nvm{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      items[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n        cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      cards[]{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      person{\n        ...,\n        links[]{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      aside{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      // A simple form keeps its fields at the root, a multi-step one spreads\n      // them over steps; the container the mode does not use comes back null.\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n},\n      regions[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      places[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      // Geen "..." in de takken hieronder: die spreidt het ruwe document\n      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de\n      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.\n      _type == "hero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      // Gekozen klantverhalen, of anders allemaal (nieuwste eerst).\n      _type == "story" => {\n        "klantverhalen": select(\n          count(klantverhalen) > 0 => klantverhalen[]->{\n  _id,\n  title,\n  shortTitle,\n  "slug": slug.current,\n  intro,\n  quote,\n  wie,\n  plaats,\n  buurt,\n  dienst,\n  mainImage,\n  secondaryImage\n},\n          *[_type == "klantverhaal"] | order(date desc, _createdAt desc){\n  _id,\n  title,\n  shortTitle,\n  "slug": slug.current,\n  intro,\n  quote,\n  wie,\n  plaats,\n  buurt,\n  dienst,\n  mainImage,\n  secondaryImage\n}\n        )\n      },\n      _type == "reviews" => {\n        "reviews": *[_type == "review"] | order(date desc)[0...8]{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n},\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "beoordelingenHero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n},\n        ...{\n  "cijfer10": count(*[_type == "review" && grade >= 9.5]),\n  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),\n  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),\n  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),\n  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])\n}\n      },\n      _type == "uitgelichteReview" => {\n        review->{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "reviewGrid" => {\n        "items": *[_type == "review"] | order(date desc){\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "objectGrid" => {\n        ctaCard{..., cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}},\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "listings" => {\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "contactFormSection" => {\n        "recaptcha": *[_type == "formGeneralSettings"][0]{\n          recaptchaEnabled,\n          recaptchaSiteKey\n        }\n      },\n      _type == "faqs" => {\n        faqs[]->{\n          ...,\n          link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n        }\n      },\n      // Portable Text: de links van een tekst staan als annotatie in markDefs,\n      // dus die moeten dezelfde intern/extern-behandeling krijgen als een cta.\n      _type == "richText" => {\n        body[]{\n          ...,\n          markDefs[]{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n        }\n      }\n    }\n  }\n': PAGE_QUERY_RESULT;
+    '\n  *[_type == "klantverhaal" && slug.current == $slug][0]{\n    _id,\n    title,\n    titleHighlight,\n    "slug": slug.current,\n    intro,\n    mainImage,\n    body[]{\n      ...,\n      markDefs[]{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n    },\n    dienst,\n    wie,\n    plaats,\n    buurt,\n    feiten,\n    grade,\n    makelaarQuote,\n    seo,\n    "meer": *[_type == "klantverhaal" && _id != ^._id] | order(date desc, _createdAt desc)[0...3]{\n  _id,\n  title,\n  shortTitle,\n  "slug": slug.current,\n  intro,\n  quote,\n  wie,\n  plaats,\n  buurt,\n  dienst,\n  mainImage,\n  secondaryImage\n}\n  }\n': KLANTVERHAAL_QUERY_RESULT;
+    '\n  *[_type == "werkgebied" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    seo,\n    isLandingPage,\n    content[]{\n      ...,\n      primaryCta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n      secondaryCta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n      link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n      cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n      nvm{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      items[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n        cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      cards[]{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      person{\n        ...,\n        links[]{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      aside{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      // A simple form keeps its fields at the root, a multi-step one spreads\n      // them over steps; the container the mode does not use comes back null.\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n},\n      regions[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      places[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      // Geen "..." in de takken hieronder: die spreidt het ruwe document\n      // opnieuw uit en overschrijft alles wat hierboven geprojecteerd is (de\n      // laatste sleutel wint). De "..." bovenaan levert de gewone velden al.\n      _type == "hero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      // Gekozen klantverhalen, of anders allemaal (nieuwste eerst).\n      _type == "story" => {\n        "klantverhalen": select(\n          count(klantverhalen) > 0 => klantverhalen[]->{\n  _id,\n  title,\n  shortTitle,\n  "slug": slug.current,\n  intro,\n  quote,\n  wie,\n  plaats,\n  buurt,\n  dienst,\n  mainImage,\n  secondaryImage\n},\n          *[_type == "klantverhaal"] | order(date desc, _createdAt desc){\n  _id,\n  title,\n  shortTitle,\n  "slug": slug.current,\n  intro,\n  quote,\n  wie,\n  plaats,\n  buurt,\n  dienst,\n  mainImage,\n  secondaryImage\n}\n        )\n      },\n      _type == "reviews" => {\n        "reviews": *[_type == "review"] | order(date desc)[0...8]{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n},\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}\n      },\n      _type == "beoordelingenHero" => {\n        ...{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n},\n        ...{\n  "cijfer10": count(*[_type == "review" && grade >= 9.5]),\n  "cijfer9": count(*[_type == "review" && grade >= 8.5 && grade < 9.5]),\n  "cijfer8": count(*[_type == "review" && grade >= 7.5 && grade < 8.5]),\n  "cijfer7": count(*[_type == "review" && grade >= 6.5 && grade < 7.5]),\n  "cijfer6": count(*[_type == "review" && defined(grade) && grade < 6.5])\n}\n      },\n      _type == "uitgelichteReview" => {\n        review->{\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "reviewGrid" => {\n        "items": *[_type == "review"] | order(date desc){\n  quote,\n  name,\n  type,\n  date,\n  grade,\n  accessibilityAndCommunication,\n  expertise,\n  localMarketKnowledge,\n  negotiationAndResult,\n  priceQuality,\n  serviceAndGuidance\n}\n      },\n      _type == "objectGrid" => {\n        ctaCard{..., cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}},\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc){\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "listings" => {\n        "objecten": *[_type == "woning"] | order(aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n}\n      },\n      _type == "contactFormSection" => {\n        "recaptcha": *[_type == "formGeneralSettings"][0]{\n          recaptchaEnabled,\n          recaptchaSiteKey\n        }\n      },\n      _type == "faqs" => {\n        faqs[]->{\n          ...,\n          link{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n        }\n      },\n      // Portable Text: de links van een tekst staan als annotatie in markDefs,\n      // dus die moeten dezelfde intern/extern-behandeling krijgen als een cta.\n      _type == "richText" => {\n        body[]{\n          ...,\n          markDefs[]{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n        }\n      }\n    }\n  }\n': WERKGEBIED_QUERY_RESULT;
+    '\n  *[_type == "woning" && slug.current == $slug][0]{\n    _id,\n    adres,\n    "slug": slug.current,\n    postcode,\n    plaats,\n    status,\n    prijs,\n    prijsConditie,\n    aangebodenSinds,\n    aanvaarding,\n    soortWoning,\n    bouwjaar,\n    woonoppervlak,\n    perceel,\n    inhoud,\n    kamers,\n    slaapkamers,\n    energielabel,\n    kenmerkGroepen[]{\n      titel,\n      rijen[]{label, waarde}\n    },\n    aanbiedingsTekst,\n    aanbiedingsTekstEngels,\n    fotos,\n    "brochureUrl": brochure.asset->url,\n    makelaar,\n    seo,\n    "vergelijkbaar": *[_type == "woning" && _id != ^._id]\n      | order(select(plaats == ^.plaats => 0, 1) asc, aangebodenSinds desc)[0...3]{\n  adres,\n  "slug": slug.current,\n  plaats,\n  status,\n  prijs,\n  woonoppervlak,\n  kamers,\n  aangebodenSinds,\n  "foto": fotos[0]\n},\n    // Het kantoornummer op de prijskaart staat in het footerdocument; site.ts\n    // is daar alleen nog terugval voor.\n    "telefoon": *[_id == "footer"][0].contactInfo.phone,\n    // Alles wat op elke objectpagina hetzelfde is: de knop op de prijskaart\n    // (label, venstertekst, formulier) en de twee secties eronder. E\xE9n\n    // singleton voor alle objecten \u2014 de import schrijft de woningen zelf.\n    "instellingen": *[_id == "objectSettings"][0]{\n      ctaLabel,\n      dialogTitle,\n      dialogLead,\n      fallbackHref,\n      form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n},\n      vergelijkbaar{\n        eyebrow,\n        title,\n        cta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      },\n      ctaBand{\n        image,\n        eyebrow,\n        title,\n        body,\n        primaryCta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n        secondaryCta{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n      }\n    },\n    "recaptcha": *[_type == "formGeneralSettings"][0]{\n      recaptchaEnabled,\n      recaptchaSiteKey\n    }\n  }\n': WONING_QUERY_RESULT;
     '\n  *[_id == $formId && _type == "form"][0]{\n    _id,\n    title,\n    mailRecipients,\n    mailSubject,\n    mailMessage,\n    sendCopyToSubmitter,\n    copySubject,\n    copyMessage,\n    "fields": select(\n      mode == "steps" => steps[].fields[]{label, name, type, isRequired},\n      fields[]{label, name, type, isRequired}\n    )\n  }\n': FORM_QUERY_RESULT;
     '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    fromEmail,\n    fromName,\n    mailLogo,\n    primaryColor,\n    textColor,\n    mailjetApiKey,\n    mailjetApiSecret,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey\n  }\n': FORM_SETTINGS_QUERY_RESULT;
     '{\n  "totaalReviews": count(*[_type == "review"]),\n  "totaalAankoop": count(*[_type == "review" && type == "Aankoop"]),\n  "totaalVerkoop": count(*[_type == "review" && type == "Verkoop"]),\n  "gemiddeldCijfer": math::avg(*[_type == "review" && defined(grade)].grade)\n}': REVIEW_STATS_QUERY_RESULT;
-    '{\n  "pages": *[_type == "page" && slug.current != "home"]{\n    "slug": slug.current,\n    _updatedAt\n  },\n  "objecten": *[_type == "woning"]{\n    "slug": slug.current,\n    _updatedAt\n  }\n}': SITEMAP_QUERY_RESULT;
-    '\n  *[_id == "navigation"][0]{\n    logo{ alt, "url": asset->url },\n    navLeft[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n    navRight[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n  }\n': NAVIGATION_QUERY_RESULT;
-    '\n  *[_id == "footer"][0]{\n    logo{ alt, "url": asset->url },\n    paragraph,\n    whatsapp,\n    contactInfo{\n      address,\n      phone,\n      email\n    },\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n    },\n    socialLinks[]{ platform, url },\n    certificationLogos[]{ alt, url, asset },\n    copyright,\n    legalLinks[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n  }\n': FOOTER_QUERY_RESULT;
+    '{\n  "pages": *[_type == "page" && slug.current != "home"]{\n    "slug": slug.current,\n    _updatedAt\n  },\n  "objecten": *[_type == "woning"]{\n    "slug": slug.current,\n    _updatedAt\n  },\n  "werkgebieden": *[_type == "werkgebied"]{\n    "slug": slug.current,\n    _updatedAt\n  },\n  "klantverhalen": *[_type == "klantverhaal"]{\n    "slug": slug.current,\n    _updatedAt\n  }\n}': SITEMAP_QUERY_RESULT;
+    '\n  *[_id == "navigation"][0]{\n    logo{ alt, "url": asset->url },\n    navLeft[]{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n},\n    navRight[]{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n  }\n': NAVIGATION_QUERY_RESULT;
+    '\n  *[_id == "footer"][0]{\n    logo{ alt, "url": asset->url },\n    paragraph,\n    whatsapp,\n    contactInfo{\n      address,\n      phone,\n      email\n    },\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n    },\n    socialLinks[]{ platform, url },\n    certificationLogos[]{ alt, url, asset },\n    copyright,\n    legalLinks[]{\n  ...,\n  internalLink->{\n    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al\n    // in de slug; resolveHref() plakt er alleen nog een "/" voor.\n    "slug": select(\n      _type == "werkgebied" => "werkgebied/" + slug.current,\n      _type == "klantverhaal" => "klantverhaal/" + slug.current,\n      slug.current\n    )\n  }\n}\n  }\n': FOOTER_QUERY_RESULT;
   }
 }

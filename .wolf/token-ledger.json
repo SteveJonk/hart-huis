@@ -3,18 +3,18 @@
   "created_at": "2026-08-04T09:02:57.105Z",
   "lifetime": {
     "total_tokens_estimated": 2862481,
-    "total_reads": 641,
+    "total_reads": 643,
     "total_writes": 0,
     "total_sessions": 108,
     "anatomy_hits": 335,
-    "anatomy_misses": 288,
-    "repeated_reads_blocked": 204,
+    "anatomy_misses": 290,
+    "repeated_reads_blocked": 206,
     "estimated_savings_vs_bare_cli": 447521,
-    "real_input_tokens": 29891,
-    "real_output_tokens": 2994236,
-    "real_cache_read_tokens": 875993290,
-    "real_cache_creation_tokens": 13556339,
-    "real_api_calls": 5280
+    "real_input_tokens": 30429,
+    "real_output_tokens": 3188982,
+    "real_cache_read_tokens": 930962755,
+    "real_cache_creation_tokens": 14137719,
+    "real_api_calls": 5536
   },
   "sessions": [
     {
@@ -5744,6 +5744,66 @@
         "writes_count": 0,
         "repeated_reads_blocked": 0,
         "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-11-19-1142",
+      "agent": "claude",
+      "started": "2026-11-19T10:42:42.338Z",
+      "ended": "2026-11-19T11:43:07.616Z",
+      "reads": [
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-hart-huis/46a7e222-eb49-4bfd-abb7-20a6174d749c/scratchpad/kv.html",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 254,
+        "output_tokens": 94938,
+        "cache_read_input_tokens": 25109983,
+        "cache_creation_input_tokens": 283935,
+        "api_calls": 121
+      }
+    },
+    {
+      "id": "session-2026-11-19-1142",
+      "agent": "claude",
+      "started": "2026-11-19T10:42:42.338Z",
+      "ended": "2026-11-19T11:48:09.098Z",
+      "reads": [
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-hart-huis/46a7e222-eb49-4bfd-abb7-20a6174d749c/scratchpad/kv.html",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 284,
+        "output_tokens": 99808,
+        "cache_read_input_tokens": 29859482,
+        "cache_creation_input_tokens": 297445,
+        "api_calls": 135
       }
     },
     {

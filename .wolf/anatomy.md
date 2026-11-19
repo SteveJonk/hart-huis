@@ -420,6 +420,7 @@
   - fn `Timeline` L25-89 (~716 tok)
 - `UitgelichteReview.tsx` — Eén uitgelichte beoordeling, groot uitgelicht naast een foto. (~751 tok)
 - `Team.tsx` — Teamleden-grid (foto, naam, rol, tekst) voor /over-ons; blok `team`. (~700 tok)
+- `Stories.tsx` — Klantverhalen-slider (story-blok): slides uit klantverhaal-documenten, 1 of 2 foto's. (~1600 tok)
   - fn `UitgelichteReview` L21-81 (~552 tok)
 - `ValueCards.tsx` — DEFAULTS (~932 tok)
   - fn `ValueIcon` L24-60 (~273 tok)

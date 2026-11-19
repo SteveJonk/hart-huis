@@ -62,15 +62,6 @@ async function buildHomeContent() {
     })),
   );
 
-  const storyImage = await uploadImage(
-    '/images/story-big.jpg',
-    'Een straat in Haarlem bij zonsondergang',
-  );
-  const storySecondary = await uploadImage(
-    '/images/story-small.jpg',
-    'Gevels in het centrum van Haarlem',
-  );
-
   const ctaImage = await uploadImage(
     '/images/cta-office.jpg',
     'Het kantoor van Hart & Huis Makelaardij in Haarlem',
@@ -121,14 +112,10 @@ async function buildHomeContent() {
     {
       _type: 'story',
       _key: key('home-story'),
-      image: storyImage,
-      secondaryImage: storySecondary,
+      // De verhalen zelf komen uit de klantverhaal-documenten (seed:klantverhalen).
       eyebrow: 'Klanten vertellen',
-      title: 'Van Amsterdam naar de Kleverparkbuurt',
-      quote:
-        'We zochten al anderhalf jaar. Binnen zes weken stonden we met de sleutel in onze hand — in de straat waar we stiekem altijd al wilden wonen.',
-      attribution: 'Sanne & Joost — Haarlem',
-      cta: cta('Lees hun verhaal', '#'),
+      ctaLabel: 'Lees hun verhaal',
+      anchorId: 'klantverhalen',
     },
     {
       _type: 'reviews',

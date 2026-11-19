@@ -16,6 +16,8 @@ import {seedBedankt} from './seed/bedankt'
 import {seedBeoordelingen} from './seed/beoordelingen'
 import {seedContact} from './seed/contact'
 import {seedHaarlem} from './seed/haarlem'
+import {seedWerkgebied} from './seed/werkgebied'
+import {seedKlantverhalen, seedKlantverhalenHome} from './seed/klantverhalen'
 import {seedHome} from './seed/home'
 import {seedNavigation} from './seed/navigation'
 import {seedNvm} from './seed/nvm'
@@ -46,6 +48,9 @@ const TARGETS = {
   waardebepaling: seedWaardebepaling,
   zoekopdracht: seedZoekopdracht,
   haarlem: seedHaarlem,
+  werkgebied: seedWerkgebied,
+  klantverhalen: seedKlantverhalen,
+  'klantverhalen-home': seedKlantverhalenHome,
   nav: seedNavigation,
 } as const
 

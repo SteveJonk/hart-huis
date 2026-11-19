@@ -302,7 +302,7 @@
             "type": "inline",
             "name": "sanity.imageAsset.reference"
           },
-          "optional": true
+          "optional": false
         },
         "media": {
           "type": "objectAttribute",
@@ -357,7 +357,7 @@
             "type": "inline",
             "name": "sanity.imageAsset.reference"
           },
-          "optional": true
+          "optional": false
         },
         "media": {
           "type": "objectAttribute",
@@ -405,7 +405,7 @@
             "type": "inline",
             "name": "sanity.imageAsset.reference"
           },
-          "optional": true
+          "optional": false
         },
         "media": {
           "type": "objectAttribute",
@@ -460,7 +460,7 @@
             "type": "inline",
             "name": "sanity.imageAsset.reference"
           },
-          "optional": true
+          "optional": false
         },
         "media": {
           "type": "objectAttribute",
@@ -745,6 +745,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -796,6 +803,13 @@
           "value": {
             "type": "inline",
             "name": "cta"
+          },
+          "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
           },
           "optional": true
         }
@@ -894,6 +908,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -922,7 +943,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -1002,6 +1023,13 @@
             "type": "string"
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -1083,6 +1111,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -1230,6 +1265,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -1288,7 +1330,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -1432,6 +1474,13 @@
             "type": "string"
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -1512,6 +1561,13 @@
           "value": {
             "type": "inline",
             "name": "cta"
+          },
+          "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
           },
           "optional": true
         }
@@ -1603,6 +1659,13 @@
             }
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -1635,6 +1698,13 @@
           "optional": true
         },
         "empty": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "anchorId": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -1705,7 +1775,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -1755,6 +1825,13 @@
             "name": "review.reference"
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -1836,6 +1913,13 @@
             "type": "string"
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -1869,6 +1953,13 @@
           "optional": true
         },
         "emptyBody": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "anchorId": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -1931,6 +2022,13 @@
           "value": {
             "type": "inline",
             "name": "aanbodHeader.aside"
+          },
+          "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
           },
           "optional": true
         }
@@ -2027,7 +2125,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -2069,6 +2167,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -2129,6 +2234,13 @@
             "name": "aside"
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -2157,7 +2269,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -2228,6 +2340,13 @@
             "name": "person"
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -2328,6 +2447,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -2407,7 +2533,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -2449,6 +2575,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -2589,6 +2722,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -2663,6 +2803,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -2723,7 +2870,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -2765,6 +2912,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -2854,6 +3008,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -2949,6 +3110,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3038,6 +3206,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3066,7 +3241,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -3134,7 +3309,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -3178,6 +3353,13 @@
           "optional": false
         },
         "caption": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "anchorId": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -3236,6 +3418,13 @@
           "optional": true
         },
         "attribution": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "anchorId": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -3302,6 +3491,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3377,6 +3573,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3474,6 +3677,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3502,7 +3712,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -3579,6 +3789,13 @@
             "type": "string"
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3676,6 +3893,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3725,7 +3949,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -3865,6 +4089,13 @@
             }
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3925,6 +4156,13 @@
             "type": "string"
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -3953,7 +4191,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -4053,6 +4291,13 @@
             "name": "cta"
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -4081,7 +4326,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -4160,6 +4405,13 @@
             "name": "cta"
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -4236,6 +4488,13 @@
             }
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -4295,8 +4554,45 @@
             "name": "cta"
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
+    }
+  },
+  {
+    "type": "type",
+    "name": "klantverhaal.reference",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_ref": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          }
+        },
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "reference"
+          }
+        },
+        "_weak": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        }
+      },
+      "dereferencesTo": "klantverhaal"
     }
   },
   {
@@ -4312,147 +4608,46 @@
             "value": "story"
           }
         },
-        "image": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "object",
-            "attributes": {
-              "asset": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "inline",
-                  "name": "sanity.imageAsset.reference"
-                },
-                "optional": true
-              },
-              "media": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "unknown"
-                },
-                "optional": true
-              },
-              "hotspot": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "inline",
-                  "name": "sanity.imageHotspot"
-                },
-                "optional": true
-              },
-              "crop": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "inline",
-                  "name": "sanity.imageCrop"
-                },
-                "optional": true
-              },
-              "alt": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                },
-                "optional": false
-              },
-              "_type": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string",
-                  "value": "image"
-                }
-              }
-            }
-          },
-          "optional": false
-        },
-        "secondaryImage": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "object",
-            "attributes": {
-              "asset": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "inline",
-                  "name": "sanity.imageAsset.reference"
-                },
-                "optional": true
-              },
-              "media": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "unknown"
-                },
-                "optional": true
-              },
-              "hotspot": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "inline",
-                  "name": "sanity.imageHotspot"
-                },
-                "optional": true
-              },
-              "crop": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "inline",
-                  "name": "sanity.imageCrop"
-                },
-                "optional": true
-              },
-              "alt": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                },
-                "optional": false
-              },
-              "_type": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string",
-                  "value": "image"
-                }
-              }
-            }
-          },
-          "optional": false
-        },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
-        "title": {
+        "klantverhalen": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "klantverhaal.reference"
+              }
+            }
+          },
+          "optional": true
+        },
+        "ctaLabel": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
-        "quote": {
+        "anchorId": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
-          },
-          "optional": false
-        },
-        "attribution": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": false
-        },
-        "cta": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "cta"
           },
           "optional": true
         }
@@ -4553,6 +4748,13 @@
             "name": "nvm"
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -4581,7 +4783,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -4713,6 +4915,13 @@
             "name": "cta"
           },
           "optional": true
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -4743,7 +4952,7 @@
                     "type": "inline",
                     "name": "sanity.imageAsset.reference"
                   },
-                  "optional": true
+                  "optional": false
                 },
                 "media": {
                   "type": "objectAttribute",
@@ -4848,6 +5057,13 @@
             "type": "string"
           },
           "optional": false
+        },
+        "anchorId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -5679,6 +5895,36 @@
     }
   },
   {
+    "type": "type",
+    "name": "werkgebied.reference",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_ref": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          }
+        },
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "reference"
+          }
+        },
+        "_weak": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        }
+      },
+      "dereferencesTo": "werkgebied"
+    }
+  },
+  {
     "name": "cta",
     "type": "type",
     "value": {
@@ -5718,8 +5964,21 @@
         "internalLink": {
           "type": "objectAttribute",
           "value": {
-            "type": "inline",
-            "name": "page.reference"
+            "type": "union",
+            "of": [
+              {
+                "type": "inline",
+                "name": "page.reference"
+              },
+              {
+                "type": "inline",
+                "name": "werkgebied.reference"
+              },
+              {
+                "type": "inline",
+                "name": "klantverhaal.reference"
+              }
+            ]
           },
           "optional": true
         },
@@ -5766,8 +6025,21 @@
         "internalLink": {
           "type": "objectAttribute",
           "value": {
-            "type": "inline",
-            "name": "page.reference"
+            "type": "union",
+            "of": [
+              {
+                "type": "inline",
+                "name": "page.reference"
+              },
+              {
+                "type": "inline",
+                "name": "werkgebied.reference"
+              },
+              {
+                "type": "inline",
+                "name": "klantverhaal.reference"
+              }
+            ]
           },
           "optional": true
         },
@@ -5819,7 +6091,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -6433,7 +6705,7 @@
                 "type": "inline",
                 "name": "sanity.imageAsset.reference"
               },
-              "optional": true
+              "optional": false
             },
             "media": {
               "type": "objectAttribute",
@@ -6654,7 +6926,7 @@
                 "type": "inline",
                 "name": "sanity.imageAsset.reference"
               },
-              "optional": true
+              "optional": false
             },
             "media": {
               "type": "objectAttribute",
@@ -6817,8 +7089,21 @@
                       "internalLink": {
                         "type": "objectAttribute",
                         "value": {
-                          "type": "inline",
-                          "name": "page.reference"
+                          "type": "union",
+                          "of": [
+                            {
+                              "type": "inline",
+                              "name": "page.reference"
+                            },
+                            {
+                              "type": "inline",
+                              "name": "werkgebied.reference"
+                            },
+                            {
+                              "type": "inline",
+                              "name": "klantverhaal.reference"
+                            }
+                          ]
                         },
                         "optional": true
                       },
@@ -6921,7 +7206,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -7060,7 +7345,7 @@
                 "type": "inline",
                 "name": "sanity.imageAsset.reference"
               },
-              "optional": true
+              "optional": false
             },
             "media": {
               "type": "objectAttribute",
@@ -7137,8 +7422,21 @@
               "internalLink": {
                 "type": "objectAttribute",
                 "value": {
-                  "type": "inline",
-                  "name": "page.reference"
+                  "type": "union",
+                  "of": [
+                    {
+                      "type": "inline",
+                      "name": "page.reference"
+                    },
+                    {
+                      "type": "inline",
+                      "name": "werkgebied.reference"
+                    },
+                    {
+                      "type": "inline",
+                      "name": "klantverhaal.reference"
+                    }
+                  ]
                 },
                 "optional": true
               },
@@ -7206,8 +7504,21 @@
               "internalLink": {
                 "type": "objectAttribute",
                 "value": {
-                  "type": "inline",
-                  "name": "page.reference"
+                  "type": "union",
+                  "of": [
+                    {
+                      "type": "inline",
+                      "name": "page.reference"
+                    },
+                    {
+                      "type": "inline",
+                      "name": "werkgebied.reference"
+                    },
+                    {
+                      "type": "inline",
+                      "name": "klantverhaal.reference"
+                    }
+                  ]
                 },
                 "optional": true
               },
@@ -7612,7 +7923,7 @@
                   "type": "inline",
                   "name": "sanity.imageAsset.reference"
                 },
-                "optional": true
+                "optional": false
               },
               "media": {
                 "type": "objectAttribute",
@@ -7966,6 +8277,664 @@
         "type": "objectAttribute",
         "value": {
           "type": "string"
+        },
+        "optional": true
+      }
+    }
+  },
+  {
+    "name": "klantverhaal",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "klantverhaal"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "title": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
+      "titleHighlight": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "shortTitle": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "slug": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "slug"
+        },
+        "optional": false
+      },
+      "intro": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
+      "mainImage": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "object",
+          "attributes": {
+            "asset": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "sanity.imageAsset.reference"
+              },
+              "optional": false
+            },
+            "media": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "unknown"
+              },
+              "optional": true
+            },
+            "hotspot": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "sanity.imageHotspot"
+              },
+              "optional": true
+            },
+            "crop": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "sanity.imageCrop"
+              },
+              "optional": true
+            },
+            "alt": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
+              },
+              "optional": false
+            },
+            "caption": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
+              },
+              "optional": true
+            },
+            "_type": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string",
+                "value": "image"
+              }
+            }
+          }
+        },
+        "optional": false
+      },
+      "secondaryImage": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "object",
+          "attributes": {
+            "asset": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "sanity.imageAsset.reference"
+              },
+              "optional": false
+            },
+            "media": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "unknown"
+              },
+              "optional": true
+            },
+            "hotspot": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "sanity.imageHotspot"
+              },
+              "optional": true
+            },
+            "crop": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "sanity.imageCrop"
+              },
+              "optional": true
+            },
+            "alt": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
+              },
+              "optional": false
+            },
+            "_type": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string",
+                "value": "image"
+              }
+            }
+          }
+        },
+        "optional": true
+      },
+      "body": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "union",
+            "of": [
+              {
+                "type": "object",
+                "attributes": {
+                  "children": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "array",
+                      "of": {
+                        "type": "object",
+                        "attributes": {
+                          "marks": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "array",
+                              "of": {
+                                "type": "string"
+                              }
+                            },
+                            "optional": true
+                          },
+                          "text": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "string"
+                            },
+                            "optional": true
+                          },
+                          "_type": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "string",
+                              "value": "span"
+                            }
+                          }
+                        },
+                        "rest": {
+                          "type": "object",
+                          "attributes": {
+                            "_key": {
+                              "type": "objectAttribute",
+                              "value": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "optional": true
+                  },
+                  "style": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "union",
+                      "of": [
+                        {
+                          "type": "string",
+                          "value": "normal"
+                        },
+                        {
+                          "type": "string",
+                          "value": "h2"
+                        }
+                      ]
+                    },
+                    "optional": true
+                  },
+                  "listItem": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "union",
+                      "of": []
+                    },
+                    "optional": true
+                  },
+                  "markDefs": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "array",
+                      "of": {
+                        "type": "object",
+                        "attributes": {
+                          "_key": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "rest": {
+                          "type": "inline",
+                          "name": "link"
+                        }
+                      }
+                    },
+                    "optional": true
+                  },
+                  "level": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "number"
+                    },
+                    "optional": true
+                  },
+                  "_type": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string",
+                      "value": "block"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "attributes": {
+                  "text": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    },
+                    "optional": false
+                  },
+                  "_type": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string",
+                      "value": "pullQuote"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "attributes": {
+                  "asset": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "inline",
+                      "name": "sanity.imageAsset.reference"
+                    },
+                    "optional": false
+                  },
+                  "media": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "unknown"
+                    },
+                    "optional": true
+                  },
+                  "hotspot": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "inline",
+                      "name": "sanity.imageHotspot"
+                    },
+                    "optional": true
+                  },
+                  "crop": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "inline",
+                      "name": "sanity.imageCrop"
+                    },
+                    "optional": true
+                  },
+                  "alt": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    },
+                    "optional": false
+                  },
+                  "_type": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string",
+                      "value": "image"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "attributes": {
+                  "items": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "array",
+                      "of": {
+                        "type": "object",
+                        "attributes": {
+                          "value": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "string"
+                            },
+                            "optional": false
+                          },
+                          "label": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "string"
+                            },
+                            "optional": false
+                          }
+                        },
+                        "rest": {
+                          "type": "object",
+                          "attributes": {
+                            "_key": {
+                              "type": "objectAttribute",
+                              "value": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "optional": true
+                  },
+                  "_type": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string",
+                      "value": "resultaat"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "optional": true
+      },
+      "dienst": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "Aankoop"
+            },
+            {
+              "type": "string",
+              "value": "Verkoop"
+            },
+            {
+              "type": "string",
+              "value": "Taxatie"
+            }
+          ]
+        },
+        "optional": false
+      },
+      "wie": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
+      "plaats": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
+      "buurt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "feiten": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "label": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": false
+              },
+              "value": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": false
+              }
+            },
+            "rest": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "optional": true
+      },
+      "grade": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "number"
+        },
+        "optional": true
+      },
+      "quote": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "makelaarQuote": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "date": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "seo": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "seo"
+        },
+        "optional": true
+      }
+    }
+  },
+  {
+    "name": "werkgebied",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "werkgebied"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "title": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
+      "slug": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "slug"
+        },
+        "optional": false
+      },
+      "seo": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "seo"
+        },
+        "optional": true
+      },
+      "content": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "pageBuilder"
         },
         "optional": true
       }

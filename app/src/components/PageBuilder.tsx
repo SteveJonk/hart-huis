@@ -182,13 +182,24 @@ function renderBlock(block: PageBlock) {
       return (
         <Stories
           key={block._key}
-          image={toImage(block.image, 900, 1200)}
-          secondaryImage={toImage(block.secondaryImage, 600, 400)}
           eyebrow={block.eyebrow}
-          title={block.title}
-          quote={block.quote}
-          attribution={block.attribution}
-          cta={toCta(block.cta)}
+          ctaLabel={block.ctaLabel}
+          slides={(block.klantverhalen ?? []).flatMap((verhaal) => {
+            // Een verwijzing naar een verwijderd verhaal komt als null terug.
+            const image = verhaal ? toImage(verhaal.mainImage, 900, 1200) : undefined;
+            if (!verhaal || !image) return [];
+            return [
+              {
+                title: verhaal.shortTitle || verhaal.title,
+                quote: verhaal.quote ?? undefined,
+                intro: verhaal.intro,
+                attribution: [verhaal.wie, verhaal.plaats].filter(Boolean).join(' — '),
+                href: `/klantverhaal/${verhaal.slug}`,
+                image,
+                secondaryImage: toImage(verhaal.secondaryImage, 600, 400),
+              },
+            ];
+          })}
         />
       );
     }
@@ -902,5 +913,22 @@ function renderBlock(block: PageBlock) {
 export function PageBuilder({ content }: { content?: PageBlock[] | null }) {
   if (!Array.isArray(content) || content.length === 0) return null;
 
-  return <>{content.map((block) => renderBlock(block))}</>;
+  return (
+    <>
+      {content.map((block) => {
+        const element = renderBlock(block);
+        // Optioneel anker-ID uit de studio: alleen dan een wrapper, zodat
+        // blokken zonder ID precies blijven zoals ze waren. scroll-mt houdt de
+        // sectiekop onder de vaste topbar vandaan.
+        const anchorId = 'anchorId' in block ? block.anchorId : undefined;
+        return anchorId ? (
+          <div key={block._key} id={anchorId} className='scroll-mt-24'>
+            {element}
+          </div>
+        ) : (
+          element
+        );
+      })}
+    </>
+  );
 }

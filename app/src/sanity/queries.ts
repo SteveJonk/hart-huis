@@ -4,8 +4,30 @@ import { defineQuery } from 'next-sanity';
 const linkExpansion = /* groq */ `{
   ...,
   internalLink->{
-    "slug": slug.current
+    // Een werkgebied staat onder /werkgebied/, dus het pad-voorvoegsel zit al
+    // in de slug; resolveHref() plakt er alleen nog een "/" voor.
+    "slug": select(
+      _type == "werkgebied" => "werkgebied/" + slug.current,
+      _type == "klantverhaal" => "klantverhaal/" + slug.current,
+      slug.current
+    )
   }
+}`;
+
+/** Kaart-/slidevelden van een `klantverhaal`: homepage-slider en "Nog meer verhalen". */
+const klantverhaalCard = /* groq */ `{
+  _id,
+  title,
+  shortTitle,
+  "slug": slug.current,
+  intro,
+  quote,
+  wie,
+  plaats,
+  buurt,
+  dienst,
+  mainImage,
+  secondaryImage
 }`;
 
 /** Card fields for a `woning`, shared by the aanbod grid and "vergelijkbare woningen". */
@@ -84,8 +106,8 @@ const reviewCard = /* groq */ `{
   serviceAndGuidance
 }`;
 
-export const PAGE_QUERY = defineQuery(`
-  *[_type == "page" && slug.current == $slug][0]{
+/** Alles wat een page-builder-document rendert; gedeeld door `page` en `werkgebied`. */
+const pageFields = /* groq */ `{
     _id,
     title,
     slug,
@@ -135,6 +157,13 @@ export const PAGE_QUERY = defineQuery(`
       _type == "hero" => {
         ...${reviewStats}
       },
+      // Gekozen klantverhalen, of anders allemaal (nieuwste eerst).
+      _type == "story" => {
+        "klantverhalen": select(
+          count(klantverhalen) > 0 => klantverhalen[]->${klantverhaalCard},
+          *[_type == "klantverhaal"] | order(date desc, _createdAt desc)${klantverhaalCard}
+        )
+      },
       _type == "reviews" => {
         "reviews": *[_type == "review"] | order(date desc)[0...8]${reviewCard},
         ...${reviewStats}
@@ -177,7 +206,40 @@ export const PAGE_QUERY = defineQuery(`
         }
       }
     }
+  }`;
+
+export const PAGE_QUERY = defineQuery(`
+  *[_type == "page" && slug.current == $slug][0]${pageFields}
+`);
+
+/** Eén klantverhaal plus maximaal drie andere voor "Nog meer verhalen". */
+export const KLANTVERHAAL_QUERY = defineQuery(`
+  *[_type == "klantverhaal" && slug.current == $slug][0]{
+    _id,
+    title,
+    titleHighlight,
+    "slug": slug.current,
+    intro,
+    mainImage,
+    body[]{
+      ...,
+      markDefs[]${linkExpansion}
+    },
+    dienst,
+    wie,
+    plaats,
+    buurt,
+    feiten,
+    grade,
+    makelaarQuote,
+    seo,
+    "meer": *[_type == "klantverhaal" && _id != ^._id] | order(date desc, _createdAt desc)[0...3]${klantverhaalCard}
   }
+`);
+
+/** Landingspagina per plaats, op /werkgebied/<slug>. */
+export const WERKGEBIED_QUERY = defineQuery(`
+  *[_type == "werkgebied" && slug.current == $slug][0]${pageFields}
 `);
 
 /**
@@ -311,6 +373,14 @@ export const SITEMAP_QUERY = defineQuery(`{
     _updatedAt
   },
   "objecten": *[_type == "woning"]{
+    "slug": slug.current,
+    _updatedAt
+  },
+  "werkgebieden": *[_type == "werkgebied"]{
+    "slug": slug.current,
+    _updatedAt
+  },
+  "klantverhalen": *[_type == "klantverhaal"]{
     "slug": slug.current,
     _updatedAt
   }

@@ -21,7 +21,7 @@ export const linkFields = [
     name: 'internalLink',
     title: 'Page',
     type: 'reference',
-    to: [{type: 'page'}],
+    to: [{type: 'page'}, {type: 'werkgebied'}, {type: 'klantverhaal'}],
     hidden: ({parent}) => parent?.linkType !== 'internal',
     validation: (rule) =>
       rule.custom((value, context) => {
