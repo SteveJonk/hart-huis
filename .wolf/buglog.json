@@ -590,6 +590,24 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-05T20:30:00+02:00"
+    },
+    {
+      "id": "bug-032",
+      "timestamp": "2026-09-16T08:27:00+02:00",
+      "error_message": "The MCP wrapper is stalling, so I’m talking to the same Blender MCP addon over its local socket",
+      "file": "/Users/stevejonk/.cursor/mcp.json",
+      "root_cause": "Cursor's user-blender MCP client (uvx blender-mcp over stdio) times out on tool calls even when the Blender addon is listening and answering on 127.0.0.1:9876. Direct TCP JSON (community protocol, complete JSON object) returns in ~20ms. The wrapper is an extra hop Cursor requires for MCP; the addon does not speak MCP itself.",
+      "fix": "Skip CallDynamicTool on user-blender. Send commands to 127.0.0.1:9876 with Python. Optional: disable the blender MCP server in mcp.json and add a Cursor user rule so future sessions never wait on the wrapper.",
+      "tags": [
+        "blender",
+        "mcp",
+        "socket",
+        "timeout",
+        "cursor"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-16T08:27:00+02:00"
     }
   ]
 }

@@ -37,6 +37,7 @@ import { FormHero } from '@/components/blocks/FormHero';
 import { IconCards } from '@/components/blocks/IconCards';
 import { NumberedSteps } from '@/components/blocks/NumberedSteps';
 import { PersonQuote } from '@/components/blocks/PersonQuote';
+import { Team } from '@/components/blocks/Team';
 import { QuoteStrip } from '@/components/blocks/QuoteStrip';
 import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import type { BlockIconName } from '@/components/ui/BlockIcon';
@@ -566,6 +567,25 @@ function renderBlock(block: PageBlock) {
                 }>
               | undefined
           }
+        />
+      );
+    }
+    case 'team': {
+      const members = (
+        block.members as
+          | Array<{ name: string; role: string; body: string; image?: SanityImage }>
+          | undefined
+      )?.flatMap((member) => {
+        const image = toImage(member.image, 800, 1000);
+        return image ? [{ name: member.name, role: member.role, body: member.body, image }] : [];
+      });
+      return (
+        <Team
+          key={block._key}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          lead={block.lead ?? undefined}
+          members={members}
         />
       );
     }

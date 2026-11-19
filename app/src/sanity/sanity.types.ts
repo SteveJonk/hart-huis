@@ -90,6 +90,15 @@ export type TimelineItemsObjectImage = {
   _type: "image";
 };
 
+export type MembersObjectImage = {
+  asset?: SanityImageAssetReference;
+  media?: unknown; // Unable to locate the referenced type "members.object.image.media" in schema
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt: string;
+  _type: "image";
+};
+
 export type RichText = {
   _type: "richText";
   eyebrow?: string;
@@ -447,6 +456,20 @@ export type MediaText = {
     alt: string;
     _type: "image";
   };
+};
+
+export type Team = {
+  _type: "team";
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  members: Array<{
+    name: string;
+    role: string;
+    body: string;
+    image: MembersObjectImage;
+    _key: string;
+  }>;
 };
 
 export type ValueCards = {
@@ -828,6 +851,9 @@ export type PageBuilder = Array<
   | ({
       _key: string;
     } & ValueCards)
+  | ({
+      _key: string;
+    } & Team)
   | ({
       _key: string;
     } & MediaText)
@@ -1392,6 +1418,7 @@ export type AllSanitySchemaTypes =
   | ObjectImage
   | ItemsObjectImage
   | TimelineItemsObjectImage
+  | MembersObjectImage
   | RichText
   | CenteredCta
   | QuoteStrip
@@ -1416,6 +1443,7 @@ export type AllSanitySchemaTypes =
   | CompareCards
   | Assurances
   | MediaText
+  | Team
   | ValueCards
   | Timeline
   | DuoPhotos
@@ -2948,6 +2976,32 @@ export type PAGE_QUERY_RESULT = {
         primaryCta: null;
         secondaryCta: null;
         link: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "team";
+        eyebrow: string;
+        title: string;
+        lead?: string;
+        members: Array<{
+          name: string;
+          role: string;
+          body: string;
+          image: MembersObjectImage;
+          _key: string;
+        }>;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
         nvm: null;
         items: null;
         cards: null;

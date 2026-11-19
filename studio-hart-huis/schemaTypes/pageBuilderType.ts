@@ -23,6 +23,7 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'duoPhotos'}),
     defineArrayMember({type: 'timeline'}),
     defineArrayMember({type: 'valueCards'}),
+    defineArrayMember({type: 'team'}),
     defineArrayMember({type: 'mediaText'}),
     defineArrayMember({type: 'assurances'}),
     defineArrayMember({type: 'compareCards'}),

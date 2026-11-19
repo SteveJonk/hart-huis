@@ -1,10 +1,17 @@
 import Image from '@/components/ui/Image';
+import { ReviewReadMore } from '@/components/blocks/Reviews';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Reveal } from '@/components/ui/Reveal';
 import { Wrap } from '@/components/ui/Wrap';
 import { BEOORDELINGEN_UITGELICHT } from '@/lib/beoordelingen-content';
 import { cn } from '@/lib/cn';
-import { formatGrade, formatReviewDate, type ReviewItem } from '@/lib/reviews';
+import {
+  formatGrade,
+  formatReviewDate,
+  subjectGrades,
+  truncateQuote,
+  type ReviewItem,
+} from '@/lib/reviews';
 
 export type UitgelichteReviewProps = {
   eyebrow?: string;
@@ -25,6 +32,8 @@ export function UitgelichteReview({
 }: UitgelichteReviewProps = {}) {
   if (!review) return null;
 
+  // Grote letters, dus korter afkappen dan op de kaarten; de rest staat in de dialog.
+  const { text, truncated } = truncateQuote(review.quote, 380);
   const grade = formatGrade(review.grade);
   const date = formatReviewDate(review.date);
   const meta = [grade ? `Beoordeeld met een ${grade}` : null, date, review.type]
@@ -62,8 +71,13 @@ export function UitgelichteReview({
               'max-sm:mb-6 max-sm:text-[1.28rem]',
             )}
           >
-            &ldquo;{review.quote}&rdquo;
+            &ldquo;{text}&rdquo;
           </blockquote>
+          {truncated ? (
+            <div className='-mt-5 mb-7 max-sm:-mt-4 max-sm:mb-6'>
+              <ReviewReadMore review={review} grades={subjectGrades(review)} />
+            </div>
+          ) : null}
           <div className='flex flex-wrap items-center gap-4'>
             <span className='grid size-12 shrink-0 place-items-center rounded-full bg-cream text-[0.84rem] font-semibold'>
               {review.name.slice(0, 1).toUpperCase()}

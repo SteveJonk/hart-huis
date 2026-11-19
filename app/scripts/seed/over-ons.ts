@@ -6,6 +6,8 @@ import {
   OVER_ONS_CTA,
   OVER_ONS_DUO,
   OVER_ONS_OPENER,
+  OVER_ONS_TEAM,
+  OVER_ONS_TEAM_INTRO,
   OVER_ONS_TIMELINE,
   OVER_ONS_TIMELINE_INTRO,
   OVER_ONS_VALUES,
@@ -30,6 +32,15 @@ async function buildOverOnsContent() {
       ...(item.image
         ? {image: await uploadImage(item.image.src, item.image.alt)}
         : {}),
+    })),
+  )
+  const teamMembers = await Promise.all(
+    OVER_ONS_TEAM.map(async (member) => ({
+      _key: key(member.name),
+      name: member.name,
+      role: member.role,
+      body: member.body,
+      image: await uploadImage(member.image.src, member.image.alt),
     })),
   )
   const buitenImage = await uploadImage(
@@ -57,6 +68,14 @@ async function buildOverOnsContent() {
       stampLabel: OVER_ONS_DUO.stampLabel,
       secondaryImage: duoSecondary,
       caption: OVER_ONS_DUO.caption,
+    },
+    {
+      _type: 'team',
+      _key: key('over-ons-team'),
+      eyebrow: OVER_ONS_TEAM_INTRO.eyebrow,
+      title: OVER_ONS_TEAM_INTRO.title,
+      lead: OVER_ONS_TEAM_INTRO.lead,
+      members: teamMembers,
     },
     {
       _type: 'timeline',

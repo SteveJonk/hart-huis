@@ -41,7 +41,7 @@ export function Benefits({
 }: BenefitsProps = {}) {
   return (
     <section className="py-[92px] pb-[124px] max-sm:py-[66px] max-sm:pb-[84px]">
-      <Wrap className="grid grid-cols-[1.12fr_0.88fr] items-center gap-[78px] max-lg:gap-[52px] max-md:grid-cols-1">
+      <Wrap className="grid grid-cols-[1.12fr_0.88fr] gap-[78px] max-lg:gap-[52px] max-md:grid-cols-1">
         <Reveal>
           <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className="mb-[22px] max-w-[18ch] text-[clamp(2rem,3.6vw,3.1rem)] max-sm:max-w-none">
@@ -65,7 +65,8 @@ export function Benefits({
           </ul>
         </Reveal>
         <Reveal delay={1} className="overflow-hidden rounded-arch">
-          <div className="relative aspect-[4/5] max-md:aspect-[3/4]">
+          {/* Desktop: de foto rekt mee met de tekstkolom; gestapeld een vaste verhouding. */}
+          <div className="relative h-full min-h-[420px] max-md:aspect-[3/4] max-md:h-auto max-md:min-h-0">
             <Image
               src={image.src}
               alt={image.alt}

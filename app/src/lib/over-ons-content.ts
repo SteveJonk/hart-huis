@@ -154,3 +154,46 @@ export const OVER_ONS_CTA = {
   primary: { label: "Plan een kennismaking", href: "#" },
   secondary: { label: SITE.phone, href: SITE.phoneHref },
 } as const;
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  body: string;
+  image: Image;
+};
+
+export const OVER_ONS_TEAM_INTRO = {
+  eyebrow: "Het team",
+  title: "De mensen achter Hart & Huis",
+  lead: "Je hebt één vast aanspreekpunt, maar er werken meer mensen aan je woning. Dit zijn ze.",
+} as const;
+
+export const OVER_ONS_TEAM: TeamMember[] = [
+  {
+    name: "Dorien Hollemans",
+    role: "NVM Register Makelaar & Taxateur",
+    body: "Oprichter van Hart & Huis en je vaste aanspreekpunt, van het eerste gesprek tot de sleuteloverdracht. Ze kent de regio en de mensen die er wonen.",
+    image: {
+      src: "/images/over-ons/portret.jpg",
+      alt: "Dorien Hollemans van Hart & Huis Makelaardij",
+    },
+  },
+  {
+    name: "Tina Treur",
+    role: "Backoffice & assistent-makelaar",
+    body: "Tina zorgt dat alles achter de schermen klopt: dossiers, afspraken en bezichtigingen. Bel je met een vraag, dan is de kans groot dat zij opneemt — en het antwoord al weet.",
+    image: {
+      src: "/images/over-ons/tina.jpg",
+      alt: "Tina Treur, backoffice en assistent-makelaar bij Hart & Huis",
+    },
+  },
+  {
+    name: "Wijnand Menger",
+    role: "Fotografie & video",
+    body: "Wijnand maakt de foto's en video's waarmee je woning online opvalt. Hij zoekt het beste licht en de mooiste hoek, zodat kopers al verliefd zijn voordat ze binnenstappen.",
+    image: {
+      src: "/images/over-ons/wijnand.jpg",
+      alt: "Wijnand Menger, fotograaf en videograaf voor Hart & Huis",
+    },
+  },
+];

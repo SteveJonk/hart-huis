@@ -12,6 +12,7 @@
 - **Scoping in workflows is gewenst, niet overbodig.** De `paths`-filter op de deploy-workflow werd bewust teruggezet. Verwijder zulke filters niet om "het simpeler te maken"; los het onderliggende probleem op (zie Do-Not-Repeat 2026-08-21).
 - **De gebruiker gaat naar self-hosted (Coolify), weg van Vercel.** Bij een keuze tussen "iets dat op Vercel leunt" en "iets dat overal draait": kies het tweede, of bied het in elk geval als eerste aan. Vercel-specifieke dingen (`vercel.json` crons, `maxDuration`) zijn tijdelijk.
 - **Klopt een aanname niet, dan zegt de gebruiker dat direct — en heeft hij meestal gelijk.** Bij "is dit geen standaardfeature van X?" eerst de bron opzoeken en het antwoord bijstellen, niet de eigen aanpak verdedigen. Twee keer in deze sessie gebeurd (Sanity Scheduled Functions, Coolify).
+- **Blender: skip the Cursor MCP wrapper (`user-blender` / `uvx blender-mcp`). Talk to the addon socket directly.** The addon listens on `127.0.0.1:9876` and answers in ~20ms. Cursor's MCP layer times out even when the socket is healthy. Never call `user-blender` tools first; send JSON `{"type": "<command>", "params": {...}}` over TCP (community protocol, not null-terminated). (2026-09-16)
 
 ## Key Learnings
 
@@ -133,6 +134,7 @@
 
 - [2026-10-05] Sanity-beeldvelden: `rule.required()` laat een beeldobject met alleen `alt` (zonder `asset`) door. Gebruik altijd `.assetRequired()` op nieuwe `type: 'image'`-velden; in de app vangt `hasImage()` in `app/src/sanity/image.ts` zulke objecten af (bug-031).
 
+- **2026-09-16 — Do not wait for `user-blender` MCP.** `CallDynamicTool` to blender stalls/times out while the addon on `127.0.0.1:9876` is fine. Probe the socket with Python immediately; do not announce a fallback after a timeout. Command: `{"type": "get_scene_info"|"execute_code"|..., "params": {...}}` as a complete JSON object (no `\0`). Keep Blender's MCP addon server started.
 - **2026-08-27 — Een knop die binnen dezelfde klik van `type='button'` naar `type='submit'` wisselt, verstuurt het formulier alsnog.** De browser bepaalt de activation behavior pás ná de React-onClick, dus `setStep()` naar de laatste stap maakt de Verder-knop submit en diezelfde klik triggert `onSubmit`. Zichtbaar als een spontane native validatie-tooltip op de nieuwe stap. Altijd `event.preventDefault()` in zo'n handler. Zie bug-027.
 - **2026-08-29 — Een blokveld leeglaten geeft de copy van een ándere pagina.** De blokcomponenten vullen ontbrekende props met `DEFAULTS` uit een `*-content.ts`; `PageOpener` valt zo terug op /over-ons. Een `pageOpener` zonder `motto` op de privacypagina toont dus het motto van Over ons. Vul bij een nieuwe pagina élk optioneel veld dat het component onvoorwaardelijk rendert, of controleer eerst wat de default is.
 

@@ -95,6 +95,79 @@ function ReviewGrades({ rows }: { rows: ReturnType<typeof subjectGrades> }) {
 }
 
 /**
+ * "Lees meer"-knop plus de dialog met de volledige beoordeling. Een dialog
+ * staat in de top layer, dus de `overflow-x` van de carousel knipt hem niet af.
+ */
+export function ReviewReadMore({
+  review,
+  grades = [],
+}: {
+  review: ReviewItem;
+  grades?: ReturnType<typeof subjectGrades>;
+}) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  return (
+    <>
+      <button
+        type='button'
+        onClick={() => dialogRef.current?.showModal()}
+        className={cn(
+          'mt-3.5 self-start text-[0.83rem] font-semibold text-sage-deep underline underline-offset-[3px]',
+          'transition-colors duration-[250ms] ease-brand hover:text-ink',
+        )}
+      >
+        Lees meer
+        <span className='sr-only'> over de beoordeling van {review.name}</span>
+      </button>
+
+      <dialog
+        ref={dialogRef}
+        // Een klik naast de kaart komt op de dialog zelf terecht, niet op
+        // de inhoud — daarom zit alle padding op de div erbinnen.
+        onClick={(event) => {
+          if (event.target === dialogRef.current) dialogRef.current?.close();
+        }}
+        className={cn(
+          'm-auto w-[min(620px,calc(100vw-2rem))] rounded bg-white p-0 text-ink shadow-card',
+          'backdrop:bg-ink/55 backdrop:backdrop-blur-[2px]',
+        )}
+      >
+        <div className='max-h-[80vh] overflow-y-auto px-[34px] pt-9 max-sm:px-[26px] max-sm:pt-[30px]'>
+          <ReviewMeta review={review} />
+
+          <p className='font-display text-[1.18rem] leading-[1.55] whitespace-pre-line text-ink italic max-sm:text-[1.06rem]'>
+            {review.quote}
+          </p>
+
+          <ReviewGrades rows={grades} />
+
+          {/* Plakt onderaan: bij een lange beoordeling staat de knop
+              anders duizend pixels naar beneden. */}
+          <form
+            method='dialog'
+            className={cn(
+              'sticky bottom-0 -mx-[34px] mt-7 border-t border-cream bg-white px-[34px] pt-4 pb-7',
+              'max-sm:-mx-[26px] max-sm:px-[26px] max-sm:pb-[30px]',
+            )}
+          >
+            <button
+              type='submit'
+              className={cn(
+                'rounded-pill border border-ink/22 px-5 py-2 text-[0.83rem] font-semibold',
+                'transition duration-300 ease-brand hover:border-ink hover:bg-ink hover:text-cream',
+              )}
+            >
+              Sluiten
+            </button>
+          </form>
+        </div>
+      </dialog>
+    </>
+  );
+}
+
+/**
  * Eén beoordeling. De sizing zit bewust níet op de kaart zelf: de carousel
  * wikkelt hem in een basis-/snap-div, de /beoordelingen-grid plaatst hem direct.
  *
@@ -110,7 +183,6 @@ export function ReviewCard({
   review: ReviewItem;
   showGrades?: boolean;
 }) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
   const { text, truncated } = truncateQuote(review.quote);
   const grades = showGrades ? subjectGrades(review) : [];
 
@@ -129,64 +201,7 @@ export function ReviewCard({
         {text}
       </p>
 
-      {truncated ? (
-        <>
-          <button
-            type='button'
-            onClick={() => dialogRef.current?.showModal()}
-            className={cn(
-              'mt-3.5 self-start text-[0.83rem] font-semibold text-sage-deep underline underline-offset-[3px]',
-              'transition-colors duration-[250ms] ease-brand hover:text-ink',
-            )}
-          >
-            Lees meer
-            <span className='sr-only'> over de beoordeling van {review.name}</span>
-          </button>
-
-          <dialog
-            ref={dialogRef}
-            // Een klik naast de kaart komt op de dialog zelf terecht, niet op
-            // de inhoud — daarom zit alle padding op de div erbinnen.
-            onClick={(event) => {
-              if (event.target === dialogRef.current) dialogRef.current?.close();
-            }}
-            className={cn(
-              'm-auto w-[min(620px,calc(100vw-2rem))] rounded bg-white p-0 text-ink shadow-card',
-              'backdrop:bg-ink/55 backdrop:backdrop-blur-[2px]',
-            )}
-          >
-            <div className='max-h-[80vh] overflow-y-auto px-[34px] pt-9 max-sm:px-[26px] max-sm:pt-[30px]'>
-              <ReviewMeta review={review} />
-
-              <p className='font-display text-[1.18rem] leading-[1.55] whitespace-pre-line text-ink italic max-sm:text-[1.06rem]'>
-                {review.quote}
-              </p>
-
-              <ReviewGrades rows={grades} />
-
-              {/* Plakt onderaan: bij een lange beoordeling staat de knop
-                  anders duizend pixels naar beneden. */}
-              <form
-                method='dialog'
-                className={cn(
-                  'sticky bottom-0 -mx-[34px] mt-7 border-t border-cream bg-white px-[34px] pt-4 pb-7',
-                  'max-sm:-mx-[26px] max-sm:px-[26px] max-sm:pb-[30px]',
-                )}
-              >
-                <button
-                  type='submit'
-                  className={cn(
-                    'rounded-pill border border-ink/22 px-5 py-2 text-[0.83rem] font-semibold',
-                    'transition duration-300 ease-brand hover:border-ink hover:bg-ink hover:text-cream',
-                  )}
-                >
-                  Sluiten
-                </button>
-              </form>
-            </div>
-          </dialog>
-        </>
-      ) : null}
+      {truncated ? <ReviewReadMore review={review} grades={grades} /> : null}
 
       <ReviewGrades rows={grades} />
     </article>
@@ -277,8 +292,9 @@ export function Reviews({
               <div
                 key={review.name}
                 className={cn(
-                  'flex shrink-0 basis-[400px] snap-start',
-                  'max-md:basis-[320px] max-sm:basis-[min(83vw,330px)]',
+                  // Drie kaarten passen precies (2 × gap-6 = 48px), twee op tablet.
+                  'flex shrink-0 basis-[calc((100%-48px)/3)] snap-start',
+                  'max-md:basis-[calc((100%-24px)/2)] max-sm:basis-[min(83vw,330px)]',
                 )}
               >
                 <ReviewCard review={review} showGrades={showGrades} />

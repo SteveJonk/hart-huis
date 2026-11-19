@@ -523,3 +523,53 @@
 |------|--------|---------|---------|--------|
 | 20:30 | Build-fix: beeld met alleen alt (geen asset) liet prerender van / crashen; hasImage-guard in urlFor/imageSrc | app/src/sanity/image.ts | gecommit, tsc nog niet gedraaid (npm ci onderbroken) | ~3000 |
 | 20:45 | assetRequired() toegevoegd aan alle 27 beeldvelden in de studio-schema's | studio-hart-huis/schemaTypes/** | gecommit; studio niet gebouwd (geen node_modules) — studio opnieuw deployen | ~6000 |
+
+## Session: 2026-09-15 14:20
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 15:20 | Restored planter from autosave; clay bump (rings+plaster grain) + glaze kicker; saved MCPTry.blend | blender scene | recovered + textured pot | ~4k |
+
+## Session: 2026-09-16 07:30
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-09-16 08:19
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-09-16 08:27
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 08:35 | Diagnosed Blender MCP stall: Cursor `user-blender` times out; addon socket 127.0.0.1:9876 answers get_scene_info in 20ms (LowPolyFox scene) | ~/.cursor/mcp.json, blender-mcp | skip wrapper, talk TCP directly | ~8k |
+
+## Session: 2026-09-16 08:37
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-09-16 09:17
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 10:43 | Rigged existing Fox with 4-bone armature Root (no deform), Spine, Head, Tail; region weights; rest pose cleared | Blender Fox_Armature | RIG_OK Head=76 Spine=102 Tail=54 | ~6k |
+
+## Session: 2026-10-16 22:14
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-11-19 11:42
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 2026-11-19 | Reviews-carousel: 3 kaarten passen (basis calc), Benefits-foto rekt mee met tekst, uitgelichte review ingekort + ReviewReadMore-dialog (uit ReviewCard gehaald), nieuw blok `team` op over-ons (Dorien, Tina, Wijnand) — niet geseed | Reviews.tsx, Benefits.tsx, UitgelichteReview.tsx, Team.tsx, teamType.ts, PageBuilder.tsx, over-ons-content.ts, seed/over-ons.ts | tsc+eslint schoon, browser gecheckt (behalve team) | ~40k |
+| 2026-11-19 | team-blok via eenmalige patch.insert in over-ons (production) gezet, Dorien hergebruikt duo-portret; gecheckt op localhost | Sanity | ok | ~8k |
+
+## Session: 2026-11-19 12:54
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|

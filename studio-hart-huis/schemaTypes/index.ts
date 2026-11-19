@@ -39,6 +39,7 @@ import {stepsType} from './blocks/stepsType'
 import {storyType} from './blocks/storyType'
 import {timelineType} from './blocks/timelineType'
 import {valueCardsType} from './blocks/valueCardsType'
+import {teamType} from './blocks/teamType'
 import {cronLogType} from './cronLogType'
 import {faqType} from './faqType'
 import {footerType} from './footerType'
@@ -93,6 +94,7 @@ export const schemaTypes = [
   duoPhotosType,
   timelineType,
   valueCardsType,
+  teamType,
   mediaTextType,
   assurancesType,
   compareCardsType,
