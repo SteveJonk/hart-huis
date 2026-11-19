@@ -578,3 +578,16 @@
 | 2026-11-19 | Interne link-reference accepteert werkgebied; linkExpansion geeft 'werkgebied/<slug>' terug zodat resolveHref ongewijzigd blijft | linkFields.ts, queries.ts | tsc+check:form ok, GROQ gecheckt | ~6k |
 | 2026-11-19 | Klantverhaal: documenttype + /klantverhaal/[slug] (design klantverhaal.html), story-blok → slider over klantverhalen (1 of 2 foto's), anchorId op elk page-builder-blok (withAnchorId + wrapper in PageBuilder), seed:klantverhalen (+ los seed:klantverhalen-home) — seeden geweigerd door auto-mode, wacht op gebruiker | klantverhaalType.ts, storyType.ts, anchorId.ts, Stories.tsx, klantverhaal/*, queries.ts, seed/klantverhalen.ts, seed/home.ts | tsc/eslint schoon | ~90k |
 | 2026-11-19 | seed:klantverhalen gedraaid (production); /klantverhaal/* + homeslider gecheckt desktop+mobiel | Sanity | ok | ~15k |
+| 2026-11-19 | Rebase-conflicten opgelost (main op origin/main #26/#27): .wolf-bestanden samengevoegd, buglog bug-031→032, next/image → ui/Image in nieuwe componenten, assetRequired op team/klantverhaal-beelden | .wolf/*, Stories.tsx, UitgelichteReview.tsx, Team.tsx, klantverhaal/*, teamType.ts, klantverhaalType.ts | rebase klaar, tsc/lint ok | ~25k |
+| 2026-11-19 | Klantverhaal Sanne & Joost (voorbeeld) vervangen door echte tekst Sanne & Mick (Santpoort), zelfde document, slug sanne-en-mick-santpoort; seed unset nu lege optionele velden | seed/klantverhalen.ts | geseed + gecheckt | ~10k |
+
+## Session: 2026-11-19 13:04
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-11-19 13:16
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 13:20 | 502 op Coolify: Next bond aan container-hostname; ENV HOSTNAME=0.0.0.0 toegevoegd | app/Dockerfile | niet gepusht/geverifieerd | ~3k |

@@ -18,6 +18,9 @@ RUN --mount=type=secret,id=sentry_auth_token \
 FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
+# Docker zet HOSTNAME op de container-id; Next's standalone server.js bindt
+# daaraan i.p.v. aan alle interfaces, en dan krijgt de Coolify-proxy een 502.
+ENV HOSTNAME=0.0.0.0
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static

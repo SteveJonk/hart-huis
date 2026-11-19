@@ -608,6 +608,25 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-09-16T08:27:00+02:00"
+    },
+    {
+      "id": "bug-033",
+      "timestamp": "2026-11-19T13:20:00Z",
+      "error_message": "502 Bad Gateway op Coolify-domein na redeploy; container 'Running', log: Next.js ready op http://<container-id>:80",
+      "file": "app/Dockerfile",
+      "root_cause": "Docker zet HOSTNAME op de container-id; Next standalone server.js luistert dan alleen op dat adres, niet op 0.0.0.0, dus de proxy kan de container niet bereiken",
+      "fix": "ENV HOSTNAME=0.0.0.0 in de runner-stage",
+      "tags": [
+        "coolify",
+        "docker",
+        "nextjs",
+        "standalone",
+        "502",
+        "hostname"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-11-19T13:20:00Z"
     }
   ]
 }

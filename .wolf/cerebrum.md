@@ -16,6 +16,8 @@
 
 ## Key Learnings
 
+- **Afbeeldingen altijd via `@/components/ui/Image`**, nooit direct `next/image` (sinds PR #26): de wrapper laat Sanity-beelden door de Sanity-CDN schalen. En elk nieuw `type: 'image'`-veld krijgt `.assetRequired()` (PR #27). (2026-11-19)
+
 - **Elk page-builder-blok krijgt `anchorId` centraal**: `schemaTypes/index.ts` mapt alle bloktypes door `withAnchorId()` (objects/anchorId.ts). Een nieuw blok hoort dus in die lijst, dan krijgt het het veld vanzelf. (2026-11-19)
 - **Seeds die bestaande live pagina's omzetten, splitsen van seeds die alleen nieuwe documenten maken.** Sanity is meteen live, code pas na deploy; de oude code op productie toont anders placeholder-copy. Voorbeeld: `seed:klantverhalen` vs `seed:klantverhalen-home`. (2026-11-19)
 
@@ -138,6 +140,9 @@
 - **Media-paneel heeft "Ongebruikte afbeeldingen verwijderen".** Vraagt vlak vóór het verwijderen opnieuw `UNUSED_IMAGES_QUERY` op (alleen `sanity.imageAsset`, pdf's blijven), verwijdert in transacties van 50, en valt per groep terug op losse deletes als een transactie geweigerd wordt. (2026-10-05)
 
 ## Do-Not-Repeat
+- **2026-11-19 — Next standalone in Docker heeft `ENV HOSTNAME=0.0.0.0` nodig.** Docker zet HOSTNAME op de container-id; `server.js` bindt daar dan aan en de Coolify-proxy geeft 502 terwijl de container 'Running' is. Herkenbaar aan `Local: http://<container-id>:80` in de log. Zie bug-033.
+
+- [2026-11-19] **`client.patch().set(doc)` laat velden staan waarvan de nieuwe waarde `undefined` is.** Bij een seed die bestaande inhoud vervangt: lege optionele velden expliciet `unset()`-en, anders blijft oude inhoud (hier: buurt, cijfer, quote) hangen.
 
 - [2026-10-05] Sanity-beeldvelden: `rule.required()` laat een beeldobject met alleen `alt` (zonder `asset`) door. Gebruik altijd `.assetRequired()` op nieuwe `type: 'image'`-velden; in de app vangt `hasImage()` in `app/src/sanity/image.ts` zulke objecten af (bug-031).
 

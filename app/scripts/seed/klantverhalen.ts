@@ -3,8 +3,8 @@
  * `seed:klantverhalen-home` het homepage-blok om naar de slider — pas draaien
  * nadat de nieuwe code live staat, anders toont de oude site placeholder-copy.
  *
- * Rachied & Roxy: tekst uit "Text Roxy en Rachied.docx". Sanne & Joost: de
- * voorbeeldtekst uit het klantverhaal-ontwerp (`example-designs/klantverhaal.html`).
+ * Rachied & Roxy: tekst uit "Text Roxy en Rachied.docx". Sanne & Mick: tekst
+ * uit "Tekst Sanne en Mick.docx".
  */
 import {toPortableText, type RichNode} from '../../src/lib/rich-text'
 import {client, key, uploadImage} from './shared'
@@ -13,6 +13,8 @@ type BodyNode = RichNode | {pullQuote: string} | {resultaat: {value: string; lab
 
 type Verhaal = {
   slug: string
+  /** Eerdere slugs: dan wordt dat bestaande document bijgewerkt in plaats van een nieuw aangemaakt. */
+  formerSlugs?: string[]
   title: string
   titleHighlight?: string
   shortTitle: string
@@ -82,51 +84,52 @@ const VERHALEN: Verhaal[] = [
     },
   },
   {
-    slug: 'sanne-en-joost-haarlem',
-    title: 'Van een flat in Amsterdam naar een huis met een tuin in Haarlem',
-    titleHighlight: 'huis met een tuin',
-    shortTitle: 'Van Amsterdam naar de Kleverparkbuurt',
+    slug: 'sanne-en-mick-santpoort',
+    // Stond eerst als voorbeeldverhaal "Sanne & Joost" in Sanity; zo wordt dat document bijgewerkt.
+    formerSlugs: ['sanne-en-joost-haarlem'],
+    title: 'Van twee woningen naar één fijn gezinshuis in Santpoort',
+    titleHighlight: 'één fijn gezinshuis',
+    shortTitle: 'Van twee appartementen naar één gezinshuis',
     intro:
-      'Sanne en Joost zochten al anderhalf jaar. Binnen zes weken na hun eerste gesprek met Dorien hadden ze de sleutel — in precies de straat waar ze stiekem altijd al wilden wonen.',
+      'Achter iedere woning schuilt een verhaal. En soms loopt dat verhaal heel anders dan je vooraf had bedacht. Zo ook bij Sanne en Mick, die ik mocht begeleiden bij de verkoop van twee appartementen én de aankoop van hun nieuwe thuis in Santpoort.',
     image: {
-      src: '/images/klantverhalen/sanne-joost-haarlem.jpg',
-      alt: 'Sanne en Joost met hun zoontje in de tuin van hun woning in Haarlem',
+      src: '/images/klantverhalen/sanne-mick-santpoort.jpg',
+      alt: 'Sanne en Mick met hun zoontje in de tuin van hun huis in Santpoort',
     },
     body: [
-      p('Toen Sanne en Joost zich meldden, waren ze er bijna klaar mee. "We hadden op alles geboden wat een beetje leek op wat we zochten," vertelt Joost. "En steeds net naast gegrepen. Op een gegeven moment denk je: misschien lukt het gewoon niet in Haarlem."'),
-      p('Het stel woonde in een bovenwoning in Amsterdam-West, maar wilde na de geboorte van hun zoon meer ruimte en een tuin. Haarlem stond bovenaan het lijstje: dichtbij werk, maar met de sfeer van een stad op menselijke maat. Alleen bleek de markt er net zo meedogenloos als in Amsterdam.'),
-      h('De eerste afspraak'),
-      p('"Het eerste wat Dorien deed, was níét meteen huizen aandragen," zegt Sanne. "Ze vroeg vooral veel. Wat we écht belangrijk vonden, waar we ons geld aan wilden uitgeven en waaraan juist niet. Pas daarna ging ze zoeken."'),
-      {pullQuote: 'We kregen een belletje: er komt iets aan dat nog niet op Funda staat. Willen jullie er vanavond al kijken?'},
-      p('Dat telefoontje ging over een woning aan de rand van de Kleverparkbuurt. Via het NVM-netwerk had Dorien gehoord dat de eigenaren wilden verkopen, nog voordat de woning online zou komen. "We stonden er die avond als eersten," herinnert Joost zich. "Dat gaf zo\'n rust. Geen kijkdag met twintig andere stellen die allemaal hetzelfde dachten."'),
-      h('Bieden met een plan'),
-      p('De woning was precies wat ze zochten, dus de verleiding was groot om fors over de vraagprijs te gaan. "Dorien hield ons juist een beetje tegen," lacht Sanne. "Ze had vergelijkbare woningen uit de buurt erbij gepakt en liet zien wat die écht hadden opgebracht. Ons bod was scherp, maar onderbouwd — geen gok uit angst."'),
-      p('Het werkte. Het bod werd geaccepteerd, de financiering kwam rond, en na de bouwkundige keuring bleek de woning zo gezond als hij eruitzag. "Ze ging mee naar de bezichtiging en wees ons op dingen waar wij nooit op hadden gelet. Het kozijn, de meterkast, vocht in de kelder. Precies de dingen die later geld kosten."'),
-      {
-        resultaat: [
-          {value: '6 weken', label: 'van eerste gesprek tot getekend koopcontract'},
-          {value: 'Vóór Funda', label: 'als eersten op bezichtiging, zonder concurrentie'},
-          {value: '€ 18.000', label: 'onder hun maximale budget gebleven'},
-        ],
-      },
-      h('En nu?'),
-      p('Inmiddels wonen Sanne en Joost er een half jaar. "Onze zoon heeft een tuin om in te spelen, en wij hebben een buurt waar we ons meteen thuis voelden," zegt Sanne. "Als iemand ons vraagt hoe het is gelukt waar het zo lang niet lukte: we hadden gewoon iemand nodig die de markt van binnenuit kende. En die eerlijk tegen ons was, ook toen we te enthousiast werden."'),
+      h('Een toevallige ontmoeting in Haarlem'),
+      p('Jaren geleden ontmoette ik Sanne en haar vader tijdens een bezichtiging van een woning die ik in de verkoop had. Uiteindelijk besloot Sanne een nieuwbouwappartement in Haarlem te kopen. Een mooie stap naar een eigen plek!'),
+      p('Maar het leven had andere plannen.'),
+      p('Terwijl Sanne wachtte op de oplevering van haar nieuwbouwwoning, ontmoette ze Mick. Hij woonde in een leuk appartement in Santpoort en het duurde niet lang voordat Sanne bij hem introk.'),
+      p('Samen ontstond de wens om een huis te kopen waar ze hun toekomst konden opbouwen. Een plek die écht van hen samen zou zijn.'),
+      h('Twee appartementen verkopen, één nieuw thuis vinden'),
+      p('Voordat de zoektocht naar hun droomhuis kon beginnen, moesten er eerst twee woningen verkocht worden.'),
+      p('Sanne en Mick schakelden mij in om hen hierbij te helpen.'),
+      p('We begonnen met de verkoop van het appartement van Mick in Santpoort. Nadat deze woning succesvol was verkocht, volgde het inmiddels opgeleverde nieuwbouwappartement van Sanne in Haarlem.'),
+      p('Ook hiervoor vonden we een enthousiaste koper!'),
+      p('Met beide woningen verkocht, was het tijd voor de volgende stap: samen op zoek naar hun nieuwe thuis.'),
+      h('Een nieuw hoofdstuk in Santpoort'),
+      p('De zoektocht bracht ons uiteindelijk weer naar Santpoort. Daar vonden we een heerlijk huis dat helemaal bij hun wensen paste.'),
+      p('Inmiddels wonen Sanne en Mick hier samen met hun zoontje en genieten ze volop van hun gezinsleven.'),
+      p('Wat begon met twee eigen appartementen, groeide uit tot één fijn gezinshuis waar ze samen nieuwe herinneringen maken.'),
+      h('Meer dan alleen een huis kopen of verkopen'),
+      p("Wat ik zo bijzonder vind aan dit verhaal? Dat een toevallige ontmoeting tijdens een bezichtiging in Haarlem jaren later uitgroeide tot zo'n mooi traject. Van twee succesvolle verkopen tot de aankoop van een nieuw thuis."),
+      p('Als makelaar in Haarlem en omgeving, waaronder Santpoort, vind ik het ontzettend leuk om mensen bij zulke belangrijke stappen in hun leven te mogen begeleiden.'),
+      p('Bij Hart & Huis Makelaardij draait het niet alleen om het kopen of verkopen van een woning. Het gaat vooral om de mensen achter de voordeur. Om hun wensen, plannen en toekomst. Met persoonlijk contact, eerlijk advies en korte lijnen help ik mijn klanten graag verder.'),
     ],
-    dienst: 'Aankoop',
-    wie: 'Sanne & Joost',
-    plaats: 'Haarlem',
-    buurt: 'Kleverparkbuurt',
-    feiten: [{label: 'Doorlooptijd', value: '6 weken'}],
-    grade: 10,
-    quote:
-      'We zochten al anderhalf jaar. Binnen zes weken stonden we met de sleutel in onze hand — in de straat waar we stiekem altijd al wilden wonen.',
+    // Twee verkopen en een aankoop; het verhaal begint bij de verkoop.
+    dienst: 'Verkoop',
+    wie: 'Sanne & Mick',
+    plaats: 'Santpoort',
+    feiten: [{label: 'Traject', value: '2× verkoop + aankoop'}],
+    // De slotzin van Dorien uit de tekst, als afsluitende makelaar-quote.
     makelaarQuote:
-      'Sanne en Joost wisten heel goed wat ze wilden — ze hadden alleen iemand nodig die er eerder bij was dan de rest. Daar is dat netwerk voor.',
+      'Dat Sanne en Mick mij het vertrouwen gaven om hen tijdens dit hele traject te begeleiden, maakt mijn werk extra leuk.',
     date: '2026-06-01',
     seo: {
-      title: 'Klantverhaal: Sanne & Joost in Haarlem',
+      title: 'Klantverhaal: Sanne & Mick in Santpoort',
       description:
-        'Hoe Sanne en Joost na anderhalf jaar zoeken binnen zes weken hun huis in de Kleverparkbuurt kochten — vóór Funda, met Hart & Huis Makelaardij.',
+        'Hoe Sanne en Mick met Hart & Huis twee appartementen verkochten en samen een gezinshuis in Santpoort kochten.',
     },
   },
 ]
@@ -173,11 +176,15 @@ async function upsertKlantverhaal(verhaal: Verhaal) {
   }
 
   const existingId = await client.fetch<string | null>(
-    `*[_type == "klantverhaal" && slug.current == $slug][0]._id`,
-    {slug: verhaal.slug},
+    `*[_type == "klantverhaal" && slug.current in $slugs][0]._id`,
+    {slugs: [verhaal.slug, ...(verhaal.formerSlugs ?? [])]},
   )
   if (existingId) {
-    await client.patch(existingId).set(doc).commit()
+    // set() slaat undefined over: optionele velden die nu leeg zijn expliciet weghalen.
+    const empty = Object.entries(doc)
+      .filter(([, value]) => value === undefined)
+      .map(([field]) => field)
+    await client.patch(existingId).set(doc).unset(empty).commit()
     console.log(`✓ klantverhaal /klantverhaal/${verhaal.slug} updated (${existingId})`)
     return
   }
