@@ -16,6 +16,8 @@
 
 ## Key Learnings
 
+- **Home fetcht met `revalidate: 30`**: na een seed toont de dev-server de eerste request nog de oude data. Herlaad na ~30s voordat je concludeert dat een blok niet rendert. Een onbekend bloktype rendert op oude code als `null` (default-tak PageBuilder), dus een nieuw blok seeden vóór deploy is veilig. (2026-11-25)
+
 - **Afbeeldingen altijd via `@/components/ui/Image`**, nooit direct `next/image` (sinds PR #26): de wrapper laat Sanity-beelden door de Sanity-CDN schalen. En elk nieuw `type: 'image'`-veld krijgt `.assetRequired()` (PR #27). (2026-11-19)
 
 - **Elk page-builder-blok krijgt `anchorId` centraal**: `schemaTypes/index.ts` mapt alle bloktypes door `withAnchorId()` (objects/anchorId.ts). Een nieuw blok hoort dus in die lijst, dan krijgt het het veld vanzelf. (2026-11-19)

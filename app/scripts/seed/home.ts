@@ -1,11 +1,14 @@
 /** Seeds the reviews and the home page. */
 import {
   HERO_SLIDES,
+  HOME_PARTNERS,
   INTRO_FACTS,
   REVIEWS,
   SERVICES,
 } from '../../src/lib/home-content';
 import { REGIONS, SITE } from '../../src/lib/site';
+
+const NVM_LOGO = '/images/home/nvm-logo.svg';
 import { client, cta, externalLink, key, uploadImage, upsertPage } from './shared';
 
 async function upsertReview(review: (typeof REVIEWS)[number]) {
@@ -104,6 +107,7 @@ async function buildHomeContent() {
       items: serviceItems,
       nvm: {
         badge: 'NVM',
+        badgeImage: await uploadImage(NVM_LOGO, 'NVM Makelaar'),
         title: 'Aangesloten bij de NVM',
         body: 'Vaste kwaliteitseisen, actuele marktdata uit de grootste woningdatabase van Nederland, en een geschillenregeling waar je op terug kunt vallen.',
         cta: cta('Wat betekent dat voor jou?', '#'),
@@ -148,6 +152,7 @@ async function buildHomeContent() {
       primaryCta: cta('Plan een kennismaking', '#'),
       secondaryCta: cta(SITE.phone, SITE.phoneHref),
     },
+    await buildPartnersBlock(),
   ];
 }
 
@@ -159,4 +164,59 @@ export async function seedHome() {
 
   console.log('\nHome page');
   await upsertPage('home', 'Home', await buildHomeContent());
+}
+
+async function buildPartnersBlock() {
+  return {
+    _type: 'partners',
+    _key: key('home-partners'),
+    eyebrow: HOME_PARTNERS.eyebrow,
+    title: HOME_PARTNERS.title,
+    body: HOME_PARTNERS.body,
+    logos: await Promise.all(
+      HOME_PARTNERS.logos.map(async (logo) => ({
+        ...(await uploadImage(logo.src, logo.alt)),
+        _key: key(`partner:${logo.alt}`),
+      })),
+    ),
+  };
+}
+
+/** Zet alleen het partnersblok onderaan de live homepage; de rest blijft staan. */
+export async function seedPartnersHome() {
+  console.log('Partners (home)');
+  const block = await buildPartnersBlock();
+  const ids = await client.fetch<string[]>(
+    `*[_type == "page" && slug.current == "home"]._id`,
+    {},
+    { perspective: 'raw' },
+  );
+  for (const id of ids) {
+    await client
+      .patch(id)
+      .unset(['content[_type=="partners"]'])
+      .append('content', [block])
+      .commit();
+    console.log(`✓ partners block → ${id}`);
+  }
+}
+
+/** Zet alleen het NVM-logo in de cirkel van de NVM-banner op de live home. */
+export async function seedNvmBadgeHome() {
+  console.log('NVM badge (home)');
+  const badgeImage = await uploadImage(NVM_LOGO, 'NVM Makelaar');
+  const docs = await client.fetch<{ _id: string; keys: string[] }[]>(
+    `*[_type == "page" && slug.current == "home"]{_id, "keys": content[_type == "services"]._key}`,
+    {},
+    { perspective: 'raw' },
+  );
+  for (const { _id, keys } of docs) {
+    for (const blockKey of keys) {
+      await client
+        .patch(_id)
+        .set({ [`content[_key=="${blockKey}"].nvm.badgeImage`]: badgeImage })
+        .commit();
+    }
+    console.log(`✓ nvm badge → ${_id} (${keys.length} blok)`);
+  }
 }

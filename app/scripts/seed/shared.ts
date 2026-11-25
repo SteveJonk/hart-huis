@@ -74,7 +74,8 @@ export async function uploadImage(publicPath: string, alt: string) {
     (
       await client.assets.upload('image', createReadStream(absolute), {
         filename,
-        contentType: 'image/jpeg',
+        // ponytail: alleen png/webp/svg herkend, de rest blijft jpeg
+        contentType: {'.png': 'image/png', '.webp': 'image/webp', '.svg': 'image/svg+xml'}[path.extname(filename).toLowerCase()] ?? 'image/jpeg',
       })
     )._id
 

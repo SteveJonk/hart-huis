@@ -19,7 +19,7 @@ import {seedExpat} from './seed/expat'
 import {seedHaarlem} from './seed/haarlem'
 import {seedWerkgebied} from './seed/werkgebied'
 import {seedKlantverhalen, seedKlantverhalenHome} from './seed/klantverhalen'
-import {seedHome} from './seed/home'
+import {seedHome, seedNvmBadgeHome, seedPartnersHome} from './seed/home'
 import {seedNavigation} from './seed/navigation'
 import {seedNvm} from './seed/nvm'
 import {seedObjecten} from './seed/objecten'
@@ -53,6 +53,8 @@ const TARGETS = {
   werkgebied: seedWerkgebied,
   klantverhalen: seedKlantverhalen,
   'klantverhalen-home': seedKlantverhalenHome,
+  'partners-home': seedPartnersHome,
+  'nvm-badge-home': seedNvmBadgeHome,
   nav: seedNavigation,
 } as const
 

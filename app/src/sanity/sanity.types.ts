@@ -16,7 +16,8 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: ../app/src/sanity/schema.json
 export type Nvm = {
-  badge: string;
+  badge?: string;
+  badgeImage?: BadgeImage;
   title: string;
   body: string;
   cta?: Cta;
@@ -73,6 +74,15 @@ export type ObjectImage = {
   _type: "image";
 };
 
+export type BadgeImage = {
+  asset: SanityImageAssetReference;
+  media?: unknown; // Unable to locate the referenced type "badgeImage.media" in schema
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt: string;
+  _type: "image";
+};
+
 export type ItemsObjectImage = {
   asset: SanityImageAssetReference;
   media?: unknown; // Unable to locate the referenced type "items.object.image.media" in schema
@@ -97,6 +107,23 @@ export type MembersObjectImage = {
   crop?: SanityImageCrop;
   alt: string;
   _type: "image";
+};
+
+export type Partners = {
+  _type: "partners";
+  eyebrow?: string;
+  title: string;
+  body?: string;
+  logos: Array<{
+    asset: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+    _key: string;
+  }>;
+  anchorId?: string;
 };
 
 export type RichText = {
@@ -884,6 +911,9 @@ export type PageBuilder = Array<
     } & DuoPhotos)
   | ({
       _key: string;
+    } & Partners)
+  | ({
+      _key: string;
     } & Timeline)
   | ({
       _key: string;
@@ -1560,9 +1590,11 @@ export type AllSanitySchemaTypes =
   | CtaCard
   | SanityImageAssetReference
   | ObjectImage
+  | BadgeImage
   | ItemsObjectImage
   | TimelineItemsObjectImage
   | MembersObjectImage
+  | Partners
   | RichText
   | CenteredCta
   | QuoteStrip
@@ -2662,6 +2694,35 @@ export type PAGE_QUERY_RESULT = {
       }
     | {
         _key: string;
+        _type: "partners";
+        eyebrow?: string;
+        title: string;
+        body?: string;
+        logos: Array<{
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+          _key: string;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
         _type: "personBlock";
         image: {
           asset: SanityImageAssetReference;
@@ -3020,7 +3081,8 @@ export type PAGE_QUERY_RESULT = {
           cta: null;
         }>;
         nvm: {
-          badge: string;
+          badge?: string;
+          badgeImage?: BadgeImage;
           title: string;
           body: string;
           cta: {
@@ -4466,6 +4528,35 @@ export type WERKGEBIED_QUERY_RESULT = {
       }
     | {
         _key: string;
+        _type: "partners";
+        eyebrow?: string;
+        title: string;
+        body?: string;
+        logos: Array<{
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+          _key: string;
+        }>;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
         _type: "personBlock";
         image: {
           asset: SanityImageAssetReference;
@@ -4824,7 +4915,8 @@ export type WERKGEBIED_QUERY_RESULT = {
           cta: null;
         }>;
         nvm: {
-          badge: string;
+          badge?: string;
+          badgeImage?: BadgeImage;
           title: string;
           body: string;
           cta: {

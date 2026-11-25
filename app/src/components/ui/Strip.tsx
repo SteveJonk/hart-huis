@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { BlockIcon, type BlockIconName } from "@/components/ui/BlockIcon";
 import { Button } from "@/components/ui/Button";
+import Image from "@/components/ui/Image";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
@@ -12,6 +13,8 @@ export type StripCta = {
 type StripProps = {
   /** Text in the round mark, e.g. "NVM". Ignored when `icon` is set. */
   badge?: string;
+  /** Logo in the round mark; wins over `badge`. */
+  badgeImage?: { src: string; alt: string };
   icon?: BlockIconName;
   title: string;
   body: string;
@@ -21,8 +24,21 @@ type StripProps = {
 };
 
 /** Dark full-width strip with a round mark, used on home and aankoop. */
-export function Strip({ badge, icon, title, body, cta, className }: StripProps) {
+export function Strip({ badge, badgeImage, icon, title, body, cta, className }: StripProps) {
   let mark: ReactNode = badge;
+  if (badgeImage) {
+    // unoptimized: SVG's mogen niet door /_next/image en hoeven niet geschaald.
+    mark = (
+      <Image
+        src={badgeImage.src}
+        alt={badgeImage.alt}
+        width={52}
+        height={52}
+        unoptimized
+        className="size-[52px] object-contain max-sm:size-[42px]"
+      />
+    );
+  }
   if (icon) mark = <BlockIcon icon={icon} size={30} />;
 
   return (

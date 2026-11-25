@@ -18,6 +18,7 @@ import { MediaText } from '@/components/blocks/MediaText';
 import { ObjectGrid } from '@/components/blocks/ObjectGrid';
 import { PageHero } from '@/components/blocks/PageHero';
 import { PageOpener } from '@/components/blocks/PageOpener';
+import { Partners } from '@/components/blocks/Partners';
 import { Person } from '@/components/blocks/Person';
 import { QuoteBand } from '@/components/blocks/QuoteBand';
 import { RegionBlock } from '@/components/blocks/RegionBlock';
@@ -42,7 +43,7 @@ import { QuoteStrip } from '@/components/blocks/QuoteStrip';
 import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import type { BlockIconName } from '@/components/ui/BlockIcon';
 import type { PortableTextBlock } from '@portabletext/types';
-import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
+import { imageSrc, toImage, urlFor, type SanityImage } from '@/sanity/image';
 import type { PAGE_QUERY_RESULT } from '@/sanity/sanity.types';
 import { toFormDefinition } from '@/lib/form-fields';
 import { resolveHref, type SanityLabeledLink, type SanityLink } from '@/lib/links';
@@ -158,7 +159,10 @@ function renderBlock(block: PageBlock) {
         })
         .filter((item): item is NonNullable<typeof item> => Boolean(item));
       const nvm = block.nvm as
-        { badge?: string; title?: string; body?: string; cta?: SanityCta } | undefined;
+        | { badge?: string; badgeImage?: SanityImage; title?: string; body?: string; cta?: SanityCta }
+        | undefined;
+      // Origineel, zonder breedte: een SVG moet als SVG binnenkomen.
+      const badgeSrc = urlFor(nvm?.badgeImage)?.url();
       return (
         <Services
           key={block._key}
@@ -169,6 +173,9 @@ function renderBlock(block: PageBlock) {
             nvm
               ? {
                   badge: nvm.badge ?? 'NVM',
+                  badgeImage: badgeSrc
+                    ? { src: badgeSrc, alt: nvm.badgeImage?.alt ?? 'NVM' }
+                    : undefined,
                   title: nvm.title ?? '',
                   body: nvm.body ?? '',
                   cta: toCta(nvm.cta),
@@ -522,6 +529,20 @@ function renderBlock(block: PageBlock) {
           lead={block.lead}
           motto={block.motto}
           attribution={block.attribution}
+        />
+      );
+    }
+    case 'partners': {
+      const logos = block.logos
+        ?.map((logo) => toImage(logo, 480))
+        .filter((logo): logo is { src: string; alt: string } => Boolean(logo));
+      return (
+        <Partners
+          key={block._key}
+          eyebrow={block.eyebrow ?? undefined}
+          title={block.title}
+          body={block.body ?? undefined}
+          logos={logos}
         />
       );
     }
