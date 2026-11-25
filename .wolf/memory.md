@@ -604,3 +604,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 15:01 | partners block: schema, component, PageBuilder, seed:partners-home (seeded prod) | partnersType.ts, Partners.tsx, PageBuilder.tsx, seed/home.ts, shared.ts | ok, verified in browser | ~40k |
+| 15:09 | NVM strip badgeImage (dark svg logo), seed:nvm-badge-home (seeded prod) | servicesType.ts, Strip.tsx, Services.tsx, PageBuilder.tsx, seed/home.ts | ok, verified in browser | ~20k |

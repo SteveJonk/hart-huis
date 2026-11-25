@@ -29,7 +29,8 @@ export type ServiceCta = {
 };
 
 export type ServicesNvm = {
-  badge: string;
+  badge?: string;
+  badgeImage?: { src: string; alt: string };
   title: string;
   body: string;
   cta?: ServiceCta;
@@ -57,6 +58,7 @@ const DEFAULTS: Required<ServicesProps> = {
   items: DEFAULT_ITEMS,
   nvm: {
     badge: 'NVM',
+    badgeImage: { src: '/images/home/nvm-logo.svg', alt: 'NVM Makelaar' },
     title: 'Aangesloten bij de NVM',
     body: 'Vaste kwaliteitseisen, actuele marktdata uit de grootste woningdatabase van Nederland, en een geschillenregeling waar je op terug kunt vallen.',
     cta: { label: 'Wat betekent dat voor jou?', href: '#' },
@@ -125,6 +127,7 @@ export function Services({
 
         <Strip
           badge={nvm.badge}
+          badgeImage={nvm.badgeImage}
           title={nvm.title}
           body={nvm.body}
           cta={nvm.cta}

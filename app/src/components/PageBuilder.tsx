@@ -43,7 +43,7 @@ import { QuoteStrip } from '@/components/blocks/QuoteStrip';
 import { Werkwijze, type WerkwijzeItem } from '@/components/blocks/Werkwijze';
 import type { BlockIconName } from '@/components/ui/BlockIcon';
 import type { PortableTextBlock } from '@portabletext/types';
-import { imageSrc, toImage, type SanityImage } from '@/sanity/image';
+import { imageSrc, toImage, urlFor, type SanityImage } from '@/sanity/image';
 import type { PAGE_QUERY_RESULT } from '@/sanity/sanity.types';
 import { toFormDefinition } from '@/lib/form-fields';
 import { resolveHref, type SanityLabeledLink, type SanityLink } from '@/lib/links';
@@ -159,7 +159,10 @@ function renderBlock(block: PageBlock) {
         })
         .filter((item): item is NonNullable<typeof item> => Boolean(item));
       const nvm = block.nvm as
-        { badge?: string; title?: string; body?: string; cta?: SanityCta } | undefined;
+        | { badge?: string; badgeImage?: SanityImage; title?: string; body?: string; cta?: SanityCta }
+        | undefined;
+      // Origineel, zonder breedte: een SVG moet als SVG binnenkomen.
+      const badgeSrc = urlFor(nvm?.badgeImage)?.url();
       return (
         <Services
           key={block._key}
@@ -170,6 +173,9 @@ function renderBlock(block: PageBlock) {
             nvm
               ? {
                   badge: nvm.badge ?? 'NVM',
+                  badgeImage: badgeSrc
+                    ? { src: badgeSrc, alt: nvm.badgeImage?.alt ?? 'NVM' }
+                    : undefined,
                   title: nvm.title ?? '',
                   body: nvm.body ?? '',
                   cta: toCta(nvm.cta),

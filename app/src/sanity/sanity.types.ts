@@ -16,7 +16,8 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: ../app/src/sanity/schema.json
 export type Nvm = {
-  badge: string;
+  badge?: string;
+  badgeImage?: BadgeImage;
   title: string;
   body: string;
   cta?: Cta;
@@ -67,6 +68,15 @@ export type SanityImageAssetReference = {
 export type ObjectImage = {
   asset: SanityImageAssetReference;
   media?: unknown; // Unable to locate the referenced type "object.image.media" in schema
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt: string;
+  _type: "image";
+};
+
+export type BadgeImage = {
+  asset: SanityImageAssetReference;
+  media?: unknown; // Unable to locate the referenced type "badgeImage.media" in schema
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
   alt: string;
@@ -1580,6 +1590,7 @@ export type AllSanitySchemaTypes =
   | CtaCard
   | SanityImageAssetReference
   | ObjectImage
+  | BadgeImage
   | ItemsObjectImage
   | TimelineItemsObjectImage
   | MembersObjectImage
@@ -3070,7 +3081,8 @@ export type PAGE_QUERY_RESULT = {
           cta: null;
         }>;
         nvm: {
-          badge: string;
+          badge?: string;
+          badgeImage?: BadgeImage;
           title: string;
           body: string;
           cta: {
@@ -4903,7 +4915,8 @@ export type WERKGEBIED_QUERY_RESULT = {
           cta: null;
         }>;
         nvm: {
-          badge: string;
+          badge?: string;
+          badgeImage?: BadgeImage;
           title: string;
           body: string;
           cta: {

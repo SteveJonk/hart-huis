@@ -15,6 +15,7 @@
 - Nieuw blok `partners` (`studio-hart-huis/schemaTypes/blocks/partnersType.ts`): eyebrow, title, body, `logos[]` (image + `alt` = bedrijfsnaam). Component `app/src/components/blocks/Partners.tsx`, defaults `HOME_PARTNERS` in `home-content.ts`, logo's in `app/public/images/partners/` (uit de base64 van het design).
 - Geseed in production met `npm run seed:partners-home` (patcht alleen het blok op de live home, idempotent). `seed:home` neemt het blok ook mee voor een verse dataset.
 - `uploadImage()` zette elk bestand als `image/jpeg` neer; leidt de contentType nu af uit de extensie (png/webp).
+- NVM-banner (`services.nvm`) kreeg `badgeImage`: logo in de cirkel i.p.v. tekst (tekst blijft terugval). NVM-logo donker gemaakt (`#241f1c`, witte achtergrond eruit) in `public/images/home/nvm-logo.svg`, geseed met `npm run seed:nvm-badge-home`. SVG wordt `unoptimized` en zonder breedte-parameter geladen.
 - Open: studio deployen (nieuw bloktype), anders toont de studio het als onbekend. Logo's linken nergens heen (design ook niet). Het 7e logo heet in het design "Vastgoedpartner" — echte naam navragen.
 
 **Expat-pagina /expat (19-11-2026)**

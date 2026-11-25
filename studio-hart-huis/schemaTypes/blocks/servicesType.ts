@@ -62,7 +62,25 @@ export const servicesType = defineType({
       title: 'NVM banner',
       type: 'object',
       fields: [
-        defineField({name: 'badge', type: 'string', validation: (rule) => rule.required()}),
+        defineField({
+          name: 'badge',
+          title: 'Badge text',
+          type: 'string',
+          description: 'Shown in the circle when no logo is set.',
+          validation: (rule) =>
+            rule.custom((value, context) => {
+              const parent = context.parent as {badgeImage?: {asset?: unknown}} | undefined
+              return value || parent?.badgeImage?.asset ? true : 'Add a badge text or a logo'
+            }),
+        }),
+        defineField({
+          name: 'badgeImage',
+          title: 'Badge logo',
+          type: 'image',
+          description: 'Replaces the badge text. Use a dark logo (SVG) on a transparent background.',
+          fields: [defineField({name: 'alt', type: 'string', validation: (rule) => rule.required()})],
+          validation: (rule) => rule.assetRequired(),
+        }),
         defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
         defineField({name: 'body', type: 'text', rows: 3, validation: (rule) => rule.required()}),
         defineField({name: 'cta', type: 'cta'}),
