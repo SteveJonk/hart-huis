@@ -147,3 +147,18 @@ export const LISTINGS: Listing[] = [
     delay: 2,
   },
 ];
+
+export const HOME_PARTNERS = {
+  eyebrow: 'Samen sterker',
+  title: 'Met deze bedrijven werken wij graag samen',
+  body: 'Van woningstyling en fotografie tot energielabels en taxatievalidatie. Een netwerk van vertrouwde partners dat elk verkoop- en aankooptraject net wat beter maakt.',
+  logos: [
+    { src: '/images/partners/partner-keur-garant.png', alt: 'KEUR Garant' },
+    { src: '/images/partners/partner-energielabel-compleet.png', alt: 'Energielabel Compleet' },
+    { src: '/images/partners/partner-westerveld.png', alt: 'Westerveld Creatieve Communicatie' },
+    { src: '/images/partners/partner-twinstyling.png', alt: 'Twinstyling' },
+    { src: '/images/partners/partner-vixx.png', alt: 'Vixx' },
+    { src: '/images/partners/partner-ag-vastgoed-media.png', alt: 'AG Vastgoed Media' },
+    { src: '/images/partners/partner-vastgoedpartner.png', alt: 'Vastgoedpartner' },
+  ],
+};

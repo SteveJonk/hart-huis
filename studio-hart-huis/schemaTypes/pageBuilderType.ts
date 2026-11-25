@@ -21,6 +21,7 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'crossLinks'}),
     defineArrayMember({type: 'pageOpener'}),
     defineArrayMember({type: 'duoPhotos'}),
+    defineArrayMember({type: 'partners'}),
     defineArrayMember({type: 'timeline'}),
     defineArrayMember({type: 'valueCards'}),
     defineArrayMember({type: 'team'}),

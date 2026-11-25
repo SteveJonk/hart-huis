@@ -38,6 +38,7 @@
     "seed:werkgebied": "tsx --env-file=.env scripts/seed.ts werkgebied",
     "seed:klantverhalen": "tsx --env-file=.env scripts/seed.ts klantverhalen",
     "seed:klantverhalen-home": "tsx --env-file=.env scripts/seed.ts klantverhalen-home",
+    "seed:partners-home": "tsx --env-file=.env scripts/seed.ts partners-home",
     "seed:nav": "tsx --env-file=.env scripts/seed.ts nav"
   },
   "dependencies": {

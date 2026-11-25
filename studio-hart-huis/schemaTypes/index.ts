@@ -7,6 +7,7 @@ import {contactWaysType} from './blocks/contactWaysType'
 import {crossLinksType} from './blocks/crossLinksType'
 import {ctaBandType} from './blocks/ctaBandType'
 import {duoPhotosType} from './blocks/duoPhotosType'
+import {partnersType} from './blocks/partnersType'
 import {factBarType} from './blocks/factBarType'
 import {faqsType} from './blocks/faqsType'
 import {heroType} from './blocks/heroType'
@@ -123,5 +124,6 @@ export const schemaTypes = [
     quoteStripType,
     centeredCtaType,
     richTextType,
+    partnersType,
   ].map(withAnchorId),
 ]

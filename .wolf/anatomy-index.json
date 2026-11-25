@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-26T16:07:36.352Z",
-    "fileCount": 280,
+    "lastScanned": "2026-11-25T14:01:54.804Z",
+    "fileCount": 344,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "b471a15bba91d58e6f582324c1511b19293360c242e3e9b37587618e6c1dded5",
-    "storeUpdatedAt": "2026-08-26T16:07:36.353Z"
+    "renderedHash": "736d5b8ea5f0024ced35b324fa53eb419bfd265a8b45d6e459baf4bbded35550",
+    "storeUpdatedAt": "2026-11-25T14:01:54.807Z"
   },
   "files": {
     ".claude/commands/reframe.md": {
@@ -14,8 +14,8 @@
       "tokens": 551,
       "hash": "17a75695be5d4629",
       "size": 2221,
-      "mtimeMs": 1785834177283.9353,
-      "updatedAt": "2026-08-26T16:07:36.257Z",
+      "mtimeMs": 1789212314255.7417,
+      "updatedAt": "2026-11-25T14:01:54.655Z",
       "source": "scan"
     },
     ".claude/commands/security-audit.md": {
@@ -23,17 +23,17 @@
       "tokens": 510,
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
-      "mtimeMs": 1785834177283.637,
-      "updatedAt": "2026-08-26T16:07:36.258Z",
+      "mtimeMs": 1789212314255.6047,
+      "updatedAt": "2026-11-25T14:01:54.655Z",
       "source": "scan"
     },
     ".claude/launch.json": {
       "description": "",
-      "tokens": 72,
-      "hash": "1c79881343c518ab",
-      "size": 249,
-      "mtimeMs": 1787047201237.4795,
-      "updatedAt": "2026-08-26T16:07:36.259Z",
+      "tokens": 88,
+      "hash": "dd4957183c466e7e",
+      "size": 308,
+      "mtimeMs": 1789392027982.087,
+      "updatedAt": "2026-11-25T14:01:54.656Z",
       "source": "scan"
     },
     ".claude/rules/openwolf.md": {
@@ -41,8 +41,8 @@
       "tokens": 328,
       "hash": "6d735b2c1c54a916",
       "size": 1323,
-      "mtimeMs": 1785834177112.1697,
-      "updatedAt": "2026-08-26T16:07:36.259Z",
+      "mtimeMs": 1789212314251.3623,
+      "updatedAt": "2026-11-25T14:01:54.657Z",
       "source": "scan"
     },
     ".claude/settings.json": {
@@ -50,8 +50,8 @@
       "tokens": 514,
       "hash": "f68759bb50af5ee4",
       "size": 1799,
-      "mtimeMs": 1785834177111.7556,
-      "updatedAt": "2026-08-26T16:07:36.260Z",
+      "mtimeMs": 1789212314251.0806,
+      "updatedAt": "2026-11-25T14:01:54.657Z",
       "source": "scan"
     },
     ".cursor/rules/openwolf.mdc": {
@@ -59,8 +59,8 @@
       "tokens": 87,
       "hash": "25a895da2047ef4d",
       "size": 323,
-      "mtimeMs": 1785834177282.8696,
-      "updatedAt": "2026-08-26T16:07:36.260Z",
+      "mtimeMs": 1789212314255.4644,
+      "updatedAt": "2026-11-25T14:01:54.658Z",
       "source": "scan"
     },
     ".DS_Store": {
@@ -68,17 +68,26 @@
       "tokens": 2732,
       "hash": "b3d3ed919a335b2b",
       "size": 10244,
-      "mtimeMs": 1786686758378.9355,
-      "updatedAt": "2026-08-26T16:07:36.261Z",
+      "mtimeMs": 1791268943216.3733,
+      "updatedAt": "2026-11-25T14:01:54.658Z",
+      "source": "scan"
+    },
+    ".github/workflows/build-app-image.yml": {
+      "description": "CI: Build App Image",
+      "tokens": 762,
+      "hash": "603edc2d37342cc6",
+      "size": 2673,
+      "mtimeMs": 1788789858090.6208,
+      "updatedAt": "2026-11-25T14:01:54.659Z",
       "source": "scan"
     },
     ".github/workflows/deploy-sanity-studio.yml": {
       "description": "CI: Deploy Sanity Studio",
-      "tokens": 743,
-      "hash": "7aff0b95a8cc4650",
-      "size": 2605,
-      "mtimeMs": 1787419173674.4424,
-      "updatedAt": "2026-08-26T16:07:36.261Z",
+      "tokens": 772,
+      "hash": "dc4a5c2a17605985",
+      "size": 2708,
+      "mtimeMs": 1787901817784.7412,
+      "updatedAt": "2026-11-25T14:01:54.660Z",
       "source": "scan"
     },
     ".gitignore": {
@@ -87,7 +96,16 @@
       "hash": "e2eb93a61ffd7877",
       "size": 9,
       "mtimeMs": 1785392122288.7588,
-      "updatedAt": "2026-08-26T16:07:36.261Z",
+      "updatedAt": "2026-11-25T14:01:54.660Z",
+      "source": "scan"
+    },
+    ".impeccable/hook.cache.json": {
+      "description": "",
+      "tokens": 2242,
+      "hash": "f1c3de4e5a96a972",
+      "size": 7846,
+      "mtimeMs": 1795091017602.9722,
+      "updatedAt": "2026-11-25T14:01:54.661Z",
       "source": "scan"
     },
     ".opencode/command/reframe.md": {
@@ -95,8 +113,8 @@
       "tokens": 551,
       "hash": "17a75695be5d4629",
       "size": 2221,
-      "mtimeMs": 1785834177284.3032,
-      "updatedAt": "2026-08-26T16:07:36.262Z",
+      "mtimeMs": 1789212314256.0037,
+      "updatedAt": "2026-11-25T14:01:54.661Z",
       "source": "scan"
     },
     ".opencode/command/security-audit.md": {
@@ -104,8 +122,8 @@
       "tokens": 510,
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
-      "mtimeMs": 1785834177284.1458,
-      "updatedAt": "2026-08-26T16:07:36.262Z",
+      "mtimeMs": 1789212314255.8816,
+      "updatedAt": "2026-11-25T14:01:54.661Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/anatomy.ts": {
@@ -113,8 +131,8 @@
       "tokens": 2922,
       "hash": "de2a14445289179f",
       "size": 10257,
-      "mtimeMs": 1785834177278.7407,
-      "updatedAt": "2026-08-26T16:07:36.264Z",
+      "mtimeMs": 1789212314252.2314,
+      "updatedAt": "2026-11-25T14:01:54.663Z",
       "source": "scan",
       "symbols": [
         {
@@ -229,8 +247,8 @@
       "tokens": 538,
       "hash": "0193b1022c8e098b",
       "size": 1881,
-      "mtimeMs": 1785834177279.1472,
-      "updatedAt": "2026-08-26T16:07:36.264Z",
+      "mtimeMs": 1789212314252.5955,
+      "updatedAt": "2026-11-25T14:01:54.664Z",
       "source": "scan",
       "symbols": [
         {
@@ -310,8 +328,8 @@
       "tokens": 1081,
       "hash": "5044a1f76c74f535",
       "size": 3782,
-      "mtimeMs": 1785834177279.532,
-      "updatedAt": "2026-08-26T16:07:36.264Z",
+      "mtimeMs": 1789212314252.865,
+      "updatedAt": "2026-11-25T14:01:54.664Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/post-read.ts": {
@@ -319,8 +337,8 @@
       "tokens": 629,
       "hash": "1bc80c56ad0cfd32",
       "size": 2200,
-      "mtimeMs": 1785834177279.9321,
-      "updatedAt": "2026-08-26T16:07:36.264Z",
+      "mtimeMs": 1789212314253.176,
+      "updatedAt": "2026-11-25T14:01:54.665Z",
       "source": "scan",
       "symbols": [
         {
@@ -337,8 +355,8 @@
       "tokens": 3226,
       "hash": "02ba6ccd8d82475c",
       "size": 11300,
-      "mtimeMs": 1785834177280.4854,
-      "updatedAt": "2026-08-26T16:07:36.265Z",
+      "mtimeMs": 1789212314253.4392,
+      "updatedAt": "2026-11-25T14:01:54.665Z",
       "source": "scan",
       "symbols": [
         {
@@ -404,8 +422,8 @@
       "tokens": 685,
       "hash": "88c051b64b073c6a",
       "size": 2401,
-      "mtimeMs": 1785834177280.8362,
-      "updatedAt": "2026-08-26T16:07:36.265Z",
+      "mtimeMs": 1789212314253.8704,
+      "updatedAt": "2026-11-25T14:01:54.666Z",
       "source": "scan",
       "symbols": [
         {
@@ -422,8 +440,8 @@
       "tokens": 1167,
       "hash": "c3b34d216601e76f",
       "size": 4092,
-      "mtimeMs": 1785834177281.0354,
-      "updatedAt": "2026-08-26T16:07:36.265Z",
+      "mtimeMs": 1789212314254.0398,
+      "updatedAt": "2026-11-25T14:01:54.666Z",
       "source": "scan",
       "symbols": [
         {
@@ -468,8 +486,8 @@
       "tokens": 952,
       "hash": "dda2df097f6d5874",
       "size": 3340,
-      "mtimeMs": 1785834177281.3862,
-      "updatedAt": "2026-08-26T16:07:36.265Z",
+      "mtimeMs": 1789212314254.3079,
+      "updatedAt": "2026-11-25T14:01:54.666Z",
       "source": "scan",
       "symbols": [
         {
@@ -507,8 +525,8 @@
       "tokens": 1444,
       "hash": "5f8633a3904ee5ce",
       "size": 5057,
-      "mtimeMs": 1785834177281.7463,
-      "updatedAt": "2026-08-26T16:07:36.266Z",
+      "mtimeMs": 1789212314254.7021,
+      "updatedAt": "2026-11-25T14:01:54.667Z",
       "source": "scan",
       "symbols": [
         {
@@ -546,8 +564,8 @@
       "tokens": 217,
       "hash": "47f4dfb03abf55f9",
       "size": 757,
-      "mtimeMs": 1785834177281.9375,
-      "updatedAt": "2026-08-26T16:07:36.266Z",
+      "mtimeMs": 1789212314254.8916,
+      "updatedAt": "2026-11-25T14:01:54.667Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf.ts": {
@@ -555,8 +573,80 @@
       "tokens": 74,
       "hash": "a29f91aadb9a324d",
       "size": 261,
-      "mtimeMs": 1785834177282.0498,
-      "updatedAt": "2026-08-26T16:07:36.266Z",
+      "mtimeMs": 1789212314254.9846,
+      "updatedAt": "2026-11-25T14:01:54.668Z",
+      "source": "scan"
+    },
+    ".token-optimizer-audit-jZRb3pWWM5/analysis/dashboard.html": {
+      "description": "Token Optimizer Dashboard",
+      "tokens": 179928,
+      "hash": "71afa0afeeed05c1",
+      "size": 674801,
+      "mtimeMs": 1795169218227.3413,
+      "updatedAt": "2026-11-25T14:01:54.671Z",
+      "source": "scan"
+    },
+    ".token-optimizer-audit-jZRb3pWWM5/analysis/optimization-plan.md": {
+      "description": "Optimization Plan — hart-huis (2026-11-20)",
+      "tokens": 560,
+      "hash": "44556eddfcacf988",
+      "size": 2248,
+      "mtimeMs": 1795169213051.8162,
+      "updatedAt": "2026-11-25T14:01:54.672Z",
+      "source": "scan"
+    },
+    ".token-optimizer-audit-jZRb3pWWM5/audit/advanced.md": {
+      "description": "Settings & Advanced Optimizations Audit",
+      "tokens": 4561,
+      "hash": "5246125c61a109ba",
+      "size": 18241,
+      "mtimeMs": 1795169182254.8643,
+      "updatedAt": "2026-11-25T14:01:54.673Z",
+      "source": "scan"
+    },
+    ".token-optimizer-audit-jZRb3pWWM5/audit/claudemd.md": {
+      "description": "CLAUDE.md Audit",
+      "tokens": 2015,
+      "hash": "e16152f9e1bbd583",
+      "size": 8066,
+      "mtimeMs": 1795169100568.446,
+      "updatedAt": "2026-11-25T14:01:54.673Z",
+      "source": "scan"
+    },
+    ".token-optimizer-audit-jZRb3pWWM5/audit/commands.md": {
+      "description": "Commands Audit",
+      "tokens": 550,
+      "hash": "140696028e1693bf",
+      "size": 2197,
+      "mtimeMs": 1795169069866.2593,
+      "updatedAt": "2026-11-25T14:01:54.674Z",
+      "source": "scan"
+    },
+    ".token-optimizer-audit-jZRb3pWWM5/audit/mcp.md": {
+      "description": "MCP Audit",
+      "tokens": 2110,
+      "hash": "93f3a7b907236d9c",
+      "size": 8438,
+      "mtimeMs": 1795169112609.0942,
+      "updatedAt": "2026-11-25T14:01:54.674Z",
+      "source": "scan"
+    },
+    ".token-optimizer-audit-jZRb3pWWM5/audit/memorymd.md": {
+      "description": "MEMORY.md Audit",
+      "tokens": 1512,
+      "hash": "6c97c97b3a98061d",
+      "size": 6047,
+      "mtimeMs": 1795169079827.2917,
+      "updatedAt": "2026-11-25T14:01:54.674Z",
+      "source": "scan"
+    },
+    ".token-optimizer-audit-jZRb3pWWM5/audit/skills.md": {
+      "description": "Skills Audit",
+      "tokens": 2378,
+      "hash": "760d92fc126bc79d",
+      "size": 9510,
+      "mtimeMs": 1795169122583.9126,
+      "updatedAt": "2026-11-25T14:01:54.675Z",
       "source": "scan"
     },
     "AGENTS.md": {
@@ -565,7 +655,43 @@
       "hash": "8c90778623bf50ac",
       "size": 271,
       "mtimeMs": 1785834177282.5024,
-      "updatedAt": "2026-08-26T16:07:36.266Z",
+      "updatedAt": "2026-11-25T14:01:54.675Z",
+      "source": "scan"
+    },
+    "app/.claude/commands/reframe.md": {
+      "description": "Mode: migrate [framework]",
+      "tokens": 551,
+      "hash": "17a75695be5d4629",
+      "size": 2221,
+      "mtimeMs": 1789212314237.0586,
+      "updatedAt": "2026-11-25T14:01:54.676Z",
+      "source": "scan"
+    },
+    "app/.claude/commands/security-audit.md": {
+      "description": "Layer 1 — Dependencies",
+      "tokens": 510,
+      "hash": "e6f7e0b7337c9c86",
+      "size": 2060,
+      "mtimeMs": 1789212314236.7727,
+      "updatedAt": "2026-11-25T14:01:54.676Z",
+      "source": "scan"
+    },
+    "app/.claude/rules/openwolf.md": {
+      "description": "",
+      "tokens": 328,
+      "hash": "6d735b2c1c54a916",
+      "size": 1323,
+      "mtimeMs": 1789212314235.1685,
+      "updatedAt": "2026-11-25T14:01:54.676Z",
+      "source": "scan"
+    },
+    "app/.claude/settings.json": {
+      "description": "",
+      "tokens": 514,
+      "hash": "f68759bb50af5ee4",
+      "size": 1799,
+      "mtimeMs": 1789212314234.54,
+      "updatedAt": "2026-11-25T14:01:54.676Z",
       "source": "scan"
     },
     "app/.dockerignore": {
@@ -574,7 +700,7 @@
       "hash": "912e79244524b0a4",
       "size": 45,
       "mtimeMs": 1787054835478.2004,
-      "updatedAt": "2026-08-26T16:07:36.267Z",
+      "updatedAt": "2026-11-25T14:01:54.677Z",
       "source": "scan"
     },
     "app/.DS_Store": {
@@ -583,16 +709,16 @@
       "hash": "71d1ee606c7c43c7",
       "size": 14340,
       "mtimeMs": 1787551679691.4053,
-      "updatedAt": "2026-08-26T16:07:36.267Z",
+      "updatedAt": "2026-11-25T14:01:54.677Z",
       "source": "scan"
     },
     "app/.gitignore": {
       "description": "Git ignore rules",
-      "tokens": 144,
-      "hash": "a6b5507a8671f3f6",
-      "size": 538,
-      "mtimeMs": 1787299035598.895,
-      "updatedAt": "2026-08-26T16:07:36.267Z",
+      "tokens": 150,
+      "hash": "309f168f9bb6dd7d",
+      "size": 562,
+      "mtimeMs": 1787821146403.039,
+      "updatedAt": "2026-11-25T14:01:54.677Z",
       "source": "scan"
     },
     "app/AGENTS.md": {
@@ -601,25 +727,43 @@
       "hash": "e3447d84251880fb",
       "size": 327,
       "mtimeMs": 1785834093957.9656,
-      "updatedAt": "2026-08-26T16:07:36.267Z",
+      "updatedAt": "2026-11-25T14:01:54.677Z",
       "source": "scan"
     },
     "app/CLAUDE.md": {
-      "description": "",
-      "tokens": 3,
-      "hash": "336cc4fbf19beaad",
-      "size": 11,
-      "mtimeMs": 1785834093958.6213,
-      "updatedAt": "2026-08-26T16:07:36.267Z",
+      "description": "OpenWolf",
+      "tokens": 60,
+      "hash": "dc7af420506c1e1f",
+      "size": 238,
+      "mtimeMs": 1789212314237.6401,
+      "updatedAt": "2026-11-25T14:01:54.677Z",
       "source": "scan"
+    },
+    "app/cron.mjs": {
+      "description": "Aanroeper voor de importroutes, bedoeld voor een geplande taak (Coolify,",
+      "tokens": 790,
+      "hash": "7568df3b38878355",
+      "size": 2968,
+      "mtimeMs": 1788938681133.2107,
+      "updatedAt": "2026-11-25T14:01:54.678Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "fail",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 88,
+          "tokens": 517
+        }
+      ]
     },
     "app/Dockerfile": {
       "description": "Docker container definition",
-      "tokens": 173,
-      "hash": "3ee40c582fa54d65",
-      "size": 647,
-      "mtimeMs": 1787054839171.4258,
-      "updatedAt": "2026-08-26T16:07:36.268Z",
+      "tokens": 300,
+      "hash": "99951c1e191c58b2",
+      "size": 1123,
+      "mtimeMs": 1795090627356.999,
+      "updatedAt": "2026-11-25T14:01:54.678Z",
       "source": "scan"
     },
     "app/eslint.config.mjs": {
@@ -628,7 +772,7 @@
       "hash": "870f1adccecf3051",
       "size": 465,
       "mtimeMs": 1785087937158.6077,
-      "updatedAt": "2026-08-26T16:07:36.268Z",
+      "updatedAt": "2026-11-25T14:01:54.678Z",
       "source": "scan"
     },
     "app/example-designs/!aanbod.html": {
@@ -637,7 +781,7 @@
       "hash": "3523ccb1ab45b801",
       "size": 919267,
       "mtimeMs": 1786544646497.3599,
-      "updatedAt": "2026-08-26T16:07:36.272Z",
+      "updatedAt": "2026-11-25T14:01:54.682Z",
       "source": "scan"
     },
     "app/example-designs/!beoordelingen.html": {
@@ -646,7 +790,7 @@
       "hash": "3778dc5759592126",
       "size": 400355,
       "mtimeMs": 1786540904307.1616,
-      "updatedAt": "2026-08-26T16:07:36.274Z",
+      "updatedAt": "2026-11-25T14:01:54.685Z",
       "source": "scan"
     },
     "app/example-designs/!contact.html": {
@@ -655,7 +799,7 @@
       "hash": "97c4aa747737140b",
       "size": 433573,
       "mtimeMs": 1786545261017.0356,
-      "updatedAt": "2026-08-26T16:07:36.276Z",
+      "updatedAt": "2026-11-25T14:01:54.687Z",
       "source": "scan"
     },
     "app/example-designs/!lp-zoekopdracht.html": {
@@ -664,7 +808,7 @@
       "hash": "d797f3b835de6255",
       "size": 443028,
       "mtimeMs": 1787298426042.6492,
-      "updatedAt": "2026-08-26T16:07:36.279Z",
+      "updatedAt": "2026-11-25T14:01:54.690Z",
       "source": "scan"
     },
     "app/example-designs/!nvm.html": {
@@ -673,7 +817,7 @@
       "hash": "bbb214e83e3ceb35",
       "size": 636679,
       "mtimeMs": 1787298426044.839,
-      "updatedAt": "2026-08-26T16:07:36.282Z",
+      "updatedAt": "2026-11-25T14:01:54.693Z",
       "source": "scan"
     },
     "app/example-designs/!over-ons.html": {
@@ -682,7 +826,16 @@
       "hash": "5511c4dee427781e",
       "size": 770145,
       "mtimeMs": 1786544072612.1208,
-      "updatedAt": "2026-08-26T16:07:36.286Z",
+      "updatedAt": "2026-11-25T14:01:54.696Z",
+      "source": "scan"
+    },
+    "app/example-designs/!stad-haarlem.html": {
+      "description": "Makelaar in Haarlem — Hart &amp; Huis Makelaardij",
+      "tokens": 173358,
+      "hash": "205bb84efeef7b22",
+      "size": 650148,
+      "mtimeMs": 1789391562334.465,
+      "updatedAt": "2026-11-25T14:01:54.700Z",
       "source": "scan"
     },
     "app/example-designs/!waardebepaling.html": {
@@ -691,7 +844,7 @@
       "hash": "8affaad085c3375d",
       "size": 490644,
       "mtimeMs": 1787298426041.0725,
-      "updatedAt": "2026-08-26T16:07:36.288Z",
+      "updatedAt": "2026-11-25T14:01:54.702Z",
       "source": "scan"
     },
     "app/example-designs/.DS_Store": {
@@ -700,7 +853,7 @@
       "hash": "f0fbc53c1fc60348",
       "size": 6148,
       "mtimeMs": 1787079675272.231,
-      "updatedAt": "2026-08-26T16:07:36.289Z",
+      "updatedAt": "2026-11-25T14:01:54.702Z",
       "source": "scan"
     },
     "app/example-designs/example-realworks.json": {
@@ -709,7 +862,7 @@
       "hash": "dec8e7e59b1429a4",
       "size": 495136,
       "mtimeMs": 1787419444796.2102,
-      "updatedAt": "2026-08-26T16:07:36.291Z",
+      "updatedAt": "2026-11-25T14:01:54.705Z",
       "source": "scan"
     },
     "app/form-migration-backup-1787299038628.json": {
@@ -718,7 +871,7 @@
       "hash": "13da24baf9220066",
       "size": 2262,
       "mtimeMs": 1787299038628.4414,
-      "updatedAt": "2026-08-26T16:07:36.291Z",
+      "updatedAt": "2026-11-25T14:01:54.706Z",
       "source": "scan"
     },
     "app/next-env.d.ts": {
@@ -727,34 +880,34 @@
       "hash": "7ad303e40d4fddf4",
       "size": 251,
       "mtimeMs": 1787320139956.746,
-      "updatedAt": "2026-08-26T16:07:36.291Z",
+      "updatedAt": "2026-11-25T14:01:54.706Z",
       "source": "scan"
     },
     "app/next.config.ts": {
       "description": "Next.js configuration",
-      "tokens": 148,
-      "hash": "9fcc2a2f0a98aee1",
-      "size": 517,
-      "mtimeMs": 1787054822787.1206,
-      "updatedAt": "2026-08-26T16:07:36.291Z",
+      "tokens": 570,
+      "hash": "b04b1aae5d012558",
+      "size": 1994,
+      "mtimeMs": 1788785870220.1472,
+      "updatedAt": "2026-11-25T14:01:54.706Z",
       "source": "scan"
     },
     "app/package-lock.json": {
       "description": "npm lock file",
-      "tokens": 197103,
-      "hash": "d66b9cbf8e96cc68",
-      "size": 689858,
-      "mtimeMs": 1787298426046.7268,
-      "updatedAt": "2026-08-26T16:07:36.293Z",
+      "tokens": 215706,
+      "hash": "2ac4c9d8cd19e72c",
+      "size": 754969,
+      "mtimeMs": 1788782808950.6929,
+      "updatedAt": "2026-11-25T14:01:54.708Z",
       "source": "scan"
     },
     "app/package.json": {
       "description": "Node.js package manifest",
-      "tokens": 645,
-      "hash": "566e95ee8f3c3f84",
-      "size": 2257,
-      "mtimeMs": 1787576677481.6191,
-      "updatedAt": "2026-08-26T16:07:36.294Z",
+      "tokens": 874,
+      "hash": "e259edbc055683c8",
+      "size": 3056,
+      "mtimeMs": 1795615221265.3354,
+      "updatedAt": "2026-11-25T14:01:54.709Z",
       "source": "scan"
     },
     "app/postcss.config.mjs": {
@@ -763,7 +916,7 @@
       "hash": "dfac7ac2d86d326a",
       "size": 94,
       "mtimeMs": 1785087937158.5386,
-      "updatedAt": "2026-08-26T16:07:36.294Z",
+      "updatedAt": "2026-11-25T14:01:54.709Z",
       "source": "scan"
     },
     "app/public/.DS_Store": {
@@ -772,7 +925,7 @@
       "hash": "92a13dc2c5c09daf",
       "size": 6148,
       "mtimeMs": 1785410057099.7646,
-      "updatedAt": "2026-08-26T16:07:36.294Z",
+      "updatedAt": "2026-11-25T14:01:54.709Z",
       "source": "scan"
     },
     "app/public/llms.txt": {
@@ -781,7 +934,7 @@
       "hash": "70404dff52256846",
       "size": 370,
       "mtimeMs": 1787077951706.5354,
-      "updatedAt": "2026-08-26T16:07:36.295Z",
+      "updatedAt": "2026-11-25T14:01:54.711Z",
       "source": "scan"
     },
     "app/scripts/.DS_Store": {
@@ -790,7 +943,7 @@
       "hash": "22a7ec52b6162b4c",
       "size": 6148,
       "mtimeMs": 1787077529454.621,
-      "updatedAt": "2026-08-26T16:07:36.296Z",
+      "updatedAt": "2026-11-25T14:01:54.711Z",
       "source": "scan"
     },
     "app/scripts/check-aanbiedingstekst.ts": {
@@ -799,31 +952,31 @@
       "hash": "67887acf672f27bb",
       "size": 1256,
       "mtimeMs": 1786611162315.6191,
-      "updatedAt": "2026-08-26T16:07:36.296Z",
+      "updatedAt": "2026-11-25T14:01:54.712Z",
       "source": "scan"
     },
     "app/scripts/check-form.ts": {
       "description": "Smallest thing that fails if the CMS-driven form layout breaks.",
-      "tokens": 2778,
-      "hash": "9b8a2e933fe815e4",
-      "size": 9751,
-      "mtimeMs": 1787419173681.5266,
-      "updatedAt": "2026-08-26T16:07:36.296Z",
+      "tokens": 3756,
+      "hash": "ec39a1b75ba868ea",
+      "size": 13177,
+      "mtimeMs": 1787819741995.049,
+      "updatedAt": "2026-11-25T14:01:54.712Z",
       "source": "scan",
       "symbols": [
         {
           "name": "names",
           "kind": "fn",
-          "startLine": 24,
-          "endLine": 211,
+          "startLine": 34,
+          "endLine": 221,
           "tokens": 1985
         },
         {
           "name": "checkAllowList",
           "kind": "fn",
-          "startLine": 212,
-          "endLine": 248,
-          "tokens": 439
+          "startLine": 222,
+          "endLine": 334,
+          "tokens": 1345
         }
       ]
     },
@@ -833,7 +986,7 @@
       "hash": "37234874b3b43d67",
       "size": 9966,
       "mtimeMs": 1786988177924.3538,
-      "updatedAt": "2026-08-26T16:07:36.296Z",
+      "updatedAt": "2026-11-25T14:01:54.712Z",
       "source": "scan",
       "symbols": [
         {
@@ -859,42 +1012,109 @@
         }
       ]
     },
+    "app/scripts/check-jsonld.ts": {
+      "description": "Smallest thing that fails if de structured data stilletjes verandert (`npm run check:jsonld`); eist o.a. hoogstens één bereikbare `aggregateRating` per knoop.",
+      "tokens": 4196,
+      "hash": "bb837337367b230e",
+      "size": 14717,
+      "mtimeMs": 1787816964157.9966,
+      "updatedAt": "2026-11-25T14:01:54.713Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "node",
+          "kind": "fn",
+          "startLine": 39,
+          "endLine": 271,
+          "tokens": 2719
+        },
+        {
+          "name": "flatten",
+          "kind": "fn",
+          "startLine": 272,
+          "endLine": 291,
+          "tokens": 223
+        },
+        {
+          "name": "countKey",
+          "kind": "fn",
+          "startLine": 292,
+          "endLine": 308,
+          "tokens": 167
+        },
+        {
+          "name": "paginaKnopen",
+          "kind": "fn",
+          "startLine": 309,
+          "endLine": 356,
+          "tokens": 486
+        },
+        {
+          "name": "checkStatsQuery",
+          "kind": "fn",
+          "startLine": 357,
+          "endLine": 383,
+          "tokens": 213
+        }
+      ]
+    },
     "app/scripts/check-realworks.ts": {
       "description": "Kleinste ding dat faalt als de Realworks-mapping breekt.",
-      "tokens": 2391,
-      "hash": "e04078f7dec0abea",
-      "size": 8378,
-      "mtimeMs": 1787734749706.4822,
-      "updatedAt": "2026-08-26T16:07:36.296Z",
+      "tokens": 3691,
+      "hash": "0ddff85a19670f42",
+      "size": 12930,
+      "mtimeMs": 1795089260905.653,
+      "updatedAt": "2026-11-25T14:01:54.713Z",
       "source": "scan",
       "symbols": [
         {
           "name": "waarde",
           "kind": "fn",
-          "startLine": 82,
-          "endLine": 103,
+          "startLine": 88,
+          "endLine": 109,
           "tokens": 380
         },
         {
           "name": "metFotos",
           "kind": "fn",
-          "startLine": 104,
-          "endLine": 115,
+          "startLine": 110,
+          "endLine": 121,
           "tokens": 86
         },
         {
           "name": "inSanity",
           "kind": "fn",
-          "startLine": 116,
-          "endLine": 169,
-          "tokens": 614
+          "startLine": 122,
+          "endLine": 152,
+          "tokens": 305
+        },
+        {
+          "name": "metKader",
+          "kind": "fn",
+          "startLine": 153,
+          "endLine": 192,
+          "tokens": 550
         },
         {
           "name": "checkVerouderdQuery",
           "kind": "fn",
-          "startLine": 170,
-          "endLine": 213,
-          "tokens": 395
+          "startLine": 193,
+          "endLine": 230,
+          "tokens": 402
+        },
+        {
+          "name": "checkVerwijderbaarQuery",
+          "kind": "fn",
+          "startLine": 231,
+          "endLine": 283,
+          "tokens": 600
+        },
+        {
+          "name": "checkBeschermVerkocht",
+          "kind": "fn",
+          "startLine": 284,
+          "endLine": 316,
+          "tokens": 414
         }
       ]
     },
@@ -904,8 +1124,33 @@
       "hash": "c1d8f611dab791a7",
       "size": 4191,
       "mtimeMs": 1786988177925.0457,
-      "updatedAt": "2026-08-26T16:07:36.296Z",
+      "updatedAt": "2026-11-25T14:01:54.713Z",
       "source": "scan"
+    },
+    "app/scripts/check-rich-text.ts": {
+      "description": "Smallest thing that fails if de omzetting naar Portable Text breekt (`npm run check:richtext`): stijlen, lijsten, links, **vet** en unieke _key's.",
+      "tokens": 1222,
+      "hash": "d6e6dc18eeeae2dd",
+      "size": 4289,
+      "mtimeMs": 1788185166753.652,
+      "updatedAt": "2026-11-25T14:01:54.714Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "key",
+          "kind": "fn",
+          "startLine": 24,
+          "endLine": 26,
+          "tokens": 50
+        },
+        {
+          "name": "alineas",
+          "kind": "fn",
+          "startLine": 27,
+          "endLine": 130,
+          "tokens": 882
+        }
+      ]
     },
     "app/scripts/fixtures/funda-widget-aankoop-p1.html": {
       "description": "Funda",
@@ -913,7 +1158,7 @@
       "hash": "97d06c62c303bc83",
       "size": 37291,
       "mtimeMs": 1786988177925.6196,
-      "updatedAt": "2026-08-26T16:07:36.297Z",
+      "updatedAt": "2026-11-25T14:01:54.714Z",
       "source": "scan"
     },
     "app/scripts/fixtures/funda-widget-verkoop-p1.html": {
@@ -922,7 +1167,7 @@
       "hash": "d6450159d22968e4",
       "size": 39053,
       "mtimeMs": 1786988177926.3547,
-      "updatedAt": "2026-08-26T16:07:36.297Z",
+      "updatedAt": "2026-11-25T14:01:54.715Z",
       "source": "scan"
     },
     "app/scripts/fixtures/funda-widget-verkoop-p9.html": {
@@ -931,7 +1176,7 @@
       "hash": "a54425d08c178c43",
       "size": 30732,
       "mtimeMs": 1786988177927.0415,
-      "updatedAt": "2026-08-26T16:07:36.298Z",
+      "updatedAt": "2026-11-25T14:01:54.715Z",
       "source": "scan"
     },
     "app/scripts/fixtures/realworks-objecten.json": {
@@ -940,7 +1185,7 @@
       "hash": "abd50a3097b960a8",
       "size": 152520,
       "mtimeMs": 1787565392309.3906,
-      "updatedAt": "2026-08-26T16:07:36.299Z",
+      "updatedAt": "2026-11-25T14:01:54.716Z",
       "source": "scan"
     },
     "app/scripts/form-migration.ts": {
@@ -949,7 +1194,7 @@
       "hash": "0febde107dfffe6d",
       "size": 3749,
       "mtimeMs": 1787299035599.692,
-      "updatedAt": "2026-08-26T16:07:36.300Z",
+      "updatedAt": "2026-11-25T14:01:54.717Z",
       "source": "scan",
       "symbols": [
         {
@@ -995,7 +1240,7 @@
       "hash": "ba75be769a917b95",
       "size": 5047,
       "mtimeMs": 1787299035600.1406,
-      "updatedAt": "2026-08-26T16:07:36.300Z",
+      "updatedAt": "2026-11-25T14:01:54.717Z",
       "source": "scan",
       "symbols": [
         {
@@ -1013,7 +1258,7 @@
       "hash": "8d71751dd2aff759",
       "size": 1728,
       "mtimeMs": 1786617377357.243,
-      "updatedAt": "2026-08-26T16:07:36.300Z",
+      "updatedAt": "2026-11-25T14:01:54.717Z",
       "source": "scan"
     },
     "app/scripts/seed/aankoop.ts": {
@@ -1022,7 +1267,7 @@
       "hash": "0491d3f5e22c0a53",
       "size": 4646,
       "mtimeMs": 1787047133399.9553,
-      "updatedAt": "2026-08-26T16:07:36.300Z",
+      "updatedAt": "2026-11-25T14:01:54.718Z",
       "source": "scan",
       "symbols": [
         {
@@ -1041,13 +1286,38 @@
         }
       ]
     },
+    "app/scripts/seed/bedankt.ts": {
+      "description": "Seeds de /bedankt-pagina (pageHero, numberedSteps, iconCards, crossLinks, ctaBand); landingsplek voor formulieren met \"Doorsturen na versturen\".",
+      "tokens": 882,
+      "hash": "28d4e87f37be1385",
+      "size": 3092,
+      "mtimeMs": 1787813454828.3923,
+      "updatedAt": "2026-11-25T14:01:54.718Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "buildBedanktContent",
+          "kind": "fn",
+          "startLine": 23,
+          "endLine": 80,
+          "tokens": 560
+        },
+        {
+          "name": "seedBedankt",
+          "kind": "fn",
+          "startLine": 81,
+          "endLine": 91,
+          "tokens": 111
+        }
+      ]
+    },
     "app/scripts/seed/beoordelingen.ts": {
       "description": "Seeds the /beoordelingen page. De beoordelingen zelf komen uit `seed:home`",
       "tokens": 902,
       "hash": "58f779b8ed1fedc1",
       "size": 3161,
       "mtimeMs": 1786622260843.213,
-      "updatedAt": "2026-08-26T16:07:36.300Z",
+      "updatedAt": "2026-11-25T14:01:54.719Z",
       "source": "scan",
       "symbols": [
         {
@@ -1072,7 +1342,7 @@
       "hash": "b6c9f59d83b62934",
       "size": 3932,
       "mtimeMs": 1787298426048.9167,
-      "updatedAt": "2026-08-26T16:07:36.300Z",
+      "updatedAt": "2026-11-25T14:01:54.719Z",
       "source": "scan",
       "symbols": [
         {
@@ -1091,94 +1361,204 @@
         }
       ]
     },
+    "app/scripts/seed/expat.ts": {
+      "description": "Seeds de expat-FAQs en /expat (aankoop-template, copy inline, alleen bestaande blocks) en zet \"Expat services\" via een gerichte patch in menu + footer.",
+      "tokens": 3547,
+      "hash": "9c1376a2583e130f",
+      "size": 12446,
+      "mtimeMs": 1795090792363.6074,
+      "updatedAt": "2026-11-25T14:01:54.719Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "buildExpatContent",
+          "kind": "fn",
+          "startLine": 63,
+          "endLine": 222,
+          "tokens": 2032
+        },
+        {
+          "name": "seedExpat",
+          "kind": "fn",
+          "startLine": 223,
+          "endLine": 244,
+          "tokens": 220
+        },
+        {
+          "name": "addToMenus",
+          "kind": "fn",
+          "startLine": 245,
+          "endLine": 276,
+          "tokens": 297
+        }
+      ]
+    },
+    "app/scripts/seed/haarlem.ts": {
+      "description": "Seeds de Haarlem-FAQs en /haarlem (stad-template: pageHero, factBar, mediaText, iconCards, regionBlock ×2, quoteBand, faqs, ctaBand — alleen bestaande blocks).",
+      "tokens": 1258,
+      "hash": "80b7f68629f65d54",
+      "size": 4403,
+      "mtimeMs": 1789391804433.0974,
+      "updatedAt": "2026-11-25T14:01:54.720Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "buildHaarlemContent",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 128,
+          "tokens": 1026
+        },
+        {
+          "name": "seedHaarlem",
+          "kind": "fn",
+          "startLine": 129,
+          "endLine": 139,
+          "tokens": 86
+        }
+      ]
+    },
     "app/scripts/seed/home.ts": {
       "description": "Seeds the reviews and the home page.",
-      "tokens": 1622,
-      "hash": "5d103f075cbb553f",
-      "size": 5694,
-      "mtimeMs": 1786990545471.7622,
-      "updatedAt": "2026-08-26T16:07:36.300Z",
+      "tokens": 1778,
+      "hash": "986248ccb15e1387",
+      "size": 6240,
+      "mtimeMs": 1795615221249.2905,
+      "updatedAt": "2026-11-25T14:01:54.720Z",
       "source": "scan",
       "symbols": [
         {
           "name": "upsertReview",
           "kind": "fn",
-          "startLine": 11,
-          "endLine": 38,
+          "startLine": 12,
+          "endLine": 39,
           "tokens": 198
         },
         {
           "name": "buildHomeContent",
           "kind": "fn",
-          "startLine": 39,
-          "endLine": 166,
-          "tokens": 1279
+          "startLine": 40,
+          "endLine": 155,
+          "tokens": 1157
         },
         {
           "name": "seedHome",
           "kind": "fn",
-          "startLine": 167,
-          "endLine": 176,
+          "startLine": 156,
+          "endLine": 165,
           "tokens": 65
+        },
+        {
+          "name": "buildPartnersBlock",
+          "kind": "fn",
+          "startLine": 166,
+          "endLine": 182,
+          "tokens": 139
+        },
+        {
+          "name": "seedPartnersHome",
+          "kind": "fn",
+          "startLine": 183,
+          "endLine": 200,
+          "tokens": 134
+        }
+      ]
+    },
+    "app/scripts/seed/klantverhalen.ts": {
+      "description": "Seeds de `klantverhaal`-documenten (/klantverhaal/<slug>). Los daarvan zet",
+      "tokens": 3750,
+      "hash": "6d557b0cd1a02260",
+      "size": 13155,
+      "mtimeMs": 1795089593827.592,
+      "updatedAt": "2026-11-25T14:01:54.720Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "toBody",
+          "kind": "fn",
+          "startLine": 137,
+          "endLine": 153,
+          "tokens": 171
+        },
+        {
+          "name": "upsertKlantverhaal",
+          "kind": "fn",
+          "startLine": 154,
+          "endLine": 199,
+          "tokens": 511
+        },
+        {
+          "name": "seedKlantverhalenHome",
+          "kind": "fn",
+          "startLine": 200,
+          "endLine": 220,
+          "tokens": 260
+        },
+        {
+          "name": "seedKlantverhalen",
+          "kind": "fn",
+          "startLine": 221,
+          "endLine": 225,
+          "tokens": 42
         }
       ]
     },
     "app/scripts/seed/navigation.ts": {
       "description": "Seeds the navigation and footer singletons.",
-      "tokens": 896,
-      "hash": "45efada7f87f39a7",
-      "size": 3144,
-      "mtimeMs": 1787317265111.155,
-      "updatedAt": "2026-08-26T16:07:36.300Z",
+      "tokens": 1011,
+      "hash": "a2189e15e19fff26",
+      "size": 3546,
+      "mtimeMs": 1795090763546.6968,
+      "updatedAt": "2026-11-25T14:01:54.721Z",
       "source": "scan",
       "symbols": [
         {
           "name": "navLinkExternal",
           "kind": "fn",
-          "startLine": 9,
-          "endLine": 17,
+          "startLine": 10,
+          "endLine": 18,
           "tokens": 48
         },
         {
           "name": "navLinkInternal",
           "kind": "fn",
-          "startLine": 18,
-          "endLine": 26,
+          "startLine": 19,
+          "endLine": 27,
           "tokens": 67
         },
         {
           "name": "pageIdBySlug",
           "kind": "fn",
-          "startLine": 27,
-          "endLine": 34,
+          "startLine": 28,
+          "endLine": 35,
           "tokens": 71
         },
         {
           "name": "pageLink",
           "kind": "fn",
-          "startLine": 35,
-          "endLine": 39,
+          "startLine": 36,
+          "endLine": 40,
           "tokens": 50
         },
         {
           "name": "upsertNavigation",
           "kind": "fn",
-          "startLine": 40,
-          "endLine": 60,
-          "tokens": 239
+          "startLine": 41,
+          "endLine": 62,
+          "tokens": 260
         },
         {
           "name": "upsertFooter",
           "kind": "fn",
-          "startLine": 61,
-          "endLine": 93,
-          "tokens": 319
+          "startLine": 63,
+          "endLine": 100,
+          "tokens": 401
         },
         {
           "name": "seedNavigation",
           "kind": "fn",
-          "startLine": 94,
-          "endLine": 99,
+          "startLine": 101,
+          "endLine": 106,
           "tokens": 38
         }
       ]
@@ -1189,7 +1569,7 @@
       "hash": "4e835a24127c1bc4",
       "size": 4149,
       "mtimeMs": 1787317265111.6382,
-      "updatedAt": "2026-08-26T16:07:36.301Z",
+      "updatedAt": "2026-11-25T14:01:54.721Z",
       "source": "scan",
       "symbols": [
         {
@@ -1214,7 +1594,7 @@
       "hash": "48b7381c10241df5",
       "size": 29465,
       "mtimeMs": 1786609894741.7761,
-      "updatedAt": "2026-08-26T16:07:36.301Z",
+      "updatedAt": "2026-11-25T14:01:54.722Z",
       "source": "scan",
       "symbols": [
         {
@@ -1269,46 +1649,80 @@
       ]
     },
     "app/scripts/seed/objectpagina.ts": {
-      "description": "Zet het bezichtigingsformulier + het `objectSettings`-document neer (de knop op de prijskaart). Raakt de woningen zelf niet aan.",
-      "tokens": 286,
-      "hash": "33faf820ca478bb0",
-      "size": 1002,
-      "mtimeMs": 1787419173681.9746,
-      "updatedAt": "2026-08-26T16:07:36.301Z",
-      "source": "scan"
+      "description": "Seeds het bezichtigingsformulier en het `objectSettings`-document dat de",
+      "tokens": 525,
+      "hash": "97954bf856aace92",
+      "size": 1843,
+      "mtimeMs": 1787813454828.5332,
+      "updatedAt": "2026-11-25T14:01:54.722Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "seedObjectpagina",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 46,
+          "tokens": 336
+        }
+      ]
     },
     "app/scripts/seed/over-ons.ts": {
       "description": "Seeds the /over-ons page.",
-      "tokens": 958,
-      "hash": "8e122ef9a61ce256",
-      "size": 3355,
-      "mtimeMs": 1786563303853.5188,
-      "updatedAt": "2026-08-26T16:07:36.301Z",
+      "tokens": 1109,
+      "hash": "aea3ea57b474debb",
+      "size": 3883,
+      "mtimeMs": 1795089261073.5542,
+      "updatedAt": "2026-11-25T14:01:54.722Z",
       "source": "scan",
       "symbols": [
         {
           "name": "buildOverOnsContent",
           "kind": "fn",
-          "startLine": 16,
-          "endLine": 106,
-          "tokens": 816
+          "startLine": 18,
+          "endLine": 125,
+          "tokens": 955
         },
         {
           "name": "seedOverOns",
           "kind": "fn",
-          "startLine": 107,
-          "endLine": 111,
+          "startLine": 126,
+          "endLine": 130,
           "tokens": 41
+        }
+      ]
+    },
+    "app/scripts/seed/privacy.ts": {
+      "description": "Seeds /privacyverklaring (pageOpener + richText + ctaBand). Zet de tekst uit `privacy-content.ts` om met `toPortableText()`.",
+      "tokens": 607,
+      "hash": "d793f15aa24fe4b6",
+      "size": 2128,
+      "mtimeMs": 1788184537504.6492,
+      "updatedAt": "2026-11-25T14:01:54.722Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "buildPrivacyContent",
+          "kind": "fn",
+          "startLine": 20,
+          "endLine": 53,
+          "tokens": 282
+        },
+        {
+          "name": "seedPrivacy",
+          "kind": "fn",
+          "startLine": 54,
+          "endLine": 62,
+          "tokens": 95
         }
       ]
     },
     "app/scripts/seed/shared.ts": {
       "description": "Shared Sanity write helpers for the per-page seed scripts in this folder.",
-      "tokens": 1926,
-      "hash": "b57e2158cb4bd396",
-      "size": 6751,
-      "mtimeMs": 1787419173682.519,
-      "updatedAt": "2026-08-26T16:07:36.302Z",
+      "tokens": 2093,
+      "hash": "972efe0a8c085868",
+      "size": 7335,
+      "mtimeMs": 1795615221235.0088,
+      "updatedAt": "2026-11-25T14:01:54.723Z",
       "source": "scan",
       "symbols": [
         {
@@ -1336,28 +1750,28 @@
           "name": "uploadImage",
           "kind": "fn",
           "startLine": 59,
-          "endLine": 93,
-          "tokens": 250
+          "endLine": 94,
+          "tokens": 293
         },
         {
           "name": "upsertFaq",
           "kind": "fn",
-          "startLine": 94,
-          "endLine": 126,
-          "tokens": 276
+          "startLine": 95,
+          "endLine": 134,
+          "tokens": 324
         },
         {
           "name": "upsertPage",
           "kind": "fn",
-          "startLine": 127,
-          "endLine": 159,
-          "tokens": 302
+          "startLine": 135,
+          "endLine": 176,
+          "tokens": 378
         },
         {
           "name": "upsertForm",
           "kind": "fn",
-          "startLine": 160,
-          "endLine": 218,
+          "startLine": 177,
+          "endLine": 235,
           "tokens": 551
         }
       ]
@@ -1368,7 +1782,7 @@
       "hash": "950efea5dcdb6f69",
       "size": 4984,
       "mtimeMs": 1787317265112.1902,
-      "updatedAt": "2026-08-26T16:07:36.302Z",
+      "updatedAt": "2026-11-25T14:01:54.723Z",
       "source": "scan",
       "symbols": [
         {
@@ -1393,7 +1807,7 @@
       "hash": "cb8ee6b7d470220a",
       "size": 4628,
       "mtimeMs": 1786563303853.3809,
-      "updatedAt": "2026-08-26T16:07:36.302Z",
+      "updatedAt": "2026-11-25T14:01:54.723Z",
       "source": "scan",
       "symbols": [
         {
@@ -1418,7 +1832,7 @@
       "hash": "c1c56fdf4aa369ee",
       "size": 4436,
       "mtimeMs": 1787317546078.1458,
-      "updatedAt": "2026-08-26T16:07:36.302Z",
+      "updatedAt": "2026-11-25T14:01:54.723Z",
       "source": "scan",
       "symbols": [
         {
@@ -1437,13 +1851,38 @@
         }
       ]
     },
+    "app/scripts/seed/werkgebied.ts": {
+      "description": "Seeds the `werkgebied` documents (/werkgebied/<slug>) from the stad-template.",
+      "tokens": 1146,
+      "hash": "e32c7149f22249d5",
+      "size": 4011,
+      "mtimeMs": 1795089383340.5535,
+      "updatedAt": "2026-11-25T14:01:54.723Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "buildContent",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 119,
+          "tokens": 964
+        },
+        {
+          "name": "seedWerkgebied",
+          "kind": "fn",
+          "startLine": 120,
+          "endLine": 130,
+          "tokens": 104
+        }
+      ]
+    },
     "app/scripts/seed/zoekopdracht.ts": {
       "description": "Seeds the /zoekopdracht FAQs, the multi-step `form` document for its",
       "tokens": 1220,
       "hash": "14945c67c60ca629",
       "size": 4272,
       "mtimeMs": 1787317546078.5981,
-      "updatedAt": "2026-08-26T16:07:36.302Z",
+      "updatedAt": "2026-11-25T14:01:54.724Z",
       "source": "scan",
       "symbols": [
         {
@@ -1464,25 +1903,25 @@
     },
     "app/scripts/seed.ts": {
       "description": "Seed Sanity content. Runs every target, or only the ones you name.",
-      "tokens": 666,
-      "hash": "d3c9f057027a099a",
-      "size": 2332,
-      "mtimeMs": 1787419173681.8513,
-      "updatedAt": "2026-08-26T16:07:36.302Z",
+      "tokens": 825,
+      "hash": "1539706e17068c7b",
+      "size": 2887,
+      "mtimeMs": 1795615221257.3176,
+      "updatedAt": "2026-11-25T14:01:54.724Z",
       "source": "scan",
       "symbols": [
         {
           "name": "parseTargets",
           "kind": "fn",
-          "startLine": 48,
-          "endLine": 59,
+          "startLine": 62,
+          "endLine": 73,
           "tokens": 106
         },
         {
           "name": "main",
           "kind": "fn",
-          "startLine": 60,
-          "endLine": 76,
+          "startLine": 74,
+          "endLine": 90,
           "tokens": 119
         }
       ]
@@ -1493,7 +1932,7 @@
       "hash": "508a68d55da41ce3",
       "size": 2914,
       "mtimeMs": 1787576677376.7068,
-      "updatedAt": "2026-08-26T16:07:36.302Z",
+      "updatedAt": "2026-11-25T14:01:54.724Z",
       "source": "scan",
       "symbols": [
         {
@@ -1505,277 +1944,325 @@
         }
       ]
     },
+    "app/sentry.edge.config.ts": {
+      "description": "This file configures the initialization of Sentry for edge features (middleware, edge routes, and so on).",
+      "tokens": 284,
+      "hash": "cde043209da33e04",
+      "size": 994,
+      "mtimeMs": 1788938720693.756,
+      "updatedAt": "2026-11-25T14:01:54.724Z",
+      "source": "scan"
+    },
+    "app/sentry.server.config.ts": {
+      "description": "This file configures the initialization of Sentry on the server.",
+      "tokens": 240,
+      "hash": "c16ac66da6cb09b9",
+      "size": 839,
+      "mtimeMs": 1788938720694.0527,
+      "updatedAt": "2026-11-25T14:01:54.724Z",
+      "source": "scan"
+    },
     "app/src/.DS_Store": {
       "description": "",
       "tokens": 2186,
       "hash": "10d8e961febdd09b",
       "size": 8196,
       "mtimeMs": 1785410026743.0393,
-      "updatedAt": "2026-08-26T16:07:36.303Z",
+      "updatedAt": "2026-11-25T14:01:54.725Z",
       "source": "scan"
     },
     "app/src/app/[slug]/page.tsx": {
       "description": "options",
-      "tokens": 325,
-      "hash": "d56743abdb87966d",
-      "size": 1137,
-      "mtimeMs": 1787419173683.5215,
-      "updatedAt": "2026-08-26T16:07:36.303Z",
+      "tokens": 451,
+      "hash": "79b06d251dfd5d29",
+      "size": 1576,
+      "mtimeMs": 1787813454828.905,
+      "updatedAt": "2026-11-25T14:01:54.725Z",
       "source": "scan"
     },
     "app/src/app/aanbod/[slug]/page.tsx": {
       "description": "Precies wat WONING_QUERY teruggeeft — afgeleid, niet nagetypt.",
-      "tokens": 1680,
-      "hash": "344ed39fa2d5e00d",
-      "size": 5884,
-      "mtimeMs": 1787419173684.0813,
-      "updatedAt": "2026-08-26T16:07:36.304Z",
+      "tokens": 2093,
+      "hash": "8fd952870266a1fa",
+      "size": 7332,
+      "mtimeMs": 1787813454829.1575,
+      "updatedAt": "2026-11-25T14:01:54.726Z",
       "source": "scan",
       "symbols": [
         {
           "name": "getWoning",
           "kind": "fn",
-          "startLine": 36,
-          "endLine": 39,
+          "startLine": 46,
+          "endLine": 49,
           "tokens": 27
         },
         {
           "name": "toCard",
           "kind": "fn",
-          "startLine": 40,
-          "endLine": 60,
+          "startLine": 50,
+          "endLine": 70,
           "tokens": 159
         },
         {
           "name": "generateMetadata",
           "kind": "fn",
-          "startLine": 61,
-          "endLine": 81,
+          "startLine": 71,
+          "endLine": 91,
           "tokens": 159
         },
         {
           "name": "viewingCta",
           "kind": "fn",
-          "startLine": 82,
-          "endLine": 108,
-          "tokens": 248
+          "startLine": 92,
+          "endLine": 123,
+          "tokens": 307
+        },
+        {
+          "name": "similarHeader",
+          "kind": "fn",
+          "startLine": 124,
+          "endLine": 133,
+          "tokens": 76
+        },
+        {
+          "name": "ctaBand",
+          "kind": "fn",
+          "startLine": 134,
+          "endLine": 146,
+          "tokens": 130
         },
         {
           "name": "ObjectPage",
           "kind": "fn",
-          "startLine": 109,
-          "endLine": 178,
-          "tokens": 659
+          "startLine": 147,
+          "endLine": 227,
+          "tokens": 750
         }
       ]
     },
     "app/src/app/api/import-realworks/route.ts": {
       "description": "Haalt de actieve objecten op bij Realworks en zet ze als `woning`-documenten",
-      "tokens": 4014,
-      "hash": "e7d92930000e7444",
-      "size": 14068,
-      "mtimeMs": 1787734749707.6733,
-      "updatedAt": "2026-08-26T16:07:36.304Z",
+      "tokens": 5695,
+      "hash": "328f6908ea3ee12c",
+      "size": 19955,
+      "mtimeMs": 1795089260908.5417,
+      "updatedAt": "2026-11-25T14:01:54.727Z",
       "source": "scan",
       "symbols": [
         {
           "name": "FeedError",
           "kind": "class",
-          "startLine": 50,
-          "endLine": 51,
+          "startLine": 59,
+          "endLine": 60,
           "tokens": 10
         },
         {
           "name": "fetchFeed",
           "kind": "fn",
-          "startLine": 52,
-          "endLine": 88,
+          "startLine": 61,
+          "endLine": 97,
           "tokens": 348
         },
         {
           "name": "existingAssets",
           "kind": "fn",
-          "startLine": 89,
-          "endLine": 101,
+          "startLine": 98,
+          "endLine": 110,
           "tokens": 142
         },
         {
           "name": "uploadFromUrl",
           "kind": "fn",
-          "startLine": 102,
-          "endLine": 114,
+          "startLine": 111,
+          "endLine": 123,
           "tokens": 134
         },
         {
           "name": "importObjects",
           "kind": "fn",
-          "startLine": 115,
-          "endLine": 255,
-          "tokens": 1419
+          "startLine": 124,
+          "endLine": 275,
+          "tokens": 1652
         },
         {
           "name": "verouderdeObjecten",
           "kind": "fn",
-          "startLine": 256,
-          "endLine": 267,
-          "tokens": 125
+          "startLine": 276,
+          "endLine": 297,
+          "tokens": 247
         },
         {
           "name": "depubliceer",
           "kind": "fn",
-          "startLine": 268,
-          "endLine": 285,
-          "tokens": 162
+          "startLine": 298,
+          "endLine": 324,
+          "tokens": 234
+        },
+        {
+          "name": "teVerwijderen",
+          "kind": "fn",
+          "startLine": 325,
+          "endLine": 354,
+          "tokens": 267
+        },
+        {
+          "name": "verwijderConcepten",
+          "kind": "fn",
+          "startLine": 355,
+          "endLine": 379,
+          "tokens": 208
         },
         {
           "name": "ruimOp",
           "kind": "fn",
-          "startLine": 286,
-          "endLine": 297,
-          "tokens": 94
+          "startLine": 380,
+          "endLine": 398,
+          "tokens": 183
         },
         {
           "name": "handle",
           "kind": "fn",
-          "startLine": 298,
-          "endLine": 401,
-          "tokens": 1006
+          "startLine": 399,
+          "endLine": 549,
+          "tokens": 1566
         },
         {
           "name": "GET",
           "kind": "fn",
-          "startLine": 402,
-          "endLine": 405,
+          "startLine": 550,
+          "endLine": 553,
           "tokens": 22
         },
         {
           "name": "POST",
           "kind": "fn",
-          "startLine": 406,
-          "endLine": 409,
+          "startLine": 554,
+          "endLine": 557,
           "tokens": 22
         },
         {
           "name": "OPTIONS",
           "kind": "fn",
-          "startLine": 410,
-          "endLine": 413,
+          "startLine": 558,
+          "endLine": 561,
           "tokens": 38
         }
       ]
     },
     "app/src/app/api/scrape-funda-reviews/route.ts": {
       "description": "Haalt de beoordelingen van Funda op en zet ze als `review`-documenten in",
-      "tokens": 2080,
-      "hash": "2876715993f9c013",
-      "size": 7291,
-      "mtimeMs": 1787565327231.8472,
-      "updatedAt": "2026-08-26T16:07:36.305Z",
+      "tokens": 2424,
+      "hash": "f6d716e806d3473b",
+      "size": 8495,
+      "mtimeMs": 1788938681136.1526,
+      "updatedAt": "2026-11-25T14:01:54.727Z",
       "source": "scan",
       "symbols": [
         {
           "name": "fetchPage",
           "kind": "fn",
-          "startLine": 63,
-          "endLine": 68,
+          "startLine": 64,
+          "endLine": 69,
           "tokens": 71
         },
         {
           "name": "toDocument",
           "kind": "fn",
-          "startLine": 69,
-          "endLine": 93,
+          "startLine": 70,
+          "endLine": 94,
           "tokens": 212
         },
         {
           "name": "upsertReviews",
           "kind": "fn",
-          "startLine": 94,
-          "endLine": 143,
+          "startLine": 95,
+          "endLine": 144,
           "tokens": 489
         },
         {
           "name": "handle",
           "kind": "fn",
-          "startLine": 144,
-          "endLine": 226,
-          "tokens": 707
+          "startLine": 145,
+          "endLine": 266,
+          "tokens": 1034
         },
         {
           "name": "GET",
           "kind": "fn",
-          "startLine": 227,
-          "endLine": 230,
+          "startLine": 267,
+          "endLine": 270,
           "tokens": 22
         },
         {
           "name": "POST",
           "kind": "fn",
-          "startLine": 231,
-          "endLine": 234,
+          "startLine": 271,
+          "endLine": 274,
           "tokens": 22
         },
         {
           "name": "OPTIONS",
           "kind": "fn",
-          "startLine": 235,
-          "endLine": 238,
+          "startLine": 275,
+          "endLine": 278,
           "tokens": 38
         }
       ]
     },
     "app/src/app/api/submit-form/route.ts": {
       "description": "Bigger uploads are rejected rather than silently dropped from the mail.",
-      "tokens": 2521,
-      "hash": "92e98990ef076808",
-      "size": 8826,
-      "mtimeMs": 1787318509120.751,
-      "updatedAt": "2026-08-26T16:07:36.305Z",
+      "tokens": 2528,
+      "hash": "55642396ec608ff0",
+      "size": 8852,
+      "mtimeMs": 1787819722389.1626,
+      "updatedAt": "2026-11-25T14:01:54.728Z",
       "source": "scan",
       "symbols": [
         {
           "name": "verifyRecaptcha",
           "kind": "fn",
-          "startLine": 11,
-          "endLine": 28,
+          "startLine": 13,
+          "endLine": 30,
           "tokens": 163
         },
         {
           "name": "fail",
           "kind": "fn",
-          "startLine": 29,
-          "endLine": 33,
+          "startLine": 31,
+          "endLine": 35,
           "tokens": 59
         },
         {
           "name": "splitEmails",
           "kind": "fn",
-          "startLine": 34,
-          "endLine": 40,
-          "tokens": 42
-        },
-        {
-          "name": "escapeHtml",
-          "kind": "fn",
-          "startLine": 41,
-          "endLine": 49,
-          "tokens": 69
+          "startLine": 36,
+          "endLine": 43,
+          "tokens": 63
         },
         {
           "name": "sendViaMailjet",
           "kind": "fn",
-          "startLine": 50,
-          "endLine": 93,
-          "tokens": 381
+          "startLine": 44,
+          "endLine": 89,
+          "tokens": 396
         },
         {
           "name": "POST",
           "kind": "fn",
-          "startLine": 94,
-          "endLine": 256,
-          "tokens": 1694
+          "startLine": 90,
+          "endLine": 257,
+          "tokens": 1708
         }
       ]
+    },
+    "app/src/app/global-error.tsx": {
+      "description": "GlobalError — uses useEffect",
+      "tokens": 195,
+      "hash": "030977b48d77c010",
+      "size": 681,
+      "mtimeMs": 1787820855576.4487,
+      "updatedAt": "2026-11-25T14:01:54.728Z",
+      "source": "scan"
     },
     "app/src/app/globals.css": {
       "description": "Styles: 4 rules, 1 media queries, 1 layers",
@@ -1783,16 +2270,41 @@
       "hash": "c2624fe14d9e1637",
       "size": 489,
       "mtimeMs": 1785408681792.3948,
-      "updatedAt": "2026-08-26T16:07:36.305Z",
+      "updatedAt": "2026-11-25T14:01:54.728Z",
       "source": "scan"
+    },
+    "app/src/app/klantverhaal/[slug]/page.tsx": {
+      "description": "options",
+      "tokens": 952,
+      "hash": "75af8bf319d6cc46",
+      "size": 3331,
+      "mtimeMs": 1795089383341.1953,
+      "updatedAt": "2026-11-25T14:01:54.729Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 27,
+          "endLine": 42,
+          "tokens": 156
+        },
+        {
+          "name": "KlantverhaalPage",
+          "kind": "fn",
+          "startLine": 43,
+          "endLine": 100,
+          "tokens": 541
+        }
+      ]
     },
     "app/src/app/layout.tsx": {
       "description": "display",
-      "tokens": 221,
-      "hash": "8d05d2ec3f7ec33f",
-      "size": 771,
-      "mtimeMs": 1787419173684.4983,
-      "updatedAt": "2026-08-26T16:07:36.306Z",
+      "tokens": 250,
+      "hash": "5681decb57592704",
+      "size": 874,
+      "mtimeMs": 1787818429247.0154,
+      "updatedAt": "2026-11-25T14:01:54.729Z",
       "source": "scan"
     },
     "app/src/app/manifest.json": {
@@ -1801,7 +2313,7 @@
       "hash": "91a78d4fe16316df",
       "size": 436,
       "mtimeMs": 1785402644000,
-      "updatedAt": "2026-08-26T16:07:36.306Z",
+      "updatedAt": "2026-11-25T14:01:54.729Z",
       "source": "scan"
     },
     "app/src/app/not-found.tsx": {
@@ -1810,16 +2322,16 @@
       "hash": "9c9ae4962a3e6f64",
       "size": 969,
       "mtimeMs": 1787419173685.127,
-      "updatedAt": "2026-08-26T16:07:36.306Z",
+      "updatedAt": "2026-11-25T14:01:54.729Z",
       "source": "scan"
     },
     "app/src/app/page.tsx": {
       "description": "options",
-      "tokens": 256,
-      "hash": "80a537f9da32f77e",
-      "size": 896,
-      "mtimeMs": 1787419173685.5806,
-      "updatedAt": "2026-08-26T16:07:36.306Z",
+      "tokens": 363,
+      "hash": "1b8e1c779b9dc0bc",
+      "size": 1269,
+      "mtimeMs": 1787813454829.7651,
+      "updatedAt": "2026-11-25T14:01:54.730Z",
       "source": "scan"
     },
     "app/src/app/robots.ts": {
@@ -1827,17 +2339,26 @@
       "tokens": 81,
       "hash": "bfcd6453bf67e728",
       "size": 283,
-      "mtimeMs": 1787419173686.3008,
-      "updatedAt": "2026-08-26T16:07:36.306Z",
+      "mtimeMs": 1788938720694.3984,
+      "updatedAt": "2026-11-25T14:01:54.730Z",
       "source": "scan"
     },
     "app/src/app/sitemap.ts": {
       "description": "BASE_URL: sitemap",
-      "tokens": 250,
-      "hash": "efe396408dda4886",
-      "size": 872,
-      "mtimeMs": 1787419173686.8296,
-      "updatedAt": "2026-08-26T16:07:36.306Z",
+      "tokens": 384,
+      "hash": "a37b127b5fce037f",
+      "size": 1344,
+      "mtimeMs": 1795089383341.5823,
+      "updatedAt": "2026-11-25T14:01:54.730Z",
+      "source": "scan"
+    },
+    "app/src/app/werkgebied/[slug]/page.tsx": {
+      "description": "options",
+      "tokens": 419,
+      "hash": "98d8facaa4e40421",
+      "size": 1466,
+      "mtimeMs": 1795089383342.0708,
+      "updatedAt": "2026-11-25T14:01:54.730Z",
       "source": "scan"
     },
     "app/src/components/blocks/AanbodHeader.tsx": {
@@ -1846,7 +2367,7 @@
       "hash": "18e19c713164c822",
       "size": 3561,
       "mtimeMs": 1787079435194.7634,
-      "updatedAt": "2026-08-26T16:07:36.307Z",
+      "updatedAt": "2026-11-25T14:01:54.731Z",
       "source": "scan",
       "symbols": [
         {
@@ -1864,7 +2385,7 @@
       "hash": "95c82e286b375224",
       "size": 3032,
       "mtimeMs": 1786560649047.1638,
-      "updatedAt": "2026-08-26T16:07:36.307Z",
+      "updatedAt": "2026-11-25T14:01:54.731Z",
       "source": "scan",
       "symbols": [
         {
@@ -1885,19 +2406,19 @@
     },
     "app/src/components/blocks/Benefits.tsx": {
       "description": "DEFAULTS",
-      "tokens": 780,
-      "hash": "7d2f0b422476569a",
-      "size": 2730,
-      "mtimeMs": 1787046957570.1377,
-      "updatedAt": "2026-08-26T16:07:36.307Z",
+      "tokens": 817,
+      "hash": "799efdade1cf06d0",
+      "size": 2860,
+      "mtimeMs": 1795089261075.4282,
+      "updatedAt": "2026-11-25T14:01:54.731Z",
       "source": "scan",
       "symbols": [
         {
           "name": "Benefits",
           "kind": "fn",
           "startLine": 35,
-          "endLine": 82,
-          "tokens": 499
+          "endLine": 83,
+          "tokens": 533
         }
       ]
     },
@@ -1907,7 +2428,7 @@
       "hash": "0151bc414004d3e0",
       "size": 6315,
       "mtimeMs": 1786622044844.197,
-      "updatedAt": "2026-08-26T16:07:36.308Z",
+      "updatedAt": "2026-11-25T14:01:54.732Z",
       "source": "scan",
       "symbols": [
         {
@@ -1925,7 +2446,7 @@
       "hash": "9b338ebc5b63121b",
       "size": 2132,
       "mtimeMs": 1787298426050.1611,
-      "updatedAt": "2026-08-26T16:07:36.308Z",
+      "updatedAt": "2026-11-25T14:01:54.732Z",
       "source": "scan",
       "symbols": [
         {
@@ -1943,7 +2464,7 @@
       "hash": "8658f47300ecaf14",
       "size": 6298,
       "mtimeMs": 1787734749708.1348,
-      "updatedAt": "2026-08-26T16:07:36.308Z",
+      "updatedAt": "2026-11-25T14:01:54.732Z",
       "source": "scan",
       "symbols": [
         {
@@ -1975,7 +2496,7 @@
       "hash": "c2bdfaa48b72e57b",
       "size": 3904,
       "mtimeMs": 1787298426050.3496,
-      "updatedAt": "2026-08-26T16:07:36.308Z",
+      "updatedAt": "2026-11-25T14:01:54.732Z",
       "source": "scan",
       "symbols": [
         {
@@ -1993,7 +2514,7 @@
       "hash": "9cf0a0c7587a6752",
       "size": 2429,
       "mtimeMs": 1787734749708.485,
-      "updatedAt": "2026-08-26T16:07:36.308Z",
+      "updatedAt": "2026-11-25T14:01:54.733Z",
       "source": "scan",
       "symbols": [
         {
@@ -2011,7 +2532,7 @@
       "hash": "91ebf5df5404356a",
       "size": 2241,
       "mtimeMs": 1787734749708.971,
-      "updatedAt": "2026-08-26T16:07:36.308Z",
+      "updatedAt": "2026-11-25T14:01:54.733Z",
       "source": "scan",
       "symbols": [
         {
@@ -2025,11 +2546,11 @@
     },
     "app/src/components/blocks/CtaBand.tsx": {
       "description": "DEFAULTS",
-      "tokens": 790,
-      "hash": "9453e19c00bd640b",
-      "size": 2762,
-      "mtimeMs": 1785413195722.425,
-      "updatedAt": "2026-08-26T16:07:36.308Z",
+      "tokens": 793,
+      "hash": "2539f08942fe6e74",
+      "size": 2773,
+      "mtimeMs": 1795089260919.9275,
+      "updatedAt": "2026-11-25T14:01:54.733Z",
       "source": "scan",
       "symbols": [
         {
@@ -2043,11 +2564,11 @@
     },
     "app/src/components/blocks/DuoPhotos.tsx": {
       "description": "DEFAULTS",
-      "tokens": 882,
-      "hash": "594f2eece16bda42",
-      "size": 3084,
-      "mtimeMs": 1786560543137.319,
-      "updatedAt": "2026-08-26T16:07:36.308Z",
+      "tokens": 885,
+      "hash": "2f70779fe2854590",
+      "size": 3095,
+      "mtimeMs": 1795089260920.2544,
+      "updatedAt": "2026-11-25T14:01:54.733Z",
       "source": "scan",
       "symbols": [
         {
@@ -2060,13 +2581,22 @@
       ]
     },
     "app/src/components/blocks/FactBar.tsx": {
-      "description": "DEFAULTS",
-      "tokens": 418,
-      "hash": "0b7344e108a67ec0",
-      "size": 1460,
-      "mtimeMs": 1785413190284.1921,
-      "updatedAt": "2026-08-26T16:07:36.308Z",
-      "source": "scan"
+      "description": "Kleine regel onder de balk, bv. de bron van de cijfers.",
+      "tokens": 578,
+      "hash": "e7ac7574b977fb5a",
+      "size": 2021,
+      "mtimeMs": 1789391654685.5532,
+      "updatedAt": "2026-11-25T14:01:54.734Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "FactBar",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 62,
+          "tokens": 474
+        }
+      ]
     },
     "app/src/components/blocks/Faq.tsx": {
       "description": "DEFAULTS",
@@ -2074,7 +2604,7 @@
       "hash": "e51ade10d399f8e6",
       "size": 3938,
       "mtimeMs": 1785415428516.1208,
-      "updatedAt": "2026-08-26T16:07:36.309Z",
+      "updatedAt": "2026-11-25T14:01:54.734Z",
       "source": "scan",
       "symbols": [
         {
@@ -2087,12 +2617,12 @@
       ]
     },
     "app/src/components/blocks/FormHero.tsx": {
-      "description": "Hero met achtergrondfoto naast een formulierkaart. Alleen omlijsting: het formulier zelf komt uit een `form`-document via FormRenderer. Generiek (gebruikt door /waardebepaling).",
-      "tokens": 1514,
-      "hash": "41bd81f7685e6584",
-      "size": 5301,
-      "mtimeMs": 1787298426050.5852,
-      "updatedAt": "2026-08-26T16:07:36.309Z",
+      "description": "Photo hero with a form card beside it. The card is only chrome — the fields,",
+      "tokens": 1518,
+      "hash": "d355074eca642792",
+      "size": 5312,
+      "mtimeMs": 1795089260920.519,
+      "updatedAt": "2026-11-25T14:01:54.734Z",
       "source": "scan",
       "symbols": [
         {
@@ -2106,11 +2636,11 @@
     },
     "app/src/components/blocks/Hero.tsx": {
       "description": "DEFAULTS",
-      "tokens": 1815,
-      "hash": "1782bb68412bb1e3",
-      "size": 6352,
-      "mtimeMs": 1785415619363.6216,
-      "updatedAt": "2026-08-26T16:07:36.309Z",
+      "tokens": 1818,
+      "hash": "ab388d3269fd6382",
+      "size": 6363,
+      "mtimeMs": 1795089260920.7427,
+      "updatedAt": "2026-11-25T14:01:54.735Z",
       "source": "scan",
       "symbols": [
         {
@@ -2128,34 +2658,34 @@
       "hash": "603f48d83177e489",
       "size": 1138,
       "mtimeMs": 1787047023778.6077,
-      "updatedAt": "2026-08-26T16:07:36.309Z",
+      "updatedAt": "2026-11-25T14:01:54.735Z",
       "source": "scan"
     },
     "app/src/components/blocks/IconCards.tsx": {
       "description": "Drie iconkaarten, geen foto.",
-      "tokens": 694,
-      "hash": "c65b940910f0c0fb",
-      "size": 2428,
-      "mtimeMs": 1787734749709.5347,
-      "updatedAt": "2026-08-26T16:07:36.309Z",
+      "tokens": 776,
+      "hash": "8b2139118ab03bde",
+      "size": 2716,
+      "mtimeMs": 1789391655481.353,
+      "updatedAt": "2026-11-25T14:01:54.735Z",
       "source": "scan",
       "symbols": [
         {
           "name": "IconCards",
           "kind": "fn",
-          "startLine": 27,
-          "endLine": 68,
-          "tokens": 487
+          "startLine": 28,
+          "endLine": 74,
+          "tokens": 553
         }
       ]
     },
     "app/src/components/blocks/Intro.tsx": {
       "description": "DEFAULTS",
-      "tokens": 1518,
-      "hash": "e6519b09e9a62195",
-      "size": 5319,
-      "mtimeMs": 1785413227994.7705,
-      "updatedAt": "2026-08-26T16:07:36.309Z",
+      "tokens": 1522,
+      "hash": "1918d17294ada63d",
+      "size": 5330,
+      "mtimeMs": 1795089260920.9368,
+      "updatedAt": "2026-11-25T14:01:54.735Z",
       "source": "scan",
       "symbols": [
         {
@@ -2176,11 +2706,11 @@
     },
     "app/src/components/blocks/Listings.tsx": {
       "description": "Pill tone: available (white), sold subject to conditions (sand), sold (burgundy).",
-      "tokens": 2011,
-      "hash": "a8d37c99f2c80b3d",
-      "size": 7040,
-      "mtimeMs": 1787734749710.4026,
-      "updatedAt": "2026-08-26T16:07:36.309Z",
+      "tokens": 2014,
+      "hash": "af4f2ace0568a346",
+      "size": 7051,
+      "mtimeMs": 1795089260921.1353,
+      "updatedAt": "2026-11-25T14:01:54.736Z",
       "source": "scan",
       "symbols": [
         {
@@ -2221,74 +2751,81 @@
       ]
     },
     "app/src/components/blocks/MediaText.tsx": {
-      "description": "Text column with a supporting photo on the right.",
-      "tokens": 652,
-      "hash": "a302d9f6c3781a19",
-      "size": 2282,
-      "mtimeMs": 1786560600830.5215,
-      "updatedAt": "2026-08-26T16:07:36.309Z",
+      "description": "`null` = bewust geen knop; alleen `undefined` valt terug op de default.",
+      "tokens": 681,
+      "hash": "622565d0f7b32b73",
+      "size": 2381,
+      "mtimeMs": 1795089260921.613,
+      "updatedAt": "2026-11-25T14:01:54.736Z",
       "source": "scan",
       "symbols": [
         {
           "name": "MediaText",
           "kind": "fn",
-          "startLine": 35,
-          "endLine": 85,
+          "startLine": 36,
+          "endLine": 86,
           "tokens": 412
         }
       ]
     },
     "app/src/components/blocks/NumberedSteps.tsx": {
-      "description": "Sand band met genummerde kaarten, geen sticky foto. Generiek (gebruikt door /waardebepaling als \"hoe het werkt\").",
-      "tokens": 578,
-      "hash": "e42e1d2a605c981d",
-      "size": 2022,
-      "mtimeMs": 1787298426050.8179,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "description": "Sand band met drie genummerde kaarten, geen sticky foto.",
+      "tokens": 624,
+      "hash": "2251eb6d7309432f",
+      "size": 2181,
+      "mtimeMs": 1795090711148.9043,
+      "updatedAt": "2026-11-25T14:01:54.736Z",
       "source": "scan",
       "symbols": [
         {
           "name": "NumberedSteps",
           "kind": "fn",
           "startLine": 25,
-          "endLine": 59,
-          "tokens": 382
+          "endLine": 65,
+          "tokens": 427
         }
       ]
     },
     "app/src/components/blocks/ObjectGrid.tsx": {
       "description": "Filter bar + listing grid, filtered and sorted in the browser over all objects.",
-      "tokens": 2703,
-      "hash": "c41e949c499f5c81",
-      "size": 9458,
-      "mtimeMs": 1786991702712.6982,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "tokens": 2817,
+      "hash": "c0ecbd57458e4e27",
+      "size": 9859,
+      "mtimeMs": 1787823302419.4045,
+      "updatedAt": "2026-11-25T14:01:54.736Z",
       "source": "scan",
       "symbols": [
         {
+          "name": "GridCTA",
+          "kind": "fn",
+          "startLine": 56,
+          "endLine": 86,
+          "tokens": 372
+        },
+        {
           "name": "ObjectGrid",
           "kind": "fn",
-          "startLine": 51,
-          "endLine": 267,
-          "tokens": 2267
+          "startLine": 87,
+          "endLine": 291,
+          "tokens": 2004
         }
       ]
     },
     "app/src/components/blocks/PageHero.tsx": {
-      "description": "DEFAULTS",
-      "tokens": 1142,
-      "hash": "fb1258a1b0739644",
-      "size": 3995,
-      "mtimeMs": 1785416736400.1511,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "description": "Tekst na het gemarkeerde woord, als dat midden in de kop staat.",
+      "tokens": 1328,
+      "hash": "ea9f9d816faebf32",
+      "size": 4648,
+      "mtimeMs": 1795090716654.8252,
+      "updatedAt": "2026-11-25T14:01:54.737Z",
       "source": "scan",
       "symbols": [
         {
           "name": "PageHero",
           "kind": "fn",
-          "startLine": 40,
-          "endLine": 134,
-          "tokens": 864
+          "startLine": 47,
+          "endLine": 152,
+          "tokens": 971
         }
       ]
     },
@@ -2298,7 +2835,7 @@
       "hash": "898d3dcd97cb7497",
       "size": 2295,
       "mtimeMs": 1786560526892.9836,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "updatedAt": "2026-11-25T14:01:54.737Z",
       "source": "scan",
       "symbols": [
         {
@@ -2310,13 +2847,31 @@
         }
       ]
     },
+    "app/src/components/blocks/Partners.tsx": {
+      "description": "Gecentreerde kop met een rij partnerlogo's op witte tegels.",
+      "tokens": 581,
+      "hash": "f4a1c7ee1c680c5d",
+      "size": 2033,
+      "mtimeMs": 1795615156709.6233,
+      "updatedAt": "2026-11-25T14:01:54.737Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Partners",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 55,
+          "tokens": 444
+        }
+      ]
+    },
     "app/src/components/blocks/Person.tsx": {
       "description": "Photo beside a short intro and the one person you'll actually speak to.",
-      "tokens": 1079,
-      "hash": "dec3de55ff8b8cc2",
-      "size": 3775,
-      "mtimeMs": 1786607590283.33,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "tokens": 1082,
+      "hash": "d25cdcbfc0fc4e96",
+      "size": 3786,
+      "mtimeMs": 1795089260922.4614,
+      "updatedAt": "2026-11-25T14:01:54.737Z",
       "source": "scan",
       "symbols": [
         {
@@ -2329,12 +2884,12 @@
       ]
     },
     "app/src/components/blocks/PersonQuote.tsx": {
-      "description": "Foto naast intro + citaat van één persoon. Generiek (gebruikt door /waardebepaling voor de makelaar-intro).",
-      "tokens": 702,
-      "hash": "8337bfe341657f72",
-      "size": 2457,
-      "mtimeMs": 1787298426050.935,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "description": "Foto naast intro + citaat van één persoon.",
+      "tokens": 705,
+      "hash": "a5cab5b45934ef3f",
+      "size": 2468,
+      "mtimeMs": 1795089260922.6335,
+      "updatedAt": "2026-11-25T14:01:54.738Z",
       "source": "scan",
       "symbols": [
         {
@@ -2348,11 +2903,11 @@
     },
     "app/src/components/blocks/QuoteBand.tsx": {
       "description": "DEFAULTS",
-      "tokens": 650,
-      "hash": "7d13572e8a5583bd",
-      "size": 2276,
-      "mtimeMs": 1785413199718.2004,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "tokens": 653,
+      "hash": "69bce8a996dfcbc8",
+      "size": 2287,
+      "mtimeMs": 1795089260922.9446,
+      "updatedAt": "2026-11-25T14:01:54.738Z",
       "source": "scan",
       "symbols": [
         {
@@ -2370,7 +2925,7 @@
       "hash": "6d747ef6ee7c0184",
       "size": 3645,
       "mtimeMs": 1787298426051.0676,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "updatedAt": "2026-11-25T14:01:54.738Z",
       "source": "scan",
       "symbols": [
         {
@@ -2383,20 +2938,20 @@
       ]
     },
     "app/src/components/blocks/RegionBlock.tsx": {
-      "description": "DEFAULTS",
-      "tokens": 637,
-      "hash": "57d64e6258679b91",
-      "size": 2229,
-      "mtimeMs": 1785415274797.0264,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "description": "Zonder link staat de plaats er als gewone tekst (bv. de wijken van een stad).",
+      "tokens": 690,
+      "hash": "fc1a8fadba9afb1a",
+      "size": 2417,
+      "mtimeMs": 1789391655802.0718,
+      "updatedAt": "2026-11-25T14:01:54.738Z",
       "source": "scan",
       "symbols": [
         {
           "name": "RegionBlock",
           "kind": "fn",
-          "startLine": 26,
-          "endLine": 62,
-          "tokens": 416
+          "startLine": 40,
+          "endLine": 71,
+          "tokens": 300
         }
       ]
     },
@@ -2406,7 +2961,7 @@
       "hash": "5e87c243e870c8e7",
       "size": 3974,
       "mtimeMs": 1786990545474.2854,
-      "updatedAt": "2026-08-26T16:07:36.310Z",
+      "updatedAt": "2026-11-25T14:01:54.739Z",
       "source": "scan",
       "symbols": [
         {
@@ -2420,11 +2975,11 @@
     },
     "app/src/components/blocks/Reviews.tsx": {
       "description": "Deelcijfertabel per review. Uit op de homepage, aan op /beoordelingen.",
-      "tokens": 3090,
-      "hash": "abe392ae3ae4a0ad",
-      "size": 10820,
-      "mtimeMs": 1787734749711.2092,
-      "updatedAt": "2026-08-26T16:07:36.311Z",
+      "tokens": 3166,
+      "hash": "de206ef702120f65",
+      "size": 11087,
+      "mtimeMs": 1795089261076.4114,
+      "updatedAt": "2026-11-25T14:01:54.739Z",
       "source": "scan",
       "symbols": [
         {
@@ -2438,32 +2993,57 @@
           "name": "ReviewGrades",
           "kind": "fn",
           "startLine": 79,
-          "endLine": 105,
-          "tokens": 277
+          "endLine": 100,
+          "tokens": 195
+        },
+        {
+          "name": "ReviewReadMore",
+          "kind": "fn",
+          "startLine": 101,
+          "endLine": 178,
+          "tokens": 784
         },
         {
           "name": "ReviewCard",
           "kind": "fn",
-          "startLine": 106,
-          "endLine": 195,
-          "tokens": 918
+          "startLine": 179,
+          "endLine": 210,
+          "tokens": 260
         },
         {
           "name": "Reviews",
           "kind": "fn",
-          "startLine": 196,
-          "endLine": 306,
-          "tokens": 1180
+          "startLine": 211,
+          "endLine": 322,
+          "tokens": 1213
+        }
+      ]
+    },
+    "app/src/components/blocks/RichText.tsx": {
+      "description": "Lopende tekst uit Portable Text (koppen, lijsten, links in een alinea). Het enige blok met Portable Text; voor documentpagina's als de privacyverklaring.",
+      "tokens": 1508,
+      "hash": "1d21ca93b3192978",
+      "size": 5284,
+      "mtimeMs": 1788184907932.3616,
+      "updatedAt": "2026-11-25T14:01:54.739Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "RichText",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 151,
+          "tokens": 1264
         }
       ]
     },
     "app/src/components/blocks/RouteBlock.tsx": {
       "description": "Dark band with opening hours, directions and a photo.",
-      "tokens": 888,
-      "hash": "15bacaa7b4cb3614",
-      "size": 3106,
-      "mtimeMs": 1786607699400.1987,
-      "updatedAt": "2026-08-26T16:07:36.311Z",
+      "tokens": 891,
+      "hash": "f9c0bc697438dee0",
+      "size": 3117,
+      "mtimeMs": 1795089260923.7039,
+      "updatedAt": "2026-11-25T14:01:54.739Z",
       "source": "scan",
       "symbols": [
         {
@@ -2477,36 +3057,36 @@
     },
     "app/src/components/blocks/Services.tsx": {
       "description": "DEFAULT_ITEMS",
-      "tokens": 1203,
-      "hash": "c730e184d1a313e0",
-      "size": 4210,
-      "mtimeMs": 1787047023769.6406,
-      "updatedAt": "2026-08-26T16:07:36.311Z",
+      "tokens": 1159,
+      "hash": "a90bda536a7d3db7",
+      "size": 4058,
+      "mtimeMs": 1795089260923.8936,
+      "updatedAt": "2026-11-25T14:01:54.739Z",
       "source": "scan",
       "symbols": [
         {
           "name": "ServiceCardItem",
           "kind": "fn",
           "startLine": 66,
-          "endLine": 111,
-          "tokens": 445
+          "endLine": 103,
+          "tokens": 414
         },
         {
           "name": "Services",
           "kind": "fn",
-          "startLine": 112,
-          "endLine": 149,
-          "tokens": 270
+          "startLine": 104,
+          "endLine": 137,
+          "tokens": 254
         }
       ]
     },
     "app/src/components/blocks/SplitHero.tsx": {
       "description": "Copy on cream next to a full-bleed photo — the contact page's opener.",
-      "tokens": 1240,
-      "hash": "7f4448009f72a0bd",
-      "size": 4342,
-      "mtimeMs": 1786607558666.14,
-      "updatedAt": "2026-08-26T16:07:36.311Z",
+      "tokens": 1244,
+      "hash": "9fa5114629163c32",
+      "size": 4353,
+      "mtimeMs": 1795089260924.0662,
+      "updatedAt": "2026-11-25T14:01:54.740Z",
       "source": "scan",
       "symbols": [
         {
@@ -2520,11 +3100,11 @@
     },
     "app/src/components/blocks/Steps.tsx": {
       "description": "DEFAULTS",
-      "tokens": 1728,
-      "hash": "df8d4b41e03cef55",
-      "size": 6047,
-      "mtimeMs": 1787734749711.632,
-      "updatedAt": "2026-08-26T16:07:36.311Z",
+      "tokens": 1731,
+      "hash": "7a326644642ab2e6",
+      "size": 6058,
+      "mtimeMs": 1795089260924.287,
+      "updatedAt": "2026-11-25T14:01:54.740Z",
       "source": "scan",
       "symbols": [
         {
@@ -2544,30 +3124,48 @@
       ]
     },
     "app/src/components/blocks/Stories.tsx": {
-      "description": "DEFAULTS",
-      "tokens": 1018,
-      "hash": "710c500aa121dbc8",
-      "size": 3565,
-      "mtimeMs": 1785413186461.6929,
-      "updatedAt": "2026-08-26T16:07:36.311Z",
+      "description": "Klantverhalen-slider (story-blok): slides uit klantverhaal-documenten, 1 of 2 foto's.",
+      "tokens": 1675,
+      "hash": "3b8052ddb4b04ac9",
+      "size": 5864,
+      "mtimeMs": 1795089403568.3806,
+      "updatedAt": "2026-11-25T14:01:54.740Z",
       "source": "scan",
       "symbols": [
         {
           "name": "Stories",
           "kind": "fn",
-          "startLine": 46,
-          "endLine": 120,
-          "tokens": 665
+          "startLine": 50,
+          "endLine": 163,
+          "tokens": 1279
+        }
+      ]
+    },
+    "app/src/components/blocks/Team.tsx": {
+      "description": "Teamleden-grid (foto, naam, rol, tekst) voor /over-ons; blok `team`.",
+      "tokens": 653,
+      "hash": "98ea08a16f793cbb",
+      "size": 2283,
+      "mtimeMs": 1795089371812.855,
+      "updatedAt": "2026-11-25T14:01:54.740Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Team",
+          "kind": "fn",
+          "startLine": 26,
+          "endLine": 68,
+          "tokens": 463
         }
       ]
     },
     "app/src/components/blocks/Timeline.tsx": {
       "description": "DEFAULTS",
-      "tokens": 888,
-      "hash": "47280cf16f3ed10d",
-      "size": 3106,
-      "mtimeMs": 1786560558589.5383,
-      "updatedAt": "2026-08-26T16:07:36.312Z",
+      "tokens": 891,
+      "hash": "1237dfd24e881bc2",
+      "size": 3117,
+      "mtimeMs": 1795089260925.069,
+      "updatedAt": "2026-11-25T14:01:54.740Z",
       "source": "scan",
       "symbols": [
         {
@@ -2581,19 +3179,19 @@
     },
     "app/src/components/blocks/UitgelichteReview.tsx": {
       "description": "Eén uitgelichte beoordeling, groot uitgelicht naast een foto.",
-      "tokens": 751,
-      "hash": "371978a44767858d",
-      "size": 2630,
-      "mtimeMs": 1786622069380.0312,
-      "updatedAt": "2026-08-26T16:07:36.312Z",
+      "tokens": 885,
+      "hash": "7ec0acb10c7f7f74",
+      "size": 3097,
+      "mtimeMs": 1795089337327.8218,
+      "updatedAt": "2026-11-25T14:01:54.741Z",
       "source": "scan",
       "symbols": [
         {
           "name": "UitgelichteReview",
           "kind": "fn",
-          "startLine": 21,
-          "endLine": 81,
-          "tokens": 552
+          "startLine": 28,
+          "endLine": 95,
+          "tokens": 653
         }
       ]
     },
@@ -2603,7 +3201,7 @@
       "hash": "f6388621f29fe4b7",
       "size": 3259,
       "mtimeMs": 1787734749712.0552,
-      "updatedAt": "2026-08-26T16:07:36.312Z",
+      "updatedAt": "2026-11-25T14:01:54.741Z",
       "source": "scan",
       "symbols": [
         {
@@ -2628,7 +3226,7 @@
       "hash": "08052a2b80291d6a",
       "size": 866,
       "mtimeMs": 1785413185546.9302,
-      "updatedAt": "2026-08-26T16:07:36.312Z",
+      "updatedAt": "2026-11-25T14:01:54.741Z",
       "source": "scan"
     },
     "app/src/components/blocks/Werkwijze.tsx": {
@@ -2637,7 +3235,7 @@
       "hash": "865a8f297772b8b2",
       "size": 3255,
       "mtimeMs": 1787317265114.2244,
-      "updatedAt": "2026-08-26T16:07:36.312Z",
+      "updatedAt": "2026-11-25T14:01:54.741Z",
       "source": "scan",
       "symbols": [
         {
@@ -2655,7 +3253,7 @@
       "hash": "a7219e399b12a8d6",
       "size": 5985,
       "mtimeMs": 1787419173688.1482,
-      "updatedAt": "2026-08-26T16:07:36.312Z",
+      "updatedAt": "2026-11-25T14:01:54.742Z",
       "source": "scan",
       "symbols": [
         {
@@ -2683,93 +3281,180 @@
     },
     "app/src/components/form/FormRenderer.tsx": {
       "description": "Public half of the reCAPTCHA settings — the secret stays server-side.",
-      "tokens": 3102,
-      "hash": "c64a8939ea8c2efa",
-      "size": 10875,
-      "mtimeMs": 1787734749712.8677,
-      "updatedAt": "2026-08-26T16:07:36.313Z",
+      "tokens": 3448,
+      "hash": "dac80fb0c975d041",
+      "size": 12090,
+      "mtimeMs": 1787822975973.2852,
+      "updatedAt": "2026-11-25T14:01:54.742Z",
       "source": "scan",
       "symbols": [
         {
           "name": "IconArrowRight",
           "kind": "fn",
-          "startLine": 62,
-          "endLine": 69,
+          "startLine": 74,
+          "endLine": 81,
           "tokens": 66
         },
         {
           "name": "SuccessPanel",
           "kind": "fn",
-          "startLine": 70,
-          "endLine": 111,
-          "tokens": 424
+          "startLine": 82,
+          "endLine": 127,
+          "tokens": 463
         },
         {
           "name": "FormRenderer",
           "kind": "fn",
-          "startLine": 112,
-          "endLine": 319,
-          "tokens": 1984
+          "startLine": 128,
+          "endLine": 367,
+          "tokens": 2264
+        }
+      ]
+    },
+    "app/src/components/JsonLd.tsx": {
+      "description": "Zet één JSON-LD-graaf in de pagina; escapet `<` zodat een adres het script niet kan afbreken.",
+      "tokens": 136,
+      "hash": "523121a794fe2532",
+      "size": 477,
+      "mtimeMs": 1787813454829.9143,
+      "updatedAt": "2026-11-25T14:01:54.742Z",
+      "source": "scan"
+    },
+    "app/src/components/klantverhaal/KlantverhaalBody.tsx": {
+      "description": "Het verhaal zelf. De eerste alinea is iets groter en donkerder, als in het ontwerp.",
+      "tokens": 919,
+      "hash": "76a0c02106fd0d13",
+      "size": 3215,
+      "mtimeMs": 1795089403578.4778,
+      "updatedAt": "2026-11-25T14:01:54.743Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "KlantverhaalBody",
+          "kind": "fn",
+          "startLine": 67,
+          "endLine": 75,
+          "tokens": 100
+        }
+      ]
+    },
+    "app/src/components/klantverhaal/KlantverhaalSections.tsx": {
+      "description": "Zet het cursieve deel van de titel in een <em>; staat het er niet letterlijk in, dan gewoon de titel.",
+      "tokens": 2846,
+      "hash": "65a72efad7186e1b",
+      "size": 9961,
+      "mtimeMs": 1795089403573.294,
+      "updatedAt": "2026-11-25T14:01:54.743Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "DienstTag",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 35,
+          "tokens": 123
+        },
+        {
+          "name": "TitleWithHighlight",
+          "kind": "fn",
+          "startLine": 36,
+          "endLine": 47,
+          "tokens": 105
+        },
+        {
+          "name": "KlantverhaalKop",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 91,
+          "tokens": 455
+        },
+        {
+          "name": "KlantverhaalBeeld",
+          "kind": "fn",
+          "startLine": 92,
+          "endLine": 104,
+          "tokens": 158
+        },
+        {
+          "name": "KlantverhaalInhoud",
+          "kind": "fn",
+          "startLine": 105,
+          "endLine": 184,
+          "tokens": 864
+        },
+        {
+          "name": "MakelaarQuote",
+          "kind": "fn",
+          "startLine": 185,
+          "endLine": 220,
+          "tokens": 323
+        },
+        {
+          "name": "MeerVerhalen",
+          "kind": "fn",
+          "startLine": 221,
+          "endLine": 265,
+          "tokens": 620
         }
       ]
     },
     "app/src/components/layout/PageWrapper.tsx": {
       "description": "options",
-      "tokens": 596,
-      "hash": "718bae031b643389",
-      "size": 2085,
-      "mtimeMs": 1787419173688.275,
-      "updatedAt": "2026-08-26T16:07:36.313Z",
+      "tokens": 806,
+      "hash": "9659528581b3290f",
+      "size": 2820,
+      "mtimeMs": 1788184537507.0593,
+      "updatedAt": "2026-11-25T14:01:54.743Z",
       "source": "scan",
       "symbols": [
         {
           "name": "asNavLinks",
           "kind": "fn",
-          "startLine": 11,
-          "endLine": 21,
+          "startLine": 17,
+          "endLine": 27,
           "tokens": 80
         },
         {
           "name": "PageWrapper",
           "kind": "fn",
-          "startLine": 22,
-          "endLine": 66,
-          "tokens": 378
+          "startLine": 28,
+          "endLine": 87,
+          "tokens": 555
         }
       ]
     },
     "app/src/components/layout/SiteFooter.tsx": {
-      "description": "FooterLinkList",
-      "tokens": 1948,
-      "hash": "3f5cc6bb6a797c0a",
-      "size": 6819,
-      "mtimeMs": 1787083183874.7505,
-      "updatedAt": "2026-08-26T16:07:36.313Z",
+      "description": "Juridische pagina's naast de copyrightregel (privacy, voorwaarden).",
+      "tokens": 2088,
+      "hash": "4a4dc5cf38c699c8",
+      "size": 7308,
+      "mtimeMs": 1795089260925.6,
+      "updatedAt": "2026-11-25T14:01:54.743Z",
       "source": "scan",
       "symbols": [
         {
           "name": "FooterLinkList",
           "kind": "fn",
           "startLine": 12,
-          "endLine": 51,
-          "tokens": 300
+          "endLine": 53,
+          "tokens": 332
         },
         {
           "name": "SiteFooter",
           "kind": "fn",
-          "startLine": 52,
-          "endLine": 194,
-          "tokens": 1501
+          "startLine": 54,
+          "endLine": 205,
+          "tokens": 1607
         }
       ]
     },
     "app/src/components/layout/SiteHeader.tsx": {
       "description": "isActivePath",
-      "tokens": 1570,
-      "hash": "1fef96cdf1642e56",
-      "size": 5493,
-      "mtimeMs": 1787419173688.8127,
-      "updatedAt": "2026-08-26T16:07:36.313Z",
+      "tokens": 1575,
+      "hash": "5a1e21439909d842",
+      "size": 5511,
+      "mtimeMs": 1795090927962.9866,
+      "updatedAt": "2026-11-25T14:01:54.744Z",
       "source": "scan",
       "symbols": [
         {
@@ -2784,7 +3469,7 @@
           "kind": "fn",
           "startLine": 16,
           "endLine": 57,
-          "tokens": 350
+          "tokens": 356
         },
         {
           "name": "Burger",
@@ -2808,16 +3493,16 @@
       "hash": "a9c87031d71b88e4",
       "size": 1608,
       "mtimeMs": 1787081668084.7224,
-      "updatedAt": "2026-08-26T16:07:36.313Z",
+      "updatedAt": "2026-11-25T14:01:54.744Z",
       "source": "scan"
     },
     "app/src/components/object/ObjectContactDialog.tsx": {
       "description": "Text on the button that opens the dialog.",
-      "tokens": 1166,
-      "hash": "9282a5f8903e0d33",
-      "size": 4086,
-      "mtimeMs": 1787734749713.2078,
-      "updatedAt": "2026-08-26T16:07:36.313Z",
+      "tokens": 1170,
+      "hash": "b9fb40a17de61387",
+      "size": 4101,
+      "mtimeMs": 1787822641240.1138,
+      "updatedAt": "2026-11-25T14:01:54.744Z",
       "source": "scan",
       "symbols": [
         {
@@ -2832,7 +3517,7 @@
           "kind": "fn",
           "startLine": 36,
           "endLine": 129,
-          "tokens": 829
+          "tokens": 834
         }
       ]
     },
@@ -2842,7 +3527,7 @@
       "hash": "5e66d737b694a669",
       "size": 2844,
       "mtimeMs": 1786611315479.8455,
-      "updatedAt": "2026-08-26T16:07:36.313Z",
+      "updatedAt": "2026-11-25T14:01:54.744Z",
       "source": "scan",
       "symbols": [
         {
@@ -2867,7 +3552,7 @@
       "hash": "9d6c39b3a1ff35ad",
       "size": 2460,
       "mtimeMs": 1786611326008.5325,
-      "updatedAt": "2026-08-26T16:07:36.313Z",
+      "updatedAt": "2026-11-25T14:01:54.745Z",
       "source": "scan",
       "symbols": [
         {
@@ -2880,34 +3565,41 @@
       ]
     },
     "app/src/components/object/ObjectGallery.tsx": {
-      "description": "Client. Three-photo header grid + \"Alle foto's\" lightbox (arrow keys, Escape, focus return). Carries `data-solid-header`.",
-      "tokens": 2206,
-      "hash": "37e3641824cbfc52",
-      "size": 7721,
-      "mtimeMs": 1786611284509.3784,
-      "updatedAt": "2026-08-26T16:07:36.314Z",
+      "description": "Client. Three-photo header grid + \"Alle foto's\" lightbox (arrow keys, Escape, focus return). Lightbox shows a spinner while the active photo loads and preloads its two neighbours. Carries `data-solid-header`.",
+      "tokens": 2798,
+      "hash": "0c9a716cf8c8a4e4",
+      "size": 9793,
+      "mtimeMs": 1795089260925.8992,
+      "updatedAt": "2026-11-25T14:01:54.745Z",
       "source": "scan",
       "symbols": [
         {
           "name": "IconBack",
           "kind": "fn",
-          "startLine": 19,
-          "endLine": 26,
+          "startLine": 18,
+          "endLine": 25,
           "tokens": 62
         },
         {
           "name": "IconPhotos",
           "kind": "fn",
-          "startLine": 27,
-          "endLine": 47,
-          "tokens": 192
+          "startLine": 26,
+          "endLine": 39,
+          "tokens": 99
+        },
+        {
+          "name": "Spinner",
+          "kind": "fn",
+          "startLine": 40,
+          "endLine": 68,
+          "tokens": 289
         },
         {
           "name": "ObjectGallery",
           "kind": "fn",
-          "startLine": 48,
-          "endLine": 239,
-          "tokens": 1839
+          "startLine": 69,
+          "endLine": 295,
+          "tokens": 2248
         }
       ]
     },
@@ -2917,7 +3609,7 @@
       "hash": "0ae6dce70550b5b6",
       "size": 3722,
       "mtimeMs": 1786611433898.564,
-      "updatedAt": "2026-08-26T16:07:36.314Z",
+      "updatedAt": "2026-11-25T14:01:54.745Z",
       "source": "scan",
       "symbols": [
         {
@@ -2944,41 +3636,41 @@
       ]
     },
     "app/src/components/object/ObjectSidebar.tsx": {
-      "description": "Sticky price card (status pill, CTAs, feiten, brochure/delen) + makelaar card. De bovenste knop opent ObjectContactDialog zodra er een formulier gekozen is, anders is het een gewone link.",
-      "tokens": 1862,
-      "hash": "ba52e435e59490a5",
-      "size": 6518,
-      "mtimeMs": 1787419173689.5764,
-      "updatedAt": "2026-08-26T16:07:36.314Z",
+      "description": "Sticky price card (status pill, CTAs, feiten, brochure/delen) + makelaar card. De bovenste knop opent ObjectContactDialog zodra er een formulier gekozen is, anders is het een gewone link; de makelaarskaart komt binnen als prop (uit het `makelaar`-veld op de woning).",
+      "tokens": 1912,
+      "hash": "71f698ce7da2348e",
+      "size": 6698,
+      "mtimeMs": 1787813454830.9858,
+      "updatedAt": "2026-11-25T14:01:54.745Z",
       "source": "scan",
       "symbols": [
         {
           "name": "IconDownload",
           "kind": "fn",
-          "startLine": 48,
-          "endLine": 60,
+          "startLine": 51,
+          "endLine": 63,
           "tokens": 84
         },
         {
           "name": "IconShare",
           "kind": "fn",
-          "startLine": 61,
-          "endLine": 71,
+          "startLine": 64,
+          "endLine": 74,
           "tokens": 133
         },
         {
           "name": "Feit",
           "kind": "fn",
-          "startLine": 72,
-          "endLine": 81,
+          "startLine": 75,
+          "endLine": 84,
           "tokens": 112
         },
         {
           "name": "ObjectSidebar",
           "kind": "fn",
-          "startLine": 82,
-          "endLine": 204,
-          "tokens": 1079
+          "startLine": 85,
+          "endLine": 209,
+          "tokens": 1075
         }
       ]
     },
@@ -2988,61 +3680,86 @@
       "hash": "3f5007d4950d8dbb",
       "size": 890,
       "mtimeMs": 1786611331205.4033,
-      "updatedAt": "2026-08-26T16:07:36.314Z",
+      "updatedAt": "2026-11-25T14:01:54.746Z",
       "source": "scan"
     },
     "app/src/components/object/SimilarObjects.tsx": {
-      "description": "\"Vergelijkbare woningen\" band on sand, reusing `ListingCard`.",
-      "tokens": 417,
-      "hash": "8da9d2e724b2b297",
-      "size": 1460,
-      "mtimeMs": 1786611884278.9775,
-      "updatedAt": "2026-08-26T16:07:36.314Z",
+      "description": "\"Vergelijkbare woningen\" band on sand, reusing `ListingCard`. Kop en knop komen als optionele props uit `objectSettings`, met `OBJECT_SIMILAR` als default.",
+      "tokens": 471,
+      "hash": "403d9301330e7a80",
+      "size": 1649,
+      "mtimeMs": 1787813454831.305,
+      "updatedAt": "2026-11-25T14:01:54.746Z",
       "source": "scan"
     },
     "app/src/components/PageBuilder.tsx": {
       "description": "Reviews zonder quote of naam zijn onbruikbaar op een kaart en vallen af.",
-      "tokens": 7527,
-      "hash": "a68073e8cd859f9c",
-      "size": 26344,
-      "mtimeMs": 1787419173687.2932,
-      "updatedAt": "2026-08-26T16:07:36.314Z",
+      "tokens": 8338,
+      "hash": "21975165e3a02c6d",
+      "size": 29186,
+      "mtimeMs": 1795615165373.3599,
+      "updatedAt": "2026-11-25T14:01:54.746Z",
       "source": "scan",
       "symbols": [
         {
           "name": "toCta",
           "kind": "fn",
-          "startLine": 70,
-          "endLine": 75,
+          "startLine": 74,
+          "endLine": 79,
           "tokens": 49
         },
         {
           "name": "toLabeledLink",
           "kind": "fn",
-          "startLine": 76,
-          "endLine": 84,
+          "startLine": 80,
+          "endLine": 88,
           "tokens": 99
         },
         {
           "name": "toReviews",
           "kind": "fn",
-          "startLine": 85,
-          "endLine": 91,
+          "startLine": 89,
+          "endLine": 95,
           "tokens": 84
         },
         {
           "name": "renderBlock",
           "kind": "fn",
-          "startLine": 92,
-          "endLine": 866,
-          "tokens": 6306
+          "startLine": 96,
+          "endLine": 928,
+          "tokens": 6904
         },
         {
           "name": "PageBuilder",
           "kind": "fn",
-          "startLine": 867,
-          "endLine": 872,
-          "tokens": 60
+          "startLine": 929,
+          "endLine": 951,
+          "tokens": 209
+        }
+      ]
+    },
+    "app/src/components/TrackingScripts.tsx": {
+      "description": "TrackingScriptsHead",
+      "tokens": 659,
+      "hash": "2cf35d983d595b58",
+      "size": 2304,
+      "mtimeMs": 1787818852193.1968,
+      "updatedAt": "2026-11-25T14:01:54.747Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "TrackingScriptsHead",
+          "kind": "fn",
+          "startLine": 3,
+          "endLine": 50,
+          "tokens": 500
+        },
+        {
+          "name": "TrackingScriptsBody",
+          "kind": "fn",
+          "startLine": 51,
+          "endLine": 70,
+          "tokens": 149
         }
       ]
     },
@@ -3052,7 +3769,7 @@
       "hash": "84a8cbe788c9f339",
       "size": 1938,
       "mtimeMs": 1787734749713.6138,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.747Z",
       "source": "scan",
       "symbols": [
         {
@@ -3073,29 +3790,29 @@
     },
     "app/src/components/ui/BlockIcon.tsx": {
       "description": "Line icons shared by the blocks that offer an icon picker (Benefits, the",
-      "tokens": 1291,
-      "hash": "f9bd7fb60c0b46bc",
-      "size": 4516,
-      "mtimeMs": 1787317265114.8782,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "tokens": 1390,
+      "hash": "6dd762ac3ab5eed6",
+      "size": 4865,
+      "mtimeMs": 1795090711146.7434,
+      "updatedAt": "2026-11-25T14:01:54.747Z",
       "source": "scan",
       "symbols": [
         {
           "name": "BlockIcon",
           "kind": "fn",
-          "startLine": 26,
-          "endLine": 181,
-          "tokens": 1166
+          "startLine": 27,
+          "endLine": 193,
+          "tokens": 1263
         }
       ]
     },
     "app/src/components/ui/Button.tsx": {
       "description": "baseClass",
-      "tokens": 451,
-      "hash": "9c98d2b03bd7232e",
-      "size": 1576,
-      "mtimeMs": 1787734749713.895,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "tokens": 456,
+      "hash": "e5f25783d7cbfc08",
+      "size": 1596,
+      "mtimeMs": 1787822554531.6956,
+      "updatedAt": "2026-11-25T14:01:54.747Z",
       "source": "scan"
     },
     "app/src/components/ui/ContactIcon.tsx": {
@@ -3104,7 +3821,7 @@
       "hash": "edabc2df94fe7af8",
       "size": 1998,
       "mtimeMs": 1786607538427.6035,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.748Z",
       "source": "scan",
       "symbols": [
         {
@@ -3122,7 +3839,7 @@
       "hash": "02d1f9bbe083f4cd",
       "size": 657,
       "mtimeMs": 1786560645894.0952,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.748Z",
       "source": "scan"
     },
     "app/src/components/ui/IconArrow.tsx": {
@@ -3131,7 +3848,16 @@
       "hash": "6a5c1f24e03300a7",
       "size": 708,
       "mtimeMs": 1785392743578.4355,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.749Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/Image.tsx": {
+      "description": "'use client' wrapper om next/image; zet sanityLoader op Sanity-src's, lokale beelden blijven op /_next/image. Alle blocks importeren deze i.p.v. next/image",
+      "tokens": 198,
+      "hash": "aa3507ad5ab90f58",
+      "size": 692,
+      "mtimeMs": 1795089260926.0425,
+      "updatedAt": "2026-11-25T14:01:54.749Z",
       "source": "scan"
     },
     "app/src/components/ui/Lead.tsx": {
@@ -3140,7 +3866,7 @@
       "hash": "014631b802eaf516",
       "size": 319,
       "mtimeMs": 1785394554923.0151,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.749Z",
       "source": "scan"
     },
     "app/src/components/ui/LogoMark.tsx": {
@@ -3149,7 +3875,7 @@
       "hash": "bdfab3c1ae5160e5",
       "size": 1223,
       "mtimeMs": 1787080757357.1313,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.749Z",
       "source": "scan"
     },
     "app/src/components/ui/Reveal.tsx": {
@@ -3158,7 +3884,7 @@
       "hash": "ba2e95e478f46336",
       "size": 905,
       "mtimeMs": 1787734749714.1895,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.749Z",
       "source": "scan"
     },
     "app/src/components/ui/RevealLink.tsx": {
@@ -3167,7 +3893,7 @@
       "hash": "f68d4a8fa99580f3",
       "size": 992,
       "mtimeMs": 1787734749714.4636,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.750Z",
       "source": "scan"
     },
     "app/src/components/ui/SectionHead.tsx": {
@@ -3176,7 +3902,7 @@
       "hash": "f0ab3aab1f7b059e",
       "size": 559,
       "mtimeMs": 1785394555191.6484,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.750Z",
       "source": "scan"
     },
     "app/src/components/ui/SocialIcon.tsx": {
@@ -3185,7 +3911,7 @@
       "hash": "81cb19db53077731",
       "size": 2131,
       "mtimeMs": 1787083168348.3113,
-      "updatedAt": "2026-08-26T16:07:36.315Z",
+      "updatedAt": "2026-11-25T14:01:54.750Z",
       "source": "scan",
       "symbols": [
         {
@@ -3203,7 +3929,7 @@
       "hash": "1529a1932f9c9d60",
       "size": 2345,
       "mtimeMs": 1787047023723.101,
-      "updatedAt": "2026-08-26T16:07:36.316Z",
+      "updatedAt": "2026-11-25T14:01:54.750Z",
       "source": "scan",
       "symbols": [
         {
@@ -3221,7 +3947,7 @@
       "hash": "bde3116a0bd7d4cd",
       "size": 416,
       "mtimeMs": 1785408054715.1523,
-      "updatedAt": "2026-08-26T16:07:36.316Z",
+      "updatedAt": "2026-11-25T14:01:54.751Z",
       "source": "scan"
     },
     "app/src/hooks/useActiveStep.ts": {
@@ -3230,7 +3956,7 @@
       "hash": "3b0e1f6ea523cbf1",
       "size": 1106,
       "mtimeMs": 1785409638047.68,
-      "updatedAt": "2026-08-26T16:07:36.316Z",
+      "updatedAt": "2026-11-25T14:01:54.751Z",
       "source": "scan"
     },
     "app/src/hooks/useMobileNav.ts": {
@@ -3239,7 +3965,7 @@
       "hash": "59f2e48a7765bf83",
       "size": 984,
       "mtimeMs": 1785392863778.6238,
-      "updatedAt": "2026-08-26T16:07:36.316Z",
+      "updatedAt": "2026-11-25T14:01:54.751Z",
       "source": "scan"
     },
     "app/src/hooks/useRevealOnScroll.ts": {
@@ -3248,7 +3974,7 @@
       "hash": "ff5027d1717a5bf1",
       "size": 906,
       "mtimeMs": 1786561479607.484,
-      "updatedAt": "2026-08-26T16:07:36.316Z",
+      "updatedAt": "2026-11-25T14:01:54.751Z",
       "source": "scan"
     },
     "app/src/hooks/useReviewsCarousel.ts": {
@@ -3257,7 +3983,7 @@
       "hash": "4de275bb0b4be16f",
       "size": 1334,
       "mtimeMs": 1785406817982.6602,
-      "updatedAt": "2026-08-26T16:07:36.316Z",
+      "updatedAt": "2026-11-25T14:01:54.752Z",
       "source": "scan"
     },
     "app/src/hooks/useStickyTopbar.ts": {
@@ -3266,48 +3992,43 @@
       "hash": "e9e5ab97944164eb",
       "size": 826,
       "mtimeMs": 1786560656601.862,
-      "updatedAt": "2026-08-26T16:07:36.316Z",
+      "updatedAt": "2026-11-25T14:01:54.752Z",
+      "source": "scan"
+    },
+    "app/src/instrumentation-client.ts": {
+      "description": "This file configures the initialization of Sentry on the client.",
+      "tokens": 264,
+      "hash": "5dc93a5d58b69a2c",
+      "size": 923,
+      "mtimeMs": 1788938720694.7227,
+      "updatedAt": "2026-11-25T14:01:54.752Z",
+      "source": "scan"
+    },
+    "app/src/instrumentation.ts": {
+      "description": "Exports register, onRequestError",
+      "tokens": 94,
+      "hash": "4a351bb98c1ab7fe",
+      "size": 328,
+      "mtimeMs": 1787820855552.982,
+      "updatedAt": "2026-11-25T14:01:54.753Z",
       "source": "scan"
     },
     "app/src/lib/aanbiedingstekst.ts": {
-      "description": "Parses the Realworks text format (`<br>`, `**vet**`, `- ` bullets) into blocks and drops the English half; `splitBold` for inline emphasis.",
-      "tokens": 588,
-      "hash": "417f23580d3dd5fa",
-      "size": 2065,
-      "mtimeMs": 1786611152891.484,
-      "updatedAt": "2026-08-26T16:07:36.316Z",
-      "source": "scan",
-      "symbols": [
-        {
-          "name": "stripMarkers",
-          "kind": "fn",
-          "startLine": 21,
-          "endLine": 22,
-          "tokens": 21
-        },
-        {
-          "name": "parseAanbiedingstekst",
-          "kind": "fn",
-          "startLine": 23,
-          "endLine": 57,
-          "tokens": 252
-        },
-        {
-          "name": "splitBold",
-          "kind": "fn",
-          "startLine": 58,
-          "endLine": 64,
-          "tokens": 66
-        }
-      ]
+      "description": "Realworks does not deliver HTML. `aanbiedingsTekst` is one long string with",
+      "tokens": 442,
+      "hash": "e89d2d89adbb2a17",
+      "size": 1551,
+      "mtimeMs": 1787823957107.154,
+      "updatedAt": "2026-11-25T14:01:54.753Z",
+      "source": "scan"
     },
     "app/src/lib/aanbod-content.ts": {
-      "description": "Copy + filter options (status, price ranges, sortings), page size and CTA-card position for /aanbod.",
-      "tokens": 839,
-      "hash": "69edd82abbe63162",
-      "size": 2949,
-      "mtimeMs": 1786617190173.3257,
-      "updatedAt": "2026-08-26T16:07:36.316Z",
+      "description": "Status filter — values match the `woning` status field, `alle` clears the filter.",
+      "tokens": 829,
+      "hash": "1aa13f6dbfc2fb74",
+      "size": 2914,
+      "mtimeMs": 1787821824718.2314,
+      "updatedAt": "2026-11-25T14:01:54.753Z",
       "source": "scan"
     },
     "app/src/lib/aankoop-content.ts": {
@@ -3316,7 +4037,16 @@
       "hash": "8239a515b5c1074c",
       "size": 9754,
       "mtimeMs": 1787046933747.037,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+      "updatedAt": "2026-11-25T14:01:54.754Z",
+      "source": "scan"
+    },
+    "app/src/lib/bedankt-content.ts": {
+      "description": "Copy voor /bedankt: hero, stappen, icon-kaarten, cross links en ctaBand. Alleen bestaande blocks.",
+      "tokens": 1027,
+      "hash": "4521b5228d36a800",
+      "size": 3610,
+      "mtimeMs": 1787813454831.4194,
+      "updatedAt": "2026-11-25T14:01:54.754Z",
       "source": "scan"
     },
     "app/src/lib/beoordelingen-content.ts": {
@@ -3325,7 +4055,7 @@
       "hash": "9a8e147761f6a739",
       "size": 3242,
       "mtimeMs": 1786621966761.69,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+      "updatedAt": "2026-11-25T14:01:54.754Z",
       "source": "scan"
     },
     "app/src/lib/chrome.ts": {
@@ -3334,7 +4064,7 @@
       "hash": "0a9825cfe769c118",
       "size": 214,
       "mtimeMs": 1785392860077.3623,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+      "updatedAt": "2026-11-25T14:01:54.754Z",
       "source": "scan"
     },
     "app/src/lib/cn.ts": {
@@ -3343,7 +4073,7 @@
       "hash": "ec1499e69cf8ab14",
       "size": 129,
       "mtimeMs": 1785394522220.3386,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+      "updatedAt": "2026-11-25T14:01:54.755Z",
       "source": "scan"
     },
     "app/src/lib/contact-content.ts": {
@@ -3352,45 +4082,116 @@
       "hash": "1a1c42be07ddb1e6",
       "size": 6777,
       "mtimeMs": 1787298426052.2292,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+      "updatedAt": "2026-11-25T14:01:54.755Z",
       "source": "scan"
     },
-    "app/src/lib/form-fields.ts": {
-      "description": "Veldvorm van CMS-formulieren (incl. het verborgen veldtype + `fillTokens()` voor `{{adres}}`-achtige waarden) en `toFormDefinition()` (GROQ-resultaat → renderervorm), `toSteps()` (modus → één vorm) + `toFieldRows()` (rij-indeling: expliciete `width`, met de narrow-type-heuristiek als fallback voor niet-gemigreerde documenten). Geen React.",
-      "tokens": 1535,
-      "hash": "706c3f49b55b9ca1",
-      "size": 5379,
-      "mtimeMs": 1787419173690.089,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+    "app/src/lib/cron-log.ts": {
+      "description": "Bewaart een geschiedenis van elke cron-run (Funda-reviews, Realworks-import)",
+      "tokens": 572,
+      "hash": "e8bb13bba8d4608f",
+      "size": 2004,
+      "mtimeMs": 1788938681139.155,
+      "updatedAt": "2026-11-25T14:01:54.755Z",
       "source": "scan",
       "symbols": [
         {
+          "name": "recordCronRun",
+          "kind": "fn",
+          "startLine": 39,
+          "endLine": 63,
+          "tokens": 190
+        }
+      ]
+    },
+    "app/src/lib/form-fields.ts": {
+      "description": "Shape and layout rules for CMS-authored forms. No React in here, so the",
+      "tokens": 1884,
+      "hash": "6c59fc479591f4e9",
+      "size": 6601,
+      "mtimeMs": 1787813454831.6106,
+      "updatedAt": "2026-11-25T14:01:54.755Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "toRedirect",
+          "kind": "fn",
+          "startLine": 81,
+          "endLine": 95,
+          "tokens": 158
+        },
+        {
           "name": "toSteps",
           "kind": "fn",
-          "startLine": 67,
-          "endLine": 81,
+          "startLine": 96,
+          "endLine": 110,
           "tokens": 128
         },
         {
           "name": "fillTokens",
           "kind": "fn",
-          "startLine": 82,
-          "endLine": 100,
+          "startLine": 111,
+          "endLine": 129,
           "tokens": 248
         },
         {
           "name": "toFieldRows",
           "kind": "fn",
-          "startLine": 101,
-          "endLine": 125,
+          "startLine": 130,
+          "endLine": 154,
           "tokens": 243
         },
         {
           "name": "toFormDefinition",
           "kind": "fn",
-          "startLine": 126,
-          "endLine": 166,
-          "tokens": 400
+          "startLine": 155,
+          "endLine": 198,
+          "tokens": 446
+        }
+      ]
+    },
+    "app/src/lib/form-mail.ts": {
+      "description": "De opmaak van de mails die `POST /api/submit-form` verstuurt.",
+      "tokens": 1718,
+      "hash": "23d19a1eb244adf2",
+      "size": 6014,
+      "mtimeMs": 1787819776992.1873,
+      "updatedAt": "2026-11-25T14:01:54.756Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "escapeHtml",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 27,
+          "tokens": 90
+        },
+        {
+          "name": "color",
+          "kind": "fn",
+          "startLine": 28,
+          "endLine": 32,
+          "tokens": 61
+        },
+        {
+          "name": "tint",
+          "kind": "fn",
+          "startLine": 33,
+          "endLine": 50,
+          "tokens": 155
+        },
+        {
+          "name": "renderText",
+          "kind": "fn",
+          "startLine": 51,
+          "endLine": 82,
+          "tokens": 238
+        },
+        {
+          "name": "renderFormMail",
+          "kind": "fn",
+          "startLine": 83,
+          "endLine": 174,
+          "tokens": 1007
         }
       ]
     },
@@ -3400,7 +4201,7 @@
       "hash": "8701aed0fafb688d",
       "size": 799,
       "mtimeMs": 1786611222475.6199,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+      "updatedAt": "2026-11-25T14:01:54.756Z",
       "source": "scan"
     },
     "app/src/lib/funda-reviews.ts": {
@@ -3409,7 +4210,7 @@
       "hash": "47302cb56e6f1e24",
       "size": 15846,
       "mtimeMs": 1786988177929.0286,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+      "updatedAt": "2026-11-25T14:01:54.756Z",
       "source": "scan",
       "symbols": [
         {
@@ -3554,22 +4355,205 @@
         }
       ]
     },
+    "app/src/lib/haarlem-content.ts": {
+      "description": "Copy voor /haarlem (stad-template): HAARLEM_HERO, HAARLEM_FACTS(+_NOTE), HAARLEM_INTRO, HAARLEM_DIENSTEN, HAARLEM_WIJKEN, HAARLEM_QUOTE, HAARLEM_FAQ, HAARLEM_OMGEVING, HAARLEM_CTA, HAARLEM_SEO. Kopie-basis voor een volgende stad.",
+      "tokens": 2378,
+      "hash": "178f60ce5de1a513",
+      "size": 8350,
+      "mtimeMs": 1789392125489.4512,
+      "updatedAt": "2026-11-25T14:01:54.757Z",
+      "source": "scan"
+    },
     "app/src/lib/home-content.ts": {
-      "description": "Exports HeroSlide, IntroFact, ServiceCard, Review + 6 more",
-      "tokens": 1046,
-      "hash": "468aafd90e1e85ea",
-      "size": 3679,
-      "mtimeMs": 1786618873059.2969,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+      "description": "Exports HeroSlide, IntroFact, ServiceCard, Review + 7 more",
+      "tokens": 1301,
+      "hash": "464c2ec3fb8d31b2",
+      "size": 4572,
+      "mtimeMs": 1795615138660.1997,
+      "updatedAt": "2026-11-25T14:01:54.757Z",
+      "source": "scan"
+    },
+    "app/src/lib/json-ld.ts": {
+      "description": "Structured data (schema.org) opgebouwd uit Sanity: organisatie, site, WebPage/FAQPage, kruimelpad, woning + Offer. Puur, geen fetch. Regel: één pad naar een knoop met een `aggregateRating` (bug-025).",
+      "tokens": 4845,
+      "hash": "b9ce1b836e5d8648",
+      "size": 17006,
+      "mtimeMs": 1787816964158.412,
+      "updatedAt": "2026-11-25T14:01:54.758Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "absoluteUrl",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 44,
+          "tokens": 129
+        },
+        {
+          "name": "prune",
+          "kind": "fn",
+          "startLine": 45,
+          "endLine": 63,
+          "tokens": 238
+        },
+        {
+          "name": "jsonLdGraph",
+          "kind": "fn",
+          "startLine": 64,
+          "endLine": 80,
+          "tokens": 186
+        },
+        {
+          "name": "postalAddress",
+          "kind": "fn",
+          "startLine": 81,
+          "endLine": 107,
+          "tokens": 231
+        },
+        {
+          "name": "aggregateRating",
+          "kind": "fn",
+          "startLine": 108,
+          "endLine": 136,
+          "tokens": 262
+        },
+        {
+          "name": "organizationJsonLd",
+          "kind": "fn",
+          "startLine": 137,
+          "endLine": 154,
+          "tokens": 185
+        },
+        {
+          "name": "websiteJsonLd",
+          "kind": "fn",
+          "startLine": 155,
+          "endLine": 166,
+          "tokens": 75
+        },
+        {
+          "name": "siteJsonLd",
+          "kind": "fn",
+          "startLine": 167,
+          "endLine": 177,
+          "tokens": 130
+        },
+        {
+          "name": "breadcrumbJsonLd",
+          "kind": "fn",
+          "startLine": 178,
+          "endLine": 196,
+          "tokens": 154
+        },
+        {
+          "name": "faqQuestions",
+          "kind": "fn",
+          "startLine": 197,
+          "endLine": 211,
+          "tokens": 158
+        },
+        {
+          "name": "pageFaqs",
+          "kind": "fn",
+          "startLine": 212,
+          "endLine": 238,
+          "tokens": 266
+        },
+        {
+          "name": "webPageJsonLd",
+          "kind": "fn",
+          "startLine": 239,
+          "endLine": 268,
+          "tokens": 389
+        },
+        {
+          "name": "pageJsonLd",
+          "kind": "fn",
+          "startLine": 269,
+          "endLine": 280,
+          "tokens": 130
+        },
+        {
+          "name": "residenceType",
+          "kind": "fn",
+          "startLine": 281,
+          "endLine": 296,
+          "tokens": 190
+        },
+        {
+          "name": "availability",
+          "kind": "fn",
+          "startLine": 297,
+          "endLine": 307,
+          "tokens": 119
+        },
+        {
+          "name": "plainDescription",
+          "kind": "fn",
+          "startLine": 308,
+          "endLine": 326,
+          "tokens": 163
+        },
+        {
+          "name": "quantitative",
+          "kind": "fn",
+          "startLine": 327,
+          "endLine": 330,
+          "tokens": 51
+        },
+        {
+          "name": "property",
+          "kind": "fn",
+          "startLine": 331,
+          "endLine": 360,
+          "tokens": 281
+        },
+        {
+          "name": "woningPath",
+          "kind": "fn",
+          "startLine": 361,
+          "endLine": 370,
+          "tokens": 124
+        },
+        {
+          "name": "residenceJsonLd",
+          "kind": "fn",
+          "startLine": 371,
+          "endLine": 415,
+          "tokens": 536
+        },
+        {
+          "name": "offerJsonLd",
+          "kind": "fn",
+          "startLine": 416,
+          "endLine": 436,
+          "tokens": 173
+        },
+        {
+          "name": "objectPageJsonLd",
+          "kind": "fn",
+          "startLine": 437,
+          "endLine": 466,
+          "tokens": 245
+        }
+      ]
+    },
+    "app/src/lib/klantverhaal-content.ts": {
+      "description": "Er is (nog) geen overzichtspagina: de slider op de homepage is het overzicht.",
+      "tokens": 608,
+      "hash": "ddf528ce630a31c0",
+      "size": 2128,
+      "mtimeMs": 1795089383344.5684,
+      "updatedAt": "2026-11-25T14:01:54.758Z",
       "source": "scan"
     },
     "app/src/lib/links.ts": {
       "description": "Resolve a Sanity link/cta object to a usable href.",
-      "tokens": 258,
-      "hash": "deb9a891b124a1f5",
-      "size": 900,
-      "mtimeMs": 1785417692764.3281,
-      "updatedAt": "2026-08-26T16:07:36.317Z",
+      "tokens": 324,
+      "hash": "a90be59dee54d52d",
+      "size": 1136,
+      "mtimeMs": 1787813454832.0984,
+      "updatedAt": "2026-11-25T14:01:54.758Z",
       "source": "scan"
     },
     "app/src/lib/nvm-content.ts": {
@@ -3578,34 +4562,48 @@
       "hash": "0950d61ebb99b972",
       "size": 10398,
       "mtimeMs": 1787317265115.3271,
-      "updatedAt": "2026-08-26T16:07:36.318Z",
+      "updatedAt": "2026-11-25T14:01:54.758Z",
       "source": "scan"
     },
     "app/src/lib/object-content.ts": {
-      "description": "The three feed statuses, with the label and pill tone the site shows for each.",
-      "tokens": 1224,
-      "hash": "d1db218670320cd6",
-      "size": 4290,
-      "mtimeMs": 1787419173690.7222,
-      "updatedAt": "2026-08-26T16:07:36.318Z",
+      "description": "Statussen (label + pill-tone) en de terugvalwaarden van de objectpagina (makelaar, vergelijkbare woningen, CTA-band, bezichtigingsformulier), plus `toMakelaar()` / `toKantoorTelefoon()` die per veld op die constanten terugvallen.",
+      "tokens": 1682,
+      "hash": "925855637f1413ba",
+      "size": 5893,
+      "mtimeMs": 1787813454832.3672,
+      "updatedAt": "2026-11-25T14:01:54.759Z",
       "source": "scan",
       "symbols": [
         {
           "name": "statusOf",
           "kind": "fn",
-          "startLine": 13,
-          "endLine": 127,
-          "tokens": 1097
+          "startLine": 14,
+          "endLine": 60,
+          "tokens": 422
+        },
+        {
+          "name": "toMakelaar",
+          "kind": "fn",
+          "startLine": 61,
+          "endLine": 102,
+          "tokens": 443
+        },
+        {
+          "name": "toKantoorTelefoon",
+          "kind": "fn",
+          "startLine": 103,
+          "endLine": 175,
+          "tokens": 676
         }
       ]
     },
     "app/src/lib/over-ons-content.ts": {
-      "description": "Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 10 more",
-      "tokens": 1949,
-      "hash": "12b28f9d9e1d1d95",
-      "size": 6839,
-      "mtimeMs": 1786560515058.1301,
-      "updatedAt": "2026-08-26T16:07:36.318Z",
+      "description": "Exports Image, OVER_ONS_OPENER, OVER_ONS_DUO, TimelineItem + 13 more",
+      "tokens": 2379,
+      "hash": "1d42272504987a22",
+      "size": 8349,
+      "mtimeMs": 1795089261079.4924,
+      "updatedAt": "2026-11-25T14:01:54.759Z",
       "source": "scan"
     },
     "app/src/lib/phone.ts": {
@@ -3614,16 +4612,25 @@
       "hash": "ed08d4d6faddd68b",
       "size": 95,
       "mtimeMs": 1787082971951.2463,
-      "updatedAt": "2026-08-26T16:07:36.318Z",
+      "updatedAt": "2026-11-25T14:01:54.759Z",
+      "source": "scan"
+    },
+    "app/src/lib/privacy-content.ts": {
+      "description": "Concepttekst van de privacyverklaring, in de schrijfvorm van `rich-text.ts`. Plekken tussen [rechte haken] moeten nog ingevuld.",
+      "tokens": 12961,
+      "hash": "f10b683a6cccd99e",
+      "size": 45460,
+      "mtimeMs": 1788185120795.3618,
+      "updatedAt": "2026-11-25T14:01:54.760Z",
       "source": "scan"
     },
     "app/src/lib/realworks.ts": {
       "description": "Vertaalt een object uit de Realworks-feed (`/wonen/v3/objecten`) naar een",
-      "tokens": 4868,
-      "hash": "2bf99d6561fb7c8e",
-      "size": 17068,
-      "mtimeMs": 1787734749714.904,
-      "updatedAt": "2026-08-26T16:07:36.319Z",
+      "tokens": 5918,
+      "hash": "d5fc36cefb4b35cc",
+      "size": 20747,
+      "mtimeMs": 1795089260926.695,
+      "updatedAt": "2026-11-25T14:01:54.760Z",
       "source": "scan",
       "symbols": [
         {
@@ -3672,57 +4679,85 @@
           "name": "rij",
           "kind": "fn",
           "startLine": 156,
-          "endLine": 188,
-          "tokens": 359
+          "endLine": 189,
+          "tokens": 387
         },
         {
           "name": "fotoUrl",
           "kind": "fn",
-          "startLine": 189,
-          "endLine": 197,
+          "startLine": 190,
+          "endLine": 198,
           "tokens": 110
         },
         {
           "name": "mediaFilename",
           "kind": "fn",
-          "startLine": 198,
-          "endLine": 207,
-          "tokens": 95
+          "startLine": 199,
+          "endLine": 213,
+          "tokens": 164
+        },
+        {
+          "name": "zonderKader",
+          "kind": "fn",
+          "startLine": 214,
+          "endLine": 217,
+          "tokens": 30
         },
         {
           "name": "toWoning",
           "kind": "fn",
-          "startLine": 208,
-          "endLine": 426,
-          "tokens": 2061
+          "startLine": 218,
+          "endLine": 438,
+          "tokens": 2094
         },
         {
           "name": "zonderBestandsnaam",
           "kind": "fn",
-          "startLine": 427,
-          "endLine": 451,
+          "startLine": 439,
+          "endLine": 463,
           "tokens": 232
         },
         {
           "name": "planMedia",
           "kind": "fn",
-          "startLine": 452,
-          "endLine": 476,
-          "tokens": 242
+          "startLine": 464,
+          "endLine": 491,
+          "tokens": 257
         },
         {
           "name": "vrijeKey",
           "kind": "fn",
-          "startLine": 477,
-          "endLine": 495,
-          "tokens": 195
+          "startLine": 492,
+          "endLine": 513,
+          "tokens": 235
         },
         {
           "name": "verouderingsGrens",
           "kind": "fn",
-          "startLine": 496,
-          "endLine": 510,
-          "tokens": 151
+          "startLine": 514,
+          "endLine": 520,
+          "tokens": 65
+        },
+        {
+          "name": "verouderingsGrensVerkocht",
+          "kind": "fn",
+          "startLine": 521,
+          "endLine": 549,
+          "tokens": 329
+        },
+        {
+          "name": "beschermVerkocht",
+          "kind": "fn",
+          "startLine": 550,
+          "endLine": 575,
+          "tokens": 352
+        },
+        {
+          "name": "verwijderingsGrens",
+          "kind": "fn",
+          "startLine": 576,
+          "endLine": 600,
+          "tokens": 240
         }
       ]
     },
@@ -3732,7 +4767,7 @@
       "hash": "677e0f8e14013995",
       "size": 6251,
       "mtimeMs": 1786988177929.5854,
-      "updatedAt": "2026-08-26T16:07:36.319Z",
+      "updatedAt": "2026-11-25T14:01:54.761Z",
       "source": "scan",
       "symbols": [
         {
@@ -3807,13 +4842,45 @@
         }
       ]
     },
+    "app/src/lib/rich-text.ts": {
+      "description": "Schrijfvorm voor het richText-blok ([label](href), **vet**) plus `toPortableText()`. Puur, getest door check:richtext.",
+      "tokens": 1252,
+      "hash": "380fdd95e265aa51",
+      "size": 4391,
+      "mtimeMs": 1788184876587.388,
+      "updatedAt": "2026-11-25T14:01:54.761Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "withStrong",
+          "kind": "fn",
+          "startLine": 55,
+          "endLine": 82,
+          "tokens": 262
+        },
+        {
+          "name": "toSpans",
+          "kind": "fn",
+          "startLine": 83,
+          "endLine": 107,
+          "tokens": 233
+        },
+        {
+          "name": "toPortableText",
+          "kind": "fn",
+          "startLine": 108,
+          "endLine": 151,
+          "tokens": 313
+        }
+      ]
+    },
     "app/src/lib/route-auth.ts": {
       "description": "Toegang tot de import-routes (Funda-reviews, Realworks-objecten).",
-      "tokens": 585,
-      "hash": "92c38b024be4eab0",
-      "size": 2049,
-      "mtimeMs": 1787565327177.7258,
-      "updatedAt": "2026-08-26T16:07:36.319Z",
+      "tokens": 654,
+      "hash": "a281e02aa4781c54",
+      "size": 2294,
+      "mtimeMs": 1788938681139.6768,
+      "updatedAt": "2026-11-25T14:01:54.761Z",
       "source": "scan",
       "symbols": [
         {
@@ -3827,14 +4894,21 @@
           "name": "isAuthorized",
           "kind": "fn",
           "startLine": 21,
-          "endLine": 36,
-          "tokens": 175
+          "endLine": 28,
+          "tokens": 76
+        },
+        {
+          "name": "authSource",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 42,
+          "tokens": 169
         },
         {
           "name": "corsHeaders",
           "kind": "fn",
-          "startLine": 37,
-          "endLine": 55,
+          "startLine": 43,
+          "endLine": 61,
           "tokens": 171
         }
       ]
@@ -3845,7 +4919,7 @@
       "hash": "182076e1bb49cced",
       "size": 1042,
       "mtimeMs": 1787419173691.1907,
-      "updatedAt": "2026-08-26T16:07:36.319Z",
+      "updatedAt": "2026-11-25T14:01:54.761Z",
       "source": "scan"
     },
     "app/src/lib/taxatie-content.ts": {
@@ -3854,7 +4928,7 @@
       "hash": "a23b5d9fcd03db71",
       "size": 11030,
       "mtimeMs": 1787317265115.8474,
-      "updatedAt": "2026-08-26T16:07:36.319Z",
+      "updatedAt": "2026-11-25T14:01:54.761Z",
       "source": "scan"
     },
     "app/src/lib/verkoop-content.ts": {
@@ -3863,17 +4937,35 @@
       "hash": "c83315f99b805c36",
       "size": 7719,
       "mtimeMs": 1787046965672.8926,
-      "updatedAt": "2026-08-26T16:07:36.319Z",
+      "updatedAt": "2026-11-25T14:01:54.762Z",
       "source": "scan"
     },
     "app/src/lib/waardebepaling-content.ts": {
-      "description": "Copy + form field defs for /waardebepaling, incl. the wizard's `contactForm` field list (`WAARDEBEPALING_FORM_FIELDS`).",
-      "tokens": 3053,
-      "hash": "89b49783c7a1c3fa",
-      "size": 10722,
-      "mtimeMs": 1787298426052.6282,
-      "updatedAt": "2026-08-26T16:07:36.319Z",
+      "description": "The `form` document the hero points at, in `steps` mode. Nothing here is",
+      "tokens": 3065,
+      "hash": "0f63ef7cde53d017",
+      "size": 10763,
+      "mtimeMs": 1789391728285.848,
+      "updatedAt": "2026-11-25T14:01:54.762Z",
       "source": "scan"
+    },
+    "app/src/lib/werkgebied-content.ts": {
+      "description": "Link naar de werkgebiedpagina van een plaats, of `#` als die er (nog) niet is.",
+      "tokens": 2877,
+      "hash": "6a472200bec06585",
+      "size": 10083,
+      "mtimeMs": 1795089383344.9636,
+      "updatedAt": "2026-11-25T14:01:54.762Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "werkgebiedHref",
+          "kind": "fn",
+          "startLine": 218,
+          "endLine": 222,
+          "tokens": 48
+        }
+      ]
     },
     "app/src/lib/zoekopdracht-content.ts": {
       "description": "Het `form`-document waar de hero naar wijst, in `steps`-modus.",
@@ -3881,7 +4973,7 @@
       "hash": "1754aae06f15b92c",
       "size": 10668,
       "mtimeMs": 1787317521273.1094,
-      "updatedAt": "2026-08-26T16:07:36.320Z",
+      "updatedAt": "2026-11-25T14:01:54.763Z",
       "source": "scan"
     },
     "app/src/sanity/client.ts": {
@@ -3890,61 +4982,77 @@
       "hash": "3ec432deb90d37d3",
       "size": 211,
       "mtimeMs": 1785089336344.546,
-      "updatedAt": "2026-08-26T16:07:36.320Z",
+      "updatedAt": "2026-11-25T14:01:54.763Z",
+      "source": "scan"
+    },
+    "app/src/sanity/image-loader.ts": {
+      "description": "next/image-loader voor cdn.sanity.io: per srcset-breedte w/h (verhouding behouden), q=85, auto=format; isSanityImage (geen SVG)",
+      "tokens": 441,
+      "hash": "8eb64932c862ba63",
+      "size": 1543,
+      "mtimeMs": 1795089260926.9602,
+      "updatedAt": "2026-11-25T14:01:54.763Z",
       "source": "scan"
     },
     "app/src/sanity/image.ts": {
-      "description": "Exports SanityImage, urlFor, imageSrc, toImage",
-      "tokens": 293,
-      "hash": "b01cf2114cc455b3",
-      "size": 1024,
-      "mtimeMs": 1786611093245.4412,
-      "updatedAt": "2026-08-26T16:07:36.320Z",
+      "description": "Een beeldveld kan in Sanity bestaan zonder bestand — bv. alleen een `alt`",
+      "tokens": 490,
+      "hash": "f608eea8c8f8c94e",
+      "size": 1715,
+      "mtimeMs": 1795089260927.8967,
+      "updatedAt": "2026-11-25T14:01:54.763Z",
       "source": "scan"
     },
     "app/src/sanity/metadata.ts": {
-      "description": "Map a page document's `seo` object onto Next metadata. Unset fields fall back to the root layout.",
-      "tokens": 511,
-      "hash": "7acb84c9e55c0cd9",
-      "size": 1790,
-      "mtimeMs": 1786611390739.419,
-      "updatedAt": "2026-08-26T16:07:36.320Z",
+      "description": "De og:image van een `seo`-object, op het formaat dat social previews willen.",
+      "tokens": 570,
+      "hash": "1d622c7e882f9362",
+      "size": 1997,
+      "mtimeMs": 1787813454832.7966,
+      "updatedAt": "2026-11-25T14:01:54.764Z",
       "source": "scan",
       "symbols": [
         {
-          "name": "pageMetadata",
+          "name": "seoImageUrl",
           "kind": "fn",
           "startLine": 23,
-          "endLine": 57,
-          "tokens": 353
+          "endLine": 28,
+          "tokens": 87
+        },
+        {
+          "name": "pageMetadata",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 61,
+          "tokens": 331
         }
       ]
     },
     "app/src/sanity/queries.ts": {
       "description": "Resolve internal page references on link/cta objects.",
-      "tokens": 2290,
-      "hash": "bcef0816d009e2b5",
-      "size": 8024,
-      "mtimeMs": 1787419173691.9946,
-      "updatedAt": "2026-08-26T16:07:36.320Z",
+      "tokens": 3186,
+      "hash": "532a9f630e7ff40d",
+      "size": 11160,
+      "mtimeMs": 1795089383345.527,
+      "updatedAt": "2026-11-25T14:01:54.764Z",
       "source": "scan"
     },
     "app/src/sanity/sanity.types.ts": {
       "description": "---------------------------------------------------------------------------------",
-      "tokens": 24122,
-      "hash": "62001f37f17302b3",
-      "size": 84429,
-      "mtimeMs": 1787419173692.652,
-      "updatedAt": "2026-08-26T16:07:36.321Z",
+      "tokens": 52330,
+      "hash": "e0cb6a94e8353dfd",
+      "size": 183156,
+      "mtimeMs": 1795615182116.4756,
+      "updatedAt": "2026-11-25T14:01:54.766Z",
       "source": "scan"
     },
     "app/src/sanity/schema.json": {
       "description": "",
-      "tokens": 54419,
-      "hash": "9732f58d2320fff7",
-      "size": 190464,
-      "mtimeMs": 1787419173693.2524,
-      "updatedAt": "2026-08-26T16:07:36.322Z",
+      "tokens": 68330,
+      "hash": "638dcc89c27e78b0",
+      "size": 239154,
+      "mtimeMs": 1795615179300.069,
+      "updatedAt": "2026-11-25T14:01:54.767Z",
       "source": "scan"
     },
     "app/src/sanity/write-client.ts": {
@@ -3953,16 +5061,16 @@
       "hash": "3e340c81ba81915b",
       "size": 942,
       "mtimeMs": 1786988177930.8914,
-      "updatedAt": "2026-08-26T16:07:36.322Z",
+      "updatedAt": "2026-11-25T14:01:54.767Z",
       "source": "scan"
     },
     "app/tailwind.config.ts": {
       "description": "Tailwind CSS configuration",
-      "tokens": 946,
-      "hash": "acbbf29f655cfa27",
-      "size": 3308,
-      "mtimeMs": 1785396746187.5957,
-      "updatedAt": "2026-08-26T16:07:36.322Z",
+      "tokens": 1030,
+      "hash": "d16d4b4542317d95",
+      "size": 3605,
+      "mtimeMs": 1788938681140.746,
+      "updatedAt": "2026-11-25T14:01:54.768Z",
       "source": "scan"
     },
     "app/tsconfig.json": {
@@ -3971,16 +5079,16 @@
       "hash": "5c51df4c59f4510d",
       "size": 670,
       "mtimeMs": 1785087937160.0479,
-      "updatedAt": "2026-08-26T16:07:36.322Z",
+      "updatedAt": "2026-11-25T14:01:54.768Z",
       "source": "scan"
     },
     "app/tsconfig.tsbuildinfo": {
       "description": "",
-      "tokens": 48174,
-      "hash": "284455d3ad87cead",
-      "size": 180650,
-      "mtimeMs": 1787576679346.6877,
-      "updatedAt": "2026-08-26T16:07:36.323Z",
+      "tokens": 89300,
+      "hash": "33ddbbd273cb0f37",
+      "size": 334872,
+      "mtimeMs": 1795615223802.67,
+      "updatedAt": "2026-11-25T14:01:54.769Z",
       "source": "scan"
     },
     "app/vercel.json": {
@@ -3989,7 +5097,7 @@
       "hash": "deb7c065925127d5",
       "size": 243,
       "mtimeMs": 1787565484212.564,
-      "updatedAt": "2026-08-26T16:07:36.324Z",
+      "updatedAt": "2026-11-25T14:01:54.770Z",
       "source": "scan"
     },
     "CLAUDE.md": {
@@ -3998,7 +5106,7 @@
       "hash": "b1ca356fa9d5f3a6",
       "size": 225,
       "mtimeMs": 1785834177112.446,
-      "updatedAt": "2026-08-26T16:07:36.324Z",
+      "updatedAt": "2026-11-25T14:01:54.770Z",
       "source": "scan"
     },
     "docker-compose.yml": {
@@ -4007,43 +5115,61 @@
       "hash": "3b03cc03388a74dc",
       "size": 291,
       "mtimeMs": 1787054841931.5232,
-      "updatedAt": "2026-08-26T16:07:36.324Z",
+      "updatedAt": "2026-11-25T14:01:54.770Z",
       "source": "scan"
     },
     "docs/formulieren.md": {
       "description": "Formulieren",
-      "tokens": 2024,
-      "hash": "55cf14f43409f0c7",
-      "size": 8153,
-      "mtimeMs": 1787318563051.042,
-      "updatedAt": "2026-08-26T16:07:36.324Z",
+      "tokens": 2727,
+      "hash": "f78d65440be7b72f",
+      "size": 10984,
+      "mtimeMs": 1787819785754.0398,
+      "updatedAt": "2026-11-25T14:01:54.771Z",
       "source": "scan"
     },
     "docs/funda-review-scraper.md": {
       "description": "Funda-review-scraper",
-      "tokens": 1819,
-      "hash": "488bb7d7350bbb02",
-      "size": 7320,
-      "mtimeMs": 1787419173694.2573,
-      "updatedAt": "2026-08-26T16:07:36.325Z",
+      "tokens": 1849,
+      "hash": "6715a4709d8927f0",
+      "size": 7440,
+      "mtimeMs": 1788938681141.3237,
+      "updatedAt": "2026-11-25T14:01:54.771Z",
+      "source": "scan"
+    },
+    "docs/geplande-taken.md": {
+      "description": "Geplande taken (cron)",
+      "tokens": 1212,
+      "hash": "50cfd4a480eb4dcd",
+      "size": 4881,
+      "mtimeMs": 1788938681141.9607,
+      "updatedAt": "2026-11-25T14:01:54.771Z",
+      "source": "scan"
+    },
+    "docs/mediabeheer.md": {
+      "description": "Mediabeheer in de studio",
+      "tokens": 1132,
+      "hash": "8c7dd70bc1eb3bf9",
+      "size": 4558,
+      "mtimeMs": 1788184537512.8774,
+      "updatedAt": "2026-11-25T14:01:54.771Z",
       "source": "scan"
     },
     "docs/realworks-import.md": {
       "description": "Realworks-objecten-import",
-      "tokens": 2059,
-      "hash": "bbe93ef021925a5c",
-      "size": 8298,
-      "mtimeMs": 1787734749715.553,
-      "updatedAt": "2026-08-26T16:07:36.325Z",
+      "tokens": 2766,
+      "hash": "080247ccc068c34e",
+      "size": 11132,
+      "mtimeMs": 1795089260930.29,
+      "updatedAt": "2026-11-25T14:01:54.772Z",
       "source": "scan"
     },
     "README.md": {
       "description": "Project documentation",
-      "tokens": 168,
-      "hash": "ea8a76bffb10e4e1",
-      "size": 673,
-      "mtimeMs": 1787565652302.847,
-      "updatedAt": "2026-08-26T16:07:36.325Z",
+      "tokens": 262,
+      "hash": "3eb47d0a13a87950",
+      "size": 1053,
+      "mtimeMs": 1788938681132.0774,
+      "updatedAt": "2026-11-25T14:01:54.772Z",
       "source": "scan"
     },
     "studio-hart-huis/.gitignore": {
@@ -4052,7 +5178,7 @@
       "hash": "863fc08c4b06d0a5",
       "size": 442,
       "mtimeMs": 1786988245593.1978,
-      "updatedAt": "2026-08-26T16:07:36.326Z",
+      "updatedAt": "2026-11-25T14:01:54.772Z",
       "source": "scan"
     },
     "studio-hart-huis/.sanity/runtime/app.js": {
@@ -4060,8 +5186,8 @@
       "tokens": 87,
       "hash": "8efdad20830ad340",
       "size": 303,
-      "mtimeMs": 1787319967114.7253,
-      "updatedAt": "2026-08-26T16:07:36.326Z",
+      "mtimeMs": 1795089084995.4392,
+      "updatedAt": "2026-11-25T14:01:54.773Z",
       "source": "scan"
     },
     "studio-hart-huis/.sanity/runtime/index.html": {
@@ -4069,8 +5195,8 @@
       "tokens": 2335,
       "hash": "919a3418e8b9d151",
       "size": 8761,
-      "mtimeMs": 1787319967114.032,
-      "updatedAt": "2026-08-26T16:07:36.326Z",
+      "mtimeMs": 1795089084994.0703,
+      "updatedAt": "2026-11-25T14:01:54.773Z",
       "source": "scan"
     },
     "studio-hart-huis/environment.d.ts": {
@@ -4079,7 +5205,7 @@
       "hash": "5a6863fecbb4371b",
       "size": 723,
       "mtimeMs": 1787565470354.9172,
-      "updatedAt": "2026-08-26T16:07:36.327Z",
+      "updatedAt": "2026-11-25T14:01:54.773Z",
       "source": "scan"
     },
     "studio-hart-huis/eslint.config.mjs": {
@@ -4088,34 +5214,34 @@
       "hash": "c5807d719bd7e7fe",
       "size": 78,
       "mtimeMs": 1785064183076.9744,
-      "updatedAt": "2026-08-26T16:07:36.327Z",
+      "updatedAt": "2026-11-25T14:01:54.773Z",
       "source": "scan"
     },
     "studio-hart-huis/package-lock.json": {
       "description": "npm lock file",
-      "tokens": 173788,
-      "hash": "db3ec51a12b1cece",
-      "size": 608256,
-      "mtimeMs": 1787298426056.2202,
-      "updatedAt": "2026-08-26T16:07:36.329Z",
+      "tokens": 175542,
+      "hash": "05fd828d8a375a78",
+      "size": 614394,
+      "mtimeMs": 1787901817790.1685,
+      "updatedAt": "2026-11-25T14:01:54.776Z",
       "source": "scan"
     },
     "studio-hart-huis/package.json": {
       "description": "Node.js package manifest",
       "tokens": 291,
-      "hash": "4b8339796d234b0a",
+      "hash": "6529acd805bd3577",
       "size": 1018,
-      "mtimeMs": 1787317262541.6091,
-      "updatedAt": "2026-08-26T16:07:36.330Z",
+      "mtimeMs": 1787824005236.5679,
+      "updatedAt": "2026-11-25T14:01:54.776Z",
       "source": "scan"
     },
     "studio-hart-huis/pnpm-lock.yaml": {
       "description": "pnpm lock file",
-      "tokens": 111114,
-      "hash": "cd7b5345df5da00b",
-      "size": 388896,
-      "mtimeMs": 1787317262543.367,
-      "updatedAt": "2026-08-26T16:07:36.331Z",
+      "tokens": 111217,
+      "hash": "e615e8693641cb8c",
+      "size": 389257,
+      "mtimeMs": 1787824005203.7896,
+      "updatedAt": "2026-11-25T14:01:54.777Z",
       "source": "scan"
     },
     "studio-hart-huis/README.md": {
@@ -4124,7 +5250,7 @@
       "hash": "9bdd511ad54209f8",
       "size": 527,
       "mtimeMs": 1785064182431.047,
-      "updatedAt": "2026-08-26T16:07:36.332Z",
+      "updatedAt": "2026-11-25T14:01:54.778Z",
       "source": "scan"
     },
     "studio-hart-huis/sanity.cli.ts": {
@@ -4133,7 +5259,7 @@
       "hash": "9bab732c830bc387",
       "size": 875,
       "mtimeMs": 1787036210824.5593,
-      "updatedAt": "2026-08-26T16:07:36.332Z",
+      "updatedAt": "2026-11-25T14:01:54.778Z",
       "source": "scan"
     },
     "studio-hart-huis/sanity.config.ts": {
@@ -4142,7 +5268,7 @@
       "hash": "1b9555d04c6817ef",
       "size": 423,
       "mtimeMs": 1787298426056.6462,
-      "updatedAt": "2026-08-26T16:07:36.332Z",
+      "updatedAt": "2026-11-25T14:01:54.778Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/aanbodHeaderType.ts": {
@@ -4151,7 +5277,7 @@
       "hash": "8ca24ea2b522143d",
       "size": 1253,
       "mtimeMs": 1786617278177.1423,
-      "updatedAt": "2026-08-26T16:07:36.333Z",
+      "updatedAt": "2026-11-25T14:01:54.779Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/assurancesType.ts": {
@@ -4160,16 +5286,16 @@
       "hash": "f5f79b942c3c7416",
       "size": 1285,
       "mtimeMs": 1786560726143.7336,
-      "updatedAt": "2026-08-26T16:07:36.333Z",
+      "updatedAt": "2026-11-25T14:01:54.779Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/benefitsType.ts": {
       "description": "Exports benefitsType",
-      "tokens": 728,
-      "hash": "f2d34365aaa2646b",
-      "size": 2546,
-      "mtimeMs": 1787317265117.7573,
-      "updatedAt": "2026-08-26T16:07:36.334Z",
+      "tokens": 747,
+      "hash": "0126ed5d1a910a02",
+      "size": 2614,
+      "mtimeMs": 1795090711147.2341,
+      "updatedAt": "2026-11-25T14:01:54.779Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/beoordelingenHeroType.ts": {
@@ -4178,7 +5304,7 @@
       "hash": "8d31f4b9d0eba883",
       "size": 1592,
       "mtimeMs": 1786622128019.0623,
-      "updatedAt": "2026-08-26T16:07:36.334Z",
+      "updatedAt": "2026-11-25T14:01:54.779Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/centeredCtaType.ts": {
@@ -4187,7 +5313,7 @@
       "hash": "2555be3c165072a2",
       "size": 888,
       "mtimeMs": 1787298426056.8066,
-      "updatedAt": "2026-08-26T16:07:36.335Z",
+      "updatedAt": "2026-11-25T14:01:54.780Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/compareCardsType.ts": {
@@ -4196,7 +5322,7 @@
       "hash": "79c4bacf2734a91d",
       "size": 2768,
       "mtimeMs": 1787317265118.1023,
-      "updatedAt": "2026-08-26T16:07:36.335Z",
+      "updatedAt": "2026-11-25T14:01:54.780Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/contactFormSectionType.ts": {
@@ -4205,7 +5331,7 @@
       "hash": "4128464d57df3fa9",
       "size": 2619,
       "mtimeMs": 1787298426057.0046,
-      "updatedAt": "2026-08-26T16:07:36.335Z",
+      "updatedAt": "2026-11-25T14:01:54.780Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/contactWaysType.ts": {
@@ -4214,7 +5340,7 @@
       "hash": "d39910ec626dc7f9",
       "size": 1853,
       "mtimeMs": 1786607789624.2578,
-      "updatedAt": "2026-08-26T16:07:36.335Z",
+      "updatedAt": "2026-11-25T14:01:54.780Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/crossLinksType.ts": {
@@ -4223,34 +5349,34 @@
       "hash": "84229b651aa969e7",
       "size": 1115,
       "mtimeMs": 1785415057713.1182,
-      "updatedAt": "2026-08-26T16:07:36.336Z",
+      "updatedAt": "2026-11-25T14:01:54.781Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/ctaBandType.ts": {
       "description": "Exports ctaBandType",
-      "tokens": 334,
-      "hash": "9c112bfd109e89c0",
-      "size": 1166,
-      "mtimeMs": 1785413063795.3142,
-      "updatedAt": "2026-08-26T16:07:36.336Z",
+      "tokens": 338,
+      "hash": "4fef3833a20e9784",
+      "size": 1182,
+      "mtimeMs": 1795089260932.491,
+      "updatedAt": "2026-11-25T14:01:54.781Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/duoPhotosType.ts": {
       "description": "Exports duoPhotosType",
-      "tokens": 366,
-      "hash": "8e379f3468f37824",
-      "size": 1278,
-      "mtimeMs": 1786560726121.0774,
-      "updatedAt": "2026-08-26T16:07:36.336Z",
+      "tokens": 375,
+      "hash": "4884e8e0593aff29",
+      "size": 1310,
+      "mtimeMs": 1795089260933.1157,
+      "updatedAt": "2026-11-25T14:01:54.781Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/factBarType.ts": {
       "description": "Exports factBarType",
-      "tokens": 289,
-      "hash": "fea9102e9266f4a3",
-      "size": 1010,
-      "mtimeMs": 1785413084448.296,
-      "updatedAt": "2026-08-26T16:07:36.337Z",
+      "tokens": 331,
+      "hash": "caa21c5c4b589cdb",
+      "size": 1158,
+      "mtimeMs": 1789391722040.0144,
+      "updatedAt": "2026-11-25T14:01:54.781Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/faqsType.ts": {
@@ -4259,25 +5385,25 @@
       "hash": "9f84992a20aef4df",
       "size": 924,
       "mtimeMs": 1785413108533.2122,
-      "updatedAt": "2026-08-26T16:07:36.337Z",
+      "updatedAt": "2026-11-25T14:01:54.781Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/formHeroType.ts": {
       "description": "Exports formHeroType",
-      "tokens": 786,
-      "hash": "93848011c5506c78",
-      "size": 2751,
-      "mtimeMs": 1787317546077.2058,
-      "updatedAt": "2026-08-26T16:07:36.337Z",
+      "tokens": 791,
+      "hash": "da55d591c1509908",
+      "size": 2767,
+      "mtimeMs": 1795089260933.6853,
+      "updatedAt": "2026-11-25T14:01:54.782Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/heroType.ts": {
       "description": "Exports heroType",
-      "tokens": 626,
-      "hash": "954fcf15d2e885a1",
-      "size": 2189,
-      "mtimeMs": 1786621270904.8347,
-      "updatedAt": "2026-08-26T16:07:36.337Z",
+      "tokens": 641,
+      "hash": "7dbf24662d760c0c",
+      "size": 2243,
+      "mtimeMs": 1795089260934.0803,
+      "updatedAt": "2026-11-25T14:01:54.782Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/highlightStripType.ts": {
@@ -4286,25 +5412,25 @@
       "hash": "80d9e7297f01d3fc",
       "size": 1431,
       "mtimeMs": 1787047043176.719,
-      "updatedAt": "2026-08-26T16:07:36.338Z",
+      "updatedAt": "2026-11-25T14:01:54.782Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/iconCardsType.ts": {
-      "description": "Rij iconkaarten zonder foto. Generiek.",
-      "tokens": 636,
-      "hash": "c0771069f9efcc8a",
-      "size": 2225,
-      "mtimeMs": 1787317265118.46,
-      "updatedAt": "2026-08-26T16:07:36.338Z",
+      "description": "Exports iconCardsType",
+      "tokens": 692,
+      "hash": "3a57d172e0dc42b8",
+      "size": 2420,
+      "mtimeMs": 1789391724345.3376,
+      "updatedAt": "2026-11-25T14:01:54.783Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/introType.ts": {
       "description": "Exports introType",
-      "tokens": 686,
-      "hash": "741d65d7d7f99709",
-      "size": 2399,
-      "mtimeMs": 1785413256568.5757,
-      "updatedAt": "2026-08-26T16:07:36.338Z",
+      "tokens": 690,
+      "hash": "5555716bfa27383b",
+      "size": 2415,
+      "mtimeMs": 1795089260934.3865,
+      "updatedAt": "2026-11-25T14:01:54.783Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/listingsType.ts": {
@@ -4313,16 +5439,16 @@
       "hash": "0f4664f92d3d29b6",
       "size": 1118,
       "mtimeMs": 1786990545475.9053,
-      "updatedAt": "2026-08-26T16:07:36.339Z",
+      "updatedAt": "2026-11-25T14:01:54.783Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/mediaTextType.ts": {
       "description": "Exports mediaTextType",
-      "tokens": 341,
-      "hash": "a2b19db266fc7fc8",
-      "size": 1192,
-      "mtimeMs": 1786560726139.4656,
-      "updatedAt": "2026-08-26T16:07:36.339Z",
+      "tokens": 346,
+      "hash": "b7965ae76fbcf469",
+      "size": 1208,
+      "mtimeMs": 1795089260934.7874,
+      "updatedAt": "2026-11-25T14:01:54.783Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/numberedStepsType.ts": {
@@ -4331,7 +5457,7 @@
       "hash": "793f36dbca352bb0",
       "size": 1438,
       "mtimeMs": 1787298426057.3608,
-      "updatedAt": "2026-08-26T16:07:36.339Z",
+      "updatedAt": "2026-11-25T14:01:54.784Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/objectGridType.ts": {
@@ -4340,16 +5466,16 @@
       "hash": "0cbd91172da12ec1",
       "size": 1102,
       "mtimeMs": 1786617285586.8928,
-      "updatedAt": "2026-08-26T16:07:36.339Z",
+      "updatedAt": "2026-11-25T14:01:54.784Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/pageHeroType.ts": {
       "description": "Exports pageHeroType",
-      "tokens": 479,
-      "hash": "fe9b18c92a938e89",
-      "size": 1676,
-      "mtimeMs": 1785413077593.0142,
-      "updatedAt": "2026-08-26T16:07:36.339Z",
+      "tokens": 615,
+      "hash": "74fafdb8f44f3bcd",
+      "size": 2150,
+      "mtimeMs": 1795090711147.5125,
+      "updatedAt": "2026-11-25T14:01:54.784Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/pageOpenerType.ts": {
@@ -4358,34 +5484,43 @@
       "hash": "aa636902ee6cd871",
       "size": 1007,
       "mtimeMs": 1786560726116.503,
-      "updatedAt": "2026-08-26T16:07:36.340Z",
+      "updatedAt": "2026-11-25T14:01:54.785Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/partnersType.ts": {
+      "description": "Exports partnersType",
+      "tokens": 352,
+      "hash": "6ed178367d7d0174",
+      "size": 1230,
+      "mtimeMs": 1795615115043.2817,
+      "updatedAt": "2026-11-25T14:01:54.785Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/personQuoteType.ts": {
-      "description": "Foto naast een korte intro en een citaat van één persoon. Generiek.",
-      "tokens": 421,
-      "hash": "1b1b6f36a24ac0b0",
-      "size": 1474,
-      "mtimeMs": 1787298426057.4702,
-      "updatedAt": "2026-08-26T16:07:36.340Z",
+      "description": "Exports personQuoteType",
+      "tokens": 426,
+      "hash": "2aad2617905e1028",
+      "size": 1490,
+      "mtimeMs": 1795089260935.2285,
+      "updatedAt": "2026-11-25T14:01:54.785Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/personType.ts": {
       "description": "Exports personType",
-      "tokens": 561,
-      "hash": "59ad75bde78645ca",
-      "size": 1962,
-      "mtimeMs": 1786607789628.988,
-      "updatedAt": "2026-08-26T16:07:36.340Z",
+      "tokens": 566,
+      "hash": "90520aeebc64dc48",
+      "size": 1978,
+      "mtimeMs": 1795089260935.8794,
+      "updatedAt": "2026-11-25T14:01:54.786Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/quoteBandType.ts": {
       "description": "Exports quoteBandType",
-      "tokens": 363,
-      "hash": "e89a70e799854c51",
-      "size": 1270,
-      "mtimeMs": 1785413100084.1924,
-      "updatedAt": "2026-08-26T16:07:36.341Z",
+      "tokens": 368,
+      "hash": "0383bcd707b117df",
+      "size": 1286,
+      "mtimeMs": 1795089260936.5012,
+      "updatedAt": "2026-11-25T14:01:54.786Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/quoteStripType.ts": {
@@ -4394,16 +5529,16 @@
       "hash": "450b6dc4d2e1652b",
       "size": 1655,
       "mtimeMs": 1787298426057.5994,
-      "updatedAt": "2026-08-26T16:07:36.341Z",
+      "updatedAt": "2026-11-25T14:01:54.786Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/regionBlockType.ts": {
       "description": "Exports regionBlockType",
-      "tokens": 342,
-      "hash": "5f6d9448a6739d6d",
-      "size": 1196,
-      "mtimeMs": 1785415063504.6973,
-      "updatedAt": "2026-08-26T16:07:36.341Z",
+      "tokens": 375,
+      "hash": "5bb356cf0b69eec1",
+      "size": 1310,
+      "mtimeMs": 1789391726421.2388,
+      "updatedAt": "2026-11-25T14:01:54.787Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/reviewGridType.ts": {
@@ -4412,7 +5547,7 @@
       "hash": "52c773c695913e6c",
       "size": 935,
       "mtimeMs": 1786622140597.4822,
-      "updatedAt": "2026-08-26T16:07:36.341Z",
+      "updatedAt": "2026-11-25T14:01:54.787Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/reviewsType.ts": {
@@ -4421,70 +5556,88 @@
       "hash": "feef40f31014e72b",
       "size": 1330,
       "mtimeMs": 1786990545476.2454,
-      "updatedAt": "2026-08-26T16:07:36.341Z",
+      "updatedAt": "2026-11-25T14:01:54.787Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/richTextType.ts": {
+      "description": "Lopende tekst met koppen, lijsten en links (Portable Text). Voor documentpagina's: privacy, voorwaarden, disclaimer.",
+      "tokens": 1206,
+      "hash": "fa6f18ba3bd213d4",
+      "size": 4227,
+      "mtimeMs": 1788184865953.127,
+      "updatedAt": "2026-11-25T14:01:54.787Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/routeBlockType.ts": {
       "description": "Exports routeBlockType",
-      "tokens": 520,
-      "hash": "e669ac88eafe57d0",
-      "size": 1819,
-      "mtimeMs": 1786607789633.3943,
-      "updatedAt": "2026-08-26T16:07:36.342Z",
+      "tokens": 525,
+      "hash": "6e86b3078b99b363",
+      "size": 1835,
+      "mtimeMs": 1795089260938.0205,
+      "updatedAt": "2026-11-25T14:01:54.788Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/servicesType.ts": {
       "description": "Exports servicesType",
-      "tokens": 685,
-      "hash": "f8b43f8565d79112",
-      "size": 2396,
-      "mtimeMs": 1785415062017.9482,
-      "updatedAt": "2026-08-26T16:07:36.342Z",
+      "tokens": 690,
+      "hash": "fc47aec61d38d27f",
+      "size": 2412,
+      "mtimeMs": 1795089260939.0205,
+      "updatedAt": "2026-11-25T14:01:54.788Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/splitHeroType.ts": {
       "description": "Exports splitHeroType",
-      "tokens": 429,
-      "hash": "4d100ac6e82e4820",
-      "size": 1499,
-      "mtimeMs": 1786607789619.8772,
-      "updatedAt": "2026-08-26T16:07:36.342Z",
+      "tokens": 433,
+      "hash": "3bff88d2478c7073",
+      "size": 1515,
+      "mtimeMs": 1795089260939.7861,
+      "updatedAt": "2026-11-25T14:01:54.788Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/stepsType.ts": {
       "description": "Exports stepsType",
-      "tokens": 452,
-      "hash": "c748e46a3ca14f11",
-      "size": 1581,
-      "mtimeMs": 1785413096292.5088,
-      "updatedAt": "2026-08-26T16:07:36.342Z",
+      "tokens": 457,
+      "hash": "c3ca58efaff554e8",
+      "size": 1597,
+      "mtimeMs": 1795089260940.1848,
+      "updatedAt": "2026-11-25T14:01:54.788Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/storyType.ts": {
-      "description": "Exports storyType",
-      "tokens": 456,
-      "hash": "11d20c4b8974f6e2",
-      "size": 1595,
-      "mtimeMs": 1785413049413.9749,
-      "updatedAt": "2026-08-26T16:07:36.342Z",
+      "description": "Slider met klantverhalen. De verhalen zelf zijn `klantverhaal`-documenten;",
+      "tokens": 326,
+      "hash": "b79e8739473db411",
+      "size": 1141,
+      "mtimeMs": 1795089395160.0793,
+      "updatedAt": "2026-11-25T14:01:54.788Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/blocks/teamType.ts": {
+      "description": "Exports teamType",
+      "tokens": 512,
+      "hash": "97686e536463a0a0",
+      "size": 1789,
+      "mtimeMs": 1795089383140.0388,
+      "updatedAt": "2026-11-25T14:01:54.789Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/timelineType.ts": {
       "description": "Exports timelineType",
-      "tokens": 492,
-      "hash": "0535ac1f45c7bc01",
-      "size": 1721,
-      "mtimeMs": 1786560726125.752,
-      "updatedAt": "2026-08-26T16:07:36.343Z",
+      "tokens": 509,
+      "hash": "6869486eca573b12",
+      "size": 1779,
+      "mtimeMs": 1795089260940.7979,
+      "updatedAt": "2026-11-25T14:01:54.789Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/uitgelichteReviewType.ts": {
       "description": "Eén beoordeling groot uitgelicht naast een foto.",
-      "tokens": 288,
-      "hash": "90b8f22d4f0445c6",
-      "size": 1006,
-      "mtimeMs": 1786622134207.8027,
-      "updatedAt": "2026-08-26T16:07:36.343Z",
+      "tokens": 292,
+      "hash": "38fbb862c152768e",
+      "size": 1022,
+      "mtimeMs": 1795089260941.1343,
+      "updatedAt": "2026-11-25T14:01:54.789Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/valueCardsType.ts": {
@@ -4493,7 +5646,7 @@
       "hash": "58de0c4342f59467",
       "size": 1640,
       "mtimeMs": 1786560726135.1118,
-      "updatedAt": "2026-08-26T16:07:36.343Z",
+      "updatedAt": "2026-11-25T14:01:54.789Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/blocks/werkwijzeType.ts": {
@@ -4502,7 +5655,16 @@
       "hash": "d64d657eb80b523b",
       "size": 1294,
       "mtimeMs": 1787317265118.7888,
-      "updatedAt": "2026-08-26T16:07:36.343Z",
+      "updatedAt": "2026-11-25T14:01:54.789Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/cronLogType.ts": {
+      "description": "Eén regel geschiedenis van een cron-run (Funda-reviews of Realworks). Wordt",
+      "tokens": 585,
+      "hash": "56d45e19de479b66",
+      "size": 2058,
+      "mtimeMs": 1788938681143.0305,
+      "updatedAt": "2026-11-25T14:01:54.789Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/faqType.ts": {
@@ -4511,61 +5673,79 @@
       "hash": "1f7a05e01a3cc9f2",
       "size": 830,
       "mtimeMs": 1785413103941.8618,
-      "updatedAt": "2026-08-26T16:07:36.343Z",
+      "updatedAt": "2026-11-25T14:01:54.790Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/footerType.ts": {
       "description": "Exports footerType",
-      "tokens": 1398,
-      "hash": "c942656bf8c0c659",
-      "size": 4892,
-      "mtimeMs": 1787082838425.934,
-      "updatedAt": "2026-08-26T16:07:36.344Z",
+      "tokens": 1497,
+      "hash": "86451c285451c8e9",
+      "size": 5239,
+      "mtimeMs": 1795089260941.8923,
+      "updatedAt": "2026-11-25T14:01:54.790Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/formGeneralSettingsType.ts": {
       "description": "Mail and spam settings shared by every `form`. Sending goes through",
-      "tokens": 1030,
-      "hash": "7279bd8c3a8f9bb3",
-      "size": 3609,
-      "mtimeMs": 1787318572969.8071,
-      "updatedAt": "2026-08-26T16:07:36.344Z",
+      "tokens": 1322,
+      "hash": "2d461b1251829b3d",
+      "size": 4631,
+      "mtimeMs": 1795089260942.6501,
+      "updatedAt": "2026-11-25T14:01:54.790Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/formType.ts": {
       "description": "Multi-step forms keep their fields under `steps`, simple ones under `fields`.",
-      "tokens": 2241,
-      "hash": "da855c654f4110a2",
-      "size": 7849,
-      "mtimeMs": 1787318468316.703,
-      "updatedAt": "2026-08-26T16:07:36.344Z",
+      "tokens": 2720,
+      "hash": "b4e7c7d3bd6ed65f",
+      "size": 9523,
+      "mtimeMs": 1787813454836.076,
+      "updatedAt": "2026-11-25T14:01:54.791Z",
       "source": "scan",
       "symbols": [
         {
           "name": "isSteps",
           "kind": "fn",
           "startLine": 5,
-          "endLine": 247,
-          "tokens": 2183
+          "endLine": 284,
+          "tokens": 2661
         }
       ]
     },
     "studio-hart-huis/schemaTypes/index.ts": {
       "description": "Exports schemaTypes",
-      "tokens": 1080,
-      "hash": "75d327b924ee2ddf",
-      "size": 3778,
-      "mtimeMs": 1787419173694.5513,
-      "updatedAt": "2026-08-26T16:07:36.344Z",
+      "tokens": 1253,
+      "hash": "a05005dff82037b6",
+      "size": 4387,
+      "mtimeMs": 1795615120337.9873,
+      "updatedAt": "2026-11-25T14:01:54.791Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/klantverhaalType.ts": {
+      "description": "Een klantverhaal, op /klantverhaal/<slug>. Vaste template (geen page",
+      "tokens": 2158,
+      "hash": "4620718b769fd100",
+      "size": 7555,
+      "mtimeMs": 1795089414495.7908,
+      "updatedAt": "2026-11-25T14:01:54.791Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/navigationType.ts": {
       "description": "Exports navigationType",
-      "tokens": 470,
-      "hash": "c9516b2a33480c41",
-      "size": 1643,
-      "mtimeMs": 1787079675478.4338,
-      "updatedAt": "2026-08-26T16:07:36.345Z",
+      "tokens": 484,
+      "hash": "4e23c9f15cee0b0e",
+      "size": 1693,
+      "mtimeMs": 1795089260943.914,
+      "updatedAt": "2026-11-25T14:01:54.792Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/schemaTypes/objects/anchorId.ts": {
+      "description": "Optioneel anker-ID op elk page-builder-blok. Gevuld wordt het het `id` van",
+      "tokens": 220,
+      "hash": "0dab61b2fdcfcf79",
+      "size": 768,
+      "mtimeMs": 1795089383350.1907,
+      "updatedAt": "2026-11-25T14:01:54.792Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/ctaType.ts": {
@@ -4574,7 +5754,7 @@
       "hash": "d016fc7939d21106",
       "size": 326,
       "mtimeMs": 1785415054580.3945,
-      "updatedAt": "2026-08-26T16:07:36.345Z",
+      "updatedAt": "2026-11-25T14:01:54.792Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/formFieldType.ts": {
@@ -4583,16 +5763,16 @@
       "hash": "1ec327b81e33c864",
       "size": 4600,
       "mtimeMs": 1787419173694.9128,
-      "updatedAt": "2026-08-26T16:07:36.345Z",
+      "updatedAt": "2026-11-25T14:01:54.793Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/linkFields.ts": {
       "description": "Shared internal/external link fields for `link` and `cta` objects.",
-      "tokens": 407,
-      "hash": "c355054eed7f2555",
-      "size": 1424,
-      "mtimeMs": 1785415050987.8442,
-      "updatedAt": "2026-08-26T16:07:36.345Z",
+      "tokens": 420,
+      "hash": "491e1842c63b5d2b",
+      "size": 1470,
+      "mtimeMs": 1795089383350.8643,
+      "updatedAt": "2026-11-25T14:01:54.793Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/linkType.ts": {
@@ -4601,34 +5781,34 @@
       "hash": "4a6dec2e72655f28",
       "size": 188,
       "mtimeMs": 1785415051978.4214,
-      "updatedAt": "2026-08-26T16:07:36.346Z",
+      "updatedAt": "2026-11-25T14:01:54.793Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objects/seoType.ts": {
       "description": "Exports seoType",
-      "tokens": 231,
-      "hash": "c3937d54e6fc72e3",
-      "size": 806,
-      "mtimeMs": 1786605655235.7788,
-      "updatedAt": "2026-08-26T16:07:36.346Z",
+      "tokens": 245,
+      "hash": "63b872958e54bf8f",
+      "size": 856,
+      "mtimeMs": 1795089260945.3376,
+      "updatedAt": "2026-11-25T14:01:54.793Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/objectSettingsType.ts": {
-      "description": "Singleton \"Objectpagina\": knoptekst, het formulier achter de knop, de venstertekst en de terugvallink. Eén document voor alle objecten, want de import schrijft de woningen.",
-      "tokens": 525,
-      "hash": "59cf04a4ce5dd5b2",
-      "size": 1837,
-      "mtimeMs": 1787419173694.6528,
-      "updatedAt": "2026-08-26T16:07:36.346Z",
+      "description": "Singleton \"Objectpagina\", twee tabbladen: de bezichtigingsknop (knoptekst, formulier, venstertekst, terugvallink) en wat onderaan elke objectpagina staat (`vergelijkbaar` + een `ctaBand`). Eén document voor alle objecten, want de import schrijft de woningen.",
+      "tokens": 1025,
+      "hash": "5c497fed0fde7a85",
+      "size": 3590,
+      "mtimeMs": 1787813454836.6543,
+      "updatedAt": "2026-11-25T14:01:54.793Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/pageBuilderType.ts": {
       "description": "Exports pageBuilderType",
-      "tokens": 554,
-      "hash": "e2e749ed05ae71de",
-      "size": 1938,
-      "mtimeMs": 1787298426058.458,
-      "updatedAt": "2026-08-26T16:07:36.346Z",
+      "tokens": 590,
+      "hash": "be665c3740fffc40",
+      "size": 2063,
+      "mtimeMs": 1795615120346.568,
+      "updatedAt": "2026-11-25T14:01:54.793Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/pageType.ts": {
@@ -4637,7 +5817,7 @@
       "hash": "b240005c75559bae",
       "size": 995,
       "mtimeMs": 1787419173695.6084,
-      "updatedAt": "2026-08-26T16:07:36.346Z",
+      "updatedAt": "2026-11-25T14:01:54.794Z",
       "source": "scan"
     },
     "studio-hart-huis/schemaTypes/reviewType.ts": {
@@ -4646,7 +5826,7 @@
       "hash": "a5f32bd95779b0fd",
       "size": 2443,
       "mtimeMs": 1786988177933.1514,
-      "updatedAt": "2026-08-26T16:07:36.347Z",
+      "updatedAt": "2026-11-25T14:01:54.794Z",
       "source": "scan",
       "symbols": [
         {
@@ -4658,13 +5838,22 @@
         }
       ]
     },
+    "studio-hart-huis/schemaTypes/werkgebiedType.ts": {
+      "description": "Landingspagina per plaats in het werkgebied, op /werkgebied/<slug>.",
+      "tokens": 290,
+      "hash": "c15c4100c2db3ffd",
+      "size": 1013,
+      "mtimeMs": 1795089383351.224,
+      "updatedAt": "2026-11-25T14:01:54.794Z",
+      "source": "scan"
+    },
     "studio-hart-huis/schemaTypes/woningType.ts": {
-      "description": "The \"Object\" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional.",
-      "tokens": 2608,
-      "hash": "101779e5870086b9",
-      "size": 9146,
-      "mtimeMs": 1786610789327.7375,
-      "updatedAt": "2026-08-26T16:07:36.347Z",
+      "description": "The \"Object\" document (house for sale). Flat typed fields for filters/cards + free-form `kenmerkGroepen` table; mirrors the Realworks feed, almost everything optional. Plus het redactionele `makelaar`-object (eigen tabblad) dat de import laat staan.",
+      "tokens": 3141,
+      "hash": "646d152c63a59b9e",
+      "size": 11012,
+      "mtimeMs": 1795089260946.8662,
+      "updatedAt": "2026-11-25T14:01:54.794Z",
       "source": "scan"
     },
     "studio-hart-huis/static/.gitkeep": {
@@ -4673,16 +5862,16 @@
       "hash": "7635960718f1ae5c",
       "size": 81,
       "mtimeMs": 1785064182433.0325,
-      "updatedAt": "2026-08-26T16:07:36.347Z",
+      "updatedAt": "2026-11-25T14:01:54.795Z",
       "source": "scan"
     },
     "studio-hart-huis/structure.ts": {
       "description": "Exports structure",
-      "tokens": 866,
-      "hash": "f16d12b1bda2f4e0",
-      "size": 3030,
-      "mtimeMs": 1787565470326.8267,
-      "updatedAt": "2026-08-26T16:07:36.347Z",
+      "tokens": 1190,
+      "hash": "12fbd679e2fcab86",
+      "size": 4167,
+      "mtimeMs": 1795089383351.7659,
+      "updatedAt": "2026-11-25T14:01:54.795Z",
       "source": "scan"
     },
     "studio-hart-huis/tools/FundaReviewsTool.tsx": {
@@ -4691,7 +5880,7 @@
       "hash": "964ab1161f9d7a55",
       "size": 4091,
       "mtimeMs": 1787565434313.3616,
-      "updatedAt": "2026-08-26T16:07:36.348Z",
+      "updatedAt": "2026-11-25T14:01:54.796Z",
       "source": "scan",
       "symbols": [
         {
@@ -4710,13 +5899,229 @@
         }
       ]
     },
+    "studio-hart-huis/tools/logsData.ts": {
+      "description": "Query, types en formatteerhulpjes voor het Logs-paneel (`LogsTool.tsx`).",
+      "tokens": 602,
+      "hash": "29dde4ea6c37aa06",
+      "size": 2115,
+      "mtimeMs": 1788938681144.9253,
+      "updatedAt": "2026-11-25T14:01:54.796Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "taskLabel",
+          "kind": "fn",
+          "startLine": 50,
+          "endLine": 59,
+          "tokens": 67
+        },
+        {
+          "name": "triggerLabel",
+          "kind": "fn",
+          "startLine": 60,
+          "endLine": 63,
+          "tokens": 31
+        },
+        {
+          "name": "matchesTask",
+          "kind": "fn",
+          "startLine": 64,
+          "endLine": 67,
+          "tokens": 36
+        },
+        {
+          "name": "formatWhen",
+          "kind": "fn",
+          "startLine": 68,
+          "endLine": 79,
+          "tokens": 81
+        },
+        {
+          "name": "formatDuration",
+          "kind": "fn",
+          "startLine": 80,
+          "endLine": 85,
+          "tokens": 57
+        }
+      ]
+    },
+    "studio-hart-huis/tools/logsStyles.ts": {
+      "description": "Aanvulling op `panelStyles.ts` voor het Logs-paneel, zelfde aanpak als `mediaStyles.ts`.",
+      "tokens": 560,
+      "hash": "d8ab66a2ccd3dfe7",
+      "size": 1959,
+      "mtimeMs": 1788938681145.2156,
+      "updatedAt": "2026-11-25T14:01:54.796Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/tools/LogsTool.tsx": {
+      "description": "Overzicht van elke run van de twee cron-taken (Funda-reviews, Realworks-",
+      "tokens": 1309,
+      "hash": "716f4e7b0deca6a3",
+      "size": 4588,
+      "mtimeMs": 1788938681144.6235,
+      "updatedAt": "2026-11-25T14:01:54.796Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Logs",
+          "kind": "fn",
+          "startLine": 33,
+          "endLine": 120,
+          "tokens": 760
+        },
+        {
+          "name": "LogRow",
+          "kind": "fn",
+          "startLine": 121,
+          "endLine": 150,
+          "tokens": 259
+        }
+      ]
+    },
+    "studio-hart-huis/tools/mediaData.ts": {
+      "description": "Queries, types en formatteerhulpjes voor het Media-paneel",
+      "tokens": 2204,
+      "hash": "71b3c5a259f4fd8b",
+      "size": 7744,
+      "mtimeMs": 1795089260948.3489,
+      "updatedAt": "2026-11-25T14:01:54.797Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "chunk",
+          "kind": "fn",
+          "startLine": 62,
+          "endLine": 128,
+          "tokens": 498
+        },
+        {
+          "name": "typeLabel",
+          "kind": "fn",
+          "startLine": 129,
+          "endLine": 132,
+          "tokens": 25
+        },
+        {
+          "name": "isImage",
+          "kind": "fn",
+          "startLine": 133,
+          "endLine": 137,
+          "tokens": 70
+        },
+        {
+          "name": "uploadKind",
+          "kind": "fn",
+          "startLine": 138,
+          "endLine": 141,
+          "tokens": 38
+        },
+        {
+          "name": "formatBytes",
+          "kind": "fn",
+          "startLine": 142,
+          "endLine": 149,
+          "tokens": 81
+        },
+        {
+          "name": "formatDate",
+          "kind": "fn",
+          "startLine": 150,
+          "endLine": 156,
+          "tokens": 74
+        },
+        {
+          "name": "formatDimensions",
+          "kind": "fn",
+          "startLine": 157,
+          "endLine": 162,
+          "tokens": 76
+        },
+        {
+          "name": "displayName",
+          "kind": "fn",
+          "startLine": 163,
+          "endLine": 174,
+          "tokens": 95
+        },
+        {
+          "name": "matchesSearch",
+          "kind": "fn",
+          "startLine": 175,
+          "endLine": 200,
+          "tokens": 216
+        },
+        {
+          "name": "matchesFilter",
+          "kind": "fn",
+          "startLine": 201,
+          "endLine": 216,
+          "tokens": 146
+        },
+        {
+          "name": "dedupeUsage",
+          "kind": "fn",
+          "startLine": 217,
+          "endLine": 232,
+          "tokens": 168
+        },
+        {
+          "name": "thumbnailUrl",
+          "kind": "fn",
+          "startLine": 233,
+          "endLine": 236,
+          "tokens": 36
+        }
+      ]
+    },
+    "studio-hart-huis/tools/mediaStyles.ts": {
+      "description": "Inline stijlen voor het Media-paneel, aanvullend op panelStyles.ts",
+      "tokens": 1422,
+      "hash": "2b478da9a1cda31a",
+      "size": 4980,
+      "mtimeMs": 1788184537517.5947,
+      "updatedAt": "2026-11-25T14:01:54.797Z",
+      "source": "scan"
+    },
+    "studio-hart-huis/tools/MediaTool.tsx": {
+      "description": "Mediabeheer in de studio: alle uploads op één plek, doorzoekbaar, met per bestand de gegevens, de documenten die het gebruiken, uploaden en verwijderen",
+      "tokens": 5935,
+      "hash": "2f8af2eb0df30400",
+      "size": 20842,
+      "mtimeMs": 1795089260947.9827,
+      "updatedAt": "2026-11-25T14:01:54.797Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "MediaBeheer",
+          "kind": "fn",
+          "startLine": 78,
+          "endLine": 422,
+          "tokens": 3330
+        },
+        {
+          "name": "MediaKaart",
+          "kind": "fn",
+          "startLine": 423,
+          "endLine": 458,
+          "tokens": 294
+        },
+        {
+          "name": "MediaDetail",
+          "kind": "fn",
+          "startLine": 459,
+          "endLine": 635,
+          "tokens": 1493
+        }
+      ]
+    },
     "studio-hart-huis/tools/panelStyles.ts": {
       "description": "Sanity's eigen card-variabelen, zodat het paneel meekleurt met het thema dat",
       "tokens": 426,
       "hash": "1a29b06bb85b5fd3",
       "size": 1490,
       "mtimeMs": 1787565434312.7854,
-      "updatedAt": "2026-08-26T16:07:36.348Z",
+      "updatedAt": "2026-11-25T14:01:54.797Z",
       "source": "scan"
     },
     "studio-hart-huis/tools/RealworksTool.tsx": {
@@ -4725,7 +6130,7 @@
       "hash": "8616c3c96c5887ed",
       "size": 4440,
       "mtimeMs": 1787734749716.1655,
-      "updatedAt": "2026-08-26T16:07:36.348Z",
+      "updatedAt": "2026-11-25T14:01:54.798Z",
       "source": "scan",
       "symbols": [
         {
@@ -4750,16 +6155,16 @@
       "hash": "e5a67d7d8cdee156",
       "size": 417,
       "mtimeMs": 1785064182435.5544,
-      "updatedAt": "2026-08-26T16:07:36.348Z",
+      "updatedAt": "2026-11-25T14:01:54.798Z",
       "source": "scan"
     },
     "studio-hart-huis/tsconfig.tsbuildinfo": {
       "description": "",
-      "tokens": 45144,
-      "hash": "1e0da96b1f493c04",
-      "size": 169288,
-      "mtimeMs": 1787565661741.7454,
-      "updatedAt": "2026-08-26T16:07:36.349Z",
+      "tokens": 45814,
+      "hash": "6781afba6d23f15e",
+      "size": 171799,
+      "mtimeMs": 1795615196422.0403,
+      "updatedAt": "2026-11-25T14:01:54.799Z",
       "source": "scan"
     },
     "template/.DS_Store": {
@@ -4768,7 +6173,7 @@
       "hash": "0fe00154a3fc363b",
       "size": 8196,
       "mtimeMs": 1786686928537.502,
-      "updatedAt": "2026-08-26T16:07:36.349Z",
+      "updatedAt": "2026-11-25T14:01:54.800Z",
       "source": "scan"
     }
   }

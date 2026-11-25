@@ -1,6 +1,7 @@
 /** Seeds the reviews and the home page. */
 import {
   HERO_SLIDES,
+  HOME_PARTNERS,
   INTRO_FACTS,
   REVIEWS,
   SERVICES,
@@ -148,6 +149,7 @@ async function buildHomeContent() {
       primaryCta: cta('Plan een kennismaking', '#'),
       secondaryCta: cta(SITE.phone, SITE.phoneHref),
     },
+    await buildPartnersBlock(),
   ];
 }
 
@@ -159,4 +161,39 @@ export async function seedHome() {
 
   console.log('\nHome page');
   await upsertPage('home', 'Home', await buildHomeContent());
+}
+
+async function buildPartnersBlock() {
+  return {
+    _type: 'partners',
+    _key: key('home-partners'),
+    eyebrow: HOME_PARTNERS.eyebrow,
+    title: HOME_PARTNERS.title,
+    body: HOME_PARTNERS.body,
+    logos: await Promise.all(
+      HOME_PARTNERS.logos.map(async (logo) => ({
+        ...(await uploadImage(logo.src, logo.alt)),
+        _key: key(`partner:${logo.alt}`),
+      })),
+    ),
+  };
+}
+
+/** Zet alleen het partnersblok onderaan de live homepage; de rest blijft staan. */
+export async function seedPartnersHome() {
+  console.log('Partners (home)');
+  const block = await buildPartnersBlock();
+  const ids = await client.fetch<string[]>(
+    `*[_type == "page" && slug.current == "home"]._id`,
+    {},
+    { perspective: 'raw' },
+  );
+  for (const id of ids) {
+    await client
+      .patch(id)
+      .unset(['content[_type=="partners"]'])
+      .append('content', [block])
+      .commit();
+    console.log(`✓ partners block → ${id}`);
+  }
 }

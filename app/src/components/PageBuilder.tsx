@@ -18,6 +18,7 @@ import { MediaText } from '@/components/blocks/MediaText';
 import { ObjectGrid } from '@/components/blocks/ObjectGrid';
 import { PageHero } from '@/components/blocks/PageHero';
 import { PageOpener } from '@/components/blocks/PageOpener';
+import { Partners } from '@/components/blocks/Partners';
 import { Person } from '@/components/blocks/Person';
 import { QuoteBand } from '@/components/blocks/QuoteBand';
 import { RegionBlock } from '@/components/blocks/RegionBlock';
@@ -522,6 +523,20 @@ function renderBlock(block: PageBlock) {
           lead={block.lead}
           motto={block.motto}
           attribution={block.attribution}
+        />
+      );
+    }
+    case 'partners': {
+      const logos = block.logos
+        ?.map((logo) => toImage(logo, 480))
+        .filter((logo): logo is { src: string; alt: string } => Boolean(logo));
+      return (
+        <Partners
+          key={block._key}
+          eyebrow={block.eyebrow ?? undefined}
+          title={block.title}
+          body={block.body ?? undefined}
+          logos={logos}
         />
       );
     }

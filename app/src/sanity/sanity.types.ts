@@ -99,6 +99,23 @@ export type MembersObjectImage = {
   _type: "image";
 };
 
+export type Partners = {
+  _type: "partners";
+  eyebrow?: string;
+  title: string;
+  body?: string;
+  logos: Array<{
+    asset: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+    _key: string;
+  }>;
+  anchorId?: string;
+};
+
 export type RichText = {
   _type: "richText";
   eyebrow?: string;
@@ -884,6 +901,9 @@ export type PageBuilder = Array<
     } & DuoPhotos)
   | ({
       _key: string;
+    } & Partners)
+  | ({
+      _key: string;
     } & Timeline)
   | ({
       _key: string;
@@ -1563,6 +1583,7 @@ export type AllSanitySchemaTypes =
   | ItemsObjectImage
   | TimelineItemsObjectImage
   | MembersObjectImage
+  | Partners
   | RichText
   | CenteredCta
   | QuoteStrip
@@ -2646,6 +2667,35 @@ export type PAGE_QUERY_RESULT = {
         lead: string;
         motto?: string;
         attribution?: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "partners";
+        eyebrow?: string;
+        title: string;
+        body?: string;
+        logos: Array<{
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+          _key: string;
+        }>;
         anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
@@ -4450,6 +4500,35 @@ export type WERKGEBIED_QUERY_RESULT = {
         lead: string;
         motto?: string;
         attribution?: string;
+        anchorId?: string;
+        primaryCta: null;
+        secondaryCta: null;
+        link: null;
+        cta: null;
+        nvm: null;
+        items: null;
+        cards: null;
+        person: null;
+        aside: null;
+        form: null;
+        regions: null;
+        places: null;
+      }
+    | {
+        _key: string;
+        _type: "partners";
+        eyebrow?: string;
+        title: string;
+        body?: string;
+        logos: Array<{
+          asset: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt: string;
+          _type: "image";
+          _key: string;
+        }>;
         anchorId?: string;
         primaryCta: null;
         secondaryCta: null;
